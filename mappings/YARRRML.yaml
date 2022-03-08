@@ -1,0 +1,19 @@
+prefixes:
+ epo: "http://data.europa.eu/a4g/ontology#"
+
+mappings:
+  buyer:
+    sources:
+      - [data.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY]
+    s: epo:$(/TED_EXPORT/TECHNICAL_SECTION/RECEPTION_ID)
+    po:
+      - [a, epo:Bayer]
+      - [epo:IsRoleOf, epo:organisation/$(/TED_EXPORT/TECHNICAL_SECTION/RECEPTION_ID)]
+    
+  organisation:
+    sources:
+      - [data.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY]
+    s: epo:organisation/$(/TED_EXPORT/TECHNICAL_SECTION/RECEPTION_ID)
+    po:
+      - [a, epo:Organisation]
+      - [epo:Town, $(ADDRESS_CONTRACTING_BODY/TOWN)]
