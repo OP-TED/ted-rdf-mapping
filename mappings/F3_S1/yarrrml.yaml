@@ -1,6 +1,6 @@
 prefixes:
  epo: "http://data.europa.eu/a4g/ontology#"
- locn: "http://toBeDefined#"
+ locn: "http://locn/ontology#"
  grel: "http://users.ugent.be/~bjdmeest/function/grel.ttl#"
 mappings:
   buyer:
@@ -19,14 +19,15 @@ mappings:
       - [a, epo:Buyer]
       - p: epo:IsRoleOf
         o:
-          function: grel:array_join
-          parameters:
-            - [grel:p_array_a, epo:]
-            - parameter: grel:p_array_a
-              value:
-                function: grel:string_md5
-                parameters: 
-                  - [grel:valueParameter, $(FORM_SECTION.F03_2014.CONTRACTING_BODY.ADDRESS_CONTRACTING_BODY.OFFICIALNAME)]
+          - function: grel:array_join
+            parameters:
+              - [grel:p_array_a, epo:Organisation]
+              - parameter: grel:p_array_a
+                value:
+                  function: grel:string_md5
+                  parameters: 
+                    - [grel:valueParameter, $(FORM_SECTION.F03_2014.CONTRACTING_BODY.ADDRESS_CONTRACTING_BODY.OFFICIALNAME)]
+            datatype: rr:IRI
   organisation:
     sources:
       - [data.json~jsonpath, "$.TED_EXPORT"]
