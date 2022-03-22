@@ -1,15 +1,15 @@
 prefixes:
  epo: "http://data.europa.eu/a4g/ontology#"
- locn: "http://toBeDefined#"
+ locn: "http://locn/ontology#"
  grel: "http://users.ugent.be/~bjdmeest/function/grel.ttl#"
 mappings:
   buyer:
     sources:
-      - [data.json~jsonpath, "$.TED_EXPORT"]
+      - [source.xml~xpath, /TED_EXPORT]
     s:
       function: grel:array_join
       parameters:
-        - [grel:p_array_a, "http://data.europa.eu/a4g/ontology#Buyer"]
+        - [grel:p_array_a, epo:Buyer]
         - parameter: grel:p_array_a
           value:
             function: grel:string_md5
@@ -17,30 +17,77 @@ mappings:
               - [grel:valueParameter, "Buyer"] # This is needed atm, bug in the YARRRML parser
     po:
       - [a, epo:Buyer]
-      - p: epo:IsRoleOf
-        o:
+      - [epo:hasBuyerType, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_TYPE/@VALUE)]
+      - [epo:hasMainActivityType, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_ACTIVITY/@VALUE)]
+      - p: epo:hasBuyerWebsite
+        o: 
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:]
+            - [grel:p_array_a, epo:BuyerProfile]
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
                 parameters: 
-                  - [grel:valueParameter, $(FORM_SECTION.F03_2014.CONTRACTING_BODY.ADDRESS_CONTRACTING_BODY.OFFICIALNAME)]
-  organisation:
+                  - [grel:valueParameter, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/URL_BUYER)]
+          
+          type: iri
+  
+      
+      - p: epo:IsRoleOf
+        o: 
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, epo:Organisation]
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters: 
+                  - [grel:valueParameter, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/OFFICIALNAME)]
+          
+          type: iri
+          
+
+  buyerprofile:
     sources:
-      - [data.json~jsonpath, "$.TED_EXPORT"]
+      - [source.xml~xpath, /TED_EXPORT]
     s:
       function: grel:array_join
       parameters:
-        - [grel:p_array_a, "http://data.europa.eu/a4g/ontology#Organisation"]
+        - [grel:p_array_a, epo:BuyerProfile]
         - parameter: grel:p_array_a
           value:
             function: grel:string_md5
             parameters: 
-              - [grel:valueParameter, $(FORM_SECTION.F03_2014.CONTRACTING_BODY.ADDRESS_CONTRACTING_BODY.OFFICIALNAME)]
+              - [grel:valueParameter, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/URL_BUYER)]
+    po:
+      - [a, epo:BuyerProfile]
+      - [epo:hasURL, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/URL_BUYER)]
+   
+  organisation:
+    sources:
+      - [source.xml~xpath, /TED_EXPORT]
+    s:
+      function: grel:array_join
+      parameters:
+        - [grel:p_array_a, epo:Organisation]
+        - parameter: grel:p_array_a
+          value:
+            function: grel:string_md5
+            parameters: 
+              - [grel:valueParameter, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/OFFICIALNAME)]
     po:
       - [a, epo:Organisation]
+      - p: epo:hasDefaultContactPoint
+        o: 
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, epo:ContactPoint]
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters: 
+                  - [grel:valueParameter, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/E_MAIL)]
+          type: iri
       - p: epo:hasRegisteredAddress
         o:
           function: grel:array_join
@@ -50,14 +97,65 @@ mappings:
               value:
                 function: grel:string_md5
                 parameters: 
-                  - [grel:valueParameter, $(FORM_SECTION.F03_2014.CONTRACTING_BODY.ADDRESS_CONTRACTING_BODY.ADDRESS)]
+                  - [grel:valueParameter, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/ADDRESS)]
+          type: iri
+      - [epo:hasName, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/OFFICIALNAME)]
+      - [epo:hasIdentifier, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/NATIONALID)]
+  
+  channel:
+    sources:
+      - [source.xml~xpath, /TED_EXPORT]
+    s:
+      function: grel:array_join
+      parameters:
+        - [grel:p_array_a, epo:Channel]
+        - parameter: grel:p_array_a
+          value:
+            function: grel:string_md5
+            parameters: 
+              - [grel:valueParameter, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/URL_GENERAL)]
 
-      - [epo:hasName, $(FORM_SECTION.F03_2014.CONTRACTING_BODY.ADDRESS_CONTRACTING_BODY.OFFICIALNAME)]
-      - [epo:hasIdentifier, $(FORM_SECTION.F03_2014.CONTRACTING_BODY.ADDRESS_CONTRACTING_BODY.NATIONALID)]
-      
+    po:
+      - [a, epo:Channel]
+      - [epo:hasUrl, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/URL_GENERAL)]
+
+    
+  
+  contactPoint:
+    sources:
+      - [source.xml~xpath, /TED_EXPORT]
+    s:
+      function: grel:array_join
+      parameters:
+        - [grel:p_array_a, epo:ContactPoint]
+        - parameter: grel:p_array_a
+          value:
+            function: grel:string_md5
+            parameters: 
+              - [grel:valueParameter, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/E_MAIL)]
+    
+    po:
+      - [a, epo:ContactPoint]
+      - p: epo:hasChannel
+        o:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, epo:Channel]
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters: 
+                  - [grel:valueParameter, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/URL_GENERAL)]
+          type: iri
+      - [epo:hasEmail, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/E_MAIL)]
+      - [epo:hasFax, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/FAX)]
+      - [epo:hasTelephone, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/PHONE)]
+      - [epo:hasDescription, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/CONTACT_POINT)]
+
+     
   address:
     sources:
-      - [data.json~jsonpath, "$.TED_EXPORT"]
+      - [source.xml~xpath, /TED_EXPORT]
     s:
       function: grel:array_join
       parameters:
@@ -66,12 +164,12 @@ mappings:
           value:
             function: grel:string_md5
             parameters: 
-              - [grel:valueParameter, $(FORM_SECTION.F03_2014.CONTRACTING_BODY.ADDRESS_CONTRACTING_BODY.ADDRESS)]
+              - [grel:valueParameter, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/ADDRESS)]
 
     po:
       - [a, locn:Address]
-      - [locn:postName, $(FORM_SECTION.F03_2014.CONTRACTING_BODY.ADDRESS_CONTRACTING_BODY.TOWN)]
-      - [locn:thoroughfare, $(FORM_SECTION.F03_2014.CONTRACTING_BODY.ADDRESS_CONTRACTING_BODY.ADDRESS)]
-      - [locn:postCode, $(FORM_SECTION.F03_2014.CONTRACTING_BODY.ADDRESS_CONTRACTING_BODY.POSTAL_CODE)]
-      - [locn:adminUnitL2, $(FORM_SECTION.F03_2014.CONTRACTING_BODY.ADDRESS_CONTRACTING_BODY.n2016:NUTS.-CODE)]
-      - [locn:adminUnitL1, $(FORM_SECTION.F03_2014.CONTRACTING_BODY.ADDRESS_CONTRACTING_BODY.COUNTRY.-VALUE)]
+      - [locn:postName, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/TOWN)]
+      - [locn:thoroughfare, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/ADDRESS)]
+      - [locn:postCode, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/POSTAL_CODE)]
+      - [locn:adminUnitL2, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/*/@CODE)]
+      - [locn:adminUnitL1, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/COUNTRY/@VALUE)]
