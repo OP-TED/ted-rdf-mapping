@@ -1,34 +1,48 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix locn: <http://locn/ontology#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
 
-epo:Buyer65fba9ec06765f60ab9510fff2bd2b16 a epo:Buyer;
-  epo:IsRoleOf epo:Organisationc0825b008b5d8e5fec5ca802cd8ab00b;
-  epo:hasBuyerType "EU_INSTITUTION";
-  epo:hasBuyerWebsite epo:BuyerProfile1882bcb78a177ada8b4d0caed84262ce;
-  epo:hasMainActivityType "GENERAL_PUBLIC_SERVICES" .
+epo:Buyer65fba9ec06765f60ab9510fff2bd2b16 rdf:type epo:Buyer ;
+	epo:hasBuyerType "EU_INSTITUTION" ;
+	epo:hasMainActivityType "GENERAL_PUBLIC_SERVICES" ;
+	epo:hasBuyerWebsite epo:BuyerProfile1882bcb78a177ada8b4d0caed84262ce ;
+	epo:IsRoleOf epo:Organisationc0825b008b5d8e5fec5ca802cd8ab00b .
 
-epo:BuyerProfile1882bcb78a177ada8b4d0caed84262ce a epo:BuyerProfile;
-  epo:hasURL "http://ec.europa.eu/social/main.jsp?catId=624&langId=en" .
+epo:BuyerProfile1882bcb78a177ada8b4d0caed84262ce rdf:type epo:BuyerProfile ;
+	epo:hasURL "http://ec.europa.eu/social/main.jsp?catId=624&langId=en" .
 
-epo:Channele10e8da54c6a926074fc762f0427801e a epo:Channel;
-  epo:hasUrl "https://etendering.ted.europa.eu/cft/cft-display.html?cftId=6676" .
+epo:Organisationc0825b008b5d8e5fec5ca802cd8ab00b rdf:type epo:Organisation ;
+	epo:hasDefaultContactPoint epo:ContactPointc0123664d2ab6f063fae75b60f8a83c5 ;
+	epo:hasRegisteredAddress locn:Address5fd45d6a43a6eaadbad33ac8cf9374c0 ;
+	epo:hasName "Europa-Kommissionen, Directorate-General for Employment, Social Affairs and\n                        Inclusion\n                    " .
 
-epo:ContactPointc0123664d2ab6f063fae75b60f8a83c5 a epo:ContactPoint;
-  epo:hasChannel epo:Channele10e8da54c6a926074fc762f0427801e;
-  epo:hasDescription "Mr Jordi Curell Gotor";
-  epo:hasEmail "EMPL-VT-2020-024@ec.europa.eu" .
+epo:Channele10e8da54c6a926074fc762f0427801e rdf:type epo:Channel ;
+	epo:hasUrl "https://etendering.ted.europa.eu/cft/cft-display.html?cftId=6676" .
 
-epo:Organisationc0825b008b5d8e5fec5ca802cd8ab00b a epo:Organisation;
-  epo:hasDefaultContactPoint epo:ContactPointc0123664d2ab6f063fae75b60f8a83c5;
-  epo:hasName """Europa-Kommissionen, Directorate-General for Employment, Social Affairs and
-                        Inclusion
-                    """;
-  epo:hasRegisteredAddress epo:5fd45d6a43a6eaadbad33ac8cf9374c0 .
+epo:ContactPointc0123664d2ab6f063fae75b60f8a83c5 rdf:type epo:ContactPoint ;
+	epo:hasChannel epo:Channele10e8da54c6a926074fc762f0427801e ;
+	epo:hasEmail "EMPL-VT-2020-024@ec.europa.eu" ;
+	epo:hasDescription "Mr Jordi Curell Gotor" .
 
-locn:Address5fd45d6a43a6eaadbad33ac8cf9374c0 a locn:Address;
-  locn:adminUnitL1 "BE";
-  locn:adminUnitL2 "BE10";
-  locn:postCode "1049";
-  locn:postName "Brussels";
-  locn:thoroughfare "27, Rue Joseph II (J-27 06/005)" .
+locn:Address5fd45d6a43a6eaadbad33ac8cf9374c0 rdf:type locn:Address ;
+	locn:postName "Brussels" ;
+	locn:thoroughfare "27, Rue Joseph II (J-27 06/005)" ;
+	locn:postCode "1049" ;
+	locn:adminUnitL2 "BE10" ;
+	locn:adminUnitL1 "BE" .
+
+epo:Procedure1a3f45e437103657ef33eccfe7f54277 rdf:type epo:Procedure ;
+	epo:hasTitle "\n                    Rammeaftale om Eures-kommunikation og Den Europæiske Arbejdsmarkedsmyndigheds arrangementstyring\n                        (fire partier)\n                    \n                " ;
+	epo:hasOverallPurpose epo:Purposed59320c7e97f6c272f5e6c3da5928368 ;
+	epo:hasEstimatedValue epo:MonetaryValued59320c7e97f6c272f5e6c3da5928368 ;
+	epo:hasDescription "\n                    Se udbudsdokumenter.\n                " .
+
+epo:Purposed59320c7e97f6c272f5e6c3da5928368 rdf:type epo:Purpose ;
+	epo:hasMainClassification "79900000" ;
+	epo:hasContractNatureType "SERVICES" .
+
+epo:MonetaryValued59320c7e97f6c272f5e6c3da5928368 rdf:type epo:MonetaryValue ;
+	epo:hasAmountValue "2800000.00" .
+
+
