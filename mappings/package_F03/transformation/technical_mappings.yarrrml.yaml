@@ -2,10 +2,48 @@ prefixes:
  epo: "http://data.europa.eu/a4g/ontology#"
  locn: "http://locn/ontology#"
  grel: "http://users.ugent.be/~bjdmeest/function/grel.ttl#"
+ dct: "http://dct/tobedefined#"
+sources:
+  notice-source:
+    access: source.xml
+    referenceFormulation: xpath
+    iterator: /TED_EXPORT
+  nuts-source:
+    access: data.json
+    referenceFormulation: jsonpath
+    iterator: $.results.bindings[*]
+  countries-source:
+    access: countries.json
+    referenceFormulation: jsonpath
+    iterator: $.results.bindings[*]
+  buyer-legal-type-source:
+    access: buyer_legal_type.json
+    referenceFormulation: jsonpath
+    iterator: $.results.bindings[*]
+  buyer-main-activity-source:
+    access: buyer_main_activity.json
+    referenceFormulation: jsonpath
+    iterator: $.results.bindings[*]
+  contract-nature-source:
+    access: contract_nature.json
+    referenceFormulation: jsonpath
+    iterator: $.results.bindings[*]
+  cpv-source:
+    access: cpv.json
+    referenceFormulation: jsonpath
+    iterator: $.results.bindings[*]
+  currency-source:
+    access: currency.json
+    referenceFormulation: jsonpath
+    iterator: $.results.bindings[*]
+  award-criterion-type-source:
+    access: award_criterion_type.json
+    referenceFormulation: jsonpath
+    iterator: $.results.bindings[*]
 mappings:
   buyer:
     sources:
-      - [source.xml~xpath, /TED_EXPORT]
+      - notice-source
     s:
       function: grel:array_join
       parameters:
@@ -13,24 +51,40 @@ mappings:
         - parameter: grel:p_array_a
           value:
             function: grel:string_md5
-            parameters: 
-              - [grel:valueParameter, "Buyer"] # This is needed atm, bug in the YARRRML parser
+            parameters:
+              - [grel:valueParameter, "Buyer"]
     po:
       - [a, epo:Buyer]
-      - [epo:hasBuyerType, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_TYPE/@VALUE)]
-      - [epo:hasMainActivityType, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_ACTIVITY/@VALUE)]
+
       - p: epo:hasBuyerWebsite
         o:
         - mapping: buyerprofile
-                
+
       - p: epo:IsRoleOf
         o:
         - mapping: organisation
-          
+      - [epo:hasMainActivityType, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_ACTIVITY/@VALUE)]
+      - [epo:hasBuyerType, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_TYPE/@VALUE)]
+      - p: epo:hasMainActivityType
+        o:
+          - mapping: buyermainactivity
+            condition:
+              function: equal
+              parameters:
+                - [str1, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_ACTIVITY/@VALUE)]
+                - [str2, $(code.value)]
+      - p: epo:hasBuyerType
+        o:
+          - mapping: buyerlegaltype
+            condition:
+              function: equal
+              parameters:
+                - [str1, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_TYPE/@VALUE)]
+                - [str2, $(code.value)]
 
   buyerprofile:
     sources:
-      - [source.xml~xpath, /TED_EXPORT]
+      - notice-source
     s:
       function: grel:array_join
       parameters:
@@ -38,15 +92,15 @@ mappings:
         - parameter: grel:p_array_a
           value:
             function: grel:string_md5
-            parameters: 
+            parameters:
               - [grel:valueParameter, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/URL_BUYER)]
     po:
       - [a, epo:BuyerProfile]
       - [epo:hasURL, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/URL_BUYER)]
-   
+
   organisation:
     sources:
-      - [source.xml~xpath, /TED_EXPORT]
+      - notice-source
     s:
       function: grel:array_join
       parameters:
@@ -54,41 +108,42 @@ mappings:
         - parameter: grel:p_array_a
           value:
             function: grel:string_md5
-            parameters: 
+            parameters:
               - [grel:valueParameter, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/OFFICIALNAME)]
     po:
       - [a, epo:Organisation]
       - p: epo:hasDefaultContactPoint
-        o: 
+        o:
         - mapping: contactPoint
       - p: epo:hasRegisteredAddress
         o:
         - mapping: address
+ #      - p: epo:hasID
+#        o:
+#        - mapping: organisationidentifier
       - [epo:hasName, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/OFFICIALNAME)]
-      - [epo:hasIdentifier, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/NATIONALID)]
-  
-  channel:
-    sources:
-      - [source.xml~xpath, /TED_EXPORT]
-    s:
-      function: grel:array_join
-      parameters:
-        - [grel:p_array_a, epo:Channel]
-        - parameter: grel:p_array_a
-          value:
-            function: grel:string_md5
-            parameters: 
-              - [grel:valueParameter, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/URL_GENERAL)]
 
-    po:
-      - [a, epo:Channel]
-      - [epo:hasUrl, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/URL_GENERAL)]
+# When their is no NATIONALID all the RDF data are not generated
+#  organisationidentifier:
+#    sources:
+#      - notice-source
+#    s:
+#      function: grel:array_join
+#      parameters:
+#        - [grel:p_array_a, epo:Identifier]
+#        - parameter: grel:p_array_a
+#          value:
+#            function: grel:string_md5
+#            parameters:
+#              - [grel:valueParameter, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/NATIONALID)]
+#    po:
+#      - [a, epo:Identifier]
+#      - [epo:hasIdentifierValue, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/NATIONALID)]
 
-    
-  
+
   contactPoint:
     sources:
-      - [source.xml~xpath, /TED_EXPORT]
+      - notice-source
     s:
       function: grel:array_join
       parameters:
@@ -96,24 +151,40 @@ mappings:
         - parameter: grel:p_array_a
           value:
             function: grel:string_md5
-            parameters: 
+            parameters:
               - [grel:valueParameter, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/E_MAIL)]
-    
+
     po:
       - [a, epo:ContactPoint]
       - p: epo:hasChannel
-        o: 
+        o:
         - mapping: channel
-          
+
       - [epo:hasEmail, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/E_MAIL)]
       - [epo:hasFax, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/FAX)]
       - [epo:hasTelephone, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/PHONE)]
       - [epo:hasDescription, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/CONTACT_POINT)]
 
-     
+  channel:
+    sources:
+      - notice-source
+    s:
+      function: grel:array_join
+      parameters:
+        - [grel:p_array_a, epo:Channel]
+        - parameter: grel:p_array_a
+          value:
+            function: grel:string_md5
+            parameters:
+              - [grel:valueParameter, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/URL_GENERAL)]
+    po:
+      - [a, epo:Channel]
+      - [epo:hasUrl, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/URL_GENERAL)]
+
+
   address:
     sources:
-      - [source.xml~xpath, /TED_EXPORT]
+      - notice-source
     s:
       function: grel:array_join
       parameters:
@@ -121,7 +192,7 @@ mappings:
         - parameter: grel:p_array_a
           value:
             function: grel:string_md5
-            parameters: 
+            parameters:
               - [grel:valueParameter, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/ADDRESS)]
 
     po:
@@ -129,12 +200,47 @@ mappings:
       - [locn:postName, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/TOWN)]
       - [locn:thoroughfare, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/ADDRESS)]
       - [locn:postCode, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/POSTAL_CODE)]
-      - [locn:adminUnitL2, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/*/@CODE)]
-      - [locn:adminUnitL1, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/COUNTRY/@VALUE)]
-  
+#      - [locn:adminUnitL2, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/*/@CODE)]
+#      - [locn:adminUnitL1, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/COUNTRY/@VALUE)]
+      - p: locn:adminUnitL1
+        o:
+          - mapping: nuts
+            condition:
+              function: equal
+              parameters:
+                - [str1, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/*/@CODE)] # ID of person under `persons`
+                - [str2, $(code.value)]
+      - p: locn:adminUnitL2
+        o:
+          - mapping: countries
+            condition:
+              function: equal
+              parameters:
+                - [str1, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/COUNTRY/@VALUE)] # ID of person under `persons`
+                - [str2, $(code.value)]
+
+  resultnotice:
+    sources:
+      - notice-source
+    s:
+      function: grel:array_join
+      parameters:
+        - [grel:p_array_a, epo:ResultNotice]
+        - parameter: grel:p_array_a
+          value:
+            function: grel:string_md5
+            parameters:
+              - [grel:valueParameter, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/TITLE)]
+
+    po:
+      - [a, epo:ResultNotice]
+      - p: epo:refersToProcedure
+        o:
+        - mapping: procedure
+
   procedure:
     sources:
-      - [source.xml~xpath, /TED_EXPORT]
+      - notice-source
     s:
       function: grel:array_join
       parameters:
@@ -142,7 +248,7 @@ mappings:
         - parameter: grel:p_array_a
           value:
             function: grel:string_md5
-            parameters: 
+            parameters:
               - [grel:valueParameter, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/TITLE)]
 
     po:
@@ -155,27 +261,117 @@ mappings:
         o:
         - mapping: monetaryvalue
       - [epo:hasDescription, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/SHORT_DESCR)]
-  
-  purpose:
+      - p: epo:hasID
+        o:
+        - mapping: procedureidentifier
+      - p: epo:comprisesLot
+        o:
+        - mapping: lot
+
+  lot:
     sources:
-      - [source.xml~xpath, /TED_EXPORT]
+      - notice-source
     s:
       function: grel:array_join
       parameters:
-        - [grel:p_array_a, epo:Purpose]
+        - [grel:p_array_a, epo:lot]
         - parameter: grel:p_array_a
           value:
             function: grel:string_md5
-            parameters: 
+            parameters:
+              - [grel:valueParameter, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/LOT_NO)]
+    po:
+      - [a, epo:Lot]
+      - [epo:hasDescription, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/SHORT_DESCR)]
+      - p: epo:hasID
+        o:
+        - mapping: lotidentifier
+      - p: epo:hasPurpose
+        o:
+        - mapping: lotpurpose
+      - p: epo:isSubjectToTerm
+        o:
+        - mapping: contractterm
+
+  lotidentifier:
+    sources:
+      - notice-source
+    s:
+      function: grel:array_join
+      parameters:
+        - [grel:p_array_a, epo:LotIdentifier]
+        - parameter: grel:p_array_a
+          value:
+            function: grel:string_md5
+            parameters:
+              - [grel:valueParameter, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/LOT_NO)]
+    po:
+      - [a, epo:Identifier]
+      - [epo:hasIdentifierValue, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/LOT_NO)]
+
+  procedureidentifier:
+    sources:
+      - notice-source
+    s:
+      function: grel:array_join
+      parameters:
+        - [grel:p_array_a, epo:ProcedureIdentifier]
+        - parameter: grel:p_array_a
+          value:
+            function: grel:string_md5
+            parameters:
+              - [grel:valueParameter, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/REFERENCE_NUMBER)]
+    po:
+      - [a, epo:Identifier]
+      - [epo:hasIdentifierValue, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/REFERENCE_NUMBER)]
+
+
+  purpose:
+    sources:
+      - notice-source
+    s:
+      function: grel:array_join
+      parameters:
+        - [grel:p_array_a, epo:PurposeProcedure]
+        - parameter: grel:p_array_a
+          value:
+            function: grel:string_md5
+            parameters:
               - [grel:valueParameter, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/CPV_MAIN/CPV_CODE/@CODE)]
 
     po:
       - [a, epo:Purpose]
-      - [epo:hasMainClassification, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/CPV_MAIN/CPV_CODE/@CODE)]      
+#      - [epo:hasMainClassification, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/CPV_MAIN/CPV_CODE/@CODE)]
       - [epo:hasContractNatureType, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/TYPE_CONTRACT/@CTYPE)]
+ #     - [epo:hasAdditionalClassification, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/CPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE)]
+      - p: epo:hasAdditionalClassification
+        o:
+          - mapping: cpv
+            condition:
+              function: equal
+              parameters:
+                - [str1,  $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/CPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE)]
+                - [str2, $(code.value)]
+      - p: epo:hasMainClassification
+        o:
+          - mapping: cpv
+            condition:
+              function: equal
+              parameters:
+                - [str1,  $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/CPV_MAIN/CPV_CODE/@CODE)]
+                - [str2, $(code.value)]
+      - p: epo:hasContractNatureType
+        o:
+          - mapping: contractnature
+            condition:
+              function: equal
+              parameters:
+                - [str1,  $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/TYPE_CONTRACT/@CTYPE)]
+                - [str2, $(code.value)]
+
   monetaryvalue:
     sources:
-      - [source.xml~xpath, /TED_EXPORT]
+      - notice-source
     s:
       function: grel:array_join
       parameters:
@@ -183,10 +379,178 @@ mappings:
         - parameter: grel:p_array_a
           value:
             function: grel:string_md5
-            parameters: 
+            parameters:
               - [grel:valueParameter, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/CPV_MAIN/CPV_CODE/@CODE)]
 
     po:
       - [a, epo:MonetaryValue]
-      - [epo:hasAmountValue, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/VAL_TOTAL)]      
+      - [epo:hasAmountValue, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/VAL_TOTAL)]
+      - [epo:hasCurrency, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/VAL_TOTAL/@CURRENCY)]
+      - p: epo:hasCurrency
+        o:
+          - mapping: currency
+            condition:
+              function: equal
+              parameters:
+                - [str1,  $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/VAL_TOTAL/@CURRENCY)]
+                - [str2, $(code.value)]
 
+
+  lotpurpose:
+    sources:
+      - notice-source
+    s:
+      function: grel:array_join
+      parameters:
+        - [grel:p_array_a, epo:LotPurpose]
+        - parameter: grel:p_array_a
+          value:
+            function: grel:string_md5
+            parameters:
+              - [grel:valueParameter, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/LOT_NO)]
+
+    po:
+      - [a, epo:Purpose]
+      - [epo:hasMainClassification, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/CPV_ADDITIONAL/CPV_CODE/@CODE)]
+ #     - [epo:hasContractNatureType, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/TYPE_CONTRACT/@CTYPE)]
+      - [epo:hasAdditionalClassification, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/CPV_ADDITIONAL/CPV_SUPPLEMENTARY_CODE/@CODE)]
+      - p: epo:hasAdditionalClassification
+        o:
+          - mapping: cpv
+            condition:
+              function: equal
+              parameters:
+                - [str1,  $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/CPV_ADDITIONAL/CPV_SUPPLEMENTARY_CODE/@CODE)]
+                - [str2, $(code.value)]
+      - p: epo:hasMainClassification
+        o:
+          - mapping: cpv
+            condition:
+              function: equal
+              parameters:
+                - [str1,  $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/CPV_ADDITIONAL/CPV_CODE/@CODE)]
+                - [str2, $(code.value)]
+  contractterm:
+    sources:
+      - notice-source
+    s:
+      function: grel:array_join
+      parameters:
+        - [grel:p_array_a, epo:ContractTerm]
+        - parameter: grel:p_array_a
+          value:
+            function: grel:string_md5
+            parameters:
+              - [grel:valueParameter, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/LOT_NO)]
+
+    po:
+      - [a, epo:ContractTerm]
+      - p: epo:hasSpecificPlaceOfPerformance
+        o:
+        - mapping: contracttermelocation
+
+  contracttermelocation:
+    sources:
+      - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/n2016:NUTS  ]
+
+    s:
+      function: grel:array_join
+      parameters:
+        - [grel:p_array_a, dct:ContractTermLocation]
+        - parameter: grel:p_array_a
+          value:
+            function: grel:string_md5
+            parameters:
+              - [grel:valueParameter, $(/TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/@ITEM)]
+
+    po:
+      - [a, dct:Location]
+#      - [epo:hasNutsCode, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/*/@CODE)]
+      - p: epo:hasNutsCode
+        o:
+          - mapping: nuts
+            condition:
+              function: equal
+              parameters:
+                - [str1, $(@CODE)]
+                - [str2, $(code.value)]
+      - p: locn:address
+        o:
+          - mapping: lotaddress
+
+  lotaddress:
+    sources:
+      - notice-source
+    s:
+      function: grel:array_join
+      parameters:
+        - [grel:p_array_a, locn:AddressContractTerm]
+        - parameter: grel:p_array_a
+          value:
+            function: grel:string_md5
+            parameters:
+              - [grel:valueParameter, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/LOT_NO)]
+
+    po:
+      - [a, locn:Address]
+      - [locn:fullAddress, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/MAIN_SITE)]
+  awaredcriterion:
+    sources:
+      - [ source.xml~xpath, /TED_EXPORT]
+    s:
+      function: grel:array_join
+      parameters:
+        - [grel:p_array_a, epo:AwardCriterion]
+        - parameter: grel:p_array_a
+          value:
+            function: grel:string_md5
+            parameters:
+              - [grel:valueParameter, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/LOT_NO)]
+    po:
+      - [a, epo:AwardCriterion]
+      - p: epo:isUsedToAward
+        o:
+          - mapping: lot
+      - p: epo:hasAwardCriterionType
+        o:
+          - mapping: awardcriteriontype
+            condition:
+              function: equal
+              parameters:
+                - [str1, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/AC/AC_QUALITY] # ID of person under `persons`
+                - [str2, $(code.value)]
+  currency:
+    sources:
+      - currency-source
+    s: $(conceptURI.value)
+
+  nuts:
+    sources:
+      - nuts-source
+    s: $(conceptURI.value)
+  countries:
+    sources:
+      - countries-source
+    s: $(conceptURI.value)
+
+  buyerlegaltype:
+    sources:
+      - buyer-legal-type-source
+    s: $(conceptURI.value)
+  buyermainactivity:
+    sources:
+      - buyer-main-activity-source
+    s: $(conceptURI.value)
+
+  cpv:
+    sources:
+      - cpv-source
+    s: $(conceptURI.value)
+  contractnature:
+    sources:
+      - contract-nature-source
+    s: $(conceptURI.value)
+  awardcriteriontype:
+    sources:
+      - award-criterion-type-source
+    s: $(conceptURI.value)
