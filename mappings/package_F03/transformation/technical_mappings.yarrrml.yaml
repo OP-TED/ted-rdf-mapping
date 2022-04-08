@@ -3,27 +3,27 @@ prefixes:
  locn: "http://locn/ontology#"
  grel: "http://users.ugent.be/~bjdmeest/function/grel.ttl#"
  dct: "http://dct/tobedefined#"
+ xsd: "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 sources:
   notice-source:
     access: source.xml
     referenceFormulation: xpath
     iterator: /TED_EXPORT
   nuts-source:
-    access: data.json
+    access: nuts.json
     referenceFormulation: jsonpath
     iterator: $.results.bindings[*]
   countries-source:
     access: countries.json
     referenceFormulation: jsonpath
     iterator: $.results.bindings[*]
+
   buyer-legal-type-source:
-    access: buyer_legal_type.json
-    referenceFormulation: jsonpath
-    iterator: $.results.bindings[*]
-  buyer-main-activity-source:
-    access: buyer_main_activity.json
-    referenceFormulation: jsonpath
-    iterator: $.results.bindings[*]
+    access: buyer_legal_type.csv
+    referenceFormulation: csv
+  main-activity-source:
+    access: main_activity.csv
+    referenceFormulation: csv
   contract-nature-source:
     access: contract_nature.json
     referenceFormulation: jsonpath
@@ -63,16 +63,25 @@ mappings:
       - p: epo:IsRoleOf
         o:
         - mapping: organisation
-      - [epo:hasMainActivityType, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_ACTIVITY/@VALUE)]
-      - [epo:hasBuyerType, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_TYPE/@VALUE)]
+#      - [epo:hasMainActivityType, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_ACTIVITY/@VALUE)]
+#      - [epo:hasBuyerType, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_TYPE/@VALUE)]
       - p: epo:hasMainActivityType
         o:
-          - mapping: buyermainactivity
+          - mapping: mainactivity
             condition:
               function: equal
               parameters:
                 - [str1, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_ACTIVITY/@VALUE)]
-                - [str2, $(code.value)]
+                - [str2, $(xmlElement)]
+      - p: epo:hasMainActivityType
+        o:
+          value: http://publications.europa.eu/resource/authority/main-activity/OP_DATPRO
+          type: iri
+        condition:
+          function: http://example.com/idlab/function/isNull
+          parameters:
+            - [http://example.com/idlab/function/str, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_ACTIVITY/@VALUE)]
+
       - p: epo:hasBuyerType
         o:
           - mapping: buyerlegaltype
@@ -80,7 +89,7 @@ mappings:
               function: equal
               parameters:
                 - [str1, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_TYPE/@VALUE)]
-                - [str2, $(code.value)]
+                - [str2, $(xmlElement)]
 
   buyerprofile:
     sources:
@@ -118,27 +127,26 @@ mappings:
       - p: epo:hasRegisteredAddress
         o:
         - mapping: address
- #      - p: epo:hasID
-#        o:
-#        - mapping: organisationidentifier
+      - p: epo:hasID
+        o:
+        - mapping: organisationidentifier
       - [epo:hasName, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/OFFICIALNAME)]
 
-# When their is no NATIONALID all the RDF data are not generated
-#  organisationidentifier:
-#    sources:
-#      - notice-source
-#    s:
-#      function: grel:array_join
-#      parameters:
-#        - [grel:p_array_a, epo:Identifier]
-#        - parameter: grel:p_array_a
-#          value:
-#            function: grel:string_md5
-#            parameters:
-#              - [grel:valueParameter, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/NATIONALID)]
-#    po:
-#      - [a, epo:Identifier]
-#      - [epo:hasIdentifierValue, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/NATIONALID)]
+  organisationidentifier:
+    sources:
+      - notice-source
+    s:
+      function: grel:array_join
+      parameters:
+        - [grel:p_array_a, epo:OrganisationIdentifier]
+        - parameter: grel:p_array_a
+          value:
+            function: grel:string_md5
+            parameters:
+              - [grel:valueParameter, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/OFFICIALNAME)]
+    po:
+      - [a, epo:Identifier]
+      - [epo:hasIdentifierValue, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/NATIONALID)]
 
 
   contactPoint:
@@ -237,7 +245,79 @@ mappings:
       - p: epo:refersToProcedure
         o:
         - mapping: procedure
+  awardcriquality:
+    sources:
+      - [source.xml~xpath, TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/AC/AC_QUALITY]
 
+    s:
+      function: grel:array_join
+      parameters:
+        - [grel:p_array_a, epo:AwardCriterionQuality]
+        - parameter: grel:p_array_a
+          value:
+            function: grel:string_md5
+            parameters:
+              - [grel:valueParameter, $(count\(preceding::*\)+1)]
+    po:
+      - [a, epo:AwardCriterion]
+      - p: epo:isUsedToAward
+        o:
+        - mapping: lot
+      - p: epo:hasAwardCriterionType
+        o:
+          value: "http://publications.europa.eu/resource/authority/award-criterion-type/quality"
+          type: iri
+      - [epo:hasName, $(AC_CRITERION)]
+      - [epo:hasFormula, $(AC_WEIGHTING)]
+  awardcriprice:
+    sources:
+      - [source.xml~xpath, TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/AC/AC_PRICE]
+
+    s:
+      function: grel:array_join
+      parameters:
+        - [grel:p_array_a, epo:AwardCriterionPrice]
+        - parameter: grel:p_array_a
+          value:
+            function: grel:string_md5
+            parameters:
+              - [grel:valueParameter, $(count\(preceding::*\)+1)]
+    po:
+      - [a, epo:AwardCriterion]
+      - p: epo:isUsedToAward
+        o:
+        - mapping: lot
+      - p: epo:hasAwardCriterionType
+        o:
+          value: "http://publications.europa.eu/resource/authority/award-criterion-type/price"
+          type: iri
+      - [epo:hasName, $(AC_CRITERION)]
+      - [epo:hasFormula, $(AC_WEIGHTING)]
+
+  awardcricost:
+    sources:
+      - [source.xml~xpath, TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/AC/AC_COST]
+
+    s:
+      function: grel:array_join
+      parameters:
+        - [grel:p_array_a, epo:AwardCriterionCost]
+        - parameter: grel:p_array_a
+          value:
+            function: grel:string_md5
+            parameters:
+              - [grel:valueParameter, $(count\(preceding::*\)+1)]
+    po:
+      - [a, epo:AwardCriterion]
+      - p: epo:isUsedToAward
+        o:
+        - mapping: lot
+      - p: epo:hasAwardCriterionType
+        o:
+          value: "http://publications.europa.eu/resource/authority/award-criterion-type/price"
+          type: iri
+      - [epo:hasName, $(AC_CRITERION)]
+      - [epo:hasFormula, $(AC_WEIGHTING)]
   procedure:
     sources:
       - notice-source
@@ -267,6 +347,101 @@ mappings:
       - p: epo:comprisesLot
         o:
         - mapping: lot
+      - p: epo:hasProcedureType
+        o:
+          value: http://publications.europa.eu/resource/authority/procurement-procedure-type/open
+          type: iri
+        condition:
+          function: grel:boolean_not
+          parameters:
+            - parameter: grel:bool_b
+              value:
+                function: http://example.com/idlab/function/isNull
+                parameters:
+                 - [http://example.com/idlab/function/str, $(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_OPEN)]
+      - p: epo:hasProcedureType
+        o:
+          value: http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted
+          type: iri
+        condition:
+          function: grel:boolean_not
+          parameters:
+            - parameter: grel:bool_b
+              value:
+                function: http://example.com/idlab/function/isNull
+                parameters:
+                 - [http://example.com/idlab/function/str, $(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_RESTRICTED)]
+      - p: epo:hasProcedureType
+        o:
+          value: http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call
+          type: iri
+        condition:
+          function: grel:boolean_not
+          parameters:
+            - parameter: grel:bool_b
+              value:
+                function: http://example.com/idlab/function/isNull
+                parameters:
+                 - [http://example.com/idlab/function/str, $(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_COMPETITIVE_NEGOTIATION)]
+      - p: epo:hasProcedureType
+        o:
+          value: http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial
+          type: iri
+        condition:
+          function: grel:boolean_not
+          parameters:
+            - parameter: grel:bool_b
+              value:
+                function: http://example.com/idlab/function/isNull
+                parameters:
+                 - [http://example.com/idlab/function/str, $(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_COMPETITIVE_DIALOGUE)]
+      - p: epo:hasProcedureType
+        o:
+          value: http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation
+          type: iri
+        condition:
+          function: grel:boolean_not
+          parameters:
+            - parameter: grel:bool_b
+              value:
+                function: http://example.com/idlab/function/isNull
+                parameters:
+                 - [http://example.com/idlab/function/str, $(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_INNOVATION_PARTNERSHIP)]
+      - p: epo:hasProcedureType
+        o:
+          value: http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call
+          type: iri
+        condition:
+          function: grel:boolean_not
+          parameters:
+            - parameter: grel:bool_b
+              value:
+                function: http://example.com/idlab/function/isNull
+                parameters:
+                 - [http://example.com/idlab/function/str, $(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL)]
+      - p: epo:isAccelerated
+        o:
+          function: grel:boolean_not
+          parameters:
+            - parameter: grel:bool_b
+              value:
+                function: http://example.com/idlab/function/isNull
+                parameters:
+                 - [http://example.com/idlab/function/str, $(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/ACCELERATED_PROC)]
+          datatype: xsd:boolean
+
+      - [epo:hasAcceleratedProcedureJustification, $(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/ACCELERATED_PROC/P)]
+      - p: epo:hasCompetitionTermination
+        o:
+          function: grel:boolean_not
+          parameters:
+            - parameter: grel:bool_b
+              value:
+                function: http://example.com/idlab/function/isNull
+                parameters:
+                 - [http://example.com/idlab/function/str, $(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/TERMINATION_PIN)]
+          datatype: xsd:boolean
+
 
   lot:
     sources:
@@ -342,8 +517,8 @@ mappings:
     po:
       - [a, epo:Purpose]
 #      - [epo:hasMainClassification, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/CPV_MAIN/CPV_CODE/@CODE)]
-      - [epo:hasContractNatureType, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/TYPE_CONTRACT/@CTYPE)]
- #     - [epo:hasAdditionalClassification, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/CPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE)]
+#     - [epo:hasContractNatureType, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/TYPE_CONTRACT/@CTYPE)]
+#     - [epo:hasAdditionalClassification, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/CPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE)]
       - p: epo:hasAdditionalClassification
         o:
           - mapping: cpv
@@ -366,8 +541,14 @@ mappings:
             condition:
               function: equal
               parameters:
-                - [str1,  $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/TYPE_CONTRACT/@CTYPE)]
-                - [str2, $(code.value)]
+                - parameter: str1
+                  value:
+                    function: grel:toLowerCase
+                    parameters:
+                     - [grel:valueParameter, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/TYPE_CONTRACT/@CTYPE)]
+                - parameter: str2
+                  value: $(code.value)
+
 
   monetaryvalue:
     sources:
@@ -385,7 +566,7 @@ mappings:
     po:
       - [a, epo:MonetaryValue]
       - [epo:hasAmountValue, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/VAL_TOTAL)]
-      - [epo:hasCurrency, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/VAL_TOTAL/@CURRENCY)]
+#      - [epo:hasCurrency, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/VAL_TOTAL/@CURRENCY)]
       - p: epo:hasCurrency
         o:
           - mapping: currency
@@ -411,7 +592,7 @@ mappings:
 
     po:
       - [a, epo:Purpose]
-      - [epo:hasMainClassification, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/CPV_ADDITIONAL/CPV_CODE/@CODE)]
+#      - [epo:hasMainClassification, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/CPV_ADDITIONAL/CPV_CODE/@CODE)]
  #     - [epo:hasContractNatureType, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/TYPE_CONTRACT/@CTYPE)]
       - [epo:hasAdditionalClassification, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/CPV_ADDITIONAL/CPV_SUPPLEMENTARY_CODE/@CODE)]
       - p: epo:hasAdditionalClassification
@@ -519,6 +700,7 @@ mappings:
               parameters:
                 - [str1, $(FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/AC/AC_QUALITY] # ID of person under `persons`
                 - [str2, $(code.value)]
+
   currency:
     sources:
       - currency-source
@@ -536,11 +718,12 @@ mappings:
   buyerlegaltype:
     sources:
       - buyer-legal-type-source
-    s: $(conceptURI.value)
-  buyermainactivity:
+    s: $(conceptURI)
+
+  mainactivity:
     sources:
-      - buyer-main-activity-source
-    s: $(conceptURI.value)
+      - main-activity-source
+    s: $(conceptURI)
 
   cpv:
     sources:
