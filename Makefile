@@ -11,8 +11,7 @@ ENV_FILE := .env
 -include .env
 
 PROJECT_PATH = $(shell pwd)
-AIRFLOW_INFRA_FOLDER ?= ${PROJECT_PATH}/.airflow
-RML_MAPPER_PATH = ${PROJECT_PATH}/.rmlmapper/rmlmapper.jar
+RML_MAPPER_PATH = ${PROJECT_PATH}/rmlmapper.jar
 
 #-----------------------------------------------------------------------------
 # Dev commands
@@ -20,5 +19,11 @@ RML_MAPPER_PATH = ${PROJECT_PATH}/.rmlmapper/rmlmapper.jar
 install:
 	@ echo -e "$(BUILD_PRINT)Installing the requirements$(END_BUILD_PRINT)"
 	@ pip install --upgrade pip
-	@ pip install -r requirements.txt
+	@ pip install --upgrade --force-reinstall --no-deps -r requirements.txt
 
+setup: install local-dotenv-file
+
+local-dotenv-file:
+	@ echo -e "$(BUILD_PRINT)Add rml-mapper path to local .env file $(END_BUILD_PRINT)"
+	@ sed -i '/^RML_MAPPER_PATH/d' .env
+	@ echo RML_MAPPER_PATH=${RML_MAPPER_PATH} >> .env
