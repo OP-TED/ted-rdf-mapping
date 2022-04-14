@@ -16,12 +16,12 @@ RML_MAPPER_PATH = ${PROJECT_PATH}/rmlmapper.jar
 #-----------------------------------------------------------------------------
 # Dev commands
 #-----------------------------------------------------------------------------
+setup: install local-dotenv-file
+
 install:
 	@ echo -e "$(BUILD_PRINT)Installing the requirements$(END_BUILD_PRINT)"
 	@ pip install --upgrade pip
-	@ pip install --upgrade --force-reinstall --no-deps -r requirements.txt
-
-setup: install local-dotenv-file
+	@ pip install --upgrade --force-reinstall -r requirements.txt
 
 local-dotenv-file:
 	@ echo -e "$(BUILD_PRINT)Add rml-mapper path to local .env file $(END_BUILD_PRINT)"
