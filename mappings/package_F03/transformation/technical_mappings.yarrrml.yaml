@@ -1,9 +1,11 @@
     prefixes:
      epo: "http://data.europa.eu/a4g/ontology#"
+     epd: "http://data.europa.eu/a4g/resource/"
      locn: "http://locn/ontology#"
      grel: "http://users.ugent.be/~bjdmeest/function/grel.ttl#"
      dct: "http://dct/tobedefined#"
-     xsd: "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xsd: "https://www.w3.org/2001/XMLSchema#"
+     xf: "http://www.w3.org/TR/xforms-xpath#"
     sources:
       notice-source:
         access: source.xml
@@ -47,7 +49,7 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:Buyer]
+            - [grel:p_array_a, 'epd:Buyer/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
@@ -97,12 +99,12 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:BuyerProfile]
+            - [grel:p_array_a, 'epd:BuyerProfile/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
                 parameters:
-                  - [grel:valueParameter, $(count\(preceding::*\)+1]
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
         po:
           - [a, epo:BuyerProfile]
           - [epo:hasURL, $( /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/URL_BUYER)]
@@ -113,12 +115,12 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:Organisation]
+            - [grel:p_array_a, 'epd:Organisation/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
                 parameters:
-                  - [grel:valueParameter,  $(count\(preceding::*\)+1]
+                  - [grel:valueParameter,  $(count\(preceding::*\)+1)]
         po:
           - [a, epo:Organisation]
           - p: epo:hasDefaultContactPoint
@@ -138,12 +140,12 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:OrganisationIdentifier]
+            - [grel:p_array_a, 'epd:OrganisationIdentifier/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
                 parameters:
-                  - [grel:valueParameter, $(count\(preceding::*\)+1]
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
         po:
           - [a, epo:Identifier]
           - [epo:hasIdentifierValue, $(NATIONALID)]
@@ -155,12 +157,12 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:ContactPoint]
+            - [grel:p_array_a, 'epd:ContactPoint/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
                 parameters:
-                  - [grel:valueParameter, $(count\(preceding::*\)+1]
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
 
         po:
           - [a, epo:ContactPoint]
@@ -179,12 +181,12 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:Channel]
+            - [grel:p_array_a, 'epd:Channel/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
                 parameters:
-                  - [grel:valueParameter, $(count\(preceding::*\)+1]
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
         po:
           - [a, epo:Channel]
           - [epo:hasUrl, $(URL_GENERAL)]
@@ -196,12 +198,12 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, "http://locn/ontology#Address"]
+            - [grel:p_array_a, 'locn:Address/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
                 parameters:
-                  - [grel:valueParameter, $(count\(preceding::*\)+1]
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
 
         po:
           - [a, locn:Address]
@@ -233,18 +235,42 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:ResultNotice]
+            - [grel:p_array_a, 'epd:ResultNotice/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
                 parameters:
-                  - [grel:valueParameter, $(count\(preceding::*\)+1]
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
 
         po:
           - [a, epo:ResultNotice]
           - p: epo:refersToProcedure
             o:
             - mapping: procedure
+          - p: epo:refersToLot
+            o:
+            - mapping: lot
+          - p: epo:refersToRole
+            o:
+            - mapping: buyer
+          - p: epo:refersToRole
+            o:
+            - mapping: contractsignatoryoncontractorside
+          - p: epo:announcesContract
+            o:
+            - mapping: contract
+          - p: epo:announcesAdditionalInformation
+            o:
+            - mapping: submissionstatisticalinformation
+          - p: epo:refersToRole
+            o:
+            - mapping: reviewer
+          - p: epo:refersToRole
+            o:
+            - mapping: Mediator
+          - p: epo:refersToRole
+            o:
+            - mapping: ReviewProcedureInformationProvider
       awardcriquality:
         sources:
           - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/AC/AC_QUALITY]
@@ -252,7 +278,7 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:AwardCriterionQuality2020/]
+            - [grel:p_array_a, 'epd:AwardCriterionQuality/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
@@ -276,7 +302,7 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:AwardCriterionPrice]
+            - [grel:p_array_a, 'epd:AwardCriterionPrice/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
@@ -301,7 +327,7 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:AwardCriterionCost]
+            - [grel:p_array_a, 'epd:AwardCriterionCost/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
@@ -324,7 +350,7 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:Procedure]
+            - [grel:p_array_a, 'epd:Procedure/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
@@ -461,7 +487,7 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:lot]
+            - [grel:p_array_a, 'epd:lot/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
@@ -488,6 +514,10 @@
           - p: epo:uses
             o:
             - mapping: eauctiontechnique
+          - p: epo:hasEstimatedValue
+            o:
+            - mapping: monetaryvaluelot
+          - [epo:hasAdditionalInformation, $(/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/INFO_ADD)]
 
       lotidentifier:
         sources:
@@ -495,7 +525,7 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:LotIdentifier]
+            - [grel:p_array_a, 'epd:LotIdentifier/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
@@ -504,6 +534,7 @@
         po:
           - [a, epo:Identifier]
           - [epo:hasIdentifierValue, $(LOT_NO)]
+          - [epo:hasIdentifierValue, $(/TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/LOT_NO)]
 
       competionnotice:
         sources:
@@ -511,7 +542,7 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:CompetitionNotice]
+            - [grel:p_array_a, 'epd:CompetitionNotice/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
@@ -529,7 +560,7 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:CompetitionNoticeIdentifier]
+            - [grel:p_array_a, 'epd:CompetitionNoticeIdentifier/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
@@ -544,7 +575,7 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:ProcedureIdentifier]
+            - [grel:p_array_a, 'epd:ProcedureIdentifier/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
@@ -561,7 +592,7 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:PurposeProcedure]
+            - [grel:p_array_a, 'epd:PurposeProcedure/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
@@ -610,7 +641,7 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:MonetaryValue]
+            - [grel:p_array_a, 'epd:MonetaryValue/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
@@ -637,7 +668,7 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:LotPurpose]
+            - [grel:p_array_a, 'epd:LotPurpose/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
@@ -671,7 +702,7 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:ContractTerm]
+            - [grel:p_array_a, 'epd:ContractTerm/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
@@ -691,7 +722,7 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, dct:ContractTermLocation]
+            - [grel:p_array_a, 'dct:ContractTermLocation/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
@@ -719,7 +750,7 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, locn:AddressContractTerm]
+            - [grel:p_array_a, 'locn:AddressContractTerm/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
@@ -735,7 +766,7 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:AwardCriterion]
+            - [grel:p_array_a, 'epd:AwardCriterion/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
@@ -760,7 +791,7 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:FrameworkAgreementTerm]
+            - [grel:p_array_a, 'epd:FrameworkAgreementTerm/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
@@ -784,7 +815,7 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:DynamicPurchaseSystemTechnique]
+            - [grel:p_array_a, 'epd:DynamicPurchaseSystemTechnique/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
@@ -818,7 +849,7 @@
         s:
           function: grel:array_join
           parameters:
-            - [grel:p_array_a, epo:EAuctionTechnique]
+            - [grel:p_array_a, 'epd:EAuctionTechnique/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
             - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
@@ -844,6 +875,753 @@
                     function: http://example.com/idlab/function/isNull
                     parameters:
                      - [http://example.com/idlab/function/str, $(EAUCTION_USED)]
+      contract:
+        sources:
+          - [ source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:Contract/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter,  $(count\(preceding::*\)+1)]
+        po:
+          - [a, epo:Contract]
+          - p: epo:hasID
+            o:
+            - mapping: contractidentifier
+          - [epo:hasTitle, $(TITLE)]
+          - p: epo:includesLotAwardOutcome
+            o:
+            - mapping: lotawardoutcome
+          - p: epo:hasContractConclusionDate
+            o:
+              value: $(AWARDED_CONTRACT/DATE_CONCLUSION_CONTRACT)
+              datatype: xsd:date
+
+      contractidentifier:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:ContractIdentifier/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+        po:
+          - [a, epo:Identifier]
+          - [epo:hasIdentifierValue, $(CONTRACT_NO)]
+      lotawardoutcome:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:LotAwardOutcome/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+        po:
+          - [a, epo:LotAwardOutcome]
+          - p: epo:hasNonAwardJustification
+              o:
+                value: http://publications.europa.eu/resource/authority/non-award-justification/all-rej
+                type: iri
+              condition:
+                function: grel:boolean_not
+                parameters:
+                  - parameter: grel:bool_b
+                    value:
+                      function: http://example.com/idlab/function/isNull
+                      parameters:
+                        - [ http://example.com/idlab/function/str, $(NO_AWARDED_CONTRACT/PROCUREMENT_UNSUCCESSFUL) ]
+                - p: epo:hasNonAwardJustification
+                  o:
+                    value: http://publications.europa.eu/resource/authority/non-award-justification/other
+                    type: iri
+                  condition:
+                    function: grel:boolean_not
+                    parameters:
+                      - parameter: grel:bool_b
+                        value:
+                          function: http://example.com/idlab/function/isNull
+                          parameters:
+                            - [ http://example.com/idlab/function/str, $(NO_AWARDED_CONTRACT/PROCUREMENT_DISCONTINUED) ]
+      submissionstatisticalinformation:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/TENDERS]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:SubmissionStatisticalInformation/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+        po:
+          - [a, epo:SubmissionStatisticalInformation]
+          - [epo:hasReceivedTenders, $(NB_TENDERS_RECEIVED)]
+          - [epo:hasReceivedSMETenders, $(NB_TENDERS_RECEIVED_SME)]
+          - [epo:hasEEAReceivedTenders, $(NB_TENDERS_RECEIVED_OTHER_EU)]
+          - [epo:hasReceivedNonEEATender, $(NB_TENDERS_RECEIVED_NON_EU)]
+          - [epo:hasElectronicTenders, $(NB_TENDERS_RECEIVED_EMEANS)]
+          - p: epo:hasLowestReceivedTenderLotValues
+            o:
+            - mapping: monetaryvaluesubmissionlow
+          - p: epo:hasHighestReceivedTenderLotValues
+            o:
+            - mapping: monetaryvaluesubmisionhight
+          - p: epo:concernsSubmissionsFor
+            o:
+            - mapping: lot
+      contractsignatoryoncontractorside:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:ContractSignatoryOnContractorSide/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter,  $(count\(preceding::*\)+1)]
+        po:
+          - [a, epo:ContractSignatoryOnContractorSide]
+          - p: epo:IsRoleOf
+            o:
+            - mapping: organisationcontract
+      organisationcontract:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:Organisation/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter,  $(count\(preceding::*\)+1)]
+        po:
+          - [a, epo:Organisation]
+          - p: epo:hasDefaultContactPoint
+            o:
+            - mapping: contactPointContract
+          - p: epo:hasRegisteredAddress
+            o:
+            - mapping: addresscontract
+          - p: epo:hasID
+            o:
+            - mapping: organisationidentifiercontract
+          - [epo:hasName, $(ADDRESS_CONTRACTOR/OFFICIALNAME)]
+
+      organisationidentifiercontract:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:OrganisationIdentifier/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+        po:
+          - [a, epo:Identifier]
+          - [epo:hasIdentifierValue, $(NATIONALID)]
+
+
+      contactPointContract:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:ContactPoint/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+
+        po:
+          - [a, epo:ContactPoint]
+          - p: epo:hasChannel
+            o:
+            - mapping: channelcontract
+
+          - [epo:hasEmail, $(E_MAIL)]
+          - [epo:hasFax, $(FAX)]
+          - [epo:hasTelephone, $(PHONE)]
+          - [epo:hasDescription, $(CONTACT_POINT)]
+
+      channelcontract:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:Channel/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+        po:
+          - [a, epo:Channel]
+          - [epo:hasUrl, $(URL_GENERAL)]
+
+
+      addresscontract:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'locn:Address/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+
+        po:
+          - [a, locn:Address]
+          - [locn:postName, $(TOWN)]
+          - [locn:thoroughfare, $(ADDRESS)]
+          - [locn:postCode, $(POSTAL_CODE)]
+    #      - [locn:adminUnitL2, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/*/@CODE)]
+    #      - [locn:adminUnitL1, $(FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/COUNTRY/@VALUE)]
+          - p: locn:adminUnitL1
+            o:
+              - mapping: nuts
+                condition:
+                  function: equal
+                  parameters:
+                    - [str1, $(*/@CODE)] # ID of person under `persons`
+                    - [str2, $(code.value)]
+          - p: locn:adminUnitL2
+            o:
+              - mapping: countries
+                condition:
+                  function: equal
+                  parameters:
+                    - [str1, $(COUNTRY/@VALUE)] # ID of person under `persons`
+                    - [str2, $(code.value)]
+      monetaryvaluelot:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:MonetaryValueLot/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+
+        po:
+          - [a, epo:MonetaryValue]
+          - [epo:hasAmountValue, $(VAL_ESTIMATED_TOTAL)]
+      tender:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_TOTAL]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:Tender/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+
+        po:
+          - [a, epo:Tender]
+          - p: epo:hasFinnancialOfferValue
+            o:
+            - mapping: monetaryvaluetender
+      monetaryvaluetender:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:MonetaryValueTender/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+
+        po:
+          - [a, epo:MonetaryValue]
+          - [epo:hasAmountValue, $(VAL_TOTAL)]
+      monetaryvaluesubmisionhight:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_RANGE_TOTAL]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:MonetaryValueSubmissionHigh/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+
+        po:
+          - [a, epo:MonetaryValue]
+          - [epo:hasAmountValue, $(HIGH)]
+      monetaryvaluesubmissionlow:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_RANGE_TOTAL]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:MonetaryValueSubmissionLow/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+
+        po:
+          - [a, epo:MonetaryValue]
+          - [epo:hasAmountValue, $(LOW)]
+      subcontractingestimate:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:SubcontractingEstimate/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+
+        po:
+          - [a, epo:SubcontractingEstimate]
+          - [epo:hasEstimatedPercentage, $(PCT_SUBCONTRACTING)]
+          - [epo:hasDescription, $(INFO_ADD_SUBCONTRACTING)]
+
+      reviewer:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:Reviewer/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter,  $(count\(preceding::*\)+1)]
+        po:
+          - [a, epo:Reviewer]
+          - p: epo:IsRoleOf
+            o:
+            - mapping: organisationreviewer
+      organisationreviewer:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:Organisation/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter,  $(count\(preceding::*\)+1)]
+        po:
+          - [a, epo:Organisation]
+          - p: epo:hasDefaultContactPoint
+            o:
+            - mapping: contactPointReviewer
+          - p: epo:hasRegisteredAddress
+            o:
+            - mapping: addressreviewer
+          - p: epo:hasID
+            o:
+            - mapping: organisationidentifierreviewer
+          - [epo:hasName, $(OFFICIALNAME)]
+
+      organisationidentifierreviewer:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:OrganisationIdentifier/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+        po:
+          - [a, epo:Identifier]
+          - [epo:hasIdentifierValue, $(NATIONALID)]
+
+
+      contactPointReviewer:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:ContactPoint/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+
+        po:
+          - [a, epo:ContactPoint]
+          - p: epo:hasChannel
+            o:
+            - mapping: channelreviewer
+
+          - [epo:hasEmail, $(E_MAIL)]
+          - [epo:hasFax, $(FAX)]
+          - [epo:hasTelephone, $(PHONE)]
+          - [epo:hasDescription, $(CONTACT_POINT)]
+
+      channelreviewer:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:Channel/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+        po:
+          - [a, epo:Channel]
+          - [epo:hasUrl, $(URL)]
+
+
+      addressreviewer:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'locn:Address/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+
+        po:
+          - [a, locn:Address]
+          - [locn:postName, $(TOWN)]
+          - [locn:thoroughfare, $(ADDRESS)]
+          - [locn:postCode, $(POSTAL_CODE)]
+          - p: locn:adminUnitL1
+            o:
+              - mapping: nuts
+                condition:
+                  function: equal
+                  parameters:
+                    - [str1, $(*/@CODE)]
+                    - [str2, $(code.value)]
+          - p: locn:adminUnitL2
+            o:
+              - mapping: countries
+                condition:
+                  function: equal
+                  parameters:
+                    - [str1, $(COUNTRY/@VALUE)]
+                    - [str2, $(code.value)]
+
+      Mediator:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_MEDIATION_BODY]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:Mediator/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter,  $(count\(preceding::*\)+1)]
+        po:
+          - [a, epo:Reviewer]
+          - p: epo:IsRoleOf
+            o:
+            - mapping: organisationmediator
+      organisationmediator:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_MEDIATION_BODY]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:Organisation/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter,  $(count\(preceding::*\)+1)]
+        po:
+          - [a, epo:Organisation]
+          - p: epo:hasDefaultContactPoint
+            o:
+            - mapping: contactPointMediator
+          - p: epo:hasRegisteredAddress
+            o:
+            - mapping: addressmediator
+          - p: epo:hasID
+            o:
+            - mapping: organisationidentifiermediator
+          - [epo:hasName, $(OFFICIALNAME)]
+
+      organisationidentifiermediator:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_MEDIATION_BODY]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:OrganisationIdentifier/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+        po:
+          - [a, epo:Identifier]
+          - [epo:hasIdentifierValue, $(NATIONALID)]
+
+
+      contactPointMediator:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_MEDIATION_BODY]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:ContactPoint/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+
+        po:
+          - [a, epo:ContactPoint]
+          - p: epo:hasChannel
+            o:
+            - mapping: channelmediator
+
+          - [epo:hasEmail, $(E_MAIL)]
+          - [epo:hasFax, $(FAX)]
+          - [epo:hasTelephone, $(PHONE)]
+          - [epo:hasDescription, $(CONTACT_POINT)]
+
+      channelmediator:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_MEDIATION_BODY]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:Channel/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+        po:
+          - [a, epo:Channel]
+          - [epo:hasUrl, $(URL)]
+
+
+      addressmediator:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_MEDIATION_BODY]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'locn:Address/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+
+        po:
+          - [a, locn:Address]
+          - [locn:postName, $(TOWN)]
+          - [locn:thoroughfare, $(ADDRESS)]
+          - [locn:postCode, $(POSTAL_CODE)]
+          - p: locn:adminUnitL1
+            o:
+              - mapping: nuts
+                condition:
+                  function: equal
+                  parameters:
+                    - [str1, $(*/@CODE)]
+                    - [str2, $(code.value)]
+          - p: locn:adminUnitL2
+            o:
+              - mapping: countries
+                condition:
+                  function: equal
+                  parameters:
+                    - [str1, $(COUNTRY/@VALUE)]
+                    - [str2, $(code.value)]
+
+      ReviewProcedureInformationProvider:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:ReviewProcedureInformationProvider/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter,  $(count\(preceding::*\)+1)]
+        po:
+          - [a, epo:Reviewer]
+          - p: epo:IsRoleOf
+            o:
+            - mapping: organisationrpip
+      organisationrpip:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:Organisation/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter,  $(count\(preceding::*\)+1)]
+        po:
+          - [a, epo:Organisation]
+          - p: epo:hasDefaultContactPoint
+            o:
+            - mapping: contactPointrpip
+          - p: epo:hasRegisteredAddress
+            o:
+            - mapping: addressrpip
+          - p: epo:hasID
+            o:
+            - mapping: organisationidentifierrpip
+          - [epo:hasName, $(OFFICIALNAME)]
+
+      organisationidentifierrpip:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:OrganisationIdentifier/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+        po:
+          - [a, epo:Identifier]
+          - [epo:hasIdentifierValue, $(NATIONALID)]
+
+
+      contactPointrpip:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:ContactPoint/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+
+        po:
+          - [a, epo:ContactPoint]
+          - p: epo:hasChannel
+            o:
+            - mapping: channelrpip
+
+          - [epo:hasEmail, $(E_MAIL)]
+          - [epo:hasFax, $(FAX)]
+          - [epo:hasTelephone, $(PHONE)]
+          - [epo:hasDescription, $(CONTACT_POINT)]
+
+      channelrpip:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'epd:Channel/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+        po:
+          - [a, epo:Channel]
+          - [epo:hasUrl, $(URL)]
+
+
+      addressrpip:
+        sources:
+          - [source.xml~xpath, /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO]
+        s:
+          function: grel:array_join
+          parameters:
+            - [grel:p_array_a, 'locn:Address/$(replace\(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, '' '', ''-'' \))/']
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                  - [grel:valueParameter, $(count\(preceding::*\)+1)]
+
+        po:
+          - [a, locn:Address]
+          - [locn:postName, $(TOWN)]
+          - [locn:thoroughfare, $(ADDRESS)]
+          - [locn:postCode, $(POSTAL_CODE)]
+          - p: locn:adminUnitL1
+            o:
+              - mapping: nuts
+                condition:
+                  function: equal
+                  parameters:
+                    - [str1, $(*/@CODE)]
+                    - [str2, $(code.value)]
+          - p: locn:adminUnitL2
+            o:
+              - mapping: countries
+                condition:
+                  function: equal
+                  parameters:
+                    - [str1, $(COUNTRY/@VALUE)]
+                    - [str2, $(code.value)]
       currency:
         sources:
           - currency-source
