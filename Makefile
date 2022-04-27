@@ -16,7 +16,7 @@ RML_MAPPER_PATH = ${PROJECT_PATH}/.rmlmapper/rmlmapper.jar
 #-----------------------------------------------------------------------------
 # Dev commands
 #-----------------------------------------------------------------------------
-setup: install local-dotenv-file install-rmlmapper
+setup: install install-rmlmapper local-dotenv-file
 
 install:
 	@ echo -e "$(BUILD_PRINT)Installing the requirements$(END_BUILD_PRINT)"
@@ -29,6 +29,8 @@ local-dotenv-file:
 	@ echo RML_MAPPER_PATH=${RML_MAPPER_PATH} >> .env
 
 install-rmlmapper:
-	@ mkdir ./.rmlmapper
+	@ mkdir -p ./.rmlmapper
 	@ wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1MckjzpvrCoChy_IRYC2S54tf3dFQNwEt' -O- | sed -rn \'s/.*confirm=\([0-9A-Za-z_]+).*/\1\n/p\'\)&id=1MckjzpvrCoChy_IRYC2S54tf3dFQNwEt" -O ./.rmlmapper/rmlmapper.jar && rm -rf /tmp/cookies.txt
 
+clear-output:
+	@ rm -rf mappings/$(id)/output/*
