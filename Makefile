@@ -34,3 +34,8 @@ install-rmlmapper:
 
 clear-output:
 	@ rm -rf mappings/$(id)/output/*
+	@ rm -rf mappings/$(id)/validation/sparql/cm_assertions/*
+
+install-dev:
+	@ echo -e "$(BUILD_PRINT)Installing the requirements$(END_BUILD_PRINT)"
+	@ pip install --upgrade --force-reinstall --no-deps ../ted-sws
