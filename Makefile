@@ -12,8 +12,8 @@ ENV_FILE := .env
 
 PROJECT_PATH = $(shell pwd)
 RML_MAPPER_PATH = ${PROJECT_PATH}/.rmlmapper/rmlmapper.jar
-API_HOST = localhost
-API_PORT = 8000
+ID_MANAGER_API_HOST = localhost
+ID_MANAGER_API_PORT = 8002
 
 #-----------------------------------------------------------------------------
 # Dev commands
@@ -34,14 +34,14 @@ rml-mapper-path-add-dotenv-file:
 
 api-add-dotenv-file:
 	@ echo -e "$(BUILD_PRINT)Add API config to local .env file $(END_BUILD_PRINT)"
-	@ sed -i '/^API_HOST/d' .env
-	@ echo API_HOST=${API_HOST} >> .env
-	@ sed -i '/^API_PORT/d' .env
-	@ echo API_PORT=${API_PORT} >> .env
+	@ sed -i '/^ID_MANAGER_API_HOST/d' .env
+	@ echo ID_MANAGER_API_HOST=${ID_MANAGER_API_HOST} >> .env
+	@ sed -i '/^ID_MANAGER_API_PORT/d' .env
+	@ echo ID_MANAGER_API_PORT=${ID_MANAGER_API_PORT} >> .env
 
 install-rmlmapper:
 	@ mkdir -p ./.rmlmapper
-	@ wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1MckjzpvrCoChy_IRYC2S54tf3dFQNwEt' -O- | sed -rn \'s/.*confirm=\([0-9A-Za-z_]+).*/\1\n/p\'\)&id=1MckjzpvrCoChy_IRYC2S54tf3dFQNwEt" -O ./.rmlmapper/rmlmapper.jar && rm -rf /tmp/cookies.txt
+	@ wget -c https://api.bitbucket.org/2.0/repositories/Dragos0000/rml-mapper/src/master/rmlmapper.jar -P ./.rmlmapper
 
 clear-output:
 	@ rm -rf mappings/$(id)/output/*
