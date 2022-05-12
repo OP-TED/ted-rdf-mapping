@@ -1,0 +1,1470 @@
+#--- technical_mapping_F03.rml.ttl ---
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedd: <http://data.europa.eu/a4g/dataset/sf-rml/> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix locn: <http://locn/ontology#> .
+@prefix dct: <http://purl.org/dc/terms> .
+# copy into the mapping_suite_f03, this file and all the imports. 
+tedd:technical_mapping_f03
+  a owl:Ontology ;
+  owl:imports 	tedm:contracting_authority, tedm:object, tedd:procedure, tedd:award_of_contract, tedd:complementary_information;#tedm:Buyer, tedm:Reviewer, tedm:Organisation, tedm:OrganisationIdentifier, tedm:ContactPoint, tedm:OrganisationAddress, tedm:OrganisationChannel ;
+  dc:description "This module provides the mapping definitions for the F03 form"@en ;
+  rdfs:label "TED-SWS mapping of F03"@en ;  
+  dc:date "2022-05-11"^^xsd:date .
+#Section 1
+# Buyer Profile & Organisation
+tedm:OrganisationIdentifier a rr:TripleMap ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/OrganisationIdentifier/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Identifier
+        ] ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY";
+            rml:referenceFormulation ql:XPath
+        ].
+tedm:ContactPoint a rr:TriplesMap ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/ContactPoint/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ContactPoint
+
+        ] ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasDescription ;
+            rr:objectMap
+                [
+                    rml:reference "CONTACT_POINT";
+                    rml:languageMap [
+                         rml:reference "ancestor::F03_2014/@LG"
+                    ]
+                ]
+        ] .
+tedm:OrganisationAddress  a rr:TriplesMap ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://locn/ontology#OrganisationAddress/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class locn:Address
+
+        ] ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY" ;
+            rml:referenceFormulation ql:XPath
+        ] .
+tedm:OrganisationChannel a rr:TriplesMap ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/Channel/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Channel
+
+        ] ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY" ;
+            rml:referenceFormulation ql:XPath
+        ] .
+
+tedm:Organisation a rr:TripleMap ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/Organisation/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Organisation
+
+        ] ;
+    rml:logicalSource
+    [
+        rml:source "data/source.xml" ;
+        rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY" ;
+        rml:referenceFormulation ql:XPath
+    ] .
+tedm:Buyer a rr:TriplesMap;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/Buyer/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Buyer
+
+        ] ;
+    rml:logicalSource
+    [
+        rml:source "data/source.xml" ;
+        rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_ACTIVITY" ;
+        rml:referenceFormulation ql:XPath
+    ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasBuyerType ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:buyerType;
+                    rr:joinCondition [
+                        rr:child "/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_TYPE/@VALUE";
+                        rr:parent "xmlElement";
+                    ];
+                ] ;
+        ] .
+
+tedm:BuyerProfile a rr:TripleMap ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/BuyerProfile/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:BuyerProfile
+        ] ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/URL_BUYER";
+            rml:referenceFormulation ql:XPath
+        ].
+tedm:ResultNotice a rr:TriplesMap ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/ResultNotice/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ResultNotice
+
+        ] ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasDispatchDate ;
+            rr:objectMap
+                [
+                    rml:reference "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/DATE_DISPATCH_NOTICE"
+                ] ;
+        ] .
+tedm:SubmissionStatisticalInformationForLot a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/SubmissionStatisticalInformationForLot/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:SubmissionStatisticalInformation
+
+        ] .
+tedm:MonetaryValueSubmissionLowestForLot a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/MonetaryValueSubmissionLowestForLot/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:MonetaryValue
+
+        ] .
+tedm:MonetaryValueSubmissionHighestForLot  a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/MonetaryValueSubmissionHighestForLot/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:MonetaryValue
+
+        ] .
+tedm:Reviewer a rr:TripleMap ;
+    rr:subjectMap
+        [
+            rr:template
+               "http://data.europa.eu/a4g/resource/Reviewer/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Reviewer
+
+        ] ;
+    rml:logicalSource
+    [
+        rml:source "data/source.xml" ;
+        rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY" ;
+        rml:referenceFormulation ql:XPath
+    ] .
+tedm:Procedure a rr:TriplesMap ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/Procedure/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Procedure
+
+        ] ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasTitle ;
+            rr:objectMap
+                [
+                    rml:reference "TITLE";
+                    rml:languageMap [
+                         rml:reference "ancestor::F03_2014/@LG"
+                    ]
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasDescription ;
+            rr:objectMap
+                [
+                    rml:reference "SHORT_DESCR";
+                    rml:languageMap [
+                         rml:reference "ancestor::F03_2014/@LG"
+                    ]
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+    [
+        rr:predicate epo:hasLegalBasis ;
+        rr:objectMap
+            [
+                rr:parentTriplesMap tedm:legalBasis;
+                rr:joinCondition [
+                        rr:child "/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/JOINT_PROCUREMENT_INVOLVED/PROCUREMENT_LAW";
+                        rr:parent "code.value";
+                    ];
+            ] ;
+    ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasProcedureType ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_OPEN)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/open' else if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_RESTRICTED)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted' else if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_COMPETITIVE_NEGOTIATION)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call' else if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_COMPETITIVE_DIALOGUE)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial' else if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_INNOVATION_PARTNERSHIP)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation' else if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call' else null";
+                    rr:termType rr:IRI
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAcceleratedProcedureJustification ;
+            rr:objectMap
+                [
+                    rml:reference "/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/ACCELERATED_PROC/P"
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:isAccelerated ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/ACCELERATED_PROC)) then 'true' else 'false'";
+                    rr:datatype xsd:boolean
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:isCompetitionTermination ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/TERMINATION_PIN)) then 'true' else 'false'";
+                    rr:datatype xsd:boolean
+                ] ;
+        ] .
+tedm:ProcedureMonetaryValue a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/MonetaryValue/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:MonetaryValue
+
+        ] .
+tedm:ProcedureIdentifier a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/ProcedureIdentifier/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasIdentifierValue;
+            rr:objectMap
+                [
+                    rml:reference "/TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/REFERENCE_NUMBER"
+                ]
+        ] .
+tedm:ProcedurePurpose a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/CPV_MAIN/CPV_SUPPLEMENTARY_CODE" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/Purpose/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Purpose
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasMainClassification ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:cpv;
+                    rr:joinCondition [
+                        rr:child "/TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/CPV_MAIN/CPV_CODE/@CODE";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContractNatureType ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:contractNature ;
+                    rr:joinCondition [
+                        rr:child "lower-case(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/TYPE_CONTRACT/@CTYPE)";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] .
+tedm:Lot a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/Lot/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Lot
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasTitle ;
+            rr:objectMap
+                [
+                    rml:reference "TITLE";
+                    rml:languageMap [
+                         rml:reference "ancestor::F03_2014/@LG"
+                    ]
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAdditionalInformation ;
+            rr:objectMap
+                [
+                    rml:reference "INFO_ADD";
+                    rml:languageMap [
+                         rml:reference "ancestor::F03_2014/@LG"
+                    ]
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAdditionalInformation ;
+            rr:objectMap
+                [
+                    rml:reference "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/INFO_ADD";
+                    rml:languageMap [
+                         rml:reference "ancestor::F03_2014/@LG"
+                    ]
+                ] ;
+        ] .
+
+tedm:LotIdentifier a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/LotIdentifier/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasIdentifierValue;
+            rr:objectMap
+                [
+                    rml:reference "/TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/LOT_NO"
+                ]
+        ] .
+tedm:LotPurpose a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/LotPurpose/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Purpose
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasOptionsDescription ;
+            rr:objectMap
+                [
+                    rml:reference "OPTIONS_DESCR";
+                    rml:languageMap [
+                         rml:reference "ancestor::F03_2014/@LG"
+                    ]
+                ] ;
+        ] .
+tedm:ContractTerm a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/ContractTerm/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ContractTerm
+
+        ] .
+tedm:ContractTermeLocation a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/*:NUTS" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/ContractTermeLocation/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class dct:Location
+
+        ] .
+tedm:ContractTermeLocationAddress a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/ContractTermeLocationAddress/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class locn:Address
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate locn:fullAddress ;
+            rr:objectMap
+                 [
+                    rml:reference "OBJECT_DESCR/MAIN_SITE";
+                    rml:languageMap [
+                         rml:reference "ancestor::F03_2014/@LG"
+                    ]
+                ] ;
+        ] .
+tedm:AwardCriterionQuality a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/AC/AC_QUALITY" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/AwardCriterionQuality/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:AwardCriterion
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasName ;
+            rr:objectMap
+                [
+                    rml:reference "AC_CRITERION";
+                    rml:languageMap [
+                         rml:reference "ancestor::F03_2014/@LG"
+                    ]
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasFormula ;
+            rr:objectMap
+                [
+                    rml:reference "AC_WEIGHTING";
+                    rml:languageMap [
+                         rml:reference "ancestor::F03_2014/@LG"
+                    ]
+                ] ;
+        ] .
+tedm:AwardCriterionPrice a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/AC/AC_PRICE" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/AwardCriterionPrice/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:AwardCriterion
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasName ;
+            rr:objectMap
+                [
+                    rml:reference "AC_CRITERION";
+                    rml:languageMap [
+                         rml:reference "ancestor::F03_2014/@LG"
+                    ]
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasFormula ;
+            rr:objectMap
+                [
+                    rml:reference "AC_WEIGHTING";
+                    rml:languageMap [
+                         rml:reference "ancestor::F03_2014/@LG"
+                    ]
+                ] ;
+        ] .
+tedm:AwardCriterionCost a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/AC/AC_COST" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/AwardCriterionCost/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:AwardCriterion
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasName ;
+            rr:objectMap
+                [
+                    rml:reference "AC_CRITERION";
+                    rml:languageMap [
+                         rml:reference "ancestor::F03_2014/@LG"
+                    ]
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasFormula ;
+            rr:objectMap
+                [
+                    rml:reference "AC_WEIGHTING";
+                    rml:languageMap [
+                         rml:reference "ancestor::F03_2014/@LG"
+                    ]
+                ] ;
+        ] .
+
+# Section 4
+tedm:FramworkAgreement a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference
+                "if(exists(FRAMEWORK)) then 'http://data.europa.eu/a4g/resource/FrameworkAgreementTerm/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:FrameworkAgreementTerm
+
+        ] .
+tedm:DynamicPurchaseSystemTechnique a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference
+                "if(exists(DPS)) then 'http://data.europa.eu/a4g/resource/DynamicPurchaseSystemTechnique/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:DynamicPurchaseSystemTechnique
+
+        ] .
+tedm:EauctionTechnique  a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference
+                "if(exists(EAUCTION_USED)) then 'http://data.europa.eu/a4g/resource/EAuctionTechnique/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:EAuctionTechnique
+
+        ] .
+#**************
+tedm:PlannedProcurementPart a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/PlannedProcurementPart/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:PlannedProcurementPart
+
+        ] .
+
+tedm:PlanningNotice a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/PlanningNotice/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:PlanningNotice
+
+        ] .
+
+tedm:PlanningNoticeIdentifier a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/PlanningNoticeIdentifier/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Identifier
+
+        ] .
+tedm:CompetitionNotice a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/CompetitionNotice/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:CompetitionNotice
+
+        ] .
+
+tedm:CompetitionNoticeIdentifier a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/CompetitionNoticeIdentifier/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Identifier
+
+        ] .
+tedm:DirectAwardPrenotificationNotice a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+               "http://data.europa.eu/a4g/resource/DirectAwardPrenotificationNotice/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:DirectAwardPrenotificationNotice
+
+        ] .
+tedm:DirectAwardPrenotificationNoticeIdentifier a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/DirectAwardPrenotificationNoticeIdentifier/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Identifier
+
+        ] .
+
+# Section 5
+tedm:Contract a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/Contract/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Contract
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasTitle;
+            rr:objectMap
+                [
+                    rml:reference "TITLE";
+                    rml:languageMap [
+                         rml:reference "ancestor::F03_2014/@LG"
+                    ]
+                ]
+        ] .
+tedm:LotAwardOutcome a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/LotAwardOutcome/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:LotAwardOutcome
+        ] .
+tedm:ContractIdentifier a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/ContractIdentifier/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Identifier
+        ] .
+tedm:ContractSignatoryonContractorSide a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/ContractSignatoryOnContractorSide/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ContractSignatoryOnContractorSide
+
+        ] .
+tedm:ContractOrganisation a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/ContractOrganisation/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Organisation
+
+        ] ;
+    rr:predicateObjectMap
+        [
+        rr:predicate epo:hasName ;
+        rr:objectMap
+                [
+                    rml:reference "ADDRESS_CONTRACTOR/OFFICIALNAME";
+                    rml:languageMap [
+                         rml:reference "lower-case(ancestor::F03_2014/@LG)"
+                    ]
+                ]
+        ] .
+tedm:ContractOrganisationIdentifier a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Identifier
+        ] .
+tedm:ContractContactPoint a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/ContractContactPoint/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ContactPoint
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasDescription ;
+            rr:objectMap
+                [
+                    rml:reference "CONTACT_POINT";
+                    rml:languageMap [
+                         rml:reference "ancestor::F03_2014/@LG"
+                    ]
+                ]
+        ] .
+tedm:ContractOrganisationAddress a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+              #  "http://locn/ontology#ContractOrganisationAddress/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{substring-before(substring-after(unparsed-text('https://www.uuidtools.com/api/generate/v3/namespace/ns:url/name/' || count(/TED_EXPORT/FORM_SECTION/F03_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/preceding::*)+1),'[\"'),'\"]')}" ;
+                "http://data.europa.eu/a4g/resource/ContractOrganisationAddress/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class locn:Address
+
+        ] .
+tedm:ContractOrganisationChannel a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/ContractOrganisationChannel/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Channel
+
+        ] .
+tedm:Tender a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_TOTAL" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/Tender/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Tender
+
+        ] .
+tedm:TenderMonetaryValue a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/TenderMonetaryValue/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:MonetaryValue
+
+        ] .
+tedm:SubmissionStatisticalInformation a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/TENDERS" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/SubmissionStatisticalInformation/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:SubmissionStatisticalInformation
+
+        ] .
+tedm:MonetaryValueSubmissionHighest a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/MonetaryValueSubmissionHighest/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:MonetaryValue
+
+        ] .
+tedm:MonetaryValueSubmissionLowest a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_RANGE_TOTAL" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/MonetaryValueSubmissionLowest/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:MonetaryValue
+
+        ] .
+tedm:MonetaryValueLot a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/MonetaryValueLot/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:MonetaryValue
+
+        ] .
+tedm:SubcontractingEstimate a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/SubcontractingEstimate/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:SubcontractingEstimate
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasDescription ;
+            rr:objectMap
+                [
+                    rml:reference "INFO_ADD_SUBCONTRACTING";
+                    rml:languageMap [
+                         rml:reference "ancestor::F03_2014/@LG"
+                    ]
+                ]
+        ] .
+tedm:SubcontractingEstimatedValueMonetaryValue a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/SubcontractingEstimatedValueMonetaryValue/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:SubcontractingEstimatedValueMonetaryValue
+
+        ] .
+#Section 6
+tedm:ReviewerContactPoint a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/ReviewerContactPoint/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ContactPoint
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasDescription ;
+            rr:objectMap
+                [
+                    rml:reference "CONTACT_POINT";
+                    rml:languageMap [
+                         rml:reference "ancestor::F03_2014/@LG"
+                    ]
+                ]
+        ] .
+tedm:ReviewerOrganisationAddress a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://locn/ontology#ReviewerOrganisationAddress/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class locn:Address
+
+        ] .
+tedm:ReviewerOrganisationChannel a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/ReviewerOrganisationChannel/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Channel
+
+        ] .
+tedm:Mediator a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_MEDIATION_BODY" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/Mediator/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Mediator
+
+        ] .
+tedm:MediatorOrganisation a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_MEDIATION_BODY" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/MediatorOrganisation/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Organisation
+
+        ] ;
+    rr:predicateObjectMap
+        [
+        rr:predicate epo:hasName ;
+        rr:objectMap
+                [
+                    rml:reference "OFFICIALNAME";
+                    rml:languageMap [
+                         rml:reference "ancestor::F03_2014/@LG"
+                    ]
+                ]
+        ] .
+tedm:MediatorOrganisationIdentifier a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_MEDIATION_BODY";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/MediatorOrganisationIdentifier/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Identifier
+        ] .
+tedm:MediatorContactPoint a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_MEDIATION_BODY";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/MediatorContactPoint/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ContactPoint
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasDescription ;
+            rr:objectMap
+                [
+                    rml:reference "CONTACT_POINT";
+                    rml:languageMap [
+                         rml:reference "ancestor::F03_2014/@LG"
+                    ]
+                ]
+        ] .
+tedm:MediatorOrganisationAddress a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_MEDIATION_BODY";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://locn/ontology#MediatorOrganisationAddress/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class locn:Address
+
+        ] .
+tedm:MediatorOrganisationChannel a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_MEDIATION_BODY";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/MediatorOrganisationChannel/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Channel
+
+        ] .
+tedm:ReviewProcedureInformationProvider a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/ReviewProcedureInformationProvider/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ReviewProcedureInformationProvider
+
+        ] .
+tedm:ReviewProcedureInformationProviderOrganisation a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Organisation
+
+        ] ;
+    rr:predicateObjectMap
+        [
+        rr:predicate epo:hasName ;
+        rr:objectMap
+                [
+                    rml:reference "OFFICIALNAME";
+                    rml:languageMap [
+                         rml:reference "ancestor::F03_2014/@LG"
+                    ]
+                ]
+        ] .
+tedm:ReviewProcedureInformationProviderOrganisationIdentifier a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisationIdentifier/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Identifier
+        ] .
+tedm:ReviewProcedureInformationProviderContactPoint a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ContactPoint
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasDescription ;
+            rr:objectMap
+                [
+                    rml:reference "CONTACT_POINT";
+                    rml:languageMap [
+                         rml:reference "ancestor::F03_2014/@LG"
+                    ]
+                ]
+        ] .
+tedm:ReviewProcedureInformationProviderOrganisationAddress a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://locn/ontology#ReviewProcedureInformationProviderAddress/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class locn:Address
+
+        ] .
+tedm:ReviewProcedureInformationProviderOrganisationChannel a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisationChannel/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Channel
+
+        ] .
+
+tedm:ReviewerOrganisation a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template
+                "http://data.europa.eu/a4g/resource/ReviewerOrganisation/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Organisation
+
+        ] ;
+    rr:predicateObjectMap
+        [
+        rr:predicate epo:hasName ;
+        rr:objectMap
+                [
+                    rml:reference "OFFICIALNAME";
+                    rml:languageMap [
+                         rml:reference "ancestor::F03_2014/@LG"
+                    ]
+                ]
+        ] .
+tedm:ReviewerOrganisationIdentifier a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/ReviewerOrganisationIdentifier/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Identifier
+        ] .
+tedm:ReviewTerm a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/ReviewTerm/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('http://localhost:8000/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ReviewTerm
+        ] .
+# controlled values
+tedm:contractNature  a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "transformation/resources/contract_nature.json" ;
+            rml:iterator "$.results.bindings[*]" ;
+            rml:referenceFormulation ql:JSONPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference
+                "conceptURI.value" ;
+        ] .
+
+tedm:cpv a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "transformation/resources/cpv.json" ;
+            rml:iterator "$.results.bindings[*]" ;
+            rml:referenceFormulation ql:JSONPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference
+                "conceptURI.value" ;
+        ] .
+tedm:buyerType a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "transformation/resources/buyer_legal_type.csv" ;
+            rml:referenceFormulation ql:CSV
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference
+                "conceptURI" ;
+        ] .
+tedm:currency a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "transformation/resources/currency.json" ;
+            rml:iterator "$.results.bindings[*]" ;
+            rml:referenceFormulation ql:JSONPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference
+                "conceptURI.value" ;
+        ] .
+tedm:mainActivity a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "transformation/resources/main_activity.csv" ;
+            rml:referenceFormulation ql:CSV
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference
+                "conceptURI" ;
+        ] .
+
+tedm:legalBasis a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "transformation/resources/legal_basis.json" ;
+            rml:iterator "$.results.bindings[*]" ;
+            rml:referenceFormulation ql:JSONPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference
+                "conceptURI.value" ;
+        ] .
+
+tedm:nuts a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "transformation/resources/nuts.json" ;
+            rml:iterator "$.results.bindings[*]" ;
+            rml:referenceFormulation ql:JSONPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference
+                "conceptURI.value" ;
+        ] .
+tedm:country a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "transformation/resources/country.json" ;
+            rml:iterator "$.results.bindings[*]" ;
+            rml:referenceFormulation ql:JSONPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference
+                "conceptURI.value" ;
+        ] .
+
+
