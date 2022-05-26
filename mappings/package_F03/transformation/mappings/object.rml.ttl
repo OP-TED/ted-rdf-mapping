@@ -86,7 +86,11 @@ tedm:SubmissionStatisticalInformationForLot a rr:TripleMap ;
             rr:predicate epo:concernsSubmissionsForLot ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:Procedure #tedm:Lot
+                    rr:parentTriplesMap tedm:Lot;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
                 ] ;
         ] .
 tedm:MonetaryValueSubmissionLowestForLot a rr:TriplesMap ;
@@ -132,24 +136,48 @@ tedm:Lot a rr:TriplesMap ;
         [
             rr:predicate epo:hasID;
             rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:LotIdentifier
-                ]
+            [
+                rr:parentTriplesMap tedm:LotIdentifier;
+                rr:joinCondition [
+                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                ];
+            ]
         ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasPurpose ;
             rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:LotPurpose
-                ] ;
+            [
+                rr:parentTriplesMap tedm:LotPurpose;
+                rr:joinCondition [
+                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                ];
+            ]
         ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:isSubjectToLotTerm ;
             rr:objectMap
+            [
+                rr:parentTriplesMap tedm:ContractTerm;
+                rr:joinCondition [
+                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                ];
+            ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:specifiesProcurementCriteria ;
+            rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ContractTerm
+                    rr:parentTriplesMap tedm:AwardCriterionQuality;
+                    rr:joinCondition [
+                        rr:child "./@ITEM";
+                        rr:parent "ancestor::OBJECT_DESCR/@ITEM";
+                    ];
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -157,7 +185,11 @@ tedm:Lot a rr:TriplesMap ;
             rr:predicate epo:specifiesProcurementCriteria ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:AwardCriterionQuality
+                    rr:parentTriplesMap tedm:AwardCriterionPrice;
+                    rr:joinCondition [
+                        rr:child "./@ITEM";
+                        rr:parent "ancestor::OBJECT_DESCR/@ITEM";
+                    ];
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -165,15 +197,11 @@ tedm:Lot a rr:TriplesMap ;
             rr:predicate epo:specifiesProcurementCriteria ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:AwardCriterionPrice
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:specifiesProcurementCriteria ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:AwardCriterionCost
+                    rr:parentTriplesMap tedm:AwardCriterionCost;
+                    rr:joinCondition [
+                        rr:child "./@ITEM";
+                        rr:parent "ancestor::OBJECT_DESCR/@ITEM";
+                    ];
                 ] ;
         ] .
 tedm:AwardCriterionQuality a rr:TripleMap ;
@@ -213,6 +241,10 @@ tedm:ContractTerm a rr:TriplesMap ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ContractTermeLocation;
+                    rr:joinCondition [
+                        rr:child "./@ITEM";
+                        rr:parent "./@ITEM";
+                    ];
                 ] ;
         ] .
 tedm:ContractTermeLocation a rr:TriplesMap ;
@@ -223,7 +255,7 @@ tedm:ContractTermeLocation a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:nuts;
                     rr:joinCondition [
-                        rr:child "@CODE";
+                        rr:child "./*:NUTS/@CODE";
                         rr:parent "code.value";
                     ];
                 ] ;
@@ -234,6 +266,10 @@ tedm:ContractTermeLocation a rr:TriplesMap ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ContractTermeLocationAddress;
+                    rr:joinCondition [
+                        rr:child "./@ITEM";
+                        rr:parent "./@ITEM";
+                    ];
                 ] ;
         ] .
 
