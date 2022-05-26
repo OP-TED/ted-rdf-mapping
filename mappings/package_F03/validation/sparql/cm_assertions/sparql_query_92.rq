@@ -1,6 +1,7 @@
-#title: V.2.3.9 - Telephone
-#description: “V.2.3.9 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is nanCONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/PHONE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / rdf:langString .
+#title: V.2.3.7 - Country
+#description: “V.2.3.7 - Country” in SF corresponds to “BT-514 Organisation Country Code” in eForms. The corresponding XML element is nanCONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/COUNTRY. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / locn:Address / at-voc:country (from CL4) .
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 
-ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasTelephone ?value . }
+ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:adminUnitL1 ?value . }

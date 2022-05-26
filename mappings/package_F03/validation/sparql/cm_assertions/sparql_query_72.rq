@@ -1,9 +1,6 @@
-#title: nan - A contract/lot is awarded
-#description: “nan - A contract/lot is awarded” in SF corresponds to “BT-142 Winner Chosen” in eForms. The corresponding XML element is nan1. *[matches(name(),'AWARDED_CONTRACT')]
-2. *[matches(name(),'NO_AWARDED_CONTRACT')]. The expected ontology instances are epo: epo:Contract / epo:LotAwardOutcome /at-voc:winner-selection-status .
+#title: nan - Lot No
+#description: “nan - Lot No” in SF corresponds to “BT-13713 Result Lot Identifier” in eForms. The corresponding XML element is nanLOT_NO. The expected ontology instances are epo: epo:Contract / epo:Lot / epo:Identifier / xsd:string .
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
-ASK WHERE { ?this epo:includesLotAwardOutcome / epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> .
-OR
-?this epo:includesLotAwardOutcome / epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw> . }
+ASK WHERE { ?this epo:includesLot / epo:hasID / epo:hasIdentifierValue ?value . }
