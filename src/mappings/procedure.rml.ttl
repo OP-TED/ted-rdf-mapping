@@ -128,6 +128,14 @@ tedm:Lot a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:FramworkAgreement
                 ] ;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:FramworkAgreement;
+                rr:joinCondition [
+                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                ];
+            ] ;
         ] ;
     rr:predicateObjectMap
         [
