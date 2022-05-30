@@ -156,7 +156,6 @@ tedm:LotAwardOutcome a rr:TripleMap ;
             rr:objectMap
                 [
                     rml:reference "if(exists(NO_AWARDED_CONTRACT)) then 'http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw' else if(exists(AWARDED_CONTRACT)) then 'http://publications.europa.eu/resource/authority/winner-selection-status/selec-w' else null";
-                    rr:template "http://publications.europa.eu/resource/authority/winner-selection-status";
                     rr:termType rr:IRI;
                 ]
         ] ;
@@ -331,6 +330,16 @@ tedm:ContractOrganisationAddress a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:adminUnitL1 ;
+            rr:objectMap
+                [
+                    rml:reference "if (not(exists(ADDRESS_CONTRACTOR/*:NUTS/@CODE))) then 'http://data.europa.eu/nuts/OP_DATPRO' else null";
+                    rr:datatype rr:IRI;
+                ]
+
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate locn:adminUnitL1 ;
             rr:objectMap
                 [
@@ -340,6 +349,16 @@ tedm:ContractOrganisationAddress a rr:TriplesMap ;
                         rr:parent "code.value";
                     ];
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:adminUnitL2 ;
+            rr:objectMap
+                [
+                    rml:reference "if (not(exists(ADDRESS_CONTRACTOR/COUNTRY/@VALUE))) then 'http://publications.europa.eu/resource/authority/country/OP_DATPRO' else null";
+                    rr:datatype rr:IRI;
+                ]
+
         ] ;
     rr:predicateObjectMap
         [
@@ -419,6 +438,16 @@ tedm:SubcontractingEstimatedValueMonetaryValue a rr:TriplesMap ;
             rr:predicate epo:hasCurrency ;
             rr:objectMap
                 [
+                    rml:reference "if (not(exists(VAL_SUBCONTRACTING/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
+                    rr:datatype rr:IRI;
+                ]
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
                     rr:parentTriplesMap tedm:currency;
                     rr:joinCondition [
                         rr:child "VAL_SUBCONTRACTING/@CURRENCY";
@@ -440,6 +469,16 @@ tedm:TenderMonetaryValue a rr:TriplesMap ;
             rr:predicate epo:hasCurrency ;
             rr:objectMap
                 [
+                    rml:reference "if (not(exists(VAL_TOTAL/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
+                    rr:datatype rr:IRI;
+                ]
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
                     rr:parentTriplesMap tedm:currency;
                     rr:joinCondition [
                         rr:child "VAL_TOTAL/@CURRENCY";
@@ -455,6 +494,16 @@ tedm:MonetaryValueLot a rr:TriplesMap ;
                 [
                     rml:reference "VAL_ESTIMATED_TOTAL";
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rml:reference "if (not(exists(VAL_ESTIMATED_TOTAL/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
+                    rr:datatype rr:IRI;
+                ]
+
         ] ;
     rr:predicateObjectMap
         [
@@ -580,6 +629,16 @@ tedm:MonetaryValueSubmissionHighest a rr:TriplesMap ;
             rr:predicate epo:hasCurrency ;
             rr:objectMap
                 [
+                    rml:reference "if (not(exists(//VAL_SUBCONTRACTING[1]/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
+                    rr:datatype rr:IRI;
+                ]
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
                     rr:parentTriplesMap tedm:currency;
                     rr:joinCondition [
                         rr:child "//VAL_SUBCONTRACTING[1]/@CURRENCY";
@@ -595,6 +654,16 @@ tedm:MonetaryValueSubmissionLowest a rr:TriplesMap ;
                 [
                     rml:reference "LOW";
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rml:reference "if (not(exists(//VAL_SUBCONTRACTING[1]/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
+                    rr:datatype rr:IRI;
+                ]
+
         ] ;
     rr:predicateObjectMap
         [
