@@ -85,22 +85,12 @@ tedm:Organisation a rr:TripleMap ;
         ] ;
     rr:predicateObjectMap
         [
-        rr:predicate epo:hasName ;
-        rr:objectMap
-                [
-                    rml:reference "OFFICIALNAME"
-                ]
-        ] ;
-    rr:predicateObjectMap
-        [
             rr:predicate epo:hasRegisteredAddress ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:OrganisationAddress
                 ]
         ] ;
-
-
     rr:predicateObjectMap
         [
             rr:predicate epo:hasID;
@@ -171,6 +161,16 @@ tedm:OrganisationAddress  a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:adminUnitL1 ;
+            rr:objectMap
+                [
+                    rml:reference "if (not(exists(*:NUTS/@CODE))) then 'http://data.europa.eu/nuts/OP_DATPRO' else null";
+                    rr:datatype rr:IRI;
+                ]
+
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate locn:adminUnitL1 ;
             rr:objectMap
                 [
@@ -180,6 +180,16 @@ tedm:OrganisationAddress  a rr:TriplesMap ;
                         rr:parent "code.value";
                     ];
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:adminUnitL2 ;
+            rr:objectMap
+                [
+                    rml:reference "if (not(exists(COUNTRY/@VALUE))) then 'http://publications.europa.eu/resource/authority/country/OP_DATPRO' else null";
+                    rr:datatype rr:IRI;
+                ]
+
         ] ;
     rr:predicateObjectMap
         [

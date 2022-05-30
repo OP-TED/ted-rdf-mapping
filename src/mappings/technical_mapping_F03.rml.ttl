@@ -57,7 +57,7 @@ tedm:ContactPoint a rr:TriplesMap ;
                 [
                     rml:reference "CONTACT_POINT";
                     rml:languageMap [
-                         rml:reference "ancestor::F03_2014/@LG"
+                         rml:reference "lower-case(ancestor::F03_2014/@LG)"
                     ]
                 ]
         ] .
@@ -98,9 +98,20 @@ tedm:Organisation a rr:TripleMap ;
     rml:logicalSource
     [
         rml:source "data/source.xml" ;
-        rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY" ;
+        rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY" ;
         rml:referenceFormulation ql:XPath
-    ] .
+    ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasName ;
+            rr:objectMap
+                [
+                    rml:reference "OFFICIALNAME";
+                    rml:languageMap [
+                         rml:reference "lower-case(ancestor::F03_2014/@LG)"
+                    ]
+                ] ;
+        ] .
 tedm:Buyer a rr:TriplesMap;
     rr:subjectMap
         [
@@ -232,7 +243,7 @@ tedm:Procedure a rr:TriplesMap ;
                 [
                     rml:reference "TITLE";
                     rml:languageMap [
-                         rml:reference "ancestor::F03_2014/@LG"
+                         rml:reference "lower-case(ancestor::F03_2014/@LG)"
                     ]
                 ] ;
         ] ;
@@ -243,9 +254,19 @@ tedm:Procedure a rr:TriplesMap ;
                 [
                     rml:reference "SHORT_DESCR";
                     rml:languageMap [
-                         rml:reference "ancestor::F03_2014/@LG"
+                         rml:reference "lower-case(ancestor::F03_2014/@LG)"
                     ]
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasLegalBasis ;
+            rr:objectMap
+                [
+                    rml:reference "if (not(exists(/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/JOINT_PROCUREMENT_INVOLVED/PROCUREMENT_LAW))) then 'http://publications.europa.eu/resource/authority/legal-basis/OP_DATPRO' else null";
+                    rr:datatype rr:IRI;
+                ]
+
         ] ;
     rr:predicateObjectMap
     [
@@ -345,12 +366,32 @@ tedm:ProcedurePurpose a rr:TriplesMap ;
             rr:predicate epo:hasMainClassification ;
             rr:objectMap
                 [
+                    rml:reference "if (not(exists(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/CPV_MAIN/CPV_CODE/@CODE))) then 'http://data.europa.eu/cpv/cpv/OP_DATPRO' else null";
+                    rr:datatype rr:IRI;
+                ]
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasMainClassification ;
+            rr:objectMap
+                [
                     rr:parentTriplesMap tedm:cpv;
                     rr:joinCondition [
                         rr:child "/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/CPV_MAIN/CPV_CODE/@CODE";
                         rr:parent "code.value";
                     ];
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContractNatureType ;
+            rr:objectMap
+                [
+                    rml:reference "if (not(exists(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/TYPE_CONTRACT/@CTYPE))) then 'http://publications.europa.eu/resource/authority/contract-nature/OP_DATPRO' else null";
+                    rr:datatype rr:IRI;
+                ]
+
         ] ;
     rr:predicateObjectMap
         [
@@ -434,7 +475,7 @@ tedm:Lot a rr:TriplesMap ;
                 [
                     rml:reference "TITLE";
                     rml:languageMap [
-                         rml:reference "ancestor::F03_2014/@LG"
+                         rml:reference "lower-case(ancestor::F03_2014/@LG)"
                     ]
                 ]
         ] ;
@@ -445,7 +486,7 @@ tedm:Lot a rr:TriplesMap ;
                 [
                     rml:reference "INFO_ADD";
                     rml:languageMap [
-                         rml:reference "ancestor::F03_2014/@LG"
+                         rml:reference "lower-case(ancestor::F03_2014/@LG)"
                     ]
                 ] ;
         ] ;
@@ -456,7 +497,7 @@ tedm:Lot a rr:TriplesMap ;
                 [
                     rml:reference "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/INFO_ADD";
                     rml:languageMap [
-                         rml:reference "ancestor::F03_2014/@LG"
+                         rml:reference "lower-case(ancestor::F03_2014/@LG)"
                     ]
                 ] ;
         ] .
@@ -501,7 +542,7 @@ tedm:LotPurpose a rr:TriplesMap ;
                 [
                     rml:reference "OPTIONS_DESCR";
                     rml:languageMap [
-                         rml:reference "ancestor::F03_2014/@LG"
+                         rml:reference "lower-case(ancestor::F03_2014/@LG)"
                     ]
                 ] ;
         ] .
@@ -551,7 +592,7 @@ tedm:ContractTermeLocationAddress a rr:TriplesMap ;
                  [
                     rml:reference "MAIN_SITE";
                     rml:languageMap [
-                         rml:reference "ancestor::F03_2014/@LG"
+                         rml:reference "lower-case(ancestor::F03_2014/@LG)"
                     ]
                 ] ;
         ] .
@@ -575,7 +616,7 @@ tedm:AwardCriterionQuality a rr:TripleMap ;
                 [
                     rml:reference "AC_CRITERION";
                     rml:languageMap [
-                         rml:reference "ancestor::F03_2014/@LG"
+                         rml:reference "lower-case(ancestor::F03_2014/@LG)"
                     ]
                 ] ;
         ] ;
@@ -1195,7 +1236,7 @@ tedm:ReviewProcedureInformationProviderOrganisation a rr:TriplesMap ;
                 [
                     rml:reference "OFFICIALNAME";
                     rml:languageMap [
-                         rml:reference "ancestor::F03_2014/@LG"
+                         rml:reference "lower-case(ancestor::F03_2014/@LG)"
                     ]
                 ]
         ] .
@@ -1231,7 +1272,7 @@ tedm:ReviewProcedureInformationProviderContactPoint a rr:TriplesMap ;
                 [
                     rml:reference "CONTACT_POINT";
                     rml:languageMap [
-                         rml:reference "ancestor::F03_2014/@LG"
+                         rml:reference "lower-case(ancestor::F03_2014/@LG)"
                     ]
                 ]
         ] .
@@ -1282,7 +1323,7 @@ tedm:ReviewerOrganisation a rr:TriplesMap ;
                 [
                     rml:reference "OFFICIALNAME";
                     rml:languageMap [
-                         rml:reference "ancestor::F03_2014/@LG"
+                         rml:reference "lower-case(ancestor::F03_2014/@LG)"
                     ]
                 ]
         ] .

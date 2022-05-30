@@ -57,6 +57,16 @@ tedm:ProcedureMonetaryValue a rr:TriplesMap ;
             rr:predicate epo:hasCurrency ;
             rr:objectMap
                 [
+                    rml:reference "if (not(exists(VAL_TOTAL/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
+                    rr:datatype rr:IRI;
+                ]
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
                     rr:parentTriplesMap tedm:currency;
                     rr:joinCondition [
                         rr:child "VAL_TOTAL/@CURRENCY";
@@ -306,6 +316,16 @@ tedm:ContractTermeLocation a rr:TriplesMap ;
             rr:predicate epo:hasNutsCode ;
             rr:objectMap
                 [
+                    rml:reference "if (not(exists(./*:NUTS/@CODE))) then 'http://data.europa.eu/nuts/OP_DATPRO' else null";
+                    rr:datatype rr:IRI;
+                ]
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasNutsCode ;
+            rr:objectMap
+                [
                     rr:parentTriplesMap tedm:nuts;
                     rr:joinCondition [
                         rr:child "./*:NUTS/@CODE";
@@ -338,6 +358,17 @@ tedm:LotPurpose a rr:TriplesMap ;
                         rr:parent "code.value";
                     ];
                 ] ;
+
+        ] ;
+        rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAdditionalClassification ;
+            rr:objectMap
+                [
+                    rml:reference "if (not(exists(CPV_ADDITIONAL/CPV_SUPPLEMENTARY_CODE/@CODE))) then 'http://data.europa.eu/cpv/cpv/OP_DATPRO' else null";
+                    rr:datatype rr:IRI;
+                ]
+
         ] ;
     rr:predicateObjectMap
         [
@@ -350,6 +381,16 @@ tedm:LotPurpose a rr:TriplesMap ;
                         rr:parent "code.value";
                     ];
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasMainClassification ;
+            rr:objectMap
+                [
+                    rml:reference "if (not(exists(CPV_ADDITIONAL/CPV_CODE/@CODE))) then 'http://data.europa.eu/cpv/cpv/OP_DATPRO' else null";
+                    rr:datatype rr:IRI;
+                ]
+
         ] ;
     rr:predicateObjectMap
         [
