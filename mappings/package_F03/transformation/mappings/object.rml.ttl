@@ -64,35 +64,7 @@ tedm:ProcedureMonetaryValue a rr:TriplesMap ;
                     ];
                 ] ;
         ] .
-tedm:SubmissionStatisticalInformationForLot a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasLowestReceivedTenderValue ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MonetaryValueSubmissionLowestForLot
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasHighestReceivedTenderLotValues ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MonetaryValueSubmissionHighestForLot
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:concernsSubmissionsForLot ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:Lot;
-                    rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    ];
-                ] ;
-        ] .
+
 tedm:MonetaryValueSubmissionLowestForLot a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -122,6 +94,28 @@ tedm:ProcedurePurpose a rr:TriplesMap ;
 
                 ] ;
         ] .
+tedm:Notice a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasID;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:NoticeIdentifier;
+                rr:joinCondition [
+                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                ];
+            ]
+        ] .
+tedm:NoticeIdentifier a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasIdentifierValue;
+            rr:objectMap
+                [
+                    rml:reference "NOTICE_NUMBER_OJ"
+                ]
+        ] .
 tedm:ResultNotice a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -130,14 +124,73 @@ tedm:ResultNotice a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:Lot
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:refersToPrevious;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:Notice;
+            ]
+        ] .
+
+tedm:Fund a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasID;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:FundIdentifier;
+                rr:joinCondition [
+                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                ];
+            ]
+        ] .
+tedm:FundIdentifier a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasIdentifierValue;
+            rr:objectMap
+                [
+                    rml:reference "EU_PROGR_RELATED/P/FT/@TYPE"
+                ]
         ] .
 tedm:Lot a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasGPAUsage;
+            rr:objectMap
+                [
+                    rml:reference "exists(./*[matches(name(),'CONTRACT_COVERED_GPA')])"
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:isUsingEUFunds;
+            rr:objectMap
+                [
+                    rml:reference "exists(./*[matches(name(),'EU_PROGR_RELATED')])"
+                ]
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasID;
             rr:objectMap
             [
                 rr:parentTriplesMap tedm:LotIdentifier;
+                rr:joinCondition [
+                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                ];
+            ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:isFundedBy;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:Fund;
                 rr:joinCondition [
                     rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                     rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
@@ -297,6 +350,14 @@ tedm:LotPurpose a rr:TriplesMap ;
                         rr:parent "code.value";
                     ];
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasOptions;
+            rr:objectMap
+                [
+                    rml:reference "exists(./*[matches(name(),'OPTIONS')])"
+                ]
         ] .
 tedm:LotIdentifier a rr:TripleMap ;
     rr:predicateObjectMap

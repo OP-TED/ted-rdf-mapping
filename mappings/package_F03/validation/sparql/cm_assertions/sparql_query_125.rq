@@ -1,6 +1,7 @@
-#title: VI.4.2.7 - Telephone
-#description: “VI.4.2.7 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is nanADDRESS_MEDIATION_BODY/PHONE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / rdf:langString .
+#title: VI.4.2.4 - Postal code
+#description: “VI.4.2.4 - Postal code” in SF corresponds to “BT-512 Organisation Post Code” in eForms. The corresponding XML element is nanADDRESS_MEDIATION_BODY/POSTAL_CODE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / locn:Address / rdf:langString .
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 
-ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasTelephone ?value . }
+ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postCode ?value . }

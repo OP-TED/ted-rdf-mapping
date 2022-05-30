@@ -28,7 +28,7 @@
 	<hr>
     <h2>Report details: </h2>
     <ul>
-        <li>Date created: 2022-05-26T07:19:00.293308</li>
+        <li>Date created: 2022-05-30T08:27:17.138872</li>
         <li>SPARQL test suite identifier: cm_assertions</li>
         <li>Mapping suite identifier: nan</li>
     </ul>
@@ -47,17 +47,73 @@
     <tbody>
         
             <tr>
-                <td>V.2.3.6 - Postal code</td>
-                <td>“V.2.3.6 - Postal code” in SF corresponds to “BT-512 Organisation Post Code” in eForms. The corresponding XML element is nanCONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/POSTAL_CODE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postCode ?value . }</td>
+                <td>V.2.3.5 - NUTS code</td>
+                <td>“V.2.3.5 - NUTS code” in SF corresponds to “BT-507 Organisation Country Subdivision” in eForms. The corresponding XML element is nanCONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR//*:NUTS/@CODE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / locn:Address / at-voc:nuts (from CL3) .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:adminUnitL2 ?value . }</td>
                 <td class="error" >False</td>
                 <td>None</td>
             </tr>
         
             <tr>
-                <td>I.1.6 - Postal code</td>
-                <td>“I.1.6 - Postal code” in SF corresponds to “BT-512 Organisation Country Subdivision” in eForms. The corresponding XML element is nanADDRESS_CONTRACTING_BODY/POSTAL_CODE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postCode ?value . }</td>
+                <td>I.1.5 - NUTS code</td>
+                <td>“I.1.5 - NUTS code” in SF corresponds to “BT-507 Organisation Country Subdivision” in eForms. The corresponding XML element is nanADDRESS_CONTRACTING_BODY//*:NUTS/@CODE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / locn:Address / at-voc:nuts (from CL3) .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:adminUnitL2 ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>IV.2.9.1 - The contracting authority will not award any further contracts based on the above prior information notice</td>
+                <td>“IV.2.9.1 - The contracting authority will not award any further contracts based on the above prior information notice” in SF corresponds to “BT-756 PIN Competition Termination” in eForms. The corresponding XML element is nanTERMINATION_PIN. The expected ontology instances are epo: epo:Procedure / xsd:boolean .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:isCompetitionTermination ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>nan - nan</td>
+                <td>“nan - nan” in SF corresponds to “nan nan” in eForms. The corresponding XML element is nannan. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / MonetaryValue /at-voc:currency (from CL9) .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasHighestReceivedTenderValue / epo:hasCurrency ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>I.1.12.2 - Address of the buyer profile</td>
+                <td>“I.1.12.2 - Address of the buyer profile” in SF corresponds to “BT-508 Buyer Profile URL” in eForms. The corresponding XML element is nanADDRESS_CONTRACTING_BODY/URL_BUYER. The expected ontology instances are epo: epo:Role / epo:Buyer / epo:URI .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasBuyerProfile / epo:hasURL ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>IV.1.1.2 - Restricted procedure</td>
+                <td>“IV.1.1.2 - Restricted procedure” in SF corresponds to “BT-105 Procedure Type” in eForms. The corresponding XML element is nanPT_RESTRICTED. The expected ontology instances are epo: epo:Procedure / at-voc:procurement-procedure-type .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted> . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>V.2.4.1 - Initial estimated total value of the contract/lot</td>
+                <td>“V.2.4.1 - Initial estimated total value of the contract/lot” in SF corresponds to “BT-27 Estimated Value” in eForms. The corresponding XML element is nanVALUES/VAL_ESTIMATED_TOTAL. The expected ontology instances are epo: epo:Lot / epo:MonetaryValue / epo:Numeric .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasEstimatedValue / epo:hasAmountValue ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.2.2.1 - Main CPV code</td>
+                <td>“II.2.2.1 - Main CPV code” in SF corresponds to “BT-262 Main Classification Code” in eForms. The corresponding XML element is nanOBJECT_DESCR/CPV_ADDITIONAL/CPV_CODE/@CODE. The expected ontology instances are epo: epo:Lot / epo:Purpose / at-voc:cpv (from CL7) .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasPurpose / epo:hasMainClassification ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>VI.3 - Additional information</td>
+                <td>“VI.3 - Additional information” in SF corresponds to “BT-300 nan” in eForms. The corresponding XML element is nanINFO_ADD. The expected ontology instances are epo: epo:Lot .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasAdditionalInformation ?value . }</td>
                 <td class="error" >False</td>
                 <td>None</td>
             </tr>
@@ -71,129 +127,73 @@
             </tr>
         
             <tr>
-                <td>V.2.4.4 - Highest offer</td>
-                <td>“V.2.4.4 - Highest offer” in SF corresponds to “BT-711 Tender Value Highest” in eForms. The corresponding XML element is nanVALUES/VAL_RANGE_TOTAL/HIGH. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / MonetaryValue / epo:Numeric .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasHighestReceivedTenderLotValue / epo:hasAmountValue ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>I.2.1.1 - In the case of joint procurement involving different countries, state applicable national procurement law</td>
-                <td>“I.2.1.1 - In the case of joint procurement involving different countries, state applicable national procurement law” in SF corresponds to “BT-09 Cross Border Law” in eForms. The corresponding XML element is nanPROCUREMENT_LAW. The expected ontology instances are epo: epo:ResultNotice / epo:Procedure / at-voc:legal-basis .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:refersToProcedure / epo:hasLegalBasis ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>IV.1.1.2.1 - Accelerated procedure</td>
-                <td>“IV.1.1.2.1 - Accelerated procedure” in SF corresponds to “BT-106 Procedure Accelerated” in eForms. The corresponding XML element is nanACCELERATED_PROC. The expected ontology instances are epo: epo:Procedure / xsd:boolean .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:isAccelerated ?value . }</td>
+                <td>I.5 - Main activity</td>
+                <td>“I.5 - Main activity” in SF corresponds to “BT-10 Activity Authority” in eForms. The corresponding XML element is nanCA_ACTIVITY. The expected ontology instances are epo: epo:Role / epo:Buyer / at-voc:main-activity (from CL6) .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasMainActivityType ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
         
             <tr>
-                <td>V.2.4.2 - Total value of the contract/lot</td>
-                <td>“V.2.4.2 - Total value of the contract/lot” in SF corresponds to “BT-720 Tender Value” in eForms. The corresponding XML element is nanVALUES/VAL_TOTAL. The expected ontology instances are epo: epo:Tender / epo:MonetaryValue / epo:Numeric .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasFinnancialOfferValue / epo:hasAmountValue ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>II.2.2.2 - Supplementary CPV code</td>
-                <td>“II.2.2.2 - Supplementary CPV code” in SF corresponds to “BT-263 Additional Classification Codes” in eForms. The corresponding XML element is nanOBJECT_DESCR/CPV_ADDITIONAL/CPV_SUPPLEMENTARY_CODE/@CODE. The expected ontology instances are epo: epo:Lot / epo:Purpose / at-voc:cpv (from CL7) .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasPurpose / epo:hasAdditionalClassification ?value . }</td>
+                <td>IV.1.1.5 - Innovation partnership</td>
+                <td>“IV.1.1.5 - Innovation partnership” in SF corresponds to “BT-105 Procedure Type” in eForms. The corresponding XML element is nanPT_INNOVATION_PARTNERSHIP. The expected ontology instances are epo: epo:Procedure / at-voc:procurement-procedure-type .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation> . }</td>
                 <td class="error" >False</td>
                 <td>None</td>
             </tr>
         
             <tr>
-                <td>VI.4.1.1 - Official name</td>
-                <td>“VI.4.1.1 - Official name” in SF corresponds to “BT-500 Organisation Name” in eForms. The corresponding XML element is nanADDRESS_REVIEW_BODY/OFFICIALNAME. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) / rdf:langString .</td>
+                <td>VI.4.2.8 - Internet Addresses (URL)</td>
+                <td>“VI.4.2.8 - Internet Addresses (URL)” in SF corresponds to “BT-505 Organisation Internet Address” in eForms. The corresponding XML element is nanADDRESS_MEDIATION_BODY/URL. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:Channel / epo:URI .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasDeliveryGateway / epo:hasURL ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>I.1.10 - E-mail</td>
+                <td>“I.1.10 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is nanADDRESS_CONTRACTING_BODY/E_MAIL. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / epo:URI .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasEmail ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>IV.1.8 - Information about the Government Procurement Agreement (GPA)</td>
+                <td>“IV.1.8 - Information about the Government Procurement Agreement (GPA)” in SF corresponds to “BT-115 GPA Coverage” in eForms. The corresponding XML element is nan*[matches(name(),'CONTRACT_COVERED_GPA')]. The expected ontology instances are epo: epo:Lot / xsd:boolean .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasGPAUsage ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.1.7.1 - Value</td>
+                <td>“II.1.7.1 - Value” in SF corresponds to “BT-27 Estimated Value” in eForms. The corresponding XML element is nanVAL_TOTAL. The expected ontology instances are epo: epo:Procedure / epo:MonetaryValue / epo:Numeric .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#><br><br>ASK WHERE { ?this rdf:type / epo:hasEstimatedValue / epo:hasAmountValue ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>I.1.1 - Official name</td>
+                <td>“I.1.1 - Official name” in SF corresponds to “BT-500 Organisation Name” in eForms. The corresponding XML element is nanADDRESS_CONTRACTING_BODY/OFFICIALNAME. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) / rdf:langString .</td>
                 <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasName ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
         
             <tr>
-                <td>IV.2.1 - Previous publication concerning this procedure</td>
-                <td>“IV.2.1 - Previous publication concerning this procedure” in SF corresponds to “BT-125 Previous Planning Identifier” in eForms. The corresponding XML element is nanNOTICE_NUMBER_OJ. The expected ontology instances are epo: epo:Procedure / epo:DirectAwardPrenotificationNotice / epo:Identifier / xsd:string .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#><br><br>ASK WHERE { ?this rdf:type epo:DirectAwardPrenotificationNotice / epo:hasID / epo:hasIdentfierValue ?value . }</td>
-                <td class="error" >None</td>
-                <td>Expected {SelectQuery | ConstructQuery | DescribeQuery | AskQuery}, found '/'  (at char 173), (line:4, col:65)</td>
-            </tr>
-        
-            <tr>
-                <td>II.1 - Scope of the procurement</td>
-                <td>“II.1 - Scope of the procurement” in SF corresponds to “nan nan” in eForms. The corresponding XML element is nannan. The expected ontology instances are epo: epo:ResultNotice / epo:Procedure .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:refersToProcedure ?value . }</td>
+                <td>II.2.5.1.2 - hasFormula</td>
+                <td>“II.2.5.1.2 - hasFormula” in SF corresponds to “BT-543 Award Criterion complicated” in eForms. The corresponding XML element is nannan. The expected ontology instances are epo: epo:AwardCriterion  .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasFormula ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
         
             <tr>
-                <td>IV.1.1.6 - Award of a contract without prior publication of a call for competition in the Official Journal of the European Union in the cases listed below</td>
-                <td>“IV.1.1.6 - Award of a contract without prior publication of a call for competition in the Official Journal of the European Union in the cases listed below” in SF corresponds to “BT-105 Procedure Type” in eForms. The corresponding XML element is nanPT_AWARD_CONTRACT_WITHOUT_CALL. The expected ontology instances are epo: epo:Procedure / at-voc:procurement-procedure-type .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call> . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>VI.4.4.1 - Official name</td>
-                <td>“VI.4.4.1 - Official name” in SF corresponds to “BT-500 Organisation Name” in eForms. The corresponding XML element is nanADDRESS_REVIEW_INFO/OFFICIALNAME. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasName ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>I.1.11 - Fax</td>
-                <td>“I.1.11 - Fax” in SF corresponds to “BT-739 Organisation Contact Fax” in eForms. The corresponding XML element is nanADDRESS_CONTRACTING_BODY/FAX. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasFax ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>IV.2.1 - Previous publication concerning this procedure</td>
-                <td>“IV.2.1 - Previous publication concerning this procedure” in SF corresponds to “BT-125 Previous Planning Identifier” in eForms. The corresponding XML element is nanNOTICE_NUMBER_OJ. The expected ontology instances are epo: epo:Procedure / epo:PlannedProcurementPart / epo:PlanningNotice / epo:Identifier / xsd:string .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#><br><br>ASK WHERE { ?this rdf:type epo:PlanningNotice / epo:hasID / epo:hasIdentfierValue ?value . }</td>
-                <td class="error" >None</td>
-                <td>Expected {SelectQuery | ConstructQuery | DescribeQuery | AskQuery}, found '/'  (at char 155), (line:4, col:47)</td>
-            </tr>
-        
-            <tr>
-                <td>II.1.7.2 - Lowest offer</td>
-                <td>“II.1.7.2 - Lowest offer” in SF corresponds to “BT-710 Tender Value Lowest” in eForms. The corresponding XML element is nanVAL_RANGE_TOTAL/LOW. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / MonetaryValue / epo:Numeric .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasLowestReceivedTenderLotValues / epo:hasAmountValue ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>I.1.2 - National registration number</td>
-                <td>“I.1.2 - National registration number” in SF corresponds to “BT-501 Organisation Identifier” in eForms. The corresponding XML element is nanADDRESS_CONTRACTING_BODY/NATIONALID. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) / epo:Identifier / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasID / epo:hasIdentifierValue ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>II.2.5.2 - Cost criterion – Name: / Weighting:</td>
-                <td>“II.2.5.2 - Cost criterion – Name: / Weighting:” in SF corresponds to “BT-539 Award Criterion Type” in eForms. The corresponding XML element is nanOBJECT_DESCR/AC/AC_COST. The expected ontology instances are epo: epo:AwardCriterion / at-voc:award-criterion-type .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/cost> . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>V.2.3.5 - NUTS code</td>
-                <td>“V.2.3.5 - NUTS code” in SF corresponds to “BT-507 Organisation Country Subdivision” in eForms. The corresponding XML element is nanCONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR//*:NUTS/@CODE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / locn:Address / at-voc:nuts (from CL3) .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:adminUnitL2 ?value . }</td>
+                <td>V.2.3.4 - Town</td>
+                <td>“V.2.3.4 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is nanCONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/TOWN. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) /  locn:Address / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postName ?value . }</td>
                 <td class="error" >False</td>
                 <td>None</td>
             </tr>
@@ -207,17 +207,17 @@
             </tr>
         
             <tr>
-                <td>VI.4.4.9 - Fax</td>
-                <td>“VI.4.4.9 - Fax” in SF corresponds to “BT-739 Organisation Contact Fax” in eForms. The corresponding XML element is nanADDRESS_REVIEW_INFO/FAX. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasFax ?value . }</td>
-                <td class="success" >True</td>
+                <td>VI.4.4.5 - Country</td>
+                <td>“VI.4.4.5 - Country” in SF corresponds to “BT-514 Organisation Country Code” in eForms. The corresponding XML element is nanADDRESS_REVIEW_INFO/COUNTRY. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / locn:Address / at-voc:nuts (from CL3) .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:adminUnitL2 ?value . }</td>
+                <td class="error" >False</td>
                 <td>None</td>
             </tr>
         
             <tr>
-                <td>I.1.8 - Contact person</td>
-                <td>“I.1.8 - Contact person” in SF corresponds to “BT-502 Organisation Contact Point” in eForms. The corresponding XML element is nanADDRESS_CONTRACTING_BODY/CONTACT_POINT. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint / epo:hasDescription ?value . }</td>
+                <td>I.1.7 - Country</td>
+                <td>“I.1.7 - Country” in SF corresponds to “BT-514 Organisation Country Code” in eForms. The corresponding XML element is nanADDRESS_CONTRACTING_BODY/COUNTRY. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / locn:Address / at-voc:country (from CL4) .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:adminUnitL1 ?value . }</td>
                 <td class="error" >False</td>
                 <td>None</td>
             </tr>
@@ -239,26 +239,26 @@
             </tr>
         
             <tr>
-                <td>VI.4.2.6 - E-mail</td>
-                <td>“VI.4.2.6 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is nanADDRESS_MEDIATION_BODY/E_MAIL. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / epo:URI .</td>
+                <td>VI.4.2.3 - Town</td>
+                <td>“VI.4.2.3 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is nanADDRESS_MEDIATION_BODY/TOWN. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) /  locn:Address / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postName ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>VI.4.4.6 - E-mail</td>
+                <td>“VI.4.4.6 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is nanADDRESS_REVIEW_INFO/E_MAIL. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / epo:URI .</td>
                 <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasEmail ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
         
             <tr>
-                <td>VI.5 - Date of dispatch of this notice (dd/mm/yyyy)</td>
-                <td>“VI.5 - Date of dispatch of this notice (dd/mm/yyyy)” in SF corresponds to “BT-05 Notice Dispatch Date” in eForms. The corresponding XML element is nanDATE_DISPATCH_NOTICE. The expected ontology instances are epo: epo:ResultNotice .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasDispatchDate ?value . }</td>
+                <td>VI.4.4 - Service from which information about the review procedure may be obtained</td>
+                <td>“VI.4.4 - Service from which information about the review procedure may be obtained” in SF corresponds to “nan nan” in eForms. The corresponding XML element is nannan. The expected ontology instances are epo: epo:ResultNotice / epo:ReviewProcedureInformationProvider .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:announcesRole ?value }</td>
                 <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>VI.4.4.4 - Postal code</td>
-                <td>“VI.4.4.4 - Postal code” in SF corresponds to “BT-512 Organisation Post Code” in eForms. The corresponding XML element is nanADDRESS_REVIEW_INFO/POSTAL_CODE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postCode ?value . }</td>
-                <td class="error" >False</td>
                 <td>None</td>
             </tr>
         
@@ -266,6 +266,182 @@
                 <td>nan - Lot No</td>
                 <td>“nan - Lot No” in SF corresponds to “BT-13713 Result Lot Identifier” in eForms. The corresponding XML element is nanLOT_NO. The expected ontology instances are epo: epo:Contract / epo:Lot / epo:Identifier / xsd:string .</td>
                 <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:includesLot / epo:hasID / epo:hasIdentifierValue ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>I.1.2 - National registration number</td>
+                <td>“I.1.2 - National registration number” in SF corresponds to “BT-501 Organisation Identifier” in eForms. The corresponding XML element is nanADDRESS_CONTRACTING_BODY/NATIONALID. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) / epo:Identifier / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasID / epo:hasIdentifierValue ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.1.1 - Title</td>
+                <td>“II.1.1 - Title” in SF corresponds to “BT-21 Title” in eForms. The corresponding XML element is nanTITLE. The expected ontology instances are epo: epo:Procedure / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasTitle ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.2.1.1 - Lot no</td>
+                <td>“II.2.1.1 - Lot no” in SF corresponds to “BT-137 Purpose Lot Identifier” in eForms. The corresponding XML element is nanOBJECT_DESCR/LOT_NO. The expected ontology instances are epo: epo:Lot / epo:Identifier / xsd:string .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasID / epo:hasIdentifierValue ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.2.5 - Award criteria</td>
+                <td>“II.2.5 - Award criteria” in SF corresponds to “nan nan” in eForms. The corresponding XML element is nannan. The expected ontology instances are epo: epo:Lot / epo:AwardCriterion  .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:specifiesProcurementCriteria ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>VI.4.4.3 - Town</td>
+                <td>“VI.4.4.3 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is nanADDRESS_REVIEW_INFO/TOWN. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) /  locn:Address / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postName ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>I.1 - Name and addresses</td>
+                <td>“I.1 - Name and addresses” in SF corresponds to “nan nan” in eForms. The corresponding XML element is nannan. The expected ontology instances are epo: epo:ResultNotice / epo:Buyer .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:announcesRole ?value }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>VI.4.2.2 - Postal address</td>
+                <td>“VI.4.2.2 - Postal address” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is nanADDRESS_MEDIATION_BODY/ADDRESS. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) /  locn:Address / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:thoroughfare ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.2.5.2 - Cost criterion – Name: / Weighting:</td>
+                <td>“II.2.5.2 - Cost criterion – Name: / Weighting:” in SF corresponds to “BT-539 Award Criterion Type” in eForms. The corresponding XML element is nanOBJECT_DESCR/AC/AC_COST. The expected ontology instances are epo: epo:AwardCriterion / at-voc:award-criterion-type .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/cost> . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.2.5.1 - Quality criterion – Name: / Weighting:</td>
+                <td>“II.2.5.1 - Quality criterion – Name: / Weighting:” in SF corresponds to “BT-539 Award Criterion Type” in eForms. The corresponding XML element is nanOBJECT_DESCR/AC/AC_QUALITY. The expected ontology instances are epo: epo:AwardCriterion / at-voc:award-criterion-type .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality> . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.2.11.2 - Description of options</td>
+                <td>“II.2.11.2 - Description of options” in SF corresponds to “BT-54 Options Description” in eForms. The corresponding XML element is nanOBJECT_DESCR/OPTIONS_DESCR. The expected ontology instances are epo: epo:Lot / epo:Purpose / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasPurpose / epo:hasOptionsDescription ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>VI.4.1.8 - Internet Addresses (URL)</td>
+                <td>“VI.4.1.8 - Internet Addresses (URL)” in SF corresponds to “BT-505 Organisation Internet Address” in eForms. The corresponding XML element is nanADDRESS_REVIEW_BODY/URL. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:Channel / epo:URI .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasDeliveryGateway / epo:hasURL ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.1 - Scope of the procurement</td>
+                <td>“II.1 - Scope of the procurement” in SF corresponds to “nan nan” in eForms. The corresponding XML element is nannan. The expected ontology instances are epo: epo:ResultNotice / epo:Procedure .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:refersToProcedure ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.2.3.2 - Main site or place of performance</td>
+                <td>“II.2.3.2 - Main site or place of performance” in SF corresponds to “BT-728 Place Performance Additional Information” in eForms. The corresponding XML element is nanOBJECT_DESCR/MAIN_SITE. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:isSubjectToLotTerm / epo:hasSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>IV.1.1.2.2 - Justification:</td>
+                <td>“IV.1.1.2.2 - Justification:” in SF corresponds to “BT-1351 Procedure Accelerated Justification” in eForms. The corresponding XML element is nanACCELERATED_PROC/P. The expected ontology instances are epo: epo:Procedure / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasAcceleratedProcedureJustification ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>V.2.3.6 - Postal code</td>
+                <td>“V.2.3.6 - Postal code” in SF corresponds to “BT-512 Organisation Post Code” in eForms. The corresponding XML element is nanCONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/POSTAL_CODE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / locn:Address / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postCode ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>VI.4.3 - Review procedure</td>
+                <td>“VI.4.3 - Review procedure” in SF corresponds to “BT-99 Review Deadline Description” in eForms. The corresponding XML element is nanREVIEW_PROCEDURE. The expected ontology instances are epo: epo:Lot / epo:ReviewTerm .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:isSubjectToLotTerm / epo:hasReviewDeadlineInformation ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>V.2.5.5 - Proportion</td>
+                <td>“V.2.5.5 - Proportion” in SF corresponds to “BT-555 Subcontracting Percentage” in eForms. The corresponding XML element is nanPCT_SUBCONTRACTING. The expected ontology instances are epo: epo:Tender / epo:SubcontractingEstimate / xsd:decimal .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:forseesSubcontracting / epo:hasEstimatedPercentage ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>V.2.5.1 - ⃞The contract is likely to be subcontracted</td>
+                <td>“V.2.5.1 - ⃞The contract is likely to be subcontracted” in SF corresponds to “BT-773 Subcontracting” in eForms. The corresponding XML element is nanLIKELY_SUBCONTRACTED. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / at-voc:applicability  .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:forseesContractTerm / epo:hasReservedExecution ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>VI.4.1.5 - Country</td>
+                <td>“VI.4.1.5 - Country” in SF corresponds to “BT-514 Organisation Country Code” in eForms. The corresponding XML element is nanADDRESS_REVIEW_BODY/COUNTRY. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / locn:Address / at-voc:nuts (from CL3) .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:adminUnitL2 ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>VI.4.2 - Body responsible for mediation procedures</td>
+                <td>“VI.4.2 - Body responsible for mediation procedures” in SF corresponds to “--- nan” in eForms. The corresponding XML element is nannan. The expected ontology instances are epo: epo:ResultNotice / epo:Mediator .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:announcesRole ?value }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>IV.1.1.3.1 - Accelerated procedure</td>
+                <td>“IV.1.1.3.1 - Accelerated procedure” in SF corresponds to “BT-106 Procedure Accelerated” in eForms. The corresponding XML element is nanACCELERATED_PROC. The expected ontology instances are epo: epo:Procedure / xsd:boolean .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:isAccelerated ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>IV.1.1.3 - Competitive procedure with negotiation</td>
+                <td>“IV.1.1.3 - Competitive procedure with negotiation” in SF corresponds to “BT-105 Procedure Type” in eForms. The corresponding XML element is nanPT_COMPETITIVE_NEGOTIATION. The expected ontology instances are epo: epo:Procedure / at-voc:procurement-procedure-type .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call> . }</td>
                 <td class="error" >False</td>
                 <td>None</td>
             </tr>
@@ -279,41 +455,337 @@
             </tr>
         
             <tr>
-                <td>II.1.1.1 - Reference number</td>
-                <td>“II.1.1.1 - Reference number” in SF corresponds to “BT-22 Internal Identifier” in eForms. The corresponding XML element is nanREFERENCE_NUMBER. The expected ontology instances are epo: epo:Procedure / epo:Identifier / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasID / epo:hasIdentifierValue ?value . }</td>
+                <td>V.2.5.6 - Short description of the part of the contract to be subcontracted</td>
+                <td>“V.2.5.6 - Short description of the part of the contract to be subcontracted” in SF corresponds to “BT-554 Subcontracting Description” in eForms. The corresponding XML element is nanINFO_ADD_SUBCONTRACTING. The expected ontology instances are epo: epo:Tender / epo:SubcontractingEstimate / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:forseesSubcontracting /  epo:hasDescription ?value. }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>V.2.3.1 - Official name</td>
+                <td>“V.2.3.1 - Official name” in SF corresponds to “BT-500 Organisation Name” in eForms. The corresponding XML element is nanOFFICIALNAME . The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasName ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
         
             <tr>
-                <td>II.2.2.1 - Main CPV code</td>
-                <td>“II.2.2.1 - Main CPV code” in SF corresponds to “BT-262 Main Classification Code” in eForms. The corresponding XML element is nanOBJECT_DESCR/CPV_ADDITIONAL/CPV_CODE/@CODE. The expected ontology instances are epo: epo:Lot / epo:Purpose / at-voc:cpv (from CL7) .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasPurpose / epo:hasMainClassification ?value . }</td>
+                <td>II.2.5.1.1 - hasName</td>
+                <td>“II.2.5.1.1 - hasName” in SF corresponds to “BT-734 Award Criterion name” in eForms. The corresponding XML element is nannan. The expected ontology instances are epo: epo:AwardCriterion  .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasName ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
         
             <tr>
-                <td>II.2.5.1 - Quality criterion – Name: / Weighting:</td>
-                <td>“II.2.5.1 - Quality criterion – Name: / Weighting:” in SF corresponds to “BT-539 Award Criterion Type” in eForms. The corresponding XML element is nanOBJECT_DESCR/AC/AC_QUALITY. The expected ontology instances are epo: epo:AwardCriterion / at-voc:award-criterion-type .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality> . }</td>
+                <td>IV.1.1.1 - Open procedure</td>
+                <td>“IV.1.1.1 - Open procedure” in SF corresponds to “BT-105 Procedure Type” in eForms. The corresponding XML element is nanPT_OPEN. The expected ontology instances are epo: epo:Procedure / at-voc:procurement-procedure-type .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open> . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
         
             <tr>
-                <td>VI.4.4.7 - Telephone</td>
-                <td>“VI.4.4.7 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is nanADDRESS_REVIEW_INFO/PHONE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / rdf:langString .</td>
+                <td>II.2 - Description</td>
+                <td>“II.2 - Description” in SF corresponds to “nan nan” in eForms. The corresponding XML element is nannan. The expected ontology instances are epo: epo:ResultNotice / epo:Lot .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:refersToLot ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>nan - Title</td>
+                <td>“nan - Title” in SF corresponds to “BT-721 Contract Title” in eForms. The corresponding XML element is nanTITLE. The expected ontology instances are epo: epo:Contract / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasTitle ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>VI.4.1.7 - Telephone</td>
+                <td>“VI.4.1.7 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is nanADDRESS_REVIEW_BODY/PHONE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / rdf:langString .</td>
                 <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasTelephone ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
         
             <tr>
-                <td>I.1.1 - Official name</td>
-                <td>“I.1.1 - Official name” in SF corresponds to “BT-500 Organisation Name” in eForms. The corresponding XML element is nanADDRESS_CONTRACTING_BODY/OFFICIALNAME. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasName ?value . }</td>
+                <td>V.1.2 - Other reasons (discontinuation of procedure)</td>
+                <td>“V.1.2 - Other reasons (discontinuation of procedure)” in SF corresponds to “BT-144 Not Awarded Reason” in eForms. The corresponding XML element is nanNO_AWARDED_CONTRACT/PROCUREMENT_DISCONTINUED. The expected ontology instances are epo: epo:LotAwardOutcome / at-voc:non-award-justification .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasNonAwardJustification <http://publications.europa.eu/resource/authority/non-award-justification/other> . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>VI.4.2.9 - Fax</td>
+                <td>“VI.4.2.9 - Fax” in SF corresponds to “BT-739 Organisation Contact Fax” in eForms. The corresponding XML element is nanADDRESS_MEDIATION_BODY/FAX. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasFax ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>V.2.5.2 - Value or proportion likely to be subcontracted to third parties</td>
+                <td>“V.2.5.2 - Value or proportion likely to be subcontracted to third parties” in SF corresponds to “BT-730; BT-731 Subcontracting Value Known; Subcontracting Percentage Known” in eForms. The corresponding XML element is no matchVAL_SUBCONTRACTING. The expected ontology instances are epo: epo:Tender / epo:SubcontractingEstimate / epo:MonetaryValue / epo:Numeric .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:forseesSubcontracting / epo:hasSubcontractingEstimatedValue / epo:hasAmountValue ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.2.5.2.2 - hasFormila</td>
+                <td>“II.2.5.2.2 - hasFormila” in SF corresponds to “BT-543 Award Criterion complicated” in eForms. The corresponding XML element is nannan. The expected ontology instances are epo: epo:AwardCriterion  .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasFormula ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>V.2.4.5 - Currency</td>
+                <td>“V.2.4.5 - Currency” in SF corresponds to “no direct match nan” in eForms. The corresponding XML element is nanVALUES/VAL_ESTIMATED_TOTAL/@CURRENCY. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / MonetaryValue /at-voc:currency (from CL9) .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasHighestReceivedTenderValue / epo:hasCurrency ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>V.2.5.4 - Currency</td>
+                <td>“V.2.5.4 - Currency” in SF corresponds to “no direct match nan” in eForms. The corresponding XML element is nanVAL_SUBCONTRACTING/@CURRENCY. The expected ontology instances are epo: epo:Tender / epo:SubcontractingEstimate / MonetaryValue /at-voc:currency (from CL9) .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:forseesSubcontracting / epo:hasSubcontractingEstimatedValue / epo:hasCurrecy ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>I.4 - Type of the contracting authority</td>
+                <td>“I.4 - Type of the contracting authority” in SF corresponds to “BT-11 Buyer Legal Type” in eForms. The corresponding XML element is nanCA_TYPE. The expected ontology instances are epo: epo:Role / epo:Buyer / at-voc:buyer-legal-type (from CL5) .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasBuyerType ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>V.2.2 - Information about tenders</td>
+                <td>“V.2.2 - Information about tenders” in SF corresponds to “--- nan” in eForms. The corresponding XML element is nanTENDERS. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / epo:Lot .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:concernsSubmissionsForLot ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>IV.1.1.3.2 - Justification:</td>
+                <td>“IV.1.1.3.2 - Justification:” in SF corresponds to “BT-1351 Procedure Accelerated Justification” in eForms. The corresponding XML element is nanACCELERATED_PROC/P. The expected ontology instances are epo: epo:Procedure / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasAcceleratedProcedureJustification ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>VI.5 - Date of dispatch of this notice (dd/mm/yyyy)</td>
+                <td>“VI.5 - Date of dispatch of this notice (dd/mm/yyyy)” in SF corresponds to “BT-05 Notice Dispatch Date” in eForms. The corresponding XML element is nanDATE_DISPATCH_NOTICE. The expected ontology instances are epo: epo:ResultNotice .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasDispatchDate ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.1.7.4 - Currency</td>
+                <td>“II.1.7.4 - Currency” in SF corresponds to “nan nan” in eForms. The corresponding XML element is nanVAL_TOTAL/@CURRENCY. The expected ontology instances are epo: epo:Procedure / epo:MonetaryValue / at-voc:currency (from CL9) .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#><br><br>ASK WHERE { ?this rdf:type / epo:hasEstimatedValue / epo:hasCurrency ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>IV.1.1.6 - Award of a contract without prior publication of a call for competition in the Official Journal of the European Union in the cases listed below</td>
+                <td>“IV.1.1.6 - Award of a contract without prior publication of a call for competition in the Official Journal of the European Union in the cases listed below” in SF corresponds to “BT-105 Procedure Type” in eForms. The corresponding XML element is nanPT_AWARD_CONTRACT_WITHOUT_CALL. The expected ontology instances are epo: epo:Procedure / at-voc:procurement-procedure-type .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call> . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>V.2.3.3 - Postal address</td>
+                <td>“V.2.3.3 - Postal address” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is nanCONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/ADDRESS. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) /  locn:Address / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:thoroughfare ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>I.2.1.1 - In the case of joint procurement involving different countries, state applicable national procurement law</td>
+                <td>“I.2.1.1 - In the case of joint procurement involving different countries, state applicable national procurement law” in SF corresponds to “BT-09 Cross Border Law” in eForms. The corresponding XML element is nanPROCUREMENT_LAW. The expected ontology instances are epo: epo:ResultNotice / epo:Procedure / at-voc:legal-basis .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:refersToProcedure / epo:hasLegalBasis ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>V.2.2.1 - Number of tenders received</td>
+                <td>“V.2.2.1 - Number of tenders received” in SF corresponds to “BT-759 Received Submissions Count” in eForms. The corresponding XML element is nanNB_TENDERS_RECEIVED. The expected ontology instances are epo:  epo:SubmissionStatisticalInformation / xsd:integer .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasElectronicTenders ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.2.13.2 - Identification of the project</td>
+                <td>“II.2.13.2 - Identification of the project” in SF corresponds to “BT-60 EU Funds” in eForms. The corresponding XML element is nanOBJECT_DESCR/EU_PROGR_RELATED/P/FT/@TYPE. The expected ontology instances are epo: epo:Lot / epo:Fund / epo:Identifier .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:isFundedBy / epo:hasID / epo:hasIdentifierValue ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.1.7.2 - Lowest offer</td>
+                <td>“II.1.7.2 - Lowest offer” in SF corresponds to “BT-710 Tender Value Lowest” in eForms. The corresponding XML element is nanVAL_RANGE_TOTAL/LOW. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / MonetaryValue / epo:Numeric .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasLowestReceivedTenderLotValues / epo:hasAmountValue ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>nan - Contract No</td>
+                <td>“nan - Contract No” in SF corresponds to “BT-150 Contract Identifier” in eForms. The corresponding XML element is nanCONTRACT_NO. The expected ontology instances are epo: epo:Contract / epo:Identifier / xsd:string .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasID / epo:hasIdentifierValue ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>V.2.3.9 - Telephone</td>
+                <td>“V.2.3.9 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is nanCONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/PHONE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasTelephone ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>V.2.2.3 - Number of tenders received from tenderers from other EU Member States</td>
+                <td>“V.2.2.3 - Number of tenders received from tenderers from other EU Member States” in SF corresponds to “BT-760 Received Submissions Type” in eForms. The corresponding XML element is nanNB_TENDERS_RECEIVED_OTHER_EU. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / xsd:integer .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasEEAReceivedTenders ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>V.2.4.3 - Lowest offer</td>
+                <td>“V.2.4.3 - Lowest offer” in SF corresponds to “BT-710 Tender Value Lowest” in eForms. The corresponding XML element is nanVALUES/VAL_RANGE_TOTAL/LOW. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / MonetaryValue / epo:Numeric .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasLowestReceivedTenderLotValue / epo:hasAmountValue ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.2.11.1 - Options</td>
+                <td>“II.2.11.1 - Options” in SF corresponds to “BT-53 Options” in eForms. The corresponding XML element is nanOBJECT_DESCR/*[matches(name(),'OPTIONS')]. The expected ontology instances are epo: epo:Lot / epo:Purpose / xsd:boolean .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasPurpose / epo:hasOptions ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.1.7.3 - Highest offer</td>
+                <td>“II.1.7.3 - Highest offer” in SF corresponds to “BT-711 Tender Value Highest” in eForms. The corresponding XML element is nanVAL_RANGE_TOTAL/HIGH. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / MonetaryValue / epo:Numeric .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasHighestReceivedTenderLotValues / epo:hasAmountValue ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>IV.1.3.1 - The procurement involves the establishment of a framework agreement</td>
+                <td>“IV.1.3.1 - The procurement involves the establishment of a framework agreement” in SF corresponds to “BT-765 Framework Agreement” in eForms. The corresponding XML element is nanFRAMEWORK. The expected ontology instances are epo: epo:Lot /  epo:FrameworkAgreementTerm / at-voc:framework-agreement .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:isSubjectToLotTerm / epo:hasFrameworkAgreementType <http://publications.europa.eu/resource/authority/framework-agreement> . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.2.2.2 - Supplementary CPV code</td>
+                <td>“II.2.2.2 - Supplementary CPV code” in SF corresponds to “BT-263 Additional Classification Codes” in eForms. The corresponding XML element is nanOBJECT_DESCR/CPV_ADDITIONAL/CPV_SUPPLEMENTARY_CODE/@CODE. The expected ontology instances are epo: epo:Lot / epo:Purpose / at-voc:cpv (from CL7) .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasPurpose / epo:hasAdditionalClassification ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>VI.4.1 - Review body</td>
+                <td>“VI.4.1 - Review body” in SF corresponds to “--- nan” in eForms. The corresponding XML element is nannan. The expected ontology instances are epo: epo:ResultNotice / epo:Reviewer .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:announcesRole ?value }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>nan - A contract/lot is awarded</td>
+                <td>“nan - A contract/lot is awarded” in SF corresponds to “BT-142 Winner Chosen” in eForms. The corresponding XML element is nan1. *[matches(name(),'AWARDED_CONTRACT')]</td>
+                <td>2. *[matches(name(),'NO_AWARDED_CONTRACT')]. The expected ontology instances are epo: epo:Contract / epo:LotAwardOutcome /at-voc:winner-selection-status (we need to add logic on the file parser to handle the OR) .<br><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:includesLotAwardOutcome / epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> .<br>OR<br>?this epo:includesLotAwardOutcome / epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw> . }</td>
+                <td class="error" >None</td>
+                <td>Expected {SelectQuery | ConstructQuery | DescribeQuery | AskQuery}, found '2'  (at char 0), (line:1, col:1)</td>
+            </tr>
+        
+            <tr>
+                <td>V.2.2.6 - The contract has been awarded to a group of economic operators</td>
+                <td>“V.2.2.6 - The contract has been awarded to a group of economic operators” in SF corresponds to “BT-768 nan” in eForms. The corresponding XML element is nanCONTRACTORS/*[matches(name(),'AWARDED_TO_GROUP')]. The expected ontology instances are epo: epo:ResultNotice / epo:PurchaseContract / xsd:boolean .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this  epo:announcesContract / epo:isWithinFrameworkAgreement ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.1.2 - Main CPV code</td>
+                <td>“II.1.2 - Main CPV code” in SF corresponds to “BT-262 Main Classification Code” in eForms. The corresponding XML element is nanCPV_MAIN/CPV_CODE/@CODE. The expected ontology instances are epo: epo:Procedure / epo:Purpose / at-voc:cpv (from CL7) .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasOverallPurpose / epo:hasMainClassification ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>I.1.11 - Fax</td>
+                <td>“I.1.11 - Fax” in SF corresponds to “BT-739 Organisation Contact Fax” in eForms. The corresponding XML element is nanADDRESS_CONTRACTING_BODY/FAX. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasFax ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>VI.4.2.4 - Postal code</td>
+                <td>“VI.4.2.4 - Postal code” in SF corresponds to “BT-512 Organisation Post Code” in eForms. The corresponding XML element is nanADDRESS_MEDIATION_BODY/POSTAL_CODE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / locn:Address / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postCode ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>VI.4.4.4 - Postal code</td>
+                <td>“VI.4.4.4 - Postal code” in SF corresponds to “BT-512 Organisation Post Code” in eForms. The corresponding XML element is nanADDRESS_REVIEW_INFO/POSTAL_CODE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / locn:Address / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postCode ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>VI.4.2.6 - E-mail</td>
+                <td>“VI.4.2.6 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is nanADDRESS_MEDIATION_BODY/E_MAIL. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / epo:URI .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasEmail ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>VI.4.2.7 - Telephone</td>
+                <td>“VI.4.2.7 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is nanADDRESS_MEDIATION_BODY/PHONE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasTelephone ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>IV.1.1.2.1 - Accelerated procedure</td>
+                <td>“IV.1.1.2.1 - Accelerated procedure” in SF corresponds to “BT-106 Procedure Accelerated” in eForms. The corresponding XML element is nanACCELERATED_PROC. The expected ontology instances are epo: epo:Procedure / xsd:boolean .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:isAccelerated ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
@@ -335,174 +807,6 @@
             </tr>
         
             <tr>
-                <td>II.2.5.1.1 - hasName</td>
-                <td>“II.2.5.1.1 - hasName” in SF corresponds to “BT-734 Award Criterion name” in eForms. The corresponding XML element is nannan. The expected ontology instances are epo: epo:AwardCriterion  .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasName ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>II.2.13.1 - The procurement is related to a project and/or programme financed by European Union funds</td>
-                <td>“II.2.13.1 - The procurement is related to a project and/or programme financed by European Union funds” in SF corresponds to “BT-60 EU Funds” in eForms. The corresponding XML element is nanOBJECT_DESCR//*[matches(name(),'EU_PROGR_RELATED')]. The expected ontology instances are epo: epo:Lot / xsd:boolean .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:isUsingEUFunds ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>VI.4.2.1 - Official name</td>
-                <td>“VI.4.2.1 - Official name” in SF corresponds to “BT-500 Organisation Name” in eForms. The corresponding XML element is nanADDRESS_MEDIATION_BODY/OFFICIALNAME. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasName ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>II.1.1 - Title</td>
-                <td>“II.1.1 - Title” in SF corresponds to “BT-21 Title” in eForms. The corresponding XML element is nanTITLE. The expected ontology instances are epo: epo:Procedure / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasTitle ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>II.2.4 - Description of the procurement</td>
-                <td>“II.2.4 - Description of the procurement” in SF corresponds to “BT-24 Description” in eForms. The corresponding XML element is nanOBJECT_DESCR/SHORT_DESCR. The expected ontology instances are epo: epo:Lot / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasDescription ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>IV.1.1.3 - Competitive procedure with negotiation</td>
-                <td>“IV.1.1.3 - Competitive procedure with negotiation” in SF corresponds to “BT-105 Procedure Type” in eForms. The corresponding XML element is nanPT_COMPETITIVE_NEGOTIATION. The expected ontology instances are epo: epo:Procedure / at-voc:procurement-procedure-type .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call> . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>V.2.3.7 - Country</td>
-                <td>“V.2.3.7 - Country” in SF corresponds to “BT-514 Organisation Country Code” in eForms. The corresponding XML element is nanCONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/COUNTRY. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / locn:Address / at-voc:country (from CL4) .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:adminUnitL1 ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>VI.4.4.3 - Town</td>
-                <td>“VI.4.4.3 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is nanADDRESS_REVIEW_INFO/TOWN. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) /  locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postName ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>V.2.5.6 - Short description of the part of the contract to be subcontracted</td>
-                <td>“V.2.5.6 - Short description of the part of the contract to be subcontracted” in SF corresponds to “BT-554 Subcontracting Description” in eForms. The corresponding XML element is nanINFO_ADD_SUBCONTRACTING. The expected ontology instances are epo: epo:Tender / epo:SubcontractingEstimate / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:forseesSubcontracting /  epo:hasDescription ?value. }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>V.2.5.2 - Value or proportion likely to be subcontracted to third parties</td>
-                <td>“V.2.5.2 - Value or proportion likely to be subcontracted to third parties” in SF corresponds to “BT-730; BT-731 Subcontracting Value Known; Subcontracting Percentage Known” in eForms. The corresponding XML element is no matchVAL_SUBCONTRACTING. The expected ontology instances are epo: epo:Tender / epo:SubcontractingEstimate / epo:MonetaryValue / epo:Numeric .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:forseesSubcontracting / epo:hasSubcontractingEstimatedValue / epo:hasAmountValue ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>VI.4.1.7 - Telephone</td>
-                <td>“VI.4.1.7 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is nanADDRESS_REVIEW_BODY/PHONE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasTelephone ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>VI.4.2.3 - Town</td>
-                <td>“VI.4.2.3 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is nanADDRESS_MEDIATION_BODY/TOWN. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) /  locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postName ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>IV.1.1.3.2 - Justification:</td>
-                <td>“IV.1.1.3.2 - Justification:” in SF corresponds to “BT-1351 Procedure Accelerated Justification” in eForms. The corresponding XML element is nanACCELERATED_PROC/P. The expected ontology instances are epo: epo:Procedure / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasAcceleratedProcedureJustification ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>IV.1.1.3.1 - Accelerated procedure</td>
-                <td>“IV.1.1.3.1 - Accelerated procedure” in SF corresponds to “BT-106 Procedure Accelerated” in eForms. The corresponding XML element is nanACCELERATED_PROC. The expected ontology instances are epo: epo:Procedure / xsd:boolean .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:isAccelerated ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>I.1.4 - Town</td>
-                <td>“I.1.4 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is nanADDRESS_CONTRACTING_BODY/TOWN. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) /  locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postName ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>VI.3 - Additional information</td>
-                <td>“VI.3 - Additional information” in SF corresponds to “BT-300 nan” in eForms. The corresponding XML element is nanINFO_ADD. The expected ontology instances are epo: epo:Lot .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasAdditionalInformation ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>V.2.3.2 - National registration number</td>
-                <td>“V.2.3.2 - National registration number” in SF corresponds to “BT-501 Organisation Identifier” in eForms. The corresponding XML element is nanCONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/NATIONALID. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) / epo:Identifier / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasID / epo:hasIdentifierValue ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>II.2.5.1.2 - hasFormula</td>
-                <td>“II.2.5.1.2 - hasFormula” in SF corresponds to “BT-543 Award Criterion complicated” in eForms. The corresponding XML element is nannan. The expected ontology instances are epo: epo:AwardCriterion  .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasFormula ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>IV.1.1.1.1 - Accelerated procedure</td>
-                <td>“IV.1.1.1.1 - Accelerated procedure” in SF corresponds to “BT-106 Procedure Accelerated” in eForms. The corresponding XML element is nanACCELERATED_PROC. The expected ontology instances are epo: epo:Procedure / xsd:boolean .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:isAccelerated ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>II.2.1 - Title</td>
-                <td>“II.2.1 - Title” in SF corresponds to “BT-21 Title” in eForms. The corresponding XML element is nanOBJECT_DESCR/TITLE. The expected ontology instances are epo: epo:Lot / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasTitle ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>nan - Title</td>
-                <td>“nan - Title” in SF corresponds to “BT-721 Contract Title” in eForms. The corresponding XML element is nanTITLE. The expected ontology instances are epo: epo:Contract / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasTitle ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
                 <td>VI.4.1.9 - Fax</td>
                 <td>“VI.4.1.9 - Fax” in SF corresponds to “BT-739 Organisation Contact Fax” in eForms. The corresponding XML element is nanADDRESS_REVIEW_BODY/FAX. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / rdf:langString .</td>
                 <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasFax ?value . }</td>
@@ -511,114 +815,10 @@
             </tr>
         
             <tr>
-                <td>V.1.2 - Other reasons (discontinuation of procedure)</td>
-                <td>“V.1.2 - Other reasons (discontinuation of procedure)” in SF corresponds to “BT-144 Not Awarded Reason” in eForms. The corresponding XML element is nanNO_AWARDED_CONTRACT/PROCUREMENT_DISCONTINUED. The expected ontology instances are epo: epo:LotAwardOutcome / at-voc:non-award-justification .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasNonAwardJustification <http://publications.europa.eu/resource/authority/non-award-justification/other> . }</td>
+                <td>nan - Previous publication concerning this procedure</td>
+                <td>“nan - Previous publication concerning this procedure” in SF corresponds to “BT-125 Previous Planning Identifier” in eForms. The corresponding XML element is nanNOTICE_NUMBER_OJ. The expected ontology instances are epo: epo:ResultNotice / epo:Notice /  epo:Identifier / xsd:string .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:refersToPrevious / epo:hasID / epo:hasIdentfierValue ?value . }</td>
                 <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>VI.4.4.2 - Postal address</td>
-                <td>“VI.4.4.2 - Postal address” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is nanADDRESS_REVIEW_INFO/ADDRESS. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) /  locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:thoroughfare ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>V.2.5.4 - Currency</td>
-                <td>“V.2.5.4 - Currency” in SF corresponds to “no direct match nan” in eForms. The corresponding XML element is nanVAL_SUBCONTRACTING/@CURRENCY. The expected ontology instances are epo: epo:Tender / epo:SubcontractingEstimate / MonetaryValue /at-voc:currency (from CL9) .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:forseesSubcontracting / epo:hasSubcontractingEstimatedValue / epo:hasCurrecy ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>II.2.5.3 - Price – Weighting</td>
-                <td>“II.2.5.3 - Price – Weighting” in SF corresponds to “BT-539 Award Criterion Type” in eForms. The corresponding XML element is nanOBJECT_DESCR/AC/AC_PRICE. The expected ontology instances are epo: epo:AwardCriterion / at-voc:award-criterion-type .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/price> . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>V.2.5.1 - ⃞The contract is likely to be subcontracted</td>
-                <td>“V.2.5.1 - ⃞The contract is likely to be subcontracted” in SF corresponds to “BT-773 Subcontracting” in eForms. The corresponding XML element is nanLIKELY_SUBCONTRACTED. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / at-voc:applicability  .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:forseesContractTerm / epo:hasReservedExecution ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>V.2.5.5 - Proportion</td>
-                <td>“V.2.5.5 - Proportion” in SF corresponds to “BT-555 Subcontracting Percentage” in eForms. The corresponding XML element is nanPCT_SUBCONTRACTING. The expected ontology instances are epo: epo:Tender / epo:SubcontractingEstimate / xsd:decimal .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:forseesSubcontracting / epo:hasEstimatedPercentage ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>I.5 - Main activity</td>
-                <td>“I.5 - Main activity” in SF corresponds to “BT-10 Activity Authority” in eForms. The corresponding XML element is nanCA_ACTIVITY. The expected ontology instances are epo: epo:Role / epo:Buyer / at-voc:main-activity (from CL6) .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasMainActivityType ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>V.2.2 - Information about tenders</td>
-                <td>“V.2.2 - Information about tenders” in SF corresponds to “--- nan” in eForms. The corresponding XML element is nanTENDERS. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / epo:Lot .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:concernsSubmissionsForLot ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>IV.1.1.4 - Competitive dialogue</td>
-                <td>“IV.1.1.4 - Competitive dialogue” in SF corresponds to “BT-105 Procedure Type” in eForms. The corresponding XML element is nanPT_COMPETITIVE_DIALOGUE. The expected ontology instances are epo: epo:Procedure / at-voc:procurement-procedure-type .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial> . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>II.2 - Description</td>
-                <td>“II.2 - Description” in SF corresponds to “nan nan” in eForms. The corresponding XML element is nannan. The expected ontology instances are epo: epo:ResultNotice / epo:Lot .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:refersToLot ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>IV.1.3.1 - The procurement involves the establishment of a framework agreement</td>
-                <td>“IV.1.3.1 - The procurement involves the establishment of a framework agreement” in SF corresponds to “BT-765 Framework Agreement” in eForms. The corresponding XML element is nanFRAMEWORK. The expected ontology instances are epo: epo:Lot /  epo:FrameworkAgreementTerm / at-voc:framework-agreement .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:isSubjectToLotTerm / epo:hasFrameworkAgreementType <http://publications.europa.eu/resource/authority/framework-agreement> . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>V.2.3.4 - Town</td>
-                <td>“V.2.3.4 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is nanCONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/TOWN. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) /  locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postName ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>I.4 - Type of the contracting authority</td>
-                <td>“I.4 - Type of the contracting authority” in SF corresponds to “BT-11 Buyer Legal Type” in eForms. The corresponding XML element is nanCA_TYPE. The expected ontology instances are epo: epo:Role / epo:Buyer / at-voc:buyer-legal-type (from CL5) .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasBuyerType ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>V.2.2.1 - Number of tenders received</td>
-                <td>“V.2.2.1 - Number of tenders received” in SF corresponds to “BT-759 Received Submissions Count” in eForms. The corresponding XML element is nanNB_TENDERS_RECEIVED. The expected ontology instances are epo:  epo:SubmissionStatisticalInformation / xsd:integer .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasElectronicTenders ?value . }</td>
-                <td class="success" >True</td>
                 <td>None</td>
             </tr>
         
@@ -626,350 +826,6 @@
                 <td>II.2.14 - Additional information</td>
                 <td>“II.2.14 - Additional information” in SF corresponds to “BT-300 Additional Information” in eForms. The corresponding XML element is nanOBJECT_DESCR/INFO_ADD. The expected ontology instances are epo: epo:Lot / rdf:langString .</td>
                 <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasAdditionalInformation ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>II.1.7.3 - Highest offer</td>
-                <td>“II.1.7.3 - Highest offer” in SF corresponds to “BT-711 Tender Value Highest” in eForms. The corresponding XML element is nanVAL_RANGE_TOTAL/HIGH. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / MonetaryValue / epo:Numeric .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasHighestReceivedTenderLotValues / epo:hasAmountValue ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>nan - Contract No</td>
-                <td>“nan - Contract No” in SF corresponds to “BT-150 Contract Identifier” in eForms. The corresponding XML element is nanCONTRACT_NO. The expected ontology instances are epo: epo:Contract / epo:Identifier / xsd:string .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasID / epo:hasIdentifierValue ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>V.2.3.11 - Fax</td>
-                <td>“V.2.3.11 - Fax” in SF corresponds to “BT-739 Organisation Contact Fax” in eForms. The corresponding XML element is nanCONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/FAX. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasFax ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>V.2.2.3 - Number of tenders received from tenderers from other EU Member States</td>
-                <td>“V.2.2.3 - Number of tenders received from tenderers from other EU Member States” in SF corresponds to “BT-760 Received Submissions Type” in eForms. The corresponding XML element is nanNB_TENDERS_RECEIVED_OTHER_EU. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / xsd:integer .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasEEAReceivedTenders ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>nan - nan</td>
-                <td>“nan - nan” in SF corresponds to “nan nan” in eForms. The corresponding XML element is nannan. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / MonetaryValue /at-voc:currency (from CL9) .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasLowestReceivedTenderLotValue / epo:hasCurrency ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>II.2.11.2 - Description of options</td>
-                <td>“II.2.11.2 - Description of options” in SF corresponds to “BT-54 Options Description” in eForms. The corresponding XML element is nanOBJECT_DESCR/OPTIONS_DESCR. The expected ontology instances are epo: epo:Lot / epo:Purpose / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasPurpose / epo:hasOptionsDescription ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>II.1.7.4 - Currency</td>
-                <td>“II.1.7.4 - Currency” in SF corresponds to “nan nan” in eForms. The corresponding XML element is nanVAL_TOTAL/@CURRENCY. The expected ontology instances are epo: epo:Procedure / epo:MonetaryValue / at-voc:currency (from CL9) .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#><br><br>ASK WHERE { ?this rdf:type / epo:hasEstimatedValue / epo:hasCurrency ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>IV.1.3.2 - A dynamic purchasing system was set up</td>
-                <td>“IV.1.3.2 - A dynamic purchasing system was set up” in SF corresponds to “BT-766 Dynamic Purchasing System” in eForms. The corresponding XML element is nanDPS. The expected ontology instances are epo: epo:Lot / epo:DynamicPurchaseSystemTechnique / at-voc:dfs-usage .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:usesTechnique / epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage> . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>II.2.3.1 - NUTS code</td>
-                <td>“II.2.3.1 - NUTS code” in SF corresponds to “BT-5071 Place Performance Country Subdivision” in eForms. The corresponding XML element is nanOBJECT_DESCR//*:NUTS/@CODE. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / dct:Location / at-voc:nuts (from CL3) .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:isSubjectToLotTerm / epo:hasSpecificPlaceOfPerformance / epo:hasNutsCode ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>VI.4.1.2 - Postal address</td>
-                <td>“VI.4.1.2 - Postal address” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is nanADDRESS_REVIEW_BODY/ADDRESS. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) /  locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:thoroughfare ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>nan - A contract/lot is awarded</td>
-                <td>“nan - A contract/lot is awarded” in SF corresponds to “BT-142 Winner Chosen” in eForms. The corresponding XML element is nan1. *[matches(name(),'AWARDED_CONTRACT')]</td>
-                <td>2. *[matches(name(),'NO_AWARDED_CONTRACT')]. The expected ontology instances are epo: epo:Contract / epo:LotAwardOutcome /at-voc:winner-selection-status (we need to add logic on the file parser to handle the OR) .<br><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:includesLotAwardOutcome / epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> .<br>OR<br>?this epo:includesLotAwardOutcome / epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw> . }</td>
-                <td class="error" >None</td>
-                <td>Expected {SelectQuery | ConstructQuery | DescribeQuery | AskQuery}, found '2'  (at char 0), (line:1, col:1)</td>
-            </tr>
-        
-            <tr>
-                <td>V.2.2.6 - The contract has been awarded to a group of economic operators</td>
-                <td>“V.2.2.6 - The contract has been awarded to a group of economic operators” in SF corresponds to “BT-768 nan” in eForms. The corresponding XML element is nanCONTRACTORS/*[matches(name(),'AWARDED_TO_GROUP')]. The expected ontology instances are epo: epo:ResultNotice / epo:PurchaseContract / xsd:boolean .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this  epo:announcesContract / epo:isWithinFrameworkAgreement ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>II.1.2.1 - Supplementary CPV code</td>
-                <td>“II.1.2.1 - Supplementary CPV code” in SF corresponds to “BT-263 Additional Classification Codes” in eForms. The corresponding XML element is nanCPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE. The expected ontology instances are epo: epo:Procedure / epo:Purpose / at-voc:cpv (from CL7) .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasOverallPurpose / epo:hasAdditionalClassification ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>I.1.12.1 - Main address</td>
-                <td>“I.1.12.1 - Main address” in SF corresponds to “BT-505 Organisation Internet Address” in eForms. The corresponding XML element is nanADDRESS_CONTRACTING_BODY/URL_GENERAL. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:Channel / epo:URI .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasDeliveryGateway / epo:hasURL ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>VI.4.2.7 - Telephone</td>
-                <td>“VI.4.2.7 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is nanADDRESS_MEDIATION_BODY/PHONE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasTelephone ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>VI.4.4.8 - Internet Addresses (URL)</td>
-                <td>“VI.4.4.8 - Internet Addresses (URL)” in SF corresponds to “BT-505 Organisation Internet Address” in eForms. The corresponding XML element is nanADDRESS_REVIEW_INFO/URL. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:Channel / epo:URI .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasDeliveryGateway / epo:hasURL ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>VI.4.2.9 - Fax</td>
-                <td>“VI.4.2.9 - Fax” in SF corresponds to “BT-739 Organisation Contact Fax” in eForms. The corresponding XML element is nanADDRESS_MEDIATION_BODY/FAX. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasFax ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>VI.4.3 - Review procedure</td>
-                <td>“VI.4.3 - Review procedure” in SF corresponds to “BT-99 Review Deadline Description” in eForms. The corresponding XML element is nanREVIEW_PROCEDURE. The expected ontology instances are epo: epo:Lot / epo:ReviewTerm .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:isSubjectToLotTerm / epo:hasReviewDeadlineInformation ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>IV.1.1.2.2 - Justification:</td>
-                <td>“IV.1.1.2.2 - Justification:” in SF corresponds to “BT-1351 Procedure Accelerated Justification” in eForms. The corresponding XML element is nanACCELERATED_PROC/P. The expected ontology instances are epo: epo:Procedure / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasAcceleratedProcedureJustification ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>VI.4.2.8 - Internet Addresses (URL)</td>
-                <td>“VI.4.2.8 - Internet Addresses (URL)” in SF corresponds to “BT-505 Organisation Internet Address” in eForms. The corresponding XML element is nanADDRESS_MEDIATION_BODY/URL. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:Channel / epo:URI .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasDeliveryGateway / epo:hasURL ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>II.2.5.2.2 - hasFormila</td>
-                <td>“II.2.5.2.2 - hasFormila” in SF corresponds to “BT-543 Award Criterion complicated” in eForms. The corresponding XML element is nannan. The expected ontology instances are epo: epo:AwardCriterion  .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasFormula ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>VI.4.2.2 - Postal address</td>
-                <td>“VI.4.2.2 - Postal address” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is nanADDRESS_MEDIATION_BODY/ADDRESS. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) /  locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:thoroughfare ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>IV.2.1 - Previous publication concerning this procedure</td>
-                <td>“IV.2.1 - Previous publication concerning this procedure” in SF corresponds to “BT-125 Previous Planning Identifier” in eForms. The corresponding XML element is nanNOTICE_NUMBER_OJ. The expected ontology instances are epo: epo:Procedure / epo:CompetitionNotice / epo:Identifier / xsd:string .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#><br><br>ASK WHERE { ?this rdf:type epo:CompetitionNotice / epo:hasID / epo:hasIdentfierValue ?value . }</td>
-                <td class="error" >None</td>
-                <td>Expected {SelectQuery | ConstructQuery | DescribeQuery | AskQuery}, found '/'  (at char 158), (line:4, col:50)</td>
-            </tr>
-        
-            <tr>
-                <td>IV.1.1.1 - Open procedure</td>
-                <td>“IV.1.1.1 - Open procedure” in SF corresponds to “BT-105 Procedure Type” in eForms. The corresponding XML element is nanPT_OPEN. The expected ontology instances are epo: epo:Procedure / at-voc:procurement-procedure-type .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open> . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>VI.4.1.6 - E-mail</td>
-                <td>“VI.4.1.6 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is nanADDRESS_REVIEW_BODY/E_MAIL. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / epo:URI .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasEmail ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>VI.4.1.5 - Country</td>
-                <td>“VI.4.1.5 - Country” in SF corresponds to “BT-514 Organisation Country Code” in eForms. The corresponding XML element is nanADDRESS_REVIEW_BODY/COUNTRY. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / locn:Address / at-voc:nuts (from CL3) .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:adminUnitL2 ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>VI.4.1.3 - Town</td>
-                <td>“VI.4.1.3 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is nanADDRESS_REVIEW_BODY/TOWN. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) /  locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postName ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>IV.1.6.1 - An electronic auction will be used</td>
-                <td>“IV.1.6.1 - An electronic auction will be used” in SF corresponds to “BT-767 Electronic Auction” in eForms. The corresponding XML element is nanEAUCTION_USED. The expected ontology instances are epo: epo:Lot / epo:EAuctionTechnique / at-voc:usage .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:usesTechnique / epo:hasEAuctionUsage <http://publications.europa.eu/resource/authority/usage> . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>II.2.13.2 - Identification of the project</td>
-                <td>“II.2.13.2 - Identification of the project” in SF corresponds to “BT-60 EU Funds” in eForms. The corresponding XML element is nanOBJECT_DESCR/EU_PROGR_RELATED/P/FT/@TYPE. The expected ontology instances are epo: epo:Lot / epo:Fund / epo:Identifier .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:isFundedBy / epo:hasID / epo:hasIdentifierValue ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>V.2.3.8 - E-mail</td>
-                <td>“V.2.3.8 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is nanCONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/URL. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / epo:URI .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasEmail ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>II.1.7.1 - Value</td>
-                <td>“II.1.7.1 - Value” in SF corresponds to “BT-27 Estimated Value” in eForms. The corresponding XML element is nanVAL_TOTAL. The expected ontology instances are epo: epo:Procedure / epo:MonetaryValue / epo:Numeric .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#><br><br>ASK WHERE { ?this rdf:type / epo:hasEstimatedValue / epo:hasAmountValue ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>II.1.2 - Main CPV code</td>
-                <td>“II.1.2 - Main CPV code” in SF corresponds to “BT-262 Main Classification Code” in eForms. The corresponding XML element is nanCPV_MAIN/CPV_CODE/@CODE. The expected ontology instances are epo: epo:Procedure / epo:Purpose / at-voc:cpv (from CL7) .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasOverallPurpose / epo:hasMainClassification ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>V.2.4.5 - Currency</td>
-                <td>“V.2.4.5 - Currency” in SF corresponds to “no direct match nan” in eForms. The corresponding XML element is nanVALUES/VAL_ESTIMATED_TOTAL/@CURRENCY. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / MonetaryValue /at-voc:currency (from CL9) .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasHighestReceivedTenderLotValue / epo:hasCurrency ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>VI.4.4.5 - Country</td>
-                <td>“VI.4.4.5 - Country” in SF corresponds to “BT-514 Organisation Country Code” in eForms. The corresponding XML element is nanADDRESS_REVIEW_INFO/COUNTRY. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / locn:Address / at-voc:nuts (from CL3) .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:adminUnitL2 ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>I.1.12.2 - Address of the buyer profile</td>
-                <td>“I.1.12.2 - Address of the buyer profile” in SF corresponds to “BT-508 Buyer Profile URL” in eForms. The corresponding XML element is nanADDRESS_CONTRACTING_BODY/URL_BUYER. The expected ontology instances are epo: epo:Role / epo:Buyer / epo:URI .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasBuyerProfile / epo:hasURL ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>V.2.3.9 - Telephone</td>
-                <td>“V.2.3.9 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is nanCONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/PHONE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasTelephone ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>V.2.3.3 - Postal address</td>
-                <td>“V.2.3.3 - Postal address” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is nanCONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/ADDRESS. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) /  locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:thoroughfare ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>II.2.11.1 - Options</td>
-                <td>“II.2.11.1 - Options” in SF corresponds to “BT-53 Options” in eForms. The corresponding XML element is nanOBJECT_DESCR/*[matches(name(),'OPTIONS')]. The expected ontology instances are epo: epo:Lot / epo:Purpose / xsd:boolean .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasPurpose / epo:hasOptions ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>V.2.4.3 - Lowest offer</td>
-                <td>“V.2.4.3 - Lowest offer” in SF corresponds to “BT-710 Tender Value Lowest” in eForms. The corresponding XML element is nanVALUES/VAL_RANGE_TOTAL/LOW. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / MonetaryValue / epo:Numeric .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasLowestReceivedTenderLotValue / epo:hasAmountValue ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>V.2.3.1 - Official name</td>
-                <td>“V.2.3.1 - Official name” in SF corresponds to “BT-500 Organisation Name” in eForms. The corresponding XML element is nanOFFICIALNAME . The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasName ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>VI.4.1.8 - Internet Addresses (URL)</td>
-                <td>“VI.4.1.8 - Internet Addresses (URL)” in SF corresponds to “BT-505 Organisation Internet Address” in eForms. The corresponding XML element is nanADDRESS_REVIEW_BODY/URL. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:Channel / epo:URI .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasDeliveryGateway / epo:hasURL ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>VI.4.4.6 - E-mail</td>
-                <td>“VI.4.4.6 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is nanADDRESS_REVIEW_INFO/E_MAIL. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / epo:URI .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasEmail ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>IV.1.1.5 - Innovation partnership</td>
-                <td>“IV.1.1.5 - Innovation partnership” in SF corresponds to “BT-105 Procedure Type” in eForms. The corresponding XML element is nanPT_INNOVATION_PARTNERSHIP. The expected ontology instances are epo: epo:Procedure / at-voc:procurement-procedure-type .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation> . }</td>
                 <td class="error" >False</td>
                 <td>None</td>
             </tr>
@@ -983,42 +839,210 @@
             </tr>
         
             <tr>
-                <td>I.1.9 - Telephone</td>
-                <td>“I.1.9 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is nanADDRESS_CONTRACTING_BODY/PHONE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / rdf:langString .</td>
+                <td>VI.4.1.3 - Town</td>
+                <td>“VI.4.1.3 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is nanADDRESS_REVIEW_BODY/TOWN. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) /  locn:Address / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postName ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>VI.4.1.1 - Official name</td>
+                <td>“VI.4.1.1 - Official name” in SF corresponds to “BT-500 Organisation Name” in eForms. The corresponding XML element is nanADDRESS_REVIEW_BODY/OFFICIALNAME. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasName ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>IV.1.3.2 - A dynamic purchasing system was set up</td>
+                <td>“IV.1.3.2 - A dynamic purchasing system was set up” in SF corresponds to “BT-766 Dynamic Purchasing System” in eForms. The corresponding XML element is nanDPS. The expected ontology instances are epo: epo:Lot / epo:DynamicPurchaseSystemTechnique / at-voc:dfs-usage .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:usesTechnique / epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage> . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.2.13.1 - The procurement is related to a project and/or programme financed by European Union funds</td>
+                <td>“II.2.13.1 - The procurement is related to a project and/or programme financed by European Union funds” in SF corresponds to “BT-60 EU Funds” in eForms. The corresponding XML element is nanOBJECT_DESCR//*[matches(name(),'EU_PROGR_RELATED')]. The expected ontology instances are epo: epo:Lot / xsd:boolean .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:isUsingEUFunds ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>V.2.3.7 - Country</td>
+                <td>“V.2.3.7 - Country” in SF corresponds to “BT-514 Organisation Country Code” in eForms. The corresponding XML element is nanCONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/COUNTRY. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / locn:Address / at-voc:country (from CL4) .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:adminUnitL1 ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.1.7 - Total value of the procurement (Excluding VAT)</td>
+                <td>“II.1.7 - Total value of the procurement (Excluding VAT)” in SF corresponds to “nan nan” in eForms. The corresponding XML element is nannan. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / epo:Lot .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:concernSubmissionsForLot ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.1.1.1 - Reference number</td>
+                <td>“II.1.1.1 - Reference number” in SF corresponds to “BT-22 Internal Identifier” in eForms. The corresponding XML element is nanREFERENCE_NUMBER. The expected ontology instances are epo: epo:Procedure / epo:Identifier / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasID / epo:hasIdentifierValue ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>V.2.4.4 - Highest offer</td>
+                <td>“V.2.4.4 - Highest offer” in SF corresponds to “BT-711 Tender Value Highest” in eForms. The corresponding XML element is nanVALUES/VAL_RANGE_TOTAL/HIGH. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / MonetaryValue / epo:Numeric .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasHighestReceivedTenderValue / epo:hasAmountValue ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>VI.4.4.1 - Official name</td>
+                <td>“VI.4.4.1 - Official name” in SF corresponds to “BT-500 Organisation Name” in eForms. The corresponding XML element is nanADDRESS_REVIEW_INFO/OFFICIALNAME. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasName ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>I.1.12.1 - Main address</td>
+                <td>“I.1.12.1 - Main address” in SF corresponds to “BT-505 Organisation Internet Address” in eForms. The corresponding XML element is nanADDRESS_CONTRACTING_BODY/URL_GENERAL. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:Channel / epo:URI .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasDeliveryGateway / epo:hasURL ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>V.2.3.8 - E-mail</td>
+                <td>“V.2.3.8 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is nanCONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/URL. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / epo:URI .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasEmail ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>V.2.3.2 - National registration number</td>
+                <td>“V.2.3.2 - National registration number” in SF corresponds to “BT-501 Organisation Identifier” in eForms. The corresponding XML element is nanCONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/NATIONALID. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) / epo:Identifier / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasID / epo:hasIdentifierValue ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.2.5.3.1 - hasFormula</td>
+                <td>“II.2.5.3.1 - hasFormula” in SF corresponds to “BT-543 Award Criterion complicated” in eForms. The corresponding XML element is nannan. The expected ontology instances are epo: epo:AwardCriterion  .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasFormula ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>VI.4.4.8 - Internet Addresses (URL)</td>
+                <td>“VI.4.4.8 - Internet Addresses (URL)” in SF corresponds to “BT-505 Organisation Internet Address” in eForms. The corresponding XML element is nanADDRESS_REVIEW_INFO/URL. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:Channel / epo:URI .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasDeliveryGateway / epo:hasURL ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>V.2.4.2 - Total value of the contract/lot</td>
+                <td>“V.2.4.2 - Total value of the contract/lot” in SF corresponds to “BT-720 Tender Value” in eForms. The corresponding XML element is nanVALUES/VAL_TOTAL. The expected ontology instances are epo: epo:Tender / epo:MonetaryValue / epo:Numeric .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasFinnancialOfferValue / epo:hasAmountValue ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>V.2.3 - Name and address of the contractor</td>
+                <td>“V.2.3 - Name and address of the contractor” in SF corresponds to “--- nan” in eForms. The corresponding XML element is TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/nan. The expected ontology instances are epo: epo:ResultNotice / epo:ContractSignatoryOnContractorSide .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:announcesRole ?value }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>VI.4.1.6 - E-mail</td>
+                <td>“VI.4.1.6 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is nanADDRESS_REVIEW_BODY/E_MAIL. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / epo:URI .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasEmail ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>VI.4.4.2 - Postal address</td>
+                <td>“VI.4.4.2 - Postal address” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is nanADDRESS_REVIEW_INFO/ADDRESS. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) /  locn:Address / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:thoroughfare ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>IV.1.1.4 - Competitive dialogue</td>
+                <td>“IV.1.1.4 - Competitive dialogue” in SF corresponds to “BT-105 Procedure Type” in eForms. The corresponding XML element is nanPT_COMPETITIVE_DIALOGUE. The expected ontology instances are epo: epo:Procedure / at-voc:procurement-procedure-type .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial> . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>VI.4.1.2 - Postal address</td>
+                <td>“VI.4.1.2 - Postal address” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is nanADDRESS_REVIEW_BODY/ADDRESS. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) /  locn:Address / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:thoroughfare ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>I.1.8 - Contact person</td>
+                <td>“I.1.8 - Contact person” in SF corresponds to “BT-502 Organisation Contact Point” in eForms. The corresponding XML element is nanADDRESS_CONTRACTING_BODY/CONTACT_POINT. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint / epo:hasDescription ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.1.3 - Type of contract</td>
+                <td>“II.1.3 - Type of contract” in SF corresponds to “BT-23 Main Nature” in eForms. The corresponding XML element is nanTYPE_CONTRACT/@CTYPE. The expected ontology instances are epo: epo:Procedure / epo:Purpose / at-voc:contract-nature (from CL8) .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasOverallPurpose / epo:hasContractNatureType ?value . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.2.3.1 - NUTS code</td>
+                <td>“II.2.3.1 - NUTS code” in SF corresponds to “BT-5071 Place Performance Country Subdivision” in eForms. The corresponding XML element is nanOBJECT_DESCR//*:NUTS/@CODE. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / dct:Location / at-voc:nuts (from CL3) .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:isSubjectToLotTerm / epo:hasSpecificPlaceOfPerformance / epo:hasNutsCode ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>IV.1.1.1.1 - Accelerated procedure</td>
+                <td>“IV.1.1.1.1 - Accelerated procedure” in SF corresponds to “BT-106 Procedure Accelerated” in eForms. The corresponding XML element is nanACCELERATED_PROC. The expected ontology instances are epo: epo:Procedure / xsd:boolean .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:isAccelerated ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>IV.1.6.1 - An electronic auction will be used</td>
+                <td>“IV.1.6.1 - An electronic auction will be used” in SF corresponds to “BT-767 Electronic Auction” in eForms. The corresponding XML element is nanEAUCTION_USED. The expected ontology instances are epo: epo:Lot / epo:EAuctionTechnique / at-voc:usage .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:usesTechnique / epo:hasEAuctionUsage <http://publications.europa.eu/resource/authority/usage> . }</td>
+                <td class="error" >False</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>VI.4.4.7 - Telephone</td>
+                <td>“VI.4.4.7 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is nanADDRESS_REVIEW_INFO/PHONE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / rdf:langString .</td>
                 <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasTelephone ?value . }</td>
                 <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>II.1.4 - Short description</td>
-                <td>“II.1.4 - Short description” in SF corresponds to “BT-24 Description” in eForms. The corresponding XML element is nanSHORT_DESCR. The expected ontology instances are epo: epo:Procedure / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasDescription ?value . }</td>
-                <td class="success" >True</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>II.2.3.2 - Main site or place of performance</td>
-                <td>“II.2.3.2 - Main site or place of performance” in SF corresponds to “BT-728 Place Performance Additional Information” in eForms. The corresponding XML element is nanOBJECT_DESCR/MAIN_SITE. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:isSubjectToLotTerm / epo:hasSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>IV.1.1.1.2 - Justification:</td>
-                <td>“IV.1.1.1.2 - Justification:” in SF corresponds to “BT-1351 Procedure Accelerated Justification” in eForms. The corresponding XML element is nanACCELERATED_PROC/P. The expected ontology instances are epo: epo:Procedure / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasAcceleratedProcedureJustification ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>IV.1.8 - Information about the Government Procurement Agreement (GPA)</td>
-                <td>“IV.1.8 - Information about the Government Procurement Agreement (GPA)” in SF corresponds to “BT-115 GPA Coverage” in eForms. The corresponding XML element is nan*[matches(name(),'CONTRACT_COVERED_GPA')]. The expected ontology instances are epo: epo:Lot / xsd:boolean .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasGPAUsage ?value . }</td>
-                <td class="error" >False</td>
                 <td>None</td>
             </tr>
         
@@ -1031,33 +1055,33 @@
             </tr>
         
             <tr>
-                <td>V.2.4.1 - Initial estimated total value of the contract/lot</td>
-                <td>“V.2.4.1 - Initial estimated total value of the contract/lot” in SF corresponds to “BT-27 Estimated Value” in eForms. The corresponding XML element is nanVALUES/VAL_ESTIMATED_TOTAL. The expected ontology instances are epo: epo:Lot / epo:MonetaryValue / epo:Numeric .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasEstimatedValue / epo:hasAmountValue ?value . }</td>
-                <td class="success" >True</td>
+                <td>V.2.3.12 - The contractor is an SME</td>
+                <td>“V.2.3.12 - The contractor is an SME” in SF corresponds to “BT-165 Winner Size” in eForms. The corresponding XML element is nanCONTRACTORS/CONTRACTOR/*[matches(name(),'SME')]. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Business / at-voc:economic-operator-size .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedByBusiness / epo:hasSize <http://publications.europa.eu/resource/authority/economic-operator-size> }</td>
+                <td class="error" >False</td>
                 <td>None</td>
             </tr>
         
             <tr>
                 <td>nan - nan</td>
                 <td>“nan - nan” in SF corresponds to “nan nan” in eForms. The corresponding XML element is nannan. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / MonetaryValue /at-voc:currency (from CL9) .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasHighestReceivedTenderLotValue / epo:hasCurrency ?value . }</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasLowestReceivedTenderValue / epo:hasCurrency ?value . }</td>
                 <td class="error" >False</td>
                 <td>None</td>
             </tr>
         
             <tr>
-                <td>II.2.5 - Award criteria</td>
-                <td>“II.2.5 - Award criteria” in SF corresponds to “nan nan” in eForms. The corresponding XML element is nannan. The expected ontology instances are epo: epo:Lot / epo:AwardCriterion  .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:specifiesProcurementCriteria ?value . }</td>
+                <td>II.2.4 - Description of the procurement</td>
+                <td>“II.2.4 - Description of the procurement” in SF corresponds to “BT-24 Description” in eForms. The corresponding XML element is nanOBJECT_DESCR/SHORT_DESCR. The expected ontology instances are epo: epo:Lot / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasDescription ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
         
             <tr>
-                <td>I.1.7 - Country</td>
-                <td>“I.1.7 - Country” in SF corresponds to “BT-514 Organisation Country Code” in eForms. The corresponding XML element is nanADDRESS_CONTRACTING_BODY/COUNTRY. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / locn:Address / at-voc:country (from CL4) .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:adminUnitL1 ?value . }</td>
+                <td>I.1.6 - Postal code</td>
+                <td>“I.1.6 - Postal code” in SF corresponds to “BT-512 Organisation Country Subdivision” in eForms. The corresponding XML element is nanADDRESS_CONTRACTING_BODY/POSTAL_CODE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / locn:Address / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postCode ?value . }</td>
                 <td class="error" >False</td>
                 <td>None</td>
             </tr>
@@ -1079,81 +1103,89 @@
             </tr>
         
             <tr>
-                <td>II.1.7 - Total value of the procurement (Excluding VAT)</td>
-                <td>“II.1.7 - Total value of the procurement (Excluding VAT)” in SF corresponds to “nan nan” in eForms. The corresponding XML element is nannan. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / epo:Lot .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:concernSubmissionsForLot ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>IV.1.1.2 - Restricted procedure</td>
-                <td>“IV.1.1.2 - Restricted procedure” in SF corresponds to “BT-105 Procedure Type” in eForms. The corresponding XML element is nanPT_RESTRICTED. The expected ontology instances are epo: epo:Procedure / at-voc:procurement-procedure-type .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted> . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>VI.4.2.4 - Postal code</td>
-                <td>“VI.4.2.4 - Postal code” in SF corresponds to “BT-512 Organisation Post Code” in eForms. The corresponding XML element is nanADDRESS_MEDIATION_BODY/POSTAL_CODE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postCode ?value . }</td>
-                <td class="error" >False</td>
-                <td>None</td>
-            </tr>
-        
-            <tr>
-                <td>IV.2.9.1 - The contracting authority will not award any further contracts based on the above prior information notice</td>
-                <td>“IV.2.9.1 - The contracting authority will not award any further contracts based on the above prior information notice” in SF corresponds to “BT-756 PIN Competition Termination” in eForms. The corresponding XML element is nanTERMINATION_PIN. The expected ontology instances are epo: epo:Procedure / xsd:boolean .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:isCompetitionTermination ?value . }</td>
+                <td>II.1.4 - Short description</td>
+                <td>“II.1.4 - Short description” in SF corresponds to “BT-24 Description” in eForms. The corresponding XML element is nanSHORT_DESCR. The expected ontology instances are epo: epo:Procedure / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasDescription ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
         
             <tr>
-                <td>II.2.1.1 - Lot no</td>
-                <td>“II.2.1.1 - Lot no” in SF corresponds to “BT-137 Purpose Lot Identifier” in eForms. The corresponding XML element is nanOBJECT_DESCR/LOT_NO. The expected ontology instances are epo: epo:Lot / epo:Identifier / xsd:string .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasID / epo:hasIdentifierValue ?value . }</td>
+                <td>VI.4.4.9 - Fax</td>
+                <td>“VI.4.4.9 - Fax” in SF corresponds to “BT-739 Organisation Contact Fax” in eForms. The corresponding XML element is nanADDRESS_REVIEW_INFO/FAX. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasFax ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
         
             <tr>
-                <td>I.1.5 - NUTS code</td>
-                <td>“I.1.5 - NUTS code” in SF corresponds to “BT-507 Organisation Country Subdivision” in eForms. The corresponding XML element is nanADDRESS_CONTRACTING_BODY//*:NUTS/@CODE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / locn:Address / at-voc:nuts (from CL3) .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:adminUnitL2 ?value . }</td>
+                <td>IV.1.1.1.2 - Justification:</td>
+                <td>“IV.1.1.1.2 - Justification:” in SF corresponds to “BT-1351 Procedure Accelerated Justification” in eForms. The corresponding XML element is nanACCELERATED_PROC/P. The expected ontology instances are epo: epo:Procedure / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasAcceleratedProcedureJustification ?value . }</td>
                 <td class="error" >False</td>
                 <td>None</td>
             </tr>
         
             <tr>
-                <td>II.2.5.3.1 - hasFormula</td>
-                <td>“II.2.5.3.1 - hasFormula” in SF corresponds to “BT-543 Award Criterion complicated” in eForms. The corresponding XML element is nannan. The expected ontology instances are epo: epo:AwardCriterion  .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasFormula ?value . }</td>
+                <td>VI.4.2.1 - Official name</td>
+                <td>“VI.4.2.1 - Official name” in SF corresponds to “BT-500 Organisation Name” in eForms. The corresponding XML element is nanADDRESS_MEDIATION_BODY/OFFICIALNAME. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasName ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
         
             <tr>
-                <td>II.1.3 - Type of contract</td>
-                <td>“II.1.3 - Type of contract” in SF corresponds to “BT-23 Main Nature” in eForms. The corresponding XML element is nanTYPE_CONTRACT/@CTYPE. The expected ontology instances are epo: epo:Procedure / epo:Purpose / at-voc:contract-nature (from CL8) .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasOverallPurpose / epo:hasContractNatureType ?value . }</td>
+                <td>Section V - Award of contract</td>
+                <td>“Section V - Award of contract” in SF corresponds to “nan nan” in eForms. The corresponding XML element is TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/nan. The expected ontology instances are epo: epo:ResultNotice / epo:Contract .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:announcesContract ?value }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.2.1 - Title</td>
+                <td>“II.2.1 - Title” in SF corresponds to “BT-21 Title” in eForms. The corresponding XML element is nanOBJECT_DESCR/TITLE. The expected ontology instances are epo: epo:Lot / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasTitle ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>I.1.4 - Town</td>
+                <td>“I.1.4 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is nanADDRESS_CONTRACTING_BODY/TOWN. The expected ontology instances are epo: epo:Role (from CL1) / epo:Organisation (from CL2) /  locn:Address / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postName ?value . }</td>
                 <td class="error" >False</td>
                 <td>None</td>
             </tr>
         
             <tr>
-                <td>V.2.3.12 - The contractor is an SME</td>
-                <td>“V.2.3.12 - The contractor is an SME” in SF corresponds to “BT-165 Winner Size” in eForms. The corresponding XML element is nanCONTRACTORS/CONTRACTOR/*[matches(name(),'SME')]. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Business / at-voc:economic-operator-size .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedByBusiness / epo:hasSize <http://publications.europa.eu/resource/authority/economic-operator-size> }</td>
+                <td>II.2.5.3 - Price – Weighting</td>
+                <td>“II.2.5.3 - Price – Weighting” in SF corresponds to “BT-539 Award Criterion Type” in eForms. The corresponding XML element is nanOBJECT_DESCR/AC/AC_PRICE. The expected ontology instances are epo: epo:AwardCriterion / at-voc:award-criterion-type .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/price> . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>II.1.2.1 - Supplementary CPV code</td>
+                <td>“II.1.2.1 - Supplementary CPV code” in SF corresponds to “BT-263 Additional Classification Codes” in eForms. The corresponding XML element is nanCPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE. The expected ontology instances are epo: epo:Procedure / epo:Purpose / at-voc:cpv (from CL7) .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasOverallPurpose / epo:hasAdditionalClassification ?value . }</td>
                 <td class="error" >False</td>
                 <td>None</td>
             </tr>
         
             <tr>
-                <td>I.1.10 - E-mail</td>
-                <td>“I.1.10 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is nanADDRESS_CONTRACTING_BODY/E_MAIL. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / epo:URI .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasEmail ?value . }</td>
+                <td>V.2.3.11 - Fax</td>
+                <td>“V.2.3.11 - Fax” in SF corresponds to “BT-739 Organisation Contact Fax” in eForms. The corresponding XML element is nanCONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/FAX. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasFax ?value . }</td>
+                <td class="success" >True</td>
+                <td>None</td>
+            </tr>
+        
+            <tr>
+                <td>I.1.9 - Telephone</td>
+                <td>“I.1.9 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is nanADDRESS_CONTRACTING_BODY/PHONE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / rdf:langString .</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasTelephone ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
