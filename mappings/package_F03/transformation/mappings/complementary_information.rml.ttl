@@ -16,7 +16,7 @@
 @prefix locn: <http://locn/ontology#> .
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix dct: <http://purl.org/dc/terms> .
+@prefix dct: <http://purl.org/dc/terms/> .
 tedd:complementary_information
   a owl:Ontology ;
   owl:imports dc:, <http://www.w3.org/2004/02/skos/core> ;
@@ -46,7 +46,7 @@ tedm:ReviewTerm a rr:TriplesMap ;
 tedm:ResultNotice a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:refersToRole ;
+            rr:predicate epo:announcesRole ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:Reviewer
@@ -54,7 +54,7 @@ tedm:ResultNotice a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:refersToRole ;
+            rr:predicate epo:announcesRole ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:Mediator
@@ -62,7 +62,7 @@ tedm:ResultNotice a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:refersToRole ;
+            rr:predicate epo:announcesRole ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ReviewProcedureInformationProvider
@@ -70,7 +70,7 @@ tedm:ResultNotice a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:refersToRole ;
+            rr:predicate epo:announcesRole ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ContractSignatoryonContractorSide
@@ -102,6 +102,14 @@ tedm:ReviewerOrganisation a rr:TriplesMap ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ReviewerOrganisationAddress
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasDeliveryGateway ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ReviewerOrganisationChannel
                 ]
         ] ;
     rr:predicateObjectMap
@@ -138,14 +146,7 @@ tedm:ReviewerContactPoint a rr:TriplesMap ;
                     rml:reference "FAX"
                 ]
         ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasDeliveryGateway ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ReviewerOrganisationChannel
-                ]
-        ] ;
+
 
     rr:predicateObjectMap
         [
@@ -208,7 +209,7 @@ tedm:ReviewerOrganisationAddress a rr:TriplesMap ;
 tedm:ReviewerOrganisationChannel a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasUrl ;
+            rr:predicate epo:hasURL ;
             rr:objectMap
                 [
                     rml:reference "URL"
@@ -240,7 +241,14 @@ tedm:MediatorOrganisation a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:MediatorOrganisationAddress
                 ]
         ] ;
-
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasDeliveryGateway ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MediatorOrganisationChannel
+                ]
+        ] ;
 
     rr:predicateObjectMap
         [
@@ -274,14 +282,6 @@ tedm:MediatorContactPoint a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "FAX"
-                ]
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasDeliveryGateway ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MediatorOrganisationChannel
                 ]
         ] ;
 
@@ -346,7 +346,7 @@ tedm:MediatorOrganisationAddress a rr:TriplesMap ;
 tedm:MediatorOrganisationChannel a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasUrl ;
+            rr:predicate epo:hasURL ;
             rr:objectMap
                 [
                     rml:reference "URL"
@@ -378,7 +378,14 @@ tedm:ReviewProcedureInformationProviderOrganisation a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:ReviewProcedureInformationProviderOrganisationAddress
                 ]
         ] ;
-
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasDeliveryGateway ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ReviewProcedureInformationProviderOrganisationChannel
+                ]
+        ] ;
 
     rr:predicateObjectMap
         [
@@ -414,15 +421,6 @@ tedm:ReviewProcedureInformationProviderContactPoint a rr:TriplesMap ;
                     rml:reference "FAX"
                 ]
         ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasDeliveryGateway ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ReviewProcedureInformationProviderOrganisationChannel
-                ]
-        ] ;
-
     rr:predicateObjectMap
         [
             rr:predicate epo:hasTelephone ;
@@ -495,7 +493,7 @@ tedm:ReviewProcedureInformationProviderOrganisationAddress a rr:TriplesMap ;
 tedm:ReviewProcedureInformationProviderOrganisationChannel a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasUrl ;
+            rr:predicate epo:hasURL ;
             rr:objectMap
                 [
                     rml:reference "URL"
