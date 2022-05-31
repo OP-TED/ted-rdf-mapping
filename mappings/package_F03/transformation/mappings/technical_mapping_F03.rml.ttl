@@ -16,6 +16,8 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix locn: <http://locn/ontology#> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource#>.
+@prefix cccev: <http://data.europa.eu/m8g#> .
 # copy into the mapping_suite_f03, this file and all the imports. 
 tedd:technical_mapping_f03
   a owl:Ontology ;
@@ -171,19 +173,7 @@ tedm:ResultNotice a rr:TriplesMap ;
                     rml:reference "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/DATE_DISPATCH_NOTICE"
                 ] ;
         ] .
-tedm:SubmissionStatisticalInformationForLot a rr:TripleMap ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/OBJECT_DESCR" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rr:template "http://data.europa.eu/a4g/resource/SubmissionStatisticalInformationForLot/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class epo:SubmissionStatisticalInformation
 
-        ] .
 tedm:MonetaryValueSubmissionLowestForLot a rr:TriplesMap ;
     rml:logicalSource
         [
@@ -415,7 +405,7 @@ tedm:Notice a rr:TriplesMap ;
     rr:subjectMap
         [
             rml:reference "if (exists(NOTICE_NUMBER_OJ)) then 'http://data.europa.eu/a4g/resource/Notice/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
-            rr:class epo:Fund
+            rr:class epo:Notice
 
         ] .
 tedm:NoticeIdentifier a rr:TripleMap ;
@@ -611,7 +601,7 @@ tedm:AwardCriterionQuality a rr:TripleMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasName ;
+            rr:predicate cccev:name ;
             rr:objectMap
                 [
                     rml:reference "AC_CRITERION";
@@ -622,7 +612,7 @@ tedm:AwardCriterionQuality a rr:TripleMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasFormula ;
+            rr:predicate cccev:weight ;
             rr:objectMap
                 [
                     rml:reference "AC_WEIGHTING";
@@ -646,7 +636,7 @@ tedm:AwardCriterionPrice a rr:TripleMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasName ;
+            rr:predicate cccev:name ;
             rr:objectMap
                 [
                     rml:reference "AC_CRITERION";
@@ -657,7 +647,7 @@ tedm:AwardCriterionPrice a rr:TripleMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasFormula ;
+            rr:predicate cccev:weight ;
             rr:objectMap
                 [
                     rml:reference "AC_WEIGHTING";
@@ -681,7 +671,7 @@ tedm:AwardCriterionCost a rr:TripleMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasName ;
+            rr:predicate cccev:name ;
             rr:objectMap
                 [
                     rml:reference "AC_CRITERION";
@@ -692,7 +682,7 @@ tedm:AwardCriterionCost a rr:TripleMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasFormula ;
+            rr:predicate cccev:weight ;
             rr:objectMap
                 [
                     rml:reference "AC_WEIGHTING";
@@ -763,6 +753,19 @@ tedm:PurchaseContract a rr:TripleMap ;
             rr:class epo:PurchaseContract
         ].
 
+tedm:ContractOrganisationGroup a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/AWARD_CONTRACT" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference "if(exists(AWARDED_CONTRACT)) then 'http://data.europa.eu/a4g/resource/ContractOrganisationGroup/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:OrganisationGroup
+
+        ] .
 tedm:Contract a rr:TripleMap ;
     rml:logicalSource
         [
@@ -846,8 +849,8 @@ tedm:TenderRole a rr:TripleMap ;
         ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/TenderRole/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class epo:Tender
+            rr:template "http://data.europa.eu/a4g/resource/TendererRole/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Tenderer
 
         ] .
 tedm:WinnerRole a rr:TripleMap ;
@@ -937,12 +940,24 @@ tedm:ContractOrganisationAddress a rr:TriplesMap ;
             rr:class locn:Address
 
         ] .
+tedm:TenderAwardOutcome a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/TenderAwardOutcome/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:TenderAwardOutcome
 
+        ] .
 tedm:Tender a rr:TripleMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_TOTAL" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -955,7 +970,7 @@ tedm:TenderMonetaryValue a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -968,7 +983,7 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/TENDERS" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -981,7 +996,7 @@ tedm:MonetaryValueSubmissionHighest a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -994,7 +1009,7 @@ tedm:MonetaryValueSubmissionLowest a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_RANGE_TOTAL" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
