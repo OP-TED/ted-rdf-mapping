@@ -56,7 +56,9 @@ tedm:PurchaseContract a rr:TripleMap ;
             rr:predicate epo:isWithinFrameworkAgreement;
             rr:objectMap
                 [
-                    rml:reference "exists(.//*[matches(name(),'AWARDED_TO_GROUP')])"
+                    rml:reference "exists(.//*[matches(name(),'AWARDED_TO_GROUP')])";
+                    rr:datatype xsd:boolean
+
                 ]
         ] .
 tedm:ContractOrganisationGroup a rr:TripleMap ;
@@ -124,7 +126,7 @@ tedm:ContractTerm a rr:TriplesMap ;
             rr:predicate epo:hasReservedExecution ;
             rr:objectMap
                 [
-                    rr:template "http://publications.europa.eu/resource/dataset/applicability" #
+                    rr:template "http://publications.europa.eu/resource/dataset/applicability"
                 ] ;
         ] .
 tedm:Lot a rr:TripleMap ;
@@ -368,11 +370,11 @@ tedm:ContractOrganisationAddress a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:adminUnitL1 ;
+            rr:predicate locn:adminUnitL1 ;
             rr:objectMap
                 [
                     rml:reference "if (not(exists(ADDRESS_CONTRACTOR/*:NUTS/@CODE))) then 'http://data.europa.eu/nuts/OP_DATPRO' else null";
-                    rr:datatype rr:IRI;
+                    rr:termType rr:IRI;
                 ]
 
         ] ;
@@ -390,11 +392,11 @@ tedm:ContractOrganisationAddress a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:adminUnitL2 ;
+            rr:predicate locn:adminUnitL2 ;
             rr:objectMap
                 [
                     rml:reference "if (not(exists(ADDRESS_CONTRACTOR/COUNTRY/@VALUE))) then 'http://publications.europa.eu/resource/authority/country/OP_DATPRO' else null";
-                    rr:datatype rr:IRI;
+                    rr:termType rr:IRI;
                 ]
 
         ] ;
@@ -510,7 +512,7 @@ tedm:SubcontractingEstimatedValueMonetaryValue a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if (not(exists(VAL_SUBCONTRACTING/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
-                    rr:datatype rr:IRI;
+                    rr:termType rr:IRI;
                 ]
 
         ] ;
@@ -541,7 +543,7 @@ tedm:TenderMonetaryValue a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if (not(exists(VALUES/VAL_TOTAL/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
-                    rr:datatype rr:IRI;
+                    rr:termType rr:IRI;
                 ]
 
         ] ;
@@ -572,7 +574,7 @@ tedm:MonetaryValueLot a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if (not(exists(VAL_ESTIMATED_TOTAL/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
-                    rr:datatype rr:IRI;
+                    rr:termType rr:IRI;
                 ]
 
         ] ;
@@ -717,7 +719,7 @@ tedm:MonetaryValueSubmissionHighest a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if (not(exists(//VAL_SUBCONTRACTING[1]/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
-                    rr:datatype rr:IRI;
+                    rr:termType rr:IRI;
                 ]
 
         ] ;
@@ -748,7 +750,7 @@ tedm:MonetaryValueSubmissionLowest a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if (not(exists(//VAL_SUBCONTRACTING[1]/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
-                    rr:datatype rr:IRI;
+                    rr:termType rr:IRI;
                 ]
 
         ] ;

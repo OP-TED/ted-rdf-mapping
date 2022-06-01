@@ -56,7 +56,22 @@ tedm:PurchaseContract a rr:TripleMap ;
             rr:predicate epo:isWithinFrameworkAgreement;
             rr:objectMap
                 [
-                    rml:reference "exists(.//*[matches(name(),'AWARDED_TO_GROUP')])"
+                    rml:reference "exists(.//*[matches(name(),'AWARDED_TO_GROUP')])";
+                    rr:datatype xsd:boolean
+
+                ]
+        ] .
+tedm:ContractOrganisationGroup a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasMember;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ContractOrganisation;
+                    rr:joinCondition [
+                        rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
+                        rr:child "./@ITEM";
+                    ];
                 ]
         ] .
 tedm:Contract a rr:TripleMap ;
@@ -111,7 +126,7 @@ tedm:ContractTerm a rr:TriplesMap ;
             rr:predicate epo:hasReservedExecution ;
             rr:objectMap
                 [
-                    rr:template "http://publications.europa.eu/resource/dataset/applicability" #
+                    rr:template "http://publications.europa.eu/resource/dataset/applicability"
                 ] ;
         ] .
 tedm:Lot a rr:TripleMap ;
@@ -142,6 +157,30 @@ tedm:Lot a rr:TripleMap ;
         ] .
 
 tedm:LotAwardOutcome a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:isSubmittedForLot ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Lot;
+                    rr:joinCondition [
+                        rr:child "./@ITEM";
+                        rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:comprisesTenderAwardOutcome ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:TenderAwardOutcome;
+                    rr:joinCondition [
+                        rr:child "./@ITEM";
+                        rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
+                    ];
+                ] ;
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasAdditionalNonAwardJustification;
@@ -230,6 +269,7 @@ tedm:ContractorRole a rr:TripleMap ;
                 ];
                 ] ;
         ] .
+
 tedm:ContractOrganisation a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -330,11 +370,11 @@ tedm:ContractOrganisationAddress a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:adminUnitL1 ;
+            rr:predicate locn:adminUnitL1 ;
             rr:objectMap
                 [
                     rml:reference "if (not(exists(ADDRESS_CONTRACTOR/*:NUTS/@CODE))) then 'http://data.europa.eu/nuts/OP_DATPRO' else null";
-                    rr:datatype rr:IRI;
+                    rr:termType rr:IRI;
                 ]
 
         ] ;
@@ -352,11 +392,11 @@ tedm:ContractOrganisationAddress a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:adminUnitL2 ;
+            rr:predicate locn:adminUnitL2 ;
             rr:objectMap
                 [
                     rml:reference "if (not(exists(ADDRESS_CONTRACTOR/COUNTRY/@VALUE))) then 'http://publications.europa.eu/resource/authority/country/OP_DATPRO' else null";
-                    rr:datatype rr:IRI;
+                    rr:termType rr:IRI;
                 ]
 
         ] ;
@@ -372,6 +412,31 @@ tedm:ContractOrganisationAddress a rr:TriplesMap ;
                     ];
                 ] ;
         ] .
+tedm:TenderAwardOutcome a rr:TripleMap ;
+        rr:predicateObjectMap
+        [
+            rr:predicate epo:isAwardedToWinner ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Tender;
+                    rr:joinCondition [
+                        rr:child "ancestor::AWARD_CONTRACT/@ITEM";
+                        rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
+                    ];
+                ] ;
+        ] ;
+        rr:predicateObjectMap
+        [
+            rr:predicate epo:isAwardedToWinner ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:WinnerRole;
+                    rr:joinCondition [
+                        rr:child "ancestor::AWARD_CONTRACT/@ITEM";
+                        rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
+                    ];
+                ] ;
+        ] .
 
 tedm:Tender a rr:TripleMap ;
     rr:predicateObjectMap
@@ -379,7 +444,11 @@ tedm:Tender a rr:TripleMap ;
             rr:predicate epo:hasFinnancialOfferValue ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:TenderMonetaryValue
+                    rr:parentTriplesMap tedm:TenderMonetaryValue;
+                                        rr:joinCondition [
+                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        ];
                 ] ;
         ] ;
 
@@ -400,7 +469,11 @@ tedm:Tender a rr:TripleMap ;
             rr:predicate epo:forseesSubcontracting ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:SubcontractingEstimate
+                    rr:parentTriplesMap tedm:SubcontractingEstimate;
+                    rr:joinCondition [
+                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        ];
                 ] ;
         ] .
 tedm:SubcontractingEstimate a rr:TripleMap ;
@@ -439,7 +512,7 @@ tedm:SubcontractingEstimatedValueMonetaryValue a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if (not(exists(VAL_SUBCONTRACTING/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
-                    rr:datatype rr:IRI;
+                    rr:termType rr:IRI;
                 ]
 
         ] ;
@@ -461,7 +534,7 @@ tedm:TenderMonetaryValue a rr:TriplesMap ;
             rr:predicate epo:hasAmountValue ;
             rr:objectMap
                 [
-                    rml:reference "VAL_TOTAL";
+                    rml:reference "VALUES/VAL_TOTAL";
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -469,8 +542,8 @@ tedm:TenderMonetaryValue a rr:TriplesMap ;
             rr:predicate epo:hasCurrency ;
             rr:objectMap
                 [
-                    rml:reference "if (not(exists(VAL_TOTAL/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
-                    rr:datatype rr:IRI;
+                    rml:reference "if (not(exists(VALUES/VAL_TOTAL/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
+                    rr:termType rr:IRI;
                 ]
 
         ] ;
@@ -481,7 +554,7 @@ tedm:TenderMonetaryValue a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:currency;
                     rr:joinCondition [
-                        rr:child "VAL_TOTAL/@CURRENCY";
+                        rr:child "VALUES/VAL_TOTAL/@CURRENCY";
                         rr:parent "code.value";
                     ];
                 ] ;
@@ -501,7 +574,7 @@ tedm:MonetaryValueLot a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if (not(exists(VAL_ESTIMATED_TOTAL/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
-                    rr:datatype rr:IRI;
+                    rr:termType rr:IRI;
                 ]
 
         ] ;
@@ -524,7 +597,7 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
             rr:predicate epo:hasReceivedTenders;
             rr:objectMap
                 [
-                    rml:reference "NB_TENDERS_RECEIVED"
+                    rml:reference "TENDERS/NB_TENDERS_RECEIVED"
                 ]
         ] ;
     rr:predicateObjectMap
@@ -532,7 +605,7 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
             rr:predicate epo:hasReceivedSMETenders;
             rr:objectMap
                 [
-                    rml:reference "NB_TENDERS_RECEIVED_SME"
+                    rml:reference "TENDERS/NB_TENDERS_RECEIVED_SME"
                 ]
         ] ;
     rr:predicateObjectMap
@@ -540,7 +613,7 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
             rr:predicate epo:hasReceivedNonEEATenders;
             rr:objectMap
                 [
-                    rml:reference "NB_TENDERS_RECEIVED_NON_EU"
+                    rml:reference "TENDERS/NB_TENDERS_RECEIVED_NON_EU"
                 ]
         ] ;
     rr:predicateObjectMap
@@ -548,7 +621,7 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
             rr:predicate epo:hasElectronicTenders;
             rr:objectMap
                 [
-                    rml:reference "NB_TENDERS_RECEIVED_EMEANS"
+                    rml:reference "TENDERS/NB_TENDERS_RECEIVED_EMEANS"
                 ]
         ] ;
     rr:predicateObjectMap
@@ -556,7 +629,11 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
             rr:predicate epo:hasLowestReceivedTenderValue ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MonetaryValueSubmissionLowest
+                    rr:parentTriplesMap tedm:MonetaryValueSubmissionLowest;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -564,7 +641,11 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
             rr:predicate epo:hasHighestReceivedTenderValue ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MonetaryValueSubmissionHighest
+                    rr:parentTriplesMap tedm:MonetaryValueSubmissionHighest;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -584,7 +665,7 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
             rr:predicate epo:hasEEAReceivedTenders;
             rr:objectMap
                 [
-                    rml:reference "NB_TENDERS_RECEIVED_OTHER_EU";
+                    rml:reference "TENDERS/NB_TENDERS_RECEIVED_OTHER_EU";
                 ]
         ] ;
  rr:predicateObjectMap
@@ -592,7 +673,11 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
             rr:predicate epo:hasLowestReceivedTenderValue ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MonetaryValueSubmissionLowestForLot
+                    rr:parentTriplesMap tedm:MonetaryValueSubmissionLowestForLot;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -600,7 +685,11 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
             rr:predicate epo:hasHighestReceivedTenderValue ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MonetaryValueSubmissionHighestForLot
+                    rr:parentTriplesMap tedm:MonetaryValueSubmissionHighestForLot;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -621,7 +710,7 @@ tedm:MonetaryValueSubmissionHighest a rr:TriplesMap ;
             rr:predicate epo:hasAmountValue ;
             rr:objectMap
                 [
-                    rml:reference "VAL_RANGE_TOTAL/HIGH";
+                    rml:reference "VALUES/VAL_RANGE_TOTAL/HIGH";
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -630,7 +719,7 @@ tedm:MonetaryValueSubmissionHighest a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if (not(exists(//VAL_SUBCONTRACTING[1]/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
-                    rr:datatype rr:IRI;
+                    rr:termType rr:IRI;
                 ]
 
         ] ;
@@ -652,7 +741,7 @@ tedm:MonetaryValueSubmissionLowest a rr:TriplesMap ;
             rr:predicate epo:hasAmountValue ;
             rr:objectMap
                 [
-                    rml:reference "LOW";
+                    rml:reference "VALUES/VAL_RANGE_TOTAL/LOW";
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -661,7 +750,7 @@ tedm:MonetaryValueSubmissionLowest a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if (not(exists(//VAL_SUBCONTRACTING[1]/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
-                    rr:datatype rr:IRI;
+                    rr:termType rr:IRI;
                 ]
 
         ] ;

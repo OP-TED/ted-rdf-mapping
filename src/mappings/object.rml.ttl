@@ -58,7 +58,7 @@ tedm:ProcedureMonetaryValue a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if (not(exists(VAL_TOTAL/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
-                    rr:datatype rr:IRI;
+                    rr:termType rr:IRI;
                 ]
 
         ] ;
@@ -180,7 +180,8 @@ tedm:Lot a rr:TriplesMap ;
             rr:predicate epo:isUsingEUFunds;
             rr:objectMap
                 [
-                    rml:reference "exists(./*[matches(name(),'EU_PROGR_RELATED')])"
+                    rml:reference "exists(./*[matches(name(),'EU_PROGR_RELATED')])";
+                    rr:datatype xsd:boolean
                 ]
         ] ;
     rr:predicateObjectMap
@@ -317,7 +318,7 @@ tedm:ContractTermeLocation a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if (not(exists(./*:NUTS/@CODE))) then 'http://data.europa.eu/nuts/OP_DATPRO' else null";
-                    rr:datatype rr:IRI;
+                    rr:termType rr:IRI;
                 ]
 
         ] ;
@@ -366,7 +367,7 @@ tedm:LotPurpose a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if (not(exists(CPV_ADDITIONAL/CPV_SUPPLEMENTARY_CODE/@CODE))) then 'http://data.europa.eu/cpv/cpv/OP_DATPRO' else null";
-                    rr:datatype rr:IRI;
+                    rr:termType rr:IRI;
                 ]
 
         ] ;
@@ -388,7 +389,7 @@ tedm:LotPurpose a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if (not(exists(CPV_ADDITIONAL/CPV_CODE/@CODE))) then 'http://data.europa.eu/cpv/cpv/OP_DATPRO' else null";
-                    rr:datatype rr:IRI;
+                    rr:termType rr:IRI;
                 ]
 
         ] ;
@@ -397,7 +398,8 @@ tedm:LotPurpose a rr:TriplesMap ;
             rr:predicate epo:hasOptions;
             rr:objectMap
                 [
-                    rml:reference "exists(./*[matches(name(),'OPTIONS')])"
+                    rml:reference "exists(./*[matches(name(),'OPTIONS')])";
+                    rr:datatype xsd:boolean
                 ]
         ] .
 tedm:LotIdentifier a rr:TripleMap ;
