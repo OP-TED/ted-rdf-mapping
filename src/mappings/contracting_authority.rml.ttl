@@ -137,7 +137,7 @@ tedm:ContactPoint a rr:TriplesMap ;
 tedm:OrganisationAddress  a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:postName ;
+            rr:predicate locn:postName ;
             rr:objectMap
                 [
                     rml:reference "TOWN"
@@ -145,7 +145,7 @@ tedm:OrganisationAddress  a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:thoroughfare ;
+            rr:predicate locn:thoroughfare ;
             rr:objectMap
                 [
                     rml:reference "ADDRESS"
@@ -153,7 +153,7 @@ tedm:OrganisationAddress  a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:postCode ;
+            rr:predicate locn:postCode ;
             rr:objectMap
                 [
                     rml:reference "POSTAL_CODE"
@@ -172,26 +172,26 @@ tedm:OrganisationAddress  a rr:TriplesMap ;
                     ];
                 ] ;
         ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate locn:adminUnitL1 ;
-            rr:objectMap
-                [
-                    rml:reference "if (not(exists(*:NUTS/@CODE))) then 'http://data.europa.eu/nuts/OP_DATPRO' else null";
-                    rr:termType rr:IRI;
-                ]
-
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate locn:adminUnitL2 ;
-            rr:objectMap
-                [
-                    rml:reference "if (not(exists(COUNTRY/@VALUE))) then 'http://publications.europa.eu/resource/authority/country/OP_DATPRO' else null";
-                    rr:termType rr:IRI;
-                ]
-
-        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate locn:adminUnitL1 ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if (not(exists(*:NUTS/@CODE))) then 'http://data.europa.eu/nuts/OP_DATPRO' else null";
+#                    rr:termType rr:IRI;
+#                ]
+#
+#        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate locn:adminUnitL2 ;
+#            rr:objectMap
+#                [
+#                  rml:reference "if (not(exists(COUNTRY/@VALUE))) then 'http://publications.europa.eu/resource/authority/country/OP_DATPRO' else null";
+#                    rr:termType rr:IRI;
+#                ]
+#
+#        ] ;
     rr:predicateObjectMap
         [
             rr:predicate locn:adminUnitL2 ;

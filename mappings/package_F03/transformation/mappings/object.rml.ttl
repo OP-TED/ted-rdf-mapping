@@ -37,6 +37,14 @@ tedm:Procedure a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:hasOverallPurpose ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ProcedurePurpose
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate epo:hasID;
             rr:objectMap
                 [
@@ -50,18 +58,19 @@ tedm:ProcedureMonetaryValue a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "VAL_TOTAL";
+                    rr:datatype xsd:decimal
                 ] ;
         ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasCurrency ;
-            rr:objectMap
-                [
-                    rml:reference "if (not(exists(VAL_TOTAL/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
-                    rr:termType rr:IRI;
-                ]
-
-        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasCurrency ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if (not(exists(VAL_TOTAL/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
+#                    rr:termType rr:IRI;
+#                ]
+#
+#        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasCurrency ;
@@ -82,6 +91,7 @@ tedm:MonetaryValueSubmissionLowestForLot a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "VAL_RANGE_TOTAL/LOW";
+                    rr:datatype xsd:decimal
                 ] ;
         ] .
 
@@ -92,6 +102,7 @@ tedm:MonetaryValueSubmissionHighestForLot  a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "VAL_RANGE_TOTAL/HIGH";
+                    rr:datatype xsd:decimal
                 ] ;
         ] .
 tedm:ProcedurePurpose a rr:TriplesMap ;
@@ -100,7 +111,7 @@ tedm:ProcedurePurpose a rr:TriplesMap ;
             rr:predicate epo:hasAdditionalClassification ;
             rr:objectMap
                 [
-                    rml:reference "./@CODE"
+                    rml:reference "CPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE"
 
                 ] ;
         ] .
@@ -312,16 +323,16 @@ tedm:ContractTerm a rr:TriplesMap ;
                 ] ;
         ] .
 tedm:ContractTermeLocation a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasNutsCode ;
-            rr:objectMap
-                [
-                    rml:reference "if (not(exists(./*:NUTS/@CODE))) then 'http://data.europa.eu/nuts/OP_DATPRO' else null";
-                    rr:termType rr:IRI;
-                ]
-
-        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasNutsCode ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if (not(exists(./*:NUTS/@CODE))) then 'http://data.europa.eu/nuts/OP_DATPRO' else null";
+#                    rr:termType rr:IRI;
+#                ]
+#
+#        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasNutsCode ;
@@ -361,16 +372,16 @@ tedm:LotPurpose a rr:TriplesMap ;
                 ] ;
 
         ] ;
-        rr:predicateObjectMap
-        [
-            rr:predicate epo:hasAdditionalClassification ;
-            rr:objectMap
-                [
-                    rml:reference "if (not(exists(CPV_ADDITIONAL/CPV_SUPPLEMENTARY_CODE/@CODE))) then 'http://data.europa.eu/cpv/cpv/OP_DATPRO' else null";
-                    rr:termType rr:IRI;
-                ]
-
-        ] ;
+#        rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasAdditionalClassification ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if (not(exists(CPV_ADDITIONAL/CPV_SUPPLEMENTARY_CODE/@CODE))) then 'http://data.europa.eu/cpv/cpv/OP_DATPRO' else null";
+#                    rr:termType rr:IRI;
+#                ]
+#
+#        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasMainClassification ;
@@ -383,16 +394,16 @@ tedm:LotPurpose a rr:TriplesMap ;
                     ];
                 ] ;
         ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasMainClassification ;
-            rr:objectMap
-                [
-                    rml:reference "if (not(exists(CPV_ADDITIONAL/CPV_CODE/@CODE))) then 'http://data.europa.eu/cpv/cpv/OP_DATPRO' else null";
-                    rr:termType rr:IRI;
-                ]
-
-        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasMainClassification ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if (not(exists(CPV_ADDITIONAL/CPV_CODE/@CODE))) then 'http://data.europa.eu/cpv/cpv/OP_DATPRO' else null";
+#                    rr:termType rr:IRI;
+#                ]
+#
+#        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasOptions;
