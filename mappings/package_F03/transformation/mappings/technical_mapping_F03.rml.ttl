@@ -511,13 +511,26 @@ tedm:LotPurpose a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/OBJECT_DESCR" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
         [
             rr:template "http://data.europa.eu/a4g/resource/LotPurpose/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:Purpose
+
+        ] .
+tedm:ContractTerm a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/ContractTerm/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ContractTerm
 
         ] ;
     rr:predicateObjectMap
@@ -530,19 +543,6 @@ tedm:LotPurpose a rr:TriplesMap ;
                          rml:reference "lower-case(ancestor::F03_2014/@LG)"
                     ]
                 ] ;
-        ] .
-tedm:ContractTerm a rr:TriplesMap ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/OBJECT_DESCR" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rr:template "http://data.europa.eu/a4g/resource/ContractTerm/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class epo:ContractTerm
-
         ] .
 tedm:ContractTermeLocation a rr:TriplesMap ;
     rml:logicalSource
@@ -859,6 +859,19 @@ tedm:WinnerRole a rr:TripleMap ;
         [
             rr:template "http://data.europa.eu/a4g/resource/WinnerRole/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:Winner
+
+        ] .
+tedm:Business a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/Business/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Business
 
         ] .
 tedm:ContractOrganisation a rr:TriplesMap ;

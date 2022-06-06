@@ -10,7 +10,7 @@
 @prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
-
+@prefix cpov: <https://semiceu.github.io/CPOV/releases/2.00#> .
 tedm:award_of_contract
   a owl:Ontology ;
   owl:imports dc:, <http://www.w3.org/2004/02/skos/core> ;
@@ -248,6 +248,30 @@ tedm:WinnerRole a rr:TripleMap ;
                     rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                 ];
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:playedByBusiness;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Business;
+                   rr:joinCondition [
+                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                ];
+                ] ;
+        ] .
+tedm:Business a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasBusinessSize ;
+                rr:objectMap
+                [
+                    rml:reference "exists(./*[matches(name(),'SME')])";
+                    rr:datatype xsd:boolean
+
+                ]
+
         ] .
 tedm:ContractSignatoryonContractorSide a rr:TripleMap ;
     rr:predicateObjectMap
@@ -326,7 +350,7 @@ tedm:ContractOrganisationIdentifier a rr:TriplesMap ;
 tedm:ContractContactPoint a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasEmail ;
+            rr:predicate cpov:hasEmail ;
             rr:objectMap
                 [
                     rml:reference "ADDRESS_CONTRACTOR/E_MAIL"
@@ -343,7 +367,7 @@ tedm:ContractContactPoint a rr:TriplesMap ;
 
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasTelephone ;
+            rr:predicate cpov:hasTelephone ;
             rr:objectMap
                 [
                     rml:reference "ADDRESS_CONTRACTOR/PHONE"
@@ -433,7 +457,7 @@ tedm:TenderAwardOutcome a rr:TripleMap ;
         ] ;
         rr:predicateObjectMap
         [
-            rr:predicate epo:isAwardedToWinner ;
+            rr:predicate epo:awardsLotToWinner ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:WinnerRole;
@@ -472,7 +496,7 @@ tedm:Tender a rr:TripleMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:forseesSubcontracting ;
+            rr:predicate epo:foreseesSubcontracting ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:SubcontractingEstimate;
