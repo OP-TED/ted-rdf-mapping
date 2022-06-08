@@ -1,12 +1,17 @@
+# Sample TED notices from 2021
 
-# This sampling was done for 2021:
-* The sampling procedure was performed on all records collected in 2021;
-* Their filtering is done based on form_number and eforms_subtype;
-* The most representative notices have been selected for form_number or eforms_subtype.
+This data sample contains carefully selected TED notices based on the following criteria: maximise notice representativeness, minimise the number of selected notices. The selected notices are guaranteed to cove all possible XPath configurations available in the data. 
 
-# Sampling results statistics for 2021
+* The current sampling exercise was performed on all records collected in 2021;
+* The data space was partitioned twice based on two criteria: the notice form number (e.g. F03, F06) and the eForms Subtype (e.g. cn-standard, can-utilities);
+* The minimal set of the most representative notices have been selected for each **form_number** and **eforms_subtype** .
+
+# Sampling result statistics 
+
+Below we present two tables with statistics indicating the total number for each slection criteria, the percentage relative to teh total number of considererd notices (i.e. total in 2021), and the number of selected most representative notices.
+
 ### Sampling based on form_number:
-| **form\_number** | **nr. notices** | **procent ration from total number** | ** nr. of most representative notices** |
+| **form\_number** | **nr. notices** | **percent ration from total number** | **nr. of the most representative notices** |
 | ------------ | ----------- | -------------------------------- |-----------------------------------------|
 | F03          | 249618      | 37,35                            | 20                                      |
 | F02          | 223430      | 33,43                            | 18                                      |
@@ -75,4 +80,4 @@
 | 33              | 0           | 0                                | 0                           |
 | 34              | 0           | 0                                | 0                           |
 | 35              | 0           | 0                                | 0                           |
-| Total           | 668381      |                                  | 454                         |
+| **Total**           | **668381**      |                                  | **454**                         |
