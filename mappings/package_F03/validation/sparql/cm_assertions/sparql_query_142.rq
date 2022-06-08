@@ -1,6 +1,7 @@
-#title: VI.5 - Date of dispatch of this notice (dd/mm/yyyy)
-#description: “VI.5 - Date of dispatch of this notice (dd/mm/yyyy)” in SF corresponds to “BT-05 Notice Dispatch Date” in eForms. The corresponding XML element is nanDATE_DISPATCH_NOTICE. The expected ontology instances are epo: epo:ResultNotice .
+#title: VI.4.4.7 - Telephone
+#description: “VI.4.4.7 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is nanCOMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO/PHONE. The expected ontology instances are epo: epo:Role (from CL1)  / org:Organization (from CL2) / epo:ContactPoint / rdf:langString .
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX cpov: <http://data.europa.eu/m8g/>
 
-ASK WHERE { ?this epo:hasDispatchDate ?value . }
+ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / cpov:telephone ?value . }

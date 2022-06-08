@@ -1,6 +1,20 @@
 #title: IV.1.1.2 - Restricted procedure
-#description: “IV.1.1.2 - Restricted procedure” in SF corresponds to “BT-105 Procedure Type” in eForms. The corresponding XML element is nanPT_RESTRICTED. The expected ontology instances are epo: epo:Procedure / at-voc:procurement-procedure-type .
+#description: “IV.1.1.2 - Restricted procedure” in SF corresponds to “BT-105 Procedure Type” in eForms. The corresponding XML element is nanPROCEDURE/PT_OPEN
+PROCEDURE/PT_RESTRICTED
+PROCEDURE/PT_COMPETITIVE_NEGOTIATION 
+PROCEDURE/PT_COMPETITIVE_DIALOGUE 
+PROCEDURE/PT_INNOVATION_PARTNERSHIP 
+PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL . The expected ontology instances are epo: epo:Procedure / at-voc:procurement-procedure-type .
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
-ASK WHERE { ?this epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted> . }
+ASK WHERE {   { ?this epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open> .
+} UNION { ?this epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted> .
+} UNION
+{ ?this epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call> .
+} UNION  { ?this epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial> . } UNION
+{ ?this epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation> .
+} UNION  { 
+?this epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call> .
+} 
+   }

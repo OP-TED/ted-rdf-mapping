@@ -1,6 +1,7 @@
-#title: V.2.4.1 - Initial estimated total value of the contract/lot
-#description: “V.2.4.1 - Initial estimated total value of the contract/lot” in SF corresponds to “BT-27 Estimated Value” in eForms. The corresponding XML element is nanVALUES/VAL_ESTIMATED_TOTAL. The expected ontology instances are epo: epo:Lot / epo:MonetaryValue / epo:Numeric .
+#title: V.2.3.8 - E-mail
+#description: “V.2.3.8 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is nanAWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/URL. The expected ontology instances are epo: epo:Role (from CL1)  / org:Organization (from CL2) / epo:ContactPoint / epo:URI .
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX cpov: <http://data.europa.eu/m8g/>
 
-ASK WHERE { ?this epo:hasEstimatedValue / epo:hasAmountValue ?value . }
+ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / cpov:email ?value . }
