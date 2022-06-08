@@ -1,6 +1,7 @@
-#title: VI.4.1.6 - E-mail
-#description: “VI.4.1.6 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is nanADDRESS_REVIEW_BODY/E_MAIL. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / epo:ContactPoint / epo:URI .
+#title: VI.4.1.3 - Town
+#description: “VI.4.1.3 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is nanCOMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY/TOWN. The expected ontology instances are epo: epo:Role (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 
-ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasEmail ?value . }
+ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postName ?value . }

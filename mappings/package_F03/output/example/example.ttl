@@ -1,18 +1,16 @@
-@prefix : <http://data.europa.eu/a4g/mapping/sf-rml/> .
-@prefix cc: <http://creativecommons.org/ns#> .
-@prefix cccev: <http://data.europa.eu/m8g#> .
-@prefix dc: <http://purl.org/dc/terms/> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix locn: <http://locn/ontology#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedd: <http://data.europa.eu/a4g/dataset/sf-rml/> .
-@prefix time: <http://www.w3.org/2006/time#> .
-@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://data.europa.eu/a4g/resource/AwardCriterionCost/2021-S-024-057196/20490be6-0b4d-3d2b-a4bd-79531c04a1c7>
@@ -43,7 +41,11 @@
                             """@da;
   cccev:weight "40"@da .
 
-<http://data.europa.eu/a4g/resource/Buyer/2021-S-024-057196/c3f45a6f-9ba2-3fbb-adbc-8ae94d139f7a>
+<http://data.europa.eu/a4g/resource/Business/2021-S-024-057196/b9a7c460-794b-36b5-a069-6e9a637315f4>
+  a epo:Business;
+  epo:hasBusinessSize true .
+
+<http://data.europa.eu/a4g/resource/Buyer/2021-S-024-057196/f3b5cfa6-95c6-37b5-9667-808a141fe995>
   a epo:Buyer;
   epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2021-S-024-057196/377f62e9-9c36-31da-9724-7f6a137d8a68>;
   epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/eu-ins-bod-ag>;
@@ -61,7 +63,7 @@
 <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-024-057196/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a epo:ContactPoint;
   epo:hasDescription "Mr Jordi Curell Gotor"@da;
-  epo:hasEmail "EMPL-VT-2020-024@ec.europa.eu" .
+  cccev:email "EMPL-VT-2020-024@ec.europa.eu" .
 
 <http://data.europa.eu/a4g/resource/Contract/2021-S-024-057196/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>
   a epo:Contract;
@@ -73,7 +75,8 @@
                     
                 """@da;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2021-S-024-057196/cbac108a-b047-3e09-a114-28c43d5b8706>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-024-057196/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
+  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-024-057196/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>;
+  epo:signedBySignatory <http://data.europa.eu/a4g/resource/ContractSignatoryOnContractorSide/2021-S-024-057196/b9a7c460-794b-36b5-a069-6e9a637315f4> .
 
 <http://data.europa.eu/a4g/resource/ContractContactPoint/2021-S-024-057196/b9a7c460-794b-36b5-a069-6e9a637315f4>
   a epo:ContactPoint .
@@ -83,14 +86,18 @@
   epo:hasIdentifierValue "VC/2020/0637" .
 
 <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-024-057196/b9a7c460-794b-36b5-a069-6e9a637315f4>
-  a epo:Organisation;
+  a org:Organization;
   epo:hasName "ECORYS EUROPE EEIG — GEIE"@da;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractContactPoint/2021-S-024-057196/b9a7c460-794b-36b5-a069-6e9a637315f4>;
-  epo:hasRegisteredAddress <http://locn/ontology/ContractOrganisationAddress/2021-S-024-057196/b9a7c460-794b-36b5-a069-6e9a637315f4> .
+  epo:hasRegisteredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-024-057196/b9a7c460-794b-36b5-a069-6e9a637315f4> .
 
-<http://data.europa.eu/a4g/resource/ContractOrganisationGroup/2021-S-024-057196/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>
-  a epo:OrganisationGroup;
-  epo:hasMember <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-024-057196/b9a7c460-794b-36b5-a069-6e9a637315f4> .
+<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-024-057196/b9a7c460-794b-36b5-a069-6e9a637315f4>
+  a locn:Address;
+  locn:adminUnitL1 <http://data.europa.eu/nuts/code/BE>;
+  locn:adminUnitL2 <http://publications.europa.eu/resource/authority/country/BEL>;
+  locn:postCode "1040";
+  locn:postName "Brussels";
+  locn:thoroughfare "Rue Belliard 12" .
 
 <http://data.europa.eu/a4g/resource/ContractSignatoryOnContractorSide/2021-S-024-057196/b9a7c460-794b-36b5-a069-6e9a637315f4>
   a epo:ContractSignatoryOnContractorSide;
@@ -98,15 +105,16 @@
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2021-S-024-057196/cbac108a-b047-3e09-a114-28c43d5b8706>
   a epo:ContractTerm;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/dataset/applicability>;
-  epo:hasSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/ContractTermLocation/2021-S-024-057196/cbac108a-b047-3e09-a114-28c43d5b8706> .
+  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/ContractTermLocation/2021-S-024-057196/cbac108a-b047-3e09-a114-28c43d5b8706>;
+  epo:hasOptions true;
+  epo:hasReservedExecution <http://publications.europa.eu/resource/dataset/applicability> .
 
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2021-S-024-057196/cbac108a-b047-3e09-a114-28c43d5b8706>
-  a dc:Location;
+  a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/BE10>;
-  locn:address <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2021-S-024-057196/cbac108a-b047-3e09-a114-28c43d5b8706> .
+  locn:address <http://data.europa.eu/a4g/resource/ContractTermeLocationAddress/2021-S-024-057196/cbac108a-b047-3e09-a114-28c43d5b8706> .
 
-<http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2021-S-024-057196/cbac108a-b047-3e09-a114-28c43d5b8706>
+<http://data.europa.eu/a4g/resource/ContractTermeLocationAddress/2021-S-024-057196/cbac108a-b047-3e09-a114-28c43d5b8706>
   a locn:Address .
 
 <http://data.europa.eu/a4g/resource/ContractorRole/2021-S-024-057196/b9a7c460-794b-36b5-a069-6e9a637315f4>
@@ -119,7 +127,8 @@
 
 <http://data.europa.eu/a4g/resource/Lot/2021-S-024-057196/cbac108a-b047-3e09-a114-28c43d5b8706>
   a epo:Lot;
-  epo:hasGPAUsage "false";
+  epo:describesLot <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-024-057196/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>;
+  epo:foreseesContractTerm <http://data.europa.eu/a4g/resource/ContractTerm/2021-S-024-057196/cbac108a-b047-3e09-a114-28c43d5b8706>;
   epo:hasID <http://data.europa.eu/a4g/resource/LotIdentifier/2021-S-024-057196/cbac108a-b047-3e09-a114-28c43d5b8706>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/LotPurpose/2021-S-024-057196/cbac108a-b047-3e09-a114-28c43d5b8706>;
   epo:hasTitle """
@@ -127,8 +136,8 @@
                             arrangementstyring — Parti 2: Eures online-jobdage
                         
                     """@da;
-  epo:isSubjectToLotTerm <http://data.europa.eu/a4g/resource/ContractTerm/2021-S-024-057196/cbac108a-b047-3e09-a114-28c43d5b8706>,
-    <http://data.europa.eu/a4g/resource/FrameworkAgreementTerm/2021-S-024-057196/1f8688eb-32e7-368b-ad1c-2e76f17321dd>,
+  epo:isCoveredbyGPA "false";
+  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/FrameworkAgreementTerm/2021-S-024-057196/1f8688eb-32e7-368b-ad1c-2e76f17321dd>,
     <http://data.europa.eu/a4g/resource/ReviewTerm/2021-S-024-057196/c396feff-0750-3296-8f73-f0464e1726ac>;
   epo:isUsingEUFunds true;
   epo:specifiesAwardCriterion <http://data.europa.eu/a4g/resource/AwardCriterionCost/2021-S-024-057196/20490be6-0b4d-3d2b-a4bd-79531c04a1c7>,
@@ -147,26 +156,15 @@
 
 <http://data.europa.eu/a4g/resource/LotPurpose/2021-S-024-057196/cbac108a-b047-3e09-a114-28c43d5b8706>
   a epo:Purpose;
-  epo:hasAdditionalClassification "http://data.europa.eu/cpv/cpv/OP_DATPRO"^^rr:IRI;
-  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/79900000>;
-  epo:hasOptions "true" .
-
-<http://data.europa.eu/a4g/resource/MonetaryValue/2021-S-024-057196/58509ec4-99dc-3865-9935-58d7ebd66d29>
-  a epo:MonetaryValue;
-  epo:hasAmountValue "2800000.00";
-  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/79900000> .
 
 <http://data.europa.eu/a4g/resource/MonetaryValueLot/2021-S-024-057196/0b50bf08-cd1d-3057-9364-9c2989323d2d>
   a epo:MonetaryValue;
-  epo:hasAmountValue "2800000.00";
+  epo:hasAmountValue 2800000.0;
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
 
-<http://data.europa.eu/a4g/resource/MonetaryValueSubmissionLowest/2021-S-024-057196/82b174c6-1f18-3b11-acf2-00977eeddafc>
-  a epo:MonetaryValue;
-  epo:hasCurrency "http://publications.europa.eu/resource/authority/currency/OP_DATPRO"^^rr:IRI .
-
 <http://data.europa.eu/a4g/resource/Notice/2021-S-024-057196/1f8688eb-32e7-368b-ad1c-2e76f17321dd>
-  a epo:Fund;
+  a epo:Notice;
   epo:hasID <http://data.europa.eu/a4g/resource/NoticeIdentifier/2021-S-024-057196/1f8688eb-32e7-368b-ad1c-2e76f17321dd> .
 
 <http://data.europa.eu/a4g/resource/NoticeIdentifier/2021-S-024-057196/1f8688eb-32e7-368b-ad1c-2e76f17321dd>
@@ -174,7 +172,7 @@
   epo:hasIdentifierValue "2020/S 128-312207" .
 
 <http://data.europa.eu/a4g/resource/Organisation/2021-S-024-057196/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
-  a epo:Organisation;
+  a org:Organization;
   epo:hasDeliveryGateway <http://data.europa.eu/a4g/resource/Channel/2021-S-024-057196/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>;
   epo:hasName """Europa-Kommissionen, Directorate-General for Employment, Social Affairs and
                         Inclusion
@@ -184,20 +182,20 @@
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-024-057196/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a locn:Address;
-  epo:postCode "1049";
-  epo:postName "Brussels";
-  epo:thoroughfare "27, Rue Joseph II (J-27 06/005)";
   locn:adminUnitL1 <http://data.europa.eu/nuts/code/BE10>;
-  locn:adminUnitL2 <http://publications.europa.eu/resource/authority/country/BEL> .
+  locn:adminUnitL2 <http://publications.europa.eu/resource/authority/country/BEL>;
+  locn:postCode "1049";
+  locn:postName "Brussels";
+  locn:thoroughfare "27, Rue Joseph II (J-27 06/005)" .
 
 <http://data.europa.eu/a4g/resource/Procedure/2021-S-024-057196/58509ec4-99dc-3865-9935-58d7ebd66d29>
   a epo:Procedure;
   epo:hasDescription """
                     Se udbudsdokumenter.
                 """@da;
-  epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/MonetaryValue/2021-S-024-057196/58509ec4-99dc-3865-9935-58d7ebd66d29>;
+  epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/ProcedureMonetaryValue/2021-S-024-057196/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2021-S-024-057196/1f8688eb-32e7-368b-ad1c-2e76f17321dd>;
-  epo:hasLegalBasis "http://publications.europa.eu/resource/authority/legal-basis/OP_DATPRO"^^rr:IRI;
+  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-024-057196/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasTitle """
                     Rammeaftale om Eures-kommunikation og Den Europæiske Arbejdsmarkedsmyndigheds arrangementstyring
@@ -211,39 +209,26 @@
   a epo:Identifier;
   epo:hasIdentifierValue "VT/2020/024" .
 
-<http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-024-057196/39b6c296-6d35-3f2e-acf8-91f37d9b86b1>
-  a epo:Purpose;
-  epo:hasAdditionalClassification "JA10";
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
-  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/79900000> .
+<http://data.europa.eu/a4g/resource/ProcedureMonetaryValue/2021-S-024-057196/58509ec4-99dc-3865-9935-58d7ebd66d29>
+  a epo:MonetaryValue;
+  epo:hasAmountValue 2800000.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
 
-<http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-024-057196/3afcfe18-c80d-37c8-a502-7319e1956dc8>
+<http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-024-057196/58509ec4-99dc-3865-9935-58d7ebd66d29>
   a epo:Purpose;
-  epo:hasAdditionalClassification "QA11";
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
-  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/79900000> .
-
-<http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-024-057196/855cfea2-4f18-383e-8218-36b549b78f7d>
-  a epo:Purpose;
-  epo:hasAdditionalClassification "JA07";
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
-  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/79900000> .
-
-<http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-024-057196/cd41088a-961c-3856-9435-8988c4b89816>
-  a epo:Purpose;
-  epo:hasAdditionalClassification "QA12";
+  epo:hasAdditionalClassification "JA07", "JA10", "QA11", "QA12";
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/79900000> .
 
 <http://data.europa.eu/a4g/resource/PurchaseContract/2021-S-024-057196/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>
   a epo:PurchaseContract;
-  epo:isWithinFrameworkAgreement "true" .
+  epo:isWithinFrameworkAgreement true .
 
 <http://data.europa.eu/a4g/resource/ResultNotice/2021-S-024-057196/58509ec4-99dc-3865-9935-58d7ebd66d29>
   a epo:ResultNotice;
   epo:announcesContract <http://data.europa.eu/a4g/resource/Contract/2021-S-024-057196/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>,
     <http://data.europa.eu/a4g/resource/PurchaseContract/2021-S-024-057196/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>;
-  epo:announcesRole <http://data.europa.eu/a4g/resource/Buyer/2021-S-024-057196/c3f45a6f-9ba2-3fbb-adbc-8ae94d139f7a>,
+  epo:announcesRole <http://data.europa.eu/a4g/resource/Buyer/2021-S-024-057196/f3b5cfa6-95c6-37b5-9667-808a141fe995>,
     <http://data.europa.eu/a4g/resource/ContractSignatoryOnContractorSide/2021-S-024-057196/b9a7c460-794b-36b5-a069-6e9a637315f4>,
     <http://data.europa.eu/a4g/resource/Reviewer/2021-S-024-057196/de2507f9-ae25-37c8-809c-0109efe10669>;
   epo:announcesTender <http://data.europa.eu/a4g/resource/Tender/2021-S-024-057196/82b174c6-1f18-3b11-acf2-00977eeddafc>;
@@ -264,17 +249,24 @@
 
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2021-S-024-057196/de2507f9-ae25-37c8-809c-0109efe10669>
   a epo:ContactPoint;
-  epo:hasEmail "GC.registry@curia.europa.eu";
   epo:hasFax "+352 4303-2100";
-  epo:hasTelephone "+352 4303-1" .
+  cccev:email "GC.registry@curia.europa.eu";
+  cccev:telephone "+352 4303-1" .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2021-S-024-057196/de2507f9-ae25-37c8-809c-0109efe10669>
-  a epo:Organisation;
+  a org:Organization;
   epo:hasDeliveryGateway <http://data.europa.eu/a4g/resource/ReviewerOrganisationChannel/2021-S-024-057196/de2507f9-ae25-37c8-809c-0109efe10669>;
   epo:hasID <http://data.europa.eu/a4g/resource/ReviewerOrganisationIdentifier/2021-S-024-057196/de2507f9-ae25-37c8-809c-0109efe10669>;
   epo:hasName "Retten"@da;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2021-S-024-057196/de2507f9-ae25-37c8-809c-0109efe10669>;
-  epo:hasRegisteredAddress <http://locn/ontology/ReviewerOrganisationAddress/2021-S-024-057196/de2507f9-ae25-37c8-809c-0109efe10669> .
+  epo:hasRegisteredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-024-057196/de2507f9-ae25-37c8-809c-0109efe10669> .
+
+<http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-024-057196/de2507f9-ae25-37c8-809c-0109efe10669>
+  a locn:Address;
+  locn:adminUnitL2 <http://publications.europa.eu/resource/authority/country/LUX>;
+  locn:postCode "L-2925";
+  locn:postName "Luxembourg";
+  locn:thoroughfare "Rue du Fort Niedergrünewald" .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationChannel/2021-S-024-057196/de2507f9-ae25-37c8-809c-0109efe10669>
   a epo:Channel;
@@ -289,7 +281,6 @@
   epo:concernsSubmissionsForLot <http://data.europa.eu/a4g/resource/Lot/2021-S-024-057196/cbac108a-b047-3e09-a114-28c43d5b8706>;
   epo:hasEEAReceivedTenders "2";
   epo:hasElectronicTenders "2";
-  epo:hasLowestReceivedTenderValue <http://data.europa.eu/a4g/resource/MonetaryValueSubmissionLowest/2021-S-024-057196/82b174c6-1f18-3b11-acf2-00977eeddafc>;
   epo:hasReceivedNonEEATenders "0";
   epo:hasReceivedSMETenders "0";
   epo:hasReceivedTenders "2" .
@@ -301,12 +292,12 @@
 
 <http://data.europa.eu/a4g/resource/TenderAwardOutcome/2021-S-024-057196/82b174c6-1f18-3b11-acf2-00977eeddafc>
   a epo:TenderAwardOutcome;
-  epo:isAwardedToWinner <http://data.europa.eu/a4g/resource/Tender/2021-S-024-057196/82b174c6-1f18-3b11-acf2-00977eeddafc>,
-    <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-024-057196/b9a7c460-794b-36b5-a069-6e9a637315f4> .
+  epo:awardsLotToWinner <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-024-057196/b9a7c460-794b-36b5-a069-6e9a637315f4>;
+  epo:describesTender <http://data.europa.eu/a4g/resource/Tender/2021-S-024-057196/82b174c6-1f18-3b11-acf2-00977eeddafc> .
 
 <http://data.europa.eu/a4g/resource/TenderMonetaryValue/2021-S-024-057196/82b174c6-1f18-3b11-acf2-00977eeddafc>
   a epo:MonetaryValue;
-  epo:hasAmountValue "2800000.00";
+  epo:hasAmountValue 2800000.0;
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
 
 <http://data.europa.eu/a4g/resource/TendererRole/2021-S-024-057196/b9a7c460-794b-36b5-a069-6e9a637315f4>
@@ -315,20 +306,5 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-024-057196/b9a7c460-794b-36b5-a069-6e9a637315f4>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-024-057196/b9a7c460-794b-36b5-a069-6e9a637315f4> .
-
-<http://locn/ontology/ContractOrganisationAddress/2021-S-024-057196/b9a7c460-794b-36b5-a069-6e9a637315f4>
-  a locn:Address;
-  epo:postCode "1040";
-  epo:postName "Brussels";
-  epo:thoroughfare "Rue Belliard 12";
-  locn:adminUnitL1 <http://data.europa.eu/nuts/code/BE>;
-  locn:adminUnitL2 <http://publications.europa.eu/resource/authority/country/BEL> .
-
-<http://locn/ontology/ReviewerOrganisationAddress/2021-S-024-057196/de2507f9-ae25-37c8-809c-0109efe10669>
-  a locn:Address;
-  epo:adminUnitL1 "http://data.europa.eu/nuts/OP_DATPRO"^^rr:IRI;
-  epo:postCode "L-2925";
-  epo:postName "Luxembourg";
-  epo:thoroughfare "Rue du Fort Niedergrünewald";
-  locn:adminUnitL2 <http://publications.europa.eu/resource/authority/country/LUX> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-024-057196/b9a7c460-794b-36b5-a069-6e9a637315f4>;
+  epo:playedByBusiness <http://data.europa.eu/a4g/resource/Business/2021-S-024-057196/b9a7c460-794b-36b5-a069-6e9a637315f4> .
