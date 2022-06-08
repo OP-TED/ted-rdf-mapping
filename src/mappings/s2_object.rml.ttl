@@ -174,7 +174,7 @@ tedm:FundIdentifier a rr:TripleMap ;
 tedm:Lot a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasGPAUsage;
+            rr:predicate epo:isCoveredbyGPA;
             rr:objectMap
                 [
                     rml:reference "exists(./*[matches(name(),'CONTRACT_COVERED_GPA')])"
@@ -227,7 +227,7 @@ tedm:Lot a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:forseesContractTerm ;
+            rr:predicate epo:foreseesContractTerm ;
             rr:objectMap
             [
                 rr:parentTriplesMap tedm:ContractTerm;
@@ -306,7 +306,7 @@ tedm:AwardCriterionCost a rr:TripleMap ;
 tedm:ContractTerm a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasSpecificPlaceOfPerformance ;
+            rr:predicate epo:definesSpecificPlaceOfPerformance ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ContractTermeLocation;
@@ -315,6 +315,15 @@ tedm:ContractTerm a rr:TriplesMap ;
                         rr:parent "./@ITEM";
                     ];
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasOptions;
+            rr:objectMap
+                [
+                    rml:reference "exists(./*[matches(name(),'OPTIONS')])";
+                    rr:datatype xsd:boolean
+                ]
         ] .
 tedm:ContractTermeLocation a rr:TriplesMap ;
 #    rr:predicateObjectMap
@@ -387,7 +396,7 @@ tedm:LotPurpose a rr:TriplesMap ;
                         rr:parent "code.value";
                     ];
                 ] ;
-        ] ;
+        ] .
 #    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasMainClassification ;
@@ -398,15 +407,7 @@ tedm:LotPurpose a rr:TriplesMap ;
 #                ]
 #
 #        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasOptions;
-            rr:objectMap
-                [
-                    rml:reference "exists(./*[matches(name(),'OPTIONS')])";
-                    rr:datatype xsd:boolean
-                ]
-        ] .
+
 tedm:LotIdentifier a rr:TripleMap ;
     rr:predicateObjectMap
         [
