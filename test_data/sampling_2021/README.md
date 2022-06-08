@@ -1,6 +1,6 @@
 # Sample TED notices from 2021
 
-This data sample contains carefully selected TED notices based on the following criteria: maximise notice representativeness, minimise the number of selected notices. The selected notices are guaranteed to cove all possible XPath configurations available in the data. 
+This data sample contains carefully selected TED notices based on the following criteria: maximise representativeness, minimise the number of selected documents. The selected notices are guaranteed to cove all possible XPath configurations available in the data. 
 
 * The current sampling exercise was performed on all records collected in 2021;
 * The data space was partitioned twice based on two criteria: the notice form number (e.g. F03, F06) and the eForms Subtype (e.g. cn-standard, can-utilities);
