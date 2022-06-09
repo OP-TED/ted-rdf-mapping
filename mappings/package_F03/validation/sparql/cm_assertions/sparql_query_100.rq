@@ -1,6 +1,7 @@
-#title: V.2.3.11 - Fax
-#description: “V.2.3.11 - Fax” in SF corresponds to “BT-739 Organisation Contact Fax” in eForms. The corresponding XML element is nanAWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/FAX. The expected ontology instances are epo: epo:Role (from CL1)  / org:Organization (from CL2) / epo:ContactPoint / rdf:langString .
+#title: V.2.3.8 - E-mail
+#description: “V.2.3.8 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is nanAWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/URL. The expected ontology instances are epo: epo:Role (from CL1)  / org:Organization (from CL2) / epo:ContactPoint / epo:URI .
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX cpov: <http://data.europa.eu/m8g/>
 
-ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / epo:hasFax ?value . }
+ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / cpov:email ?value . }

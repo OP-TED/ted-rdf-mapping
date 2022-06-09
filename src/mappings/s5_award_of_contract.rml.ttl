@@ -82,6 +82,26 @@ tedm:Contract a rr:TripleMap ;
             ] ;
     ] ;
     rr:predicateObjectMap
+    [
+        rr:predicate epo:bindsContractor ;
+        rr:objectMap
+            [
+                rr:parentTriplesMap tedm:ContractorRole;
+                rr:joinCondition [
+                    rr:child "./@ITEM";
+                    rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
+                ];
+            ] ;
+    ] ;
+    rr:predicateObjectMap
+    [
+        rr:predicate epo:bindsBuyer ;
+        rr:objectMap
+            [
+                rr:parentTriplesMap tedm:Buyer;
+            ] ;
+    ] ;
+    rr:predicateObjectMap
         [
             rr:predicate epo:hasID;
             rr:objectMap
