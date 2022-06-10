@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: ted-sws-artefacts-docs</title>
+    <meta name="generator" content="Antora 3.0.0">
+    <link rel="stylesheet" href="../_/css/site.css">
+    <script>var uiRootPath = '../_'</script>
+  </head>
+  <body class="article">
+<div class="navbar-item has-dropdown is-hoverable">
+<h1>TED-SWS</h1>
+</div><div class="body">
+<div class="nav-container" data-component="ted-sws-artefacts" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">TED-SWS artefacts documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="mapping-priorities.html">Mapping priorities</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="methodology.html">Methodology</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="mapping-suite-structure.html">Mapping Suite anatomy</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="repository-structure.html">Repository structure</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="cli-toolchain.html">Toolchain</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">TED-SWS artefacts documentation</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="index.html">TED-SWS artefacts documentation</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<div class="sect2">
+<h3 id="_rml-modules-chaper"><a class="anchor" href="#_rml-modules-chaper"></a>Create RML Rules Modules</h3>
+<div class="paragraph">
+<p>Forms tend to have sections, that are similar or identical i.e. represent the same information. For example form F03 and F06 have the same section 1 which is the information about the contract authority.</p>
+</div>
+<div class="paragraph">
+<p>In order to not write transformation rules twice (for section 1 of F03 and section 1 of F06), we have set up a module system which consists of writing transformation rules that are reusable by several forms. This gives us the following advantages:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Not to rewrite several times the same rules for several forms (avoid duplication of rules).</p>
+</li>
+<li>
+<p>In the case of an update of the ePO ontology, we will have to make the modification only once within the modules concerned by modification which will be passed on to all the forms.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As explained in <a href="mapping-creation-method.html" class="xref page">technical mappings' creation</a>, a TripleMAp represent a mapping of an XML element and its content with one class on the ontology and a set of its predicates objects. In order to have a module that can be reused on many forms we only define in this modules files the predicates objects of a TripleMap. , the logical sources and subjects map are described seperately in the main file as they contain specific information of forms.  For example a module that contain an organisation looked like that:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;#OrganisationMapping&gt; a rr:TriplesMap ;
+    rr:predicateObjectMap
+       [
+       rr:predicate epo:hasName ;
+       rr:objectMap
+               [
+                   rml:reference "OFFICIALNAME"
+               ]
+       ] ;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This module is extended in the main file of F03 by adding the logicalSource and the SubjectMap in this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;#OrganisationMapping&gt; a rr:TriplesMap ;
+   rml:logicalSource
+       [
+           rml:source "source.xml" ;
+           rml:referenceFormulation ql:XPath
+           rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY" ;
+
+       ] ;
+   rr:subjectMap
+       [
+           rr:template
+               "http://data.europa.eu/a4g/resource/Organisation/uuid_generation_function ;
+           rr:class epo:Organisation
+
+       ] ;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The modules are stored on the ted-sws-artefact project in the src folder.
+For the moment we covered five modules that represent the five sections of F03 and part of F06/F25. The modules are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>s1_contracting_authority.rml.ttl</p>
+</li>
+<li>
+<p>s2_object.rml.ttl</p>
+</li>
+<li>
+<p>s4_procedure.rml.ttl</p>
+</li>
+<li>
+<p>s5_award_of_contract.rml.ttl</p>
+</li>
+<li>
+<p>s6_complementary_information.rml.ttl</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The project contains one src folder containing all the modules files and one main file per form package. Here a representation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>/ted-sws-artefacts
+    /XXX
+    /mappings
+        /package_F03
+            /transformation
+                XXXX
+                /mappings
+                    technical_mapping_F03.rml.ttl
+        /package_XXX
+            /transformation
+                XXXX
+                /mappings
+                    technical_mapping_FXX.rml.ttl
+    /src
+        s1_contracting_authority.rml.ttl
+        s2_object.rml.ttl
+        s4_procedure.rml.ttl
+        s5_award_of_contract.rml.ttl
+        s6_complementary_information.rml.ttl</pre>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<div>
+</div>
+<script src="../_/js/site.js"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
