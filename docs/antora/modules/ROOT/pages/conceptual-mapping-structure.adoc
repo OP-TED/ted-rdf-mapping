@@ -1,0 +1,65 @@
+[#_conceptual-mapping-structure]
+== Conceptual mapping structure
+
+In this section we describe the structure of the mapping file that we aim to create as the result of the described mapping process. The mapping file is an Excel workbook containing multiple worksheets. This workbook is generated from a Google Sheets document, where it can be prepared, revised, and refined by multiple contributors in a collaborative fashion. The template for this spreadsheet is provided https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0[here]. This template informs software developers and knowledge engineers alike about what should be the content of such a mapping file.
+
+It consists of several important worksheets:
+
+* Metadata sheet: provides important technical and descriptive information about the mapping suite
+* Resources Sheet: provides the list of resources used in the technical mappings. This list is used to automatically populate the mapping suite with indicated resources files.
+* Rules sheet: provides the actual set of mapping rules
+* Misc: there are additional optional worksheets added by the semantic engineers to manage additional information.
+
+https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0[Metadata sheet]
+
+|===
+|*Cell refs.*|*Header for content*|*Description*|*Notes*
+
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B2[B2]|Form number|Standard Form number (one of _F03_-_F08_, _F12_-_F25_, _T1_ or _T2_). For multiple forms a comma separated list can be used.|See list of standard forms https://simap.ted.europa.eu/standard-forms-for-public-procurement[here]
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B3[B3]|Legal Basis|Filter for the directives that constitute the legal bases for the notice. For multiple directives a comma separated list can be used. For any value the character * can be used.|Examples: D24 / D23, D25 / R1370
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B4[B4]|Year|Filter for the year when the notice was published. For multiple years a comma separated list or ranges of the form _startYear-endYear_, or a combination of these two can be used. For any value the character * can be used.|Valid examples: 2018 / 2016-2020 / 2016, 2018-2020
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B5[B5]|Notice type (eForms)|[TODO]|
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B6[B6]|Form type (eForms)|[TODO]|
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B7[B7]|Mapping Version|A version number for the current mapping table. The version number should be increased for each “released” version of the mapping table that is different from the previously released version, following https://semver.org/[semantic versioning] practices.|Example values: 0.1.0 / 1.0.0-beta / 1.1.0 / 2.3.2
+
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B8[B8]|EPO version|The version number of EPO to which the mapping is done.|
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B9[B9]|XSD version number(s)|The version number of the TED XML Schema file. Ranges should be also allowed. For multiple versions a comma separated list or ranges of the form (_startVersion, endVersion)_, or a combination of these two can be used. For any value the character * can be used.|Example values: R2.0.9.S05 (this includes all intermediary versions of R2.0.9.S05.E01, such as R2.0.9.S05.E01_001-20210730) /
+ R2.0.9.S04.E01_002-20201027, R2.0.9.S04.E01_001-20201008 /
+(R2.0.9.S03.E01_005-20180515, R2.0.9.S03.E01_010-20200224] /
+Theoretically anything like this could be used: (,1.0],[1.2,)
+
+||||
+|===
+
+https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=222960787[Resources sheet]
+
+|===
+|*Cell refs.*|*Header for content*|*Description*|*Notes*
+
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=222960787&range=A2:A[A2:A]|File name|The name of the resource files that are used by the mappings and need to be present in the +resources +folder.|
+||||
+|===
+
+
+https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674[Rules sheet]
+
+|===
+|*Cell refs.*|*Header for content*|*Description*|*Notes*
+|*A:D*|*Conceptual mapping*||
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674&range=A3:A[A3:A]|Standard Form Field ID (M)|The “identifier” of the field in the Standard Form PDF file. Usually the field number, such as _IV.1.1.1.2_, or the section name, e.g. “_Section IV_”|Mandatory
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674&range=B3:B[B3:B]|Standard Form Field Name (M)|The name of the field in the Standard Form PDF|Mandatory
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674&range=C3:C[C3:C]|eForm BT-ID (O)|The ID of the corresponding business term (BT) or business term group (BG) in eForms. The values are coming from the column B of this spreadsheet (or one of its equivalents): |Optional
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674&range=D3:D[D3:D]|eForm BT Name (O)|The name of the corresponding business term (BT) or business term group (BG) in eForms. The values are coming from the column C of this spreadsheet (or one of its equivalents): |Optional
+|*E:F*|*Standard form technical mapping*||
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674&range=E3:E[E3:E]|Base XPath (for anchoring) (M)|The “base” XPath that identifies an XML element and all of its subelements. It can be specified at the level of a section, or subsection, so that writing XPaths for form elements within that (sub)section will not have to repeat over and over again the “base” XPath.|Mandatory
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674&range=F3:F[F3:F]|Field XPath (M)|The XPath that identifies the form element, which is relative to the “base” XPath that was specified for the closest  element above this one.|Mandatory
+|*G:J*|*ePO mapping*||
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674&range=G3:G[G3:G]|Class path (M)|Specifies the types of the resources involved in the entire “path” from the subject to the object, which “connects” the concept that represents this XML element (the object), to an RDF resource already created from previous XML elements (the subject). So, if the representation of an XML element involves the creation of the following triples:
+_s p1 o1.   o1 p2 o2.   o2 p3 o._|Mandatory
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674&range=H3:H[H3:H]|Property path (M)|Specifies the properties involved in the entire “path” from the subject to the object, which “connects” the concept that represents this XML element (the object), to an RDF resource already created from previous XML elements (the subject). So, if the representation of an XML element involves the creation of the following triples:
+_s p1 o1.   o1 p2 o2.   o2 p3 o._|Mandatory
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674&range=I3:I[I3:I]|Triple fingerprint (O)|[TODO]|Optional
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674&range=J3:J[J3:J]|Fragment fingerprint (O)|[TODO]|Optional
+||||
+|===
+

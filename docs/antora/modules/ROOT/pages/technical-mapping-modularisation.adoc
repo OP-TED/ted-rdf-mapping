@@ -1,0 +1,79 @@
+[#_rml-modules-chaper]
+=== Create RML Rules Modules
+Forms tend to have sections, that are similar or identical i.e. represent the same information. For example form F03 and F06 have the same section 1 which is the information about the contract authority.
+
+In order to not write transformation rules twice (for section 1 of F03 and section 1 of F06), we have set up a module system which consists of writing transformation rules that are reusable by several forms. This gives us the following advantages:
+
+* Not to rewrite several times the same rules for several forms (avoid duplication of rules).
+
+* In the case of an update of the ePO ontology, we will have to make the modification only once within the modules concerned by modification which will be passed on to all the forms.
+
+
+As explained in xref:mapping-creation-method.adoc[technical mappings' creation], a TripleMAp represent a mapping of an XML element and its content with one class on the ontology and a set of its predicates objects. In order to have a module that can be reused on many forms we only define in this modules files the predicates objects of a TripleMap. , the logical sources and subjects map are described seperately in the main file as they contain specific information of forms.  For example a module that contain an organisation looked like that:
+----
+<#OrganisationMapping> a rr:TriplesMap ;
+    rr:predicateObjectMap
+       [
+       rr:predicate epo:hasName ;
+       rr:objectMap
+               [
+                   rml:reference "OFFICIALNAME"
+               ]
+       ] ;
+
+----
+
+This module is extended in the main file of F03 by adding the logicalSource and the SubjectMap in this way:
+
+
+----
+<#OrganisationMapping> a rr:TriplesMap ;
+   rml:logicalSource
+       [
+           rml:source "source.xml" ;
+           rml:referenceFormulation ql:XPath
+           rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY" ;
+
+       ] ;
+   rr:subjectMap
+       [
+           rr:template
+               "http://data.europa.eu/a4g/resource/Organisation/uuid_generation_function ;
+           rr:class epo:Organisation
+
+       ] ;
+----
+The modules are stored on the ted-sws-artefact project in the src folder.
+For the moment we covered five modules that represent the five sections of F03 and part of F06/F25. The modules are:
+
+* s1_contracting_authority.rml.ttl
+* s2_object.rml.ttl
+* s4_procedure.rml.ttl
+* s5_award_of_contract.rml.ttl
+* s6_complementary_information.rml.ttl
+
+The project contains one src folder containing all the modules files and one main file per form package. Here a representation:
+
+----
+/ted-sws-artefacts
+    /XXX
+    /mappings
+        /package_F03
+            /transformation
+                XXXX
+                /mappings
+                    technical_mapping_F03.rml.ttl
+        /package_XXX
+            /transformation
+                XXXX
+                /mappings
+                    technical_mapping_FXX.rml.ttl
+    /src
+        s1_contracting_authority.rml.ttl
+        s2_object.rml.ttl
+        s4_procedure.rml.ttl
+        s5_award_of_contract.rml.ttl
+        s6_complementary_information.rml.ttl
+----
+
+
