@@ -1,4 +1,4 @@
-## Mapping suite package structure
+== Mapping suite package structure
 
 In this section we describe the structure of a “mapping suite package” in GitHub. Such a package contains everything that is needed for the development and testing of a given “mapping suite” that is applicable to a certain set of notices. After the package is finalised, it can be used by a process to apply it to a large number of notices stored in a database, and would transform those notices into RDF data.
 
@@ -7,7 +7,7 @@ A package is represented by a well-defined folder structure containing certain f
 The structure of the package changes through the different phases of the mapping development process. Below we describe how such a package looks in three phases of the mapping development.
 
 
-### Mapping suite package description for Semantic Engineers
+=== Mapping suite package description for Semantic Engineers
 
 In the first, initial, phase, when the Semantic Engineers start working on a new mapping suite, they will have to set up a package folder structure similar to the one described below, and will work on (or with) the files contained there.
 
@@ -17,7 +17,7 @@ In the first, initial, phase, when the Semantic Engineers start working on a new
 
 The structure of an example mapping package folder structure is presented below:
 
-```
+----
 /package_Fxx
 	/transformation
 		conceptual_mappings.xlsx
@@ -29,11 +29,11 @@ The structure of an example mapping package folder structure is presented below:
 			*.json, *.xml, *.csv
 	/test_data
 		*.xml
-```
+----
 
 * `/package_Fxx` root folder of the mapping suite
 
-* `/transformation/conceptual_mappings.xlsx` manually created (from the Google Sheet template described link:conceptual-mapping-structure.adoc[here])
+* `/transformation/conceptual_mappings.xlsx` manually created (from the Google Sheet template described xref:conceptual-mapping-structure.adoc[here])
 
 * `/transformation/mappings` either manually created, automatically generated from YARRRML file, or managed in a modular fashion elsewhere
 
@@ -47,9 +47,9 @@ The only reason we might have it listed here, at this stage of the mapping devel
 
 * `technical_mappings.yarrrml.yaml` (optional) manually created, but lately not used
 
-### Mapping suite package description for the Software Engineers
+=== Mapping suite package description for the Software Engineers
 
-A package provided by the semantic engineers (SE) is enriched with additional artefacts that are generated automatically using the link:cli-toolchain.adoc[package expanding tools] which take as input the artefacts provided by the SE. Here are some examples of these additional artefacts that are being generated:
+A package provided by the semantic engineers (SE) is enriched with additional artefacts that are generated automatically using the xref:cli-toolchain.adoc[package expanding tools] which take as input the artefacts provided by the SE. Here are some examples of these additional artefacts that are being generated:
 
 * *Metadata* describing the parameters for selecting the notices that the mappings can be applied to, various version informations, etc.
 * *SPARQL queries* that can be used to validate and/or test the generated outputs
@@ -58,7 +58,7 @@ A package provided by the semantic engineers (SE) is enriched with additional ar
 
 After the package processing/expansion, the structure of the example mapping package presented in the previous subsection would look like this:
 
-```
+----
 /package_Fxx
 	metadata.json
 	/transformation
@@ -80,7 +80,7 @@ After the package processing/expansion, the structure of the example mapping pac
 	/test_data # manually and carefully selected test data
 		*.xml
 
-```
+----
 
 * `metadata.json` automatically generated from Metadata sheet of conceptual_mapping.xlsx
 
@@ -92,11 +92,11 @@ After the package processing/expansion, the structure of the example mapping pac
 
 * `/validation/sparql/cm_assertions` SPARQL queries automatically generated from the conceptual mapping
 
-### Mapping suite package description for the Semantic Engineers after the expansion
+=== Mapping suite package description for the Semantic Engineers after the expansion
 
 After the “execution” of a mapping, the mapping package will be further enriched, and will contain additional files, as a result of running the mapping suite on the included test data.
 
-```
+----
 /package_Fxx
 	metadata.json
 	/transformation
@@ -129,7 +129,7 @@ After the “execution” of a mapping, the mapping package will be further enri
 		notice_file2.xml
         notice_file3.xml
 		*.xml
-```
+----
 
 * `/output/notice_file1` for each example file we create a folder that will contain all the generated artefacts for that sample file
 * `/output/test_suite_report`  validation reports summarising all individual reports
