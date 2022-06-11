@@ -1,0 +1,33 @@
+# Repository structure
+
+Transformation rules and other artefacts for the https://github.com/meaningfy-ws/ted-sws[TED Semantic Web Services (TED-SWS)] system are organised in https://github.com/meaningfy-ws/ted-sws-artefacts[this repository].
+
+The repository is organised as presented below. Next we describe the important folders and their purpose.
+
+----
+/docs
+    /antora
+/mappings
+    /package_F03
+    /package_F06
+    /package_F025
+    ...
+/src
+    /mappings
+        *.rml.ttl
+/test_data
+    /sampling_2021
+    /sampling_manual
+Makefile
+requirements.txt
+----
+
+`/docs` folder contains this documentation. It is written in https://asciidoc.org/[AsciiDoc format] and compiled with https://antora.org/[Antora system].
+
+`/mappings` folder contains xref:mapping-suite-structure.adoc[mapping suite packages] organised based on the standard forms numbers. Their name is formed based on the form number (e.g. F03, F06) prefixed with `package` for readability. When the eForms will be mapped, then the corresponding appropriate organisation will be chosen.
+
+`/src/mappings` folder represents the single source of truth for the mapping rules across various mapping suite packages. This is necessary because of the xref:partial$methodology/technical-mapping-modularisation.adoc[modularisation and reuse method] adopted in this project. The basic idea is that the mapping rules are organised in modules and all stored in the source folder. Each mapping suite provides in the xref:partial$methodology/conceptual-mapping-structure.adoc[conceptual mapping workbook] the list of modules that be used to compose the complete set of transformation rules of the mapped form number.
+
+`/test_data` folder contains sample https://ted.europa.eu/TED/browse/browseByMap.do[TED notices] originating by different selection methods. Some manually selected data are available in the `/sampling_manual` and automatically generated notices in `/sampling_2021` described xref:preparing-test-data.adoc[here]. More automated samples will follow.
+
+
