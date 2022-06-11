@@ -21,9 +21,6 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="mapping-priorities.html">Mapping priorities</a>
-  </li>
   <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="methodology.html">Methodology</a>
   </li>
@@ -35,6 +32,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="cli-toolchain.html">Toolchain</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="preparing-test-data.html">Data sampling</a>
   </li>
 </ul>
   </li>
@@ -79,7 +79,6 @@
 <h1 class="page">Methodology</h1>
 <div id="preamble">
 <div class="sectionbody">
-<!-- toc disabled -->
 <div class="paragraph">
 <p>The purpose of this guide is to describe a <strong>methodology for creating mapping rules</strong> that can be used for transforming XML data representing the content of the TED “Standard” Forms into RDF graphs that conform to the <a href="https://github.com/OP-TED/ePO">ePO ontology</a>.</p>
 </div>
@@ -113,7 +112,7 @@
 <p>Once the target form is selected, <strong>a set of representative shall be selected</strong> in order to serve as a test set for the developed mapping.</p>
 </div>
 <div class="paragraph">
-<p>The notice classification scheme is usually subject to regulations and described in multiple forms starting from PDF documents, XSD schemes, and other documents. All possible documentation and modelling artefacts are <strong>analysed in order to produce a conceptual mapping</strong> (see <a href="conceptual-mapping-structure.html" class="xref page">conceptual mapping structure</a> ). This artefact, stored as a workbook, establishes the correspondence of the TED notice fields, to XPath expressions and to EPO structures.</p>
+<p>The notice classification scheme is usually subject to regulations and described in multiple forms starting from PDF documents, XSD schemes, and other documents. All possible documentation and modelling artefacts are <strong>analysed in order to produce a conceptual mapping</strong> (see <a href="#conceptual-mapping-structure.adoc" class="xref unresolved">conceptual mapping structure</a> ). This artefact, stored as a workbook, establishes the correspondence of the TED notice fields, to XPath expressions and to EPO structures.</p>
 </div>
 <div class="paragraph">
 <p>Once the conceptual mapping is established between the XPath expressions and ontology structures, <strong>a corresponding technical mapping is implemented</strong>. This technical mapping consists of a set of mapping rules expressed in <a href="https://rml.io/specs/rml/">RDF Mapping Language (RML)</a> and it represents a translation of the conceptual mapping into a formal language which can be automatically executed by a transformation engine, such as <a href="https://github.com/RMLio/rmlmapper-java">RMLMapper</a>.</p>
@@ -245,13 +244,256 @@
 </div>
 </div>
 <div class="sect1">
+<h2 id="_conceptual-mapping-structure"><a class="anchor" href="#_conceptual-mapping-structure"></a>Conceptual mapping structure</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this section we describe the structure of the mapping file that we aim to create as the result of the described mapping process. The mapping file is an Excel workbook containing multiple worksheets. This workbook is generated from a Google Sheets document, where it can be prepared, revised, and refined by multiple contributors in a collaborative fashion. The template for this spreadsheet is provided <a href="https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0">here</a>. This template informs software developers and knowledge engineers alike about what should be the content of such a mapping file.</p>
+</div>
+<div class="paragraph">
+<p>It consists of several important worksheets:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Metadata sheet: provides important technical and descriptive information about the mapping suite</p>
+</li>
+<li>
+<p>Resources Sheet: provides the list of resources used in the technical mappings. This list is used to automatically populate the mapping suite with indicated resources files.</p>
+</li>
+<li>
+<p>Rules sheet: provides the actual set of mapping rules</p>
+</li>
+<li>
+<p>Misc: there are additional optional worksheets added by the semantic engineers to manage additional information.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0">Metadata sheet</a></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Cell refs.</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Header for content</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Notes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&amp;range=B2">B2</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Form number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard Form number (one of <em>F03</em>-<em>F08</em>, <em>F12</em>-<em>F25</em>, <em>T1</em> or <em>T2</em>). For multiple forms a comma separated list can be used.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See list of standard forms <a href="https://simap.ted.europa.eu/standard-forms-for-public-procurement">here</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&amp;range=B3">B3</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Legal Basis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for the directives that constitute the legal bases for the notice. For multiple directives a comma separated list can be used. For any value the character * can be used.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Examples: D24 / D23, D25 / R1370</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&amp;range=B4">B4</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Year</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for the year when the notice was published. For multiple years a comma separated list or ranges of the form <em>startYear-endYear</em>, or a combination of these two can be used. For any value the character * can be used.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Valid examples: 2018 / 2016-2020 / 2016, 2018-2020</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&amp;range=B5">B5</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Notice type (eForms)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[TODO]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&amp;range=B6">B6</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Form type (eForms)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[TODO]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&amp;range=B7">B7</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mapping Version</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A version number for the current mapping table. The version number should be increased for each “released” version of the mapping table that is different from the previously released version, following <a href="https://semver.org/">semantic versioning</a> practices.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example values: 0.1.0 / 1.0.0-beta / 1.1.0 / 2.3.2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&amp;range=B8">B8</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EPO version</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The version number of EPO to which the mapping is done.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&amp;range=B9">B9</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">XSD version number(s)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The version number of the TED XML Schema file. Ranges should be also allowed. For multiple versions a comma separated list or ranges of the form (<em>startVersion, endVersion)</em>, or a combination of these two can be used. For any value the character * can be used.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example values: R2.0.9.S05 (this includes all intermediary versions of R2.0.9.S05.E01, such as R2.0.9.S05.E01_001-20210730) /
+ R2.0.9.S04.E01_002-20201027, R2.0.9.S04.E01_001-20201008 /
+(R2.0.9.S03.E01_005-20180515, R2.0.9.S03.E01_010-20200224] /
+Theoretically anything like this could be used: (,1.0],[1.2,)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><a href="https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=222960787">Resources sheet</a></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Cell refs.</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Header for content</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Notes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=222960787&amp;range=A2:A">A2:A</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">File name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the resource files that are used by the mappings and need to be present in the +resources +folder.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><a href="https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674">Rules sheet</a></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cell refs.</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Header for content</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Description</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Notes</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>A:D</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Conceptual mapping</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674&amp;range=A3:A">A3:A</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard Form Field ID (M)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The “identifier” of the field in the Standard Form PDF file. Usually the field number, such as <em>IV.1.1.1.2</em>, or the section name, e.g. “<em>Section IV</em>”</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mandatory</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674&amp;range=B3:B">B3:B</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard Form Field Name (M)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the field in the Standard Form PDF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mandatory</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674&amp;range=C3:C">C3:C</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eForm BT-ID (O)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The ID of the corresponding business term (BT) or business term group (BG) in eForms. The values are coming from the column B of this spreadsheet (or one of its equivalents):</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674&amp;range=D3:D">D3:D</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eForm BT Name (O)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the corresponding business term (BT) or business term group (BG) in eForms. The values are coming from the column C of this spreadsheet (or one of its equivalents):</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>E:F</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Standard form technical mapping</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674&amp;range=E3:E">E3:E</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Base XPath (for anchoring) (M)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The “base” XPath that identifies an XML element and all of its subelements. It can be specified at the level of a section, or subsection, so that writing XPaths for form elements within that (sub)section will not have to repeat over and over again the “base” XPath.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mandatory</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674&amp;range=F3:F">F3:F</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Field XPath (M)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The XPath that identifies the form element, which is relative to the “base” XPath that was specified for the closest  element above this one.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mandatory</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>G:J</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ePO mapping</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674&amp;range=G3:G">G3:G</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Class path (M)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the types of the resources involved in the entire “path” from the subject to the object, which “connects” the concept that represents this XML element (the object), to an RDF resource already created from previous XML elements (the subject). So, if the representation of an XML element involves the creation of the following triples:
+<em>s p1 o1.   o1 p2 o2.   o2 p3 o.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mandatory</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674&amp;range=H3:H">H3:H</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Property path (M)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the properties involved in the entire “path” from the subject to the object, which “connects” the concept that represents this XML element (the object), to an RDF resource already created from previous XML elements (the subject). So, if the representation of an XML element involves the creation of the following triples:
+<em>s p1 o1.   o1 p2 o2.   o2 p3 o.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mandatory</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674&amp;range=I3:I">I3:I</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Triple fingerprint (O)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[TODO]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674&amp;range=J3:J">J3:J</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fragment fingerprint (O)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[TODO]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_mapping_development_methodology"><a class="anchor" href="#_mapping_development_methodology"></a>Mapping development methodology</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The purpose of this section is to give a high-level overview of the process that we follow to create the mapping rules that are used to transform TED notices available as XML files into RDF triples that use ePO terms.</p>
 </div>
 <div class="paragraph">
-<p>The methodology that we describe here, focuses on a few steps and artefacts that are at the core of the diagram depicted in <a href="#mapping-creation">Figure 2</a>. This diagram shows only a part of the <a href="#mapping-lifecycle.adoc#mapping-lifecycle" class="xref unresolved">mapping lifecycle</a>.</p>
+<p>The methodology that we describe here, focuses on a few steps and artefacts that are at the core of the diagram depicted in <a href="#mapping-creation">Figure 2</a>. This diagram shows only a part of the <a href="#partial$methodology/mapping-lifecycle.adoc" class="xref unresolved">mapping lifecycle</a>.</p>
 </div>
 <div id="mapping-creation" class="imageblock text-center">
 <div class="content">
@@ -671,6 +913,112 @@ We have two use cases of connecting two TriplesMaps by using the <code>rr:parent
 </div>
 <div class="paragraph">
 <p>Problems that were successfully resolved should be integrated in this guide, as recommendations, e.g. in one of the above sections, and marked as [SOLVED] in the document. Unless the problem turns out to be fairly trivial, or there is only one obvious solution to it. It would be recommended NOT to delete the issue from the “Problem description” document, so that we can keep track of the different issues, and the thinking that went into choosing certain solutions.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_create_rml_rules_modules"><a class="anchor" href="#_create_rml_rules_modules"></a>Create RML Rules Modules</h3>
+<div class="paragraph">
+<p>Forms tend to have sections, that are similar or identical i.e. represent the same information. For example form F03 and F06 have the same section 1 which is the information about the contract authority.</p>
+</div>
+<div class="paragraph">
+<p>In order to not write transformation rules twice (for section 1 of F03 and section 1 of F06), we have set up a module system which consists of writing transformation rules that are reusable by several forms. This gives us the following advantages:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Not to rewrite several times the same rules for several forms (avoid duplication of rules).</p>
+</li>
+<li>
+<p>In the case of an update of the ePO ontology, we will have to make the modification only once within the modules concerned by modification which will be passed on to all the forms.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As explained in <a href="#partial$methodology/mapping-creation-method.adoc" class="xref unresolved">technical mappings' creation</a>, a TripleMAp represent a mapping of an XML element and its content with one class on the ontology and a set of its predicates objects. In order to have a module that can be reused on many forms we only define in this modules files the predicates objects of a TripleMap. , the logical sources and subjects map are described seperately in the main file as they contain specific information of forms.  For example a module that contain an organisation looked like that:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;#OrganisationMapping&gt; a rr:TriplesMap ;
+    rr:predicateObjectMap
+       [
+       rr:predicate epo:hasName ;
+       rr:objectMap
+               [
+                   rml:reference "OFFICIALNAME"
+               ]
+       ] ;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This module is extended in the main file of F03 by adding the logicalSource and the SubjectMap in this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;#OrganisationMapping&gt; a rr:TriplesMap ;
+   rml:logicalSource
+       [
+           rml:source "source.xml" ;
+           rml:referenceFormulation ql:XPath
+           rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY" ;
+
+       ] ;
+   rr:subjectMap
+       [
+           rr:template
+               "http://data.europa.eu/a4g/resource/Organisation/uuid_generation_function ;
+           rr:class epo:Organisation
+
+       ] ;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The modules are stored on the ted-sws-artefact project in the src folder.
+For the moment we covered five modules that represent the five sections of F03 and part of F06/F25. The modules are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>s1_contracting_authority.rml.ttl</p>
+</li>
+<li>
+<p>s2_object.rml.ttl</p>
+</li>
+<li>
+<p>s4_procedure.rml.ttl</p>
+</li>
+<li>
+<p>s5_award_of_contract.rml.ttl</p>
+</li>
+<li>
+<p>s6_complementary_information.rml.ttl</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The project contains one src folder containing all the modules files and one main file per form package. Here a representation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>/ted-sws-artefacts
+    /XXX
+    /mappings
+        /package_F03
+            /transformation
+                XXXX
+                /mappings
+                    technical_mapping_F03.rml.ttl
+        /package_XXX
+            /transformation
+                XXXX
+                /mappings
+                    technical_mapping_FXX.rml.ttl
+    /src
+        s1_contracting_authority.rml.ttl
+        s2_object.rml.ttl
+        s4_procedure.rml.ttl
+        s5_award_of_contract.rml.ttl
+        s6_complementary_information.rml.ttl</pre>
+</div>
 </div>
 </div>
 </div>
