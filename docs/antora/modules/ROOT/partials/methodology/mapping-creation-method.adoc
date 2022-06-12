@@ -1,8 +1,9 @@
+[#_mapping_creation_method]
 == Mapping development methodology
 
 The purpose of this section is to give a high-level overview of the process that we follow to create the mapping rules that are used to transform TED notices available as XML files into RDF triples that use ePO terms.
 
-The methodology that we describe here, focuses on a few steps and artefacts that are at the core of the diagram depicted in <<mapping-creation>>. This diagram shows only a part of the xref:partial$methodology/mapping-lifecycle.adoc[mapping lifecycle].
+The methodology that we describe here, focuses in a few steps and artefacts that are at the core of the diagram depicted in <<mapping-creation>>. This diagram shows only a part of the xref:partial$methodology/mapping-lifecycle.adoc[mapping lifecycle].
 
 [#mapping-creation]
 .Mapping creation steps in the development lifecycle
@@ -35,7 +36,7 @@ The focus here is on describing the steps how the *conceptual mapping* and the *
 *Testing the mapping in various ways* to discover potential problems and improve it:
 
 * Run the mapping on all test notices files and analyse the output
-* Generate the various validation outputs (SHACL shapes, SPARQL queries etc), for all test data and analyse it
+* Generate the various validation outputs (SHACL shapes, SPARQL queries etc.), for all test data and analyse it
 * Execute the other steps in the mapping development lifecycle to find potential issues and refine the mapping
 
 Next we provide more detailed descriptions of steps in more detail.
@@ -48,7 +49,7 @@ The conceptual mapping (see structure description here ) is the first artefact t
 
 To identify the XML elements that contain information to be mapped to RDF we look at:
 
-* The “Standard Forms to eForms” mapping table that corresponds to the form that we are trying to map. This provides us both with the list of the form elements, as well as XPath expressions that can be used to retrieve the appropriate information (from XML elements, attributes, etc) from the XML data. *Note: *Some of these XPaths are pretty straight forward, but other times they can be quite complicated, or multiple XPaths are used to retrieve alternative values. We need to test these XPaths, and see if we can write simpler, better and/or more appropriate ones.
+* The “Standard Forms to eForms” mapping table that corresponds to the form that we are trying to map. This provides us both with the list of the form elements, and XPath expressions that can be used to retrieve the appropriate information (from XML elements, attributes, etc.) from the XML data. *Note: *Some of these XPaths are pretty straight forward, but other times they can be quite complicated, or multiple XPaths are used to retrieve alternative values. We need to test these XPaths, and see if we can write simpler, better and/or more appropriate ones.
 * The *TED_EXPORT.xsd* schema file, corresponding to the XML version that we are trying to map. *Note:* Special attention should be paid to the structure of the XML document (especially when we have repeating elements, or multiple levels of nesting, sometimes involving elements with very similar names)
 * The *PDF form* that we are trying to map, to make sure that all the elements are covered and the correct semantic of the fields has been identified
 Individual XML notices available in our test data set, as well as data extracted from these sample notices and compiled in tables to provide an overview of the different values that are contained in the test regarding a certain field.
@@ -59,7 +60,7 @@ Although this is not necessary for the conversion of the Standard Form XML to RD
 ==== Identify ePO terms (classes and relations) that correspond to XML elements and their relationships
 Basically, in this step, we need to identify the appropriate classes, class attributes, and relationships between the ePO classes that can be used to represent the information contained in the various XML elements. This requires a deep understanding of the ePO model.
 
-Identifying the relevant ePO terms might not be very straightforward in some cases, as there is quite a significant difference between the conceptualisation and abstractisations made in the two models, and we can often encounter situations where even the names used for the same concept might differ significantly in the two models. Therefore, in this step it is *highly recommended* to consult with people who have a high level of knowledge of the structure and content of the ePO model.
+Identifying the relevant ePO terms might not be very straightforward in some cases, as there is quite a significant difference between the conceptualisation and abstractisations made in the two models, and we can often encounter situations where even the names used for the same concept might differ significantly in the two models. Therefore, in this step it is *highly recommended* consulting with people who have a high level of knowledge of the structure and content of the ePO model.
 
 Make sure to *document* any problems and discrepancies that we discover, which prevents the creation of a perfect (one-to-one) mapping. This documentation should happen both on the spreadsheet (e.g. by highlighting problematic cells in certain colours and/or adding comments to them), but also by describing issues in a separate, dedicated, document that can be reviewed and addressed by ePO experts. For more on the documentation process see section below.
 
@@ -74,15 +75,56 @@ To identify the value sets (i.e. the possible different values) that are used in
 
 ==== Identify value sets in ePO and in other vocabularies, corresponding to XML controlled values used in the XML files
 
-For this step we should identify the different vocabularies that are referenced by ePO attributes and relationships that are involved in the mapping of a certain XML element, and we should gain some familiarity with that vocabulary. At minimum we should know what namespace they are using and what are some of the values and how are they encoded (i.e. which properties they are using to encode labels, ids, etc).
+For this step we have to identify the different vocabularies that are referenced by ePO attributes and relationships that are involved in the mapping of a certain XML element, and we should gain some familiarity with that vocabulary. At minimum, we should know what namespace they are using and what are some values and how are they encoded (i.e. which properties they are using to encode labels, ids, etc).
 
 ==== Write Turtle fragments that provide a template for the triples that should be generated, and which can be used in the RML mapping rules
 
-TODO
+To give an example of an input (XML notice's fragment), and it's transformation (RDF result), let's see a fragment of an organisation definition.
+
+===== XML fragment (source.xml)
+
+----
+<TED_EXPORT>
+    <FORM_SECTION>
+        <F03_2014 CATEGORY="ORIGINAL" FORM="F03" LG="PT">
+            <CONTRACTING_BODY>
+                <ADDRESS_CONTRACTING_BODY>
+                    <OFFICIALNAME>Administração Regional de Saúde do Alentejo, I. P.</OFFICIALNAME>
+                <ADDRESS_CONTRACTING_BODY>
+            <CONTRACTING_BODY>
+        <F03_2014 CATEGORY="ORIGINAL" FORM="F03" LG="PT">
+    <FORM_SECTION>
+<TED_EXPORT>
+
+----
+===== Expected RDF result (result.ttl)
+----
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+
+epo:Organization/2021-S-001-000163/ab152979-15bf-30c3-b6f3-e0c554cfa9d0
+    a org:Organization;
+    epo:hasName "Administração Regional de Saúde do Alentejo, I. P."@pt .
+
+----
+To see the corresponding RML rules that we are writing to do such a transformation please see section below: <<_write_rml_rules>>.
 
 ==== Identify and document problems/issue/questions to be clarified with external experts
 
-TODO
+When we take a look at the way how the RML rules are writen (see <<_technical-mapping-modularisation-chapter,technical mapping chapter>>) we notice that it is a set of TripleMap. Each one contains:
+
+* "LogicalSource" that gives information about the *source* (XML file to transform)
+
+* "referenceFormulation" witch is the language used to parse the source.
+
+The main problem that we had when we are using XPath as parser of XML notices, is the old version used by https://github.com/RMLio/rmlmapper-java[RML Mapper] to parse the XML notices.
+The only version that were supported is XPath 1.0 that did not offer enough features, functions and expressions to parse an XML file.
+
+For example, XPath 1.0 does not support the default namespaces that we find in the notices that we are transforming. The consequences of having these namespaces in the XML notices is that RML Mapper did generate empty RDF result because XPath does not find any element that we are referring for. To handle this problem we started to think to add a pre-processing step that remove these default namespaces from the XML notices. We were not convinced by that solution because modifying/deleting element from the input can impact the quality of the expected results.
+
+So that's why we contacted the founders of RML Mapper to find a way to handle default namespaces without processing the XML notices.
+
+The founders ended up by generously offering us a new version of RML Mapper that supports XPath 2.0/3.0 into witch the default namespaces are supported.
 
 === Steps involved in the technical mapping process
 
@@ -98,11 +140,11 @@ This step is about making sure that all necessary sources are defined properly i
 
 ====  Prepare test data
 
-TODO
+Please refer to the xref:preparing-test-data.adoc[representative sample data selection chapter].
 
 ==== Write YARRRML Rules (optional)
 
-During the initial phase of our mapping creation process we started out writing the mapping rules in https://rml.io/yarrrml/spec/[YARRRML] (a human readable text-based representation for declarative generation rules), instead of RML, because it seemed simpler, and the end result was more human friendly. However, as we gained more experience and confidence in how the mappings should be defined, we realised that writing RML rules directly could be even more powerful, and we started to rewrite all our YARRRML mapping rules into RML. If this transition proves to be successful, and writing RML rules directly will be more convenient, our process will not require writing YARRRML rules in the future. This is the reason for why this step is optional. It could be useful for small test cases, quick demos, or showcases, and in cases when some people are more familiar with YARRRML than RML. If people decide to write YARRRML rules, the next step will become unnecessary, as the RML rules will be automatically generated from the YARRRML rules, using xref:cli-toolchain.adoc[dedicated tools] that were developed for this purpose.
+During the initial phase of our mapping creation process we started out writing the mapping rules in https://rml.io/yarrrml/spec/[YARRRML] (a human-readable text-based representation for declarative generation rules), instead of RML, because it seemed simpler, and the end result was more human friendly. However, as we gained more experience and confidence in how the mappings should be defined, we realised that writing RML rules directly could be even more powerful, and we started to rewrite all our YARRRML mapping rules into RML. If this transition proves to be successful, and writing RML rules directly will be more convenient, our process will not require writing YARRRML rules in the future. This is the reason for why this step is optional. It could be useful for small test cases, quick demos, or showcases, and in cases when some people are more familiar with YARRRML than RML. If people decide to write YARRRML rules, the next step will become unnecessary, as the RML rules will be automatically generated from the YARRRML rules, using xref:cli-toolchain.adoc[dedicated tools] that were developed for this purpose.
 
 Since this step is optional, we will not describe in detail the individual issues that need to be worked on, but they are in principle the same as the ones described in the next section.
 
@@ -112,7 +154,7 @@ If in the previous step we have defined the mapping rules in YARRRML, then this 
 
 Regardless of which file we chose to define manually, the YARRRML or the RML, at the end of this step we will need to have an RML mapping file that should be able to convert an XML notice into a corresponding RDF graph.
 
-*In the rest of this section we assume that the RML rules are being written manually*, as this is the solution that promises the biggest potential benefitand this is the approach that we would like to pursue in the future.
+*In the rest of this section we assume that the RML rules are being written manually*, as this is the solution that promises the biggest potential benefit and this is the approach that we would like to pursue in the future.
 
 The technical mappings are written in the https://rml.io/[RML mapping language]. The version of RML used is https://github.com/julianrojas87/rmlmapper-java[5.0.0-r362], which was recommended to us by Julian Rojas, its principal developer, in which the https://www.w3schools.com/xml/xpath_intro.asp[XPath] version https://www.w3.org/TR/xpath-31/[3.1] is supported.
 
@@ -160,22 +202,22 @@ The subjectMap describes how to generate a unique subject value of a TriplesMap 
        [
            rr:template
                "http://data.europa.eu/a4g/resource/Organisation/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{substring-before(substring-after(unparsed-text('https://www.uuidtools.com/api/generate/v3/namespace/ns:url/name/' || count(preceding::*)+1),'[\"'),'\"]')}" ;
-           rr:class epo:Organisation
+           rr:class org:Organization
 
        ] ;
 ----
 
 
-The subject should be unique to each different organisation that we find in a XML notice. To do that, we are using a concatenation of
+The subject should be unique to each different organisation that we find in an XML notice. To do that, we are using a concatenation of
 
 1. a cleaned reference of the notice file
-`replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}`; and
-2. a cleaned result of a `MD5` function which returns a UUID based on the position of the iterator that is unique to each organisation on the XML notice, this is done with `{substring-before(substring-after(unparsed-text('https://www.uuidtools.com/api/generate/v3/namespace/ns:url/name/' || count(preceding::*)+1),'[\"'),'\"]')}`;
-3. the type of the mapping is defined by rr:class epo:Organisation
+`replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')`; and
+2. a cleaned result of a `MD5` function which returns a UUID based on the position of the iterator that is unique to each organisation on the XML notice, this is done with `substring-before(substring-after(unparsed-text('https://www.uuidtools.com/api/generate/v3/namespace/ns:url/name/' || count(preceding::*)+1),'[\"'),'\"]')`;
+3. the type of the mapping is defined by rr:class org:Organization
 
 This solution also helps us to handle the case of having nested tags by giving each of them a different uuid thanks to the result of the position XPath function.
 
-===== predicatObjectMap
+===== predicateObjectMap
 
 A nested set of predicates objects map to each predicate/object of the organisation instance.
 
@@ -238,9 +280,6 @@ A join condition is represented by a resource that has exactly one value for eac
 
 * `rr:child`, whose value is known as the join condition's child reference (the path into the Address TriplesMap)
 * `rr:parent`, whose value is known as the join condition's parent source (the path into the ContactPont TriplesMap))
-
-
-TODO: Ask Ibrahim to help provide some items and text snippets about the various technical mapping aspects that are challenging, interesting, or where multiple solutions were possible and certain design decisions have been taken, for example, the generation of UUID, using external files for controlled values, handling repeatable/nested tags, etc.
 
 === Document technical and philosophical issues
 
