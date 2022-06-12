@@ -2,7 +2,7 @@
 
 The purpose of this section is to give a high-level overview of the process that we follow to create the mapping rules that are used to transform TED notices available as XML files into RDF triples that use ePO terms.
 
-The methodology that we describe here, focuses on a few steps and artefacts that are at the core of the diagram depicted in <<mapping-creation>>. This diagram shows only a part of the xref:partial$methodology/mapping-lifecycle.adoc[mapping lifecycle].
+The methodology that we describe here, focuses in a few steps and artefacts that are at the core of the diagram depicted in <<mapping-creation>>. This diagram shows only a part of the xref:partial$methodology/mapping-lifecycle.adoc[mapping lifecycle].
 
 [#mapping-creation]
 .Mapping creation steps in the development lifecycle
@@ -74,15 +74,56 @@ To identify the value sets (i.e. the possible different values) that are used in
 
 ==== Identify value sets in ePO and in other vocabularies, corresponding to XML controlled values used in the XML files
 
-For this step we should identify the different vocabularies that are referenced by ePO attributes and relationships that are involved in the mapping of a certain XML element, and we should gain some familiarity with that vocabulary. At minimum we should know what namespace they are using and what are some of the values and how are they encoded (i.e. which properties they are using to encode labels, ids, etc).
+For this step we have to identify the different vocabularies that are referenced by ePO attributes and relationships that are involved in the mapping of a certain XML element, and we should gain some familiarity with that vocabulary. At minimum we should know what namespace they are using and what are some of the values and how are they encoded (i.e. which properties they are using to encode labels, ids, etc).
 
 ==== Write Turtle fragments that provide a template for the triples that should be generated, and which can be used in the RML mapping rules
 
-TODO
+To give an example of an input (XML notice's fragment), and it's transformation (RDF result), let's see a fragment of an organisation definition.
+
+===== XML fragment (source.xml)
+
+----
+<TED_EXPORT>
+    <FORM_SECTION>
+        <F03_2014 CATEGORY="ORIGINAL" FORM="F03" LG="PT">
+            <CONTRACTING_BODY>
+                <ADDRESS_CONTRACTING_BODY>
+                    <OFFICIALNAME>Administração Regional de Saúde do Alentejo, I. P.</OFFICIALNAME>
+                <ADDRESS_CONTRACTING_BODY>
+            <CONTRACTING_BODY>
+        <F03_2014 CATEGORY="ORIGINAL" FORM="F03" LG="PT">
+    <FORM_SECTION>
+<TED_EXPORT>
+
+----
+===== Expected RDF result (result.ttl)
+----
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+
+epo:Organization/2021-S-001-000163/ab152979-15bf-30c3-b6f3-e0c554cfa9d0
+    a org:Organization;
+    epo:hasName "Administração Regional de Saúde do Alentejo, I. P."@pt .
+
+----
+To see the corresponding RML rules that we are writing to do such a transformation please see section below: <<_write_rml_rules>>.
 
 ==== Identify and document problems/issue/questions to be clarified with external experts
 
-TODO
+When we take a look at the way how the RML rules are writen (see xref:technical-mapping-modularisation.adoc[technical mapping chapter]) we notice that it is a set of TripleMap. Each one contains:
+
+* "LogicalSource" that gives information about the *source* (XML file to transform)
+
+* "referenceFormulation" witch is the language used to parse the source.
+
+The main problem that we had when we are using XPath as parser of XML notices, is the old version used by https://github.com/RMLio/rmlmapper-java[RML Mapper] to parse the XML notices.
+The only version that were supported is XPath 1.0 that did not offer enough features, functions and expressions to parse an XML file.
+
+For example, XPath 1.0 does not support the default namespaces that we find in the notices that we are transforming. The consequences of having these namespaces in the XML notices is that RML Mapper did generate empty RDF result because XPath does not find any element that we are referring for. To handle this problem we started to think to add a pre-processing step that remove these default namespaces from the XML notices. We were not convinced by that solution because modifying/deleting element from the input can impact the quality of the expected results.
+
+So that's why we contacted the founders of RML Mapper to find a way to handle default namespaces without processing the XML notices.
+
+The founders ended up by generously offering us a new version of RML Mapper that supports XPath 2.0/3.0 into witch the default namespaces are supported.
 
 === Steps involved in the technical mapping process
 
@@ -98,7 +139,7 @@ This step is about making sure that all necessary sources are defined properly i
 
 ====  Prepare test data
 
-TODO
+Test data (XML notices) are the main input of our process pipline. To now how he are preparing them please se the xref:preparing-test-data.adoc[dedicated chapter].
 
 ==== Write YARRRML Rules (optional)
 
@@ -160,7 +201,7 @@ The subjectMap describes how to generate a unique subject value of a TriplesMap 
        [
            rr:template
                "http://data.europa.eu/a4g/resource/Organisation/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{substring-before(substring-after(unparsed-text('https://www.uuidtools.com/api/generate/v3/namespace/ns:url/name/' || count(preceding::*)+1),'[\"'),'\"]')}" ;
-           rr:class epo:Organisation
+           rr:class org:Organization
 
        ] ;
 ----
@@ -171,7 +212,7 @@ The subject should be unique to each different organisation that we find in a XM
 1. a cleaned reference of the notice file
 `replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}`; and
 2. a cleaned result of a `MD5` function which returns a UUID based on the position of the iterator that is unique to each organisation on the XML notice, this is done with `{substring-before(substring-after(unparsed-text('https://www.uuidtools.com/api/generate/v3/namespace/ns:url/name/' || count(preceding::*)+1),'[\"'),'\"]')}`;
-3. the type of the mapping is defined by rr:class epo:Organisation
+3. the type of the mapping is defined by rr:class org:Organization
 
 This solution also helps us to handle the case of having nested tags by giving each of them a different uuid thanks to the result of the position XPath function.
 
@@ -238,9 +279,6 @@ A join condition is represented by a resource that has exactly one value for eac
 
 * `rr:child`, whose value is known as the join condition's child reference (the path into the Address TriplesMap)
 * `rr:parent`, whose value is known as the join condition's parent source (the path into the ContactPont TriplesMap))
-
-
-TODO: Ask Ibrahim to help provide some items and text snippets about the various technical mapping aspects that are challenging, interesting, or where multiple solutions were possible and certain design decisions have been taken, for example, the generation of UUID, using external files for controlled values, handling repeatable/nested tags, etc.
 
 === Document technical and philosophical issues
 
