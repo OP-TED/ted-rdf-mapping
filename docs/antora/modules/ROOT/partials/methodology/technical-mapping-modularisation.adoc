@@ -4,23 +4,23 @@ Forms tend to have similar or identical sections i.e. represent the same informa
 
 In order to not write transformation rules twice (for section 1 of F03 and section 1 of F06), we have set up a module system which consists of writing transformation rules that are reusable by several forms. This gives us the following advantages:
 
-* Not to rewrite several times the same rules for several forms (avoid duplication of rules).
+* Not to rewrite several times the same rules for different forms (avoid duplication of rules).
 
-* In the case of an update of the ePO ontology, we will have to implement the modification only once within the modules concerned by modification which will be passed into all the forms.
+* In the case of an update of the ePO ontology, we will have to implement the modification only once in the module(s) affected by the modification which, and the modififacation will be passed into all the forms.
 
 
-As explained in xref:partial$methodology/mapping-creation-method.adoc[technical mapping creation section], a TripleMap represent a mapping of an XML element and its content with one class in the ontology and a set of its predicates objects. In order to have a module that can be reused on many forms we only define in these module files the predicates objects of a TripleMap. The logical sources and subjects map, needed in every TripleMap object, are described separately in the main file as they contain information specific to every form, making these parts of the TripleMap object non-reusable. For example a module that contain an organisation looked like that:
+As explained in xref:methodology.adoc#_mapping_creation_method[technical mapping creation] section, a TripleMap represent a mapping of an XML element and its content with one class in the ontology and a set of its predicates objects. In order to have a module that can be reused on many forms we only define in these module files the predicates objects of a TripleMap. The logical sources and subjects map, needed in every TripleMap object, are described separately in the main file as they contain information specific to every form, making these parts of the TripleMap object non-reusable. For example a module that contain an organisation looked like that:
 
 ----
 <#OrganisationMapping> a rr:TriplesMap ;
-    rr:predicateObjectMap
-       [
-       rr:predicate epo:hasName ;
-       rr:objectMap
-               [
-                   rml:reference "OFFICIALNAME"
-               ]
-       ] ;
+	rr:predicateObjectMap
+		[
+		rr:predicate epo:hasName ;
+		rr:objectMap
+				[
+					rml:reference "OFFICIALNAME"
+				]
+		] ;
 
 ----
 
@@ -29,53 +29,60 @@ This module is extended in the main file of F03 by adding the logicalSource and 
 
 ----
 <#OrganisationMapping> a rr:TriplesMap ;
-   rml:logicalSource
-       [
-           rml:source "source.xml" ;
-           rml:referenceFormulation ql:XPath
-           rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY" ;
+	rml:logicalSource
+		[
+			rml:source "source.xml" ;
+			rml:referenceFormulation ql:XPath
+			rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY" ;
 
-       ] ;
-   rr:subjectMap
-       [
-           rr:template
-               "http://data.europa.eu/a4g/resource/Organisation/uuid_generation_function ;
-           rr:class epo:Organisation
+		] ;
+	rr:subjectMap
+		[
+			rr:template
+				"http://data.europa.eu/a4g/resource/Organisation/uuid_generation_function ;
+			rr:class epo:Organisation
 
-       ] ;
+		] ;
 ----
 
-The modules are stored in the ted-sws-artefact project in the src folder.
-For the moment we covered five modules that represent the five sections of F03 and part of F06/F25. The modules are:
+The modules are stored in the ted-sws-artefact project in the `src/mappings` folder.
+For the moment we covered five modules that represent the five sections of F03 and part of F06/F25, and one for Annex D1, which is part of F03. The modules are:
 
 * s1_contracting_authority.rml.ttl
 * s2_object.rml.ttl
 * s4_procedure.rml.ttl
 * s5_award_of_contract.rml.ttl
 * s6_complementary_information.rml.ttl
+* annex_d1.rml.ttl
 
-The project contains one src folder containing all the modules files and one main file per form package. Here a representation:
+The project contains one `src/mappings` folder containing all the modules files and one "main" entry point mapping file for each form package. Here is a representation:
 
 ----
 /ted-sws-artefacts
-    /XXX
-    /mappings
-        /package_F03
-            /transformation
-                XXXX
-                /mappings
-                    technical_mapping_F03.rml.ttl
-        /package_XXX
-            /transformation
-                XXXX
-                /mappings
-                    technical_mapping_FXX.rml.ttl
-    /src
-        s1_contracting_authority.rml.ttl
-        s2_object.rml.ttl
-        s4_procedure.rml.ttl
-        s5_award_of_contract.rml.ttl
-        s6_complementary_information.rml.ttl
+	/XXX
+	/mappings
+		/package_F03
+			/transformation
+				XXXX
+				/mappings
+					...
+					technical_mapping_F03.rml.ttl
+		/package_FXX
+			/transformation
+				XXXX
+				/mappings
+					...
+					technical_mapping_FXX.rml.ttl
+	/src
+		/mappings
+			annex_d1.rml.ttl
+			s1_contracting_authority.rml.ttl
+			s2_object.rml.ttl
+			s4_procedure.rml.ttl
+			s5_award_of_contract.rml.ttl
+			s6_complementary_information.rml.ttl
+			technical_mapping_F03.rml.ttl
+			technical_mapping_FXX.rml.ttl
 ----
 
 
