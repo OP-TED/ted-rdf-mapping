@@ -12,22 +12,23 @@ ENV_FILE := .env
 
 PROJECT_PATH = $(shell pwd)
 RML_MAPPER_PATH = ${PROJECT_PATH}/.rmlmapper/rmlmapper.jar
+XML_PROCESSOR_PATH = ${PROJECT_PATH}/.saxon/saxon-he-10.6.jar
 LOCAL_ID_MANAGER_API_HOST = localhost
 LOCAL_ID_MANAGER_API_PORT = 8000
 
 #-----------------------------------------------------------------------------
 # Dev commands
 #-----------------------------------------------------------------------------
-setup: install install-rmlmapper local-dotenv-file
+setup: install install-rmlmapper init-saxon local-dotenv-file
 
 install:
 	@ echo -e "$(BUILD_PRINT)Installing the requirements$(END_BUILD_PRINT)"
 	@ pip install --upgrade pip
 	@ pip install --upgrade --force-reinstall -r requirements.txt
 
-dev-dotenv-file: rml-mapper-path-add-dotenv-file dev-secrets-dotenv-file
+dev-dotenv-file: rml-mapper-path-add-dotenv-file saxon-path-add-dotenv-file dev-secrets-dotenv-file
 
-local-dotenv-file: rml-mapper-path-add-dotenv-file local-secrets-dotenv-file
+local-dotenv-file: rml-mapper-path-add-dotenv-file saxon-path-add-dotenv-file local-secrets-dotenv-file
 
 rml-mapper-path-add-dotenv-file:
 	@ echo -e "$(BUILD_PRINT)Add rml-mapper path to local .env file $(END_BUILD_PRINT)"
@@ -47,6 +48,16 @@ local-secrets-dotenv-file:
 install-rmlmapper:
 	@ mkdir -p ./.rmlmapper
 	@ wget -c https://api.bitbucket.org/2.0/repositories/Dragos0000/rml-mapper/src/master/rmlmapper.jar -P ./.rmlmapper
+
+init-saxon:
+	@ echo -e "$(BUILD_PRINT)Saxon folder initialization $(END_BUILD_PRINT)"
+	@ wget -c https://kumisystems.dl.sourceforge.net/project/saxon/Saxon-HE/10/Java/SaxonHE10-6J.zip -P .saxon/
+	@ cd .saxon && unzip SaxonHE10-6J.zip && rm -rf SaxonHE10-6J.zip
+
+saxon-path-add-dotenv-file:
+	@ echo -e "$(BUILD_PRINT)Add Saxon path to local .env file $(END_BUILD_PRINT)"
+	@ sed -i '/^XML_PROCESSOR_PATH/d' .env
+	@ echo XML_PROCESSOR_PATH=${XML_PROCESSOR_PATH} >> .env
 
 clear-output:
 	@ rm -rf mappings/$(id)/output/*
