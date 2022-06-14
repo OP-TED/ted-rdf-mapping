@@ -1,7 +1,7 @@
-#title: VI.4.1.6 - E-mail
-#description: “VI.4.1.6 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is nanCOMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY/E_MAIL. The expected ontology instances are epo: epo:Role (from CL1)  / org:Organization (from CL2) / epo:ContactPoint / epo:URI .
+#title: VI.4.1.5 - Country
+#description: “VI.4.1.5 - Country” in SF corresponds to “BT-514 Organisation Country Code” in eForms. The corresponding XML element is nanCOMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY/COUNTRY. The expected ontology instances are epo: epo:Role (from CL1)  / org:Organization (from CL2) / locn:Address / at-voc:nuts (from CL3) .
 
-PREFIX cpov: <http://data.europa.eu/m8g/>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
-ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / cpov:email ?value . }
+ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:adminUnitL2 ?value . }
