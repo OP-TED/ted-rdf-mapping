@@ -1,6 +1,7 @@
-#title: VI.4.1.8 - Internet Addresses (URL)
-#description: “VI.4.1.8 - Internet Addresses (URL)” in SF corresponds to “BT-505 Organisation Internet Address” in eForms. The corresponding XML element is nanCOMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY/URL. The expected ontology instances are epo: epo:Role (from CL1)  / org:Organization (from CL2) / epo:Channel / epo:URI .
+#title: VI.4.1.7 - Telephone
+#description: “VI.4.1.7 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is nanCOMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY/PHONE. The expected ontology instances are epo: epo:Role (from CL1)  / org:Organization (from CL2) / epo:ContactPoint / rdf:langString .
 
+PREFIX cpov: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
-ASK WHERE { ?this epo:playedBy / epo:hasDeliveryGateway / epo:hasURL ?value . }
+ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / cpov:telephone ?value . }
