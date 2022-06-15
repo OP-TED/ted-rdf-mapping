@@ -19,7 +19,7 @@ Each indicator helps semantic engineers and reviewers to figure out different in
 
 * True: the mapping corresponding to the sparql query does work.
 
-* False: the mapping didn't generate RDF results when an expected element is missing on the XML notice, or when something wrong with the mappings rules.
+* False: the mapping didn't generate RDF results that would match the query. This can happen either when an expected element is missing on the XML notice, or if there is a problem with the mapping rules.
 
 * Error: the SPARQL query is incorrect. That means that the conceptual mapping has to be reviewed.
 
@@ -30,21 +30,21 @@ This CLI injects the requested resources listed on the "Resources" spreadsheet o
 
 Consult the authority tables used in the EPO available from the https://op.europa.eu/en/web/eu-vocabularies/authority-tables[EU Vocabularies].
 
-For more detailed documentation on its usage please check out the https://github.com/meaningfy-ws/ted-sws#cmd-[readme file].
+For more detailed documentation on its usage please check out the https://github.com/meaningfy-ws/ted-sws#cmd-resources_injector[readme file].
 
 === RML Modules Injector (rml_modules_injector)
-This CLI injects the technical mappings modules from the src folder (see xref:methodology.adoc#_technical-mapping-modularisation-chapter[modules chapter]) into the MappingSuite. Each Form has a module list that is needed in order to run the mapping_runner.
+This CLI injects the technical mappings modules from the `src/mappings` folder (see xref:methodology.adoc#_technical-mapping-modularisation-chapter[modules chapter]) into the mapping suite. Each form has a module list that is needed in order to run the mapping_runner.
 The modules name are listed on the "RML_Modules" spreadsheet of the Conceptual Mappings
 
-For more detailed documentation on its usage please check out the https://github.com/meaningfy-ws/ted-sws#cmd-[readme file].
+For more detailed documentation on its usage please check out the https://github.com/meaningfy-ws/ted-sws#cmd-rml_modules_injector[readme file].
 
 === Mapping Test Runner (mapping_runner)
-This CLI applies the mapping on a certain test notice files, a batch of notice files (organised in a folder), or on all available test notices, and generates output files representing the corresponding RDF graph for each notice (see RDF output examples https://github.com/meaningfy-ws/ted-sws-artefacts/tree/main/mappings/package_F03/output[here]).
+This CLI applies the mapping on a certain test notice file, a batch of notice files (organised in a folder), or on all available test notices, and generates output files representing the corresponding RDF graph for each notice (see RDF output examples https://github.com/meaningfy-ws/ted-sws-artefacts/tree/main/mappings/package_F03/output[here]).
 
-For more detailed documentation on its usage please check out the https://github.com/meaningfy-ws/ted-sws#cmd-transformer[readme file].
+For more detailed documentation on its usage please check out the https://github.com/meaningfy-ws/ted-sws#cmd-mapping_runner[readme file].
 
 === Metadata generator (metadata_generator)
-This tool extracts the relevant metadata from the conceptual mapping file (by default: conceptual_mappings.xlsx) and stores it in a JSON file (by default: metadata.json). This metadata file will be used by various other processes (both CLIs and DAGs), mainly to inform them about the applicability of this mapping to various notices.
+This tool extracts the relevant metadata from the conceptual mapping file (by default: `conceptual_mappings.xlsx`) and stores it in a JSON file (by default: `metadata.json`). This metadata file will be used by various other processes (both CLIs and DAGs), mainly to inform them about the applicability of this mapping to various notices.
 
 For more detailed documentation on its usage please check out the https://github.com/meaningfy-ws/ted-sws#cmd-metadata_generator[readme file].
 
@@ -55,7 +55,7 @@ For more detailed documentation on its usage please check out the https://github
 
 === SHACL Validation Runner (shacl_runner)
 Generates SHACL Validation Reports for RDF files.
-For more detailed documentation on its usage please check out the https://github.com/meaningfy-ws/ted-sws#cmd-yarrrml2rml_converter[readme file].
+For more detailed documentation on its usage please check out the https://github.com/meaningfy-ws/ted-sws#cmd-shacl_runner[readme file].
 
 === Mapping Suite Processor (mapping_suite_processor)
 This CLI runs all the necessary CLIs mentioned above in a logical order, to fully process a mapping suite, starting with the generation of metadata and up to running the mapping on all the (specified) tests data, and generating all the possible associated validation artefacts.
@@ -65,9 +65,9 @@ For more detailed documentation on its usage please check out the https://github
 === Other relevant tools and libraries
 Other relevant tools that are used in the mapping process that worth mentioning, are:
 
-https://rml.io/yarrrml/matey/#[Matey]: a browser-based application that helps writing YARRRML rules, and converting them to RML rules that can be also executed online. Matey uses the yarrrml-parser (described next) in the backend
+https://rml.io/yarrrml/matey/#[Matey]: a browser-based application that helps writing YARRRML rules, and converting them to RML rules that can be also executed online. Matey uses the yarrrml-parser (described next) in the backend.
 
-The https://github.com/rmlio/yarrrml-parser[RMLio/yarrrml-parser] library, available on GitHub, allows the conversion of YARRRML rules to RML or R2RML rules.  Since this is a library, besides using it to power Matey, it can be also used independently or as an integrated part of our CLI tools.
+The https://github.com/rmlio/yarrrml-parser[RMLio/yarrrml-parser] library, available on GitHub, allows the conversion of YARRRML rules to RML or R2RML rules.  Since this is a library, besides using it to power Matey, it can be also used independently, or as an integrated part of our CLI tools.
 
 The https://github.com/RMLio/rmlmapper-java[RMLio/rmlmapper-java] library, available on GitHub, allows the execution of a set of RML mappings on a set of data sources, to generate high quality RDF data.
 
