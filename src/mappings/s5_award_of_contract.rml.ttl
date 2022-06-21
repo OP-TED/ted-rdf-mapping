@@ -83,6 +83,14 @@ tedm:Contract a rr:TripleMap ;
     ] ;
     rr:predicateObjectMap
     [
+        rr:predicate epo:bindsBuyer ;
+        rr:objectMap
+            [
+                rr:parentTriplesMap tedm:AdditionalBuyer;
+            ] ;
+    ] ;
+    rr:predicateObjectMap
+    [
         rr:predicate epo:bindsContractor ;
         rr:objectMap
             [
@@ -121,9 +129,17 @@ tedm:Contract a rr:TripleMap ;
                 [
                     rr:parentTriplesMap tedm:Lot;
                     rr:joinCondition [
-                        rr:parent "./@ITEM";
-                        rr:child "./@ITEM";
+                        rr:parent "if (count(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/OBJECT_DESCR)=1) then ./@ITEM else LOT_NO";
+                        rr:child "if (count(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/OBJECT_DESCR)=1) then ./@ITEM else LOT_NO";
                     ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate rdfs:comment ;
+            rr:objectMap
+                [
+                    rml:reference "if(not(exists(LOT_NO)) and count(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/OBJECT_DESCR)>1) then 'Erroneous XML data: this contract does not have a <LOT_NO> element' else null";
                 ] ;
         ] ;
     rr:predicateObjectMap
