@@ -113,10 +113,15 @@ tedm:ProcedurePurpose a rr:TriplesMap ;
             rr:predicate epo:hasAdditionalClassification ;
             rr:objectMap
                 [
-                    rml:reference "CPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE"
-
+                    rr:parentTriplesMap tedm:cpvsuppl;
+                    rr:joinCondition [
+                        rr:child "CPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE";
+                        rr:parent "code.value";
+                    ];
                 ] ;
+
         ] .
+
 tedm:Notice a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -138,23 +143,6 @@ tedm:NoticeIdentifier a rr:TripleMap ;
                 [
                     rml:reference "NOTICE_NUMBER_OJ"
                 ]
-        ] .
-tedm:ResultNotice a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:refersToLot ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:Lot
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:refersToPrevious;
-            rr:objectMap
-            [
-                rr:parentTriplesMap tedm:Notice;
-            ]
         ] .
 
 tedm:Fund a rr:TriplesMap ;
@@ -375,7 +363,7 @@ tedm:LotPurpose a rr:TriplesMap ;
             rr:predicate epo:hasAdditionalClassification ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:cpv;
+                    rr:parentTriplesMap tedm:cpvsuppl;
                     rr:joinCondition [
                         rr:child "CPV_ADDITIONAL/CPV_SUPPLEMENTARY_CODE/@CODE";
                         rr:parent "code.value";
