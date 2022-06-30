@@ -15,6 +15,9 @@ RML_MAPPER_PATH = ${PROJECT_PATH}/.rmlmapper/rmlmapper.jar
 XML_PROCESSOR_PATH = ${PROJECT_PATH}/.saxon/saxon-he-10.6.jar
 LOCAL_ID_MANAGER_API_HOST = localhost
 LOCAL_ID_MANAGER_API_PORT = 8000
+AGRAPH_SUPER_PASSWORD = admin56GHhgfd*9
+AGRAPH_SUPER_USER = admin
+ALLEGRO_HOST = https://agraph.ted-data.eu
 
 #-----------------------------------------------------------------------------
 # Dev commands
@@ -39,11 +42,17 @@ dev-secrets-dotenv-file:
 	@ vault kv get -format="json" ted-dev/ted-sws | jq -r ".data.data | keys[] as \$$k | \"\(\$$k)=\(.[\$$k])\"" >> .env
 
 local-secrets-dotenv-file:
-	@ echo -e "$(BUILD_PRINT)Add API config to local .env file $(END_BUILD_PRINT)"
+	@ echo -e "$(BUILD_PRINT)Add local secrets to local .env file $(END_BUILD_PRINT)"
 	@ sed -i '/^ID_MANAGER_API_HOST/d' .env
 	@ echo ID_MANAGER_API_HOST=${LOCAL_ID_MANAGER_API_HOST} >> .env
 	@ sed -i '/^ID_MANAGER_API_PORT/d' .env
 	@ echo ID_MANAGER_API_PORT=${LOCAL_ID_MANAGER_API_PORT} >> .env
+	@ sed -i '/^AGRAPH_SUPER_PASSWORD/d' .env
+	@ echo AGRAPH_SUPER_PASSWORD=${AGRAPH_SUPER_PASSWORD} >> .env
+	@ sed -i '/^AGRAPH_SUPER_USER/d' .env
+	@ echo AGRAPH_SUPER_USER=${AGRAPH_SUPER_USER} >> .env
+	@ sed -i '/^ALLEGRO_HOST/d' .env
+	@ echo ALLEGRO_HOST=${ALLEGRO_HOST} >> .env
 
 install-rmlmapper:
 	@ mkdir -p ./.rmlmapper
