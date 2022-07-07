@@ -1,6 +1,7 @@
-#title: V.2.4.2 - Total value of the contract/lot
-#description: “V.2.4.2 - Total value of the contract/lot” in SF corresponds to “BT-720 Tender Value” in eForms. The corresponding XML element is nanVALUES/VAL_TOTAL. The expected ontology instances are epo: epo:Tender / epo:MonetaryValue / epo:Numeric .
+#title: V.2.3.5 - NUTS code
+#description: “V.2.3.5 - NUTS code” in SF corresponds to “BT-507 Organisation Country Subdivision” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/n2016:NUTS/@CODE. The expected ontology instances are epo: epo:Role (from CL1)  / org:Organization (from CL2) / locn:Address / at-voc:nuts (from CL3) .
 
+PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
-ASK WHERE { ?this epo:hasFinnancialOfferValue / epo:hasAmountValue ?value . }
+ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:adminUnitL2 ?value . }

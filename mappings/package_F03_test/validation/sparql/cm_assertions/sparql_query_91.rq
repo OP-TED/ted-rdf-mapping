@@ -1,7 +1,6 @@
-#title: V.2.3.5 - NUTS code
-#description: “V.2.3.5 - NUTS code” in SF corresponds to “BT-507 Organisation Country Subdivision” in eForms. The corresponding XML element is nanCONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR//*:NUTS/@CODE. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / locn:Address / at-voc:nuts (from CL3) .
+#title: V.2.2.5 - Number of tenders received by electronic means
+#description: “V.2.2.5 - Number of tenders received by electronic means” in SF corresponds to “BT-760 Received Submissions Type” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/TENDERS/NB_TENDERS_RECEIVED_EMEANS. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / xsd:integer .
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX locn: <http://www.w3.org/ns/locn#>
 
-ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:adminUnitL2 ?value . }
+ASK WHERE { ?this epo:hasElectronicTenders ?value . }

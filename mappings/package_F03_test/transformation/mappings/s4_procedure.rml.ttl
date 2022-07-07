@@ -12,7 +12,7 @@
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 tedm:procedure
   a owl:Ontology ;
-  owl:imports dc:, <http://www.w3.org/2004/02/skos/core> ;
+  owl:imports dct:, <http://www.w3.org/2004/02/skos/core> ;
   dct:description """
         This module provides the mapping definitions for the ..."""@en ;
   rdfs:label "TED-SWS mapping of "@en ;  
@@ -21,7 +21,7 @@ tedm:procedure
 tedm:Lot a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:isSubjectToLotTerm ;
+            rr:predicate epo:isSubjectToLotSpecificTerm ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:FramworkAgreement
@@ -86,5 +86,14 @@ tedm:EauctionTechnique  a rr:TriplesMap ;
             rr:objectMap
                 [
                     rr:template "http://publications.europa.eu/resource/authority/usage"
+                ] ;
+        ] .
+tedm:CompetitionTerminationInformation a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:concernsProcedureCompetitionTermination ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Procedure
                 ] ;
         ] .

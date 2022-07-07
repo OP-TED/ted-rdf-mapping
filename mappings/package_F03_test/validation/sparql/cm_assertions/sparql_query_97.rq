@@ -1,6 +1,7 @@
-#title: V.2.3.12 - The contractor is an SME
-#description: “V.2.3.12 - The contractor is an SME” in SF corresponds to “BT-165 Winner Size” in eForms. The corresponding XML element is nanCONTRACTORS/CONTRACTOR/*[matches(name(),'SME')]. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Business / at-voc:economic-operator-size .
+#title: V.2.3.3 - Postal address
+#description: “V.2.3.3 - Postal address” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/ADDRESS. The expected ontology instances are epo: epo:Role (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .
 
+PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
-ASK WHERE { ?this epo:playedByBusiness / epo:hasSize <http://publications.europa.eu/resource/authority/economic-operator-size> }
+ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:thoroughfare ?value . }
