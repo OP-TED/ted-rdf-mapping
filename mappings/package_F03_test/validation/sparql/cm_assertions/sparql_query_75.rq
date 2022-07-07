@@ -1,7 +1,6 @@
-#title: V.1.1 - No tenders or requests to participate were received or all were rejected
-#description: “V.1.1 - No tenders or requests to participate were received or all were rejected” in SF corresponds to “BT-144 Not Awarded Reason” in eForms. The corresponding XML element is nanNO_AWARDED_CONTRACT/PROCUREMENT_UNSUCCESSFUL. The expected ontology instances are epo: epo:Notice / epo:LotAwardOutcome / at-voc:non-award-justification .
+#title: V.0.3 - Contract No
+#description: “V.0.3 - Contract No” in SF corresponds to “BT-150 Contract Identifier” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/CONTRACT_NO. The expected ontology instances are epo: epo:Contract / epo:Identifier / xsd:string .
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
-ASK WHERE { ?this epo:hasNonAwardJustification <http://publications.europa.eu/resource/authority/non-award-justification/all-rej> .
-?this epo:includesLotAwardOutcome / epo:hasNonAwardJustification <http://publications.europa.eu/resource/authority/non-award-justification/no-rece> . }
+ASK WHERE { ?this epo:hasID / epo:hasIdentifierValue ?value . }

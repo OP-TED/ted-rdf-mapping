@@ -10,7 +10,7 @@
 @prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
-
+@prefix cpov: <http://data.europa.eu/m8g/> .
 tedm:complementary_information
   a owl:Ontology ;
   owl:imports dct:, <http://www.w3.org/2004/02/skos/core> ;
@@ -22,7 +22,7 @@ tedm:complementary_information
 tedm:Lot a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:isSubjectToLotTerm ;
+            rr:predicate epo:isSubjectToLotSpecificTerm ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ReviewTerm
@@ -35,39 +35,6 @@ tedm:ReviewTerm a rr:TriplesMap ;
             rr:objectMap
                 [
                    rml:reference "REVIEW_PROCEDURE"
-                ] ;
-        ] .
-tedm:ResultNotice a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:announcesRole ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:Reviewer
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:announcesRole ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:Mediator
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:announcesRole ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ReviewProcedureInformationProvider
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:announcesRole ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ContractSignatoryonContractorSide
                 ] ;
         ] .
 
@@ -126,7 +93,7 @@ tedm:ReviewerOrganisationIdentifier a rr:TripleMap ;
 tedm:ReviewerContactPoint a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasEmail ;
+            rr:predicate cpov:email ;
             rr:objectMap
                 [
                     rml:reference "E_MAIL"
@@ -144,7 +111,7 @@ tedm:ReviewerContactPoint a rr:TriplesMap ;
 
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasTelephone ;
+            rr:predicate cpov:telephone ;
             rr:objectMap
                 [
                     rml:reference "PHONE"
@@ -284,7 +251,7 @@ tedm:MediatorOrganisationIdentifier a rr:TripleMap ;
 tedm:MediatorContactPoint a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasEmail ;
+            rr:predicate cpov:email ;
             rr:objectMap
                 [
                     rml:reference "E_MAIL"
@@ -301,7 +268,7 @@ tedm:MediatorContactPoint a rr:TriplesMap ;
 
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasTelephone ;
+            rr:predicate cpov:telephone ;
             rr:objectMap
                 [
                     rml:reference "PHONE"
@@ -441,7 +408,7 @@ tedm:ReviewProcedureInformationProviderOrganisationIdentifier a rr:TripleMap ;
 tedm:ReviewProcedureInformationProviderContactPoint a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasEmail ;
+            rr:predicate cpov:email ;
             rr:objectMap
                 [
                     rml:reference "E_MAIL"
@@ -457,7 +424,7 @@ tedm:ReviewProcedureInformationProviderContactPoint a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasTelephone ;
+            rr:predicate cpov:telephone ;
             rr:objectMap
                 [
                     rml:reference "PHONE"

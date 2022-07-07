@@ -13,7 +13,7 @@
 
 tedm:object
   a owl:Ontology ;
-  owl:imports dc:, <http://www.w3.org/2004/02/skos/core> ;
+  owl:imports dct:, <http://www.w3.org/2004/02/skos/core> ;
   dct:description """
         This module provides the mapping definitions for the ..."""@en ;
   rdfs:label "TED-SWS mapping of "@en ;  
@@ -21,6 +21,14 @@ tedm:object
 
 
 tedm:Procedure a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasProcurementScopeDividedIntoLot ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Lot
+                ] ;
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasEstimatedValue ;
@@ -105,10 +113,15 @@ tedm:ProcedurePurpose a rr:TriplesMap ;
             rr:predicate epo:hasAdditionalClassification ;
             rr:objectMap
                 [
-                    rml:reference "CPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE"
-
+                    rr:parentTriplesMap tedm:cpvsuppl;
+                    rr:joinCondition [
+                        rr:child "CPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE";
+                        rr:parent "code.value";
+                    ];
                 ] ;
+
         ] .
+
 tedm:Notice a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -130,23 +143,6 @@ tedm:NoticeIdentifier a rr:TripleMap ;
                 [
                     rml:reference "NOTICE_NUMBER_OJ"
                 ]
-        ] .
-tedm:ResultNotice a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:refersToLot ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:Lot
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:refersToPrevious;
-            rr:objectMap
-            [
-                rr:parentTriplesMap tedm:Notice;
-            ]
         ] .
 
 tedm:Fund a rr:TriplesMap ;
@@ -174,7 +170,7 @@ tedm:FundIdentifier a rr:TripleMap ;
 tedm:Lot a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasGPAUsage;
+            rr:predicate epo:isCoveredbyGPA;
             rr:objectMap
                 [
                     rml:reference "exists(./*[matches(name(),'CONTRACT_COVERED_GPA')])"
@@ -227,7 +223,7 @@ tedm:Lot a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:forseesContractTerm ;
+            rr:predicate epo:foreseesContractTerm ;
             rr:objectMap
             [
                 rr:parentTriplesMap tedm:ContractTerm;
@@ -306,7 +302,7 @@ tedm:AwardCriterionCost a rr:TripleMap ;
 tedm:ContractTerm a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasSpecificPlaceOfPerformance ;
+            rr:predicate epo:definesSpecificPlaceOfPerformance ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ContractTermeLocation;
@@ -315,6 +311,15 @@ tedm:ContractTerm a rr:TriplesMap ;
                         rr:parent "./@ITEM";
                     ];
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasOptions;
+            rr:objectMap
+                [
+                    rml:reference "exists(./*[matches(name(),'OPTIONS')])";
+                    rr:datatype xsd:boolean
+                ]
         ] .
 tedm:ContractTermeLocation a rr:TriplesMap ;
 #    rr:predicateObjectMap
@@ -358,7 +363,7 @@ tedm:LotPurpose a rr:TriplesMap ;
             rr:predicate epo:hasAdditionalClassification ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:cpv;
+                    rr:parentTriplesMap tedm:cpvsuppl;
                     rr:joinCondition [
                         rr:child "CPV_ADDITIONAL/CPV_SUPPLEMENTARY_CODE/@CODE";
                         rr:parent "code.value";
@@ -387,7 +392,7 @@ tedm:LotPurpose a rr:TriplesMap ;
                         rr:parent "code.value";
                     ];
                 ] ;
-        ] ;
+        ] .
 #    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasMainClassification ;
@@ -398,15 +403,7 @@ tedm:LotPurpose a rr:TriplesMap ;
 #                ]
 #
 #        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasOptions;
-            rr:objectMap
-                [
-                    rml:reference "exists(./*[matches(name(),'OPTIONS')])";
-                    rr:datatype xsd:boolean
-                ]
-        ] .
+
 tedm:LotIdentifier a rr:TripleMap ;
     rr:predicateObjectMap
         [

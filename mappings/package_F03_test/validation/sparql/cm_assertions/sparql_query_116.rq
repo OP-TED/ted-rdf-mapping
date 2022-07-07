@@ -1,7 +1,6 @@
-#title: VI.4.1.5 - Country
-#description: “VI.4.1.5 - Country” in SF corresponds to “BT-514 Organisation Country Code” in eForms. The corresponding XML element is nanADDRESS_REVIEW_BODY/COUNTRY. The expected ontology instances are epo: epo:Role (from CL1)  / epo:Organisation (from CL2) / locn:Address / at-voc:nuts (from CL3) .
+#title: V.2.5.5 - Proportion
+#description: “V.2.5.5 - Proportion” in SF corresponds to “BT-555 Subcontracting Percentage” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/PCT_SUBCONTRACTING. The expected ontology instances are epo: epo:Tender / epo:SubcontractingEstimate / xsd:decimal .
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX locn: <http://www.w3.org/ns/locn#>
 
-ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:adminUnitL2 ?value . }
+ASK WHERE { ?this epo:forseesSubcontracting / epo:hasEstimatedPercentage ?value . }
