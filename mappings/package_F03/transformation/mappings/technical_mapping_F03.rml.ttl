@@ -24,7 +24,19 @@ tedm:technical_mapping_f03
   dct:date "2022-05-11"^^xsd:date .
 #Section 1
 # Buyer Profile & Organisation
+tedm:BuyerOrganisationGroup a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/BuyerOrganisationGroup/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:OrganisationGroup
 
+        ] .
 tedm:OrganisationIdentifier a rr:TripleMap ;
     rr:subjectMap
         [
@@ -148,6 +160,7 @@ tedm:AdditionalOrganisation a rr:TripleMap ;
                     ]
                 ] ;
         ] .
+
 tedm:AdditionalBuyer a rr:TriplesMap;
     rr:subjectMap
         [
@@ -167,18 +180,6 @@ tedm:AdditionalBuyer a rr:TriplesMap;
             rr:objectMap
                 [
                    rml:reference "if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/CENTRAL_PURCHASING)) then 'http://data.europa.eu/a4g/ontology#AwardingCentralPurchasingBody' else null";
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasBuyerType ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:buyerType;
-                    rr:joinCondition [
-                        rr:child "/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_TYPE/@VALUE";
-                        rr:parent "xmlElement";
-                    ];
                 ] ;
         ] .
 
@@ -239,18 +240,6 @@ tedm:Buyer a rr:TriplesMap;
                 [
                    rml:reference "if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/CENTRAL_PURCHASING)) then 'http://data.europa.eu/a4g/ontology#AwardingCentralPurchasingBody' else null";
                 ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasBuyerType ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:buyerType;
-                    rr:joinCondition [
-                        rr:child "/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_TYPE/@VALUE";
-                        rr:parent "xmlElement";
-                    ];
-                ] ;
         ] .
 
 tedm:BuyerProfile a rr:TripleMap ;
@@ -301,7 +290,7 @@ tedm:ResultNotice a rr:TriplesMap ;
                 ] ;
         ] .
 
-tedm:MonetaryValueSubmissionLowestForProcurement a rr:TriplesMap ;
+tedm:ProcurementLowestReceivedTenderValue a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -310,11 +299,11 @@ tedm:MonetaryValueSubmissionLowestForProcurement a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
-            rml:reference "if (exists(VAL_RANGE_TOTAL/LOW)) then 'http://data.europa.eu/a4g/resource/MonetaryValueSubmissionLowestForProcurement/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(VAL_RANGE_TOTAL/LOW)) then 'http://data.europa.eu/a4g/resource/ProcurementLowestReceivedTenderValue/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:MonetaryValue
 
         ] .
-tedm:MonetaryValueSubmissionHighestForProcurement  a rr:TriplesMap ;
+tedm:ProcurementHighestReceivedTenderValue  a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -323,7 +312,7 @@ tedm:MonetaryValueSubmissionHighestForProcurement  a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
-            rml:reference "if (exists(VAL_RANGE_TOTAL/HIGH)) then 'http://data.europa.eu/a4g/resource/MonetaryValueSubmissionHighestForProcurement/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(VAL_RANGE_TOTAL/HIGH)) then 'http://data.europa.eu/a4g/resource/ProcurementHighestReceivedTenderValue/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:MonetaryValue
 
         ] .
@@ -347,19 +336,6 @@ tedm:DirectAwardTerm a rr:TriplesMap ;
             rml:reference "if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL)) then 'http://data.europa.eu/a4g/resource/DirectAwardTerm/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             # rr:template "http://data.europa.eu/a4g/resource/DirectAwardTerm/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:DirectAwardTerm
-
-        ] ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE" ;
-            rml:referenceFormulation ql:XPath
-        ] .
-tedm:CompetitionTerminationInformation a rr:TriplesMap ;
-    rr:subjectMap
-        [
-            rml:reference "if (exists(TERMINATION_PIN)) then 'http://data.europa.eu/a4g/resource/CompetitionTerminationInformation/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
-            rr:class epo:CompetitionTerminationInformation
 
         ] ;
     rml:logicalSource
@@ -400,6 +376,17 @@ tedm:Procedure a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "TITLE";
+                    rml:languageMap [
+                         rml:reference "lower-case(ancestor::F03_2014/@LG)"
+                    ]
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAdditionalInformation ;
+            rr:objectMap
+                [
+                    rml:reference "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/INFO_ADD";
                     rml:languageMap [
                          rml:reference "lower-case(ancestor::F03_2014/@LG)"
                     ]
@@ -473,15 +460,6 @@ tedm:Procedure a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/ACCELERATED_PROC)) then 'true' else 'false'";
-                    rr:datatype xsd:boolean
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:isCompetitionTermination ;
-            rr:objectMap
-                [
-                    rml:reference "if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/TERMINATION_PIN)) then 'true' else 'false'";
                     rr:datatype xsd:boolean
                 ] ;
         ] .
@@ -647,28 +625,6 @@ tedm:Lot a rr:TriplesMap ;
                          rml:reference "lower-case(ancestor::F03_2014/@LG)"
                     ]
                 ]
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasAdditionalInformation ;
-            rr:objectMap
-                [
-                    rml:reference "INFO_ADD";
-                    rml:languageMap [
-                         rml:reference "lower-case(ancestor::F03_2014/@LG)"
-                    ]
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasAdditionalInformation ;
-            rr:objectMap
-                [
-                    rml:reference "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/INFO_ADD";
-                    rml:languageMap [
-                         rml:reference "lower-case(ancestor::F03_2014/@LG)"
-                    ]
-                ] ;
         ] .
 
 tedm:LotIdentifier a rr:TripleMap ;
@@ -893,7 +849,7 @@ tedm:FrameworkAgreementTechniqueUsage a rr:TriplesMap ;
             rr:class epo:FrameworkAgreementTechniqueUsage
 
         ] .
-tedm:DynamicPurchaseSystemStatus a rr:TriplesMap ;
+tedm:ProcurementProcessInformation a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -903,8 +859,9 @@ tedm:DynamicPurchaseSystemStatus a rr:TriplesMap ;
     rr:subjectMap
         [
         rml:reference
-                "if(exists(DPS)) then 'http://data.europa.eu/a4g/resource/DynamicPurchaseSystemStatus/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
-        rr:class epo:DynamicPurchaseSystemStatus
+            "if(exists(NOTICE_NUMBER_OJ) or exists(TERMINATION_DPS) or exists(TERMINATION_PIN)) then 'http://data.europa.eu/a4g/resource/ProcurementProcessInformation/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+        #rr:template "http://data.europa.eu/a4g/resource/ProcurementProcessInformation/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+        rr:class epo:ProcurementProcessInformation
 
         ] .
 tedm:DynamicPurchaseSystemTechniqueUsage a rr:TriplesMap ;
@@ -972,7 +929,7 @@ tedm:Contract a rr:TripleMap ;
         ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/Contract/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if (exists(AWARDED_CONTRACT)) then 'http://data.europa.eu/a4g/resource/Contract/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:Contract
 
         ] ;
@@ -1011,32 +968,32 @@ tedm:ContractIdentifier a rr:TripleMap ;
             rml:reference "if (exists(CONTRACT_NO)) then 'http://data.europa.eu/a4g/resource/ContractIdentifier/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:Identifier
         ] .
-tedm:ContractSignatoryonContractorSide a rr:TripleMap ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rr:template "http://data.europa.eu/a4g/resource/ContractSignatoryOnContractorSide/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class epo:ContractSignatoryOnContractorSide
-
-        ] .
-tedm:ContractorRole a rr:TripleMap ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rr:template "http://data.europa.eu/a4g/resource/ContractorRole/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class epo:Contractor
-
-        ] .
+#tedm:ContractSignatoryonContractorSide a rr:TripleMap ;
+#    rml:logicalSource
+#        [
+#            rml:source "data/source.xml" ;
+#            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR" ;
+#            rml:referenceFormulation ql:XPath
+#        ] ;
+#    rr:subjectMap
+#        [
+#            rr:template "http://data.europa.eu/a4g/resource/ContractSignatoryOnContractorSide/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+#            rr:class epo:ContractSignatoryOnContractorSide
+#
+#        ] .
+#tedm:ContractorRole a rr:TripleMap ;
+#    rml:logicalSource
+#        [
+#            rml:source "data/source.xml" ;
+#            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR" ;
+#            rml:referenceFormulation ql:XPath
+#        ] ;
+#    rr:subjectMap
+#        [
+#            rr:template "http://data.europa.eu/a4g/resource/ContractorRole/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+#            rr:class epo:Contractor
+#
+#        ] .
 tedm:TenderRole a rr:TripleMap ;
     rml:logicalSource
         [
@@ -1251,7 +1208,7 @@ tedm:SubcontractingEstimate a rr:TripleMap ;
         ] ;
     rr:subjectMap
         [
-            rml:reference "if (exists(VAL_SUBCONTRACTING)) then 'http://data.europa.eu/a4g/resource/SubcontractingEstimate/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(LIKELY_SUBCONTRACTED)) then 'http://data.europa.eu/a4g/resource/SubcontractingEstimate/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:SubcontractingEstimate
 
         ] ;

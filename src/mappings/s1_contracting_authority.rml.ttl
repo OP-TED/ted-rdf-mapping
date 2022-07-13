@@ -18,9 +18,61 @@ tedm:contracting_authority
         This module provides the mapping definitions for the ..."""@en ;
   rdfs:label "TED-SWS mapping of "@en ;  
   dct:date "2022-05-11"^^xsd:date .
-
+tedm:BuyerOrganisationGroup a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasMember;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:AdditionalOrganisation;
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasMember;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Organisation;
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasMainActivityType ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:mainActivity;
+                    rr:joinCondition [
+                        rr:child "/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_ACTIVITY/@VALUE";
+                        rr:parent "xmlElement";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasBuyerType ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:buyerType;
+                    rr:joinCondition [
+                        rr:child "/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_TYPE/@VALUE";
+                        rr:parent "xmlElement";
+                    ];
+                ] ;
+        ] .
 
 tedm:AdditionalBuyer a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContactPointInRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:AdditionalContactPoint;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
+                ] ;
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:playedBy ;
@@ -44,18 +96,6 @@ tedm:AdditionalBuyer a rr:TripleMap ;
                         rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                     ];
                 ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasMainActivityType ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:mainActivity;
-                    rr:joinCondition [
-                        rr:child "/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_ACTIVITY/@VALUE";
-                        rr:parent "xmlElement";
-                    ];
-                ] ;
         ] .
 
 tedm:AdditionalBuyerProfile a rr:TripleMap ;
@@ -69,30 +109,6 @@ tedm:AdditionalBuyerProfile a rr:TripleMap ;
         ] .
 
 tedm:AdditionalOrganisation a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasPrimaryContactPoint ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:AdditionalContactPoint;
-                    rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    ];
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasDeliveryGateway ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:AdditionalOrganisationChannel;
-                    rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    ];
-                ]
-        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasRegisteredAddress ;
@@ -127,6 +143,14 @@ tedm:AdditionalOrganisationIdentifier a rr:TripleMap ;
                 ]
         ] .
 tedm:AdditionalContactPoint a rr:TriplesMap ;
+    rr:predicateObjectMap
+    [
+        rr:predicate epo:hasInternetAddress ;
+        rr:objectMap
+            [
+                rml:reference "URL_GENERAL"
+            ] ;
+    ] ;
     rr:predicateObjectMap
         [
             rr:predicate cpov:email ;
@@ -223,15 +247,6 @@ tedm:AdditionalOrganisationAddress  a rr:TriplesMap ;
                 ] ;
         ] .
 
-tedm:AdditionalOrganisationChannel a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasURL ;
-            rr:objectMap
-                [
-                    rml:reference "URL_GENERAL"
-                ] ;
-        ] .
 
 tedm:Buyer a rr:TripleMap ;
     rr:predicateObjectMap
@@ -244,22 +259,18 @@ tedm:Buyer a rr:TripleMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasBuyerProfile ;
+            rr:predicate epo:hasContactPointInRole ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:BuyerProfile
+                    rr:parentTriplesMap tedm:ContactPoint
                 ] ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasMainActivityType ;
+            rr:predicate epo:hasBuyerProfile ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:mainActivity;
-                    rr:joinCondition [
-                        rr:child "CA_ACTIVITY/@VALUE";
-                        rr:parent "xmlElement";
-                    ];
+                    rr:parentTriplesMap tedm:BuyerProfile
                 ] ;
         ] .
 		
@@ -276,22 +287,6 @@ tedm:BuyerProfile a rr:TripleMap ;
 tedm:Organisation a rr:TripleMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasPrimaryContactPoint ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ContactPoint
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasDeliveryGateway ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:OrganisationChannel
-                ]
-        ] ;
-    rr:predicateObjectMap
-        [
             rr:predicate epo:hasRegisteredAddress ;
             rr:objectMap
                 [
@@ -305,6 +300,30 @@ tedm:Organisation a rr:TripleMap ;
                 [
                     rr:parentTriplesMap tedm:OrganisationIdentifier
                 ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasMainActivityType ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:mainActivity;
+                    rr:joinCondition [
+                        rr:child "if(not(exists(/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_ACTIVITY/@VALUE else null";
+                        rr:parent "xmlElement";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasBuyerType ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:buyerType;
+                    rr:joinCondition [
+                        rr:child "if(not(exists(/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_TYPE/@VALUE else null";
+                        rr:parent "xmlElement";
+                    ];
+                ] ;
         ] .
 tedm:OrganisationIdentifier a rr:TripleMap ;
     rr:predicateObjectMap
@@ -340,6 +359,14 @@ tedm:ContactPoint a rr:TriplesMap ;
                 [
                     rml:reference "PHONE"
                 ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasInternetAddress ;
+            rr:objectMap
+                [
+                    rml:reference "URL_GENERAL"
+                ] ;
         ] .
 tedm:OrganisationAddress  a rr:TriplesMap ;
     rr:predicateObjectMap
@@ -412,15 +439,6 @@ tedm:OrganisationAddress  a rr:TriplesMap ;
                 ] ;
         ] .
 
-tedm:OrganisationChannel a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasURL ;
-            rr:objectMap
-                [
-                    rml:reference "URL_GENERAL"
-                ] ;
-        ] .
 
 
 

@@ -1,7 +1,6 @@
-#title: VI.4.1.6 - E-mail
-#description: “VI.4.1.6 - E-mail” in SF corresponds to “BT-502 Organisation Contact Email Address” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY/E_MAIL. The expected ontology instances are epo: epo:Role (from CL1)  / org:Organization (from CL2) / epo:ContactPoint / epo:URI .
+#title: V.2.3.12 - The contractor is an SME
+#description: “V.2.3.12 - The contractor is an SME” in SF corresponds to “BT-165 Winner Size” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/SME. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / epo:Business / at-voc:economic-operator-size .
 
-PREFIX cpov: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
-ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / cpov:email ?value . }
+ASK WHERE { ?this epo:playedByBusiness / epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size> }

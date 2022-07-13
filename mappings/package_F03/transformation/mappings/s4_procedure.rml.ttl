@@ -21,6 +21,15 @@ tedm:procedure
 tedm:Procedure a rr:TriplesMap ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:isCoveredbyGPA;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/CONTRACT_COVERED_GPA)) then 'true' else 'false'";
+                    rr:datatype xsd:boolean
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate epo:usesTechnique ;
             rr:objectMap
                 [
@@ -43,15 +52,32 @@ tedm:Procedure a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:EauctionTechnique
                 ] ;
         ] .
-tedm:DynamicPurchaseSystemStatus a rr:TriplesMap ;
+tedm:ProcurementProcessInformation a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:isTerminated ;
+            rr:predicate epo:isDPSTerminated ;
             rr:objectMap
                 [
                     rml:reference "if(exists(TERMINATION_DPS)) then 'true' else 'false'";
                     rr:datatype xsd:boolean
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:isCompetitionTerminated ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(TERMINATION_PIN)) then 'true' else 'false'";
+                    rr:datatype xsd:boolean
+                ] ;
+        ] ;
+     rr:predicateObjectMap
+        [
+            rr:predicate epo:concernsPreviousNotice;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:Notice;
+            ]
         ] ;
     rr:predicateObjectMap
         [
@@ -62,12 +88,3 @@ tedm:DynamicPurchaseSystemStatus a rr:TriplesMap ;
                 ] ;
         ] .
 
-tedm:CompetitionTerminationInformation a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:concernsProcedureCompetitionTermination ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:Procedure
-                ] ;
-        ] .

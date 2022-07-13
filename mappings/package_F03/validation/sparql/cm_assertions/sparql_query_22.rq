@@ -1,6 +1,7 @@
-#title: II.1.3 - Type of contract
-#description: “II.1.3 - Type of contract” in SF corresponds to “BT-23 Main Nature” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/TYPE_CONTRACT/@CTYPE. The expected ontology instances are epo: epo:Procedure / epo:Purpose / at-voc:contract-nature (from CL8) .
+#title: I.1.6 - Postal code
+#description: “I.1.6 - Postal code” in SF corresponds to “BT-512 Place Performance Post Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL/POSTAL_CODE. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / rdf:langString .
 
+PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
-ASK WHERE { ?this epo:hasOverallPurpose / epo:hasContractNatureType ?value . }
+ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postCode ?value . }

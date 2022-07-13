@@ -22,7 +22,7 @@ tedm:object
 tedm:NoticeAwardInformation a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasEstimatedValue ;
+            rr:predicate epo:hasTotalAwardedValue ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ProcurementMonetaryValue
@@ -33,7 +33,7 @@ tedm:NoticeAwardInformation a rr:TriplesMap ;
             rr:predicate epo:hasProcurementLowestReceivedTenderValue ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MonetaryValueSubmissionLowestForProcurement;
+                    rr:parentTriplesMap tedm:ProcurementLowestReceivedTenderValue;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -41,7 +41,7 @@ tedm:NoticeAwardInformation a rr:TriplesMap ;
             rr:predicate epo:hasProcurementHighestReceivedTenderValue ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MonetaryValueSubmissionHighestForProcurement;
+                    rr:parentTriplesMap tedm:ProcurementHighestReceivedTenderValue;
 
                 ] ;
         ] .
@@ -49,7 +49,7 @@ tedm:NoticeAwardInformation a rr:TriplesMap ;
 tedm:ProcurementMonetaryValue a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasTotalAwardedValue ;
+            rr:predicate epo:hasAmountValue ;
             rr:objectMap
                 [
                     rml:reference "VAL_TOTAL";
@@ -68,7 +68,7 @@ tedm:ProcurementMonetaryValue a rr:TriplesMap ;
                     ];
                 ] ;
         ] .
-tedm:MonetaryValueSubmissionLowestForProcurement a rr:TriplesMap ;
+tedm:ProcurementLowestReceivedTenderValue a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasAmountValue ;
@@ -91,7 +91,7 @@ tedm:MonetaryValueSubmissionLowestForProcurement a rr:TriplesMap ;
                 ] ;
         ] .
 
-tedm:MonetaryValueSubmissionHighestForProcurement  a rr:TriplesMap ;
+tedm:ProcurementHighestReceivedTenderValue  a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasAmountValue ;
@@ -121,6 +121,15 @@ tedm:ProcedureTerm a rr:TriplesMap ;
                 [
                     rml:reference "PROCUREMENT_LAW"
                 ]
+        ] ;
+     rr:predicateObjectMap
+        [
+            rr:predicate epo:isAwardedByCPB ;
+            rr:objectMap
+                [
+                   rml:reference "if(exists(CENTRAL_PURCHASING)) then 'true' else 'false'";
+                   rr:datatype xsd:boolean
+                ] ;
         ] .
 tedm:Procedure a rr:TriplesMap ;
     rr:predicateObjectMap
@@ -208,18 +217,10 @@ tedm:NoticeIdentifier a rr:TripleMap ;
 tedm:Lot a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:isCoveredbyGPA;
-            rr:objectMap
-                [
-                    rml:reference "exists(./*[matches(name(),'CONTRACT_COVERED_GPA')])"
-                ]
-        ] ;
-    rr:predicateObjectMap
-        [
             rr:predicate epo:isUsingEUFunds;
             rr:objectMap
                 [
-                    rml:reference "exists(./*[matches(name(),'EU_PROGR_RELATED')])";
+                    rml:reference "if(exists(EU_PROGR_RELATED)) then 'true' else 'false'";
                     rr:datatype xsd:boolean
                 ]
         ] ;
@@ -355,7 +356,7 @@ tedm:ContractTerm a rr:TriplesMap ;
             rr:predicate epo:hasOptions;
             rr:objectMap
                 [
-                    rml:reference "exists(./*[matches(name(),'OPTIONS')])";
+                    rml:reference "if(exists(OPTIONS)) then 'true' else 'false'";
                     rr:datatype xsd:boolean
                 ]
         ] .

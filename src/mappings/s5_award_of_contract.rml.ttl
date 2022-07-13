@@ -25,7 +25,7 @@ tedm:PurchaseContract a rr:TripleMap ;
             rr:predicate epo:isWithinFrameworkAgreement;
             rr:objectMap
                 [
-                    rml:reference "exists(.//*[matches(name(),'AWARDED_TO_GROUP')])";
+                    rml:reference "if(exists(AWARDED_TO_GROUP)) then 'true' else 'false'";
                     rr:datatype xsd:boolean
 
                 ]
@@ -44,18 +44,18 @@ tedm:ContractOrganisationGroup a rr:TripleMap ;
                 ]
         ] .
 tedm:Contract a rr:TripleMap ;
-    rr:predicateObjectMap
-    [
-        rr:predicate epo:signedBySignatory ;
-        rr:objectMap
-            [
-                rr:parentTriplesMap tedm:ContractSignatoryonContractorSide;
-                rr:joinCondition [
-                    rr:child "./@ITEM";
-                    rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
-                ];
-            ] ;
-    ] ;
+#    rr:predicateObjectMap
+#    [
+#        rr:predicate epo:signedBySignatory ;
+#        rr:objectMap
+#            [
+#                rr:parentTriplesMap tedm:ContractSignatoryonContractorSide;
+#                rr:joinCondition [
+#                    rr:child "./@ITEM";
+#                    rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
+#                ];
+#            ] ;
+#    ] ;
     rr:predicateObjectMap
     [
         rr:predicate epo:bindsBuyer ;
@@ -64,18 +64,18 @@ tedm:Contract a rr:TripleMap ;
                 rr:parentTriplesMap tedm:AdditionalBuyer;
             ] ;
     ] ;
-    rr:predicateObjectMap
-    [
-        rr:predicate epo:bindsContractor ;
-        rr:objectMap
-            [
-                rr:parentTriplesMap tedm:ContractorRole;
-                rr:joinCondition [
-                    rr:child "./@ITEM";
-                    rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
-                ];
-            ] ;
-    ] ;
+#    rr:predicateObjectMap
+#    [
+#        rr:predicate epo:bindsContractor ;
+#        rr:objectMap
+#            [
+#                rr:parentTriplesMap tedm:ContractorRole;
+#                rr:joinCondition [
+#                    rr:child "./@ITEM";
+#                    rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
+#                ];
+#            ] ;
+#    ] ;
     rr:predicateObjectMap
     [
         rr:predicate epo:bindsBuyer ;
@@ -105,7 +105,7 @@ tedm:Contract a rr:TripleMap ;
                     rr:parentTriplesMap tedm:Lot;
                     rr:joinCondition [
                         rr:parent "if (count(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/OBJECT_DESCR)=1) then ./@ITEM else LOT_NO";
-                        rr:child "if (count(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/OBJECT_DESCR)=1) then ./@ITEM else LOT_NO";
+                        rr:child "if (count(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else LOT_NO";
                     ];
                 ] ;
         ] ;
@@ -176,7 +176,7 @@ tedm:Lot a rr:TripleMap ;
 tedm:LotAwardOutcome a rr:TripleMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:isSubmittedForLot ;
+            rr:predicate epo:describesLot ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:Lot;
@@ -278,38 +278,38 @@ tedm:Business a rr:TripleMap ;
             rr:predicate epo:hasBusinessSize ;
                 rr:objectMap
                 [
-                    rml:reference "exists(./*[matches(name(),'SME')])";
+                    rml:reference "if(exists(SME)) then 'true' else 'false'";
                     rr:datatype xsd:boolean
 
                 ]
 
         ] .
-tedm:ContractSignatoryonContractorSide a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:playedBy ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ContractOrganisation;
-                   rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                ];
-                ] ;
-        ] .
-tedm:ContractorRole a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:playedBy ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ContractOrganisation;
-                   rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                ];
-                ] ;
-        ] .
+#tedm:ContractSignatoryonContractorSide a rr:TripleMap ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:playedBy ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:ContractOrganisation;
+#                   rr:joinCondition [
+#                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                ];
+#                ] ;
+#        ] .
+#tedm:ContractorRole a rr:TripleMap ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:playedBy ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:ContractOrganisation;
+#                   rr:joinCondition [
+#                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                ];
+#                ] ;
+#        ] .
 
 tedm:ContractOrganisation a rr:TriplesMap ;
     rr:predicateObjectMap
@@ -365,6 +365,14 @@ tedm:ContractContactPoint a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "ADDRESS_CONTRACTOR/E_MAIL"
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasInternetAddress ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_CONTRACTOR/URL"
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -662,7 +670,7 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasElectronicTenders;
+            rr:predicate epo:hasReceivedTenders;
             rr:objectMap
                 [
                     rml:reference "TENDERS/NB_TENDERS_RECEIVED_EMEANS"
@@ -694,47 +702,11 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:concernsSubmissionsForLot ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:Lot;
-                    rr:joinCondition [
-                        rr:child "ancestor::AWARD_CONTRACT/@ITEM";
-                        rr:parent "./@ITEM";
-                    ];
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
             rr:predicate epo:hasEEAReceivedTenders;
             rr:objectMap
                 [
                     rml:reference "TENDERS/NB_TENDERS_RECEIVED_OTHER_EU";
                 ]
-        ] ;
- rr:predicateObjectMap
-        [
-            rr:predicate epo:hasLowestReceivedTenderValue ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MonetaryValueSubmissionLowestForLot;
-                    rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    ];
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasHighestReceivedTenderValue ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MonetaryValueSubmissionHighestForLot;
-                    rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    ];
-                ] ;
         ] ;
     rr:predicateObjectMap
         [
@@ -775,7 +747,7 @@ tedm:MonetaryValueSubmissionHighest a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:currency;
                     rr:joinCondition [
-                        rr:child "//VAL_SUBCONTRACTING[1]/@CURRENCY";
+                        rr:child "VALUES/VAL_RANGE_TOTAL/@CURRENCY";
                         rr:parent "code.value";
                     ];
                 ] ;
@@ -807,7 +779,7 @@ tedm:MonetaryValueSubmissionLowest a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:currency;
                     rr:joinCondition [
-                        rr:child "//VAL_SUBCONTRACTING[1]/@CURRENCY";
+                        rr:child "VALUES/VAL_RANGE_TOTAL/@CURRENCY";
                         rr:parent "code.value";
                     ];
                 ] ;

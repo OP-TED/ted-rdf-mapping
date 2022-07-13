@@ -1,6 +1,6 @@
-#title: II.2.5.3.1 - hasFormula
-#description: “II.2.5.3.1 - hasFormula” in SF corresponds to “BT-543 Award Criterion complicated” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/AC/AC_PRICE/AC_CRITERION. The expected ontology instances are epo: epo:AwardCriterion  .
+#title: II.1.7.3 - Highest offer
+#description: “II.1.7.3 - Highest offer” in SF corresponds to “BT-711 Tender Value Highest” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/VAL_RANGE_TOTAL/HIGH. The expected ontology instances are epo: epo:ResultNotice / epo:NoticeAwardInformation / epo:MonetaryValue / epo:Numeric .
 
-PREFIX cccev: <http://data.europa.eu/m8g/>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
-ASK WHERE { ?this cccev:name ?value . }
+ASK WHERE { ?this epo:describesResultNotice / epo:hasProcurementHighestReceivedTenderValue / epo:hasAmountValue ?value . }
