@@ -18,13 +18,13 @@ tedm:procedure
   rdfs:label "TED-SWS mapping of "@en ;  
   dct:date "2022-05-11"^^xsd:date .
 
-tedm:Lot a rr:TriplesMap ;
+tedm:Procedure a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:isSubjectToLotSpecificTerm ;
+            rr:predicate epo:usesTechnique ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:FramworkAgreement
+                    rr:parentTriplesMap tedm:DynamicPurchaseSystemTechniqueUsage
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -32,7 +32,7 @@ tedm:Lot a rr:TriplesMap ;
             rr:predicate epo:usesTechnique ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:DynamicPurchaseSystemTechnique
+                    rr:parentTriplesMap tedm:FrameworkAgreementTechniqueUsage
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -43,20 +43,10 @@ tedm:Lot a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:EauctionTechnique
                 ] ;
         ] .
-
-tedm:FramworkAgreement a rr:TriplesMap ;
+tedm:DynamicPurchaseSystemStatus a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasFrameworkAgreementType ;
-            rr:objectMap
-                [
-                    rr:template "http://publications.europa.eu/resource/authority/framework-agreement"
-                ] ;
-        ] .
-tedm:DynamicPurchaseSystemTechnique a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasDPSTermination ;
+            rr:predicate epo:isTerminated ;
             rr:objectMap
                 [
                     rml:reference "if(exists(TERMINATION_DPS)) then 'true' else 'false'";
@@ -65,21 +55,13 @@ tedm:DynamicPurchaseSystemTechnique a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasDPSScope ;
+            rr:predicate epo:concernsProcedure ;
             rr:objectMap
                 [
-                    rr:template "http://publications.europa.eu/resource/authority/dps-usage"
+                    rr:parentTriplesMap tedm:Procedure
                 ] ;
         ] .
-tedm:EauctionTechnique  a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasEAuctionUsage ;
-            rr:objectMap
-                [
-                    rr:template "http://publications.europa.eu/resource/authority/usage/used"
-                ] ;
-        ] .
+
 tedm:CompetitionTerminationInformation a rr:TriplesMap ;
     rr:predicateObjectMap
         [

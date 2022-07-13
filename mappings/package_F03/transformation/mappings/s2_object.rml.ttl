@@ -19,8 +19,118 @@ tedm:object
   rdfs:label "TED-SWS mapping of "@en ;  
   dct:date "2022-05-11"^^xsd:date .
 
+tedm:NoticeAwardInformation a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasEstimatedValue ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ProcurementMonetaryValue
+                ] ;
+        ] ;
+ rr:predicateObjectMap
+        [
+            rr:predicate epo:hasProcurementLowestReceivedTenderValue ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MonetaryValueSubmissionLowestForProcurement;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasProcurementHighestReceivedTenderValue ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MonetaryValueSubmissionHighestForProcurement;
 
+                ] ;
+        ] .
+
+tedm:ProcurementMonetaryValue a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasTotalAwardedValue ;
+            rr:objectMap
+                [
+                    rml:reference "VAL_TOTAL";
+                    rr:datatype xsd:decimal
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:currency;
+                    rr:joinCondition [
+                        rr:child "VAL_TOTAL/@CURRENCY";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] .
+tedm:MonetaryValueSubmissionLowestForProcurement a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "VAL_RANGE_TOTAL/LOW";
+                    rr:datatype xsd:decimal
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:currency;
+                    rr:joinCondition [
+                        rr:child "VAL_RANGE_TOTAL/@CURRENCY";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] .
+
+tedm:MonetaryValueSubmissionHighestForProcurement  a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "VAL_RANGE_TOTAL/HIGH";
+                    rr:datatype xsd:decimal
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:currency;
+                    rr:joinCondition [
+                        rr:child "VAL_RANGE_TOTAL/@CURRENCY";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] .
+tedm:ProcedureTerm a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCrossBorderLaw;
+            rr:objectMap
+                [
+                    rml:reference "PROCUREMENT_LAW"
+                ]
+        ] .
 tedm:Procedure a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ProcedureTerm
+                ] ;
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasProcurementScopeDividedIntoLot ;
@@ -31,12 +141,15 @@ tedm:Procedure a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasEstimatedValue ;
+            rr:predicate epo:isJointProcurement ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ProcedureMonetaryValue
+                   rml:reference "if(exists(/TED_EXPORT/FORM_SECTION/F03_2014[1]/CONTRACTING_BODY/JOINT_PROCUREMENT_INVOLVED)) then 'true' else 'false'";
+                   rr:datatype xsd:boolean
                 ] ;
         ] ;
+
+
     rr:predicateObjectMap
         [
             rr:predicate epo:hasOverallPurpose ;
@@ -53,60 +166,7 @@ tedm:Procedure a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:ProcedureIdentifier
                 ]
         ] .
-tedm:ProcedureMonetaryValue a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasAmountValue ;
-            rr:objectMap
-                [
-                    rml:reference "VAL_TOTAL";
-                    rr:datatype xsd:decimal
-                ] ;
-        ] ;
-#    rr:predicateObjectMap
-#        [
-#            rr:predicate epo:hasCurrency ;
-#            rr:objectMap
-#                [
-#                    rml:reference "if (not(exists(VAL_TOTAL/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
-#                    rr:termType rr:IRI;
-#                ]
-#
-#        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasCurrency ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:currency;
-                    rr:joinCondition [
-                        rr:child "VAL_TOTAL/@CURRENCY";
-                        rr:parent "code.value";
-                    ];
-                ] ;
-        ] .
 
-tedm:MonetaryValueSubmissionLowestForLot a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasAmountValue ;
-            rr:objectMap
-                [
-                    rml:reference "VAL_RANGE_TOTAL/LOW";
-                    rr:datatype xsd:decimal
-                ] ;
-        ] .
-
-tedm:MonetaryValueSubmissionHighestForLot  a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasAmountValue ;
-            rr:objectMap
-                [
-                    rml:reference "VAL_RANGE_TOTAL/HIGH";
-                    rr:datatype xsd:decimal
-                ] ;
-        ] .
 tedm:ProcedurePurpose a rr:TriplesMap ;
     rr:predicateObjectMap
         [
