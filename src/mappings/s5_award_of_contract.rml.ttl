@@ -19,17 +19,17 @@ tedm:award_of_contract
   rdfs:label "TED-SWS mapping of "@en ;
   dct:date "2022-05-11"^^xsd:date .
 
-tedm:PurchaseContract a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:isWithinFrameworkAgreement;
-            rr:objectMap
-                [
-                    rml:reference "exists(.//*[matches(name(),'AWARDED_TO_GROUP')])";
-                    rr:datatype xsd:boolean
-
-                ]
-        ] .
+#tedm:PurchaseContract a rr:TripleMap ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:isWithinFrameworkAgreement;
+#            rr:objectMap
+#                [
+#                    rml:reference "if(exists(AWARDED_TO_GROUP)) then 'true' else 'false'";
+#                    rr:datatype xsd:boolean
+#
+#                ]
+#        ] .
 tedm:ContractOrganisationGroup a rr:TripleMap ;
     rr:predicateObjectMap
         [
@@ -44,18 +44,18 @@ tedm:ContractOrganisationGroup a rr:TripleMap ;
                 ]
         ] .
 tedm:Contract a rr:TripleMap ;
-    rr:predicateObjectMap
-    [
-        rr:predicate epo:signedBySignatory ;
-        rr:objectMap
-            [
-                rr:parentTriplesMap tedm:ContractSignatoryonContractorSide;
-                rr:joinCondition [
-                    rr:child "./@ITEM";
-                    rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
-                ];
-            ] ;
-    ] ;
+#    rr:predicateObjectMap
+#    [
+#        rr:predicate epo:signedBySignatory ;
+#        rr:objectMap
+#            [
+#                rr:parentTriplesMap tedm:ContractSignatoryonContractorSide;
+#                rr:joinCondition [
+#                    rr:child "./@ITEM";
+#                    rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
+#                ];
+#            ] ;
+#    ] ;
     rr:predicateObjectMap
     [
         rr:predicate epo:bindsBuyer ;
@@ -66,14 +66,30 @@ tedm:Contract a rr:TripleMap ;
     ] ;
     rr:predicateObjectMap
     [
-        rr:predicate epo:bindsContractor ;
+        rr:predicate epo:bindsBuyer ;
         rr:objectMap
             [
-                rr:parentTriplesMap tedm:ContractorRole;
-                rr:joinCondition [
-                    rr:child "./@ITEM";
-                    rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
-                ];
+                rr:parentTriplesMap tedm:AdditionalBuyerCP;
+            ] ;
+    ] ;
+#    rr:predicateObjectMap
+#    [
+#        rr:predicate epo:bindsContractor ;
+#        rr:objectMap
+#            [
+#                rr:parentTriplesMap tedm:ContractorRole;
+#                rr:joinCondition [
+#                    rr:child "./@ITEM";
+#                    rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
+#                ];
+#            ] ;
+#    ] ;
+    rr:predicateObjectMap
+    [
+        rr:predicate epo:bindsBuyer ;
+        rr:objectMap
+            [
+                rr:parentTriplesMap tedm:Buyer;
             ] ;
     ] ;
     rr:predicateObjectMap
@@ -81,7 +97,7 @@ tedm:Contract a rr:TripleMap ;
         rr:predicate epo:bindsBuyer ;
         rr:objectMap
             [
-                rr:parentTriplesMap tedm:Buyer;
+                rr:parentTriplesMap tedm:BuyerCP;
             ] ;
     ] ;
     rr:predicateObjectMap
@@ -105,7 +121,7 @@ tedm:Contract a rr:TripleMap ;
                     rr:parentTriplesMap tedm:Lot;
                     rr:joinCondition [
                         rr:parent "if (count(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/OBJECT_DESCR)=1) then ./@ITEM else LOT_NO";
-                        rr:child "if (count(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/OBJECT_DESCR)=1) then ./@ITEM else LOT_NO";
+                        rr:child "if (count(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else LOT_NO";
                     ];
                 ] ;
         ] ;
@@ -166,8 +182,8 @@ tedm:Lot a rr:TripleMap ;
                 [
                     rr:parentTriplesMap tedm:MonetaryValueLot;
                     rr:joinCondition [
-                        rr:child "./@ITEM";
-                        rr:parent "ancestor::OBJECT_DESCR/@ITEM";
+                        rr:parent "if (count(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else LOT_NO";
+                        rr:child "if (count(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/OBJECT_DESCR)=1) then ./@ITEM else LOT_NO";
                     ];
 
                 ] ;
@@ -176,7 +192,7 @@ tedm:Lot a rr:TripleMap ;
 tedm:LotAwardOutcome a rr:TripleMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:isSubmittedForLot ;
+            rr:predicate epo:describesLot ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:Lot;
@@ -278,38 +294,38 @@ tedm:Business a rr:TripleMap ;
             rr:predicate epo:hasBusinessSize ;
                 rr:objectMap
                 [
-                    rml:reference "exists(./*[matches(name(),'SME')])";
+                    rml:reference "if(exists(SME)) then 'true' else 'false'";
                     rr:datatype xsd:boolean
 
                 ]
 
         ] .
-tedm:ContractSignatoryonContractorSide a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:playedBy ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ContractOrganisation;
-                   rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                ];
-                ] ;
-        ] .
-tedm:ContractorRole a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:playedBy ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ContractOrganisation;
-                   rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                ];
-                ] ;
-        ] .
+#tedm:ContractSignatoryonContractorSide a rr:TripleMap ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:playedBy ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:ContractOrganisation;
+#                   rr:joinCondition [
+#                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                ];
+#                ] ;
+#        ] .
+#tedm:ContractorRole a rr:TripleMap ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:playedBy ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:ContractOrganisation;
+#                   rr:joinCondition [
+#                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                ];
+#                ] ;
+#        ] .
 
 tedm:ContractOrganisation a rr:TriplesMap ;
     rr:predicateObjectMap
@@ -369,6 +385,14 @@ tedm:ContractContactPoint a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:hasInternetAddress ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_CONTRACTOR/URL"
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate epo:hasFax ;
             rr:objectMap
                 [
@@ -411,7 +435,7 @@ tedm:ContractOrganisationAddress a rr:TriplesMap ;
         ] ;
 #    rr:predicateObjectMap
 #        [
-#            rr:predicate locn:adminUnitL1 ;
+#            rr:predicate epo:hasNutsCode ;
 #            rr:objectMap
 #                [
 #                    rml:reference "if (not(exists(ADDRESS_CONTRACTOR/*:NUTS/@CODE))) then 'http://data.europa.eu/nuts/OP_DATPRO' else null";
@@ -421,7 +445,7 @@ tedm:ContractOrganisationAddress a rr:TriplesMap ;
 #        ] ;
     rr:predicateObjectMap
         [
-            rr:predicate locn:adminUnitL1 ;
+            rr:predicate epo:hasNutsCode;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:nuts;
@@ -433,7 +457,7 @@ tedm:ContractOrganisationAddress a rr:TriplesMap ;
         ] ;
 #    rr:predicateObjectMap
 #        [
-#            rr:predicate locn:adminUnitL2 ;
+#            rr:predicate epo:hasCountryCode ;
 #            rr:objectMap
 #                [
 #                    rml:reference "if (not(exists(ADDRESS_CONTRACTOR/COUNTRY/@VALUE))) then 'http://publications.europa.eu/resource/authority/country/OP_DATPRO' else null";
@@ -443,7 +467,7 @@ tedm:ContractOrganisationAddress a rr:TriplesMap ;
 #        ] ;
     rr:predicateObjectMap
         [
-            rr:predicate locn:adminUnitL2 ;
+            rr:predicate epo:hasCountryCode ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:country;
@@ -608,7 +632,7 @@ tedm:MonetaryValueLot a rr:TriplesMap ;
             rr:predicate epo:hasAmountValue ;
             rr:objectMap
                 [
-                    rml:reference "VAL_ESTIMATED_TOTAL";
+                    rml:reference "VALUES/VAL_ESTIMATED_TOTAL";
                     rr:datatype xsd:decimal
                 ] ;
         ] ;
@@ -629,7 +653,7 @@ tedm:MonetaryValueLot a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:currency;
                     rr:joinCondition [
-                        rr:child "VAL_ESTIMATED_TOTAL/@CURRENCY";
+                        rr:child "VALUES/VAL_ESTIMATED_TOTAL/@CURRENCY";
                         rr:parent "code.value";
                     ];
                 ] ;
@@ -694,48 +718,12 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:concernsSubmissionsForLot ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:Lot;
-                    rr:joinCondition [
-                        rr:child "ancestor::AWARD_CONTRACT/@ITEM";
-                        rr:parent "./@ITEM";
-                    ];
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
             rr:predicate epo:hasEEAReceivedTenders;
             rr:objectMap
                 [
                     rml:reference "TENDERS/NB_TENDERS_RECEIVED_OTHER_EU";
                 ]
         ] ;
- rr:predicateObjectMap
-        [
-            rr:predicate epo:hasLowestReceivedTenderValue ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MonetaryValueSubmissionLowestForLot;
-                    rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    ];
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasHighestReceivedTenderValue ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MonetaryValueSubmissionHighestForLot;
-                    rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    ];
-                ] ;
-        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:concernsSubmissionsForLot ;
@@ -743,8 +731,8 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
                 [
                     rr:parentTriplesMap tedm:Lot;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "if (count(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/OBJECT_DESCR)=1) then ./@ITEM else LOT_NO";
+                        rr:child "if (count(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else LOT_NO";
                     ];
                 ] ;
         ] .
@@ -775,7 +763,7 @@ tedm:MonetaryValueSubmissionHighest a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:currency;
                     rr:joinCondition [
-                        rr:child "//VAL_SUBCONTRACTING[1]/@CURRENCY";
+                        rr:child "VALUES/VAL_RANGE_TOTAL/@CURRENCY";
                         rr:parent "code.value";
                     ];
                 ] ;
@@ -807,7 +795,7 @@ tedm:MonetaryValueSubmissionLowest a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:currency;
                     rr:joinCondition [
-                        rr:child "//VAL_SUBCONTRACTING[1]/@CURRENCY";
+                        rr:child "VALUES/VAL_RANGE_TOTAL/@CURRENCY";
                         rr:parent "code.value";
                     ];
                 ] ;

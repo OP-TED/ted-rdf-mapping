@@ -1,6 +1,6 @@
-#title: II.2.5.3 - Price – Weighting
-#description: “II.2.5.3 - Price – Weighting” in SF corresponds to “BT-539 Award Criterion Type” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/AC/AC_PRICE. The expected ontology instances are epo: epo:AwardCriterion / at-voc:award-criterion-type .
+#title: II.1.7.2 - Lowest offer
+#description: “II.1.7.2 - Lowest offer” in SF corresponds to “BT-710 Tender Value Lowest” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/VAL_RANGE_TOTAL/LOW. The expected ontology instances are epo: epo:ResultNotice / epo:NoticeAwardInformation / epo:MonetaryValue / epo:Numeric .
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
-ASK WHERE { ?this epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/price> . }
+ASK WHERE { ?this epo:announcesNoticeAwardInformation / epo:hasProcurementLowestReceivedTenderValue / epo:hasAmountValue ?value . }

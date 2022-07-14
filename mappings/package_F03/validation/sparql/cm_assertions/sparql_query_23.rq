@@ -1,6 +1,6 @@
-#title: II.1.4 - Short description
-#description: “II.1.4 - Short description” in SF corresponds to “BT-24 Description” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/SHORT_DESCR. The expected ontology instances are epo: epo:Procedure / rdf:langString .
+#title: I.1.7 - Country
+#description: “I.1.7 - Country” in SF corresponds to “BT-514 Organisation Country Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL/COUNTRY. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / at-voc:country (from country.json) .
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
-ASK WHERE { ?this epo:hasDescription ?value . }
+ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / epo:hasCountryCode ?value . }

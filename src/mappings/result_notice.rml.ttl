@@ -19,7 +19,15 @@ tedm:result_notice
 tedm:ResultNotice a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:announcesRole ;
+            rr:predicate epo:announcesNoticeAwardInformation ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:NoticeAwardInformation
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:refersToRole ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:Reviewer
@@ -27,7 +35,7 @@ tedm:ResultNotice a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:announcesRole ;
+            rr:predicate epo:refersToRole ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:Mediator
@@ -35,18 +43,50 @@ tedm:ResultNotice a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:announcesRole ;
+            rr:predicate epo:refersToRole ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ReviewProcedureInformationProvider
                 ] ;
         ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:refersToRole ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:ContractSignatoryonContractorSide
+#                ] ;
+#        ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:announcesRole ;
+            rr:predicate epo:refersToRole ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ContractSignatoryonContractorSide
+                    rr:parentTriplesMap tedm:Buyer
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:refersToRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:BuyerCP
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:refersToRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:AdditionalBuyer
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:refersToRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:AdditionalBuyerCP
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -54,7 +94,7 @@ tedm:ResultNotice a rr:TriplesMap ;
             rr:predicate epo:announcesRole ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:Buyer
+                    rr:parentTriplesMap tedm:WinnerRole
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -89,14 +129,14 @@ tedm:ResultNotice a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:Contract
                 ] ;
         ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:announcesContract ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:PurchaseContract
-                ] ;
-        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:announcesContract ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:PurchaseContract
+#                ] ;
+#        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:announcesTender ;

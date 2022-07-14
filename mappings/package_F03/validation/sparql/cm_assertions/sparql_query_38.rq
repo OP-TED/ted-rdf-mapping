@@ -1,6 +1,6 @@
-#title: II.2.5.1 - Quality criterion – Name: / Weighting:
-#description: “II.2.5.1 - Quality criterion – Name: / Weighting:” in SF corresponds to “BT-539 Award Criterion Type” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/AC/AC_QUALITY. The expected ontology instances are epo: epo:AwardCriterion / at-voc:award-criterion-type .
+#title: II.1.2 - Main CPV code
+#description: “II.1.2 - Main CPV code” in SF corresponds to “BT-262 Main Classification Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/CPV_MAIN/CPV_CODE/@CODE. The expected ontology instances are epo: epo:Procedure / epo:Purpose / at-voc:cpv (from cpv.json) .
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
-ASK WHERE { ?this epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality> . }
+ASK WHERE { ?this epo:hasOverallPurpose / epo:hasMainClassification ?value . }

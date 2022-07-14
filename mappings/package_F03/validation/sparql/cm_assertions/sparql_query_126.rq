@@ -1,7 +1,6 @@
-#title: VI.4.1.7 - Telephone
-#description: “VI.4.1.7 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY/PHONE. The expected ontology instances are epo: epo:Role (from CL1)  / org:Organization (from CL2) / epo:ContactPoint / rdf:langString .
+#title: V.2.4.3 - Lowest offer
+#description: “V.2.4.3 - Lowest offer” in SF corresponds to “BT-710 Tender Value Lowest” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_RANGE_TOTAL/LOW. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / MonetaryValue / epo:Numeric .
 
-PREFIX cpov: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
-ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint  / cpov:telephone ?value . }
+ASK WHERE { ?this epo:hasLowestReceivedTenderValue / epo:hasAmountValue ?value . }

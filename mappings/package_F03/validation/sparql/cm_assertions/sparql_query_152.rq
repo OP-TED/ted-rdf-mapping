@@ -1,6 +1,7 @@
-#title: D1.1.1.1 - Open procedure
-#description: “D1.1.1.1 - Open procedure” in SF corresponds to “BT-1252 Direct Award Justification Previous Procedure Identifier” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_PROC_OPEN. The expected ontology instances are epo: epo:DirectAwardTerm / epo:Procedure / at-voc:procurement-procedure-type .
+#title: VI.4.2.6 - E-mail
+#description: “VI.4.2.6 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_MEDIATION_BODY/E_MAIL. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / epo:URI .
 
+PREFIX cpov: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
-ASK WHERE { ?this epo:refersToPreviousProcedure / epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open> . }
+ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:email ?value . }
