@@ -19,17 +19,17 @@ tedm:award_of_contract
   rdfs:label "TED-SWS mapping of "@en ;
   dct:date "2022-05-11"^^xsd:date .
 
-tedm:PurchaseContract a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:isWithinFrameworkAgreement;
-            rr:objectMap
-                [
-                    rml:reference "if(exists(AWARDED_TO_GROUP)) then 'true' else 'false'";
-                    rr:datatype xsd:boolean
-
-                ]
-        ] .
+#tedm:PurchaseContract a rr:TripleMap ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:isWithinFrameworkAgreement;
+#            rr:objectMap
+#                [
+#                    rml:reference "if(exists(AWARDED_TO_GROUP)) then 'true' else 'false'";
+#                    rr:datatype xsd:boolean
+#
+#                ]
+#        ] .
 tedm:ContractOrganisationGroup a rr:TripleMap ;
     rr:predicateObjectMap
         [
@@ -64,6 +64,14 @@ tedm:Contract a rr:TripleMap ;
                 rr:parentTriplesMap tedm:AdditionalBuyer;
             ] ;
     ] ;
+    rr:predicateObjectMap
+    [
+        rr:predicate epo:bindsBuyer ;
+        rr:objectMap
+            [
+                rr:parentTriplesMap tedm:AdditionalBuyerCP;
+            ] ;
+    ] ;
 #    rr:predicateObjectMap
 #    [
 #        rr:predicate epo:bindsContractor ;
@@ -82,6 +90,14 @@ tedm:Contract a rr:TripleMap ;
         rr:objectMap
             [
                 rr:parentTriplesMap tedm:Buyer;
+            ] ;
+    ] ;
+    rr:predicateObjectMap
+    [
+        rr:predicate epo:bindsBuyer ;
+        rr:objectMap
+            [
+                rr:parentTriplesMap tedm:BuyerCP;
             ] ;
     ] ;
     rr:predicateObjectMap
@@ -419,7 +435,7 @@ tedm:ContractOrganisationAddress a rr:TriplesMap ;
         ] ;
 #    rr:predicateObjectMap
 #        [
-#            rr:predicate locn:adminUnitL1 ;
+#            rr:predicate epo:hasNutsCode ;
 #            rr:objectMap
 #                [
 #                    rml:reference "if (not(exists(ADDRESS_CONTRACTOR/*:NUTS/@CODE))) then 'http://data.europa.eu/nuts/OP_DATPRO' else null";
@@ -429,7 +445,7 @@ tedm:ContractOrganisationAddress a rr:TriplesMap ;
 #        ] ;
     rr:predicateObjectMap
         [
-            rr:predicate locn:adminUnitL1 ;
+            rr:predicate epo:hasNutsCode;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:nuts;
@@ -441,7 +457,7 @@ tedm:ContractOrganisationAddress a rr:TriplesMap ;
         ] ;
 #    rr:predicateObjectMap
 #        [
-#            rr:predicate locn:adminUnitL2 ;
+#            rr:predicate epo:hasCountryCode ;
 #            rr:objectMap
 #                [
 #                    rml:reference "if (not(exists(ADDRESS_CONTRACTOR/COUNTRY/@VALUE))) then 'http://publications.europa.eu/resource/authority/country/OP_DATPRO' else null";
@@ -451,7 +467,7 @@ tedm:ContractOrganisationAddress a rr:TriplesMap ;
 #        ] ;
     rr:predicateObjectMap
         [
-            rr:predicate locn:adminUnitL2 ;
+            rr:predicate epo:hasCountryCode ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:country;
