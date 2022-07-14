@@ -30,7 +30,7 @@
 	<hr>
     <h2>Report details: </h2>
     <ul>
-        <li>Date created: 2022-07-14T15:23:29.953475</li>
+        <li>Date created: 2022-07-14T18:41:59.308105</li>
         <li>SPARQL test suite identifier: cm_assertions</li>
         <li>Mapping suite identifier: package_F03</li>
     </ul>
@@ -66,7 +66,7 @@
             <tr>
                 <td>I.1.4 - Town</td>
                 <td>“I.1.4 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL/TOWN. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postName ?value . }</td>
+                <td>PREFIX locn: <http://www.w3.org/ns/locn#><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postName ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
@@ -94,8 +94,8 @@
             <tr>
                 <td>IV.1.3.1 - The procurement involves the establishment of a framework agreement</td>
                 <td>“IV.1.3.1 - The procurement involves the establishment of a framework agreement” in SF corresponds to “BT-765 Framework Agreement” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/FRAMEWORK. The expected ontology instances are epo: epo:Procedure /  epo:FrameworkAgreementTechniqueUsage .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:usesTechnique ?this }</td>
-                <td class="error" >False</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:usesTechnique ?value . }</td>
+                <td class="success" >True</td>
                 <td>None</td>
             </tr>
             
@@ -108,7 +108,7 @@
             <tr>
                 <td>II.1.7.3 - Highest offer</td>
                 <td>“II.1.7.3 - Highest offer” in SF corresponds to “BT-711 Tender Value Highest” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/VAL_RANGE_TOTAL/HIGH. The expected ontology instances are epo: epo:ResultNotice / epo:NoticeAwardInformation / epo:MonetaryValue / epo:Numeric .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:describesResultNotice / epo:hasProcurementHighestReceivedTenderValue / epo:hasAmountValue ?value . }</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:announcesNoticeAwardInformation / epo:hasProcurementHighestReceivedTenderValue / epo:hasAmountValue ?value . }</td>
                 <td class="error" >False</td>
                 <td>None</td>
             </tr>
@@ -192,7 +192,7 @@
             <tr>
                 <td>I.1.9 - Telephone</td>
                 <td>“I.1.9 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/PHONE. The expected ontology instances are epo: epo:AgentInRole (from CL1) / cpov:ContactPoint / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX cpov: <http://data.europa.eu/m8g/><br><br>ASK WHERE { ?this epo:hasContactPointInRole  / cpov:telephone ?value . }</td>
+                <td>PREFIX cpov: <http://data.europa.eu/m8g/><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasContactPointInRole  / cpov:telephone ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
@@ -318,7 +318,7 @@
             <tr>
                 <td>I.1.10 - E-mail</td>
                 <td>“I.1.10 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/E_MAIL. The expected ontology instances are epo: epo:AgentInRole (from CL1) / cpov:ContactPoint / epo:URI .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX cpov: <http://data.europa.eu/m8g/><br><br>ASK WHERE { ?this epo:hasContactPointInRole  / cpov:email ?value . }</td>
+                <td>PREFIX cpov: <http://data.europa.eu/m8g/><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasContactPointInRole  / cpov:email ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
@@ -360,7 +360,7 @@
             <tr>
                 <td>I.1.9 - Telephone</td>
                 <td>“I.1.9 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL/PHONE. The expected ontology instances are epo: epo:AgentInRole (from CL1) / cpov:ContactPoint / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX cpov: <http://data.europa.eu/m8g/><br><br>ASK WHERE { ?this epo:hasContactPointInRole  / cpov:telephone ?value . }</td>
+                <td>PREFIX cpov: <http://data.europa.eu/m8g/><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasContactPointInRole  / cpov:telephone ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
@@ -500,7 +500,7 @@
             <tr>
                 <td>II.1.7.2 - Lowest offer</td>
                 <td>“II.1.7.2 - Lowest offer” in SF corresponds to “BT-710 Tender Value Lowest” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/VAL_RANGE_TOTAL/LOW. The expected ontology instances are epo: epo:ResultNotice / epo:NoticeAwardInformation / epo:MonetaryValue / epo:Numeric .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:describesResultNotice / epo:hasProcurementLowestReceivedTenderValue / epo:hasAmountValue ?value . }</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:announcesNoticeAwardInformation / epo:hasProcurementLowestReceivedTenderValue / epo:hasAmountValue ?value . }</td>
                 <td class="error" >False</td>
                 <td>None</td>
             </tr>
@@ -598,7 +598,7 @@
             <tr>
                 <td>VI.4.1.4 - Postal code</td>
                 <td>“VI.4.1.4 - Postal code” in SF corresponds to “BT-512 Organisation Post Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY/POSTAL_CODE. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organizationn (from CL2) / locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postCode ?value . }</td>
+                <td>PREFIX locn: <http://www.w3.org/ns/locn#><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postCode ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
@@ -668,7 +668,7 @@
             <tr>
                 <td>VI.4.4.7 - Telephone</td>
                 <td>“VI.4.4.7 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO/PHONE. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX cpov: <http://data.europa.eu/m8g/><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:telephone ?value . }</td>
+                <td>PREFIX cpov: <http://data.europa.eu/m8g/><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:telephone ?value . }</td>
                 <td class="error" >False</td>
                 <td>None</td>
             </tr>
@@ -710,7 +710,7 @@
             <tr>
                 <td>VI.4.2.4 - Postal code</td>
                 <td>“VI.4.2.4 - Postal code” in SF corresponds to “BT-512 Organisation Post Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_MEDIATION_BODY/POSTAL_CODE. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postCode ?value . }</td>
+                <td>PREFIX locn: <http://www.w3.org/ns/locn#><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postCode ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
@@ -752,7 +752,7 @@
             <tr>
                 <td>I.1.6 - Postal code</td>
                 <td>“I.1.6 - Postal code” in SF corresponds to “BT-512 Place Performance Post Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/POSTAL_CODE. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postCode ?value . }</td>
+                <td>PREFIX locn: <http://www.w3.org/ns/locn#><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postCode ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
@@ -794,7 +794,7 @@
             <tr>
                 <td>V.2.3.4 - Town</td>
                 <td>“V.2.3.4 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/TOWN. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postName ?value . }</td>
+                <td>PREFIX locn: <http://www.w3.org/ns/locn#><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postName ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
@@ -837,7 +837,7 @@
                 <td>V.2.2 - Information about tenders</td>
                 <td>“V.2.2 - Information about tenders” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / epo:Lot .</td>
                 <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:concernsSubmissionsForLot ?value . }</td>
-                <td class="error" >False</td>
+                <td class="success" >True</td>
                 <td>None</td>
             </tr>
             
@@ -864,7 +864,7 @@
             <tr>
                 <td>VI.4.4.3 - Town</td>
                 <td>“VI.4.4.3 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO/TOWN. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postName ?value . }</td>
+                <td>PREFIX locn: <http://www.w3.org/ns/locn#><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postName ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
@@ -906,7 +906,7 @@
             <tr>
                 <td>V.2.3.9 - Telephone</td>
                 <td>“V.2.3.9 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/PHONE. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX cpov: <http://data.europa.eu/m8g/><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:telephone ?value . }</td>
+                <td>PREFIX cpov: <http://data.europa.eu/m8g/><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:telephone ?value . }</td>
                 <td class="error" >False</td>
                 <td>None</td>
             </tr>
@@ -934,7 +934,7 @@
             <tr>
                 <td>V.2.3.3 - Postal address</td>
                 <td>“V.2.3.3 - Postal address” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/ADDRESS. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:thoroughfare ?value . }</td>
+                <td>PREFIX locn: <http://www.w3.org/ns/locn#><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:thoroughfare ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
@@ -1004,7 +1004,7 @@
             <tr>
                 <td>VI.4.4.4 - Postal code</td>
                 <td>“VI.4.4.4 - Postal code” in SF corresponds to “BT-512 Organisation Post Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO/POSTAL_CODE. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postCode ?value . }</td>
+                <td>PREFIX locn: <http://www.w3.org/ns/locn#><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postCode ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
@@ -1047,7 +1047,7 @@
                 <td>V.2.2.5 - Number of tenders received by electronic means</td>
                 <td>“V.2.2.5 - Number of tenders received by electronic means” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/TENDERS/NB_TENDERS_RECEIVED_EMEANS. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / xsd:integer .</td>
                 <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasElectronicTenders ?value . }</td>
-                <td class="error" >False</td>
+                <td class="success" >True</td>
                 <td>None</td>
             </tr>
             
@@ -1075,7 +1075,7 @@
                 <td>V.2.4.1 - Initial estimated total value of the contract/lot</td>
                 <td>“V.2.4.1 - Initial estimated total value of the contract/lot” in SF corresponds to “BT-27 Estimated Value” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_ESTIMATED_TOTAL. The expected ontology instances are epo: epo:Lot / epo:MonetaryValue / epo:Numeric .</td>
                 <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasEstimatedValue / epo:hasAmountValue ?value . }</td>
-                <td class="error" >False</td>
+                <td class="success" >True</td>
                 <td>None</td>
             </tr>
             
@@ -1116,7 +1116,7 @@
             <tr>
                 <td>V.2.5.6 - Short description of the part of the contract to be subcontracted</td>
                 <td>“V.2.5.6 - Short description of the part of the contract to be subcontracted” in SF corresponds to “BT-554 Subcontracting Description” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/INFO_ADD_SUBCONTRACTING. The expected ontology instances are epo: epo:Tender / epo:SubcontractingEstimate / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:forseesSubcontracting /  epo:hasDescription ?value. }</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:foreseesSubcontracting /  epo:hasDescription ?value. }</td>
                 <td class="error" >False</td>
                 <td>None</td>
             </tr>
@@ -1214,7 +1214,7 @@
             <tr>
                 <td>I.1.4 - Town</td>
                 <td>“I.1.4 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/TOWN. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postName ?value . }</td>
+                <td>PREFIX locn: <http://www.w3.org/ns/locn#><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postName ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
@@ -1270,7 +1270,7 @@
             <tr>
                 <td>V.2.3.6 - Postal code</td>
                 <td>“V.2.3.6 - Postal code” in SF corresponds to “BT-512 Organisation Post Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/POSTAL_CODE. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postCode ?value . }</td>
+                <td>PREFIX locn: <http://www.w3.org/ns/locn#><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postCode ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
@@ -1326,8 +1326,8 @@
             <tr>
                 <td>V.2.5.5 - Proportion</td>
                 <td>“V.2.5.5 - Proportion” in SF corresponds to “BT-555 Subcontracting Percentage” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/PCT_SUBCONTRACTING. The expected ontology instances are epo: epo:Tender / epo:SubcontractingEstimate / xsd:decimal .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:forseesSubcontracting / epo:hasEstimatedPercentage ?value . }</td>
-                <td class="error" >False</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:foreseesSubcontracting / epo:hasEstimatedPercentage ?value . }</td>
+                <td class="success" >True</td>
                 <td>None</td>
             </tr>
             
@@ -1396,7 +1396,7 @@
             <tr>
                 <td>VI.4.1.6 - E-mail</td>
                 <td>“VI.4.1.6 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY/E_MAIL. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / epo:URI .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX cpov: <http://data.europa.eu/m8g/><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:email ?value . }</td>
+                <td>PREFIX cpov: <http://data.europa.eu/m8g/><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:email ?value . }</td>
                 <td class="error" >False</td>
                 <td>None</td>
             </tr>
@@ -1480,7 +1480,7 @@
             <tr>
                 <td>VI.4.2.6 - E-mail</td>
                 <td>“VI.4.2.6 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_MEDIATION_BODY/E_MAIL. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / epo:URI .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX cpov: <http://data.europa.eu/m8g/><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:email ?value . }</td>
+                <td>PREFIX cpov: <http://data.europa.eu/m8g/><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:email ?value . }</td>
                 <td class="error" >False</td>
                 <td>None</td>
             </tr>
@@ -1578,7 +1578,7 @@
             <tr>
                 <td>VI.4.1.7 - Telephone</td>
                 <td>“VI.4.1.7 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY/PHONE. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX cpov: <http://data.europa.eu/m8g/><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:telephone ?value . }</td>
+                <td>PREFIX cpov: <http://data.europa.eu/m8g/><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:telephone ?value . }</td>
                 <td class="error" >False</td>
                 <td>None</td>
             </tr>
@@ -1662,7 +1662,7 @@
             <tr>
                 <td>VI.4.2.7 - Telephone</td>
                 <td>“VI.4.2.7 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_MEDIATION_BODY/PHONE. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX cpov: <http://data.europa.eu/m8g/><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:telephone ?value . }</td>
+                <td>PREFIX cpov: <http://data.europa.eu/m8g/><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:telephone ?value . }</td>
                 <td class="error" >False</td>
                 <td>None</td>
             </tr>
@@ -1732,7 +1732,7 @@
             <tr>
                 <td>I.1.3 - Postal address</td>
                 <td>“I.1.3 - Postal address” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL/ADDRESS. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:thoroughfare ?value . }</td>
+                <td>PREFIX locn: <http://www.w3.org/ns/locn#><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:thoroughfare ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
@@ -1760,7 +1760,7 @@
             <tr>
                 <td>I.1.3 - Postal address</td>
                 <td>“I.1.3 - Postal address” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/ADDRESS. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:thoroughfare ?value . }</td>
+                <td>PREFIX locn: <http://www.w3.org/ns/locn#><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:thoroughfare ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
@@ -1858,7 +1858,7 @@
             <tr>
                 <td>VI.4.4.6 - E-mail</td>
                 <td>“VI.4.4.6 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO/E_MAIL. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / epo:URI .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX cpov: <http://data.europa.eu/m8g/><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:email ?value . }</td>
+                <td>PREFIX cpov: <http://data.europa.eu/m8g/><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:email ?value . }</td>
                 <td class="error" >False</td>
                 <td>None</td>
             </tr>
@@ -1872,7 +1872,7 @@
             <tr>
                 <td>V.2.5.4 - Currency</td>
                 <td>“V.2.5.4 - Currency” in SF corresponds to “no direct match nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VAL_SUBCONTRACTING/@CURRENCY. The expected ontology instances are epo: epo:Tender / epo:SubcontractingEstimate / MonetaryValue /at-voc:currency (from currency.json) .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:forseesSubcontracting / epo:hasSubcontractingEstimatedValue / epo:hasCurrency ?value . }</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:foreseesSubcontracting / epo:hasSubcontractingEstimatedValue / epo:hasCurrency ?value . }</td>
                 <td class="error" >False</td>
                 <td>None</td>
             </tr>
@@ -1928,8 +1928,8 @@
             <tr>
                 <td>II.1.7.1 - Value</td>
                 <td>“II.1.7.1 - Value” in SF corresponds to “BT-27 Estimated Value” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/VAL_TOTAL. The expected ontology instances are epo: epo:ResultNotice / epo:NoticeAwardInformation / epo:MonetaryValue / epo:Numeric .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:describesResultNotice / epo:hasTotalAwardedValue / epo:hasAmountValue ?value . }</td>
-                <td class="error" >False</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:announcesNoticeAwardInformation / epo:hasTotalAwardedValue / epo:hasAmountValue ?value . }</td>
+                <td class="success" >True</td>
                 <td>None</td>
             </tr>
             
@@ -1970,7 +1970,7 @@
             <tr>
                 <td>I.1.10 - E-mail</td>
                 <td>“I.1.10 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL/E_MAIL. The expected ontology instances are epo: epo:AgentInRole (from CL1) / cpov:ContactPoint / epo:URI .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX cpov: <http://data.europa.eu/m8g/><br><br>ASK WHERE { ?this epo:hasContactPointInRole  / cpov:email ?value . }</td>
+                <td>PREFIX cpov: <http://data.europa.eu/m8g/><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:hasContactPointInRole  / cpov:email ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
@@ -2040,7 +2040,7 @@
             <tr>
                 <td>II.2.3.2 - Main site or place of performance</td>
                 <td>“II.2.3.2 - Main site or place of performance” in SF corresponds to “BT-728 Place Performance Additional Information” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/MAIN_SITE. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:foreseesContractTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value . }</td>
+                <td>PREFIX locn: <http://www.w3.org/ns/locn#><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:foreseesContractTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
@@ -2068,7 +2068,7 @@
             <tr>
                 <td>VI.4.1.3 - Town</td>
                 <td>“VI.4.1.3 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY/TOWN. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postName ?value . }</td>
+                <td>PREFIX locn: <http://www.w3.org/ns/locn#><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postName ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
@@ -2082,7 +2082,7 @@
             <tr>
                 <td>V.2.3.8 - E-mail</td>
                 <td>“V.2.3.8 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/E_MAIL. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / epo:URI .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX cpov: <http://data.europa.eu/m8g/><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:email ?value . }</td>
+                <td>PREFIX cpov: <http://data.europa.eu/m8g/><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:email ?value . }</td>
                 <td class="error" >False</td>
                 <td>None</td>
             </tr>
@@ -2096,7 +2096,7 @@
             <tr>
                 <td>VI.4.2.2 - Postal address</td>
                 <td>“VI.4.2.2 - Postal address” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_MEDIATION_BODY/ADDRESS. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:thoroughfare ?value . }</td>
+                <td>PREFIX locn: <http://www.w3.org/ns/locn#><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:thoroughfare ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
@@ -2138,7 +2138,7 @@
             <tr>
                 <td>I.1.6 - Postal code</td>
                 <td>“I.1.6 - Postal code” in SF corresponds to “BT-512 Place Performance Post Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL/POSTAL_CODE. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postCode ?value . }</td>
+                <td>PREFIX locn: <http://www.w3.org/ns/locn#><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postCode ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
@@ -2194,7 +2194,7 @@
             <tr>
                 <td>I.2.2 - The contract is awarded by a central purchasing body</td>
                 <td>“I.2.2 - The contract is awarded by a central purchasing body” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/CENTRAL_PURCHASING. The expected ontology instances are epo: epo:AwardingCentralPurchasingBody / epo:OrganisationGroup .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#><br><br>ASK WHERE { ?this rdf:type epo:AwardingCentralPurchasingBody / epo:playedBy ?value }</td>
+                <td>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this rdf:type epo:AwardingCentralPurchasingBody / epo:playedBy ?value }</td>
                 <td class="error" >None</td>
                 <td>Expected {SelectQuery | ConstructQuery | DescribeQuery | AskQuery}, found '/'  (at char 170), (line:</td>
             </tr>
@@ -2278,7 +2278,7 @@
             <tr>
                 <td>VI.4.2.3 - Town</td>
                 <td>“VI.4.2.3 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_MEDIATION_BODY/TOWN. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postName ?value . }</td>
+                <td>PREFIX locn: <http://www.w3.org/ns/locn#><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:postName ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
@@ -2348,9 +2348,9 @@
             <tr>
                 <td>II.1.7.4 - Currency</td>
                 <td>“II.1.7.4 - Currency” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/VAL_TOTAL/@CURRENCY. The expected ontology instances are epo: epo:ResultNotice / epo:NoticeAwardInformation / epo:MonetaryValue / at-voc:currency (from currency.json) .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { { ?this epo:describesResultNotice / epo:hasTotalAwardedValue / epo:hasCurrency ?value } UNION { ?this epo:describesResultNotice / epo:hasProcurementLowestReceivedTenderValue / epo:hasCurrency ?value } UNION  { ?this epo:describesResultNotice / epo:hasProcurementHighestReceivedTenderValue / epo:hasCurrency ?value } UNION  }</td>
+                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { { ?this epo:announcesNoticeAwardInformation / epo:hasTotalAwardedValue / epo:hasCurrency ?value } UNION { ?this epo:announcesNoticeAwardInformation / epo:hasProcurementLowestReceivedTenderValue / epo:hasCurrency ?value } UNION  { ?this epo:announcesNoticeAwardInformation / epo:hasProcurementHighestReceivedTenderValue / epo:hasCurrency ?value } UNION  }</td>
                 <td class="error" >None</td>
-                <td>Expected {SelectQuery | ConstructQuery | DescribeQuery | AskQuery}, found 'UNION'  (at char 379), (l</td>
+                <td>Expected {SelectQuery | ConstructQuery | DescribeQuery | AskQuery}, found 'UNION'  (at char 409), (l</td>
             </tr>
             
                 
@@ -2418,7 +2418,7 @@
             <tr>
                 <td>VI.4.4.2 - Postal address</td>
                 <td>“VI.4.4.2 - Postal address” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO/ADDRESS. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:thoroughfare ?value . }</td>
+                <td>PREFIX locn: <http://www.w3.org/ns/locn#><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:thoroughfare ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
@@ -2614,7 +2614,7 @@
             <tr>
                 <td>VI.4.1.2 - Postal address</td>
                 <td>“VI.4.1.2 - Postal address” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY/ADDRESS. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .</td>
-                <td>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br>PREFIX locn: <http://www.w3.org/ns/locn#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:thoroughfare ?value . }</td>
+                <td>PREFIX locn: <http://www.w3.org/ns/locn#><br>PREFIX epo: <http://data.europa.eu/a4g/ontology#><br><br>ASK WHERE { ?this epo:playedBy / epo:hasRegisteredAddress / locn:thoroughfare ?value . }</td>
                 <td class="success" >True</td>
                 <td>None</td>
             </tr>
@@ -2639,13 +2639,13 @@
         <tbody>
         <tr>
             <td>True</td>
-            <td>105</td>
-            <td>0.5706521739130435</td>
+            <td>111</td>
+            <td>0.6032608695652174</td>
         </tr>
         <tr>
             <td>False</td>
-            <td>77</td>
-            <td>0.41847826086956524</td>
+            <td>71</td>
+            <td>0.3858695652173913</td>
         </tr>
                 <tr>
             <td>Error</td>

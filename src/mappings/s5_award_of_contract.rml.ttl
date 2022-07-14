@@ -182,8 +182,8 @@ tedm:Lot a rr:TripleMap ;
                 [
                     rr:parentTriplesMap tedm:MonetaryValueLot;
                     rr:joinCondition [
-                        rr:child "./@ITEM";
-                        rr:parent "ancestor::OBJECT_DESCR/@ITEM";
+                        rr:parent "if (count(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else LOT_NO";
+                        rr:child "if (count(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/OBJECT_DESCR)=1) then ./@ITEM else LOT_NO";
                     ];
 
                 ] ;
@@ -632,7 +632,7 @@ tedm:MonetaryValueLot a rr:TriplesMap ;
             rr:predicate epo:hasAmountValue ;
             rr:objectMap
                 [
-                    rml:reference "VAL_ESTIMATED_TOTAL";
+                    rml:reference "VALUES/VAL_ESTIMATED_TOTAL";
                     rr:datatype xsd:decimal
                 ] ;
         ] ;
@@ -653,7 +653,7 @@ tedm:MonetaryValueLot a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:currency;
                     rr:joinCondition [
-                        rr:child "VAL_ESTIMATED_TOTAL/@CURRENCY";
+                        rr:child "VALUES/VAL_ESTIMATED_TOTAL/@CURRENCY";
                         rr:parent "code.value";
                     ];
                 ] ;
@@ -686,7 +686,7 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasReceivedTenders;
+            rr:predicate epo:hasElectronicTenders;
             rr:objectMap
                 [
                     rml:reference "TENDERS/NB_TENDERS_RECEIVED_EMEANS"
@@ -731,8 +731,8 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
                 [
                     rr:parentTriplesMap tedm:Lot;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "if (count(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/OBJECT_DESCR)=1) then ./@ITEM else LOT_NO";
+                        rr:child "if (count(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else LOT_NO";
                     ];
                 ] ;
         ] .
