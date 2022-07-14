@@ -97,6 +97,43 @@ tedm:AdditionalBuyer a rr:TripleMap ;
                     ];
                 ] ;
         ] .
+tedm:AdditionalBuyerCP a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContactPointInRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:AdditionalContactPoint;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:playedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:AdditionalOrganisation;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasBuyerProfile ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:AdditionalBuyerProfile;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
+                ] ;
+        ] .
 
 tedm:AdditionalBuyerProfile a rr:TripleMap ;
     rr:predicateObjectMap
@@ -247,7 +284,31 @@ tedm:AdditionalOrganisationAddress  a rr:TriplesMap ;
                 ] ;
         ] .
 
-
+tedm:BuyerCP a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:playedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Organisation
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContactPointInRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ContactPoint
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasBuyerProfile ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:BuyerProfile
+                ] ;
+        ] .
 tedm:Buyer a rr:TripleMap ;
     rr:predicateObjectMap
         [
