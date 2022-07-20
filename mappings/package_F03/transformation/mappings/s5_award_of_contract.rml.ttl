@@ -165,18 +165,6 @@ tedm:ContractTerm a rr:TriplesMap ;
 tedm:Lot a rr:TripleMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:describesLot ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:LotAwardOutcome;
-                    rr:joinCondition [
-                        rr:parent "./@ITEM";
-                        rr:child "./@ITEM";
-                    ];
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
             rr:predicate epo:hasEstimatedValue;
             rr:objectMap
                 [
@@ -197,8 +185,8 @@ tedm:LotAwardOutcome a rr:TripleMap ;
                 [
                     rr:parentTriplesMap tedm:Lot;
                     rr:joinCondition [
+                        rr:parent "./@ITEM";
                         rr:child "./@ITEM";
-                        rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
                     ];
                 ] ;
         ] ;
