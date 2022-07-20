@@ -151,6 +151,7 @@ tedm:Contract a rr:TripleMap ;
             rr:objectMap
                 [
                     rml:reference "AWARDED_CONTRACT/DATE_CONCLUSION_CONTRACT";
+                    rr:datatype xsd:date;
                 ]
         ] .
 tedm:ContractTerm a rr:TriplesMap ;
@@ -163,18 +164,6 @@ tedm:ContractTerm a rr:TriplesMap ;
                 ] ;
         ] .
 tedm:Lot a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:describesLot ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:LotAwardOutcome;
-                    rr:joinCondition [
-                        rr:parent "./@ITEM";
-                        rr:child "./@ITEM";
-                    ];
-                ] ;
-        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasEstimatedValue;
@@ -197,8 +186,8 @@ tedm:LotAwardOutcome a rr:TripleMap ;
                 [
                     rr:parentTriplesMap tedm:Lot;
                     rr:joinCondition [
+                        rr:parent "./@ITEM";
                         rr:child "./@ITEM";
-                        rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
                     ];
                 ] ;
         ] ;
@@ -388,7 +377,8 @@ tedm:ContractContactPoint a rr:TriplesMap ;
             rr:predicate epo:hasInternetAddress ;
             rr:objectMap
                 [
-                    rml:reference "ADDRESS_CONTRACTOR/URL"
+                    rml:reference "ADDRESS_CONTRACTOR/URL";
+                    #-rr:termType rr:IRI;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -560,6 +550,7 @@ tedm:SubcontractingEstimate a rr:TripleMap ;
             rr:objectMap
                 [
                     rml:reference "PCT_SUBCONTRACTING";
+                    rr:datatype xsd:decimal
                 ] ;
         ] .
 tedm:SubcontractingEstimatedValueMonetaryValue a rr:TriplesMap ;
@@ -665,7 +656,8 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
             rr:predicate epo:hasReceivedTenders;
             rr:objectMap
                 [
-                    rml:reference "TENDERS/NB_TENDERS_RECEIVED"
+                    rml:reference "TENDERS/NB_TENDERS_RECEIVED";
+                    rr:datatype xsd:integer;
                 ]
         ] ;
     rr:predicateObjectMap
@@ -673,7 +665,8 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
             rr:predicate epo:hasReceivedSMETenders;
             rr:objectMap
                 [
-                    rml:reference "TENDERS/NB_TENDERS_RECEIVED_SME"
+                    rml:reference "TENDERS/NB_TENDERS_RECEIVED_SME";
+                    rr:datatype xsd:integer
                 ]
         ] ;
     rr:predicateObjectMap
@@ -681,7 +674,8 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
             rr:predicate epo:hasReceivedNonEEATenders;
             rr:objectMap
                 [
-                    rml:reference "TENDERS/NB_TENDERS_RECEIVED_NON_EU"
+                    rml:reference "TENDERS/NB_TENDERS_RECEIVED_NON_EU";
+                    rr:datatype xsd:integer
                 ]
         ] ;
     rr:predicateObjectMap
@@ -689,7 +683,8 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
             rr:predicate epo:hasElectronicTenders;
             rr:objectMap
                 [
-                    rml:reference "TENDERS/NB_TENDERS_RECEIVED_EMEANS"
+                    rml:reference "TENDERS/NB_TENDERS_RECEIVED_EMEANS";
+                    rr:datatype xsd:integer
                 ]
         ] ;
     rr:predicateObjectMap
@@ -722,6 +717,7 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
             rr:objectMap
                 [
                     rml:reference "TENDERS/NB_TENDERS_RECEIVED_OTHER_EU";
+                    rr:datatype xsd:integer
                 ]
         ] ;
     rr:predicateObjectMap
