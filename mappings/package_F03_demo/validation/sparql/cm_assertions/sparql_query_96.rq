@@ -1,0 +1,11 @@
+#title: V.0.6 - A contract/lot is awarded
+#description: “V.0.6 - A contract/lot is awarded” in SF corresponds to “BT-142 Winner Chosen” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT, /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/NO_AWARDED_CONTRACT. The expected ontology instances are epo: epo:Contract / epo:LotAwardOutcome /at-voc:winner-selection-status (we need to add logic on the file parser to handle the OR) .
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+
+ASK WHERE { {
+  ?this epo:includesLotAwardOutcome / epo:hasAwardStatus   <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> .
+} UNION
+{
+  ?this epo:includesLotAwardOutcome / epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw> .
+} }
