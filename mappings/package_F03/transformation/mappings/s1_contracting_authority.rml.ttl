@@ -49,6 +49,18 @@ tedm:BuyerOrganisationGroup a rr:TripleMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:hasMainActivityType ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:mainActivity;
+                    rr:joinCondition [
+                        rr:child "../CE_ACTIVITY/@VALUE";
+                        rr:parent "xmlElement";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate epo:hasBuyerType ;
             rr:objectMap
                 [
@@ -371,6 +383,18 @@ tedm:Organisation a rr:TripleMap ;
                     rr:parentTriplesMap tedm:mainActivity;
                     rr:joinCondition [
                         rr:child "if(not(exists(/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_ACTIVITY/@VALUE else null";
+                        rr:parent "xmlElement";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasMainActivityType ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:mainActivity;
+                    rr:joinCondition [
+                        rr:child "if(not(exists(/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/CE_ACTIVITY/@VALUE else null";
                         rr:parent "xmlElement";
                     ];
                 ] ;
