@@ -416,7 +416,7 @@ tedm:Procedure a rr:TriplesMap ;
                          rml:reference "lower-case(ancestor::F03_2014/@LG)"
                     ]
                 ] ;
-        ] ;
+        ] .
 #    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasLegalBasis ;
@@ -439,44 +439,8 @@ tedm:Procedure a rr:TriplesMap ;
 #                    ];
 #            ] ;
 #    ] ;
-    rr:predicateObjectMap
-    [
-        rr:predicate epo:hasLegalBasis ;
-        rr:objectMap
-            [
-                rr:parentTriplesMap tedm:legalBasis;
-                rr:joinCondition [
-                        rr:child "/TED_EXPORT/FORM_SECTION/F03_2014/LEGAL_BASIS/@VALUE";
-                        rr:parent "code.value";
-                    ];
-            ] ;
-    ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasProcedureType ;
-            rr:objectMap
-                [
-                        rml:reference "if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_OPEN)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/open' else if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_RESTRICTED)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted' else if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_COMPETITIVE_NEGOTIATION)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call' else if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_COMPETITIVE_DIALOGUE)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial' else if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_INNOVATION_PARTNERSHIP)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation' else if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call' else null";
-                    rr:termType rr:IRI
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasAcceleratedProcedureJustification ;
-            rr:objectMap
-                [
-                    rml:reference "/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/ACCELERATED_PROC/P"
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:isAccelerated ;
-            rr:objectMap
-                [
-                    rml:reference "if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/ACCELERATED_PROC)) then 'true' else 'false'";
-                    rr:datatype xsd:boolean
-                ] ;
-        ] .
+
+
 tedm:ProcurementMonetaryValue a rr:TriplesMap ;
     rml:logicalSource
         [
