@@ -294,14 +294,6 @@ tedm:ResultNotice a rr:TriplesMap ;
             rml:source "data/source.xml" ;
             rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT" ;
             rml:referenceFormulation ql:XPath
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasDispatchDate ;
-            rr:objectMap
-                [
-                    rml:reference "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/DATE_DISPATCH_NOTICE"
-                ] ;
         ] .
 
 tedm:ProcurementLowestReceivedTenderValue a rr:TriplesMap ;
@@ -465,14 +457,6 @@ tedm:ProcedureIdentifier a rr:TripleMap ;
         [
             rml:reference "if (exists(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/REFERENCE_NUMBER)) then 'http://data.europa.eu/a4g/resource/ProcedureIdentifier/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:Identifier
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasIdentifierValue;
-            rr:objectMap
-                [
-                    rml:reference "/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/REFERENCE_NUMBER"
-                ]
         ] .
 tedm:ProcedurePurpose a rr:TriplesMap ;
     rml:logicalSource
@@ -486,7 +470,7 @@ tedm:ProcedurePurpose a rr:TriplesMap ;
             rr:template "http://data.europa.eu/a4g/resource/ProcedurePurpose/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:Purpose
 
-        ] ;
+        ] .
 #    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasMainClassification ;
@@ -497,18 +481,6 @@ tedm:ProcedurePurpose a rr:TriplesMap ;
 #                ]
 #
 #        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasMainClassification ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:cpv;
-                    rr:joinCondition [
-                        rr:child "/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/CPV_MAIN/CPV_CODE/@CODE";
-                        rr:parent "code.value";
-                    ];
-                ] ;
-        ] ;
 #    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasContractNatureType ;
@@ -519,18 +491,7 @@ tedm:ProcedurePurpose a rr:TriplesMap ;
 #                ]
 #
 #        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasContractNatureType ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:contractNature ;
-                    rr:joinCondition [
-                        rr:child "lower-case(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/TYPE_CONTRACT/@CTYPE)";
-                        rr:parent "code.value";
-                    ];
-                ] ;
-        ] .
+
 tedm:Notice a rr:TriplesMap ;
     rml:logicalSource
         [
