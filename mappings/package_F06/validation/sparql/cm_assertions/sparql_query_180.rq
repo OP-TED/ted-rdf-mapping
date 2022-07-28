@@ -1,6 +1,6 @@
-#title: VI.4.4.9 - Fax
-#description: “VI.4.4.9 - Fax” in SF corresponds to “BT-739 Organisation Contact Fax” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO/FAX. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / rdf:langString .
+#title: D2.1.1 - No tenders or no suitable tenders/requests to participate in response to a procedure with prior call for competition
+#description: “D2.1.1 - No tenders or no suitable tenders/requests to participate in response to a procedure with prior call for competition” in SF corresponds to “BT-136 Direct Award Justification Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_NO_TENDERS_REQUESTS. The expected ontology instances are epo: epo:Procedure / epo:DirectAwardTerm / at-voc:direct-award-justification .
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
-ASK WHERE { ?this epo:playedBy / epo:hasPrimaryContactPoint / epo:hasFax ?value . }
+ASK WHERE { ?this epo:isSubjectToProcedureSpecificTerm / epo:hasDirectAwardJustification <http://publications.europa.eu/resource/authority/direct-award-justification/unsuitable> . }

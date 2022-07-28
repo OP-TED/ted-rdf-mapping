@@ -1,6 +1,6 @@
-#title: II.2.2.1 - Main CPV code
-#description: “II.2.2.1 - Main CPV code” in SF corresponds to “BT-262 Main Classification Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/OBJECT_CONTRACT/OBJECT_DESCR/CPV_ADDITIONAL/CPV_CODE/@CODE. The expected ontology instances are epo: epo:Lot / epo:Purpose / at-voc:cpv (from cpv.json) .
+#title: II.2.3.1 - NUTS code
+#description: “II.2.3.1 - NUTS code” in SF corresponds to “BT-5071 Place Performance Country Subdivision” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/OBJECT_CONTRACT/OBJECT_DESCR/n2016:NUTS/@CODE. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / dct:Location / at-voc:nuts (from nuts.json) .
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
-ASK WHERE { ?this epo:hasPurpose / epo:hasMainClassification ?value . }
+ASK WHERE { ?this epo:foreseesContractTerm / epo:definesSpecificPlaceOfPerformance / epo:hasNutsCode ?value . }

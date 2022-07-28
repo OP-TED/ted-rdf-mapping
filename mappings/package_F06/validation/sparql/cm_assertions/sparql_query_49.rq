@@ -1,6 +1,6 @@
-#title: II.1.7.5 - Currency
-#description: “II.1.7.5 - Currency” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/OBJECT_CONTRACT/VAL_TOTAL/@CURRENCY. The expected ontology instances are epo: epo:ResultNotice / epo:NoticeAwardInformation / epo:MonetaryValue / at-voc:currency (from currency.json) .
+#title: II.2.1 - Title
+#description: “II.2.1 - Title” in SF corresponds to “BT-21 Title” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/OBJECT_CONTRACT/OBJECT_DESCR/TITLE. The expected ontology instances are epo: epo:Lot / rdf:langString .
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
-ASK WHERE { { ?this epo:announcesNoticeAwardInformation / epo:hasTotalAwardedValue / epo:hasCurrency ?value } UNION { ?this epo:announcesNoticeAwardInformation / epo:hasProcurementLowestReceivedTenderValue / epo:hasCurrency ?value } UNION  { ?this epo:announcesNoticeAwardInformation / epo:hasProcurementHighestReceivedTenderValue / epo:hasCurrency ?value } }
+ASK WHERE { ?this epo:hasTitle ?value . }
