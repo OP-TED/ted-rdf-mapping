@@ -11,6 +11,7 @@
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix legal: <https://www.w3.org/ns/legal#> .
 tedm:award_of_contract
   a owl:Ontology ;
   owl:imports dct:, <http://www.w3.org/2004/02/skos/core> ;
@@ -183,7 +184,7 @@ tedm:LotAwardOutcomeMonetaryValue a rr:TriplesMap ;
             rr:predicate epo:hasAmountValue ;
             rr:objectMap
                 [
-                    rml:reference "VAL_BARGAIN_PURCHASE";
+                    rml:reference "AWARDED_CONTRACT/VAL_BARGAIN_PURCHASE";
                     rr:datatype xsd:decimal
                 ] ;
         ] ;
@@ -194,7 +195,7 @@ tedm:LotAwardOutcomeMonetaryValue a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:currency;
                     rr:joinCondition [
-                        rr:child "VAL_BARGAIN_PURCHASE/@CURRENCY";
+                        rr:child "AWARDED_CONTRACT/VAL_BARGAIN_PURCHASE/@CURRENCY";
                         rr:parent "code.value";
                     ];
                 ] ;
@@ -364,7 +365,7 @@ tedm:ContractOrganisation a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
     [
-        rr:predicate epo:hasRegisteredAddress ;
+        rr:predicate legal:registeredAddress ;
         rr:objectMap
             [
                 rr:parentTriplesMap tedm:ContractOrganisationAddress;
@@ -527,7 +528,6 @@ tedm:TenderAwardOutcome a rr:TripleMap ;
         ] .
 
 tedm:Tender a rr:TripleMap ;
-
     rr:predicateObjectMap
         [
             rr:predicate epo:hasFinnancialOfferValue ;
