@@ -294,14 +294,6 @@ tedm:ResultNotice a rr:TriplesMap ;
             rml:source "data/source.xml" ;
             rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT" ;
             rml:referenceFormulation ql:XPath
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasDispatchDate ;
-            rr:objectMap
-                [
-                    rml:reference "/TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/DATE_DISPATCH_NOTICE"
-                ] ;
         ] .
 
 tedm:ProcurementLowestReceivedTenderValue a rr:TriplesMap ;
@@ -416,7 +408,7 @@ tedm:Procedure a rr:TriplesMap ;
                          rml:reference "lower-case(ancestor::F03_2014/@LG)"
                     ]
                 ] ;
-        ] ;
+        ] .
 #    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasLegalBasis ;
@@ -439,44 +431,8 @@ tedm:Procedure a rr:TriplesMap ;
 #                    ];
 #            ] ;
 #    ] ;
-    rr:predicateObjectMap
-    [
-        rr:predicate epo:hasLegalBasis ;
-        rr:objectMap
-            [
-                rr:parentTriplesMap tedm:legalBasis;
-                rr:joinCondition [
-                        rr:child "/TED_EXPORT/FORM_SECTION/F03_2014/LEGAL_BASIS/@VALUE";
-                        rr:parent "code.value";
-                    ];
-            ] ;
-    ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasProcedureType ;
-            rr:objectMap
-                [
-                        rml:reference "if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_OPEN)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/open' else if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_RESTRICTED)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted' else if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_COMPETITIVE_NEGOTIATION)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call' else if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_COMPETITIVE_DIALOGUE)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial' else if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_INNOVATION_PARTNERSHIP)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation' else if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call' else null";
-                    rr:termType rr:IRI
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasAcceleratedProcedureJustification ;
-            rr:objectMap
-                [
-                    rml:reference "/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/ACCELERATED_PROC/P"
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:isAccelerated ;
-            rr:objectMap
-                [
-                    rml:reference "if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/ACCELERATED_PROC)) then 'true' else 'false'";
-                    rr:datatype xsd:boolean
-                ] ;
-        ] .
+
+
 tedm:ProcurementMonetaryValue a rr:TriplesMap ;
     rml:logicalSource
         [
@@ -501,14 +457,6 @@ tedm:ProcedureIdentifier a rr:TripleMap ;
         [
             rml:reference "if (exists(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/REFERENCE_NUMBER)) then 'http://data.europa.eu/a4g/resource/ProcedureIdentifier/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:Identifier
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasIdentifierValue;
-            rr:objectMap
-                [
-                    rml:reference "/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/REFERENCE_NUMBER"
-                ]
         ] .
 tedm:ProcedurePurpose a rr:TriplesMap ;
     rml:logicalSource
@@ -522,7 +470,7 @@ tedm:ProcedurePurpose a rr:TriplesMap ;
             rr:template "http://data.europa.eu/a4g/resource/ProcedurePurpose/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:Purpose
 
-        ] ;
+        ] .
 #    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasMainClassification ;
@@ -533,18 +481,6 @@ tedm:ProcedurePurpose a rr:TriplesMap ;
 #                ]
 #
 #        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasMainClassification ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:cpv;
-                    rr:joinCondition [
-                        rr:child "/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/CPV_MAIN/CPV_CODE/@CODE";
-                        rr:parent "code.value";
-                    ];
-                ] ;
-        ] ;
 #    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasContractNatureType ;
@@ -555,18 +491,7 @@ tedm:ProcedurePurpose a rr:TriplesMap ;
 #                ]
 #
 #        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasContractNatureType ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:contractNature ;
-                    rr:joinCondition [
-                        rr:child "lower-case(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/TYPE_CONTRACT/@CTYPE)";
-                        rr:parent "code.value";
-                    ];
-                ] ;
-        ] .
+
 tedm:Notice a rr:TriplesMap ;
     rml:logicalSource
         [
@@ -1158,6 +1083,19 @@ tedm:TenderMonetaryValue a rr:TriplesMap ;
     rr:subjectMap
         [
             rml:reference "if (exists(VALUES/VAL_TOTAL)) then 'http://data.europa.eu/a4g/resource/TenderMonetaryValue/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:MonetaryValue
+
+        ] .
+tedm:LotAwardOutcomeMonetaryValue a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/AWARD_CONTRACT" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference "if (exists(AWARDED_CONTRACT/VAL_BARGAIN_PURCHASE)) then 'http://data.europa.eu/a4g/resource/LotAwardOutcomeMonetaryValue/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:MonetaryValue
 
         ] .

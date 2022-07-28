@@ -11,6 +11,7 @@
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix legal: <https://www.w3.org/ns/legal#> .
 tedm:contracting_authority
   a owl:Ontology ;
   owl:imports dct:, <http://www.w3.org/2004/02/skos/core> ;
@@ -43,6 +44,18 @@ tedm:BuyerOrganisationGroup a rr:TripleMap ;
                     rr:parentTriplesMap tedm:mainActivity;
                     rr:joinCondition [
                         rr:child "../CA_ACTIVITY/@VALUE";
+                        rr:parent "xmlElement";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasMainActivityType ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:mainActivity;
+                    rr:joinCondition [
+                        rr:child "../CE_ACTIVITY/@VALUE";
                         rr:parent "xmlElement";
                     ];
                 ] ;
@@ -148,7 +161,7 @@ tedm:AdditionalBuyerProfile a rr:TripleMap ;
 tedm:AdditionalOrganisation a rr:TripleMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasRegisteredAddress ;
+            rr:predicate legal:registeredAddress ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:AdditionalOrganisationAddress;
@@ -349,7 +362,7 @@ tedm:BuyerProfile a rr:TripleMap ;
 tedm:Organisation a rr:TripleMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasRegisteredAddress ;
+            rr:predicate legal:registeredAddress ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:OrganisationAddress
@@ -371,6 +384,18 @@ tedm:Organisation a rr:TripleMap ;
                     rr:parentTriplesMap tedm:mainActivity;
                     rr:joinCondition [
                         rr:child "if(not(exists(/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_ACTIVITY/@VALUE else null";
+                        rr:parent "xmlElement";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasMainActivityType ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:mainActivity;
+                    rr:joinCondition [
+                        rr:child "if(not(exists(/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/CE_ACTIVITY/@VALUE else null";
                         rr:parent "xmlElement";
                     ];
                 ] ;

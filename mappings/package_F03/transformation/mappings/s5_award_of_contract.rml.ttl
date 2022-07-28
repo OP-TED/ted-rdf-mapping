@@ -11,6 +11,7 @@
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix legal: <https://www.w3.org/ns/legal#> .
 tedm:award_of_contract
   a owl:Ontology ;
   owl:imports dct:, <http://www.w3.org/2004/02/skos/core> ;
@@ -177,8 +178,41 @@ tedm:Lot a rr:TripleMap ;
 
                 ] ;
         ] .
-
+tedm:LotAwardOutcomeMonetaryValue a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "AWARDED_CONTRACT/VAL_BARGAIN_PURCHASE";
+                    rr:datatype xsd:decimal
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:currency;
+                    rr:joinCondition [
+                        rr:child "AWARDED_CONTRACT/VAL_BARGAIN_PURCHASE/@CURRENCY";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] .
 tedm:LotAwardOutcome a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAwardedValue ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:LotAwardOutcomeMonetaryValue;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
+                ] ;
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:describesLot ;
@@ -331,7 +365,7 @@ tedm:ContractOrganisation a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
     [
-        rr:predicate epo:hasRegisteredAddress ;
+        rr:predicate legal:registeredAddress ;
         rr:objectMap
             [
                 rr:parentTriplesMap tedm:ContractOrganisationAddress;
@@ -506,7 +540,27 @@ tedm:Tender a rr:TripleMap ;
                         ];
                 ] ;
         ] ;
-
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasItemCountryOfOrigin ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:country;
+                    rr:joinCondition [
+                        rr:child "COUNTRY_ORIGIN/NON_COMMUNITY_ORIGIN";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasItemCountryOfOrigin;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(COUNTRY_ORIGIN/COMMUNITY_ORIGIN)) then 'http://publications.europa.eu/resource/authority/country/EUR' else null";
+                    rr:termType rr:IRI;
+                ]
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:isSubmittedForLot ;
