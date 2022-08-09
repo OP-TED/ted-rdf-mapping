@@ -12,10 +12,7 @@ The following table indicates the status of the various mapping suites.
 | Status        | Mapping Suites                                      | 
 |----------------|-----------------------------------------------------|
 | Released       |                                                     |          
- | In review      | package_F03                                         | 
-| In development | package_F06, package_F25, package_F22, package_F21  |          
- | For testing    | package_F03_test, package_F03_demo                  |    
-
+ | In review      | package_F03                                         |
 
 # Installation 
 
