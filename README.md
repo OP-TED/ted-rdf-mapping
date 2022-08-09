@@ -6,6 +6,7 @@ The artefacts provided in this repository are used as are by the TED-SWS system.
 
 [Project documentation available here.](https://meaningfy-ws.github.io/ted-sws-artefacts/ted-sws-artefacts/index.html)  
 
+The following table indicates the status of the various mapping suites. 
 
 | Status        | Mapping Suites                                    | 
 |----------------|---------------------------------------------------|
