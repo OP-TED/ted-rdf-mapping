@@ -145,15 +145,6 @@ tedm:Contract a rr:TripleMap ;
                         rr:child "./@ITEM";
                     ];
                 ]
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasContractConclusionDate;
-            rr:objectMap
-                [
-                    rml:reference "AWARDED_CONTRACT/DATE_CONCLUSION_CONTRACT";
-                    rr:datatype xsd:date;
-                ]
         ] .
 tedm:ContractTerm a rr:TriplesMap ;
     rr:predicateObjectMap
@@ -261,6 +252,15 @@ tedm:LotAwardOutcome a rr:TripleMap ;
                 [
                     rml:reference "if(exists(NO_AWARDED_CONTRACT/PROCUREMENT_UNSUCCESSFUL)) then 'http://publications.europa.eu/resource/authority/non-award-justification/all-rej' else if(exists(NO_AWARDED_CONTRACT/PROCUREMENT_DISCONTINUED)) then 'http://publications.europa.eu/resource/authority/non-award-justification/other' else null";
                     rr:termType rr:IRI;
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAwardDecisionDate;
+            rr:objectMap
+                [
+                    rml:reference "AWARDED_CONTRACT/DATE_CONCLUSION_CONTRACT";
+                    rr:datatype xsd:date;
                 ]
         ] .
 tedm:ContractIdentifier a rr:TripleMap ;
@@ -542,6 +542,18 @@ tedm:Tender a rr:TripleMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:foreseesConcession ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ConcessionEstimate;
+                                        rr:joinCondition [
+                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate epo:hasItemCountryOfOrigin ;
             rr:objectMap
                 [
@@ -637,6 +649,104 @@ tedm:SubcontractingEstimatedValueMonetaryValue a rr:TriplesMap ;
                         rr:child "VAL_SUBCONTRACTING/@CURRENCY";
                         rr:parent "code.value";
                     ];
+                ] ;
+        ] .
+tedm:UserConcessionRevenueMonetaryValue a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "VAL_REVENUE";
+                    rr:datatype xsd:decimal
+                ] ;
+        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasCurrency ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if (not(exists(VALUES/VAL_TOTAL/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
+#                    rr:termType rr:IRI;
+#                ]
+#
+#        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:currency;
+                    rr:joinCondition [
+                        rr:child "VAL_REVENUE/@CURRENCY";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] .
+tedm:BuyerConcessionRevenueMonetaryValue a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "VAL_PRICE_PAYMENT";
+                    rr:datatype xsd:decimal
+                ] ;
+        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasCurrency ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if (not(exists(VALUES/VAL_TOTAL/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
+#                    rr:termType rr:IRI;
+#                ]
+#
+#        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:currency;
+                    rr:joinCondition [
+                        rr:child "VAL_PRICE_PAYMENT/@CURRENCY";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] .
+tedm:ConcessionEstimate a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCalculationMethod ;
+            rr:objectMap
+                [
+                    rml:reference "INFO_ADD_VALUE";
+
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasEstimatedUserConcessionRevenue ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:UserConcessionRevenueMonetaryValue;
+                                        rr:joinCondition [
+                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasEstimatedBuyerConcessionRevenue ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:BuyerConcessionRevenueMonetaryValue;
+                                        rr:joinCondition [
+                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        ];
                 ] ;
         ] .
 tedm:TenderMonetaryValue a rr:TriplesMap ;
