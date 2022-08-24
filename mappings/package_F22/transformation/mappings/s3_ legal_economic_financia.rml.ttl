@@ -1,0 +1,74 @@
+#--- s6_complementary_information.rml.ttl ---
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+
+tedm:legal_economic_financial
+  a owl:Ontology ;
+  owl:imports dct:, <http://www.w3.org/2004/02/skos/core> ;
+  dct:description """
+        This module provides the mapping definitions for the ..."""@en ;
+  rdfs:label "TED-SWS mapping of "@en ;
+  dct:date "2022-08-20"^^xsd:date .
+
+tedm:SelectionCriterion a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate cccev:description ;
+            rr:objectMap
+                [
+                    rml:reference "RULES_CRITERIA";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate cccev:description ;
+            rr:objectMap
+                [
+                    rml:reference "REFERENCE_TO_LAW";
+                ] ;
+        ] .
+tedm:Lot a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:specifiesSelectionCreterion;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:SelectionCriterion;
+            ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasReservedProcurement;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(../../LEFTI/RESTRICTED_SHELTERED_WORKSHOP)) then 'http://publications.europa.eu/resource/authority/reserved-procurement/res-ws' else null";
+                    rr:termType rr:IRI
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasReservedProcurement;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(../../LEFTI/RESERVED_ORGANISATIONS_SERVICE_MISSION)) then 'http://publications.europa.eu/resource/authority/reserved-procurement/res-pub-ser' else null";
+                    rr:termType rr:IRI
+                ]
+        ] .
+
+tedm:ContractTerm a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasReservedExecution;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(../../LEFTI/RESTRICTED_SHELTERED_PROGRAM)) then 'http://publications.europa.eu/resource/authority/applicability/yes' else null";
+                    rr:termType rr:IRI
+                ]
+        ] .

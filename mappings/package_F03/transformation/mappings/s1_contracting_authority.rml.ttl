@@ -22,6 +22,14 @@ tedm:contracting_authority
 tedm:BuyerOrganisationGroup a rr:TripleMap ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:hasDeliveryGateway ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:OrganisationChannel;
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate epo:hasMember;
             rr:objectMap
                 [
@@ -362,6 +370,18 @@ tedm:BuyerProfile a rr:TripleMap ;
 tedm:Organisation a rr:TripleMap ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:hasDeliveryGateway ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:OrganisationChannel;
+                    rr:joinCondition [
+                        rr:child "if(not(exists(/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate legal:registeredAddress ;
             rr:objectMap
                 [
@@ -526,9 +546,56 @@ tedm:OrganisationAddress  a rr:TriplesMap ;
                     ];
                 ] ;
         ] .
+# mapping specific to F22
+tedm:OrganisationChannel a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasURL ;
+            rr:objectMap
+                [
+                    rml:reference ".";
+                    rr:termType rr:IRI;
 
+                ] ;
+        ] .
 
-
+tedm:AccessTerm  a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:isProcurementDocumentRestricted ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(DOCUMENT_FULL)) then 'false' else null";
+                    rr:datatype xsd:boolean
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:isProcurementDocumentRestricted ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(DOCUMENT_RESTRICTED)) then 'true' else null";
+                    rr:datatype xsd:boolean
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasPublicAccessURL ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(DOCUMENT_FULL)) then URL_DOCUMENT else null";
+                    rr:termType rr:IRI;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasRestrictedAccessURL ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(DOCUMENT_RESTRICTED)) then URL_DOCUMENT else null";
+                    rr:termType rr:IRI;
+                ] ;
+        ] .
 
 
 
