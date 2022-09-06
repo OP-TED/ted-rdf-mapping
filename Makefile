@@ -80,3 +80,6 @@ clear-output:
 install-dev:
 	@ echo -e "$(BUILD_PRINT)Installing the requirements$(END_BUILD_PRINT)"
 	@ pip install --upgrade --force-reinstall --no-deps ../ted-sws
+
+test:
+	@ mapping_suite_validator package_F03
