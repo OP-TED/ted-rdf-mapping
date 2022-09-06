@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: test
+    name: Tests
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +22,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade setuptools pip wheel
-        make install
-    - name: Run Mapping Suite Validator
+        TED_SWS_BRANCH=feature/TED-604 make install-custom
+    - name: Run Tests
       run: mapping_suite_validator package_F03
 
