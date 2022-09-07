@@ -327,10 +327,10 @@ tedm:Lot a rr:TriplesMap ;
             rr:objectMap
             [
                 rr:parentTriplesMap tedm:LotPurpose;
-                rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                ];
+                    rr:joinCondition [
+                        rr:child "ancestor::OBJECT_DESCR/@ITEM";
+                        rr:parent "ancestor::OBJECT_DESCR/@ITEM";
+                    ];
             ]
         ] ;
     rr:predicateObjectMap
@@ -543,7 +543,7 @@ tedm:LotPurpose a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:cpvsuppl;
                     rr:joinCondition [
-                        rr:child "CPV_ADDITIONAL/CPV_SUPPLEMENTARY_CODE/@CODE";
+                        rr:child "CPV_SUPPLEMENTARY_CODE/@CODE";
                         rr:parent "code.value";
                     ];
                 ] ;
@@ -566,7 +566,7 @@ tedm:LotPurpose a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:cpv;
                     rr:joinCondition [
-                        rr:child "CPV_ADDITIONAL/CPV_CODE/@CODE";
+                        rr:child "CPV_CODE/@CODE";
                         rr:parent "code.value";
                     ];
                 ] ;
