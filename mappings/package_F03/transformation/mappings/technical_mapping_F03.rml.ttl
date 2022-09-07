@@ -52,7 +52,7 @@ tedm:OrganisationIdentifier a rr:TripleMap ;
 tedm:ContactPoint a rr:TriplesMap ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/ContactPoint/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if(exists(E_MAIL) or exists(FAX) or exists(PHONE) or exists(URL_GENERAL) or exists(CONTACT_POINT)) then 'http://data.europa.eu/a4g/resource/ContactPoint/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class cpov:ContactPoint
 
         ] ;
@@ -102,7 +102,7 @@ tedm:AdditionalOrganisationIdentifier a rr:TripleMap ;
 tedm:AdditionalContactPoint a rr:TriplesMap ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/ContactPoint/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if(exists(E_MAIL) or exists(FAX) or exists(PHONE) or exists(URL_GENERAL) or exists(CONTACT_POINT)) then 'http://data.europa.eu/a4g/resource/AdditionalContactPoint/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class cpov:ContactPoint
 
         ] ;
@@ -622,8 +622,6 @@ tedm:ContractTerm a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
-            rml:reference
-                "if(exists(MAIN_SITE)) then 'http://data.europa.eu/a4g/resource/ContractTerm/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:template "http://data.europa.eu/a4g/resource/ContractTerm/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:ContractTerm
 
@@ -1032,7 +1030,7 @@ tedm:ContractContactPoint a rr:TriplesMap ;
     rr:subjectMap
         [
              rml:reference
-                "if(exists(ADDRESS_CONTRACTOR/E_MAIL) or exists(ADDRESS_CONTRACTOR/FAX) or exists(ADDRESS_CONTRACTOR/PHONE)) then 'http://data.europa.eu/a4g/resource/ContractContactPoint/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+                "if(exists(ADDRESS_CONTRACTOR/E_MAIL) or exists(ADDRESS_CONTRACTOR/FAX) or exists(ADDRESS_CONTRACTOR/PHONE) or exists(ADDRESS_CONTRACTOR/URL) or exists(ADDRESS_CONTRACTOR/CONTACT_POINT)) then 'http://data.europa.eu/a4g/resource/ContractContactPoint/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class cpov:ContactPoint
 
         ] ;
@@ -1212,7 +1210,7 @@ tedm:ReviewerContactPoint a rr:TriplesMap ;
     rr:subjectMap
         [
             rml:reference
-                "if(exists(E_MAIL) or exists(FAX) or exists(PHONE)) then 'http://data.europa.eu/a4g/resource/ReviewerContactPoint/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+                "if(exists(E_MAIL) or exists(FAX) or exists(PHONE) or exists(URL) or exists(CONTACT_POINT)) then 'http://data.europa.eu/a4g/resource/ReviewerContactPoint/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class cpov:ContactPoint
 
         ] ;
@@ -1298,7 +1296,7 @@ tedm:MediatorContactPoint a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/MediatorContactPoint/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if(exists(E_MAIL) or exists(FAX) or exists(PHONE) or exists(URL) or exists(CONTACT_POINT)) then 'http://data.europa.eu/a4g/resource/MediatorContactPoint/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class cpov:ContactPoint
 
         ] ;
@@ -1384,7 +1382,7 @@ tedm:ReviewProcedureInformationProviderContactPoint a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if(exists(E_MAIL) or exists(FAX) or exists(PHONE) or exists(URL) or exists(CONTACT_POINT)) then 'http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class cpov:ContactPoint
 
         ] ;
