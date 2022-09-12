@@ -146,15 +146,15 @@ tedm:Contract a rr:TripleMap ;
                     ];
                 ]
         ] .
-tedm:ContractTerm a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasReservedExecution ;
-            rr:objectMap
-                [
-                    rr:template "http://publications.europa.eu/resource/dataset/applicability"
-                ] ;
-        ] .
+#tedm:ContractTerm a rr:TriplesMap ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasReservedExecution ;
+#            rr:objectMap
+#                [
+#                    rr:template "http://publications.europa.eu/resource/dataset/applicability"
+#                ] ;
+#        ] .
 tedm:Lot a rr:TripleMap ;
     rr:predicateObjectMap
         [
@@ -890,8 +890,8 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
                 [
                     rr:parentTriplesMap tedm:Lot;
                     rr:joinCondition [
-                        rr:parent "if (count(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/OBJECT_DESCR)=1) then ./@ITEM else LOT_NO";
-                        rr:child "if (count(/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else LOT_NO";
+                        rr:parent "if (count(.)=1) then ./@ITEM else ./LOT_NO";
+                        rr:child "if (count(../../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ../LOT_NO";
                     ];
                 ] ;
         ] .
