@@ -216,19 +216,19 @@ tedm:Procedure a rr:TriplesMap ;
         ] .
 
 tedm:ProcedurePurpose a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasAdditionalClassification ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:cpvsuppl;
-                    rr:joinCondition [
-                        rr:child "CPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE";
-                        rr:parent "code.value";
-                    ];
-                ] ;
-
-        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasMainSupplementaryClassification ;  #this property is not in version 3.0.0 of EPO
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:cpvsuppl;
+#                    rr:joinCondition [
+#                        rr:child "CPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE";
+#                        rr:parent "code.value";
+#                    ];
+#                ] ;
+#
+#        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasMainClassification ;
@@ -536,19 +536,20 @@ tedm:ContractTermeLocation a rr:TriplesMap ;
         ] .
 
 tedm:LotPurpose a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasAdditionalClassification ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:cpvsuppl;
-                    rr:joinCondition [
-                        rr:child "CPV_SUPPLEMENTARY_CODE/@CODE";
-                        rr:parent "code.value";
-                    ];
-                ] ;
-
-        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasAdditionalSupplementaryClassification ;  #this property is not in version 3.0.0 of EPO
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:cpvsuppl;
+#                    rr:joinCondition [
+#                        rr:child "CPV_SUPPLEMENTARY_CODE/@CODE";
+#                        rr:parent "code.value";
+#                    ];
+#                ] ;
+#
+#        ] ;
+#
 #        rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasAdditionalClassification ;
@@ -561,7 +562,7 @@ tedm:LotPurpose a rr:TriplesMap ;
 #        ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasMainClassification ;
+            rr:predicate epo:hasAdditionalClassification ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:cpv;
