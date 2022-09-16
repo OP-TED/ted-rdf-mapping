@@ -4,7 +4,17 @@ Transformation rules and other artefacts for the [TED Semantic Web Services (TED
 
 The artefacts provided in this repository are used as are by the TED-SWS system. They are organised in packages called Mapping Suites.
 
-[Project documentation available here.](https://meaningfy-ws.github.io/ted-sws-artefacts/ted-sws-artefacts/index.html)  
+[Project documentation available here.](https://docs.ted.europa.eu/rdf-mapping/index.html)  
+
+The following table indicates the status of the various mapping suites. 
+
+| Status         | Mapping Suites                                    | 
+|----------------|---------------------------------------------------|
+| Released       |                                                   |          
+| In review      | package_F03                                       | 
+| In development | package_F06, package_F25                          |          
+| For testing    | package_F03_test, package_F03_demo                |    
+
 
 
 The following table indicates the status of the various mapping suites. 

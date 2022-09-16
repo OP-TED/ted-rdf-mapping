@@ -10,6 +10,7 @@
 @prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix time: <http://www.w3.org/2006/time#> .
 
 tedm:object
   a owl:Ontology ;
@@ -131,7 +132,45 @@ tedm:ProcedureSpecificTerm a rr:TriplesMap ;
                    rr:datatype xsd:boolean
                 ] ;
         ] .
+tedm:MonetaryValueProcedure a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "VAL_ESTIMATED_TOTAL";
+                    rr:datatype xsd:decimal
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:currency;
+                    rr:joinCondition [
+                        rr:child "VAL_ESTIMATED_TOTAL/@CURRENCY";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] .
 tedm:Procedure a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasMainFeature;
+            rr:objectMap
+                [
+                    rml:reference "../PROCEDURE/MAIN_FEATURES_AWARD"
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasEstimatedValue ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MonetaryValueProcedure
+                ] ;
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:isSubjectToProcedureSpecificTerm ;
@@ -216,6 +255,16 @@ tedm:ProcedurePurpose a rr:TriplesMap ;
         ] .
 
 tedm:Notice a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate rdf:type ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(PT_AWARD_CONTRACT_WITH_PRIOR_PUBLICATION)) then 'http://data.europa.eu/a4g/ontology#CompetitionNotice' else null";
+                    rr:termType rr:IRI
+
+                ]
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasID;
@@ -313,6 +362,18 @@ tedm:Lot a rr:TriplesMap ;
             rr:predicate epo:specifiesAwardCriterion ;
             rr:objectMap
                 [
+                    rr:parentTriplesMap tedm:AwardCriterion;
+                    rr:joinCondition [
+                        rr:child "./@ITEM";
+                        rr:parent "ancestor::OBJECT_DESCR/@ITEM";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:specifiesAwardCriterion ;
+            rr:objectMap
+                [
                     rr:parentTriplesMap tedm:AwardCriterionPrice;
                     rr:joinCondition [
                         rr:child "./@ITEM";
@@ -362,6 +423,44 @@ tedm:AwardCriterionCost a rr:TripleMap ;
                     rr:termType rr:IRI
                 ] ;
         ] .
+tedm:Period a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate time:hasBeginning ;
+            rr:objectMap
+                [
+                    rml:reference "DATE_START";
+                    rr:datatype xsd:datetime
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate time:hasEnd ;
+            rr:objectMap
+                [
+                    rml:reference "DATE_END";
+                    rr:datatype xsd:datetime
+                ] ;
+        ] .
+tedm:Duration a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate time:numericDuration ;
+            rr:objectMap
+                [
+                    rml:reference ".";
+                    rr:datatype xsd:decimal
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate time:unitType ;
+            rr:objectMap
+                [
+                    rml:reference "if(./@TYPE='MONTH') then 'http://www.w3.org/2006/time#unitMonth' else if (./@TYPE='DAY') then 'http://www.w3.org/2006/time#unitMonth' else null ";
+                    rr:termType rr:IRI;
+                ] ;
+        ] .
 tedm:ContractTerm a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -374,6 +473,22 @@ tedm:ContractTerm a rr:TriplesMap ;
                         rr:parent "./@ITEM";
                     ];
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:definesContractPeriod;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:Period;
+            ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:definesContractDuration;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:Duration;
+            ]
         ] ;
     rr:predicateObjectMap
         [
