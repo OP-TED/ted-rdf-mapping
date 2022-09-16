@@ -1,5 +1,6 @@
 #--- s2_object.rml.ttl ---
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
@@ -128,7 +129,7 @@ tedm:ProcedureSpecificTerm a rr:TriplesMap ;
             rr:predicate epo:isAwardedByCPB ;
             rr:objectMap
                 [
-                   rml:reference "if(exists(CENTRAL_PURCHASING)) then 'true' else 'false'";
+                   rml:reference "if(exists(CENTRAL_PURCHASING)) then 'true' else null";
                    rr:datatype xsd:boolean
                 ] ;
         ] .
@@ -192,7 +193,7 @@ tedm:Procedure a rr:TriplesMap ;
             rr:predicate epo:isJointProcurement ;
             rr:objectMap
                 [
-                   rml:reference "if(exists(/TED_EXPORT/FORM_SECTION/F03_2014[1]/CONTRACTING_BODY/JOINT_PROCUREMENT_INVOLVED)) then 'true' else 'false'";
+                   rml:reference "if(exists(/TED_EXPORT/FORM_SECTION/F03_2014[1]/CONTRACTING_BODY/JOINT_PROCUREMENT_INVOLVED)) then 'true' else null";
                    rr:datatype xsd:boolean
                 ] ;
         ] ;
@@ -218,7 +219,7 @@ tedm:Procedure a rr:TriplesMap ;
 tedm:ProcedurePurpose a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasAdditionalClassification ;
+            rr:predicate epo:hasMainClassification ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:cpvsuppl;
@@ -257,7 +258,7 @@ tedm:ProcedurePurpose a rr:TriplesMap ;
 tedm:Notice a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate rdfs:type ;
+            rr:predicate rdf:type ;
             rr:objectMap
                 [
                     rml:reference "if(exists(PT_AWARD_CONTRACT_WITH_PRIOR_PUBLICATION)) then 'http://data.europa.eu/a4g/ontology#CompetitionNotice' else null";
@@ -327,10 +328,10 @@ tedm:Lot a rr:TriplesMap ;
             rr:objectMap
             [
                 rr:parentTriplesMap tedm:LotPurpose;
-                rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                ];
+                    rr:joinCondition [
+                        rr:child "ancestor::OBJECT_DESCR/@ITEM";
+                        rr:parent "ancestor::OBJECT_DESCR/@ITEM";
+                    ];
             ]
         ] ;
     rr:predicateObjectMap
@@ -543,7 +544,7 @@ tedm:LotPurpose a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:cpvsuppl;
                     rr:joinCondition [
-                        rr:child "CPV_ADDITIONAL/CPV_SUPPLEMENTARY_CODE/@CODE";
+                        rr:child "CPV_SUPPLEMENTARY_CODE/@CODE";
                         rr:parent "code.value";
                     ];
                 ] ;
@@ -561,12 +562,12 @@ tedm:LotPurpose a rr:TriplesMap ;
 #        ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasMainClassification ;
+            rr:predicate epo:hasAdditionalClassification ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:cpv;
                     rr:joinCondition [
-                        rr:child "CPV_ADDITIONAL/CPV_CODE/@CODE";
+                        rr:child "CPV_CODE/@CODE";
                         rr:parent "code.value";
                     ];
                 ] ;
