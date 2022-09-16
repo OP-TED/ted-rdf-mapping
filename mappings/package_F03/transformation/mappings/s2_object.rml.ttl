@@ -128,7 +128,7 @@ tedm:ProcedureSpecificTerm a rr:TriplesMap ;
             rr:predicate epo:isAwardedByCPB ;
             rr:objectMap
                 [
-                   rml:reference "if(exists(CENTRAL_PURCHASING)) then 'true' else 'false'";
+                   rml:reference "if(exists(CENTRAL_PURCHASING)) then 'true' else null";
                    rr:datatype xsd:boolean
                 ] ;
         ] .
@@ -192,7 +192,7 @@ tedm:Procedure a rr:TriplesMap ;
             rr:predicate epo:isJointProcurement ;
             rr:objectMap
                 [
-                   rml:reference "if(exists(/TED_EXPORT/FORM_SECTION/F03_2014[1]/CONTRACTING_BODY/JOINT_PROCUREMENT_INVOLVED)) then 'true' else 'false'";
+                   rml:reference "if(exists(/TED_EXPORT/FORM_SECTION/F03_2014[1]/CONTRACTING_BODY/JOINT_PROCUREMENT_INVOLVED)) then 'true' else null";
                    rr:datatype xsd:boolean
                 ] ;
         ] ;
@@ -218,7 +218,7 @@ tedm:Procedure a rr:TriplesMap ;
 tedm:ProcedurePurpose a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasAdditionalClassification ;
+            rr:predicate epo:hasMainClassification ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:cpvsuppl;
@@ -327,10 +327,10 @@ tedm:Lot a rr:TriplesMap ;
             rr:objectMap
             [
                 rr:parentTriplesMap tedm:LotPurpose;
-                rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                ];
+                    rr:joinCondition [
+                        rr:child "ancestor::OBJECT_DESCR/@ITEM";
+                        rr:parent "ancestor::OBJECT_DESCR/@ITEM";
+                    ];
             ]
         ] ;
     rr:predicateObjectMap
@@ -543,7 +543,7 @@ tedm:LotPurpose a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:cpvsuppl;
                     rr:joinCondition [
-                        rr:child "CPV_ADDITIONAL/CPV_SUPPLEMENTARY_CODE/@CODE";
+                        rr:child "CPV_SUPPLEMENTARY_CODE/@CODE";
                         rr:parent "code.value";
                     ];
                 ] ;
@@ -561,12 +561,12 @@ tedm:LotPurpose a rr:TriplesMap ;
 #        ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasMainClassification ;
+            rr:predicate epo:hasAdditionalClassification ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:cpv;
                     rr:joinCondition [
-                        rr:child "CPV_ADDITIONAL/CPV_CODE/@CODE";
+                        rr:child "CPV_CODE/@CODE";
                         rr:parent "code.value";
                     ];
                 ] ;
