@@ -16,6 +16,14 @@ The following table indicates the status of the various mapping suites.
 | For testing    | package_F03_test, package_F03_demo                |    
 
 
+
+The following table indicates the status of the various mapping suites. 
+
+| Status        | Mapping Suites                                      | 
+|----------------|-----------------------------------------------------|
+| Released       |                                                     |          
+ | In review      | package_F03                                         |
+
 # Installation 
 
 To assist the semantic engineers in the development of mapping suites a toolchain has been developed. The toolchain is documented on the documentation page. In order to install it open a terminal and follow the instructions below.
