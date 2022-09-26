@@ -28,8 +28,35 @@ tedm:Procedure a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:DirectAwardTerm
                 ]
         ] .
-
+tedm:PreviousProcedure a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasProcedureType ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(D_PROC_OPEN)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/open' else if(exists(D_PROC_RESTRICTED)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted' else null";
+                    rr:termType rr:IRI
+                ] ;
+        ] .
 tedm:DirectAwardTerm a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:refersToPreviousProcedure;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:PreviousProcedure
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasDirectAwardJustification ;
+            rr:objectMap
+                [
+                    rml:reference "if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_PROC_OPEN) or exists (PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_PROC_RESTRICTED)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/unsuitable' else null";
+                    rr:termType rr:IRI;
+                ]
+
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasDirectAwardJustification ;
@@ -50,6 +77,7 @@ tedm:DirectAwardTerm a rr:TriplesMap ;
                 ]
 
         ] ;
+
     rr:predicateObjectMap
         [
             rr:predicate epo:hasDirectAwardJustification ;
