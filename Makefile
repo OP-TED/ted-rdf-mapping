@@ -15,8 +15,6 @@ RML_MAPPER_PATH = ${PROJECT_PATH}/.rmlmapper/rmlmapper.jar
 XML_PROCESSOR_PATH = ${PROJECT_PATH}/.saxon/saxon-he-10.6.jar
 LOCAL_ID_MANAGER_API_HOST = localhost
 LOCAL_ID_MANAGER_API_PORT = 8000
-AGRAPH_SUPER_PASSWORD = admin56GHhgfd*9
-AGRAPH_SUPER_USER = admin
 ALLEGRO_HOST = https://agraph.ted-data.eu
 
 #-----------------------------------------------------------------------------
