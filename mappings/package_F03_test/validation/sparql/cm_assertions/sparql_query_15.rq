@@ -1,6 +1,12 @@
-#title: I.4 - Type of the contracting authority
-#description: “I.4 - Type of the contracting authority” in SF corresponds to “BT-11 Buyer Legal Type” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/CA_TYPE. The expected ontology instances are epo: epo:Role / epo:Buyer / at-voc:buyer-legal-type (from CL5) .
+#title: I.0 - Contracting authority
+#description: “I.0 - Contracting authority” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL. The expected ontology instances are epo: epo:OrganisationGroup / org:Organization .
+#xpath: /TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-ASK WHERE { ?this epo:hasBuyerType ?value . }
+ASK WHERE { 
+		?this rdf:type epo:OrganisationGroup .
+		?value rdf:type org:Organization .
+		?this epo:hasMember ?value }

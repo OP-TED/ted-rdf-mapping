@@ -11,6 +11,8 @@
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix legal: <https://www.w3.org/ns/legal#> .
+
 tedm:complementary_information
   a owl:Ontology ;
   owl:imports dct:, <http://www.w3.org/2004/02/skos/core> ;
@@ -59,18 +61,10 @@ tedm:ReviewerOrganisation a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasRegisteredAddress ;
+            rr:predicate legal:registeredAddress ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ReviewerOrganisationAddress
-                ]
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasDeliveryGateway ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ReviewerOrganisationChannel
                 ]
         ] ;
     rr:predicateObjectMap
@@ -87,10 +81,19 @@ tedm:ReviewerOrganisationIdentifier a rr:TripleMap ;
             rr:predicate epo:hasIdentifierValue;
             rr:objectMap
                 [
-                    rml:reference "OFFICIALNAME"
+                    rml:reference "NATIONALID"
                 ]
         ] .
 tedm:ReviewerContactPoint a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasInternetAddress ;
+            rr:objectMap
+                [
+                    rml:reference "URL";
+                    #-rr:termType rr:IRI;
+                ] ;
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate cpov:email ;
@@ -144,7 +147,7 @@ tedm:ReviewerOrganisationAddress a rr:TriplesMap ;
         ] ;
 #    rr:predicateObjectMap
 #        [
-#            rr:predicate locn:adminUnitL1 ;
+#            rr:predicate epo:hasNutsCode ;
 #            rr:objectMap
 #                [
 #                    rml:reference "if (not(exists(*:NUTS/@CODE))) then 'http://data.europa.eu/nuts/OP_DATPRO' else null";
@@ -154,7 +157,7 @@ tedm:ReviewerOrganisationAddress a rr:TriplesMap ;
 #        ] ;
     rr:predicateObjectMap
         [
-            rr:predicate locn:adminUnitL1 ;
+            rr:predicate epo:hasNutsCode ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:nuts;
@@ -166,7 +169,7 @@ tedm:ReviewerOrganisationAddress a rr:TriplesMap ;
         ] ;
 #    rr:predicateObjectMap
 #        [
-#            rr:predicate locn:adminUnitL2 ;
+#            rr:predicate epo:hasCountryCode ;
 #            rr:objectMap
 #                [
 #                    rml:reference "if (not(exists(COUNTRY/@VALUE))) then 'http://publications.europa.eu/resource/authority/country/OP_DATPRO' else null";
@@ -176,7 +179,7 @@ tedm:ReviewerOrganisationAddress a rr:TriplesMap ;
 #        ] ;
     rr:predicateObjectMap
         [
-            rr:predicate locn:adminUnitL2 ;
+            rr:predicate epo:hasCountryCode ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:country;
@@ -187,15 +190,6 @@ tedm:ReviewerOrganisationAddress a rr:TriplesMap ;
                 ] ;
         ] .
 
-tedm:ReviewerOrganisationChannel a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasURL ;
-            rr:objectMap
-                [
-                    rml:reference "URL"
-                ] ;
-        ] .
 tedm:Mediator a rr:TripleMap ;
     rr:predicateObjectMap
         [
@@ -216,21 +210,12 @@ tedm:MediatorOrganisation a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasRegisteredAddress ;
+            rr:predicate legal:registeredAddress ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MediatorOrganisationAddress
                 ]
         ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasDeliveryGateway ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MediatorOrganisationChannel
-                ]
-        ] ;
-
     rr:predicateObjectMap
         [
             rr:predicate epo:hasID;
@@ -245,10 +230,19 @@ tedm:MediatorOrganisationIdentifier a rr:TripleMap ;
             rr:predicate epo:hasIdentifierValue;
             rr:objectMap
                 [
-                    rml:reference "OFFICIALNAME"
+                    rml:reference "NATIONALID"
                 ]
         ] .
 tedm:MediatorContactPoint a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasInternetAddress ;
+            rr:objectMap
+                [
+                    rml:reference "URL";
+                    #-rr:termType rr:IRI;
+                ] ;
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate cpov:email ;
@@ -301,7 +295,7 @@ tedm:MediatorOrganisationAddress a rr:TriplesMap ;
         ] ;
 #    rr:predicateObjectMap
 #        [
-#            rr:predicate locn:adminUnitL1 ;
+#            rr:predicate epo:hasNutsCode ;
 #            rr:objectMap
 #                [
 #                    rml:reference "if (not(exists(*:NUTS/@CODE))) then 'http://data.europa.eu/nuts/OP_DATPRO' else null";
@@ -311,7 +305,7 @@ tedm:MediatorOrganisationAddress a rr:TriplesMap ;
 #        ] ;
     rr:predicateObjectMap
         [
-            rr:predicate locn:adminUnitL1 ;
+            rr:predicate epo:hasNutsCode ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:nuts;
@@ -323,7 +317,7 @@ tedm:MediatorOrganisationAddress a rr:TriplesMap ;
         ] ;
 #    rr:predicateObjectMap
 #        [
-#            rr:predicate locn:adminUnitL2 ;
+#            rr:predicate epo:hasCountryCode ;
 #            rr:objectMap
 #                [
 #                    rml:reference "if (not(exists(COUNTRY/@VALUE))) then 'http://publications.europa.eu/resource/authority/country/OP_DATPRO' else null";
@@ -333,7 +327,7 @@ tedm:MediatorOrganisationAddress a rr:TriplesMap ;
 #        ] ;
     rr:predicateObjectMap
         [
-            rr:predicate locn:adminUnitL2 ;
+            rr:predicate epo:hasCountryCode ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:country;
@@ -344,15 +338,6 @@ tedm:MediatorOrganisationAddress a rr:TriplesMap ;
                 ] ;
         ] .
 
-tedm:MediatorOrganisationChannel a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasURL ;
-            rr:objectMap
-                [
-                    rml:reference "URL"
-                ] ;
-        ] .
 tedm:ReviewProcedureInformationProvider a rr:TripleMap ;
     rr:predicateObjectMap
         [
@@ -373,21 +358,12 @@ tedm:ReviewProcedureInformationProviderOrganisation a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasRegisteredAddress ;
+            rr:predicate legal:registeredAddress ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ReviewProcedureInformationProviderOrganisationAddress
                 ]
         ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasDeliveryGateway ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ReviewProcedureInformationProviderOrganisationChannel
-                ]
-        ] ;
-
     rr:predicateObjectMap
         [
             rr:predicate epo:hasID;
@@ -402,10 +378,19 @@ tedm:ReviewProcedureInformationProviderOrganisationIdentifier a rr:TripleMap ;
             rr:predicate epo:hasIdentifierValue;
             rr:objectMap
                 [
-                    rml:reference "OFFICIALNAME"
+                    rml:reference "NATIONALID"
                 ]
         ] .
 tedm:ReviewProcedureInformationProviderContactPoint a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasInternetAddress ;
+            rr:objectMap
+                [
+                    rml:reference "URL";
+                    #-rr:termType rr:IRI;
+                ] ;
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate cpov:email ;
@@ -468,7 +453,7 @@ tedm:ReviewProcedureInformationProviderOrganisationAddress a rr:TriplesMap ;
         ] ;
 #    rr:predicateObjectMap
 #        [
-#            rr:predicate locn:adminUnitL1 ;
+#            rr:predicate epo:hasNutsCode ;
 #            rr:objectMap
 #                [
 #                    rml:reference "if (not(exists(*:NUTS/@CODE))) then 'http://data.europa.eu/nuts/OP_DATPRO' else null";
@@ -478,7 +463,7 @@ tedm:ReviewProcedureInformationProviderOrganisationAddress a rr:TriplesMap ;
 #        ] ;
     rr:predicateObjectMap
         [
-            rr:predicate locn:adminUnitL1 ;
+            rr:predicate epo:hasNutsCode ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:nuts;
@@ -490,7 +475,7 @@ tedm:ReviewProcedureInformationProviderOrganisationAddress a rr:TriplesMap ;
         ] ;
 #    rr:predicateObjectMap
 #        [
-#            rr:predicate locn:adminUnitL2 ;
+#            rr:predicate epo:hasCountryCode ;
 #            rr:objectMap
 #                [
 #                    rml:reference "if (not(exists(COUNTRY/@VALUE))) then 'http://publications.europa.eu/resource/authority/country/OP_DATPRO' else null";
@@ -500,7 +485,7 @@ tedm:ReviewProcedureInformationProviderOrganisationAddress a rr:TriplesMap ;
 #        ] ;
     rr:predicateObjectMap
         [
-            rr:predicate locn:adminUnitL2 ;
+            rr:predicate epo:hasCountryCode ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:country;
@@ -508,15 +493,5 @@ tedm:ReviewProcedureInformationProviderOrganisationAddress a rr:TriplesMap ;
                         rr:child "COUNTRY/@VALUE";
                         rr:parent "code.value";
                     ];
-                ] ;
-        ] .
-
-tedm:ReviewProcedureInformationProviderOrganisationChannel a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasURL ;
-            rr:objectMap
-                [
-                    rml:reference "URL"
                 ] ;
         ] .

@@ -1,6 +1,12 @@
-#title: V.2.2.4 - Number of tenders received from tenderers from non-EU Member States
-#description: “V.2.2.4 - Number of tenders received from tenderers from non-EU Member States” in SF corresponds to “BT-760 Received Submissions Type” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/TENDERS/NB_TENDERS_RECEIVED_NON_EU. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / xsd:integer .
+#title: IV.2.1 - Previous publication concerning this procedure
+#description: “IV.2.1 - Previous publication concerning this procedure” in SF corresponds to “BT-125 Previous Planning Identifier” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/NOTICE_NUMBER_OJ. The expected ontology instances are epo: epo:ResultNotice / epo:Notice /  epo:Identifier / xsd:string .
+#xpath: /TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/NOTICE_NUMBER_OJ
 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-ASK WHERE { ?this epo:hasReceivedNonEEATenders ?value . }
+ASK WHERE { 
+		?this rdf:type epo:ResultNotice .
+		?value rdf:type xsd:string .
+		?this epo:refersToPrevious / epo:hasID / epo:hasIdentifierValue ?value . }
