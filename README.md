@@ -1,6 +1,6 @@
  TED-SWS artefacts
  === 
-Transformation rules and other artefacts for the [TED Semantic Web Services (TED-SWS)](https://github.com/meaningfy-ws/ted-sws) system.
+Transformation rules and other artefacts for the [TED Semantic Web Services (TED-SWS)](https://github.com/OP-TED/ted-rdf-conversion-pipeline) system.
 
 The artefacts provided in this repository are used as are by the TED-SWS system. They are organised in packages called Mapping Suites.
 
@@ -30,8 +30,8 @@ To assist the semantic engineers in the development of mapping suites a toolchai
 
  1. Clone the project from GitHub 
 ```bash
-git clone https://github.com/meaningfy-ws/ted-sws-artefacts
-cd ted-sws-artefacts
+git clone https://github.com/OP-TED/ted-rdf-mapping
+cd ted-rdf-mapping
 ```
 
 2. Create and activate a virtual environment
