@@ -1,5 +1,6 @@
 #--- s2_object.rml.ttl ---
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
@@ -10,6 +11,7 @@
 @prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix time: <http://www.w3.org/2006/time#> .
 
 tedm:object
   a owl:Ontology ;
@@ -19,8 +21,165 @@ tedm:object
   rdfs:label "TED-SWS mapping of "@en ;  
   dct:date "2022-05-11"^^xsd:date .
 
+tedm:NoticeAwardInformation a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasTotalAwardedValue ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ProcurementMonetaryValue
+                ] ;
+        ] ;
+ rr:predicateObjectMap
+        [
+            rr:predicate epo:hasProcurementLowestReceivedTenderValue ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ProcurementLowestReceivedTenderValue;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasProcurementHighestReceivedTenderValue ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ProcurementHighestReceivedTenderValue;
 
+                ] ;
+        ] .
+
+tedm:ProcurementMonetaryValue a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "VAL_TOTAL";
+                    rr:datatype xsd:decimal
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:currency;
+                    rr:joinCondition [
+                        rr:child "VAL_TOTAL/@CURRENCY";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] .
+tedm:ProcurementLowestReceivedTenderValue a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "VAL_RANGE_TOTAL/LOW";
+                    rr:datatype xsd:decimal
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:currency;
+                    rr:joinCondition [
+                        rr:child "VAL_RANGE_TOTAL/@CURRENCY";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] .
+
+tedm:ProcurementHighestReceivedTenderValue  a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "VAL_RANGE_TOTAL/HIGH";
+                    rr:datatype xsd:decimal
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:currency;
+                    rr:joinCondition [
+                        rr:child "VAL_RANGE_TOTAL/@CURRENCY";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] .
+tedm:ProcedureSpecificTerm a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCrossBorderLaw;
+            rr:objectMap
+                [
+                    rml:reference "PROCUREMENT_LAW"
+                ]
+        ] ;
+     rr:predicateObjectMap
+        [
+            rr:predicate epo:isAwardedByCPB ;
+            rr:objectMap
+                [
+                   rml:reference "if(exists(CENTRAL_PURCHASING)) then 'true' else null";
+                   rr:datatype xsd:boolean
+                ] ;
+        ] .
+tedm:MonetaryValueProcedure a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "VAL_ESTIMATED_TOTAL";
+                    rr:datatype xsd:decimal
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:currency;
+                    rr:joinCondition [
+                        rr:child "VAL_ESTIMATED_TOTAL/@CURRENCY";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] .
 tedm:Procedure a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasMainFeature;
+            rr:objectMap
+                [
+                    rml:reference "../PROCEDURE/MAIN_FEATURES_AWARD"
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasEstimatedValue ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MonetaryValueProcedure
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ProcedureSpecificTerm
+                ] ;
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasProcurementScopeDividedIntoLot ;
@@ -31,12 +190,15 @@ tedm:Procedure a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasEstimatedValue ;
+            rr:predicate epo:isJointProcurement ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ProcedureMonetaryValue
+                   rml:reference "if(exists(/TED_EXPORT/FORM_SECTION/F03_2014[1]/CONTRACTING_BODY/JOINT_PROCUREMENT_INVOLVED)) then 'true' else null";
+                   rr:datatype xsd:boolean
                 ] ;
         ] ;
+
+
     rr:predicateObjectMap
         [
             rr:predicate epo:hasOverallPurpose ;
@@ -53,64 +215,11 @@ tedm:Procedure a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:ProcedureIdentifier
                 ]
         ] .
-tedm:ProcedureMonetaryValue a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasAmountValue ;
-            rr:objectMap
-                [
-                    rml:reference "VAL_TOTAL";
-                    rr:datatype xsd:decimal
-                ] ;
-        ] ;
-#    rr:predicateObjectMap
-#        [
-#            rr:predicate epo:hasCurrency ;
-#            rr:objectMap
-#                [
-#                    rml:reference "if (not(exists(VAL_TOTAL/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
-#                    rr:termType rr:IRI;
-#                ]
-#
-#        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasCurrency ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:currency;
-                    rr:joinCondition [
-                        rr:child "VAL_TOTAL/@CURRENCY";
-                        rr:parent "code.value";
-                    ];
-                ] ;
-        ] .
 
-tedm:MonetaryValueSubmissionLowestForLot a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasAmountValue ;
-            rr:objectMap
-                [
-                    rml:reference "VAL_RANGE_TOTAL/LOW";
-                    rr:datatype xsd:decimal
-                ] ;
-        ] .
-
-tedm:MonetaryValueSubmissionHighestForLot  a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasAmountValue ;
-            rr:objectMap
-                [
-                    rml:reference "VAL_RANGE_TOTAL/HIGH";
-                    rr:datatype xsd:decimal
-                ] ;
-        ] .
 tedm:ProcedurePurpose a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasAdditionalClassification ;
+            rr:predicate epo:hasMainClassification ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:cpvsuppl;
@@ -120,9 +229,43 @@ tedm:ProcedurePurpose a rr:TriplesMap ;
                     ];
                 ] ;
 
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasMainClassification ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:cpv;
+                    rr:joinCondition [
+                        rr:child "CPV_MAIN/CPV_CODE/@CODE";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContractNatureType ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:contractNature ;
+                    rr:joinCondition [
+                        rr:child "lower-case(TYPE_CONTRACT/@CTYPE)";
+                        rr:parent "code.value";
+                    ];
+                ] ;
         ] .
 
 tedm:Notice a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate rdf:type ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(PT_AWARD_CONTRACT_WITH_PRIOR_PUBLICATION)) then 'http://data.europa.eu/a4g/ontology#CompetitionNotice' else null";
+                    rr:termType rr:IRI
+
+                ]
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasID;
@@ -145,43 +288,13 @@ tedm:NoticeIdentifier a rr:TripleMap ;
                 ]
         ] .
 
-tedm:Fund a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasID;
-            rr:objectMap
-            [
-                rr:parentTriplesMap tedm:FundIdentifier;
-                rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                ];
-            ]
-        ] .
-tedm:FundIdentifier a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasIdentifierValue;
-            rr:objectMap
-                [
-                    rml:reference "EU_PROGR_RELATED/P/FT/@TYPE"
-                ]
-        ] .
 tedm:Lot a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:isCoveredbyGPA;
-            rr:objectMap
-                [
-                    rml:reference "exists(./*[matches(name(),'CONTRACT_COVERED_GPA')])"
-                ]
-        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:isUsingEUFunds;
             rr:objectMap
                 [
-                    rml:reference "exists(./*[matches(name(),'EU_PROGR_RELATED')])";
+                    rml:reference "if(exists(EU_PROGR_RELATED)) then 'true' else 'false'";
                     rr:datatype xsd:boolean
                 ]
         ] ;
@@ -215,15 +328,15 @@ tedm:Lot a rr:TriplesMap ;
             rr:objectMap
             [
                 rr:parentTriplesMap tedm:LotPurpose;
-                rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                ];
+                    rr:joinCondition [
+                        rr:child "ancestor::OBJECT_DESCR/@ITEM";
+                        rr:parent "ancestor::OBJECT_DESCR/@ITEM";
+                    ];
             ]
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:foreseesContractTerm ;
+            rr:predicate epo:foreseesContractSpecificTerm ;
             rr:objectMap
             [
                 rr:parentTriplesMap tedm:ContractTerm;
@@ -239,6 +352,18 @@ tedm:Lot a rr:TriplesMap ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:AwardCriterionQuality;
+                    rr:joinCondition [
+                        rr:child "./@ITEM";
+                        rr:parent "ancestor::OBJECT_DESCR/@ITEM";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:specifiesAwardCriterion ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:AwardCriterion;
                     rr:joinCondition [
                         rr:child "./@ITEM";
                         rr:parent "ancestor::OBJECT_DESCR/@ITEM";
@@ -299,6 +424,44 @@ tedm:AwardCriterionCost a rr:TripleMap ;
                     rr:termType rr:IRI
                 ] ;
         ] .
+tedm:Period a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate time:hasBeginning ;
+            rr:objectMap
+                [
+                    rml:reference "DATE_START";
+                    rr:datatype xsd:datetime
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate time:hasEnd ;
+            rr:objectMap
+                [
+                    rml:reference "DATE_END";
+                    rr:datatype xsd:datetime
+                ] ;
+        ] .
+tedm:Duration a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate time:numericDuration ;
+            rr:objectMap
+                [
+                    rml:reference ".";
+                    rr:datatype xsd:decimal
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate time:unitType ;
+            rr:objectMap
+                [
+                    rml:reference "if(./@TYPE='MONTH') then 'http://www.w3.org/2006/time#unitMonth' else if (./@TYPE='DAY') then 'http://www.w3.org/2006/time#unitMonth' else null ";
+                    rr:termType rr:IRI;
+                ] ;
+        ] .
 tedm:ContractTerm a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -314,10 +477,26 @@ tedm:ContractTerm a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:definesContractPeriod;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:Period;
+            ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:definesContractDuration;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:Duration;
+            ]
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate epo:hasOptions;
             rr:objectMap
                 [
-                    rml:reference "exists(./*[matches(name(),'OPTIONS')])";
+                    rml:reference "if(exists(OPTIONS)) then 'true' else 'false'";
                     rr:datatype xsd:boolean
                 ]
         ] .
@@ -365,7 +544,7 @@ tedm:LotPurpose a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:cpvsuppl;
                     rr:joinCondition [
-                        rr:child "CPV_ADDITIONAL/CPV_SUPPLEMENTARY_CODE/@CODE";
+                        rr:child "CPV_SUPPLEMENTARY_CODE/@CODE";
                         rr:parent "code.value";
                     ];
                 ] ;
@@ -383,12 +562,12 @@ tedm:LotPurpose a rr:TriplesMap ;
 #        ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasMainClassification ;
+            rr:predicate epo:hasAdditionalClassification ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:cpv;
                     rr:joinCondition [
-                        rr:child "CPV_ADDITIONAL/CPV_CODE/@CODE";
+                        rr:child "CPV_CODE/@CODE";
                         rr:parent "code.value";
                     ];
                 ] ;

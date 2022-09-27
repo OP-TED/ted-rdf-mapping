@@ -17,30 +17,78 @@ tedm:procedure
         This module provides the mapping definitions for the ..."""@en ;
   rdfs:label "TED-SWS mapping of "@en ;  
   dct:date "2022-05-11"^^xsd:date .
-
-tedm:Lot a rr:TriplesMap ;
+tedm:ProcedureIdentifier a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:isSubjectToLotSpecificTerm ;
+            rr:predicate epo:hasIdentifierValue;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:FramworkAgreement
-                ] ;
-            rr:objectMap
+                    rml:reference "./REFERENCE_NUMBER"
+                ]
+        ] .
+
+tedm:Procedure a rr:TriplesMap ;
+    rr:predicateObjectMap
+    [
+        rr:predicate epo:hasLegalBasis ;
+        rr:objectMap
             [
-                rr:parentTriplesMap tedm:FramworkAgreement;
+                rr:parentTriplesMap tedm:legalBasis;
                 rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                ];
+                        rr:child "../LEGAL_BASIS/@VALUE";
+                        rr:parent "code.value";
+                    ];
             ] ;
+    ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasProcedureType ;
+            rr:objectMap
+                [
+                        rml:reference "if(exists(../PROCEDURE/PT_OPEN)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/open' else if(exists(../PROCEDURE/PT_RESTRICTED)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted' else if(exists(../PROCEDURE/PT_COMPETITIVE_NEGOTIATION)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call' else if(exists(../PROCEDURE/PT_COMPETITIVE_DIALOGUE)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial' else if(exists(../PROCEDURE/PT_INNOVATION_PARTNERSHIP)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation' else if(exists(../PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call' else null";
+                    rr:termType rr:IRI
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAcceleratedProcedureJustification ;
+            rr:objectMap
+                [
+                    rml:reference "../PROCEDURE/ACCELERATED_PROC/P"
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:isAccelerated ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(../PROCEDURE/ACCELERATED_PROC)) then 'true' else 'false'";
+                    rr:datatype xsd:boolean
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:isCoveredbyGPA;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/CONTRACT_COVERED_GPA)) then 'true' else 'false'";
+                    rr:datatype xsd:boolean
+                ]
         ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:usesTechnique ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:DynamicPurchaseSystemTechnique
+                    rr:parentTriplesMap tedm:DynamicPurchaseSystemTechniqueUsage
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:usesTechnique ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:FrameworkAgreementTechniqueUsage
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -51,49 +99,39 @@ tedm:Lot a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:EauctionTechnique
                 ] ;
         ] .
-
-tedm:FramworkAgreement a rr:TriplesMap ;
+tedm:ProcurementProcessInformation a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasFrameworkAgreementType ;
+            rr:predicate epo:isDPSTerminated ;
             rr:objectMap
                 [
-                    rr:template "http://publications.europa.eu/resource/authority/framework-agreement"
-                ] ;
-        ] .
-tedm:DynamicPurchaseSystemTechnique a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasDPSTermination ;
-            rr:objectMap
-                [
-                    rml:reference "if(exists(TERMINATION_DPS)) then 'true' else 'false'";
+                    rml:reference "if(exists(TERMINATION_DPS)) then 'true' else null";
                     rr:datatype xsd:boolean
                 ] ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasDPSScope ;
+            rr:predicate epo:isCompetitionTerminated ;
             rr:objectMap
                 [
-                    rr:template "http://publications.europa.eu/resource/authority/dps-usage"
+                    rml:reference "if(exists(TERMINATION_PIN)) then 'true' else null";
+                    rr:datatype xsd:boolean
                 ] ;
-        ] .
-tedm:EauctionTechnique  a rr:TriplesMap ;
-    rr:predicateObjectMap
+        ] ;
+     rr:predicateObjectMap
         [
-            rr:predicate epo:hasEAuctionUsage ;
+            rr:predicate epo:concernsPreviousNotice;
             rr:objectMap
-                [
-                    rr:template "http://publications.europa.eu/resource/authority/usage"
-                ] ;
-        ] .
-tedm:CompetitionTerminationInformation a rr:TriplesMap ;
+            [
+                rr:parentTriplesMap tedm:Notice;
+            ]
+        ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:concernsProcedureCompetitionTermination ;
+            rr:predicate epo:concernsProcedure ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:Procedure
                 ] ;
         ] .
+

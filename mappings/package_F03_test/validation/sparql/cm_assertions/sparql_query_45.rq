@@ -1,6 +1,12 @@
-#title: II.2.5.3.1 - hasFormula
-#description: “II.2.5.3.1 - hasFormula” in SF corresponds to “BT-543 Award Criterion complicated” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/AC/AC_PRICE/AC_CRITERION. The expected ontology instances are epo: epo:AwardCriterion  .
+#title: II.1.7.1 - Value
+#description: “II.1.7.1 - Value” in SF corresponds to “BT-161 Estimated Value” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/VAL_TOTAL. The expected ontology instances are epo: epo:ResultNotice / epo:NoticeAwardInformation / epo:MonetaryValue / xsd:decimal .
+#xpath: /TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/VAL_TOTAL
 
-PREFIX cccev: <http://data.europa.eu/m8g/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-ASK WHERE { ?this cccev:name ?value . }
+ASK WHERE { 
+		?this rdf:type epo:ResultNotice .
+		?value rdf:type xsd:decimal .
+		?this epo:announcesNoticeAwardInformation / epo:hasTotalAwardedValue / epo:hasAmountValue ?value . }
