@@ -1,10 +1,10 @@
-#title: VI.4.1 - Review body
-#description: “VI.4.1 - Review body” in SF corresponds to “--- nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO. The expected ontology instances are epo: epo:ResultNotice / epo:Reviewer .
-#xpath: /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO
+#title: VI.3 - Additional information
+#description: “VI.3 - Additional information” in SF corresponds to “BT-300 Additional Information” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/INFO_ADD. The expected ontology instances are epo: epo:Procedure / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/INFO_ADD
 
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:ResultNotice .
-		?this epo:announcesRole ?value }
+		?this rdf:type epo:Procedure .
+		?this epo:hasAdditionalInformation ?value . }
