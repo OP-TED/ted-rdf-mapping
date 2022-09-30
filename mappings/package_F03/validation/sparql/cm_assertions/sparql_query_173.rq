@@ -1,10 +1,10 @@
-#title: D1.1.1.1 - Open procedure
-#description: “D1.1.1.1 - Open procedure” in SF corresponds to “BT-1252 Direct Award Justification Previous Procedure Identifier” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_PROC_OPEN. The expected ontology instances are epo: epo:DirectAwardTerm / epo:Procedure / at-voc:procurement-procedure-type .
-#xpath: /TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_PROC_OPEN
+#title: VI.5 - Date of dispatch of this notice (dd/mm/yyyy)
+#description: “VI.5 - Date of dispatch of this notice (dd/mm/yyyy)” in SF corresponds to “BT-05 Notice Dispatch Date” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/DATE_DISPATCH_NOTICE. The expected ontology instances are epo: epo:ResultNotice .
+#xpath: /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/DATE_DISPATCH_NOTICE
 
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:DirectAwardTerm .
-		?this epo:refersToPreviousProcedure / epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open> . }
+		?this rdf:type epo:ResultNotice .
+		?this epo:hasDispatchDate ?value . }
