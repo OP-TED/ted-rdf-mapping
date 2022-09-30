@@ -1,11 +1,10 @@
-#title: VI.4.2 - Body responsible for mediation procedures
-#description: “VI.4.2 - Body responsible for mediation procedures” in SF corresponds to “--- nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO. The expected ontology instances are epo: epo:ResultNotice / epo:Mediator .
-#xpath: /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO
+#title: VI.4.1.9 - Fax
+#description: “VI.4.1.9 - Fax” in SF corresponds to “BT-739 Organisation Contact Fax” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY/FAX. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY/FAX
 
-PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
 ASK WHERE { 
-		?this rdf:type epo:ResultNotice .
-		?value rdf:type epo:Mediator .
-		?this epo:announcesRole ?value }
+		?this rdf:type epo:Reviewer .
+		?this epo:playedBy / epo:hasPrimaryContactPoint / epo:hasFax ?value . }
