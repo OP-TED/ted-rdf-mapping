@@ -294,7 +294,7 @@ tedm:Lot a rr:TriplesMap ;
             rr:predicate epo:isUsingEUFunds;
             rr:objectMap
                 [
-                    rml:reference "if(exists(EU_PROGR_RELATED)) then 'true' else 'false'";
+                    rml:reference "if(exists(EU_PROGR_RELATED)) then 'true' else if(exists(NO_EU_PROGR_RELATED)) then 'false' else null";
                     rr:datatype xsd:boolean
                 ]
         ] ;
@@ -329,7 +329,7 @@ tedm:Lot a rr:TriplesMap ;
             [
                 rr:parentTriplesMap tedm:LotPurpose;
                     rr:joinCondition [
-                        rr:child "ancestor::OBJECT_DESCR/@ITEM";
+                        rr:child "./@ITEM";
                         rr:parent "ancestor::OBJECT_DESCR/@ITEM";
                     ];
             ]
@@ -496,7 +496,7 @@ tedm:ContractTerm a rr:TriplesMap ;
             rr:predicate epo:hasOptions;
             rr:objectMap
                 [
-                    rml:reference "if(exists(OPTIONS)) then 'true' else 'false'";
+                    rml:reference "if(exists(OPTIONS)) then 'true' else if(exists(NO_OPTIONS)) then 'false' else null";
                     rr:datatype xsd:boolean
                 ]
         ] .

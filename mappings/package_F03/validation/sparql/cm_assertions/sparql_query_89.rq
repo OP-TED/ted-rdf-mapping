@@ -1,12 +1,10 @@
-#title: IV.1.8 - Information about the Government Procurement Agreement (GPA)
-#description: “IV.1.8 - Information about the Government Procurement Agreement (GPA)” in SF corresponds to “BT-115 GPA Coverage” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/CONTRACT_COVERED_GPA. The expected ontology instances are epo: epo:Procedure / xsd:boolean .
-#xpath: /TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/CONTRACT_COVERED_GPA
+#title: IV.1.6.1 - An electronic auction will be used
+#description: “IV.1.6.1 - An electronic auction will be used” in SF corresponds to “BT-767 Electronic Auction” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/EAUCTION_USED. The expected ontology instances are epo: epo:Procedure / epo:EAuctionTechniqueUsage .
+#xpath: /TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/EAUCTION_USED
 
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
 ASK WHERE { 
 		?this rdf:type epo:Procedure .
-		?value rdf:type xsd:boolean .
-		?this epo:isCoveredbyGPA ?value . }
+		?this epo:usesTechnique ?value . }

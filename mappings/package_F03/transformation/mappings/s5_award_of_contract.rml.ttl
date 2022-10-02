@@ -94,14 +94,14 @@ tedm:Contract a rr:TripleMap ;
 #                rr:parentTriplesMap tedm:Buyer;
 #            ] ;
 #    ] ;
-    rr:predicateObjectMap
-    [
-        rr:predicate epo:bindsBuyer ;
-        rr:objectMap
-            [
-                rr:parentTriplesMap tedm:BuyerCP;
-            ] ;
-    ] ;
+#    rr:predicateObjectMap
+#    [
+#        rr:predicate epo:bindsBuyer ;
+#        rr:objectMap
+#            [
+#                rr:parentTriplesMap tedm:BuyerCP;
+#            ] ;
+#    ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasID;
@@ -164,7 +164,7 @@ tedm:Lot a rr:TripleMap ;
                 [
                     rr:parentTriplesMap tedm:MonetaryValueLot;
                     rr:joinCondition [
-                        rr:parent "if (count(../../OBJECT_CONTRACT/OBJECT_DESCR)=1) then ./@ITEM else ../LOT_NO";
+                        rr:parent "if (count(../../OBJECT_CONTRACT/OBJECT_DESCR)=1) then ../@ITEM else ../LOT_NO";
                         rr:child "if (count(../OBJECT_DESCR)=1) then 1 else ./LOT_NO";
                     ];
 
@@ -253,15 +253,6 @@ tedm:LotAwardOutcome a rr:TripleMap ;
                 [
                     rml:reference "if(exists(NO_AWARDED_CONTRACT/PROCUREMENT_UNSUCCESSFUL)) then 'http://publications.europa.eu/resource/authority/non-award-justification/all-rej' else if(exists(NO_AWARDED_CONTRACT/PROCUREMENT_DISCONTINUED)) then 'http://publications.europa.eu/resource/authority/non-award-justification/other' else null";
                     rr:termType rr:IRI;
-                ]
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasAwardDecisionDate;
-            rr:objectMap
-                [
-                    rml:reference "AWARDED_CONTRACT/DATE_CONCLUSION_CONTRACT";
-                    rr:datatype xsd:date;
                 ]
         ] .
 tedm:ContractIdentifier a rr:TripleMap ;

@@ -1,11 +1,10 @@
-#title: Section V - Award of contract
-#description: “Section V - Award of contract” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT. The expected ontology instances are epo: epo:ResultNotice / epo:Contract .
-#xpath: /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT
+#title: IV.2.8.1 - The notice involves the termination of the dynamic purchasing system published by the above contract notice
+#description: “IV.2.8.1 - The notice involves the termination of the dynamic purchasing system published by the above contract notice” in SF corresponds to “BT-119 Dynamic Purchasing System Termination” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/TERMINATION_DPS. The expected ontology instances are epo: epo:ProcurementProcessInformation / xsd:boolean .
+#xpath: /TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/TERMINATION_DPS
 
-PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
 ASK WHERE { 
-		?this rdf:type epo:ResultNotice .
-		?value rdf:type epo:Contract .
-		?this epo:announcesContract ?value }
+		?this rdf:type epo:ProcurementProcessInformation .
+		?this epo:isDPSTerminated ?value . }

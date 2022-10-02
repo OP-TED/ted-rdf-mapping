@@ -68,10 +68,10 @@ tedm:Procedure a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:isCoveredbyGPA;
+            rr:predicate epo:isCoveredByGPA;
             rr:objectMap
                 [
-                    rml:reference "if(exists(/TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/CONTRACT_COVERED_GPA)) then 'true' else 'false'";
+                    rml:reference "if(exists(../PROCEDURE/CONTRACT_COVERED_GPA)) then 'true' else if(exists(../PROCEDURE/NO_CONTRACT_COVERED_GPA)) then 'false' else null";
                     rr:datatype xsd:boolean
                 ]
         ] ;

@@ -1,12 +1,10 @@
-#title: V.2.2.6 - The contract has been awarded to a group of economic operators
-#description: “V.2.2.6 - The contract has been awarded to a group of economic operators” in SF corresponds to “BT-768 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/AWARDED_TO_GROUP. The expected ontology instances are epo: epo:OrganisationGroup / org:Organization .
-#xpath: /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/AWARDED_TO_GROUP
+#title: V.2.2.4 - Number of tenders received from tenderers from non-EU Member States
+#description: “V.2.2.4 - Number of tenders received from tenderers from non-EU Member States” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/TENDERS/NB_TENDERS_RECEIVED_NON_EU. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / xsd:integer .
+#xpath: /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/TENDERS/NB_TENDERS_RECEIVED_NON_EU
 
-PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
 ASK WHERE { 
-		?this rdf:type epo:OrganisationGroup .
-		?value rdf:type org:Organization .
-		?this epo:hasMember ?value }
+		?this rdf:type epo:SubmissionStatisticalInformation .
+		?this epo:hasReceivedNonEUTenders ?value . }
