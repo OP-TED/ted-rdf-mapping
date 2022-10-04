@@ -1,0 +1,10 @@
+#title: V.2.4.2 - Total value of the contract/lot
+#description: “V.2.4.2 - Total value of the contract/lot” in SF corresponds to “BT-720 Tender Value” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_TOTAL. The expected ontology instances are epo: epo:Tender / epo:MonetaryValue / xsd:decimal .
+#xpath: /TED_EXPORT/FORM_SECTION/F06_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_TOTAL
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+
+ASK WHERE { 
+		?this rdf:type epo:Tender .
+		?this epo:hasFinancialOfferValue / epo:hasAmountValue ?value . }
