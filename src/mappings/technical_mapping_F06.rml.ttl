@@ -743,21 +743,9 @@ tedm:AwardCriterionPrice a rr:TripleMap ;
         ] ;
     rr:subjectMap
         [
-            rml:reference
-                "if(exists(AC_CRITERION) or exists(AC_WEIGHTING)) then 'http://data.europa.eu/a4g/resource/AwardCriterionPrice/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:template "http://data.europa.eu/a4g/resource/AwardCriterionPrice/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:AwardCriterion
 
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate cccev:name ;
-            rr:objectMap
-                [
-                    rml:reference "AC_CRITERION";
-                    rml:languageMap [
-                         rml:reference "lower-case(ancestor::F06_2014/@LG)"
-                    ]
-                ] ;
         ] ;
     rr:predicateObjectMap
         [
