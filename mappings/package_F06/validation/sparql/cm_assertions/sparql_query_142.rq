@@ -1,10 +1,10 @@
-#title: V.2.7 - Number of contracts awarded
-#description: “V.2.7 - Number of contracts awarded” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/AWARD_CONTRACT. The expected ontology instances are epo: epo:PublicationProvision / epo:ElementConfidentialityDescription / xsd:anyURI (epo:XXX) .
-#xpath: /TED_EXPORT/FORM_SECTION/F06_2014/AWARD_CONTRACT
+#title: V.2.5.6 - Short description of the part of the contract to be subcontracted
+#description: “V.2.5.6 - Short description of the part of the contract to be subcontracted” in SF corresponds to “BT-554 Subcontracting Description” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/AWARD_CONTRACT/AWARDED_CONTRACT/INFO_ADD_SUBCONTRACTING. The expected ontology instances are epo: epo:Tender / epo:SubcontractingEstimate / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F06_2014/AWARD_CONTRACT/AWARDED_CONTRACT/INFO_ADD_SUBCONTRACTING
 
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:PublicationProvision .
-		?this epo:hasElementConfidentiality / epo:haPreficateReference ?value . }
+		?this rdf:type epo:Tender .
+		?this epo:foreseesSubcontracting /  epo:hasDescription ?value. }

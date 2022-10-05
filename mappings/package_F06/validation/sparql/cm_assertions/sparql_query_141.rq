@@ -1,10 +1,10 @@
-#title: V.2.7 - Number of contracts awarded
-#description: “V.2.7 - Number of contracts awarded” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/AWARD_CONTRACT. The expected ontology instances are epo: epo:PublicationProvision / epo:ResultNotice .
-#xpath: /TED_EXPORT/FORM_SECTION/F06_2014/AWARD_CONTRACT
+#title: V.2.5.5 - Proportion
+#description: “V.2.5.5 - Proportion” in SF corresponds to “BT-555 Subcontracting Percentage” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/AWARD_CONTRACT/AWARDED_CONTRACT/PCT_SUBCONTRACTING. The expected ontology instances are epo: epo:Tender / epo:SubcontractingEstimate / xsd:decimal .
+#xpath: /TED_EXPORT/FORM_SECTION/F06_2014/AWARD_CONTRACT/AWARDED_CONTRACT/PCT_SUBCONTRACTING
 
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:PublicationProvision .
-		?this epo:describesNotice ?value . }
+		?this rdf:type epo:Tender .
+		?this epo:foreseesSubcontracting / epo:hasEstimatedPercentage ?value . }

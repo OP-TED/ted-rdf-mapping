@@ -1,10 +1,10 @@
-#title: II.2.11.1 - Options
-#description: “II.2.11.1 - Options” in SF corresponds to “BT-53 Options” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/OBJECT_CONTRACT/OBJECT_DESCR/NO_OPTIONS. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / xsd:boolean .
-#xpath: /TED_EXPORT/FORM_SECTION/F06_2014/OBJECT_CONTRACT/OBJECT_DESCR/NO_OPTIONS
+#title: II.2.5.3 - Price – Weighting
+#description: “II.2.5.3 - Price – Weighting” in SF corresponds to “BT-539 Award Criterion Type” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/OBJECT_CONTRACT/OBJECT_DESCR/AC/AC_PRICE. The expected ontology instances are epo: epo:AwardCriterion / at-voc:award-criterion-type .
+#xpath: /TED_EXPORT/FORM_SECTION/F06_2014/OBJECT_CONTRACT/OBJECT_DESCR/AC/AC_PRICE
 
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Lot .
-		?this epo:foreseesContractSpecificTerm / epo:hasOptions false . }
+		?this rdf:type epo:AwardCriterion .
+		?this epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/price> . }
