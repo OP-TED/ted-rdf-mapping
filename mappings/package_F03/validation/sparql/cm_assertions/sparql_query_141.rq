@@ -1,10 +1,10 @@
-#title: VI.3 - Additional information
-#description: “VI.3 - Additional information” in SF corresponds to “BT-300 Additional Information” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/INFO_ADD. The expected ontology instances are epo: epo:Procedure / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO/INFO_ADD
+#title: V.2.5.5 - Proportion
+#description: “V.2.5.5 - Proportion” in SF corresponds to “BT-555 Subcontracting Percentage” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/PCT_SUBCONTRACTING. The expected ontology instances are epo: epo:Tender / epo:SubcontractingEstimate / xsd:decimal .
+#xpath: /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/PCT_SUBCONTRACTING
 
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Procedure .
-		?this epo:hasAdditionalInformation ?value . }
+		?this rdf:type epo:Tender .
+		?this epo:foreseesSubcontracting / epo:hasEstimatedPercentage ?value . }
