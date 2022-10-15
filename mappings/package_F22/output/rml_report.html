@@ -26,6 +26,3912 @@
 <h1>RML report </h1>
 <hr>
 
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/Procedure">http://data.europa.eu/a4g/mapping/sf-rml/Procedure</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+        <dd>
+            <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#Procedure<br>
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/Procedure/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+        </dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#isSubjectToProcedureSpecificTerm</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/DirectAwardTerm">http://data.europa.eu/a4g/mapping/sf-rml/DirectAwardTerm</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasLegalBasis</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/legalBasis">http://data.europa.eu/a4g/mapping/sf-rml/legalBasis</a>
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    ../LEGAL_BASIS/@VALUE
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    code.value
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasProcedureType</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if(exists(../PROCEDURE/PT_OPEN)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/open' else if(exists(../PROCEDURE/PT_RESTRICTED)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted' else if(exists(../PROCEDURE/PT_COMPETITIVE_NEGOTIATION)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call' else if(exists(../PROCEDURE/PT_COMPETITIVE_DIALOGUE)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial' else if(exists(../PROCEDURE/PT_INNOVATION_PARTNERSHIP)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation' else if(exists(../PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#IRI
+                
+            </dd>
+        
+    
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasAcceleratedProcedureJustification</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ../PROCEDURE/ACCELERATED_PROC/P
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#isAccelerated</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if(exists(../PROCEDURE/ACCELERATED_PROC)) then 'true' else 'false'
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#isCoveredByGPA</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if(exists(../PROCEDURE/CONTRACT_COVERED_GPA)) then 'true' else if(exists(../PROCEDURE/NO_CONTRACT_COVERED_GPA)) then 'false' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#usesTechnique</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/DynamicPurchaseSystemTechniqueUsage">http://data.europa.eu/a4g/mapping/sf-rml/DynamicPurchaseSystemTechniqueUsage</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#usesTechnique</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/FrameworkAgreementTechniqueUsage">http://data.europa.eu/a4g/mapping/sf-rml/FrameworkAgreementTechniqueUsage</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#usesTechnique</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/EauctionTechnique">http://data.europa.eu/a4g/mapping/sf-rml/EauctionTechnique</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasMainFeature</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ../PROCEDURE/MAIN_FEATURES_AWARD
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasEstimatedValue</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueProcedure">http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueProcedure</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#isSubjectToProcedureSpecificTerm</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ProcedureSpecificTerm">http://data.europa.eu/a4g/mapping/sf-rml/ProcedureSpecificTerm</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasProcurementScopeDividedIntoLot</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Lot">http://data.europa.eu/a4g/mapping/sf-rml/Lot</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#isJointProcurement</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if(exists(../CONTRACTING_BODY/JOINT_PROCUREMENT_INVOLVED)) then 'true' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasOverallPurpose</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ProcedurePurpose">http://data.europa.eu/a4g/mapping/sf-rml/ProcedurePurpose</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasID</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ProcedureIdentifier">http://data.europa.eu/a4g/mapping/sf-rml/ProcedureIdentifier</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasTitle</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    TITLE
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Reference Language Map:</em></strong>
+                
+                    lower-case(ancestor::F22_2014/@LG)
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasAdditionalInformation</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ../COMPLEMENTARY_INFO/INFO_ADD
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Reference Language Map:</em></strong>
+                
+                    lower-case(ancestor::F22_2014/@LG)
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasDescription</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    SHORT_DESCR
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Reference Language Map:</em></strong>
+                
+                    lower-case(ancestor::F22_2014/@LG)
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/PreviousProcedure">http://data.europa.eu/a4g/mapping/sf-rml/PreviousProcedure</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasProcedureType</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if(exists(D_PROC_OPEN)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/open' else if(exists(D_PROC_RESTRICTED)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#IRI
+                
+            </dd>
+        
+    
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/DirectAwardTerm">http://data.europa.eu/a4g/mapping/sf-rml/DirectAwardTerm</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_MANUF_FOR_RESEARCH)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/resd' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#IRI
+                
+            </dd>
+        
+    
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_NO_TENDERS_REQUESTS)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/unsuitable' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#IRI
+                
+            </dd>
+        
+    
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_TECHNICAL)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/technical' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#IRI
+                
+            </dd>
+        
+    
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_PURE_RESEARCH)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/resd' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#IRI
+                
+            </dd>
+        
+    
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_BARGAIN_PURCHASE)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/bargain' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#IRI
+                
+            </dd>
+        
+    
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_ARTISTIC)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/artistic' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#IRI
+                
+            </dd>
+        
+    
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_PROTECT_RIGHTS)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/exclusive' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#IRI
+                
+            </dd>
+        
+    
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_EXTREME_URGENCY)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/urgency' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#IRI
+                
+            </dd>
+        
+    
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_ADD_DELIVERIES_ORDERED)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/additional' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#IRI
+                
+            </dd>
+        
+    
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_REPETITION_EXISTING)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/repetition' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#IRI
+                
+            </dd>
+        
+    
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_CONTRACT_AWARDED_DESIGN_CONTEST)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/contest' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#IRI
+                
+            </dd>
+        
+    
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_COMMODITY_MARKET)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/commodity' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#IRI
+                
+            </dd>
+        
+    
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_FROM_WINDING_PROVIDER)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/closure' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#IRI
+                
+            </dd>
+        
+    
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_FROM_LIQUIDATOR_CREDITOR)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/liquidator' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#IRI
+                
+            </dd>
+        
+    
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_OUTSIDE_SCOPE)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/dir24-list' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#IRI
+                
+            </dd>
+        
+    
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasJustification</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    PT_AWARD_CONTRACT_WITHOUT_CALL/D_JUSTIFICATION
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/Lot">http://data.europa.eu/a4g/mapping/sf-rml/Lot</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+        <dd>
+            <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#Lot<br>
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/Lot/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+        </dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#isSubjectToLotSpecificTerm</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ReviewTerm">http://data.europa.eu/a4g/mapping/sf-rml/ReviewTerm</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#isUsingEUFunds</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if(exists(EU_PROGR_RELATED)) then 'true' else if(exists(NO_EU_PROGR_RELATED)) then 'false' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasID</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/LotIdentifier">http://data.europa.eu/a4g/mapping/sf-rml/LotIdentifier</a>
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#isFundedBy</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Fund">http://data.europa.eu/a4g/mapping/sf-rml/Fund</a>
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasPurpose</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/LotPurpose">http://data.europa.eu/a4g/mapping/sf-rml/LotPurpose</a>
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    ./@ITEM
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    ancestor::OBJECT_DESCR/@ITEM
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#foreseesContractSpecificTerm</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ContractTerm">http://data.europa.eu/a4g/mapping/sf-rml/ContractTerm</a>
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#specifiesAwardCriterion</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionQuality">http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionQuality</a>
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    ./@ITEM
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    ancestor::OBJECT_DESCR/@ITEM
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#specifiesAwardCriterion</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterion">http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterion</a>
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    ./@ITEM
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    ancestor::OBJECT_DESCR/@ITEM
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#specifiesAwardCriterion</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionPrice">http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionPrice</a>
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    ./@ITEM
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    ancestor::OBJECT_DESCR/@ITEM
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#specifiesAwardCriterion</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionCost">http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionCost</a>
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    ./@ITEM
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    ancestor::OBJECT_DESCR/@ITEM
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasTitle</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    TITLE
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Reference Language Map:</em></strong>
+                
+                    lower-case(ancestor::F22_2014/@LG)
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasDescription</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    SHORT_DESCR
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Reference Language Map:</em></strong>
+                
+                    lower-case(ancestor::F22_2014/@LG)
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasAdditionalInformation</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    INFO_ADD
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Reference Language Map:</em></strong>
+                
+                    lower-case(ancestor::F22_2014/@LG)
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#specifiesSelectionCreterion</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/SelectionCriterion">http://data.europa.eu/a4g/mapping/sf-rml/SelectionCriterion</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasReservedProcurement</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if(exists(../../LEFTI/RESTRICTED_SHELTERED_WORKSHOP)) then 'http://publications.europa.eu/resource/authority/reserved-procurement/res-ws' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#IRI
+                
+            </dd>
+        
+    
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasReservedProcurement</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if(exists(../../LEFTI/RESERVED_ORGANISATIONS_SERVICE_MISSION)) then 'http://publications.europa.eu/resource/authority/reserved-procurement/res-pub-ser' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#IRI
+                
+            </dd>
+        
+    
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasEstimatedValue</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueLot">http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueLot</a>
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    if (count(../OBJECT_DESCR)=1) then 1 else ./LOT_NO
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    if (count(../../OBJECT_CONTRACT/OBJECT_DESCR)=1) then ../@ITEM else ../LOT_NO
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ReviewTerm">http://data.europa.eu/a4g/mapping/sf-rml/ReviewTerm</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasReviewDeadlineInformation</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    REVIEW_PROCEDURE
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisation">http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisation</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+        <dd>
+            <strong><em>Class:</em></strong> http://www.w3.org/ns/org#Organization<br>
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/ReviewerOrganisation/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+        </dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasPrimaryContactPoint</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ReviewerContactPoint">http://data.europa.eu/a4g/mapping/sf-rml/ReviewerContactPoint</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>https://www.w3.org/ns/legal#registeredAddress</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisationAddress">http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisationAddress</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasID</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisationIdentifier">http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisationIdentifier</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasLegalName</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    OFFICIALNAME
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Reference Language Map:</em></strong>
+                
+                    lower-case(ancestor::F22_2014/@LG)
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ReviewerContactPoint">http://data.europa.eu/a4g/mapping/sf-rml/ReviewerContactPoint</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasInternetAddress</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    URL
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/m8g/email</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    E_MAIL
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasFax</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    FAX
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/m8g/telephone</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    PHONE
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasContactName</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    CONTACT_POINT
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Reference Language Map:</em></strong>
+                
+                    lower-case(ancestor::F22_2014/@LG)
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisationAddress">http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisationAddress</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+        <dd>
+            <strong><em>Class:</em></strong> http://www.w3.org/ns/locn#Address<br>
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+        </dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://www.w3.org/ns/locn#postName</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    TOWN
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://www.w3.org/ns/locn#thoroughfare</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ADDRESS
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://www.w3.org/ns/locn#postCode</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    POSTAL_CODE
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasCountryCode</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/country">http://data.europa.eu/a4g/mapping/sf-rml/country</a>
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    COUNTRY/@VALUE
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    code.value
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisation">http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisation</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+        <dd>
+            <strong><em>Class:</em></strong> http://www.w3.org/ns/org#Organization<br>
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/MediatorOrganisation/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+        </dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasPrimaryContactPoint</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/MediatorContactPoint">http://data.europa.eu/a4g/mapping/sf-rml/MediatorContactPoint</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>https://www.w3.org/ns/legal#registeredAddress</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisationAddress">http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisationAddress</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasID</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisationIdentifier">http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisationIdentifier</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasLegalName</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    OFFICIALNAME
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Reference Language Map:</em></strong>
+                
+                    lower-case(ancestor::F22_2014/@LG)
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/MediatorContactPoint">http://data.europa.eu/a4g/mapping/sf-rml/MediatorContactPoint</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasInternetAddress</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    URL
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/m8g/email</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    E_MAIL
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasFax</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    FAX
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/m8g/telephone</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    PHONE
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasContactName</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    CONTACT_POINT
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Reference Language Map:</em></strong>
+                
+                    lower-case(ancestor::F22_2014/@LG)
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisationAddress">http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisationAddress</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+        <dd>
+            <strong><em>Class:</em></strong> http://www.w3.org/ns/locn#Address<br>
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+        </dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://www.w3.org/ns/locn#postName</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    TOWN
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://www.w3.org/ns/locn#thoroughfare</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ADDRESS
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://www.w3.org/ns/locn#postCode</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    POSTAL_CODE
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasCountryCode</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/country">http://data.europa.eu/a4g/mapping/sf-rml/country</a>
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    COUNTRY/@VALUE
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    code.value
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisation">http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisation</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+        <dd>
+            <strong><em>Class:</em></strong> http://www.w3.org/ns/org#Organization<br>
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+        </dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasPrimaryContactPoint</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderContactPoint">http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderContactPoint</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>https://www.w3.org/ns/legal#registeredAddress</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisationAddress">http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisationAddress</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasID</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisationIdentifier">http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisationIdentifier</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasLegalName</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    OFFICIALNAME
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Reference Language Map:</em></strong>
+                
+                    lower-case(ancestor::F22_2014/@LG)
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderContactPoint">http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderContactPoint</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasInternetAddress</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    URL
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/m8g/email</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    E_MAIL
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasFax</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    FAX
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/m8g/telephone</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    PHONE
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasDescription</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    CONTACT_POINT
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Reference Language Map:</em></strong>
+                
+                    ancestor::F03_2014/@LG
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasContactName</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    CONTACT_POINT
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Reference Language Map:</em></strong>
+                
+                    lower-case(ancestor::F22_2014/@LG)
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisationAddress">http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisationAddress</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+        <dd>
+            <strong><em>Class:</em></strong> http://www.w3.org/ns/locn#Address<br>
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+        </dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://www.w3.org/ns/locn#postName</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    TOWN
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://www.w3.org/ns/locn#thoroughfare</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ADDRESS
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://www.w3.org/ns/locn#postCode</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    POSTAL_CODE
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasCountryCode</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/country">http://data.europa.eu/a4g/mapping/sf-rml/country</a>
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    COUNTRY/@VALUE
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    code.value
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ProcedureIdentifier">http://data.europa.eu/a4g/mapping/sf-rml/ProcedureIdentifier</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasIdentifierValue</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ./REFERENCE_NUMBER
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcessInformation">http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcessInformation</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#isDPSTerminated</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if(exists(TERMINATION_DPS)) then 'true' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#isCompetitionTerminated</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if(exists(TERMINATION_PIN)) then 'true' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#concernsPreviousNotice</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Notice">http://data.europa.eu/a4g/mapping/sf-rml/Notice</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#concernsProcedure</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Procedure">http://data.europa.eu/a4g/mapping/sf-rml/Procedure</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
     <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/NoticeAwardInformation">http://data.europa.eu/a4g/mapping/sf-rml/NoticeAwardInformation</h2>
     
         
@@ -652,656 +4558,6 @@
     </dl>
 
 
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/Procedure">http://data.europa.eu/a4g/mapping/sf-rml/Procedure</h2>
-    
-        
-
-        
-
-    
-    <dl>
-        <dt>Logical Source</dt>
-        
-        <dd>data/source.xml</dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Subject map</dt>
-        
-        <dd>
-            <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#Procedure<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/Procedure/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
-        </dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Predicate object maps</dt>
-        <dd>
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasMainFeature</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    ../PROCEDURE/MAIN_FEATURES_AWARD
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasEstimatedValue</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueProcedure">http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueProcedure</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#isSubjectToProcedureSpecificTerm</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ProcedureSpecificTerm">http://data.europa.eu/a4g/mapping/sf-rml/ProcedureSpecificTerm</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasProcurementScopeDividedIntoLot</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Lot">http://data.europa.eu/a4g/mapping/sf-rml/Lot</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#isJointProcurement</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if(exists(../CONTRACTING_BODY/JOINT_PROCUREMENT_INVOLVED)) then 'true' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasOverallPurpose</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ProcedurePurpose">http://data.europa.eu/a4g/mapping/sf-rml/ProcedurePurpose</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasID</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ProcedureIdentifier">http://data.europa.eu/a4g/mapping/sf-rml/ProcedureIdentifier</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasTitle</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    TITLE
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Reference Language Map:</em></strong>
-                
-                    lower-case(ancestor::F22_2014/@LG)
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasAdditionalInformation</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    ../COMPLEMENTARY_INFO/INFO_ADD
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Reference Language Map:</em></strong>
-                
-                    lower-case(ancestor::F22_2014/@LG)
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasDescription</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    SHORT_DESCR
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Reference Language Map:</em></strong>
-                
-                    lower-case(ancestor::F22_2014/@LG)
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#isSubjectToProcedureSpecificTerm</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/DirectAwardTerm">http://data.europa.eu/a4g/mapping/sf-rml/DirectAwardTerm</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasLegalBasis</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/legalBasis">http://data.europa.eu/a4g/mapping/sf-rml/legalBasis</a>
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Child:</em></strong>
-                
-                    ../LEGAL_BASIS/@VALUE
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Parent:</em></strong>
-                
-                    code.value
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasProcedureType</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if(exists(../PROCEDURE/PT_OPEN)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/open' else if(exists(../PROCEDURE/PT_RESTRICTED)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted' else if(exists(../PROCEDURE/PT_COMPETITIVE_NEGOTIATION)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call' else if(exists(../PROCEDURE/PT_COMPETITIVE_DIALOGUE)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial' else if(exists(../PROCEDURE/PT_INNOVATION_PARTNERSHIP)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation' else if(exists(../PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasAcceleratedProcedureJustification</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    ../PROCEDURE/ACCELERATED_PROC/P
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#isAccelerated</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if(exists(../PROCEDURE/ACCELERATED_PROC)) then 'true' else 'false'
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#isCoveredByGPA</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if(exists(../PROCEDURE/CONTRACT_COVERED_GPA)) then 'true' else if(exists(../PROCEDURE/NO_CONTRACT_COVERED_GPA)) then 'false' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#usesTechnique</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/DynamicPurchaseSystemTechniqueUsage">http://data.europa.eu/a4g/mapping/sf-rml/DynamicPurchaseSystemTechniqueUsage</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#usesTechnique</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/FrameworkAgreementTechniqueUsage">http://data.europa.eu/a4g/mapping/sf-rml/FrameworkAgreementTechniqueUsage</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#usesTechnique</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/EauctionTechnique">http://data.europa.eu/a4g/mapping/sf-rml/EauctionTechnique</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-        </dd>
-    </dl>
-
-
     <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ProcedurePurpose">http://data.europa.eu/a4g/mapping/sf-rml/ProcedurePurpose</h2>
     
         
@@ -1574,732 +4830,6 @@
                         
 
                         
-
-
-                    </dl>
-                
-            
-        </dd>
-    </dl>
-
-
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/Lot">http://data.europa.eu/a4g/mapping/sf-rml/Lot</h2>
-    
-        
-
-        
-
-    
-    <dl>
-        <dt>Logical Source</dt>
-        
-        <dd>data/source.xml</dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Subject map</dt>
-        
-        <dd>
-            <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#Lot<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/Lot/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
-        </dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Predicate object maps</dt>
-        <dd>
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#isUsingEUFunds</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if(exists(EU_PROGR_RELATED)) then 'true' else if(exists(NO_EU_PROGR_RELATED)) then 'false' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasID</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/LotIdentifier">http://data.europa.eu/a4g/mapping/sf-rml/LotIdentifier</a>
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Child:</em></strong>
-                
-                    unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Parent:</em></strong>
-                
-                    unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#isFundedBy</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Fund">http://data.europa.eu/a4g/mapping/sf-rml/Fund</a>
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Child:</em></strong>
-                
-                    unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Parent:</em></strong>
-                
-                    unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasPurpose</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/LotPurpose">http://data.europa.eu/a4g/mapping/sf-rml/LotPurpose</a>
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Child:</em></strong>
-                
-                    ./@ITEM
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Parent:</em></strong>
-                
-                    ancestor::OBJECT_DESCR/@ITEM
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#foreseesContractSpecificTerm</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ContractTerm">http://data.europa.eu/a4g/mapping/sf-rml/ContractTerm</a>
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Child:</em></strong>
-                
-                    unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Parent:</em></strong>
-                
-                    unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#specifiesAwardCriterion</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionQuality">http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionQuality</a>
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Child:</em></strong>
-                
-                    ./@ITEM
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Parent:</em></strong>
-                
-                    ancestor::OBJECT_DESCR/@ITEM
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#specifiesAwardCriterion</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterion">http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterion</a>
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Child:</em></strong>
-                
-                    ./@ITEM
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Parent:</em></strong>
-                
-                    ancestor::OBJECT_DESCR/@ITEM
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#specifiesAwardCriterion</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionPrice">http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionPrice</a>
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Child:</em></strong>
-                
-                    ./@ITEM
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Parent:</em></strong>
-                
-                    ancestor::OBJECT_DESCR/@ITEM
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#specifiesAwardCriterion</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionCost">http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionCost</a>
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Child:</em></strong>
-                
-                    ./@ITEM
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Parent:</em></strong>
-                
-                    ancestor::OBJECT_DESCR/@ITEM
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasTitle</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    TITLE
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Reference Language Map:</em></strong>
-                
-                    lower-case(ancestor::F22_2014/@LG)
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasDescription</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    SHORT_DESCR
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Reference Language Map:</em></strong>
-                
-                    lower-case(ancestor::F22_2014/@LG)
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasAdditionalInformation</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    INFO_ADD
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Reference Language Map:</em></strong>
-                
-                    lower-case(ancestor::F22_2014/@LG)
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasEstimatedValue</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueLot">http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueLot</a>
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Child:</em></strong>
-                
-                    if (count(../OBJECT_DESCR)=1) then 1 else ./LOT_NO
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Parent:</em></strong>
-                
-                    if (count(../../OBJECT_CONTRACT/OBJECT_DESCR)=1) then ../@ITEM else ../LOT_NO
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#isSubjectToLotSpecificTerm</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ReviewTerm">http://data.europa.eu/a4g/mapping/sf-rml/ReviewTerm</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#specifiesSelectionCreterion</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/SelectionCriterion">http://data.europa.eu/a4g/mapping/sf-rml/SelectionCriterion</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasReservedProcurement</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if(exists(../../LEFTI/RESTRICTED_SHELTERED_WORKSHOP)) then 'http://publications.europa.eu/resource/authority/reserved-procurement/res-ws' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasReservedProcurement</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if(exists(../../LEFTI/RESERVED_ORGANISATIONS_SERVICE_MISSION)) then 'http://publications.europa.eu/resource/authority/reserved-procurement/res-pub-ser' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
 
 
                     </dl>
@@ -2783,6 +5313,548 @@
             </dd>
         
     
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ResultNotice">http://data.europa.eu/a4g/mapping/sf-rml/ResultNotice</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+        <dd>
+            <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#ResultNotice<br>
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/ResultNotice/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+        </dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://www.w3.org/2006/time#hasPublicationDate</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    DATE_PUBLICATION_NOTICE
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasDispatchDate</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ../COMPLEMENTARY_INFO/DATE_DISPATCH_NOTICE
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#announcesNoticeAwardInformation</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/NoticeAwardInformation">http://data.europa.eu/a4g/mapping/sf-rml/NoticeAwardInformation</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#refersToRole</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Reviewer">http://data.europa.eu/a4g/mapping/sf-rml/Reviewer</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#refersToRole</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Mediator">http://data.europa.eu/a4g/mapping/sf-rml/Mediator</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#refersToRole</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProvider">http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProvider</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#refersToRole</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Buyer">http://data.europa.eu/a4g/mapping/sf-rml/Buyer</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#refersToRole</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/BuyerCP">http://data.europa.eu/a4g/mapping/sf-rml/BuyerCP</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#refersToRole</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/AdditionalBuyer">http://data.europa.eu/a4g/mapping/sf-rml/AdditionalBuyer</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#refersToRole</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/AdditionalBuyerCP">http://data.europa.eu/a4g/mapping/sf-rml/AdditionalBuyerCP</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#announcesRole</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/WinnerRole">http://data.europa.eu/a4g/mapping/sf-rml/WinnerRole</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#refersToProcedure</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Procedure">http://data.europa.eu/a4g/mapping/sf-rml/Procedure</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#refersToLot</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Lot">http://data.europa.eu/a4g/mapping/sf-rml/Lot</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#refersToPrevious</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Notice">http://data.europa.eu/a4g/mapping/sf-rml/Notice</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#announcesContract</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Contract">http://data.europa.eu/a4g/mapping/sf-rml/Contract</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#announcesTender</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Tender">http://data.europa.eu/a4g/mapping/sf-rml/Tender</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#announcesRole</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcedureInformationProvider">http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcedureInformationProvider</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
 
                         
 
@@ -4158,1240 +7230,6 @@
     </dl>
 
 
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ResultNotice">http://data.europa.eu/a4g/mapping/sf-rml/ResultNotice</h2>
-    
-        
-
-        
-
-    
-    <dl>
-        <dt>Logical Source</dt>
-        
-        <dd>data/source.xml</dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Subject map</dt>
-        
-        <dd>
-            <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#ResultNotice<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/ResultNotice/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
-        </dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Predicate object maps</dt>
-        <dd>
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#announcesRole</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcedureInformationProvider">http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcedureInformationProvider</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://www.w3.org/2006/time#hasPublicationDate</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    DATE_PUBLICATION_NOTICE
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasDispatchDate</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    ../COMPLEMENTARY_INFO/DATE_DISPATCH_NOTICE
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#announcesNoticeAwardInformation</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/NoticeAwardInformation">http://data.europa.eu/a4g/mapping/sf-rml/NoticeAwardInformation</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#refersToRole</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Reviewer">http://data.europa.eu/a4g/mapping/sf-rml/Reviewer</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#refersToRole</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Mediator">http://data.europa.eu/a4g/mapping/sf-rml/Mediator</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#refersToRole</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProvider">http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProvider</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#refersToRole</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Buyer">http://data.europa.eu/a4g/mapping/sf-rml/Buyer</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#refersToRole</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/BuyerCP">http://data.europa.eu/a4g/mapping/sf-rml/BuyerCP</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#refersToRole</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/AdditionalBuyer">http://data.europa.eu/a4g/mapping/sf-rml/AdditionalBuyer</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#refersToRole</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/AdditionalBuyerCP">http://data.europa.eu/a4g/mapping/sf-rml/AdditionalBuyerCP</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#announcesRole</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/WinnerRole">http://data.europa.eu/a4g/mapping/sf-rml/WinnerRole</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#refersToProcedure</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Procedure">http://data.europa.eu/a4g/mapping/sf-rml/Procedure</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#refersToLot</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Lot">http://data.europa.eu/a4g/mapping/sf-rml/Lot</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#refersToPrevious</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Notice">http://data.europa.eu/a4g/mapping/sf-rml/Notice</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#announcesContract</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Contract">http://data.europa.eu/a4g/mapping/sf-rml/Contract</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#announcesTender</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Tender">http://data.europa.eu/a4g/mapping/sf-rml/Tender</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-        </dd>
-    </dl>
-
-
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/DirectAwardTerm">http://data.europa.eu/a4g/mapping/sf-rml/DirectAwardTerm</h2>
-    
-        
-
-        
-
-    
-    <dl>
-        <dt>Logical Source</dt>
-        
-        <dd>data/source.xml</dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Subject map</dt>
-        
-    </dl>
-
-    <dl>
-        <dt>Predicate object maps</dt>
-        <dd>
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_MANUF_FOR_RESEARCH)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/resd' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_NO_TENDERS_REQUESTS)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/unsuitable' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_TECHNICAL)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/technical' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_PURE_RESEARCH)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/resd' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_BARGAIN_PURCHASE)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/bargain' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_ARTISTIC)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/artistic' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_PROTECT_RIGHTS)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/exclusive' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_EXTREME_URGENCY)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/urgency' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_ADD_DELIVERIES_ORDERED)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/additional' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_REPETITION_EXISTING)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/repetition' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_CONTRACT_AWARDED_DESIGN_CONTEST)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/contest' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_COMMODITY_MARKET)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/commodity' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_FROM_WINDING_PROVIDER)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/closure' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_FROM_LIQUIDATOR_CREDITOR)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/liquidator' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_OUTSIDE_SCOPE)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/dir24-list' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasJustification</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    PT_AWARD_CONTRACT_WITHOUT_CALL/D_JUSTIFICATION
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-        </dd>
-    </dl>
-
-
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/PreviousProcedure">http://data.europa.eu/a4g/mapping/sf-rml/PreviousProcedure</h2>
-    
-        
-
-        
-
-    
-    <dl>
-        <dt>Logical Source</dt>
-        
-        <dd>data/source.xml</dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Subject map</dt>
-        
-    </dl>
-
-    <dl>
-        <dt>Predicate object maps</dt>
-        <dd>
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasProcedureType</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if(exists(D_PROC_OPEN)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/open' else if(exists(D_PROC_RESTRICTED)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
-
-
-                    </dl>
-                
-            
-        </dd>
-    </dl>
-
-
     <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/Fund">http://data.europa.eu/a4g/mapping/sf-rml/Fund</h2>
     
         
@@ -5636,153 +7474,6 @@
     <dl>
         <dt>Predicate object maps</dt>
         <dd>
-            
-        </dd>
-    </dl>
-
-
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcessInformation">http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcessInformation</h2>
-    
-        
-
-        
-
-    
-    <dl>
-        <dt>Logical Source</dt>
-        
-        <dd>data/source.xml</dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Subject map</dt>
-        
-    </dl>
-
-    <dl>
-        <dt>Predicate object maps</dt>
-        <dd>
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#isDPSTerminated</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if(exists(TERMINATION_DPS)) then 'true' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#isCompetitionTerminated</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if(exists(TERMINATION_PIN)) then 'true' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#concernsPreviousNotice</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Notice">http://data.europa.eu/a4g/mapping/sf-rml/Notice</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#concernsProcedure</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Procedure">http://data.europa.eu/a4g/mapping/sf-rml/Procedure</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
             
         </dd>
     </dl>
@@ -7130,1583 +8821,6 @@
             </dd>
         
     
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-        </dd>
-    </dl>
-
-
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ReviewerContactPoint">http://data.europa.eu/a4g/mapping/sf-rml/ReviewerContactPoint</h2>
-    
-        
-
-        
-
-    
-    <dl>
-        <dt>Logical Source</dt>
-        
-        <dd>data/source.xml</dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Subject map</dt>
-        
-    </dl>
-
-    <dl>
-        <dt>Predicate object maps</dt>
-        <dd>
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasContactName</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    CONTACT_POINT
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Reference Language Map:</em></strong>
-                
-                    lower-case(ancestor::F22_2014/@LG)
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasInternetAddress</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    URL
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/m8g/email</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    E_MAIL
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasFax</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    FAX
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/m8g/telephone</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    PHONE
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-        </dd>
-    </dl>
-
-
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisationAddress">http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisationAddress</h2>
-    
-        
-
-        
-
-    
-    <dl>
-        <dt>Logical Source</dt>
-        
-        <dd>data/source.xml</dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Subject map</dt>
-        
-        <dd>
-            <strong><em>Class:</em></strong> http://www.w3.org/ns/locn#Address<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
-        </dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Predicate object maps</dt>
-        <dd>
-            
-                
-                    <dl>
-                        <dt>http://www.w3.org/ns/locn#postName</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    TOWN
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://www.w3.org/ns/locn#thoroughfare</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    ADDRESS
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://www.w3.org/ns/locn#postCode</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    POSTAL_CODE
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasCountryCode</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/country">http://data.europa.eu/a4g/mapping/sf-rml/country</a>
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Child:</em></strong>
-                
-                    COUNTRY/@VALUE
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Parent:</em></strong>
-                
-                    code.value
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-        </dd>
-    </dl>
-
-
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisation">http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisation</h2>
-    
-        
-
-        
-
-    
-    <dl>
-        <dt>Logical Source</dt>
-        
-        <dd>data/source.xml</dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Subject map</dt>
-        
-        <dd>
-            <strong><em>Class:</em></strong> http://www.w3.org/ns/org#Organization<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/MediatorOrganisation/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
-        </dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Predicate object maps</dt>
-        <dd>
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasLegalName</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    OFFICIALNAME
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Reference Language Map:</em></strong>
-                
-                    lower-case(ancestor::F22_2014/@LG)
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasPrimaryContactPoint</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/MediatorContactPoint">http://data.europa.eu/a4g/mapping/sf-rml/MediatorContactPoint</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>https://www.w3.org/ns/legal#registeredAddress</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisationAddress">http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisationAddress</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasID</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisationIdentifier">http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisationIdentifier</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-        </dd>
-    </dl>
-
-
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/MediatorContactPoint">http://data.europa.eu/a4g/mapping/sf-rml/MediatorContactPoint</h2>
-    
-        
-
-        
-
-    
-    <dl>
-        <dt>Logical Source</dt>
-        
-        <dd>data/source.xml</dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Subject map</dt>
-        
-    </dl>
-
-    <dl>
-        <dt>Predicate object maps</dt>
-        <dd>
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasContactName</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    CONTACT_POINT
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Reference Language Map:</em></strong>
-                
-                    lower-case(ancestor::F22_2014/@LG)
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasInternetAddress</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    URL
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/m8g/email</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    E_MAIL
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasFax</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    FAX
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/m8g/telephone</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    PHONE
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-        </dd>
-    </dl>
-
-
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisationAddress">http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisationAddress</h2>
-    
-        
-
-        
-
-    
-    <dl>
-        <dt>Logical Source</dt>
-        
-        <dd>data/source.xml</dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Subject map</dt>
-        
-        <dd>
-            <strong><em>Class:</em></strong> http://www.w3.org/ns/locn#Address<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
-        </dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Predicate object maps</dt>
-        <dd>
-            
-                
-                    <dl>
-                        <dt>http://www.w3.org/ns/locn#postName</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    TOWN
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://www.w3.org/ns/locn#thoroughfare</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    ADDRESS
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://www.w3.org/ns/locn#postCode</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    POSTAL_CODE
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasCountryCode</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/country">http://data.europa.eu/a4g/mapping/sf-rml/country</a>
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Child:</em></strong>
-                
-                    COUNTRY/@VALUE
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Parent:</em></strong>
-                
-                    code.value
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-        </dd>
-    </dl>
-
-
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisation">http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisation</h2>
-    
-        
-
-        
-
-    
-    <dl>
-        <dt>Logical Source</dt>
-        
-        <dd>data/source.xml</dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Subject map</dt>
-        
-        <dd>
-            <strong><em>Class:</em></strong> http://www.w3.org/ns/org#Organization<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
-        </dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Predicate object maps</dt>
-        <dd>
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasLegalName</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    OFFICIALNAME
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Reference Language Map:</em></strong>
-                
-                    lower-case(ancestor::F22_2014/@LG)
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasPrimaryContactPoint</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderContactPoint">http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderContactPoint</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>https://www.w3.org/ns/legal#registeredAddress</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisationAddress">http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisationAddress</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasID</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisationIdentifier">http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisationIdentifier</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-        </dd>
-    </dl>
-
-
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderContactPoint">http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderContactPoint</h2>
-    
-        
-
-        
-
-    
-    <dl>
-        <dt>Logical Source</dt>
-        
-        <dd>data/source.xml</dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Subject map</dt>
-        
-    </dl>
-
-    <dl>
-        <dt>Predicate object maps</dt>
-        <dd>
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasContactName</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    CONTACT_POINT
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Reference Language Map:</em></strong>
-                
-                    lower-case(ancestor::F22_2014/@LG)
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasInternetAddress</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    URL
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/m8g/email</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    E_MAIL
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasFax</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    FAX
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/m8g/telephone</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    PHONE
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasDescription</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    CONTACT_POINT
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Reference Language Map:</em></strong>
-                
-                    ancestor::F03_2014/@LG
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-        </dd>
-    </dl>
-
-
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisationAddress">http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisationAddress</h2>
-    
-        
-
-        
-
-    
-    <dl>
-        <dt>Logical Source</dt>
-        
-        <dd>data/source.xml</dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Subject map</dt>
-        
-        <dd>
-            <strong><em>Class:</em></strong> http://www.w3.org/ns/locn#Address<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
-        </dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Predicate object maps</dt>
-        <dd>
-            
-                
-                    <dl>
-                        <dt>http://www.w3.org/ns/locn#postName</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    TOWN
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://www.w3.org/ns/locn#thoroughfare</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    ADDRESS
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://www.w3.org/ns/locn#postCode</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    POSTAL_CODE
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasCountryCode</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/country">http://data.europa.eu/a4g/mapping/sf-rml/country</a>
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Child:</em></strong>
-                
-                    COUNTRY/@VALUE
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Parent:</em></strong>
-                
-                    code.value
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-        </dd>
-    </dl>
-
-
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisation">http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisation</h2>
-    
-        
-
-        
-
-    
-    <dl>
-        <dt>Logical Source</dt>
-        
-        <dd>data/source.xml</dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Subject map</dt>
-        
-        <dd>
-            <strong><em>Class:</em></strong> http://www.w3.org/ns/org#Organization<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/ReviewerOrganisation/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
-        </dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Predicate object maps</dt>
-        <dd>
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasLegalName</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    OFFICIALNAME
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Reference Language Map:</em></strong>
-                
-                    lower-case(ancestor::F22_2014/@LG)
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasPrimaryContactPoint</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ReviewerContactPoint">http://data.europa.eu/a4g/mapping/sf-rml/ReviewerContactPoint</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>https://www.w3.org/ns/legal#registeredAddress</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisationAddress">http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisationAddress</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasID</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisationIdentifier">http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisationIdentifier</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
 
                         
 
@@ -10303,120 +10417,6 @@
             </dd>
         
     
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-        </dd>
-    </dl>
-
-
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ReviewTerm">http://data.europa.eu/a4g/mapping/sf-rml/ReviewTerm</h2>
-    
-        
-
-        
-
-    
-    <dl>
-        <dt>Logical Source</dt>
-        
-        <dd>data/source.xml</dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Subject map</dt>
-        
-    </dl>
-
-    <dl>
-        <dt>Predicate object maps</dt>
-        <dd>
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasReviewDeadlineInformation</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    REVIEW_PROCEDURE
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-        </dd>
-    </dl>
-
-
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ProcedureIdentifier">http://data.europa.eu/a4g/mapping/sf-rml/ProcedureIdentifier</h2>
-    
-        
-
-        
-
-    
-    <dl>
-        <dt>Logical Source</dt>
-        
-        <dd>data/source.xml</dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Subject map</dt>
-        
-    </dl>
-
-    <dl>
-        <dt>Predicate object maps</dt>
-        <dd>
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasIdentifierValue</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    ./REFERENCE_NUMBER
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
 
                         
 

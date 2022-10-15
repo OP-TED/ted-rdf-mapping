@@ -21,38 +21,6 @@
         table thead th {
             text-align: left;
         }
-        [data-role=collapsible].collapsible-wrapper {
-            padding: 10px 0;
-        }
-        [data-role=collapsible] h4 {
-            margin: 0;
-        }
-        [data-role=collapsible] h4 a {
-            padding: 3px 10px;
-            background: #ccc;
-            width: 100%;
-            box-sizing: border-box;
-            display: block;
-            color: #111;
-            text-decoration: none;
-            margin: -3px 0;
-        }
-
-        [data-role=collapsible][data-state=collapsed] h4 a:before {
-            content: '+ expand';
-        }
-        [data-role=collapsible] h4 a:before {
-            content: '- collapse';
-        }
-        [data-role=collapsible][data-state=collapsed] .ui-collapsible-content {
-            visibility: hidden;
-            height: 0;
-            padding: 0 10px;;
-        }
-
-        [data-role=collapsible] .ui-collapsible-content {
-            padding: 10px;
-        }
     </style>
 </head>
 <body>
@@ -60,22 +28,9 @@
 <hr>
 <h2>Report details: </h2>
 <ul>
-    <li>Date created: 2022-10-14T01:48:56.847921</li>
+    <li>Date created: 2022-10-15T21:15:54.148009</li>
     <li>SHACL test suite identifier: epo</li>
     <li>Mapping suite identifier: package_F22</li>
-    
-    <li><div><hr></div>Notice identifier(s):
-        <div data-role="collapsible" data-state=""
-            class="collapsible-wrapper">
-            <h4><a href="#"></a></h4>
-            <div class="ui-collapsible-content">
-            
-                512236-2021
-            
-            </div>
-        </div>
-    </li>
-    
 </ul>
 <hr>
 <h2>Results</h2>
@@ -357,13 +312,7 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        $("[data-role=collapsible] h4 a").on("click", function(e) {
-            $p = $(this).closest("[data-role=collapsible]");
-            $p.attr("data-state", $p.attr("data-state") == "collapsed" ? "expanded" : "collapsed");
-            $c = $p.find('.ui-collapsible-content');
-            $c.attr("data-state", $c.attr("data-state") == "collapsed" ? "expanded" : "collapsed");
-            return false;
-        });
+
         $("table.display").DataTable({
             dom: 'B<"clear">lfiprtip',
             buttons: [],
