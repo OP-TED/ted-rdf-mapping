@@ -1,10 +1,10 @@
-#title: IV.1.3.2 - A dynamic purchasing system was set up
-#description: “IV.1.3.2 - A dynamic purchasing system was set up” in SF corresponds to “BT-766 Dynamic Purchasing System” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/PROCEDURE/DPS. The expected ontology instances are epo: epo:Procedure / epo:DynamicPurchaseSystemTechniqueUsage .
-#xpath: /TED_EXPORT/FORM_SECTION/F06_2014/PROCEDURE/DPS
+#title: IV.2.1 - Previous publication concerning this procedure
+#description: “IV.2.1 - Previous publication concerning this procedure” in SF corresponds to “BT-125 Previous Planning Identifier” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/PROCEDURE/NOTICE_NUMBER_OJ. The expected ontology instances are epo: epo:ResultNotice / epo:Notice /  epo:Identifier / xsd:string .
+#xpath: /TED_EXPORT/FORM_SECTION/F06_2014/PROCEDURE/NOTICE_NUMBER_OJ
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Procedure .
-		?this epo:usesTechnique ?value . }
+		?this rdf:type epo:ResultNotice .
+		?this epo:refersToPrevious / epo:hasID / epo:hasIdentifierValue ?value . }

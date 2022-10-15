@@ -1,10 +1,10 @@
-#title: II.1.7.0 - Agree to publish
-#description: “II.1.7.0 - Agree to publish” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/OBJECT_CONTRACT/AGREE_TO_PUBLICATION_MAN/@PUBLICATION. The expected ontology instances are epo: epo:PublicationProvision / epo:ElementConfidentialityDescription / xsd:anyURI (epo:NoticeAwardInformation) .
-#xpath: /TED_EXPORT/FORM_SECTION/F06_2014/OBJECT_CONTRACT/AGREE_TO_PUBLICATION_MAN/@PUBLICATION
+#title: II.1.7.2 - Lowest offer
+#description: “II.1.7.2 - Lowest offer” in SF corresponds to “BT-710 Tender Value Lowest” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/OBJECT_CONTRACT/VAL_RANGE_TOTAL/LOW. The expected ontology instances are epo: epo:ResultNotice / epo:NoticeAwardInformation / epo:MonetaryValue / xsd:decimal .
+#xpath: /TED_EXPORT/FORM_SECTION/F06_2014/OBJECT_CONTRACT/VAL_RANGE_TOTAL/LOW
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:PublicationProvision .
-		?this epo:hasElementConfidentiality / epo:hasClassReference ?value . }
+		?this rdf:type epo:ResultNotice .
+		?this epo:announcesNoticeAwardInformation / epo:hasProcurementLowestReceivedTenderValue / epo:hasAmountValue ?value . }

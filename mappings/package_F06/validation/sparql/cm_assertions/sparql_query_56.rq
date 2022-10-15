@@ -1,10 +1,11 @@
-#title: II.2.5.0 - Award criteria
-#description: “II.2.5.0 - Award criteria” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/OBJECT_CONTRACT. The expected ontology instances are epo: epo:PublicationProvision / epo:ResultNotice .
-#xpath: /TED_EXPORT/FORM_SECTION/F06_2014/OBJECT_CONTRACT
+#title: II.2.5.1.1 - hasName
+#description: “II.2.5.1.1 - hasName” in SF corresponds to “BT-734 Award Criterion name” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/OBJECT_CONTRACT/OBJECT_DESCR/AC/AC_QUALITY/AC_CRITERION. The expected ontology instances are epo: epo:AwardCriterion / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F06_2014/OBJECT_CONTRACT/OBJECT_DESCR/AC/AC_QUALITY/AC_CRITERION
 
+PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:PublicationProvision .
-		?this epo:describesNotice ?value . }
+		?this rdf:type epo:AwardCriterion .
+		?this cccev:name ?value . }

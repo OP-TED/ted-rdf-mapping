@@ -1,12 +1,10 @@
-#title: VI.4.4.4 - Postal code
-#description: “VI.4.4.4 - Postal code” in SF corresponds to “BT-512 Organisation Post Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO/POSTAL_CODE. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F06_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO/POSTAL_CODE
+#title: D2.1.5 - Additional deliveries by the original supplier ordered under the strict conditions stated in the directive
+#description: “D2.1.5 - Additional deliveries by the original supplier ordered under the strict conditions stated in the directive” in SF corresponds to “BT-136 Direct Award Justification Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_ADD_DELIVERIES_ORDERED. The expected ontology instances are epo: epo:Procedure / epo:DirectAwardTerm / at-voc:direct-award-justification .
+#xpath: /TED_EXPORT/FORM_SECTION/F06_2014/PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL/D_ACCORDANCE_ARTICLE/D_ADD_DELIVERIES_ORDERED
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX legal: <https://www.w3.org/ns/legal#>
-PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:ReviewProcedureInformationProvider .
-		?this epo:playedBy / legal:registeredAddress / locn:postCode ?value . }
+		?this rdf:type epo:Procedure .
+		?this epo:isSubjectToProcedureSpecificTerm / epo:hasDirectAwardJustification <http://publications.europa.eu/resource/authority/direct-award-justification/additional> . }

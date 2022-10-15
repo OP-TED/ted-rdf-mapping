@@ -1,9 +1,10 @@
-#title: V.2.3.5 - NUTS code
-#description: “V.2.3.5 - NUTS code” in SF corresponds to “BT-507 Organisation Country Subdivision” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/NUTS/@CODE. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / at-voc:nuts (from nuts.json) .
-#xpath: /TED_EXPORT/FORM_SECTION/F06_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/NUTS/@CODE
+#title: V.2.4.1 - Initial estimated total value of the contract/lot
+#description: “V.2.4.1 - Initial estimated total value of the contract/lot” in SF corresponds to “BT-27 Estimated Value” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_ESTIMATED_TOTAL. The expected ontology instances are epo: epo:Lot / epo:MonetaryValue / xsd:decimal .
+#xpath: /TED_EXPORT/FORM_SECTION/F06_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_ESTIMATED_TOTAL
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX legal: <https://www.w3.org/ns/legal#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this epo:playedBy / legal:registeredAddress / epo:hasNutsCode ?value . }
+		?this rdf:type epo:Lot .
+		?this epo:hasEstimatedValue / epo:hasAmountValue ?value . }

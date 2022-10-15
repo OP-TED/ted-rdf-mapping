@@ -1,0 +1,13 @@
+#title: II.2.7.1 - Duration in months or days
+#description: “II.2.7.1 - Duration in months or days” in SF corresponds to “BT-36 Duration Period” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/OBJECT_DESCR/DURATION. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / epo:Duration / xsd:decimal .
+#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/OBJECT_DESCR/DURATION
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX time: <http://www.w3.org/2006/time#>
+
+ASK WHERE { 
+		?this rdf:type epo:Lot .
+		
+
+?this epo:foreseesContractSpecificTerm / epo:definesContractDuration / time:numericDuration ?value . }
