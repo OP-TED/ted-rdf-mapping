@@ -1,0 +1,166 @@
+#--- s6_complementary_information.rml.ttl ---
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+
+tedm:result_notice
+  a owl:Ontology ;
+  owl:imports dct:, <http://www.w3.org/2004/02/skos/core> ;
+  dct:description """
+        This module provides the mapping definitions for the ..."""@en ;
+  rdfs:label "TED-SWS mapping of "@en ;
+  dct:date "2022-06-28"^^xsd:date .
+
+tedm:ResultNotice a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate time:hasPublicationDate ;
+            rr:objectMap
+                [
+                    rml:reference "DATE_PUBLICATION_NOTICE";
+                    rr:datatype xsd:datetime
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasDispatchDate ;
+            rr:objectMap
+                [
+                    rml:reference "../COMPLEMENTARY_INFO/DATE_DISPATCH_NOTICE"
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:announcesNoticeAwardInformation ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:NoticeAwardInformation
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:refersToRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Reviewer
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:refersToRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Mediator
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:refersToRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ReviewProcedureInformationProvider
+                ] ;
+        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:refersToRole ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:ContractSignatoryonContractorSide
+#                ] ;
+#        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:refersToRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Buyer
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:refersToRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:BuyerCP
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:refersToRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:AdditionalBuyer
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:refersToRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:AdditionalBuyerCP
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:WinnerRole
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:refersToProcedure ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Procedure
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:refersToLot ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Lot
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:refersToPrevious;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:Notice;
+            ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:announcesContract ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Contract
+                ] ;
+        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:announcesContract ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:PurchaseContract
+#                ] ;
+#        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:announcesTender ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Tender
+                ] ;
+        ] .
