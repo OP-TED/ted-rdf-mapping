@@ -18,6 +18,40 @@ tedm:legal_economic_financial
   dct:date "2022-08-20"^^xsd:date .
 
 tedm:SelectionCriterion a rr:TriplesMap ;
+
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasSelectionCriterionType ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(PARTICULAR_PROFESSION)) then 'http://publications.europa.eu/resource/authority/selection-criterion/sui-act' else null ";
+                    rr:termType rr:IRI;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate cccev:name ;
+            rr:objectMap
+                [
+                    rml:reference "QUALIFICATION/CONDITIONS";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate cccev:description ;
+            rr:objectMap
+                [
+                    rml:reference "REFERENCE_TO_LAW";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate cccev:description ;
+            rr:objectMap
+                [
+                    rml:reference "QUALIFICATION/METHODS";
+                ] ;
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate cccev:description ;
@@ -63,12 +97,33 @@ tedm:Lot a rr:TriplesMap ;
         ] .
 
 tedm:ContractTerm a rr:TriplesMap ;
+
     rr:predicateObjectMap
         [
             rr:predicate epo:hasReservedExecution;
             rr:objectMap
                 [
                     rml:reference "if(exists(../../LEFTI/RESTRICTED_SHELTERED_PROGRAM)) then 'http://publications.europa.eu/resource/authority/applicability/yes' else null";
+                    rr:termType rr:IRI
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasPerformanceConditions;
+            rr:objectMap
+                [
+                    rml:reference "../../LEFTI/PERFORMANCE_CONDITIONS"
+
+                ]
+        ] .
+
+tedm:Lot a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasPerformingStaffQualificationInformation;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(../../LEFTI/RESTRICTED_SHELTERED_PROGRAM)) then 'http://publications.europa.eu/resource/authority/requirement-stage/t-requ' else 'http://publications.europa.eu/resource/authority/requirement-stage/not-requ'";
                     rr:termType rr:IRI
                 ]
         ] .

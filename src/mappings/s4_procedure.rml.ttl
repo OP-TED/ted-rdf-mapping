@@ -45,7 +45,7 @@ tedm:Procedure a rr:TriplesMap ;
             rr:predicate epo:hasProcedureType ;
             rr:objectMap
                 [
-                        rml:reference "if(exists(../PROCEDURE/PT_OPEN)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/open' else if(exists(../PROCEDURE/PT_RESTRICTED)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted' else if(exists(../PROCEDURE/PT_COMPETITIVE_NEGOTIATION)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call' else if(exists(../PROCEDURE/PT_COMPETITIVE_DIALOGUE)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial' else if(exists(../PROCEDURE/PT_INNOVATION_PARTNERSHIP)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation' else if(exists(../PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call' else null";
+                        rml:reference "if(exists(../PROCEDURE/PT_OPEN)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/open' else if(exists(../PROCEDURE/PT_RESTRICTED)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted' else if(exists(../PROCEDURE/PT_COMPETITIVE_NEGOTIATION)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call' else if(exists(../PROCEDURE/PT_COMPETITIVE_DIALOGUE)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial' else if(exists(../PROCEDURE/PT_INNOVATION_PARTNERSHIP)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation' else if(exists(../PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call' else if(exists(../PROCEDURE/PT_INVOLVING_NEGOTIATION)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call' else null";
                     rr:termType rr:IRI
                 ] ;
         ] ;
@@ -83,6 +83,15 @@ tedm:Procedure a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:DynamicPurchaseSystemTechniqueUsage
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:SubmissionTerm
+                ] ;
+        ] ;
+
     rr:predicateObjectMap
         [
             rr:predicate epo:usesTechnique ;
@@ -132,6 +141,53 @@ tedm:ProcurementProcessInformation a rr:TriplesMap ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:Procedure
+                ] ;
+        ] .
+
+tedm:FrameworkAgreementTechniqueUsage a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasDurationExtensionJustification ;
+            rr:objectMap
+                [
+                    rml:reference "FRAMEWORK/JUSTIFICATION"
+                ] ;
+        ] .
+tedm:ProcedureTerm a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasNationalProcedureRules ;
+            rr:objectMap
+                [
+                    rml:reference "../PROCEDURE/URL_NATIONAL_PROCEDURE";
+                    rr:termType rr:IRI
+                ] ;
+        ] .
+tedm:SubmissionTerm a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasReceiptDeadline ;
+            rr:objectMap
+                [
+                    rml:reference "DATE_RECEIPT_TENDERS";
+                    rr:datatype xsd:datetime
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasReceiptExpressionsDeadline ;
+            rr:objectMap
+                [
+                    rml:reference "TIME_RECEIPT_TENDERS";
+                    rr:datatype xsd:datetime
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasLanguage ;
+            rr:objectMap
+                [
+                    rml:reference "LANGUAGES/@VALUE";
                 ] ;
         ] .
 

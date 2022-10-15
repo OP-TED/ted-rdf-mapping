@@ -1740,6 +1740,73 @@ tedm:InformationProviderOrganisationAddress  a rr:TriplesMap ;
             rml:referenceFormulation ql:XPath
         ] .
 
+tedm:MultipleStageProcedureTerm a rr:TriplesMap ;
+    rr:subjectMap
+        [
+            rml:reference "if(exists(QS/INDEFINITE_DURATION) or exists(QS/DATE_START) or exists(QS/DATE_END) or exists(RENEWAL) or exists(RENEWAL_DESC)) then 'http://data.europa.eu/a4g/resource/MultipleStageProcedureTerm/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:MultipleStageProcedureTerm
+
+        ] ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/OBJECT_DESCR" ;
+            rml:referenceFormulation ql:XPath
+        ] .
+tedm:MultipleStageProcedurePeriod a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/OBJECT_DESCR" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference
+                "if(exists(QS/DATE_START) or exists(QS/DATE_END)) then 'http://data.europa.eu/a4g/resource/MultipleStageProcedurePeriod/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:Period
+
+        ] .
+tedm:ProcedureTerm a rr:TriplesMap ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/ProcedureTerm/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ProcedureTerm
+
+        ] ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT" ;
+            rml:referenceFormulation ql:XPath
+        ] .
+tedm:SubmissionTerm a rr:TriplesMap ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/SubmissionTerm/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:SubmissionTerm
+
+        ] ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F22_2014/PROCEDURE" ;
+            rml:referenceFormulation ql:XPath
+        ] .
+#tedm:MultipleStageProcedureDuration a rr:TriplesMap ;
+#    rml:logicalSource
+#        [
+#            rml:source "data/source.xml" ;
+#            rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014/OBJECT_CONTRACT/OBJECT_DESCR" ;
+#            rml:referenceFormulation ql:XPath
+#        ] ;
+#    rr:subjectMap
+#        [
+#            rml:reference
+#                "if(exists(QS/INDEFINITE_DURATION)) then 'http://data.europa.eu/a4g/resource/MultipleStageProcedureDuration/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+#                rr:class epo:Duration
+#
+#        ] .
 # controlled values
 tedm:contractNature  a rr:TriplesMap ;
     rml:logicalSource
