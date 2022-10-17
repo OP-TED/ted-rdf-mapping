@@ -1491,12 +1491,12 @@ tedm:ReviewTerm a rr:TripleMap ;
                 "if(exists(REVIEW_PROCEDURE)) then 'http://data.europa.eu/a4g/resource/ReviewTerm/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:ReviewTerm
         ] .
-#F25 mappings
+
 tedm:MonetaryValueProcedure a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014[1]/OBJECT_CONTRACT" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F21_2014[1]/OBJECT_CONTRACT" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -1509,7 +1509,7 @@ tedm:AwardCriterion a rr:TripleMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014/OBJECT_CONTRACT/OBJECT_DESCR/AC" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/OBJECT_DESCR/AC" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -1526,7 +1526,7 @@ tedm:AwardCriterion a rr:TripleMap ;
                 [
                     rml:reference "AC_CRITERION";
                     rml:languageMap [
-                         rml:reference "lower-case(ancestor::F25_2014/@LG)"
+                         rml:reference "lower-case(ancestor::F21_2014/@LG)"
                     ]
                 ] ;
         ] ;
@@ -1537,7 +1537,7 @@ tedm:AwardCriterion a rr:TripleMap ;
                 [
                     rml:reference "AC_WEIGHTING";
                     rml:languageMap [
-                         rml:reference "lower-case(ancestor::F25_2014/@LG)"
+                         rml:reference "lower-case(ancestor::F21_2014/@LG)"
                     ]
                 ] ;
         ] .
@@ -1545,7 +1545,7 @@ tedm:ConcessionEstimate a rr:TripleMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F21_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -1558,7 +1558,7 @@ tedm:UserConcessionRevenueMonetaryValue a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F21_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -1571,7 +1571,7 @@ tedm:BuyerConcessionRevenueMonetaryValue a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F21_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -1584,7 +1584,7 @@ tedm:Duration a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014/OBJECT_CONTRACT/OBJECT_DESCR/DURATION" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/OBJECT_DESCR/DURATION" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -1600,7 +1600,7 @@ tedm:Period a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014/OBJECT_CONTRACT/OBJECT_DESCR" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/OBJECT_DESCR" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -1612,7 +1612,6 @@ tedm:Period a rr:TriplesMap ;
 
         ] .
 
-#F21 TriplesMap
 tedm:AccessTerm  a rr:TriplesMap ;
     rml:logicalSource
         [
