@@ -1770,9 +1770,9 @@ tedm:MultipleStageProcedurePeriod a rr:TriplesMap ;
 tedm:ProcedureTerm a rr:TriplesMap ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/ProcedureTerm/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference
+                "if(exists(../PROCEDURE/URL_NATIONAL_PROCEDURE) or exists(../OBJECT_CONTRACT/LOT_DIVISION)) then 'http://data.europa.eu/a4g/resource/ProcedureTerm/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:ProcedureTerm
-
         ] ;
     rml:logicalSource
         [
