@@ -413,6 +413,52 @@ tedm:Lot a rr:TriplesMap ;
                         rr:parent "ancestor::OBJECT_DESCR/@ITEM";
                     ];
                 ] ;
+        ] ;
+
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasEstimatedValue;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MainMonetaryValueLot;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
+
+                ] ;
+        ] .
+tedm:MainMonetaryValueLot a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "VAL_OBJECT";
+                    rr:datatype xsd:decimal
+                ] ;
+        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasCurrency ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if (not(exists(VAL_ESTIMATED_TOTAL/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
+#                    rr:termType rr:IRI;
+#                ]
+#
+#        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:currency;
+                    rr:joinCondition [
+                        rr:child "VAL_OBJECT/@CURRENCY";
+                        rr:parent "code.value";
+                    ];
+                ] ;
         ] .
 tedm:AwardCriterionQuality a rr:TripleMap ;
     rr:predicateObjectMap
