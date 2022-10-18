@@ -822,6 +822,20 @@ tedm:FrameworkAgreementTechniqueUsage a rr:TriplesMap ;
             rr:class epo:FrameworkAgreementTechniqueUsage
 
         ] .
+tedm:FrameworkAgreementTerm a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F21_2014[1]/PROCEDURE" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference
+                "if(exists(FRAMEWORK)) then 'http://data.europa.eu/a4g/resource/FrameworkAgreementTerm/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:FrameworkAgreementTerm
+
+        ] .
 tedm:ProcurementProcessInformation a rr:TriplesMap ;
     rml:logicalSource
         [
