@@ -1811,9 +1811,9 @@ tedm:ProcedureTerm a rr:TriplesMap ;
 tedm:SubmissionTerm a rr:TriplesMap ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/SubmissionTerm/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference
+                "if(exists(DATE_RECEIPT_TENDERS) or exists(TIME_RECEIPT_TENDERS)) then 'http://data.europa.eu/a4g/resource/SubmissionTerm/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:SubmissionTerm
-
         ] ;
     rml:logicalSource
         [
