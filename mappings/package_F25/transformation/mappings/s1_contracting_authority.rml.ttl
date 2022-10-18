@@ -399,8 +399,8 @@ tedm:Organisation a rr:TripleMap ;
                 [
                     rr:parentTriplesMap tedm:OrganisationChannel;
                     rr:joinCondition [
-                        rr:child "if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then 'true' else null";
+                        rr:parent "if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then 'true' else null";
                     ];
                 ]
         ] ;

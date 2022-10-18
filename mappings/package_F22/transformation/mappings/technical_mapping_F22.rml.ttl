@@ -822,6 +822,20 @@ tedm:FrameworkAgreementTechniqueUsage a rr:TriplesMap ;
             rr:class epo:FrameworkAgreementTechniqueUsage
 
         ] .
+tedm:FrameworkAgreementTerm a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F22_2014[1]/PROCEDURE" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference
+                "if(exists(FRAMEWORK)) then 'http://data.europa.eu/a4g/resource/FrameworkAgreementTerm/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:FrameworkAgreementTerm
+
+        ] .
 tedm:ProcurementProcessInformation a rr:TriplesMap ;
     rml:logicalSource
         [
@@ -1181,6 +1195,19 @@ tedm:MonetaryValueSubmissionLowest a rr:TriplesMap ;
             rr:class epo:MonetaryValue
 
         ] .
+tedm:MainMonetaryValueLot a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F22_2014[1]/OBJECT_CONTRACT/OBJECT_DESCR" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference "if (exists(VAL_OBJECT)) then 'http://data.europa.eu/a4g/resource/MainMonetaryValueLot/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:MonetaryValue
+
+        ] .
 tedm:MonetaryValueLot a rr:TriplesMap ;
     rml:logicalSource
         [
@@ -1491,12 +1518,12 @@ tedm:ReviewTerm a rr:TripleMap ;
                 "if(exists(REVIEW_PROCEDURE)) then 'http://data.europa.eu/a4g/resource/ReviewTerm/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:ReviewTerm
         ] .
-#F25 mappings
+
 tedm:MonetaryValueProcedure a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014[1]/OBJECT_CONTRACT" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F22_2014[1]/OBJECT_CONTRACT" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -1505,11 +1532,12 @@ tedm:MonetaryValueProcedure a rr:TriplesMap ;
             rr:class epo:MonetaryValue
 
         ] .
+
 tedm:AwardCriterion a rr:TripleMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014/OBJECT_CONTRACT/OBJECT_DESCR/AC" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/OBJECT_DESCR/AC" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -1526,7 +1554,7 @@ tedm:AwardCriterion a rr:TripleMap ;
                 [
                     rml:reference "AC_CRITERION";
                     rml:languageMap [
-                         rml:reference "lower-case(ancestor::F25_2014/@LG)"
+                         rml:reference "lower-case(ancestor::F22_2014/@LG)"
                     ]
                 ] ;
         ] ;
@@ -1537,7 +1565,7 @@ tedm:AwardCriterion a rr:TripleMap ;
                 [
                     rml:reference "AC_WEIGHTING";
                     rml:languageMap [
-                         rml:reference "lower-case(ancestor::F25_2014/@LG)"
+                         rml:reference "lower-case(ancestor::F22_2014/@LG)"
                     ]
                 ] ;
         ] .
@@ -1545,7 +1573,7 @@ tedm:ConcessionEstimate a rr:TripleMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F22_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -1558,7 +1586,7 @@ tedm:UserConcessionRevenueMonetaryValue a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F22_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -1571,7 +1599,7 @@ tedm:BuyerConcessionRevenueMonetaryValue a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F22_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -1584,7 +1612,7 @@ tedm:Duration a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014/OBJECT_CONTRACT/OBJECT_DESCR/DURATION" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/OBJECT_DESCR/DURATION" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -1600,7 +1628,7 @@ tedm:Period a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014/OBJECT_CONTRACT/OBJECT_DESCR" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/OBJECT_DESCR" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -1740,6 +1768,73 @@ tedm:InformationProviderOrganisationAddress  a rr:TriplesMap ;
             rml:referenceFormulation ql:XPath
         ] .
 
+tedm:MultipleStageProcedureTerm a rr:TriplesMap ;
+    rr:subjectMap
+        [
+            rml:reference "if(exists(QS/INDEFINITE_DURATION) or exists(QS/DATE_START) or exists(QS/DATE_END) or exists(RENEWAL) or exists(RENEWAL_DESC)) then 'http://data.europa.eu/a4g/resource/MultipleStageProcedureTerm/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:MultipleStageProcedureTerm
+
+        ] ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/OBJECT_DESCR" ;
+            rml:referenceFormulation ql:XPath
+        ] .
+tedm:MultipleStageProcedurePeriod a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/OBJECT_DESCR" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference
+                "if(exists(QS/DATE_START) or exists(QS/DATE_END)) then 'http://data.europa.eu/a4g/resource/MultipleStageProcedurePeriod/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:Period
+
+        ] .
+tedm:ProcedureTerm a rr:TriplesMap ;
+    rr:subjectMap
+        [
+            rml:reference
+                "if(exists(../PROCEDURE/URL_NATIONAL_PROCEDURE) or exists(../OBJECT_CONTRACT/LOT_DIVISION)) then 'http://data.europa.eu/a4g/resource/ProcedureTerm/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:ProcedureTerm
+        ] ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT" ;
+            rml:referenceFormulation ql:XPath
+        ] .
+tedm:SubmissionTerm a rr:TriplesMap ;
+    rr:subjectMap
+        [
+            rml:reference
+                "if(exists(DATE_RECEIPT_TENDERS) or exists(TIME_RECEIPT_TENDERS)) then 'http://data.europa.eu/a4g/resource/SubmissionTerm/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:SubmissionTerm
+        ] ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F22_2014/PROCEDURE" ;
+            rml:referenceFormulation ql:XPath
+        ] .
+#tedm:MultipleStageProcedureDuration a rr:TriplesMap ;
+#    rml:logicalSource
+#        [
+#            rml:source "data/source.xml" ;
+#            rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014/OBJECT_CONTRACT/OBJECT_DESCR" ;
+#            rml:referenceFormulation ql:XPath
+#        ] ;
+#    rr:subjectMap
+#        [
+#            rml:reference
+#                "if(exists(QS/INDEFINITE_DURATION)) then 'http://data.europa.eu/a4g/resource/MultipleStageProcedureDuration/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+#                rr:class epo:Duration
+#
+#        ] .
 # controlled values
 tedm:contractNature  a rr:TriplesMap ;
     rml:logicalSource

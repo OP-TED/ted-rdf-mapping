@@ -49,6 +49,39 @@
             margin-bottom: 8px;
         }
 
+        [data-role=collapsible].collapsible-wrapper {
+            padding: 10px 0;
+        }
+        [data-role=collapsible] h4 {
+            margin: 0;
+        }
+        [data-role=collapsible] h4 a {
+            padding: 3px 10px;
+            background: #ccc;
+            width: 100%;
+            box-sizing: border-box;
+            display: block;
+            color: #111;
+            text-decoration: none;
+            margin: -3px 0;
+        }
+
+        [data-role=collapsible][data-state=collapsed] h4 a:before {
+            content: '+ expand';
+        }
+        [data-role=collapsible] h4 a:before {
+            content: '- collapse';
+        }
+        [data-role=collapsible][data-state=collapsed] .ui-collapsible-content {
+            visibility: hidden;
+            height: 0;
+            padding: 0 10px;;
+        }
+
+        [data-role=collapsible] .ui-collapsible-content {
+            padding: 10px;
+        }
+
     </style>
   </head>
   <body>
@@ -56,13 +89,26 @@
 	<hr>
     <h2>Report details: </h2>
     <ul>
-        <li>Date created: 2022-10-15T21:15:54.148009</li>
+        <li>Date created: 2022-10-18T21:43:13.380577</li>
         <li>SPARQL test suite identifier: cm_assertions</li>
         <li>Mapping suite identifier: package_F22</li>
+        
+        <li><div><hr></div>Notice identifier(s):
+            <div data-role="collapsible" data-state=""
+                class="collapsible-wrapper">
+                <h4><a href="#"></a></h4>
+                <div class="ui-collapsible-content">
+                
+                    671859-2021
+                
+                </div>
+            </div>
+        </li>
+        
     </ul>
     <hr>
     <h2>Results summary</h2>
-        <table class="display">
+        <table class="display" data-order='[[0, "asc"]]'>
             <thead class="center aligned">
             <tr>
                 <th>Result</th>
@@ -75,29 +121,29 @@
                 
                 
                 <td class="strong valid">valid</td>
-                <td>51</td>
-                <td>23.72%</td>
+                <td>54</td>
+                <td>25.12%</td>
             </tr>
             <tr>
                 
                 
                 <td class="strong unverifiable">unverifiable</td>
-                <td>135</td>
-                <td>62.79%</td>
+                <td>133</td>
+                <td>61.86%</td>
             </tr>
             <tr>
                 
                 
                 <td class="strong warning">warning</td>
-                <td>23</td>
-                <td>10.7%</td>
+                <td>25</td>
+                <td>11.63%</td>
             </tr>
             <tr>
                 
                 
                 <td class="strong invalid">invalid</td>
-                <td>6</td>
-                <td>2.79%</td>
+                <td>3</td>
+                <td>1.4%</td>
             </tr>
             <tr>
                 
@@ -994,6 +1040,40 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="I.1.12.1 - Main address">
+                        “I.1.12.1 - Main address” in SF corresponds to “BT-505 Organisation Internet Address” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/URL_GENERAL. The expected ontology instances are epo: epo:AgentInRole (from CL1) / cpov:ContactPoint / xsd:anyURI .
+                    </div>
+                </td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:hasContactPointInRole / epo:hasInternetAddress ?value . }</td>
+                <td class="strong valid">valid</td>
+                <td>
+                    <button class="open-dialog">Details</button>
+                    <div class="dialog" title="I.1.12.1 - Main address">
+                    <ul>
+                    <li>Query result: True</li>
+                    
+                    <li>Fields are covered: True</li>
+                    
+                        <li>
+                        <h4 class="info">Fields:</h4>
+                        <ol>
+                        
+                            <li>/TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/URL_GENERAL</li>
+                        
+                        </ol>
+                        </li>
+                    
+                    
+                    
+                    </ul>
+                    </div>
+                </td>
+            </tr>
+        
+            <tr>
+                <td>I.1.12.1 - Main address</td>
+                <td>
+                    <button class="open-dialog">Description</button>
+                    <div class="dialog" title="I.1.12.1 - Main address">
                         “I.1.12.1 - Main address” in SF corresponds to “BT-505 Organisation Internet Address” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL/URL_GENERAL. The expected ontology instances are epo: epo:AgentInRole (from CL1) / cpov:ContactPoint / xsd:anyURI .
                     </div>
                 </td>
@@ -1025,40 +1105,6 @@
                         
                         </ol>
                         </li>
-                    
-                    
-                    </ul>
-                    </div>
-                </td>
-            </tr>
-        
-            <tr>
-                <td>I.1.12.1 - Main address</td>
-                <td>
-                    <button class="open-dialog">Description</button>
-                    <div class="dialog" title="I.1.12.1 - Main address">
-                        “I.1.12.1 - Main address” in SF corresponds to “BT-505 Organisation Internet Address” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/URL_GENERAL. The expected ontology instances are epo: epo:AgentInRole (from CL1) / cpov:ContactPoint / xsd:anyURI .
-                    </div>
-                </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:hasContactPointInRole / epo:hasInternetAddress ?value . }</td>
-                <td class="strong valid">valid</td>
-                <td>
-                    <button class="open-dialog">Details</button>
-                    <div class="dialog" title="I.1.12.1 - Main address">
-                    <ul>
-                    <li>Query result: True</li>
-                    
-                    <li>Fields are covered: True</li>
-                    
-                        <li>
-                        <h4 class="info">Fields:</h4>
-                        <ol>
-                        
-                            <li>/TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/URL_GENERAL</li>
-                        
-                        </ol>
-                        </li>
-                    
                     
                     
                     </ul>
@@ -1148,49 +1194,6 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="I.1.2 - National registration number">
-                        “I.1.2 - National registration number” in SF corresponds to “BT-501 Organisation Identifier” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/NATIONALID. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / epo:Identifier / rdf:langString .
-                    </div>
-                </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:playedBy / epo:hasID / epo:hasIdentifierValue ?value . }</td>
-                <td class="strong unverifiable">unverifiable</td>
-                <td>
-                    <button class="open-dialog">Details</button>
-                    <div class="dialog" title="I.1.2 - National registration number">
-                    <ul>
-                    <li>Query result: False</li>
-                    
-                    <li>Fields are covered: False</li>
-                    
-                        <li>
-                        <h4 class="info">Fields:</h4>
-                        <ol>
-                        
-                            <li>/TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/NATIONALID</li>
-                        
-                        </ol>
-                        </li>
-                    
-                    
-                        <li>
-                        <h4 class="danger">Missing fields:</h4>
-                        <ol>
-                        
-                            <li>/TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/NATIONALID</li>
-                        
-                        </ol>
-                        </li>
-                    
-                    
-                    </ul>
-                    </div>
-                </td>
-            </tr>
-        
-            <tr>
-                <td>I.1.2 - National registration number</td>
-                <td>
-                    <button class="open-dialog">Description</button>
-                    <div class="dialog" title="I.1.2 - National registration number">
                         “I.1.2 - National registration number” in SF corresponds to “BT-501 Organisation Identifier” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL/NATIONALID. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / epo:Identifier / rdf:langString .
                     </div>
                 </td>
@@ -1219,6 +1222,49 @@
                         <ol>
                         
                             <li>/TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL/NATIONALID</li>
+                        
+                        </ol>
+                        </li>
+                    
+                    
+                    </ul>
+                    </div>
+                </td>
+            </tr>
+        
+            <tr>
+                <td>I.1.2 - National registration number</td>
+                <td>
+                    <button class="open-dialog">Description</button>
+                    <div class="dialog" title="I.1.2 - National registration number">
+                        “I.1.2 - National registration number” in SF corresponds to “BT-501 Organisation Identifier” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/NATIONALID. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / epo:Identifier / rdf:langString .
+                    </div>
+                </td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:playedBy / epo:hasID / epo:hasIdentifierValue ?value . }</td>
+                <td class="strong unverifiable">unverifiable</td>
+                <td>
+                    <button class="open-dialog">Details</button>
+                    <div class="dialog" title="I.1.2 - National registration number">
+                    <ul>
+                    <li>Query result: False</li>
+                    
+                    <li>Fields are covered: False</li>
+                    
+                        <li>
+                        <h4 class="info">Fields:</h4>
+                        <ol>
+                        
+                            <li>/TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/NATIONALID</li>
+                        
+                        </ol>
+                        </li>
+                    
+                    
+                        <li>
+                        <h4 class="danger">Missing fields:</h4>
+                        <ol>
+                        
+                            <li>/TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/NATIONALID</li>
                         
                         </ol>
                         </li>
@@ -1311,6 +1357,40 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="I.1.4 - Town">
+                        “I.1.4 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/TOWN. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .
+                    </div>
+                </td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX legal: &lt;https://www.w3.org/ns/legal#&gt;<br>PREFIX locn: &lt;http://www.w3.org/ns/locn#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:playedBy / legal:registeredAddress / locn:postName ?value . }</td>
+                <td class="strong valid">valid</td>
+                <td>
+                    <button class="open-dialog">Details</button>
+                    <div class="dialog" title="I.1.4 - Town">
+                    <ul>
+                    <li>Query result: True</li>
+                    
+                    <li>Fields are covered: True</li>
+                    
+                        <li>
+                        <h4 class="info">Fields:</h4>
+                        <ol>
+                        
+                            <li>/TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/TOWN</li>
+                        
+                        </ol>
+                        </li>
+                    
+                    
+                    
+                    </ul>
+                    </div>
+                </td>
+            </tr>
+        
+            <tr>
+                <td>I.1.4 - Town</td>
+                <td>
+                    <button class="open-dialog">Description</button>
+                    <div class="dialog" title="I.1.4 - Town">
                         “I.1.4 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL/TOWN. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .
                     </div>
                 </td>
@@ -1342,40 +1422,6 @@
                         
                         </ol>
                         </li>
-                    
-                    
-                    </ul>
-                    </div>
-                </td>
-            </tr>
-        
-            <tr>
-                <td>I.1.4 - Town</td>
-                <td>
-                    <button class="open-dialog">Description</button>
-                    <div class="dialog" title="I.1.4 - Town">
-                        “I.1.4 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/TOWN. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .
-                    </div>
-                </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX legal: &lt;https://www.w3.org/ns/legal#&gt;<br>PREFIX locn: &lt;http://www.w3.org/ns/locn#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:playedBy / legal:registeredAddress / locn:postName ?value . }</td>
-                <td class="strong valid">valid</td>
-                <td>
-                    <button class="open-dialog">Details</button>
-                    <div class="dialog" title="I.1.4 - Town">
-                    <ul>
-                    <li>Query result: True</li>
-                    
-                    <li>Fields are covered: True</li>
-                    
-                        <li>
-                        <h4 class="info">Fields:</h4>
-                        <ol>
-                        
-                            <li>/TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/TOWN</li>
-                        
-                        </ol>
-                        </li>
-                    
                     
                     
                     </ul>
@@ -1465,40 +1511,6 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="I.1.6 - Postal code">
-                        “I.1.6 - Postal code” in SF corresponds to “BT-512 Place Performance Post Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/POSTAL_CODE. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / rdf:langString .
-                    </div>
-                </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX legal: &lt;https://www.w3.org/ns/legal#&gt;<br>PREFIX locn: &lt;http://www.w3.org/ns/locn#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:playedBy / legal:registeredAddress / locn:postCode ?value . }</td>
-                <td class="strong valid">valid</td>
-                <td>
-                    <button class="open-dialog">Details</button>
-                    <div class="dialog" title="I.1.6 - Postal code">
-                    <ul>
-                    <li>Query result: True</li>
-                    
-                    <li>Fields are covered: True</li>
-                    
-                        <li>
-                        <h4 class="info">Fields:</h4>
-                        <ol>
-                        
-                            <li>/TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/POSTAL_CODE</li>
-                        
-                        </ol>
-                        </li>
-                    
-                    
-                    
-                    </ul>
-                    </div>
-                </td>
-            </tr>
-        
-            <tr>
-                <td>I.1.6 - Postal code</td>
-                <td>
-                    <button class="open-dialog">Description</button>
-                    <div class="dialog" title="I.1.6 - Postal code">
                         “I.1.6 - Postal code” in SF corresponds to “BT-512 Place Performance Post Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL/POSTAL_CODE. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / rdf:langString .
                     </div>
                 </td>
@@ -1538,18 +1550,18 @@
             </tr>
         
             <tr>
-                <td>I.1.7 - Country</td>
+                <td>I.1.6 - Postal code</td>
                 <td>
                     <button class="open-dialog">Description</button>
-                    <div class="dialog" title="I.1.7 - Country">
-                        “I.1.7 - Country” in SF corresponds to “BT-514 Organisation Country Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/COUNTRY. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / at-voc:country (from country.json) .
+                    <div class="dialog" title="I.1.6 - Postal code">
+                        “I.1.6 - Postal code” in SF corresponds to “BT-512 Place Performance Post Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/POSTAL_CODE. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / rdf:langString .
                     </div>
                 </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX legal: &lt;https://www.w3.org/ns/legal#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:playedBy / legal:registeredAddress / epo:hasCountryCode ?value . }</td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX legal: &lt;https://www.w3.org/ns/legal#&gt;<br>PREFIX locn: &lt;http://www.w3.org/ns/locn#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:playedBy / legal:registeredAddress / locn:postCode ?value . }</td>
                 <td class="strong valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
-                    <div class="dialog" title="I.1.7 - Country">
+                    <div class="dialog" title="I.1.6 - Postal code">
                     <ul>
                     <li>Query result: True</li>
                     
@@ -1559,7 +1571,7 @@
                         <h4 class="info">Fields:</h4>
                         <ol>
                         
-                            <li>/TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/COUNTRY</li>
+                            <li>/TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/POSTAL_CODE</li>
                         
                         </ol>
                         </li>
@@ -1615,18 +1627,18 @@
             </tr>
         
             <tr>
-                <td>I.1.8 - Contact person</td>
+                <td>I.1.7 - Country</td>
                 <td>
                     <button class="open-dialog">Description</button>
-                    <div class="dialog" title="I.1.8 - Contact person">
-                        “I.1.8 - Contact person” in SF corresponds to “BT-502 Organisation Contact Point” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/CONTACT_POINT. The expected ontology instances are epo: epo:AgentInRole (from CL1) / cpov:ContactPoint / rdf:langString .
+                    <div class="dialog" title="I.1.7 - Country">
+                        “I.1.7 - Country” in SF corresponds to “BT-514 Organisation Country Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/COUNTRY. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / at-voc:country (from country.json) .
                     </div>
                 </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:hasContactPointInRole / epo:hasContactName ?value . }</td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX legal: &lt;https://www.w3.org/ns/legal#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:playedBy / legal:registeredAddress / epo:hasCountryCode ?value . }</td>
                 <td class="strong valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
-                    <div class="dialog" title="I.1.8 - Contact person">
+                    <div class="dialog" title="I.1.7 - Country">
                     <ul>
                     <li>Query result: True</li>
                     
@@ -1636,7 +1648,7 @@
                         <h4 class="info">Fields:</h4>
                         <ol>
                         
-                            <li>/TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/CONTACT_POINT</li>
+                            <li>/TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/COUNTRY</li>
                         
                         </ol>
                         </li>
@@ -1692,18 +1704,18 @@
             </tr>
         
             <tr>
-                <td>I.1.9 - Telephone</td>
+                <td>I.1.8 - Contact person</td>
                 <td>
                     <button class="open-dialog">Description</button>
-                    <div class="dialog" title="I.1.9 - Telephone">
-                        “I.1.9 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/PHONE. The expected ontology instances are epo: epo:AgentInRole (from CL1) / cpov:ContactPoint / rdf:langString .
+                    <div class="dialog" title="I.1.8 - Contact person">
+                        “I.1.8 - Contact person” in SF corresponds to “BT-502 Organisation Contact Point” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/CONTACT_POINT. The expected ontology instances are epo: epo:AgentInRole (from CL1) / cpov:ContactPoint / rdf:langString .
                     </div>
                 </td>
-                <td>PREFIX cpov: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:hasContactPointInRole  / cpov:telephone ?value . }</td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:hasContactPointInRole / epo:hasContactName ?value . }</td>
                 <td class="strong valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
-                    <div class="dialog" title="I.1.9 - Telephone">
+                    <div class="dialog" title="I.1.8 - Contact person">
                     <ul>
                     <li>Query result: True</li>
                     
@@ -1713,7 +1725,7 @@
                         <h4 class="info">Fields:</h4>
                         <ol>
                         
-                            <li>/TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/PHONE</li>
+                            <li>/TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/CONTACT_POINT</li>
                         
                         </ol>
                         </li>
@@ -1761,6 +1773,40 @@
                         
                         </ol>
                         </li>
+                    
+                    
+                    </ul>
+                    </div>
+                </td>
+            </tr>
+        
+            <tr>
+                <td>I.1.9 - Telephone</td>
+                <td>
+                    <button class="open-dialog">Description</button>
+                    <div class="dialog" title="I.1.9 - Telephone">
+                        “I.1.9 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/PHONE. The expected ontology instances are epo: epo:AgentInRole (from CL1) / cpov:ContactPoint / rdf:langString .
+                    </div>
+                </td>
+                <td>PREFIX cpov: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:hasContactPointInRole  / cpov:telephone ?value . }</td>
+                <td class="strong valid">valid</td>
+                <td>
+                    <button class="open-dialog">Details</button>
+                    <div class="dialog" title="I.1.9 - Telephone">
+                    <ul>
+                    <li>Query result: True</li>
+                    
+                    <li>Fields are covered: True</li>
+                    
+                        <li>
+                        <h4 class="info">Fields:</h4>
+                        <ol>
+                        
+                            <li>/TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/PHONE</li>
+                        
+                        </ol>
+                        </li>
+                    
                     
                     
                     </ul>
@@ -2105,12 +2151,12 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:ResultNotice .<br>		?this epo:announcesRole ?value }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong warning">warning</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.3.3.2 - Another address: (please provide another address)">
                     <ul>
-                    <li>Query result: False</li>
+                    <li>Query result: True</li>
                     
                     <li>Fields are covered: False</li>
                     
@@ -4207,7 +4253,7 @@
                         “II.2.7.1.1 - Duration in months or days” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/OBJECT_DESCR/DURATION/@TYPE. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / epo:Duration / time:TemporalUnit .
                     </div>
                 </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br>PREFIX time: &lt;http://www.w3.org/2006/time#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Lot .<br>		?this epo:foreseesContractSpecificTerm / epo:definesContractDuration / time:unitType time:unitMonth. }</td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br>PREFIX time: &lt;http://www.w3.org/2006/time#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Lot .<br>		?this epo:foreseesContractSpecificTerm / epo:definesContractDuration / time:unitType time:unitDay . }</td>
                 <td class="strong unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
@@ -4250,7 +4296,7 @@
                         “II.2.7.1.1 - Duration in months or days” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/OBJECT_DESCR/DURATION/@TYPE. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / epo:Duration / time:TemporalUnit .
                     </div>
                 </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br>PREFIX time: &lt;http://www.w3.org/2006/time#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Lot .<br>		?this epo:foreseesContractSpecificTerm / epo:definesContractDuration / time:unitType time:unitDay . }</td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br>PREFIX time: &lt;http://www.w3.org/2006/time#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Lot .<br>		?this epo:foreseesContractSpecificTerm / epo:definesContractDuration / time:unitType time:unitMonth. }</td>
                 <td class="strong unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
@@ -4809,7 +4855,7 @@
                         “III.2.1.1 - Execution of the service is reserved to a particular profession” in SF corresponds to “BT-747 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/LEFTI/PARTICULAR_PROFESSION. The expected ontology instances are epo: epo:Lot / epo:SelectionCriterion / at-voc:selection-criterion .
                     </div>
                 </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Lot .<br>		?this epo:specifiesSelectionCriterion / epo:epo:hasSelectionCriterionType &lt;https://op.europa.eu/en/web/eu-vocabularies/concept/-/resource?uri=http://publications.europa.eu/resource/authority/selection-criterion/sui-act&gt; }</td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Lot .<br>		?this epo:specifiesSelectionCriterion / epo:hasSelectionCriterionType &lt;http://publications.europa.eu/resource/authority/selection-criterion/sui-act&gt; }</td>
                 <td class="strong unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
@@ -4895,7 +4941,7 @@
                         “III.2.2 - Contract performance conditions” in SF corresponds to “BT-70 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/LEFTI/PERFORMANCE_CONDITIONS. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / rdf:langString .
                     </div>
                 </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Lot .<br>		?this epo:foreseesContractSpecificTerm / epo:hasPerformanceConditions ?this }</td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Lot .<br>		?this epo:foreseesContractSpecificTerm / epo:hasPerformanceConditions ?value }</td>
                 <td class="strong unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
@@ -4938,13 +4984,13 @@
                         “III.2.3.1 - Obligation to indicate the names and professional qualifications of the staff assigned to performing the contract” in SF corresponds to “BT-79 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/LEFTI/PERFORMANCE_STAFF_QUALIFICATION. The expected ontology instances are epo: epo:Lot / at-voc:requirement-stage .
                     </div>
                 </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Lot .<br>		?this epo:hasPerformingStaffQualificationInformation &lt;http://publications.europa.eu/resource/authority/requirement-stage/t-requ&gt; }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Lot .<br>		?this epo:hasPerformingStaffQualificationInformation &lt;http://publications.europa.eu/resource/authority/requirement-stage/not-requ&gt; }</td>
+                <td class="strong warning">warning</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="III.2.3.1 - Obligation to indicate the names and professional qualifications of the staff assigned to performing the contract">
                     <ul>
-                    <li>Query result: False</li>
+                    <li>Query result: True</li>
                     
                     <li>Fields are covered: False</li>
                     
@@ -4981,7 +5027,7 @@
                         “III.2.3.1 - Obligation to indicate the names and professional qualifications of the staff assigned to performing the contract” in SF corresponds to “BT-79 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/LEFTI/PERFORMANCE_STAFF_QUALIFICATION. The expected ontology instances are epo: epo:Lot / at-voc:requirement-stage .
                     </div>
                 </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Lot .<br>		?this epo:hasPerformingStaffQualificationInformation &lt;http://publications.europa.eu/resource/authority/requirement-stage/not-requ&gt; }</td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Lot .<br>		?this epo:hasPerformingStaffQualificationInformation &lt;http://publications.europa.eu/resource/authority/requirement-stage/t-requ&gt; }</td>
                 <td class="strong unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
@@ -5393,7 +5439,7 @@
                         “IV.2.2.1 - Time limit for receipt of expressions of interest (Date/Time)” in SF corresponds to “BT-630 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/PROCEDURE/TIME_RECEIPT_TENDERS. The expected ontology instances are epo: epo:Procedure / epo:SubmissionTerm / xsd:datetime .
                     </div>
                 </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Procedure .<br>		?this epo:isSubjectToProcedureSpecificTerm  / epo:epo:hasReceiptExpressionsDeadline ?value . }</td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Procedure .<br>		?this epo:isSubjectToProcedureSpecificTerm  / epo:hasReceiptExpressionsDeadline ?value . }</td>
                 <td class="strong unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
@@ -5553,16 +5599,16 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="Section V - Award of contract">
-                        “Section V - Award of contract” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT. The expected ontology instances are epo: epo:ResultNotice / epo:Contract .
+                        “Section V - Award of contract” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT. The expected ontology instances are epo: epo:LotAwardOutcome / epo:Lot .
                     </div>
                 </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:ResultNotice .<br>		?this epo:announcesContract ?value }</td>
-                <td class="strong invalid">invalid</td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:LotAwardOutcome .<br>		?this epo:describesLot ?value }</td>
+                <td class="strong valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="Section V - Award of contract">
                     <ul>
-                    <li>Query result: False</li>
+                    <li>Query result: True</li>
                     
                     <li>Fields are covered: True</li>
                     
@@ -5587,16 +5633,16 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="Section V - Award of contract">
-                        “Section V - Award of contract” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT. The expected ontology instances are epo: epo:LotAwardOutcome / epo:Lot .
+                        “Section V - Award of contract” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT. The expected ontology instances are epo: epo:ResultNotice / epo:Contract .
                     </div>
                 </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:LotAwardOutcome .<br>		?this epo:describesLot ?value }</td>
-                <td class="strong valid">valid</td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:ResultNotice .<br>		?this epo:announcesContract ?value }</td>
+                <td class="strong invalid">invalid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="Section V - Award of contract">
                     <ul>
-                    <li>Query result: True</li>
+                    <li>Query result: False</li>
                     
                     <li>Fields are covered: True</li>
                     
@@ -5732,40 +5778,6 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="V.0.4 - A contract/lot is awarded">
-                        “V.0.4 - A contract/lot is awarded” in SF corresponds to “BT-142 Winner Chosen” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/NO_AWARDED_CONTRACT. The expected ontology instances are epo: epo:LotAwardOutcome / at-voc:winner-selection-status .
-                    </div>
-                </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:LotAwardOutcome .<br>		?this epo:hasAwardStatus &lt;http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw&gt; . }</td>
-                <td class="strong valid">valid</td>
-                <td>
-                    <button class="open-dialog">Details</button>
-                    <div class="dialog" title="V.0.4 - A contract/lot is awarded">
-                    <ul>
-                    <li>Query result: True</li>
-                    
-                    <li>Fields are covered: True</li>
-                    
-                        <li>
-                        <h4 class="info">Fields:</h4>
-                        <ol>
-                        
-                            <li>/TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/NO_AWARDED_CONTRACT</li>
-                        
-                        </ol>
-                        </li>
-                    
-                    
-                    
-                    </ul>
-                    </div>
-                </td>
-            </tr>
-        
-            <tr>
-                <td>V.0.4 - A contract/lot is awarded</td>
-                <td>
-                    <button class="open-dialog">Description</button>
-                    <div class="dialog" title="V.0.4 - A contract/lot is awarded">
                         “V.0.4 - A contract/lot is awarded” in SF corresponds to “BT-142 Winner Chosen” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/AWARDED_CONTRACT. The expected ontology instances are epo: epo:Contract / epo:LotAwardOutcome / at-voc:winner-selection-status .
                     </div>
                 </td>
@@ -5797,6 +5809,40 @@
                         
                         </ol>
                         </li>
+                    
+                    
+                    </ul>
+                    </div>
+                </td>
+            </tr>
+        
+            <tr>
+                <td>V.0.4 - A contract/lot is awarded</td>
+                <td>
+                    <button class="open-dialog">Description</button>
+                    <div class="dialog" title="V.0.4 - A contract/lot is awarded">
+                        “V.0.4 - A contract/lot is awarded” in SF corresponds to “BT-142 Winner Chosen” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/NO_AWARDED_CONTRACT. The expected ontology instances are epo: epo:LotAwardOutcome / at-voc:winner-selection-status .
+                    </div>
+                </td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:LotAwardOutcome .<br>		?this epo:hasAwardStatus &lt;http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw&gt; . }</td>
+                <td class="strong valid">valid</td>
+                <td>
+                    <button class="open-dialog">Details</button>
+                    <div class="dialog" title="V.0.4 - A contract/lot is awarded">
+                    <ul>
+                    <li>Query result: True</li>
+                    
+                    <li>Fields are covered: True</li>
+                    
+                        <li>
+                        <h4 class="info">Fields:</h4>
+                        <ol>
+                        
+                            <li>/TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/NO_AWARDED_CONTRACT</li>
+                        
+                        </ol>
+                        </li>
+                    
                     
                     
                     </ul>
@@ -7649,16 +7695,16 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="VI.4.1 - Review body">
-                        “VI.4.1 - Review body” in SF corresponds to “--- nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/COMPLEMENTARY_INFO. The expected ontology instances are epo: epo:ResultNotice / epo:Reviewer .
+                        “VI.4.1 - Review body” in SF corresponds to “--- nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY. The expected ontology instances are epo: epo:ResultNotice / epo:AgentInRole (from CL1) .
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:ResultNotice .<br>		?this epo:announcesRole ?value }</td>
-                <td class="strong invalid">invalid</td>
+                <td class="strong valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.1 - Review body">
                     <ul>
-                    <li>Query result: False</li>
+                    <li>Query result: True</li>
                     
                     <li>Fields are covered: True</li>
                     
@@ -7666,7 +7712,7 @@
                         <h4 class="info">Fields:</h4>
                         <ol>
                         
-                            <li>/TED_EXPORT/FORM_SECTION/F22_2014/COMPLEMENTARY_INFO</li>
+                            <li>/TED_EXPORT/FORM_SECTION/F22_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY</li>
                         
                         </ol>
                         </li>
@@ -8016,16 +8062,16 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="VI.4.2 - Body responsible for mediation procedures">
-                        “VI.4.2 - Body responsible for mediation procedures” in SF corresponds to “--- nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/COMPLEMENTARY_INFO. The expected ontology instances are epo: epo:ResultNotice / epo:Mediator .
+                        “VI.4.2 - Body responsible for mediation procedures” in SF corresponds to “--- nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/COMPLEMENTARY_INFO/ADDRESS_MEDIATION_BODY. The expected ontology instances are epo: epo:ResultNotice / epo:Mediator .
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:ResultNotice .<br>		?this epo:announcesRole ?value }</td>
-                <td class="strong invalid">invalid</td>
+                <td class="strong valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.2 - Body responsible for mediation procedures">
                     <ul>
-                    <li>Query result: False</li>
+                    <li>Query result: True</li>
                     
                     <li>Fields are covered: True</li>
                     
@@ -8033,7 +8079,7 @@
                         <h4 class="info">Fields:</h4>
                         <ol>
                         
-                            <li>/TED_EXPORT/FORM_SECTION/F22_2014/COMPLEMENTARY_INFO</li>
+                            <li>/TED_EXPORT/FORM_SECTION/F22_2014/COMPLEMENTARY_INFO/ADDRESS_MEDIATION_BODY</li>
                         
                         </ol>
                         </li>
@@ -8426,16 +8472,16 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="VI.4.4 - Service from which information about the review procedure may be obtained">
-                        “VI.4.4 - Service from which information about the review procedure may be obtained” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/COMPLEMENTARY_INFO. The expected ontology instances are epo: epo:ResultNotice / epo:ReviewProcedureInformationProvider .
+                        “VI.4.4 - Service from which information about the review procedure may be obtained” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO. The expected ontology instances are epo: epo:ResultNotice / epo:AgentInRole (from CL1) .
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:ResultNotice .<br>		?this epo:announcesRole ?value }</td>
-                <td class="strong invalid">invalid</td>
+                <td class="strong valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.4 - Service from which information about the review procedure may be obtained">
                     <ul>
-                    <li>Query result: False</li>
+                    <li>Query result: True</li>
                     
                     <li>Fields are covered: True</li>
                     
@@ -8443,7 +8489,7 @@
                         <h4 class="info">Fields:</h4>
                         <ol>
                         
-                            <li>/TED_EXPORT/FORM_SECTION/F22_2014/COMPLEMENTARY_INFO</li>
+                            <li>/TED_EXPORT/FORM_SECTION/F22_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO</li>
                         
                         </ol>
                         </li>
@@ -8826,7 +8872,7 @@
     </table>
     <hr>
     <h2>Query results summary</h2>
-    <table class="display">
+    <table class="display" data-order='[[0, "asc"]]'>
         <thead class="center aligned">
         <tr>
             <th>Query result</th>
@@ -8839,15 +8885,15 @@
             
             
             <td class="strong">True</td>
-            <td>74</td>
-            <td>34.42%</td>
+            <td>79</td>
+            <td>36.74%</td>
         </tr>
         <tr>
             
             
             <td class="strong">False</td>
-            <td>141</td>
-            <td>65.58%</td>
+            <td>136</td>
+            <td>63.26%</td>
         </tr>
         <tr>
             
@@ -8867,7 +8913,13 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-
+        $("[data-role=collapsible] h4 a").on("click", function(e) {
+            $p = $(this).closest("[data-role=collapsible]");
+            $p.attr("data-state", $p.attr("data-state") == "collapsed" ? "expanded" : "collapsed");
+            $c = $p.find('.ui-collapsible-content');
+            $c.attr("data-state", $c.attr("data-state") == "collapsed" ? "expanded" : "collapsed");
+            return false;
+        });
         $("table.display").DataTable({
             dom: 'B<"clear">lfiprtip',
             buttons: [],

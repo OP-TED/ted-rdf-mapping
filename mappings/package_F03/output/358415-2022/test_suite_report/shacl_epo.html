@@ -21,6 +21,38 @@
         table thead th {
             text-align: left;
         }
+        [data-role=collapsible].collapsible-wrapper {
+            padding: 10px 0;
+        }
+        [data-role=collapsible] h4 {
+            margin: 0;
+        }
+        [data-role=collapsible] h4 a {
+            padding: 3px 10px;
+            background: #ccc;
+            width: 100%;
+            box-sizing: border-box;
+            display: block;
+            color: #111;
+            text-decoration: none;
+            margin: -3px 0;
+        }
+
+        [data-role=collapsible][data-state=collapsed] h4 a:before {
+            content: '+ expand';
+        }
+        [data-role=collapsible] h4 a:before {
+            content: '- collapse';
+        }
+        [data-role=collapsible][data-state=collapsed] .ui-collapsible-content {
+            visibility: hidden;
+            height: 0;
+            padding: 0 10px;;
+        }
+
+        [data-role=collapsible] .ui-collapsible-content {
+            padding: 10px;
+        }
     </style>
 </head>
 <body>
@@ -28,9 +60,22 @@
 <hr>
 <h2>Report details: </h2>
 <ul>
-    <li>Date created: 2022-10-15T20:40:19.848755</li>
+    <li>Date created: 2022-10-18T21:02:58.892209</li>
     <li>SHACL test suite identifier: epo</li>
     <li>Mapping suite identifier: package_F03</li>
+    
+    <li><div><hr></div>Notice identifier(s):
+        <div data-role="collapsible" data-state=""
+            class="collapsible-wrapper">
+            <h4><a href="#"></a></h4>
+            <div class="ui-collapsible-content">
+            
+                358415-2022
+            
+            </div>
+        </div>
+    </li>
+    
 </ul>
 <hr>
 <h2>Results</h2>
@@ -277,6 +322,14 @@
         
             <tr>
                 <td>http://data.europa.eu/a4g/resource/ResultNotice/2022-S-126-358415/58509ec4-99dc-3865-9935-58d7ebd66d29</td>
+                <td>http://data.europa.eu/a4g/ontology#announcesRole</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#ClassConstraintComponent</td>
+                <td>Value does not have class epo:AgentInRole</td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/ResultNotice/2022-S-126-358415/58509ec4-99dc-3865-9935-58d7ebd66d29</td>
                 <td>http://data.europa.eu/a4g/ontology#refersToProcedureTerm</td>
                 <td>http://www.w3.org/ns/shacl#Violation</td>
                 <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
@@ -360,7 +413,13 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-
+        $("[data-role=collapsible] h4 a").on("click", function(e) {
+            $p = $(this).closest("[data-role=collapsible]");
+            $p.attr("data-state", $p.attr("data-state") == "collapsed" ? "expanded" : "collapsed");
+            $c = $p.find('.ui-collapsible-content');
+            $c.attr("data-state", $c.attr("data-state") == "collapsed" ? "expanded" : "collapsed");
+            return false;
+        });
         $("table.display").DataTable({
             dom: 'B<"clear">lfiprtip',
             buttons: [],
