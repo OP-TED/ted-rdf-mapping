@@ -1181,6 +1181,19 @@ tedm:MonetaryValueSubmissionLowest a rr:TriplesMap ;
             rr:class epo:MonetaryValue
 
         ] .
+tedm:MainMonetaryValueLot a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/OBJECT_CONTRACT/OBJECT_DESCR" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference "if (exists(VAL_OBJECT)) then 'http://data.europa.eu/a4g/resource/MainMonetaryValueLot/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:MonetaryValue
+
+        ] .
 tedm:MonetaryValueLot a rr:TriplesMap ;
     rml:logicalSource
         [
