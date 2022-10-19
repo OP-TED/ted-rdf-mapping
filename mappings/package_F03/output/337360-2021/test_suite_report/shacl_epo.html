@@ -21,6 +21,38 @@
         table thead th {
             text-align: left;
         }
+        [data-role=collapsible].collapsible-wrapper {
+            padding: 10px 0;
+        }
+        [data-role=collapsible] h4 {
+            margin: 0;
+        }
+        [data-role=collapsible] h4 a {
+            padding: 3px 10px;
+            background: #ccc;
+            width: 100%;
+            box-sizing: border-box;
+            display: block;
+            color: #111;
+            text-decoration: none;
+            margin: -3px 0;
+        }
+
+        [data-role=collapsible][data-state=collapsed] h4 a:before {
+            content: '+ expand';
+        }
+        [data-role=collapsible] h4 a:before {
+            content: '- collapse';
+        }
+        [data-role=collapsible][data-state=collapsed] .ui-collapsible-content {
+            visibility: hidden;
+            height: 0;
+            padding: 0 10px;;
+        }
+
+        [data-role=collapsible] .ui-collapsible-content {
+            padding: 10px;
+        }
     </style>
 </head>
 <body>
@@ -28,9 +60,22 @@
 <hr>
 <h2>Report details: </h2>
 <ul>
-    <li>Date created: 2022-10-02T10:56:51.145451</li>
+    <li>Date created: 2022-10-19T03:09:51.299784</li>
     <li>SHACL test suite identifier: epo</li>
     <li>Mapping suite identifier: package_F03</li>
+    
+    <li><div><hr></div>Notice identifier(s):
+        <div data-role="collapsible" data-state=""
+            class="collapsible-wrapper">
+            <h4><a href="#"></a></h4>
+            <div class="ui-collapsible-content">
+            
+                337360-2021
+            
+            </div>
+        </div>
+    </li>
+    
 </ul>
 <hr>
 <h2>Results</h2>
@@ -55,7 +100,7 @@
     <hr>
     <h2>Extended results</h2>
     <h1>epo</h1>
-    <table class="display">
+    <table class="display" data-order='[[0, "asc"]]'>
      <thead class="center aligned">
         <tr>
             <th>focusNode</th>
@@ -77,10 +122,18 @@
         
             <tr>
                 <td>http://data.europa.eu/a4g/resource/Contract/2021-S-127-337360/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2</td>
+                <td>http://data.europa.eu/a4g/ontology#includesTender</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/Contract/2021-S-127-337360/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>->epo:includesTender</td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/Contract/2021-S-127-337360/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2</td>
                 <td>http://data.europa.eu/a4g/ontology#bindsBuyer</td>
                 <td>http://www.w3.org/ns/shacl#Violation</td>
                 <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
-                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/Contract/2021-S-127-337360/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>->:bindsBuyer</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/Contract/2021-S-127-337360/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>->epo:bindsBuyer</td>
             </tr>
         
             <tr>
@@ -88,7 +141,55 @@
                 <td>http://data.europa.eu/a4g/ontology#signedBySignatory</td>
                 <td>http://www.w3.org/ns/shacl#Violation</td>
                 <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
-                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/Contract/2021-S-127-337360/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>->:signedBySignatory</td>
+                <td>Less than 2 values on <http://data.europa.eu/a4g/resource/Contract/2021-S-127-337360/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>->epo:signedBySignatory</td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/Contract/2021-S-127-337360/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2</td>
+                <td>http://data.europa.eu/a4g/ontology#resultsFromLotAwardOutcome</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/Contract/2021-S-127-337360/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>->epo:resultsFromLotAwardOutcome</td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/Contract/2021-S-127-337360/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2</td>
+                <td>http://data.europa.eu/a4g/ontology#bindsContractor</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/Contract/2021-S-127-337360/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>->epo:bindsContractor</td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-127-337360/b9a7c460-794b-36b5-a069-6e9a637315f4</td>
+                <td>http://data.europa.eu/a4g/ontology#hasPrimaryContactPoint</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-127-337360/b9a7c460-794b-36b5-a069-6e9a637315f4>->epo:hasPrimaryContactPoint</td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-127-337360/b9a7c460-794b-36b5-a069-6e9a637315f4</td>
+                <td>http://www.w3.org/ns/locn#addressArea</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-127-337360/b9a7c460-794b-36b5-a069-6e9a637315f4>-><http://www.w3.org/ns/locn#addressArea></td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-127-337360/b9a7c460-794b-36b5-a069-6e9a637315f4</td>
+                <td>http://www.w3.org/ns/locn#fullAddress</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-127-337360/b9a7c460-794b-36b5-a069-6e9a637315f4>-><http://www.w3.org/ns/locn#fullAddress></td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-127-337360/b9a7c460-794b-36b5-a069-6e9a637315f4</td>
+                <td>http://www.w3.org/ns/locn#locatorDesignator</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-127-337360/b9a7c460-794b-36b5-a069-6e9a637315f4>-><http://www.w3.org/ns/locn#locatorDesignator></td>
             </tr>
         
             <tr>
@@ -96,15 +197,31 @@
                 <td>http://data.europa.eu/a4g/ontology#hasReservedExecution</td>
                 <td>http://www.w3.org/ns/shacl#Violation</td>
                 <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
-                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/ContractTerm/2021-S-127-337360/cbac108a-b047-3e09-a114-28c43d5b8706>->:hasReservedExecution</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/ContractTerm/2021-S-127-337360/cbac108a-b047-3e09-a114-28c43d5b8706>->epo:hasReservedExecution</td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/ContractTermLocation/2021-S-127-337360/cbac108a-b047-3e09-a114-28c43d5b8706</td>
+                <td>http://www.w3.org/ns/locn#geographicName</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/ContractTermLocation/2021-S-127-337360/cbac108a-b047-3e09-a114-28c43d5b8706>-><http://www.w3.org/ns/locn#geographicName></td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/ContractTermLocation/2021-S-127-337360/cbac108a-b047-3e09-a114-28c43d5b8706</td>
+                <td>http://data.europa.eu/a4g/ontology#geographicIdentifier</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/ContractTermLocation/2021-S-127-337360/cbac108a-b047-3e09-a114-28c43d5b8706>->epo:geographicIdentifier</td>
             </tr>
         
             <tr>
                 <td>http://data.europa.eu/a4g/resource/Lot/2021-S-127-337360/cbac108a-b047-3e09-a114-28c43d5b8706</td>
-                <td>http://data.europa.eu/a4g/ontology#foreseesContractSpecificTerm</td>
+                <td>http://data.europa.eu/a4g/ontology#isSubjectToLotSpecificTerm</td>
                 <td>http://www.w3.org/ns/shacl#Violation</td>
-                <td>http://www.w3.org/ns/shacl#ClassConstraintComponent</td>
-                <td>Value does not have class :ContractSpecificTerm</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/Lot/2021-S-127-337360/cbac108a-b047-3e09-a114-28c43d5b8706>->epo:isSubjectToLotSpecificTerm</td>
             </tr>
         
             <tr>
@@ -112,23 +229,71 @@
                 <td>http://data.europa.eu/a4g/ontology#hasMainClassification</td>
                 <td>http://www.w3.org/ns/shacl#Violation</td>
                 <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
-                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/LotPurpose/2021-S-127-337360/cbac108a-b047-3e09-a114-28c43d5b8706>->:hasMainClassification</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/LotPurpose/2021-S-127-337360/cbac108a-b047-3e09-a114-28c43d5b8706>->epo:hasMainClassification</td>
             </tr>
         
             <tr>
-                <td>http://data.europa.eu/a4g/resource/ResultNotice/2021-S-127-337360/58509ec4-99dc-3865-9935-58d7ebd66d29</td>
-                <td>http://data.europa.eu/a4g/ontology#refersToRole</td>
+                <td>http://data.europa.eu/a4g/resource/Notice/2021-S-127-337360/1f8688eb-32e7-368b-ad1c-2e76f17321dd</td>
+                <td>http://data.europa.eu/a4g/ontology#refersToNotice</td>
                 <td>http://www.w3.org/ns/shacl#Violation</td>
-                <td>http://www.w3.org/ns/shacl#ClassConstraintComponent</td>
-                <td>Value does not have class :AgentInRole</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/Notice/2021-S-127-337360/1f8688eb-32e7-368b-ad1c-2e76f17321dd>->epo:refersToNotice</td>
             </tr>
         
             <tr>
-                <td>http://data.europa.eu/a4g/resource/ResultNotice/2021-S-127-337360/58509ec4-99dc-3865-9935-58d7ebd66d29</td>
-                <td>http://data.europa.eu/a4g/ontology#refersToRole</td>
+                <td>http://data.europa.eu/a4g/resource/NoticeAwardInformation/2021-S-127-337360/58509ec4-99dc-3865-9935-58d7ebd66d29</td>
+                <td>http://data.europa.eu/a4g/ontology#describesResultNotice</td>
                 <td>http://www.w3.org/ns/shacl#Violation</td>
-                <td>http://www.w3.org/ns/shacl#ClassConstraintComponent</td>
-                <td>Value does not have class :AgentInRole</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/NoticeAwardInformation/2021-S-127-337360/58509ec4-99dc-3865-9935-58d7ebd66d29>->epo:describesResultNotice</td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/Organisation/2021-S-127-337360/ab152979-15bf-30c3-b6f3-e0c554cfa9d0</td>
+                <td>http://data.europa.eu/a4g/ontology#hasPrimaryContactPoint</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/Organisation/2021-S-127-337360/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>->epo:hasPrimaryContactPoint</td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-127-337360/ab152979-15bf-30c3-b6f3-e0c554cfa9d0</td>
+                <td>http://www.w3.org/ns/locn#addressArea</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-127-337360/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>-><http://www.w3.org/ns/locn#addressArea></td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-127-337360/ab152979-15bf-30c3-b6f3-e0c554cfa9d0</td>
+                <td>http://www.w3.org/ns/locn#fullAddress</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-127-337360/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>-><http://www.w3.org/ns/locn#fullAddress></td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-127-337360/ab152979-15bf-30c3-b6f3-e0c554cfa9d0</td>
+                <td>http://www.w3.org/ns/locn#locatorDesignator</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-127-337360/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>-><http://www.w3.org/ns/locn#locatorDesignator></td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/Procedure/2021-S-127-337360/58509ec4-99dc-3865-9935-58d7ebd66d29</td>
+                <td>http://data.europa.eu/a4g/ontology#hasEstimatedValue</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/Procedure/2021-S-127-337360/58509ec4-99dc-3865-9935-58d7ebd66d29>->epo:hasEstimatedValue</td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/Procedure/2021-S-127-337360/58509ec4-99dc-3865-9935-58d7ebd66d29</td>
+                <td>http://data.europa.eu/a4g/ontology#involvesBuyer</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/Procedure/2021-S-127-337360/58509ec4-99dc-3865-9935-58d7ebd66d29>->epo:involvesBuyer</td>
             </tr>
         
             <tr>
@@ -136,7 +301,31 @@
                 <td>http://data.europa.eu/a4g/ontology#announcesRole</td>
                 <td>http://www.w3.org/ns/shacl#Violation</td>
                 <td>http://www.w3.org/ns/shacl#ClassConstraintComponent</td>
-                <td>Value does not have class :AgentInRole</td>
+                <td>Value does not have class epo:AgentInRole</td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/ResultNotice/2021-S-127-337360/58509ec4-99dc-3865-9935-58d7ebd66d29</td>
+                <td>http://data.europa.eu/a4g/ontology#announcesRole</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#ClassConstraintComponent</td>
+                <td>Value does not have class epo:AgentInRole</td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/ResultNotice/2021-S-127-337360/58509ec4-99dc-3865-9935-58d7ebd66d29</td>
+                <td>http://data.europa.eu/a4g/ontology#refersToProcedureTerm</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/ResultNotice/2021-S-127-337360/58509ec4-99dc-3865-9935-58d7ebd66d29>->epo:refersToProcedureTerm</td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/ResultNotice/2021-S-127-337360/58509ec4-99dc-3865-9935-58d7ebd66d29</td>
+                <td>http://data.europa.eu/a4g/ontology#announcesLotAwardOutcome</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/ResultNotice/2021-S-127-337360/58509ec4-99dc-3865-9935-58d7ebd66d29>->epo:announcesLotAwardOutcome</td>
             </tr>
         
             <tr>
@@ -145,6 +334,54 @@
                 <td>http://www.w3.org/ns/shacl#Violation</td>
                 <td>http://www.w3.org/ns/shacl#DatatypeConstraintComponent</td>
                 <td>Value is not Literal with datatype xsd:anyURI</td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/ReviewerContactPoint/2021-S-127-337360/de2507f9-ae25-37c8-809c-0109efe10669</td>
+                <td>http://data.europa.eu/a4g/ontology#hasContactName</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2021-S-127-337360/de2507f9-ae25-37c8-809c-0109efe10669>->epo:hasContactName</td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-127-337360/de2507f9-ae25-37c8-809c-0109efe10669</td>
+                <td>http://www.w3.org/ns/locn#addressArea</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-127-337360/de2507f9-ae25-37c8-809c-0109efe10669>-><http://www.w3.org/ns/locn#addressArea></td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-127-337360/de2507f9-ae25-37c8-809c-0109efe10669</td>
+                <td>http://www.w3.org/ns/locn#fullAddress</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-127-337360/de2507f9-ae25-37c8-809c-0109efe10669>-><http://www.w3.org/ns/locn#fullAddress></td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-127-337360/de2507f9-ae25-37c8-809c-0109efe10669</td>
+                <td>http://www.w3.org/ns/locn#locatorDesignator</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-127-337360/de2507f9-ae25-37c8-809c-0109efe10669>-><http://www.w3.org/ns/locn#locatorDesignator></td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/Tender/2021-S-127-337360/82b174c6-1f18-3b11-acf2-00977eeddafc</td>
+                <td>http://data.europa.eu/a4g/ontology#isSubmitedBy</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/Tender/2021-S-127-337360/82b174c6-1f18-3b11-acf2-00977eeddafc>->epo:isSubmitedBy</td>
+            </tr>
+        
+            <tr>
+                <td>http://data.europa.eu/a4g/resource/TenderAwardOutcome/2021-S-127-337360/82b174c6-1f18-3b11-acf2-00977eeddafc</td>
+                <td>http://data.europa.eu/a4g/ontology#hasAwardRank</td>
+                <td>http://www.w3.org/ns/shacl#Violation</td>
+                <td>http://www.w3.org/ns/shacl#MinCountConstraintComponent</td>
+                <td>Less than 1 values on <http://data.europa.eu/a4g/resource/TenderAwardOutcome/2021-S-127-337360/82b174c6-1f18-3b11-acf2-00977eeddafc>->epo:hasAwardRank</td>
             </tr>
         
         </tbody>
@@ -160,7 +397,13 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-
+        $("[data-role=collapsible] h4 a").on("click", function(e) {
+            $p = $(this).closest("[data-role=collapsible]");
+            $p.attr("data-state", $p.attr("data-state") == "collapsed" ? "expanded" : "collapsed");
+            $c = $p.find('.ui-collapsible-content');
+            $c.attr("data-state", $c.attr("data-state") == "collapsed" ? "expanded" : "collapsed");
+            return false;
+        });
         $("table.display").DataTable({
             dom: 'B<"clear">lfiprtip',
             buttons: [],

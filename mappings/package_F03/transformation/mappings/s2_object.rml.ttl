@@ -166,6 +166,14 @@ tedm:Procedure a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ProcedureTerm
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate epo:hasEstimatedValue ;
             rr:objectMap
                 [
@@ -193,7 +201,7 @@ tedm:Procedure a rr:TriplesMap ;
             rr:predicate epo:isJointProcurement ;
             rr:objectMap
                 [
-                   rml:reference "if(exists(/TED_EXPORT/FORM_SECTION/F03_2014[1]/CONTRACTING_BODY/JOINT_PROCUREMENT_INVOLVED)) then 'true' else null";
+                   rml:reference "if(exists(../CONTRACTING_BODY/JOINT_PROCUREMENT_INVOLVED)) then 'true' else null";
                    rr:datatype xsd:boolean
                 ] ;
         ] ;
@@ -312,6 +320,18 @@ tedm:Lot a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:isSubjectToLotSpecificTerm;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:MultipleStageProcedureTerm;
+                rr:joinCondition [
+                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                ];
+            ]
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate epo:isFundedBy;
             rr:objectMap
             [
@@ -393,6 +413,52 @@ tedm:Lot a rr:TriplesMap ;
                         rr:parent "ancestor::OBJECT_DESCR/@ITEM";
                     ];
                 ] ;
+        ] ;
+
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasEstimatedValue;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MainMonetaryValueLot;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
+
+                ] ;
+        ] .
+tedm:MainMonetaryValueLot a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "VAL_OBJECT";
+                    rr:datatype xsd:decimal
+                ] ;
+        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasCurrency ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if (not(exists(VAL_ESTIMATED_TOTAL/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
+#                    rr:termType rr:IRI;
+#                ]
+#
+#        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:currency;
+                    rr:joinCondition [
+                        rr:child "VAL_OBJECT/@CURRENCY";
+                        rr:parent "code.value";
+                    ];
+                ] ;
         ] .
 tedm:AwardCriterionQuality a rr:TripleMap ;
     rr:predicateObjectMap
@@ -427,7 +493,7 @@ tedm:AwardCriterionCost a rr:TripleMap ;
 tedm:Period a rr:TripleMap ;
     rr:predicateObjectMap
         [
-            rr:predicate time:hasBeginning ;
+            rr:predicate epo:hasBeginning ;
             rr:objectMap
                 [
                     rml:reference "DATE_START";
@@ -436,7 +502,7 @@ tedm:Period a rr:TripleMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate time:hasEnd ;
+            rr:predicate epo:hasEnd ;
             rr:objectMap
                 [
                     rml:reference "DATE_END";
@@ -458,7 +524,7 @@ tedm:Duration a rr:TripleMap ;
             rr:predicate time:unitType ;
             rr:objectMap
                 [
-                    rml:reference "if(./@TYPE='MONTH') then 'http://www.w3.org/2006/time#unitMonth' else if (./@TYPE='DAY') then 'http://www.w3.org/2006/time#unitMonth' else null ";
+                    rml:reference "if(./@TYPE='MONTH') then 'http://www.w3.org/2006/time#unitMonth' else if (./@TYPE='DAY') then 'http://www.w3.org/2006/time#unitDay' else null ";
                     rr:termType rr:IRI;
                 ] ;
         ] .
@@ -592,7 +658,100 @@ tedm:LotIdentifier a rr:TripleMap ;
                     rml:reference "LOT_NO"
                 ]
         ] .
+#JLR#
 
+tedm:ProcedureTerm a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:isSubmissionForAllLotsAllowed;
+            rr:objectMap
+                [
+                   rml:reference "if(exists(LOT_DIVISION/LOT_ALL)) then 'true' else null";
+                   rr:datatype xsd:boolean
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasMaximumLotSubmissionAllowed;
+            rr:objectMap
+                [
+                    rml:reference "LOT_DIVISION/LOT_MAX_NUMBER";
+                    rr:datatype xsd:integer
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:isOneLotOnlyAllowed;
+            rr:objectMap
+                [
+                   rml:reference "if(exists(LOT_DIVISION/LOT_ONE_ONLY)) then 'true' else null";
+                   rr:datatype xsd:boolean
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasMaximumNumberOfLotsToBeAwarded;
+            rr:objectMap
+                [
+                    rml:reference "LOT_DIVISION/LOT_MAX_ONE_TENDERER";
+                    rr:datatype xsd:integer
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasLotAwardCombination;
+            rr:objectMap
+                [
+                    rml:reference "LOT_DIVISION/LOT_COMBINING_CONTRACT_RIGHT"
 
-
+                ]
+        ] .
+tedm:MultipleStageProcedureTerm a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasQualificationSystemDuration;
+            rr:objectMap
+                [
+                    rml:reference "QS/INDEFINITE_DURATION"
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasQualificationSystemPeriod ;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:MultipleStageProcedurePeriod;
+                rr:joinCondition [
+                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                ];
+            ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasQualificationSystemRenewalDescription;
+            rr:objectMap
+                [
+                    rml:reference "RENEWAL_DESC"
+                ]
+        ] .
+tedm:MultipleStageProcedurePeriod a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasBeginning ;
+            rr:objectMap
+                [
+                    rml:reference "QS/DATE_START";
+                    rr:datatype xsd:datetime
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasEnd ;
+            rr:objectMap
+                [
+                    rml:reference "QS/DATE_END";
+                    rr:datatype xsd:datetime
+                ] ;
+        ] .
 
