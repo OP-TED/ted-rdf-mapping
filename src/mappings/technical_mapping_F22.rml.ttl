@@ -601,7 +601,6 @@ tedm:Lot a rr:TriplesMap ;
                     ]
                 ] ;
         ] .
-
 tedm:LotIdentifier a rr:TripleMap ;
     rml:logicalSource
         [
@@ -931,7 +930,7 @@ tedm:Contract a rr:TripleMap ;
                     ]
                 ]
         ] ;
-    rr:predicateObjectMap   #specific for F3, F06, F22 and perhaps others (different for F25, for example)
+    rr:predicateObjectMap   #specific for F3, F06, F21, F22 and perhaps others (different for F25, for example)
         [
             rr:predicate epo:hasContractConclusionDate;
             rr:objectMap
@@ -951,6 +950,15 @@ tedm:LotAwardOutcome a rr:TripleMap ;
         [
             rr:template "http://data.europa.eu/a4g/resource/LotAwardOutcome/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:LotAwardOutcome
+#        ] ;
+#    rr:predicateObjectMap   #specific for F25 (different for F3 and F06, for example)
+#        [
+#            rr:predicate epo:hasAwardDecisionDate;
+#            rr:objectMap
+#                [
+#                    rml:reference "AWARDED_CONTRACT/DATE_CONCLUSION_CONTRACT";
+#                    rr:datatype xsd:date;
+#                ]
         ] .
 tedm:ContractIdentifier a rr:TripleMap ;
     rml:logicalSource
@@ -1518,7 +1526,7 @@ tedm:ReviewTerm a rr:TripleMap ;
                 "if(exists(REVIEW_PROCEDURE)) then 'http://data.europa.eu/a4g/resource/ReviewTerm/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:ReviewTerm
         ] .
-
+#F25 mappings
 tedm:MonetaryValueProcedure a rr:TriplesMap ;
     rml:logicalSource
         [
@@ -1532,7 +1540,6 @@ tedm:MonetaryValueProcedure a rr:TriplesMap ;
             rr:class epo:MonetaryValue
 
         ] .
-
 tedm:AwardCriterion a rr:TripleMap ;
     rml:logicalSource
         [

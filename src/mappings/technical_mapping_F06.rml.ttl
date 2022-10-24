@@ -601,7 +601,6 @@ tedm:Lot a rr:TriplesMap ;
                     ]
                 ] ;
         ] .
-
 tedm:LotIdentifier a rr:TripleMap ;
     rml:logicalSource
         [
@@ -793,6 +792,20 @@ tedm:AwardCriterionCost a rr:TripleMap ;
                 ] ;
         ] .
 
+# Section 3     #specific for F21,F22,F23,F24,F01,F02,F04,F05,F07,F12 and T02
+#tedm:SelectionCriterion a rr:TriplesMap ;
+#    rml:logicalSource
+#        [
+#            rml:source "data/source.xml" ;
+#            rml:iterator "/TED_EXPORT/FORM_SECTION/F06_2014/LEFTI" ;
+#            rml:referenceFormulation ql:XPath
+#        ] ;
+#    rr:subjectMap
+#        [
+#            rr:template "http://data.europa.eu/a4g/resource/SelectionCriterion/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+#            rr:class epo:SelectionCriterion
+#        ] .
+
 # Section 4
 tedm:FrameworkAgreementTechniqueUsage a rr:TriplesMap ;
     rml:logicalSource
@@ -917,7 +930,7 @@ tedm:Contract a rr:TripleMap ;
                     ]
                 ]
         ] ;
-    rr:predicateObjectMap   #specific for F3, F06, F22 and perhaps others (different for F25, for example)
+    rr:predicateObjectMap   #specific for F3, F06, F21, F22 and perhaps others (different for F25, for example)
         [
             rr:predicate epo:hasContractConclusionDate;
             rr:objectMap
@@ -937,6 +950,15 @@ tedm:LotAwardOutcome a rr:TripleMap ;
         [
             rr:template "http://data.europa.eu/a4g/resource/LotAwardOutcome/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:LotAwardOutcome
+#        ] ;
+#    rr:predicateObjectMap   #specific for F25 (different for F3 and F06, for example)
+#        [
+#            rr:predicate epo:hasAwardDecisionDate;
+#            rr:objectMap
+#                [
+#                    rml:reference "AWARDED_CONTRACT/DATE_CONCLUSION_CONTRACT";
+#                    rr:datatype xsd:date;
+#                ]
         ] .
 tedm:ContractIdentifier a rr:TripleMap ;
     rml:logicalSource
@@ -1515,7 +1537,7 @@ tedm:ReviewTerm a rr:TripleMap ;
                 "if(exists(REVIEW_PROCEDURE)) then 'http://data.europa.eu/a4g/resource/ReviewTerm/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:ReviewTerm
         ] .
-
+#F25 mappings
 tedm:MonetaryValueProcedure a rr:TriplesMap ;
     rml:logicalSource
         [
@@ -1649,9 +1671,7 @@ tedm:AccessTerm  a rr:TriplesMap ;
             rml:reference
                 "if(exists(DOCUMENT_FULL) or exists(DOCUMENT_RESTRICTED) or exists(URL_DOCUMENT)) then 'http://data.europa.eu/a4g/resource/AccessTerm/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:AccessTerm
-
         ] .
-
 tedm:OrganisationChannel a rr:TriplesMap ;
     rr:subjectMap
         [
@@ -1665,7 +1685,6 @@ tedm:OrganisationChannel a rr:TriplesMap ;
             rml:iterator "/TED_EXPORT/FORM_SECTION/F06_2014[1]/CONTRACTING_BODY/URL_TOOL" ;
             rml:referenceFormulation ql:XPath
         ] .
-
 tedm:ProcurementProcedureInformationProvider  a rr:TriplesMap ;
     rml:logicalSource
         [
@@ -1820,6 +1839,20 @@ tedm:SubmissionTerm a rr:TriplesMap ;
             rml:iterator "/TED_EXPORT/FORM_SECTION/F06_2014/PROCEDURE" ;
             rml:referenceFormulation ql:XPath
         ] .
+#tedm:MultipleStageProcedureDuration a rr:TriplesMap ;
+#    rml:logicalSource
+#        [
+#            rml:source "data/source.xml" ;
+#            rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014/OBJECT_CONTRACT/OBJECT_DESCR" ;
+#            rml:referenceFormulation ql:XPath
+#        ] ;
+#    rr:subjectMap
+#        [
+#            rml:reference
+#                "if(exists(QS/INDEFINITE_DURATION)) then 'http://data.europa.eu/a4g/resource/MultipleStageProcedureDuration/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+#                rr:class epo:Duration
+#
+#        ] .
 # controlled values
 tedm:contractNature  a rr:TriplesMap ;
     rml:logicalSource
