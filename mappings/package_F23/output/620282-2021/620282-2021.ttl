@@ -1,0 +1,202 @@
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix legal: <https://www.w3.org/ns/legal#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.europa.eu/a4g/resource/Buyer/2021-S-235-620282/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209>
+  a epo:Buyer;
+  epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-235-620282/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
+  epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2021-S-235-620282/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
+
+<http://data.europa.eu/a4g/resource/ContactPoint/2021-S-235-620282/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
+  a cccev:ContactPoint;
+  epo:hasInternetAddress "http://www.ville-perols.fr";
+  cccev:email "marches-publics@ville-perols.fr" .
+
+<http://data.europa.eu/a4g/resource/Contract/2021-S-235-620282/70e1fca2-f8e6-3a32-8dca-713ccb185cf6>
+  a epo:Contract;
+  epo:hasContractConclusionDate "2021-09-23"^^xsd:date;
+  epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2021-S-235-620282/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
+  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-235-620282/70e1fca2-f8e6-3a32-8dca-713ccb185cf6> .
+
+<http://data.europa.eu/a4g/resource/ContractContactPoint/2021-S-235-620282/15a5bf74-f364-3b6a-8f6c-92ab57374118>
+  a cccev:ContactPoint;
+  epo:hasFax "+33 140550116";
+  cccev:telephone "+33 158051870" .
+
+<http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-235-620282/15a5bf74-f364-3b6a-8f6c-92ab57374118>
+  a org:Organization;
+  epo:hasLegalName "people and baby"@fr;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractContactPoint/2021-S-235-620282/15a5bf74-f364-3b6a-8f6c-92ab57374118>;
+  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-235-620282/15a5bf74-f364-3b6a-8f6c-92ab57374118> .
+
+<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-235-620282/15a5bf74-f364-3b6a-8f6c-92ab57374118>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR101>;
+  locn:postCode "75008";
+  locn:postName "Paris";
+  locn:thoroughfare "9 avenue Hoche" .
+
+<http://data.europa.eu/a4g/resource/ContractTerm/2021-S-235-620282/64592fe7-40a4-3c6b-85ce-08fd4c446531>
+  a epo:ContractTerm;
+  epo:definesContractDuration <http://data.europa.eu/a4g/resource/Duration/2021-S-235-620282/1d20f563-6060-39ce-a62d-de87c1a9defd>;
+  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/ContractTermLocation/2021-S-235-620282/64592fe7-40a4-3c6b-85ce-08fd4c446531> .
+
+<http://data.europa.eu/a4g/resource/ContractTermLocation/2021-S-235-620282/64592fe7-40a4-3c6b-85ce-08fd4c446531>
+  a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRJ13> .
+
+<http://data.europa.eu/a4g/resource/Duration/2021-S-235-620282/1d20f563-6060-39ce-a62d-de87c1a9defd>
+  a epo:Duration;
+  time:numericDuration 72.0;
+  time:unitType time:unitMonth .
+
+<http://data.europa.eu/a4g/resource/Lot/2021-S-235-620282/64592fe7-40a4-3c6b-85ce-08fd4c446531>
+  a epo:Lot;
+  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2021-S-235-620282/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
+  epo:hasDescription "délégation de service public pour l'exploitation et la gestion de la crèche municipale \"Les Pitchouns\" de la ville de Pérols"@fr;
+  epo:hasPerformingStaffQualificationInformation <http://publications.europa.eu/resource/authority/requirement-stage/not-requ>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/LotPurpose/2021-S-235-620282/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
+  epo:isUsingEUFunds false .
+
+<http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-235-620282/70e1fca2-f8e6-3a32-8dca-713ccb185cf6>
+  a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome <http://data.europa.eu/a4g/resource/TenderAwardOutcome/2021-S-235-620282/5a5721a0-4258-3cfd-89c8-805fdb0d3c88>;
+  epo:describesLot <http://data.europa.eu/a4g/resource/Lot/2021-S-235-620282/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> .
+
+<http://data.europa.eu/a4g/resource/LotPurpose/2021-S-235-620282/64592fe7-40a4-3c6b-85ce-08fd4c446531>
+  a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/85312110> .
+
+<http://data.europa.eu/a4g/resource/MonetaryValueProcedure/2021-S-235-620282/3b2748c6-16de-3218-af2c-e7456a886558>
+  a epo:MonetaryValue;
+  epo:hasAmountValue 8520000.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+<http://data.europa.eu/a4g/resource/Notice/2021-S-235-620282/64850f6d-a341-38ae-bc98-ed98207d0890>
+  a epo:CompetitionNotice, epo:Notice;
+  epo:hasID <http://data.europa.eu/a4g/resource/NoticeIdentifier/2021-S-235-620282/64850f6d-a341-38ae-bc98-ed98207d0890> .
+
+<http://data.europa.eu/a4g/resource/NoticeAwardInformation/2021-S-235-620282/3b2748c6-16de-3218-af2c-e7456a886558>
+  a epo:NoticeAwardInformation;
+  epo:hasTotalAwardedValue <http://data.europa.eu/a4g/resource/ProcurementMonetaryValue/2021-S-235-620282/3b2748c6-16de-3218-af2c-e7456a886558> .
+
+<http://data.europa.eu/a4g/resource/NoticeIdentifier/2021-S-235-620282/64850f6d-a341-38ae-bc98-ed98207d0890>
+  a epo:Identifier;
+  epo:hasIdentifierValue "2021/S 104-275077" .
+
+<http://data.europa.eu/a4g/resource/Organisation/2021-S-235-620282/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
+  a org:Organization;
+  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasLegalName "ville de Pérols"@fr;
+  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-235-620282/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
+
+<http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-235-620282/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRJ13>;
+  locn:postName "Perols" .
+
+<http://data.europa.eu/a4g/resource/Procedure/2021-S-235-620282/3b2748c6-16de-3218-af2c-e7456a886558>
+  a epo:Procedure;
+  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2021-S-235-620282/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
+  epo:hasDescription "le marché a pour objet de confier l'exploitation et la gestion de la crèche multi-accueil municipale de la Commune de Pérols, \"Les Pitchouns\" sous la forme d'un contrat d'affermage ainsi que la crèche \"Charles Perrault\""@fr;
+  epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/MonetaryValueProcedure/2021-S-235-620282/3b2748c6-16de-3218-af2c-e7456a886558>;
+  epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2021-S-235-620282/3b2748c6-16de-3218-af2c-e7456a886558>;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0023>;
+  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-235-620282/3b2748c6-16de-3218-af2c-e7456a886558>;
+  epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2021-S-235-620282/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
+  epo:hasTitle "délégation de service public pour l'exploitation et la gestion de la crèche municipale Les Pitchouns de la ville de Pérols"@fr;
+  epo:isAccelerated false;
+  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2021-S-235-620282/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209> .
+
+<http://data.europa.eu/a4g/resource/ProcedureIdentifier/2021-S-235-620282/3b2748c6-16de-3218-af2c-e7456a886558>
+  a epo:Identifier;
+  epo:hasIdentifierValue "2021DSP0501" .
+
+<http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-235-620282/3b2748c6-16de-3218-af2c-e7456a886558>
+  a epo:Purpose;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/85312110> .
+
+<http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2021-S-235-620282/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209>
+  a epo:ProcedureSpecificTerm .
+
+<http://data.europa.eu/a4g/resource/ProcurementMonetaryValue/2021-S-235-620282/3b2748c6-16de-3218-af2c-e7456a886558>
+  a epo:MonetaryValue;
+  epo:hasAmountValue 1741620.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+<http://data.europa.eu/a4g/resource/ProcurementProcessInformation/2021-S-235-620282/64850f6d-a341-38ae-bc98-ed98207d0890>
+  a epo:ProcurementProcessInformation;
+  epo:concernsPreviousNotice <http://data.europa.eu/a4g/resource/Notice/2021-S-235-620282/64850f6d-a341-38ae-bc98-ed98207d0890>;
+  epo:concernsProcedure <http://data.europa.eu/a4g/resource/Procedure/2021-S-235-620282/3b2748c6-16de-3218-af2c-e7456a886558> .
+
+<http://data.europa.eu/a4g/resource/ResultNotice/2021-S-235-620282/3b2748c6-16de-3218-af2c-e7456a886558>
+  a epo:ResultNotice;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/Contract/2021-S-235-620282/70e1fca2-f8e6-3a32-8dca-713ccb185cf6>;
+  epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/NoticeAwardInformation/2021-S-235-620282/3b2748c6-16de-3218-af2c-e7456a886558>;
+  epo:announcesRole <http://data.europa.eu/a4g/resource/Reviewer/2021-S-235-620282/2a666ce1-cebc-31d9-b200-113ebf473883>,
+    <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-235-620282/15a5bf74-f364-3b6a-8f6c-92ab57374118>;
+  epo:announcesTender <http://data.europa.eu/a4g/resource/Tender/2021-S-235-620282/5a5721a0-4258-3cfd-89c8-805fdb0d3c88>;
+  epo:hasDispatchDate "2021-11-30";
+  epo:refersToLot <http://data.europa.eu/a4g/resource/Lot/2021-S-235-620282/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
+  epo:refersToPrevious <http://data.europa.eu/a4g/resource/Notice/2021-S-235-620282/64850f6d-a341-38ae-bc98-ed98207d0890>;
+  epo:refersToProcedure <http://data.europa.eu/a4g/resource/Procedure/2021-S-235-620282/3b2748c6-16de-3218-af2c-e7456a886558>;
+  epo:refersToRole <http://data.europa.eu/a4g/resource/Buyer/2021-S-235-620282/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209> .
+
+<http://data.europa.eu/a4g/resource/Reviewer/2021-S-235-620282/2a666ce1-cebc-31d9-b200-113ebf473883>
+  a epo:Reviewer;
+  epo:playedBy <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2021-S-235-620282/2a666ce1-cebc-31d9-b200-113ebf473883> .
+
+<http://data.europa.eu/a4g/resource/ReviewerOrganisation/2021-S-235-620282/2a666ce1-cebc-31d9-b200-113ebf473883>
+  a org:Organization;
+  epo:hasLegalName "tribunal administratif de Montpellier"@fr;
+  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-235-620282/2a666ce1-cebc-31d9-b200-113ebf473883> .
+
+<http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-235-620282/2a666ce1-cebc-31d9-b200-113ebf473883>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  locn:postCode "34063";
+  locn:postName "Montpellier Cedex ";
+  locn:thoroughfare "6 rue Pitot" .
+
+<http://data.europa.eu/a4g/resource/SubmissionStatisticalInformation/2021-S-235-620282/5a5721a0-4258-3cfd-89c8-805fdb0d3c88>
+  a epo:SubmissionStatisticalInformation;
+  epo:concernsSubmissionsForLot <http://data.europa.eu/a4g/resource/Lot/2021-S-235-620282/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
+  epo:hasReceivedTenders 6 .
+
+<http://data.europa.eu/a4g/resource/Tender/2021-S-235-620282/5a5721a0-4258-3cfd-89c8-805fdb0d3c88>
+  a epo:Tender;
+  epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/TenderMonetaryValue/2021-S-235-620282/5a5721a0-4258-3cfd-89c8-805fdb0d3c88>;
+  epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/Lot/2021-S-235-620282/64592fe7-40a4-3c6b-85ce-08fd4c446531> .
+
+<http://data.europa.eu/a4g/resource/TenderAwardOutcome/2021-S-235-620282/5a5721a0-4258-3cfd-89c8-805fdb0d3c88>
+  a epo:TenderAwardOutcome;
+  epo:awardsLotToWinner <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-235-620282/15a5bf74-f364-3b6a-8f6c-92ab57374118>;
+  epo:describesTender <http://data.europa.eu/a4g/resource/Tender/2021-S-235-620282/5a5721a0-4258-3cfd-89c8-805fdb0d3c88> .
+
+<http://data.europa.eu/a4g/resource/TenderMonetaryValue/2021-S-235-620282/5a5721a0-4258-3cfd-89c8-805fdb0d3c88>
+  a epo:MonetaryValue;
+  epo:hasAmountValue 1741620.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+<http://data.europa.eu/a4g/resource/WinnerRole/2021-S-235-620282/15a5bf74-f364-3b6a-8f6c-92ab57374118>
+  a epo:Winner;
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-235-620282/15a5bf74-f364-3b6a-8f6c-92ab57374118> .
