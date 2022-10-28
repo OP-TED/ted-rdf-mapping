@@ -340,7 +340,7 @@ tedm:Reviewer a rr:TripleMap ;
 tedm:DirectAwardTerm a rr:TriplesMap ;
     rr:subjectMap
         [
-            rml:reference "if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL)) then 'http://data.europa.eu/a4g/resource/DirectAwardTerm/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL) or exists(PT_AWARD_CONTRACT_WITHOUT_PUBLICATION)) then 'http://data.europa.eu/a4g/resource/DirectAwardTerm/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             # rr:template "http://data.europa.eu/a4g/resource/DirectAwardTerm/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:DirectAwardTerm
 
@@ -929,15 +929,15 @@ tedm:Contract a rr:TripleMap ;
                          rml:reference "lower-case(ancestor::F23_2014/@LG)"
                     ]
                 ]
-        ] ;
-    rr:predicateObjectMap   #specific for F3, F06, F21, F22 and perhaps others (different for F25, for example) How about F23?
-        [
-            rr:predicate epo:hasContractConclusionDate;
-            rr:objectMap
-                [
-                    rml:reference "AWARDED_CONTRACT/DATE_CONCLUSION_CONTRACT";
-                    rr:datatype xsd:date;
-                ]
+#        ] ;
+#    rr:predicateObjectMap   #specific for F3, F06, F21, F22 and perhaps others (different for F25, for example) How about F23?
+#        [
+#            rr:predicate epo:hasContractConclusionDate;
+#            rr:objectMap
+#                [
+#                    rml:reference "AWARDED_CONTRACT/DATE_CONCLUSION_CONTRACT";
+#                    rr:datatype xsd:date;
+#                ]
         ] .
 tedm:LotAwardOutcome a rr:TripleMap ;
     rml:logicalSource
@@ -950,15 +950,15 @@ tedm:LotAwardOutcome a rr:TripleMap ;
         [
             rr:template "http://data.europa.eu/a4g/resource/LotAwardOutcome/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:LotAwardOutcome
-#        ] ;
-#    rr:predicateObjectMap   #specific for F25 (different for F3 and F06, for example) How about F23?
-#        [
-#            rr:predicate epo:hasAwardDecisionDate;
-#            rr:objectMap
-#                [
-#                    rml:reference "AWARDED_CONTRACT/DATE_CONCLUSION_CONTRACT";
-#                    rr:datatype xsd:date;
-#                ]
+        ] ;
+    rr:predicateObjectMap   #specific for F25 and 23 (different for F3 and F06, for example)
+        [
+            rr:predicate epo:hasAwardDecisionDate;
+            rr:objectMap
+                [
+                    rml:reference "AWARDED_CONTRACT/DATE_CONCLUSION_CONTRACT";
+                    rr:datatype xsd:date;
+                ]
         ] .
 tedm:ContractIdentifier a rr:TripleMap ;
     rml:logicalSource
