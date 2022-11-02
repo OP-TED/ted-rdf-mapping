@@ -340,7 +340,7 @@ tedm:Reviewer a rr:TripleMap ;
 tedm:DirectAwardTerm a rr:TriplesMap ;
     rr:subjectMap
         [
-            rml:reference "if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL)) then 'http://data.europa.eu/a4g/resource/DirectAwardTerm/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL) or exists(PT_AWARD_CONTRACT_WITHOUT_PUBLICATION)) then 'http://data.europa.eu/a4g/resource/DirectAwardTerm/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             # rr:template "http://data.europa.eu/a4g/resource/DirectAwardTerm/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:DirectAwardTerm
 
