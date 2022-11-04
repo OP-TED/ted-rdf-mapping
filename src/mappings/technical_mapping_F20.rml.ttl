@@ -1842,6 +1842,33 @@ tedm:SubmissionTerm a rr:TriplesMap ;
 #                rr:class epo:Duration
 #
 #        ] .
+
+#F20 TripleMaps - mostly Section 7
+tedm:ProcedureModification a rr:TriplesMap ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/ProcedureModification/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Procedure
+        ] ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT" ;
+            rml:referenceFormulation ql:XPath
+        ] .
+tedm:ProcedurePurposeModification a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/ProcedurePurposeModification/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Purpose
+        ] .
+
 # controlled values
 tedm:contractNature  a rr:TriplesMap ;
     rml:logicalSource
