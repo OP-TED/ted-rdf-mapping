@@ -18,3 +18,52 @@ tedm:modifications_to_contract
   dct:date "2022-10-24"^^xsd:date .
 
 #TODO: Add Section 7 specific mappings here
+
+tedm:ProcedureModification a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:containsModificationsOn;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Procedure;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasOverallPurpose ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ProcedurePurposeModification
+                ] ;
+        ] .
+
+tedm:ProcedurePurposeModification a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasMainClassification ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:cpvsuppl;
+                    rr:joinCondition [
+                        rr:child "CPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasMainClassification ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:cpv;
+                    rr:joinCondition [
+                        rr:child "CPV_MAIN/CPV_CODE/@CODE";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] .
