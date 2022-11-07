@@ -65,6 +65,251 @@ tedm:ProcedurePurposeModification a rr:TriplesMap ;
                     ];
                 ] ;
         ] .
+tedm:LotModification a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:containsModificationsOn;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Lot;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')";
+                    ];
+                ] ;
+        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:isUsingEUFunds;
+#            rr:objectMap
+#                [
+#                    rml:reference "if(exists(EU_PROGR_RELATED)) then 'true' else if(exists(NO_EU_PROGR_RELATED)) then 'false' else null";
+#                    rr:datatype xsd:boolean
+#                ]
+#        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasID;
+#            rr:objectMap
+#            [
+#                rr:parentTriplesMap tedm:LotIdentifier;
+#                rr:joinCondition [
+#                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                ];
+#            ]
+#        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:isSubjectToLotSpecificTerm;
+#            rr:objectMap
+#            [
+#                rr:parentTriplesMap tedm:MultipleStageProcedureTerm;
+#                rr:joinCondition [
+#                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                ];
+#            ]
+#        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:isFundedBy;
+#            rr:objectMap
+#            [
+#                rr:parentTriplesMap tedm:Fund;
+#                rr:joinCondition [
+#                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                ];
+#            ]
+#        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasPurpose ;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:LotPurposeModification;
+                    rr:joinCondition [
+#                        rr:child "path(.)";
+#                        rr:parent "path(..)";
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(.)) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')";
+                    ];
+            ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:foreseesContractSpecificTerm;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:ContractTermModification;
+                rr:joinCondition [
+                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                ];
+            ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasEstimatedValue;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MainMonetaryValueLot;  #Modification
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
+
+                ] ;
+        ] .
+tedm:LotPurposeModification a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAdditionalClassification ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:cpvsuppl;
+                    rr:joinCondition [
+                        rr:child "CPV_SUPPLEMENTARY_CODE/@CODE";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+
+        ] ;
+#        rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasAdditionalClassification ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if (not(exists(CPV_ADDITIONAL/CPV_SUPPLEMENTARY_CODE/@CODE))) then 'http://data.europa.eu/cpv/cpv/OP_DATPRO' else null";
+#                    rr:termType rr:IRI;
+#                ]
+#
+#        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAdditionalClassification ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:cpv;
+                    rr:joinCondition [
+                        rr:child "CPV_CODE/@CODE";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] .
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasAdditionalClassification ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if (not(exists(CPV_ADDITIONAL/CPV_CODE/@CODE))) then 'http://data.europa.eu/cpv/cpv/OP_DATPRO' else null";
+#                    rr:termType rr:IRI;
+#                ]
+#
+#        ] ;
+tedm:ContractTermModification a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:definesSpecificPlaceOfPerformance ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ContractTermLocationModification;
+#                    rr:joinCondition [
+#                        rr:child "./@ITEM";
+#                        rr:parent "./@ITEM";
+#                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:definesContractDuration;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:DurationModification;
+            ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:definesContractPeriod;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:PeriodModification;
+            ]
+        ] .
+tedm:ContractTermLocationModification a rr:TriplesMap ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasNutsCode ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if (not(exists(./*:NUTS/@CODE))) then 'http://data.europa.eu/nuts/OP_DATPRO' else null";
+#                    rr:termType rr:IRI;
+#                ]
+#
+#        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasNutsCode ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:nuts;
+                    rr:joinCondition [
+                        rr:child "./*:NUTS/@CODE";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate locn:address ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ContractTermLocationAddressModification;
+#                    rr:joinCondition [
+#                        rr:child "./@ITEM";
+#                        rr:parent "./@ITEM";
+#                    ];
+                ] ;
+        ] .
+tedm:DurationModification a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate time:numericDuration ;
+            rr:objectMap
+                [
+                    rml:reference ".";
+                    rr:datatype xsd:decimal
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate time:unitType ;
+            rr:objectMap
+                [
+                    rml:reference "if(./@TYPE='MONTH') then 'http://www.w3.org/2006/time#unitMonth' else if (./@TYPE='DAY') then 'http://www.w3.org/2006/time#unitDay' else null ";
+                    rr:termType rr:IRI;
+                ] ;
+        ] .
+tedm:PeriodModification a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasBeginning ;
+            rr:objectMap
+                [
+                    rml:reference "DATE_START";
+                    rr:datatype xsd:datetime
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasEnd ;
+            rr:objectMap
+                [
+                    rml:reference "DATE_END";
+                    rr:datatype xsd:datetime
+                ] ;
+        ] .
 
 tedm:ContractModification a rr:TriplesMap ;
     rr:predicateObjectMap
