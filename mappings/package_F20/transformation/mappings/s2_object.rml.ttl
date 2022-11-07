@@ -490,51 +490,13 @@ tedm:AwardCriterionCost a rr:TripleMap ;
                     rr:termType rr:IRI
                 ] ;
         ] .
-tedm:Period a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasBeginning ;
-            rr:objectMap
-                [
-                    rml:reference "DATE_START";
-                    rr:datatype xsd:datetime
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasEnd ;
-            rr:objectMap
-                [
-                    rml:reference "DATE_END";
-                    rr:datatype xsd:datetime
-                ] ;
-        ] .
-tedm:Duration a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate time:numericDuration ;
-            rr:objectMap
-                [
-                    rml:reference ".";
-                    rr:datatype xsd:decimal
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate time:unitType ;
-            rr:objectMap
-                [
-                    rml:reference "if(./@TYPE='MONTH') then 'http://www.w3.org/2006/time#unitMonth' else if (./@TYPE='DAY') then 'http://www.w3.org/2006/time#unitDay' else null ";
-                    rr:termType rr:IRI;
-                ] ;
-        ] .
 tedm:ContractTerm a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:definesSpecificPlaceOfPerformance ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ContractTermeLocation;
+                    rr:parentTriplesMap tedm:ContractTermLocation;
                     rr:joinCondition [
                         rr:child "./@ITEM";
                         rr:parent "./@ITEM";
@@ -566,7 +528,7 @@ tedm:ContractTerm a rr:TriplesMap ;
                     rr:datatype xsd:boolean
                 ]
         ] .
-tedm:ContractTermeLocation a rr:TriplesMap ;
+tedm:ContractTermLocation a rr:TriplesMap ;
 #    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasNutsCode ;
@@ -594,11 +556,49 @@ tedm:ContractTermeLocation a rr:TriplesMap ;
             rr:predicate locn:address ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ContractTermeLocationAddress;
+                    rr:parentTriplesMap tedm:ContractTermLocationAddress;
                     rr:joinCondition [
                         rr:child "./@ITEM";
                         rr:parent "./@ITEM";
                     ];
+                ] ;
+        ] .
+tedm:Duration a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate time:numericDuration ;
+            rr:objectMap
+                [
+                    rml:reference ".";
+                    rr:datatype xsd:decimal
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate time:unitType ;
+            rr:objectMap
+                [
+                    rml:reference "if(./@TYPE='MONTH') then 'http://www.w3.org/2006/time#unitMonth' else if (./@TYPE='DAY') then 'http://www.w3.org/2006/time#unitDay' else null ";
+                    rr:termType rr:IRI;
+                ] ;
+        ] .
+tedm:Period a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasBeginning ;
+            rr:objectMap
+                [
+                    rml:reference "DATE_START";
+                    rr:datatype xsd:datetime
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasEnd ;
+            rr:objectMap
+                [
+                    rml:reference "DATE_END";
+                    rr:datatype xsd:datetime
                 ] ;
         ] .
 
@@ -640,7 +640,7 @@ tedm:LotPurpose a rr:TriplesMap ;
         ] .
 #    rr:predicateObjectMap
 #        [
-#            rr:predicate epo:hasMainClassification ;
+#            rr:predicate epo:hasAdditionalClassification ;
 #            rr:objectMap
 #                [
 #                    rml:reference "if (not(exists(CPV_ADDITIONAL/CPV_CODE/@CODE))) then 'http://data.europa.eu/cpv/cpv/OP_DATPRO' else null";
