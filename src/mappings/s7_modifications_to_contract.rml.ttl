@@ -317,10 +317,10 @@ tedm:ContractModification a rr:TriplesMap ;
             rr:predicate epo:containsModificationsOn;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:LotAwardOutcome ;
+                    rr:parentTriplesMap tedm:Contract ;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')";
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                     ];
                 ] ;
         ] ;
@@ -339,7 +339,10 @@ tedm:ElementModificationDescription a rr:TriplesMap ;
             rr:predicate epo:hasModificationDescription ;
             rr:objectMap
                 [
-                    rml:reference "SHORT_DESCR"
+                    rml:reference "SHORT_DESCR" ;
+                    rml:languageMap [
+                         rml:reference "lower-case(ancestor::F20_2014/@LG)"
+                    ]
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -347,7 +350,10 @@ tedm:ElementModificationDescription a rr:TriplesMap ;
             rr:predicate epo:hasModificationReasonDescription ;
             rr:objectMap
                 [
-                    rml:reference "P"
+                    rml:reference ".";
+                    rml:languageMap [
+                         rml:reference "lower-case(ancestor::F20_2014/@LG)"
+                    ]
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -355,6 +361,28 @@ tedm:ElementModificationDescription a rr:TriplesMap ;
             rr:predicate epo:hasModificationJustification ;
             rr:objectMap
                 [
-                    rml:reference "UNFORESEEN_CIRCUMSTANCE"
+                    rml:reference "if (.) then 'http://publications.europa.eu/resource/authority/modification-justification/add-wss' else null";
+                    rr:termType rr:IRI
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasModificationJustification ;
+            rr:objectMap
+                [
+                    rml:reference "if (exists(UNFORESEEN_CIRCUMSTANCE)) then 'http://publications.europa.eu/resource/authority/modification-justification/mod-cir' else null";
+                    rr:termType rr:IRI
+                ] ;
+        ] ;
+
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasModificationReasonDescription ;
+            rr:objectMap
+                [
+                    rml:reference "UNFORESEEN_CIRCUMSTANCE/P";
+                    rml:languageMap [
+                         rml:reference "lower-case(ancestor::F20_2014/@LG)"
+                    ]
                 ] ;
         ] .
