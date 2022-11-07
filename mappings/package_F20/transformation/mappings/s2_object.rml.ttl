@@ -349,8 +349,8 @@ tedm:Lot a rr:TriplesMap ;
             [
                 rr:parentTriplesMap tedm:LotPurpose;
                     rr:joinCondition [
-                        rr:child "./@ITEM";
-                        rr:parent "ancestor::OBJECT_DESCR/@ITEM";
+                        rr:child "./CPV_ADDITIONAL";
+                        rr:parent "ancestor::OBJECT_DESCR/CPV_ADDITIONAL";
                     ];
             ]
         ] ;
@@ -536,8 +536,11 @@ tedm:ContractTerm a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:ContractTermeLocation;
                     rr:joinCondition [
-                        rr:child "./@ITEM";
-                        rr:parent "./@ITEM";
+#                        rr:child "./@ITEM";
+#                        rr:parent "./@ITEM";
+                         rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                         rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+
                     ];
                 ] ;
         ] ;
@@ -596,8 +599,8 @@ tedm:ContractTermeLocation a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:ContractTermeLocationAddress;
                     rr:joinCondition [
-                        rr:child "./@ITEM";
-                        rr:parent "./@ITEM";
+                        rr:child "./MAIN_SITE";
+                        rr:parent "./MAIN_SITE";
                     ];
                 ] ;
         ] .

@@ -65,3 +65,51 @@ tedm:ProcedurePurposeModification a rr:TriplesMap ;
                     ];
                 ] ;
         ] .
+
+tedm:ContractModification a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:containsModificationsOn;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:LotAwardOutcome ;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasElementModification ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ElementModificationDescription
+                ] ;
+        ] .
+
+tedm:ElementModificationDescription a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasModificationDescription ;
+            rr:objectMap
+                [
+                    rml:reference "SHORT_DESCR"
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasModificationReasonDescription ;
+            rr:objectMap
+                [
+                    rml:reference "P"
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasModificationJustification ;
+            rr:objectMap
+                [
+                    rml:reference "UNFORESEEN_CIRCUMSTANCE"
+                ] ;
+        ] .
