@@ -13,6 +13,7 @@
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix cpov: <http://data.europa.eu/m8g/> .
 @prefix legal: <https://www.w3.org/ns/legal#> .
+
 tedm:award_of_contract
   a owl:Ontology ;
   owl:imports dct:, <http://www.w3.org/2004/02/skos/core> ;
@@ -42,6 +43,19 @@ tedm:ContractOrganisationGroup a rr:TripleMap ;
                     rr:joinCondition [
                         rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
                         rr:child "ancestor::AWARD_CONTRACT/@ITEM";
+                    ];
+                ]
+        ] ;
+
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasMember;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ContractOrganisation;
+                    rr:joinCondition [
+                        rr:parent "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR";
+                        rr:child "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR";
                     ];
                 ]
         ] .
@@ -109,8 +123,8 @@ tedm:Contract a rr:TripleMap ;
                 [
                     rr:parentTriplesMap tedm:ContractIdentifier;
                     rr:joinCondition [
-                        rr:parent "./@ITEM";
-                        rr:child "./@ITEM";
+                        rr:parent "./CONTRACT_NO";
+                        rr:child "./CONTRACT_NO";
                     ];
                 ]
         ] ;
@@ -122,8 +136,10 @@ tedm:Contract a rr:TripleMap ;
                 [
                     rr:parentTriplesMap tedm:Lot;
                     rr:joinCondition [
-                        rr:parent "if (count(../OBJECT_DESCR)=1) then ./@ITEM else ./LOT_NO";
-                        rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ./LOT_NO";
+#                        rr:parent "if (count(../OBJECT_DESCR)=1) then ./@ITEM else ./LOT_NO";
+#                        rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ./LOT_NO";
+                        rr:parent "if (count(../OBJECT_DESCR)=1) then ../OBJECT_DESCR else ./LOT_NO";
+                        rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)=1) then ../OBJECT_CONTRACT/OBJECT_DESCR else ./LOT_NO";
                     ];
                 ] ;
         ] ;
@@ -246,8 +262,10 @@ tedm:LotAwardOutcome a rr:TripleMap ;
                 [
                     rr:parentTriplesMap tedm:Lot;
                     rr:joinCondition [
-                        rr:parent "if (count(../OBJECT_DESCR)=1) then ./@ITEM else ./LOT_NO";
-                        rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ./LOT_NO";
+#                        rr:parent "if (count(../OBJECT_DESCR)=1) then ./@ITEM else ./LOT_NO";
+#                        rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ./LOT_NO";
+                        rr:parent "if (count(../OBJECT_DESCR)=1) then ../OBJECT_DESCR else ./LOT_NO";
+                        rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)=1) then ../OBJECT_CONTRACT/OBJECT_DESCR else ./LOT_NO";
                     ];
                 ] ;
         ] ;
@@ -258,8 +276,10 @@ tedm:LotAwardOutcome a rr:TripleMap ;
                 [
                     rr:parentTriplesMap tedm:TenderAwardOutcome;
                     rr:joinCondition [
-                        rr:child "./@ITEM";
-                        rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
+#                        rr:child "./@ITEM";
+#                        rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
+                        rr:child "./AWARDED_CONTRACT";
+                        rr:parent "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT";
                     ];
                 ] ;
         ] ;
@@ -554,8 +574,10 @@ tedm:TenderAwardOutcome a rr:TripleMap ;
                 [
                     rr:parentTriplesMap tedm:Tender;
                     rr:joinCondition [
-                        rr:child "ancestor::AWARD_CONTRACT/@ITEM";
-                        rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
+#                        rr:child "ancestor::AWARD_CONTRACT/@ITEM";
+#                        rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
+                         rr:child "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT";
+                         rr:parent "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT";
                     ];
                 ] ;
         ] ;
@@ -566,8 +588,10 @@ tedm:TenderAwardOutcome a rr:TripleMap ;
                 [
                     rr:parentTriplesMap tedm:WinnerRole;
                     rr:joinCondition [
-                        rr:child "ancestor::AWARD_CONTRACT/@ITEM";
-                        rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
+#                        rr:child "ancestor::AWARD_CONTRACT/@ITEM";
+#                        rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
+                        rr:child "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT";
+                        rr:parent "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT";
                     ];
                 ] ;
         ] .
@@ -894,8 +918,11 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
                 [
                     rr:parentTriplesMap tedm:Lot;
                     rr:joinCondition [
-                        rr:parent "if (count(../OBJECT_DESCR)=1) then ./@ITEM else ./LOT_NO";
-                        rr:child "if (count(../../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ../LOT_NO";
+#                        rr:parent "if (count(../OBJECT_DESCR)=1) then ./@ITEM else ./LOT_NO";
+#                        rr:child "if (count(../../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ../LOT_NO";
+                        rr:parent "if (count(../OBJECT_DESCR)=1) then ../OBJECT_DESCR else ./LOT_NO";
+                        rr:child "if (count(../../OBJECT_CONTRACT/OBJECT_DESCR)=1) then ../../OBJECT_CONTRACT/OBJECT_DESCR else ../LOT_NO";
+
                     ];
                 ] ;
         ] .
