@@ -1,0 +1,11 @@
+#title: V.3.3.8 - E-mail
+#description: “V.3.3.8 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/E_MAIL. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / xsd:anyURI .
+#xpath: /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/E_MAIL
+
+PREFIX cpov: <http://data.europa.eu/m8g/>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+		?this rdf:type epo:Winner .
+		?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:email ?value . }
