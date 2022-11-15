@@ -2756,6 +2756,36 @@
             
                 
                     <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#isDesignContest</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if(exists(../PROCEDURE)) then 'true' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
                         <dt>http://data.europa.eu/a4g/ontology#hasMainFeature</dt>
 
                         
@@ -11795,6 +11825,746 @@
             <dd><strong><em>Reference:</em></strong>
                 
                     JUSTIFICATION/P
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationModification">http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationModification</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+        <dd>
+            <strong><em>Class:</em></strong> http://www.w3.org/ns/org#Organization<br>
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/ContractOrganisation/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+        </dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasLegalName</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ADDRESS_CONTRACTOR/OFFICIALNAME
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Reference Language Map:</em></strong>
+                
+                    lower-case(ancestor::F20_2014/@LG)
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasBusinessSize</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if(exists(SME)) then 'http://publications.europa.eu/resource/authority/economic-operator-size/sme' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#IRI
+                
+            </dd>
+        
+    
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if(exists(SME)) then 'http://data.europa.eu/a4g/ontology#Business' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#IRI
+                
+            </dd>
+        
+    
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasPrimaryContactPoint</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ContractorContactPointModification">http://data.europa.eu/a4g/mapping/sf-rml/ContractorContactPointModification</a>
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>https://www.w3.org/ns/legal#registeredAddress</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationAddressModification">http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationAddressModification</a>
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasID</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationIdentifierModification">http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationIdentifierModification</a>
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ContractorContactPointModification">http://data.europa.eu/a4g/mapping/sf-rml/ContractorContactPointModification</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasContactName</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ADDRESS_CONTRACTOR/CONTACT_POINT
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Reference Language Map:</em></strong>
+                
+                    lower-case(ancestor::F20_2014/@LG)
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/m8g/email</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ADDRESS_CONTRACTOR/E_MAIL
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasInternetAddress</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ADDRESS_CONTRACTOR/URL
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasFax</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ADDRESS_CONTRACTOR/FAX
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/m8g/telephone</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ADDRESS_CONTRACTOR/PHONE
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationAddressModification">http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationAddressModification</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+        <dd>
+            <strong><em>Class:</em></strong> http://www.w3.org/ns/locn#Address<br>
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/ContractOrganisationAddress/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+        </dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://www.w3.org/ns/locn#postName</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ADDRESS_CONTRACTOR/TOWN
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://www.w3.org/ns/locn#thoroughfare</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ADDRESS_CONTRACTOR/ADDRESS
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://www.w3.org/ns/locn#postCode</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ADDRESS_CONTRACTOR/POSTAL_CODE
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasNutsCode</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/nuts">http://data.europa.eu/a4g/mapping/sf-rml/nuts</a>
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    ADDRESS_CONTRACTOR/*:NUTS/@CODE
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    code.value
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasCountryCode</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/country">http://data.europa.eu/a4g/mapping/sf-rml/country</a>
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    ADDRESS_CONTRACTOR/COUNTRY/@VALUE
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    code.value
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationIdentifierModification">http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationIdentifierModification</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasIdentifierValue</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ADDRESS_CONTRACTOR/NATIONALID
                 
             </dd>
         
