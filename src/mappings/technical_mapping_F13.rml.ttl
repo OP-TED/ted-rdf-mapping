@@ -943,7 +943,20 @@ tedm:LotAwardOutcome a rr:TripleMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-#            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014[1]/AWARD_CONTRACT";
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014[1]/AWARD_CONTRACT";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/LotAwardOutcome/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:LotAwardOutcome
+        ] .
+
+# For F13
+tedm:LotAwardOutcomeFromResult a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
             rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014[1]/RESULTS";
             rml:referenceFormulation ql:XPath
         ];
@@ -1025,6 +1038,74 @@ tedm:WinnerRole a rr:TripleMap ;
             rr:class epo:Winner
 
         ] .
+
+tedm:WinnerRoleFromResults a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014[1]/RESULTS/AWARDED_PRIZE/WINNERS/WINNER" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/WinnerRole/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Winner
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasLegalName ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_WINNER/OFFICIALNAME";
+                    rml:languageMap [
+                         rml:reference "lower-case(ancestor::F13_2014/@LG)"
+                    ]
+                ] ;
+        ] .
+
+tedm:WinnerRoleFromResultsIdentifier a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014[1]/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rml:reference "if (exists(NATIONALID)) then 'http://data.europa.eu/a4g/resource/WinnerRoleIdentifier/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:Identifier
+        ] .
+
+tedm:WinnerRoleFromResultsContactPoint a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference
+                "if(exists(E_MAIL) or exists(FAX) or exists(PHONE) or exists(URL) or exists(CONTACT_POINT)) then 'http://data.europa.eu/a4g/resource/WinnerRoleContactPoint/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class cpov:ContactPoint
+
+        ] .
+
+tedm:WinnerRoleFromResultsAddress a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014[1]/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/WinnerRoleAddress/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class locn:Address
+
+        ] .
+
 #tedm:Business a rr:TripleMap ;
 #    rml:logicalSource
 #        [
@@ -1126,6 +1207,21 @@ tedm:TenderAwardOutcome a rr:TripleMap ;
             rr:class epo:TenderAwardOutcome
 
         ] .
+# For F13
+tedm:TenderAwardOutcomeFromResult a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014[1]/RESULTS/AWARDED_PRIZE" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/TenderAwardOutcome/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:TenderAwardOutcome
+
+        ] .
+
 tedm:Tender a rr:TripleMap ;
     rml:logicalSource
         [
@@ -1178,6 +1274,22 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
             rr:class epo:SubmissionStatisticalInformation
 
         ] .
+
+#F13
+tedm:SubmissionStatisticalInformationFromResult a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014[1]/RESULTS/AWARDED_PRIZE" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/SubmissionStatisticalInformation/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:SubmissionStatisticalInformation
+
+        ] .
+
 tedm:MonetaryValueSubmissionHighest a rr:TriplesMap ;
     rml:logicalSource
         [
