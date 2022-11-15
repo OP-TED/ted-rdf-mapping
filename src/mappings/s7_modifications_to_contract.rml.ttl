@@ -10,6 +10,9 @@
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix time: <http://www.w3.org/2006/time#> .
+@prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix legal: <https://www.w3.org/ns/legal#> .
 
 tedm:modifications_to_contract
   a owl:Ontology ;
@@ -405,5 +408,177 @@ tedm:FrameworkAgreementTermLot a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "JUSTIFICATION/P"
+                ] ;
+        ] .
+
+tedm:ContractorOrganisationModification a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasBusinessSize ;
+                rr:objectMap
+                [
+                    rml:reference "if(exists(SME)) then 'http://publications.europa.eu/resource/authority/economic-operator-size/sme' else null";
+                    rr:termType rr:IRI;
+                ]
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate rdf:type ;
+                rr:objectMap
+                [
+                    rml:reference "if(exists(SME)) then 'http://data.europa.eu/a4g/ontology#Business' else null";
+                    rr:termType rr:IRI;
+                ]
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasPrimaryContactPoint ;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:ContractorContactPointModification;
+                rr:joinCondition [
+                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                ];
+            ] ;
+        ] ;
+    rr:predicateObjectMap
+    [
+        rr:predicate legal:registeredAddress ;
+        rr:objectMap
+            [
+                rr:parentTriplesMap tedm:ContractorOrganisationAddressModification;
+                rr:joinCondition [
+                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                ];
+            ] ;
+    ] ;
+
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasID;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:ContractorOrganisationIdentifierModification;
+                rr:joinCondition [
+                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                ];
+            ] ;
+        ] .
+tedm:ContractorOrganisationIdentifierModification a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasIdentifierValue ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_CONTRACTOR/NATIONALID"
+                ] ;
+        ] .
+tedm:ContractorContactPointModification a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate cpov:email ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_CONTRACTOR/E_MAIL"
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasInternetAddress ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_CONTRACTOR/URL";
+                    #-rr:termType rr:IRI;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasFax ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_CONTRACTOR/FAX"
+                ]
+        ] ;
+
+    rr:predicateObjectMap
+        [
+            rr:predicate cpov:telephone ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_CONTRACTOR/PHONE"
+                ]
+        ] .
+tedm:ContractorOrganisationAddressModification a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate locn:postName ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_CONTRACTOR/TOWN"
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate locn:thoroughfare ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_CONTRACTOR/ADDRESS"
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate locn:postCode ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_CONTRACTOR/POSTAL_CODE"
+                ] ;
+        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasNutsCode ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if (not(exists(ADDRESS_CONTRACTOR/*:NUTS/@CODE))) then 'http://data.europa.eu/nuts/OP_DATPRO' else null";
+#                    rr:termType rr:IRI;
+#                ]
+#
+#        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasNutsCode;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:nuts;
+                    rr:joinCondition [
+                        rr:child "ADDRESS_CONTRACTOR/*:NUTS/@CODE";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasCountryCode ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if (not(exists(ADDRESS_CONTRACTOR/COUNTRY/@VALUE))) then 'http://publications.europa.eu/resource/authority/country/OP_DATPRO' else null";
+#                    rr:termType rr:IRI;
+#                ]
+#
+#        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCountryCode ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:country;
+                    rr:joinCondition [
+                        rr:child "ADDRESS_CONTRACTOR/COUNTRY/@VALUE";
+                        rr:parent "code.value";
+                    ];
                 ] ;
         ] .

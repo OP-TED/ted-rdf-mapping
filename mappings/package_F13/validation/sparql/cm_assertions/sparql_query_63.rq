@@ -7,7 +7,6 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:SubmissionStatisticalInformation .
-		?this epo:hasEUReceivedTenders  ?value .
-OR
-?this epo:hasReceivedNonEUTenders ?value .
-OR something else? }
+		  { ?this epo:hasEUReceivedTenders  ?value .  }
+UNION
+ { ?this epo:hasReceivedNonEUTenders ?value . } }

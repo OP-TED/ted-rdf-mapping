@@ -2133,3 +2133,81 @@ tedm:FrameworkAgreementTermLot a rr:TriplesMap ;
                 "if(exists(JUSTIFICATION)) then 'http://data.europa.eu/a4g/resource/FrameworkAgreementTerm/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:FrameworkAgreementTerm
         ] .
+
+tedm:ContractorOrganisationModification a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTORS/CONTRACTOR" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/ContractOrganisation/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class org:Organization
+
+        ] ;
+    rr:predicateObjectMap
+        [
+        rr:predicate epo:hasLegalName ;
+        rr:objectMap
+                [
+                    rml:reference "ADDRESS_CONTRACTOR/OFFICIALNAME";
+                    rml:languageMap [
+                         rml:reference "lower-case(ancestor::F20_2014/@LG)"
+                    ]
+                ]
+        ] .
+
+tedm:ContractorOrganisationIdentifierModification a rr:TripleMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTORS/CONTRACTOR";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rml:reference "if (exists(ADDRESS_CONTRACTOR/NATIONALID)) then 'http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:Identifier
+        ] .
+
+tedm:ContractorContactPointModification a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTORS/CONTRACTOR" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+             rml:reference
+                "if(exists(ADDRESS_CONTRACTOR/E_MAIL) or exists(ADDRESS_CONTRACTOR/FAX) or exists(ADDRESS_CONTRACTOR/PHONE) or exists(ADDRESS_CONTRACTOR/URL) or exists(ADDRESS_CONTRACTOR/CONTACT_POINT)) then 'http://data.europa.eu/a4g/resource/ContractContactPoint/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class cpov:ContactPoint
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContactName ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_CONTRACTOR/CONTACT_POINT";
+                    rml:languageMap [
+                         rml:reference "lower-case(ancestor::F20_2014/@LG)"
+                    ]
+                ]
+        ] .
+
+tedm:ContractorOrganisationAddressModification a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTORS/CONTRACTOR" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/ContractOrganisationAddress/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class locn:Address
+
+        ] .

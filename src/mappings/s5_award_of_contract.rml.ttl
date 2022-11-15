@@ -315,6 +315,15 @@ tedm:LotAwardOutcome a rr:TripleMap ;
             rr:predicate epo:hasNonAwardJustification;
             rr:objectMap
                 [
+                    rml:reference "if(exists(../RESULTS/NO_AWARDED_PRIZE/PROCUREMENT_DISCONTINUED)) then 'http://publications.europa.eu/resource/authority/non-award-justification/other' else  null";
+                    rr:termType rr:IRI;
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasNonAwardJustification;
+            rr:objectMap
+                [
                     rml:reference "if(exists(NO_AWARDED_CONTRACT/PROCUREMENT_UNSUCCESSFUL)) then 'http://publications.europa.eu/resource/authority/non-award-justification/all-rej' else if(exists(NO_AWARDED_CONTRACT/PROCUREMENT_DISCONTINUED)) then 'http://publications.europa.eu/resource/authority/non-award-justification/other' else null";
                     rr:termType rr:IRI;
                 ]

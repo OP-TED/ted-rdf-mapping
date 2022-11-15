@@ -349,8 +349,12 @@ tedm:Lot a rr:TriplesMap ;
             [
                 rr:parentTriplesMap tedm:LotPurpose;
                     rr:joinCondition [
-                        rr:child "./CPV_ADDITIONAL";
-                        rr:parent "ancestor::OBJECT_DESCR/CPV_ADDITIONAL";
+#                        rr:child "./@ITEM";
+#                        rr:parent "ancestor::OBJECT_DESCR/@ITEM";
+#                        rr:child "./CPV_ADDITIONAL";
+#                        rr:parent "ancestor::OBJECT_DESCR/CPV_ADDITIONAL";
+                        rr:child "if(exists(./@ITEM)) then ./@ITEM else 1";
+                        rr:parent "if(exists(ancestor::OBJECT_DESCR/@ITEM)) then ancestor::OBJECT_DESCR/@ITEM else 1";
                     ];
             ]
         ] ;
