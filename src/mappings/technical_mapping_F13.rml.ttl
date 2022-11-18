@@ -939,34 +939,23 @@ tedm:Contract a rr:TripleMap ;
                          rml:reference "lower-case(ancestor::F13_2014/@LG)"
                     ]
                 ]
-        ] ;
-    rr:predicateObjectMap   #specific for F3, F06, F21, F22 and perhaps others (different for F25 and F23, for example)
-        [
-            rr:predicate epo:hasContractConclusionDate;
-            rr:objectMap
-                [
-                    rml:reference "AWARDED_CONTRACT/DATE_CONCLUSION_CONTRACT";
-                    rr:datatype xsd:date;
-                ]
+#        ] ;
+#    rr:predicateObjectMap   #specific for F3, F06, F21, F22 and perhaps others (different for F25 and F23, and also F13, for example)
+#        [
+#            rr:predicate epo:hasContractConclusionDate;
+#            rr:objectMap
+#                [
+#                    rml:reference "AWARDED_CONTRACT/DATE_CONCLUSION_CONTRACT";
+#                    rr:datatype xsd:date;
+#                ]
         ] .
 tedm:LotAwardOutcome a rr:TripleMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014[1]/AWARD_CONTRACT";
-            rml:referenceFormulation ql:XPath
-        ];
-    rr:subjectMap
-        [
-            rr:template "http://data.europa.eu/a4g/resource/LotAwardOutcome/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class epo:LotAwardOutcome
-        ] .
-
-# For F13
-tedm:LotAwardOutcomeFromResult a rr:TripleMap ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
+# For all forms except F13
+#            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014[1]/AWARD_CONTRACT";
+# For form F13
             rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014[1]/RESULTS";
             rml:referenceFormulation ql:XPath
         ];
@@ -974,8 +963,22 @@ tedm:LotAwardOutcomeFromResult a rr:TripleMap ;
         [
             rr:template "http://data.europa.eu/a4g/resource/LotAwardOutcome/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:LotAwardOutcome
-        ] .
-#    rr:predicateObjectMap   #specific for F25 and F23 (different for F3 and F06, for example)
+        ] ;
+
+# For F13
+#tedm:LotAwardOutcomeFromResult a rr:TripleMap ;
+#    rml:logicalSource
+#        [
+#            rml:source "data/source.xml" ;
+#            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014[1]/RESULTS";
+#            rml:referenceFormulation ql:XPath
+#        ];
+#    rr:subjectMap
+#        [
+#            rr:template "http://data.europa.eu/a4g/resource/LotAwardOutcome/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+#            rr:class epo:LotAwardOutcome
+#        ] .
+#    rr:predicateObjectMap   #specific for F25 and F23 (similar to F13, but different for F3 and F06, for example)
 #        [
 #            rr:predicate epo:hasAwardDecisionDate;
 #            rr:objectMap
@@ -984,6 +987,15 @@ tedm:LotAwardOutcomeFromResult a rr:TripleMap ;
 #                    rr:datatype xsd:date;
 #                ]
 #        ] .
+    rr:predicateObjectMap   #specific for F13 (similar to F25 and F23, but different for F3 and F06, for example)
+        [
+            rr:predicate epo:hasAwardDecisionDate;
+            rr:objectMap
+                [
+                    rml:reference "AWARDED_PRIZE/DATE_DECISION_JURY";
+                    rr:datatype xsd:date;
+                ]
+        ] .
 tedm:ContractIdentifier a rr:TripleMap ;
     rml:logicalSource
         [
@@ -1078,12 +1090,12 @@ tedm:WinnerRoleFromResultsIdentifier a rr:TripleMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014[1]/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER";
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014[1]/RESULTS/AWARDED_PRIZE/WINNERS/WINNER";
             rml:referenceFormulation ql:XPath
         ];
     rr:subjectMap
         [
-            rml:reference "if (exists(NATIONALID)) then 'http://data.europa.eu/a4g/resource/WinnerRoleIdentifier/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(ADDRESS_WINNER/NATIONALID)) then 'http://data.europa.eu/a4g/resource/WinnerRoleIdentifier/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:Identifier
         ] .
 
@@ -1091,13 +1103,13 @@ tedm:WinnerRoleFromResultsContactPoint a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER";
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER";
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
         [
             rml:reference
-                "if(exists(E_MAIL) or exists(FAX) or exists(PHONE) or exists(URL) or exists(CONTACT_POINT)) then 'http://data.europa.eu/a4g/resource/WinnerRoleContactPoint/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+                "if(exists(ADDRESS_WINNER/E_MAIL) or exists(ADDRESS_WINNER/FAX) or exists(ADDRESS_WINNER/PHONE) or exists(ADDRESS_WINNER/URL) or exists(ADDRESS_WINNER/CONTACT_POINT)) then 'http://data.europa.eu/a4g/resource/WinnerRoleContactPoint/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class cpov:ContactPoint
 
         ] .
@@ -1106,7 +1118,7 @@ tedm:WinnerRoleFromResultsAddress a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014[1]/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER";
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014[1]/RESULTS/AWARDED_PRIZE/WINNERS/WINNER";
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -1208,20 +1220,9 @@ tedm:TenderAwardOutcome a rr:TripleMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rr:template "http://data.europa.eu/a4g/resource/TenderAwardOutcome/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class epo:TenderAwardOutcome
-
-        ] .
-# For F13
-tedm:TenderAwardOutcomeFromResult a rr:TripleMap ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
+# For all forms except F13
+#            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT" ;
+# For form F13
             rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014[1]/RESULTS/AWARDED_PRIZE" ;
             rml:referenceFormulation ql:XPath
         ] ;
@@ -1231,6 +1232,20 @@ tedm:TenderAwardOutcomeFromResult a rr:TripleMap ;
             rr:class epo:TenderAwardOutcome
 
         ] .
+# For F13
+#tedm:TenderAwardOutcomeFromResult a rr:TripleMap ;
+#    rml:logicalSource
+#        [
+#            rml:source "data/source.xml" ;
+#            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014[1]/RESULTS/AWARDED_PRIZE" ;
+#            rml:referenceFormulation ql:XPath
+#        ] ;
+#    rr:subjectMap
+#        [
+#            rr:template "http://data.europa.eu/a4g/resource/TenderAwardOutcome/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+#            rr:class epo:TenderAwardOutcome
+#
+#        ] .
 
 tedm:Tender a rr:TripleMap ;
     rml:logicalSource
@@ -1286,7 +1301,7 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
         ] .
 
 #F13
-tedm:SubmissionStatisticalInformationFromResult a rr:TripleMap ;
+tedm:SubmissionStatisticalInformationFromResults a rr:TripleMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;

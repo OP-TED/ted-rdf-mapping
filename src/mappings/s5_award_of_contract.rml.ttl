@@ -294,6 +294,7 @@ tedm:LotAwardOutcome a rr:TripleMap ;
                 ] ;
         ] ;
 
+#TODO: this mapping needs to be reviewed and fixed
     rr:predicateObjectMap
         [
             rr:predicate epo:hasAdditionalNonAwardJustification;
@@ -302,12 +303,21 @@ tedm:LotAwardOutcome a rr:TripleMap ;
                     rml:reference "NO_AWARDED_CONTRACT/PROCUREMENT_DISCONTINUED/NO_DOC_EXT/@PUBLICATION"
                 ]
         ] ;
+#TODO: this mapping needs to be reviewed and fixed
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasAdditionalNonAwardJustification;
+#            rr:objectMap
+#                [
+#                    rml:reference "NO_AWARDED_PRIZE/PROCUREMENT_DISCONTINUED/NO_DOC_EXT/@PUBLICATION"
+#                ]
+#        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasAwardStatus;
             rr:objectMap
                 [
-                    rml:reference "if(exists(NO_AWARDED_CONTRACT)) then 'http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw' else if(exists(AWARDED_CONTRACT)) then 'http://publications.europa.eu/resource/authority/winner-selection-status/selec-w' else null";
+                    rml:reference "if(exists(NO_AWARDED_CONTRACT) or exists(NO_AWARDED_PRIZE)) then 'http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw' else if(exists(AWARDED_CONTRACT)) then 'http://publications.europa.eu/resource/authority/winner-selection-status/selec-w' else null";
                     rr:termType rr:IRI;
                 ]
         ] ;
@@ -316,47 +326,47 @@ tedm:LotAwardOutcome a rr:TripleMap ;
             rr:predicate epo:hasNonAwardJustification;
             rr:objectMap
                 [
-                    rml:reference "if(exists(NO_AWARDED_CONTRACT/PROCUREMENT_UNSUCCESSFUL)) then 'http://publications.europa.eu/resource/authority/non-award-justification/all-rej' else if(exists(NO_AWARDED_CONTRACT/PROCUREMENT_DISCONTINUED)) then 'http://publications.europa.eu/resource/authority/non-award-justification/other' else null";
+                    rml:reference "if(exists(NO_AWARDED_CONTRACT/PROCUREMENT_UNSUCCESSFUL) or exists(NO_AWARDED_PRIZE/PROCUREMENT_UNSUCCESSFUL)) then 'http://publications.europa.eu/resource/authority/non-award-justification/all-rej' else if(exists(NO_AWARDED_CONTRACT/PROCUREMENT_DISCONTINUED)or exists(NO_AWARDED_PRIZE/PROCUREMENT_DISCONTINUED)) then 'http://publications.europa.eu/resource/authority/non-award-justification/other' else null";
                     rr:termType rr:IRI;
                 ]
         ] .
 
 # For F13
-tedm:LotAwardOutcomeFromResult a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:comprisesTenderAwardOutcome ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:TenderAwardOutcomeFromResult;
-                    rr:joinCondition [
-#                        rr:child "./@ITEM";
-#                        rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
-#                        rr:child "./AWARDED_CONTRACT";
-#                        rr:parent "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT";
-                        rr:child "if(exists(./@ITEM)) then ./@ITEM else 1";
-                        rr:parent "if(exists(ancestor::RESULTS/@ITEM)) then ancestor::RESULTS/@ITEM else 1";
-                    ];
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasNonAwardJustification;
-            rr:objectMap
-                [
-                    rml:reference "if(exists(../RESULTS/NO_AWARDED_PRIZE/PROCUREMENT_UNSUCCESSFUL)) then 'http://publications.europa.eu/resource/authority/non-award-justification/all-rej' else if(exists(../RESULTS/NO_AWARDED_PRIZE/PROCUREMENT_DISCONTINUED)) then 'http://publications.europa.eu/resource/authority/non-award-justification/other' else null";
-                    rr:termType rr:IRI;
-                ]
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasAwardDecisionDate;
-            rr:objectMap
-                [
-                    rml:reference "AWARDED_PRIZE/DATE_DECISION_JURY";
-                    rr:datatype xsd:date;
-                ]
-        ] .
+#tedm:LotAwardOutcomeFromResult a rr:TripleMap ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:comprisesTenderAwardOutcome ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:TenderAwardOutcomeFromResult;
+#                    rr:joinCondition [
+##                        rr:child "./@ITEM";
+##                        rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
+##                        rr:child "./AWARDED_CONTRACT";
+##                        rr:parent "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT";
+#                        rr:child "if(exists(./@ITEM)) then ./@ITEM else 1";
+#                        rr:parent "if(exists(ancestor::RESULTS/@ITEM)) then ancestor::RESULTS/@ITEM else 1";
+#                    ];
+#                ] ;
+#        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasNonAwardJustification;
+#            rr:objectMap
+#                [
+#                    rml:reference "if(exists(NO_AWARDED_PRIZE/PROCUREMENT_UNSUCCESSFUL)) then 'http://publications.europa.eu/resource/authority/non-award-justification/all-rej' else if(exists(../RESULTS/NO_AWARDED_PRIZE/PROCUREMENT_DISCONTINUED)) then 'http://publications.europa.eu/resource/authority/non-award-justification/other' else null";
+#                    rr:termType rr:IRI;
+#                ]
+#        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasAwardDecisionDate;
+#            rr:objectMap
+#                [
+#                    rml:reference "AWARDED_PRIZE/DATE_DECISION_JURY";
+#                    rr:datatype xsd:date;
+#                ]
+#        ] .
 
 tedm:ContractIdentifier a rr:TripleMap ;
     rr:predicateObjectMap
@@ -982,7 +992,7 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
                 ] ;
         ] .
 
-tedm:SubmissionStatisticalInformationFromResult a rr:TripleMap ;
+tedm:SubmissionStatisticalInformationFromResults a rr:TripleMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasReceivedTenders;
@@ -1129,17 +1139,25 @@ tedm:WinnerRoleFromResults a rr:TripleMap ;
         [
             rr:predicate epo:hasID;
             rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:WinnerRoleFromResultsIdentifier
-                ]
+            [
+                rr:parentTriplesMap tedm:WinnerRoleFromResultsIdentifier;
+                rr:joinCondition [
+                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                ];
+            ] ;
         ] ;
     rr:predicateObjectMap
         [
             rr:predicate legal:registeredAddress ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:WinnerRoleFromResultsAddress
-                ]
+                    rr:parentTriplesMap tedm:WinnerRoleFromResultsAddress;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
+                ] ;
         ] ;
     rr:predicateObjectMap
         [
