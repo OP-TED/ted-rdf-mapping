@@ -964,20 +964,6 @@ tedm:LotAwardOutcome a rr:TripleMap ;
             rr:template "http://data.europa.eu/a4g/resource/LotAwardOutcome/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:LotAwardOutcome
         ] ;
-
-# For F13
-#tedm:LotAwardOutcomeFromResult a rr:TripleMap ;
-#    rml:logicalSource
-#        [
-#            rml:source "data/source.xml" ;
-#            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014[1]/RESULTS";
-#            rml:referenceFormulation ql:XPath
-#        ];
-#    rr:subjectMap
-#        [
-#            rr:template "http://data.europa.eu/a4g/resource/LotAwardOutcome/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-#            rr:class epo:LotAwardOutcome
-#        ] .
 #    rr:predicateObjectMap   #specific for F25 and F23 (similar to F13, but different for F3 and F06, for example)
 #        [
 #            rr:predicate epo:hasAwardDecisionDate;
@@ -1232,21 +1218,6 @@ tedm:TenderAwardOutcome a rr:TripleMap ;
             rr:class epo:TenderAwardOutcome
 
         ] .
-# For F13
-#tedm:TenderAwardOutcomeFromResult a rr:TripleMap ;
-#    rml:logicalSource
-#        [
-#            rml:source "data/source.xml" ;
-#            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014[1]/RESULTS/AWARDED_PRIZE" ;
-#            rml:referenceFormulation ql:XPath
-#        ] ;
-#    rr:subjectMap
-#        [
-#            rr:template "http://data.europa.eu/a4g/resource/TenderAwardOutcome/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-#            rr:class epo:TenderAwardOutcome
-#
-#        ] .
-
 tedm:Tender a rr:TripleMap ;
     rml:logicalSource
         [

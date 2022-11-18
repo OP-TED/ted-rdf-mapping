@@ -304,14 +304,14 @@ tedm:LotAwardOutcome a rr:TripleMap ;
                 ]
         ] ;
 #TODO: this mapping needs to be reviewed and fixed
-#    rr:predicateObjectMap
-#        [
-#            rr:predicate epo:hasAdditionalNonAwardJustification;
-#            rr:objectMap
-#                [
-#                    rml:reference "NO_AWARDED_PRIZE/PROCUREMENT_DISCONTINUED/NO_DOC_EXT/@PUBLICATION"
-#                ]
-#        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAdditionalNonAwardJustification;
+            rr:objectMap
+                [
+                    rml:reference "NO_AWARDED_PRIZE/PROCUREMENT_DISCONTINUED/NO_DOC_EXT/@PUBLICATION"
+                ]
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasAwardStatus;
@@ -330,43 +330,6 @@ tedm:LotAwardOutcome a rr:TripleMap ;
                     rr:termType rr:IRI;
                 ]
         ] .
-
-# For F13
-#tedm:LotAwardOutcomeFromResult a rr:TripleMap ;
-#    rr:predicateObjectMap
-#        [
-#            rr:predicate epo:comprisesTenderAwardOutcome ;
-#            rr:objectMap
-#                [
-#                    rr:parentTriplesMap tedm:TenderAwardOutcomeFromResult;
-#                    rr:joinCondition [
-##                        rr:child "./@ITEM";
-##                        rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
-##                        rr:child "./AWARDED_CONTRACT";
-##                        rr:parent "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT";
-#                        rr:child "if(exists(./@ITEM)) then ./@ITEM else 1";
-#                        rr:parent "if(exists(ancestor::RESULTS/@ITEM)) then ancestor::RESULTS/@ITEM else 1";
-#                    ];
-#                ] ;
-#        ] ;
-#    rr:predicateObjectMap
-#        [
-#            rr:predicate epo:hasNonAwardJustification;
-#            rr:objectMap
-#                [
-#                    rml:reference "if(exists(NO_AWARDED_PRIZE/PROCUREMENT_UNSUCCESSFUL)) then 'http://publications.europa.eu/resource/authority/non-award-justification/all-rej' else if(exists(../RESULTS/NO_AWARDED_PRIZE/PROCUREMENT_DISCONTINUED)) then 'http://publications.europa.eu/resource/authority/non-award-justification/other' else null";
-#                    rr:termType rr:IRI;
-#                ]
-#        ] ;
-#    rr:predicateObjectMap
-#        [
-#            rr:predicate epo:hasAwardDecisionDate;
-#            rr:objectMap
-#                [
-#                    rml:reference "AWARDED_PRIZE/DATE_DECISION_JURY";
-#                    rr:datatype xsd:date;
-#                ]
-#        ] .
 
 tedm:ContractIdentifier a rr:TripleMap ;
     rr:predicateObjectMap
@@ -1010,7 +973,6 @@ tedm:SubmissionStatisticalInformationFromResults a rr:TripleMap ;
                     rr:datatype xsd:integer;
                 ]
         ] ;
-
     rr:predicateObjectMap
         [
             rr:predicate epo:hasReceivedSMETenders;
@@ -1020,7 +982,6 @@ tedm:SubmissionStatisticalInformationFromResults a rr:TripleMap ;
                     rr:datatype xsd:integer
                 ]
         ] ;
-
 #    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasReceivedNonEUTenders;
