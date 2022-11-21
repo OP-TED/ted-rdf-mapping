@@ -274,7 +274,7 @@
         
             <dd><strong><em>Join condition Child:</em></strong>
                 
-                    ./@ITEM
+                    if(exists(./@ITEM)) then ./@ITEM else 1
                 
             </dd>
         
@@ -284,7 +284,7 @@
         
             <dd><strong><em>Join condition Parent:</em></strong>
                 
-                    ancestor::OBJECT_DESCR/@ITEM
+                    if(exists(ancestor::OBJECT_DESCR/@ITEM)) then ancestor::OBJECT_DESCR/@ITEM else 1
                 
             </dd>
         
@@ -3416,7 +3416,7 @@
         
             <dd><strong><em>Parent Triple Map:</em></strong>
                 
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ContractTermeLocation">http://data.europa.eu/a4g/mapping/sf-rml/ContractTermeLocation</a>
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLocation">http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLocation</a>
                 
             </dd>
         
@@ -3426,7 +3426,7 @@
         
             <dd><strong><em>Join condition Child:</em></strong>
                 
-                    ./@ITEM
+                    if(exists(./@ITEM)) then ./@ITEM else 1
                 
             </dd>
         
@@ -3436,7 +3436,7 @@
         
             <dd><strong><em>Join condition Parent:</em></strong>
                 
-                    ./@ITEM
+                    if(exists(./@ITEM)) then ./@ITEM else 1
                 
             </dd>
         
@@ -5245,7 +5245,7 @@
     </dl>
 
 
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ContractTermeLocation">http://data.europa.eu/a4g/mapping/sf-rml/ContractTermeLocation</h2>
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLocation">http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLocation</h2>
     
         
 
@@ -5331,7 +5331,7 @@
         
             <dd><strong><em>Parent Triple Map:</em></strong>
                 
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ContractTermeLocationAddress">http://data.europa.eu/a4g/mapping/sf-rml/ContractTermeLocationAddress</a>
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLocationAddress">http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLocationAddress</a>
                 
             </dd>
         
@@ -5341,7 +5341,7 @@
         
             <dd><strong><em>Join condition Child:</em></strong>
                 
-                    ./@ITEM
+                    ./MAIN_SITE
                 
             </dd>
         
@@ -5351,7 +5351,7 @@
         
             <dd><strong><em>Join condition Parent:</em></strong>
                 
-                    ./@ITEM
+                    ./MAIN_SITE
                 
             </dd>
         
@@ -7769,7 +7769,7 @@
     </dl>
 
 
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ContractTermeLocationAddress">http://data.europa.eu/a4g/mapping/sf-rml/ContractTermeLocationAddress</h2>
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLocationAddress">http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLocationAddress</h2>
     
         
 
@@ -8788,7 +8788,7 @@
     </dl>
 
 
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/TenderMonetaryValue">http://data.europa.eu/a4g/mapping/sf-rml/TenderMonetaryValue</h2>
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcomeAwardedMonetaryValue">http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcomeAwardedMonetaryValue</h2>
     
         
 
@@ -8819,7 +8819,7 @@
         
             <dd><strong><em>Reference:</em></strong>
                 
-                    VALUES/VAL_TOTAL
+                    AWARDED_CONTRACT/VALUES/VAL_TOTAL
                 
             </dd>
         
@@ -8863,7 +8863,7 @@
         
             <dd><strong><em>Join condition Child:</em></strong>
                 
-                    VALUES/VAL_TOTAL/@CURRENCY
+                    AWARDED_CONTRACT/VALUES/VAL_TOTAL/@CURRENCY
                 
             </dd>
         
@@ -8891,7 +8891,7 @@
     </dl>
 
 
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcomeMonetaryValue">http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcomeMonetaryValue</h2>
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcomeBargainMonetaryValue">http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcomeBargainMonetaryValue</h2>
     
         
 
@@ -9907,14 +9907,6 @@
                         
 
                         
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
 
 
                     </dl>
@@ -9945,14 +9937,6 @@
                         
 
                         
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
 
 
                     </dl>
@@ -10015,14 +9999,6 @@
                         
 
                         
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
 
 
                     </dl>
@@ -11205,6 +11181,358 @@
             <dd><strong><em>Join condition Parent:</em></strong>
                 
                     unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ContractOrganisationFromResultsContactPoint">http://data.europa.eu/a4g/mapping/sf-rml/ContractOrganisationFromResultsContactPoint</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasInternetAddress</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ADDRESS_WINNER/URL
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/m8g/email</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ADDRESS_WINNER/E_MAIL
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasFax</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ADDRESS_WINNER/FAX
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/m8g/telephone</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ADDRESS_WINNER/PHONE
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ContractOrganisationFromResultsAddress">http://data.europa.eu/a4g/mapping/sf-rml/ContractOrganisationFromResultsAddress</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://www.w3.org/ns/locn#postName</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ADDRESS_WINNER/TOWN
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://www.w3.org/ns/locn#thoroughfare</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ADDRESS_WINNER/ADDRESS
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://www.w3.org/ns/locn#postCode</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ADDRESS_WINNER/POSTAL_CODE
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasNutsCode</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/nuts">http://data.europa.eu/a4g/mapping/sf-rml/nuts</a>
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    ADDRESS_WINNER/*:NUTS/@CODE
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    code.value
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasCountryCode</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/country">http://data.europa.eu/a4g/mapping/sf-rml/country</a>
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    ADDRESS_WINNER/COUNTRY/@VALUE
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    code.value
                 
             </dd>
         
