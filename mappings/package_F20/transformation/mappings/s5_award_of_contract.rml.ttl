@@ -293,6 +293,8 @@ tedm:LotAwardOutcome a rr:TripleMap ;
                     ];
                 ] ;
         ] ;
+
+#TODO: this mapping needs to be reviewed and fixed
     rr:predicateObjectMap
         [
             rr:predicate epo:hasAdditionalNonAwardJustification;
@@ -301,12 +303,21 @@ tedm:LotAwardOutcome a rr:TripleMap ;
                     rml:reference "NO_AWARDED_CONTRACT/PROCUREMENT_DISCONTINUED/NO_DOC_EXT/@PUBLICATION"
                 ]
         ] ;
+#TODO: this mapping needs to be reviewed and fixed
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAdditionalNonAwardJustification;
+            rr:objectMap
+                [
+                    rml:reference "NO_AWARDED_PRIZE/PROCUREMENT_DISCONTINUED/NO_DOC_EXT/@PUBLICATION"
+                ]
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasAwardStatus;
             rr:objectMap
                 [
-                    rml:reference "if(exists(NO_AWARDED_CONTRACT)) then 'http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw' else if(exists(AWARDED_CONTRACT)) then 'http://publications.europa.eu/resource/authority/winner-selection-status/selec-w' else null";
+                    rml:reference "if(exists(NO_AWARDED_CONTRACT) or exists(NO_AWARDED_PRIZE)) then 'http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw' else if(exists(AWARDED_CONTRACT)) then 'http://publications.europa.eu/resource/authority/winner-selection-status/selec-w' else null";
                     rr:termType rr:IRI;
                 ]
         ] ;
@@ -315,19 +326,11 @@ tedm:LotAwardOutcome a rr:TripleMap ;
             rr:predicate epo:hasNonAwardJustification;
             rr:objectMap
                 [
-                    rml:reference "if(exists(../RESULTS/NO_AWARDED_PRIZE/PROCUREMENT_DISCONTINUED)) then 'http://publications.europa.eu/resource/authority/non-award-justification/other' else  null";
-                    rr:termType rr:IRI;
-                ]
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasNonAwardJustification;
-            rr:objectMap
-                [
-                    rml:reference "if(exists(NO_AWARDED_CONTRACT/PROCUREMENT_UNSUCCESSFUL)) then 'http://publications.europa.eu/resource/authority/non-award-justification/all-rej' else if(exists(NO_AWARDED_CONTRACT/PROCUREMENT_DISCONTINUED)) then 'http://publications.europa.eu/resource/authority/non-award-justification/other' else null";
+                    rml:reference "if(exists(NO_AWARDED_CONTRACT/PROCUREMENT_UNSUCCESSFUL) or exists(NO_AWARDED_PRIZE/PROCUREMENT_UNSUCCESSFUL)) then 'http://publications.europa.eu/resource/authority/non-award-justification/all-rej' else if(exists(NO_AWARDED_CONTRACT/PROCUREMENT_DISCONTINUED)or exists(NO_AWARDED_PRIZE/PROCUREMENT_DISCONTINUED)) then 'http://publications.europa.eu/resource/authority/non-award-justification/other' else null";
                     rr:termType rr:IRI;
                 ]
         ] .
+
 tedm:ContractIdentifier a rr:TripleMap ;
     rr:predicateObjectMap
         [
@@ -358,7 +361,7 @@ tedm:WinnerRole a rr:TripleMap ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ContractOrganisation;
-                   rr:joinCondition [
+                    rr:joinCondition [
                     rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                     rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                 ];
@@ -951,6 +954,62 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
                     ];
                 ] ;
         ] .
+
+tedm:SubmissionStatisticalInformationFromResults a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasReceivedTenders;
+            rr:objectMap
+                [
+                    rml:reference "PARTICIPANTS/NB_PARTICIPANTS";
+                    rr:datatype xsd:integer;
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasReceivedSMETenders;
+            rr:objectMap
+                [
+                    rml:reference "PARTICIPANTS/NB_PARTICIPANTS_SME";
+                    rr:datatype xsd:integer
+                ]
+        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasReceivedNonEUTenders;
+#            rr:objectMap
+#                [
+#                    rml:reference "PARTICIPANTS/NB_PARTICIPANTS_OTHER_EU";
+#                    rr:datatype xsd:integer
+#                ]
+#        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasEUReceivedTenders;
+            rr:objectMap
+                [
+                    rml:reference "PARTICIPANTS/NB_PARTICIPANTS_OTHER_EU";
+                    rr:datatype xsd:integer
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:concernsSubmissionsForLot ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Lot;
+                    rr:joinCondition [
+#                        rr:parent "if (count(../OBJECT_DESCR)=1) then ./@ITEM else ./LOT_NO";
+#                        rr:child "if (count(../../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ../LOT_NO";
+#                        rr:parent "if (count(../OBJECT_DESCR)=1) then ../OBJECT_DESCR else ./LOT_NO";
+#                        rr:child "if (count(../../OBJECT_CONTRACT/OBJECT_DESCR)=1) then ../../OBJECT_CONTRACT/OBJECT_DESCR else ../LOT_NO";
+                        rr:parent "if (count(../OBJECT_DESCR)=1) then (if(exists(./@ITEM)) then ./@ITEM else 1) else ./LOT_NO";
+                        rr:child "if (count(../../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ../LOT_NO";
+
+                    ];
+                ] ;
+        ] .
+
 tedm:MonetaryValueSubmissionHighest a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -1011,6 +1070,174 @@ tedm:MonetaryValueSubmissionLowest a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:currency;
                     rr:joinCondition [
                         rr:child "VALUES/VAL_RANGE_TOTAL/@CURRENCY";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] .
+
+tedm:WinnerRoleFromResults a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:playedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ContractOrganisationFromResults;
+                    rr:joinCondition [
+                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                ];
+                ] ;
+        ] .
+
+tedm:ContractOrganisationFromResults a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasBusinessSize ;
+                rr:objectMap
+                [
+                    rml:reference "if(exists(SME)) then 'http://publications.europa.eu/resource/authority/economic-operator-size/sme' else null";
+                    rr:termType rr:IRI;
+                ]
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate rdf:type ;
+                rr:objectMap
+                [
+                    rml:reference "if(exists(SME)) then 'http://data.europa.eu/a4g/ontology#Business' else null";
+                    rr:termType rr:IRI;
+                ]
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasID;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:ContractOrganisationFromResultsIdentifier;
+                rr:joinCondition [
+                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                ];
+            ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate legal:registeredAddress ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ContractOrganisationFromResultsAddress;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasPrimaryContactPoint ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ContractOrganisationFromResultsContactPoint ;
+                    rr:joinCondition [
+                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
+                ] ;
+        ] .
+
+tedm:ContractOrganisationFromResultsIdentifier a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasIdentifierValue;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_WINNER/NATIONALID"
+                ]
+        ] .
+
+tedm:ContractOrganisationFromResultsContactPoint a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasInternetAddress ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_WINNER/URL";
+                    #-rr:termType rr:IRI;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate cpov:email ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_WINNER/E_MAIL"
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasFax ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_WINNER/FAX"
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate cpov:telephone ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_WINNER/PHONE"
+                ]
+        ] .
+tedm:ContractOrganisationFromResultsAddress a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate locn:postName ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_WINNER/TOWN"
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate locn:thoroughfare ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_WINNER/ADDRESS"
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate locn:postCode ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_WINNER/POSTAL_CODE"
+                ] ;
+        ] ;
+
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasNutsCode;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:nuts;
+                    rr:joinCondition [
+                        rr:child "ADDRESS_WINNER/*:NUTS/@CODE";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] ;
+
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCountryCode ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:country;
+                    rr:joinCondition [
+                        rr:child "ADDRESS_WINNER/COUNTRY/@VALUE";
                         rr:parent "code.value";
                     ];
                 ] ;
