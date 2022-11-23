@@ -17,6 +17,7 @@ tedm:procedure
         This module provides the mapping definitions for the ..."""@en ;
   rdfs:label "TED-SWS mapping of "@en ;  
   dct:date "2022-05-11"^^xsd:date .
+
 tedm:ProcedureIdentifier a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -45,7 +46,7 @@ tedm:Procedure a rr:TriplesMap ;
             rr:predicate epo:hasProcedureType ;
             rr:objectMap
                 [
-                        rml:reference "if(exists(../PROCEDURE/PT_OPEN)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/open' else if(exists(../PROCEDURE/PT_RESTRICTED)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted' else if(exists(../PROCEDURE/PT_COMPETITIVE_NEGOTIATION)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call' else if(exists(../PROCEDURE/PT_COMPETITIVE_DIALOGUE)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial' else if(exists(../PROCEDURE/PT_INNOVATION_PARTNERSHIP)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation' else if(exists(../PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call' else if(exists(../PROCEDURE/PT_INVOLVING_NEGOTIATION)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call' else null";
+                    rml:reference "if(exists(../PROCEDURE/PT_OPEN)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/open' else if(exists(../PROCEDURE/PT_RESTRICTED)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted' else if(exists(../PROCEDURE/PT_NEGOTIATED_WITH_PRIOR_CALL)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call' else if(exists(../PROCEDURE/PT_COMPETITIVE_DIALOGUE)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial' else if(exists(../PROCEDURE/PT_INNOVATION_PARTNERSHIP)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation' else if(exists(../PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call' else if(exists(../PROCEDURE/PT_INVOLVING_NEGOTIATION)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call' else null";
                     rr:termType rr:IRI
                 ] ;
         ] ;
@@ -62,7 +63,8 @@ tedm:Procedure a rr:TriplesMap ;
             rr:predicate epo:isAccelerated ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(../PROCEDURE/ACCELERATED_PROC)) then 'true' else 'false'";
+#                    rml:reference "if(exists(../PROCEDURE/ACCELERATED_PROC)) then 'true' else 'false'";
+                    rml:reference "if(exists(../PROCEDURE/ACCELERATED_PROC)) then 'true' else null";
                     rr:datatype xsd:boolean
                 ] ;
         ] ;
@@ -113,9 +115,10 @@ tedm:Procedure a rr:TriplesMap ;
             rr:predicate epo:usesTechnique ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:EauctionTechnique
+                    rr:parentTriplesMap tedm:EauctionTechniqueUsage
                 ] ;
         ] .
+
 tedm:ProcurementProcessInformation a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -135,14 +138,14 @@ tedm:ProcurementProcessInformation a rr:TriplesMap ;
                     rr:datatype xsd:boolean
                 ] ;
         ] ;
-     rr:predicateObjectMap
-        [
-            rr:predicate epo:concernsPreviousNotice;
-            rr:objectMap
-            [
-                rr:parentTriplesMap tedm:Notice;
-            ]
-        ] ;
+#     rr:predicateObjectMap
+#        [
+#            rr:predicate epo:concernsPreviousNotice;
+#            rr:objectMap
+#            [
+#                rr:parentTriplesMap tedm:Notice;
+#            ]
+#        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:concernsProcedure ;
