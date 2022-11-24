@@ -1679,13 +1679,13 @@ tedm:AwardCriterion a rr:TripleMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014/OBJECT_CONTRACT/OBJECT_DESCR/AC" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014/OBJECT_CONTRACT/OBJECT_DESCR/AC/AC_CRITERION" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
         [
             rml:reference
-                "if(exists(AC_CRITERION)) then 'http://data.europa.eu/a4g/resource/AwardCriterion/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+                "'http://data.europa.eu/a4g/resource/AwardCriterion/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')" ;
             rr:class epo:AwardCriterion
 
         ] ;
@@ -1694,7 +1694,7 @@ tedm:AwardCriterion a rr:TripleMap ;
             rr:predicate cccev:description ;
             rr:objectMap
                 [
-                    rml:reference "AC_CRITERION";
+                    rml:reference ".";
                     rml:languageMap [
                          rml:reference "lower-case(ancestor::F13_2014/@LG)"
                     ]
