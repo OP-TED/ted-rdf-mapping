@@ -845,7 +845,7 @@ tedm:ProcurementProcessInformation a rr:TriplesMap ;
     rr:subjectMap
         [
         rml:reference
-            "if(exists(NOTICE_NUMBER_OJ) or exists(TERMINATION_DPS) or exists(TERMINATION_PIN)) then 'http://data.europa.eu/a4g/resource/ProcurementProcessInformation/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            "if(exists(TERMINATION_DPS) or exists(TERMINATION_PIN)) then 'http://data.europa.eu/a4g/resource/ProcurementProcessInformation/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
         #rr:template "http://data.europa.eu/a4g/resource/ProcurementProcessInformation/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
         rr:class epo:ProcurementProcessInformation
 
@@ -1138,13 +1138,13 @@ tedm:Tender a rr:TripleMap ;
             rr:class epo:Tender
 
         ] ;
-    #F06 specific
+    #F06 specific    -  Not to be published!
     rr:predicateObjectMap
         [
             rr:predicate epo:isVariant;
             rr:objectMap
                 [
-                    rml:reference "if(exists(AWARDED_TENDERER_VARIANT)) then 'true' else 'null'";
+                    rml:reference "if(exists(AWARDED_TENDERER_VARIANT)) then 'true' else if(exists(NO_AWARDED_TENDERER_VARIANT)) then 'false' else null";
                     rr:datatype xsd:boolean
 
                 ]
