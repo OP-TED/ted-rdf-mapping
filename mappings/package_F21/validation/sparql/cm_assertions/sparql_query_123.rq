@@ -1,10 +1,10 @@
-#title: Section V - Award of contract
-#description: “Section V - Award of contract” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT. The expected ontology instances are epo: epo:Contract / epo:Lot .
-#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT
+#title: IV.2.4 - Languages in which tenders or requests to participate may be submitted
+#description: “IV.2.4 - Languages in which tenders or requests to participate may be submitted” in SF corresponds to “BT-97 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/PROCEDURE/LANGUAGES/LANGUAGE/@VALUE. The expected ontology instances are epo: epo:Procedure / epo:SubmissionTerm / at-voc:language .
+#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/PROCEDURE/LANGUAGES/LANGUAGE/@VALUE
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Contract .
-		?this epo:includesLot ?value . }
+		?this rdf:type epo:Procedure .
+		?this epo:isSubjectToProcedureSpecificTerm  / epo:hasLanguage ?value . }
