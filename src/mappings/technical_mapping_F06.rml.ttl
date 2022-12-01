@@ -1138,13 +1138,13 @@ tedm:Tender a rr:TripleMap ;
             rr:class epo:Tender
 
         ] ;
-    #F06 specific
+    #F06 specific    -  Not to be published!
     rr:predicateObjectMap
         [
             rr:predicate epo:isVariant;
             rr:objectMap
                 [
-                    rml:reference "if(exists(AWARDED_TENDERER_VARIANT)) then 'true' else 'null'";
+                    rml:reference "if(exists(AWARDED_TENDERER_VARIANT)) then 'true' else if(exists(NO_AWARDED_TENDERER_VARIANT)) then 'false' else null";
                     rr:datatype xsd:boolean
 
                 ]
