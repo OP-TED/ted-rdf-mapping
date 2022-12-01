@@ -1,10 +1,11 @@
-#title: II.1.2 - Main CPV code
-#description: “II.1.2 - Main CPV code” in SF corresponds to “BT-262 Main Classification Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F25_2014/OBJECT_CONTRACT/CPV_MAIN/CPV_CODE/@CODE. The expected ontology instances are epo: epo:Procedure / epo:Purpose / at-voc:cpv (from cpv.json) .
-#xpath: /TED_EXPORT/FORM_SECTION/F25_2014/OBJECT_CONTRACT/CPV_MAIN/CPV_CODE/@CODE
+#title: I.6.1 - Main activity (in the case of a notice published by a contracting entity)
+#description: “I.6.1 - Main activity (in the case of a notice published by a contracting entity)” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F25_2014/CONTRACTING_BODY/CE_ACTIVITY_OTHER. The expected ontology instances are epo: org:Organization / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F25_2014/CONTRACTING_BODY/CE_ACTIVITY_OTHER
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Procedure .
-		?this epo:hasOverallPurpose / epo:hasMainClassification ?value . }
+		?this rdf:type org:Organization .
+		?this epo:hasMainActivityDescription ?value . }

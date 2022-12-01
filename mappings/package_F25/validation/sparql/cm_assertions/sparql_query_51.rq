@@ -1,10 +1,10 @@
-#title: IV.1.1.1 - Award procedure with prior publication of a concession notice
-#description: “IV.1.1.1 - Award procedure with prior publication of a concession notice” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F25_2014/PROCEDURE/PT_AWARD_CONTRACT_WITH_PRIOR_PUBLICATION. The expected ontology instances are epo: epo:ResultNotice / epo:CompetitionNotice .
-#xpath: /TED_EXPORT/FORM_SECTION/F25_2014/PROCEDURE/PT_AWARD_CONTRACT_WITH_PRIOR_PUBLICATION
+#title: II.2.13.2 - Identification of the project
+#description: “II.2.13.2 - Identification of the project” in SF corresponds to “BT-5011 Contract EU Funds Identifier” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F25_2014/OBJECT_CONTRACT/OBJECT_DESCR/EU_PROGR_RELATED/P. The expected ontology instances are epo: epo:Lot / epo:Fund / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F25_2014/OBJECT_CONTRACT/OBJECT_DESCR/EU_PROGR_RELATED/P
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:ResultNotice .
-		?this epo:refersToPrevious ?value . }
+		?this rdf:type epo:Lot .
+		?this epo:isFundedBy / epo:hasDescription ?value . }
