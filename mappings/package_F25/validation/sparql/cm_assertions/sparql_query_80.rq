@@ -1,9 +1,9 @@
-#title: V.2.3.9 - Telephone
-#description: “V.2.3.9 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F25_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/PHONE. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F25_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/PHONE
+#title: V.2.3.5 - NUTS code
+#description: “V.2.3.5 - NUTS code” in SF corresponds to “BT-507 Organisation Country Subdivision” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F25_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/NUTS/@CODE. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / at-voc:nuts (from nuts.json) .
+#xpath: /TED_EXPORT/FORM_SECTION/F25_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/NUTS/@CODE
 
-PREFIX cpov: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX legal: <https://www.w3.org/ns/legal#>
 
 ASK WHERE { 
-		?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:telephone ?value . }
+		?this epo:playedBy / legal:registeredAddress / epo:hasNutsCode ?value . }
