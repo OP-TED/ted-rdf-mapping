@@ -1,10 +1,10 @@
-#title: V.1.1.2 - Other reasons (discontinuation of procedure)
-#description: “V.1.1.2 - Other reasons (discontinuation of procedure)” in SF corresponds to “BT-144 Not Awarded Reason” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F25_2014/AWARD_CONTRACT/NO_AWARDED_CONTRACT/PROCUREMENT_DISCONTINUED. The expected ontology instances are epo: epo:LotAwardOutcome / at-voc:non-award-justification .
-#xpath: /TED_EXPORT/FORM_SECTION/F25_2014/AWARD_CONTRACT/NO_AWARDED_CONTRACT/PROCUREMENT_DISCONTINUED
+#title: V.1.1.3 - Notice reference
+#description: “V.1.1.3 - Notice reference” in SF corresponds to “no match nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F25_2014/AWARD_CONTRACT/NO_AWARDED_CONTRACT/PROCUREMENT_DISCONTINUED/NO_DOC_EXT/@PUBLICATION. The expected ontology instances are epo: epo:LotAwardOutcome / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F25_2014/AWARD_CONTRACT/NO_AWARDED_CONTRACT/PROCUREMENT_DISCONTINUED/NO_DOC_EXT/@PUBLICATION
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:LotAwardOutcome .
-		?this epo:hasNonAwardJustification <http://publications.europa.eu/resource/authority/non-award-justification/other> . }
+		?this epo:hasAdditionalNonAwardJustification ?value . }
