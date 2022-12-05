@@ -2041,3 +2041,16 @@ tedm:ParticipationRequestOrganisationProfile a rr:TripleMap ;
             rml:iterator "/TED_EXPORT/FORM_SECTION/F22_2014[1]/CONTRACTING_BODY/ADDRESS_PARTICIPATION/URL_BUYER";
             rml:referenceFormulation ql:XPath
         ].
+
+tedm:ProcurementParticipationRequestOrganisation  a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_PARTICIPATION" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/ProcurementParticipationRequestOrganisation/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:TenderReceiver
+        ] .
