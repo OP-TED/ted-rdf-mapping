@@ -631,8 +631,17 @@ tedm:AccessTerm  a rr:TriplesMap ;
             rr:predicate epo:hasPublicAccessURL ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(DOCUMENT_FULL)) then URL_DOCUMENT else null";
-                    #--rr:termType rr:IRI;
+                    rml:reference "if(exists(DOCUMENT_FULL) and starts-with(URL_DOCUMENT,'http')) then URL_DOCUMENT else null";
+                    rr:termType rr:IRI;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasPublicAccessURL ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(DOCUMENT_FULL) and not(starts-with(URL_DOCUMENT,'http'))) then URL_DOCUMENT else null";
+                    rr:termType rr:Literal;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -640,10 +649,19 @@ tedm:AccessTerm  a rr:TriplesMap ;
             rr:predicate epo:hasRestrictedAccessURL ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(DOCUMENT_RESTRICTED)) then URL_DOCUMENT else null";
-                    #--rr:termType rr:IRI;
+                    rml:reference "if(exists(DOCUMENT_RESTRICTED) and starts-with(URL_DOCUMENT,'http')) then URL_DOCUMENT else null";
+                    rr:termType rr:IRI;
                 ] ;
-        ] .
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasRestrictedAccessURL ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(DOCUMENT_RESTRICTED) and not(starts-with(URL_DOCUMENT,'http'))) then URL_DOCUMENT else null";
+                    rr:termType rr:Literal;
+                ] ;
+        ].
 tedm:ResultNotice a rr:TriplesMap ;
     rr:predicateObjectMap
         [
