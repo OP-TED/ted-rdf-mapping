@@ -851,8 +851,134 @@ tedm:InformationProviderOrganisationAddress  a rr:TriplesMap ;
                 ] ;
         ] .
 
+tedm:ParticipationRequestOrganisation a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasPrimaryContactPoint ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ParticipationRequestOrganisationContactPoint
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate legal:registeredAddress ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ParticipationRequestOrganisationAddress
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasID;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ParticipationRequestOrganisationIdentifier
+                ]
+        ] .
 
+tedm:ParticipationRequestOrganisationIdentifier a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasIdentifierValue;
+            rr:objectMap
+                [
+                    rml:reference "NATIONALID"
+                ]
+        ] .
 
+tedm:ParticipationRequestOrganisationContactPoint a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate cpov:email ;
+            rr:objectMap
+                [
+                    rml:reference "E_MAIL"
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasFax ;
+            rr:objectMap
+                [
+                    rml:reference "FAX"
+                ]
+        ] ;
 
+    rr:predicateObjectMap
+        [
+            rr:predicate cpov:telephone ;
+            rr:objectMap
+                [
+                    rml:reference "PHONE"
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasInternetAddress ;
+            rr:objectMap
+                [
+                    rml:reference "URL_GENERAL";
+                    #-rr:termType rr:IRI;
+                ] ;
+        ] .
+tedm:ParticipationRequestOrganisationAddress  a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate locn:postName ;
+            rr:objectMap
+                [
+                    rml:reference "TOWN"
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate locn:thoroughfare ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS"
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate locn:postCode ;
+            rr:objectMap
+                [
+                    rml:reference "POSTAL_CODE"
+                ] ;
+        ] ;
 
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasNutsCode ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:nuts;
+                    rr:joinCondition [
+                        rr:child "*:NUTS/@CODE";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCountryCode ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:country;
+                    rr:joinCondition [
+                        rr:child "COUNTRY/@VALUE";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] .
 
+tedm:ParticipationRequestOrganisationProfile a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasURL;
+            rr:objectMap
+                [
+                    rml:reference "."
+                ]
+        ] .
