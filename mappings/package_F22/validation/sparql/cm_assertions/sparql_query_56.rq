@@ -1,11 +1,10 @@
-#title: I.6.1 - Main activity
-#description: “I.6.1 - Main activity” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/CE_ACTIVITY_OTHER. The expected ontology instances are epo: org:Organization / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/CE_ACTIVITY_OTHER
+#title: I.3.4.2 - To the abovementioned address
+#description: “I.3.4.2 - To the abovementioned address” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_PARTICIPATION_IDEM. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) .
+#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_PARTICIPATION_IDEM
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type org:Organization .
-		?this epo:hasMainActivityDescription ?value . }
+		?this rdf:type epo:TenderReceiver .
+		?this epo:playedBy ?value . }

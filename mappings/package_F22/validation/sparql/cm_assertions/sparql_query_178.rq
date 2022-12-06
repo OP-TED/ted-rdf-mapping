@@ -1,12 +1,10 @@
-#title: VI.4.1.3 - Town
-#description: “VI.4.1.3 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY/TOWN. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY/TOWN
+#title: V.2.4.3 - Lowest offer
+#description: “V.2.4.3 - Lowest offer” in SF corresponds to “BT-710 Tender Value Lowest” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_RANGE_TOTAL/LOW. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / MonetaryValue / xsd:decimal .
+#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_RANGE_TOTAL/LOW
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX legal: <https://www.w3.org/ns/legal#>
-PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Reviewer .
-		?this epo:playedBy / legal:registeredAddress / locn:postName ?value . }
+		?this rdf:type epo:SubmissionStatisticalInformation .
+		?this epo:hasLowestReceivedTenderValue / epo:hasAmountValue ?value . }

@@ -1,10 +1,11 @@
-#title: II.3 - Estimated date of publication of contract notice
-#description: “II.3 - Estimated date of publication of contract notice” in SF corresponds to “BT-127 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/DATE_PUBLICATION_NOTICE. The expected ontology instances are epo: epo:ResultNotice / xsd:date .
-#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/DATE_PUBLICATION_NOTICE
+#title: II.2.3.2 - Main site or place of performance
+#description: “II.2.3.2 - Main site or place of performance” in SF corresponds to “BT-728 Place Performance Additional Information” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/OBJECT_DESCR/MAIN_SITE. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/OBJECT_DESCR/MAIN_SITE
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:ResultNotice .
-		?this epo:hasPublicationDate ?value }
+		?this rdf:type epo:Lot .
+		?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value . }

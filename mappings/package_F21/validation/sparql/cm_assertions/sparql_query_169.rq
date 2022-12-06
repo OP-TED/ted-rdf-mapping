@@ -1,10 +1,8 @@
-#title: V.2.5.5 - Proportion
-#description: “V.2.5.5 - Proportion” in SF corresponds to “BT-555 Subcontracting Percentage” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/PCT_SUBCONTRACTING. The expected ontology instances are epo: epo:Tender / epo:SubcontractingEstimate / xsd:decimal .
-#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/PCT_SUBCONTRACTING
+#title: V.2.3.12 - The contractor is an SME
+#description: “V.2.3.12 - The contractor is an SME” in SF corresponds to “BT-165 Winner Size” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/SME. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2)  / at-voc:economic-operator-size .
+#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/SME
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Tender .
-		?this epo:foreseesSubcontracting / epo:hasEstimatedPercentage ?value . }
+		?this epo:playedBy / epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme> }

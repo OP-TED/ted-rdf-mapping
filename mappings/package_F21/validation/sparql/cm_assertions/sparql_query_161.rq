@@ -1,10 +1,10 @@
-#title: V.2.4.2.1 - Currency
-#description: “V.2.4.2.1 - Currency” in SF corresponds to “no direct match nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_TOTAL/@CURRENCY. The expected ontology instances are epo: epo:LotAwardOutcome / epo:MonetaryValue / at-voc:currency (from currency.json) .
-#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_TOTAL/@CURRENCY
+#title: V.2.3.4 - Town
+#description: “V.2.3.4 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/TOWN. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/TOWN
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX legal: <https://www.w3.org/ns/legal#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 
 ASK WHERE { 
-		?this rdf:type epo:LotAwardOutcome .
-		?this epo:hasAwardedValue / epo:hasCurrency ?value . }
+		?this epo:playedBy / legal:registeredAddress / locn:postName ?value . }

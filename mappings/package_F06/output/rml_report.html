@@ -500,6 +500,52 @@
             
                 
                     <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#usesChannel</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/OrganisationChannel">http://data.europa.eu/a4g/mapping/sf-rml/OrganisationChannel</a>
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    ..
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    ../..
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
                         <dt>http://data.europa.eu/a4g/ontology#usesTechnique</dt>
 
                         
@@ -601,6 +647,36 @@
             <dd><strong><em>Parent Triple Map:</em></strong>
                 
                     <a href="#http://data.europa.eu/a4g/mapping/sf-rml/FrameworkAgreementTerm">http://data.europa.eu/a4g/mapping/sf-rml/FrameworkAgreementTerm</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#isSubjectToProcedureSpecificTerm</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/AccessTerm">http://data.europa.eu/a4g/mapping/sf-rml/AccessTerm</a>
                 
             </dd>
         
@@ -2224,7 +2300,97 @@
         
             <dd><strong><em>Parent Triple Map:</em></strong>
                 
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcedureInformationProviderIdem">http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcedureInformationProviderIdem</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#announcesRole</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
                     <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcedureInformationProvider">http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcedureInformationProvider</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#announcesRole</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverIdem">http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverIdem</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#announcesRole</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiver">http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiver</a>
                 
             </dd>
         
@@ -3062,7 +3228,7 @@
         <dt>Subject map</dt>
         
         <dd>
-            <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#Channel<br>
+            <strong><em>Class:</em></strong> http://data.europa.eu/m8g/Channel<br>
             <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/Channel/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
@@ -3197,7 +3363,7 @@
         
             <dd><strong><em>Reference:</em></strong>
                 
-                    if(exists(DOCUMENT_FULL)) then URL_DOCUMENT else null
+                    if(exists(DOCUMENT_FULL) and starts-with(URL_DOCUMENT,'http')) then URL_DOCUMENT else null
                 
             </dd>
         
@@ -3214,6 +3380,52 @@
                         
 
                         
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#IRI
+                
+            </dd>
+        
+    
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasPublicAccessURL</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if(exists(DOCUMENT_FULL) and not(starts-with(URL_DOCUMENT,'http'))) then URL_DOCUMENT else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#Literal
+                
+            </dd>
+        
+    
 
 
                     </dl>
@@ -3227,7 +3439,7 @@
         
             <dd><strong><em>Reference:</em></strong>
                 
-                    if(exists(DOCUMENT_RESTRICTED)) then URL_DOCUMENT else null
+                    if(exists(DOCUMENT_RESTRICTED) and starts-with(URL_DOCUMENT,'http')) then URL_DOCUMENT else null
                 
             </dd>
         
@@ -3244,6 +3456,52 @@
                         
 
                         
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#IRI
+                
+            </dd>
+        
+    
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasRestrictedAccessURL</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if(exists(DOCUMENT_RESTRICTED) and not(starts-with(URL_DOCUMENT,'http'))) then URL_DOCUMENT else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#Literal
+                
+            </dd>
+        
+    
 
 
                     </dl>
@@ -3458,6 +3716,405 @@
         <dd>
             <strong><em>Class:</em></strong> http://www.w3.org/ns/locn#Address<br>
             <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/InformationProviderOrganisationAddress/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+        </dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://www.w3.org/ns/locn#postName</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    TOWN
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://www.w3.org/ns/locn#thoroughfare</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ADDRESS
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://www.w3.org/ns/locn#postCode</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    POSTAL_CODE
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasNutsCode</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/nuts">http://data.europa.eu/a4g/mapping/sf-rml/nuts</a>
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    *:NUTS/@CODE
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    code.value
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasCountryCode</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/country">http://data.europa.eu/a4g/mapping/sf-rml/country</a>
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    COUNTRY/@VALUE
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    code.value
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisationContactPoint">http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisationContactPoint</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/m8g/email</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    E_MAIL
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasFax</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    FAX
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/m8g/telephone</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    PHONE
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasInternetAddress</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    URL_GENERAL
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasContactName</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    CONTACT_POINT
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Reference Language Map:</em></strong>
+                
+                    lower-case(ancestor::F06_2014/@LG)
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisationAddress">http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisationAddress</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+        <dd>
+            <strong><em>Class:</em></strong> http://www.w3.org/ns/locn#Address<br>
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/TenderReceiverOrganisationAddress/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -11129,6 +11786,128 @@
     </dl>
 
 
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcedureInformationProviderIdem">http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcedureInformationProviderIdem</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+        <dd>
+            <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#ProcurementProcedureInformationProvider<br>
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/ProcurementProcedureInformationProvider/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+        </dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#playedBy</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Organisation">http://data.europa.eu/a4g/mapping/sf-rml/Organisation</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasContactPointInRole</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ContactPoint">http://data.europa.eu/a4g/mapping/sf-rml/ContactPoint</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasBuyerProfile</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/BuyerProfile">http://data.europa.eu/a4g/mapping/sf-rml/BuyerProfile</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
     <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcedureInformationProvider">http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcedureInformationProvider</h2>
     
         
@@ -11229,7 +12008,251 @@
         
             <dd><strong><em>Parent Triple Map:</em></strong>
                 
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderProfile">http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderProfile</a>
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderBuyerProfile">http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderBuyerProfile</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverIdem">http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverIdem</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+        <dd>
+            <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#TenderReceiver<br>
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/TenderReceiver/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+        </dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#playedBy</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Organisation">http://data.europa.eu/a4g/mapping/sf-rml/Organisation</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasContactPointInRole</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ContactPoint">http://data.europa.eu/a4g/mapping/sf-rml/ContactPoint</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasBuyerProfile</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/BuyerProfile">http://data.europa.eu/a4g/mapping/sf-rml/BuyerProfile</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiver">http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiver</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+        <dd>
+            <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#TenderReceiver<br>
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/TenderReceiver/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+        </dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#playedBy</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisation">http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisation</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasContactPointInRole</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisationContactPoint">http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisationContactPoint</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasBuyerProfile</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverBuyerProfile">http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverBuyerProfile</a>
                 
             </dd>
         

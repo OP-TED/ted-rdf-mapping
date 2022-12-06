@@ -1,10 +1,10 @@
-#title: I.3.4.1 - Electronically via (URL)
-#description: “I.3.4.1 - Electronically via (URL)” in SF corresponds to “BT-17 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/CENTRAL_PURCHASING/URL_PARTICIPATION. The expected ontology instances are epo: epo:Procedure / epo:SubmissionTerm .
-#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/CENTRAL_PURCHASING/URL_PARTICIPATION
+#title: I.3.3.2.12.2 - Address of the buyer profile
+#description: “I.3.3.2.12.2 - Address of the buyer profile” in SF corresponds to “BT-508 Buyer Profile URL” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_FURTHER_INFO/URL_BUYER. The expected ontology instances are epo: epo:AgentInRole (from CL1) / epo:BuyerProfile / xsd:anyURI .
+#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_FURTHER_INFO/URL_BUYER
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Procedure .
-		?this epo:isSubjectToProcedureSpecificTerm ?value . }
+		?this rdf:type epo:ProcurementProcedureInformationProvider .
+		?this epo:hasBuyerProfile / epo:hasURL ?value . }

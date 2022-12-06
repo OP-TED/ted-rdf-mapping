@@ -1,10 +1,10 @@
-#title: II.1.5.2 - Currency
-#description: “II.1.5.2 - Currency” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/VAL_ESTIMATED_TOTAL/@CURRENCY. The expected ontology instances are epo: epo:Procedure / MonetaryValue /at-voc:currency (from currency.json) .
-#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/VAL_ESTIMATED_TOTAL/@CURRENCY
+#title: I.3.4.3.12.2 - Address of the buyer profile
+#description: “I.3.4.3.12.2 - Address of the buyer profile” in SF corresponds to “BT-508 Buyer Profile URL” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/CONTRACTING_BODY/ADDRESS_PARTICIPATION/URL_BUYER. The expected ontology instances are epo: epo:AgentInRole (from CL1) / epo:BuyerProfile / xsd:anyURI .
+#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/CONTRACTING_BODY/ADDRESS_PARTICIPATION/URL_BUYER
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Procedure .
-		?this epo:hasEstimatedValue / epo:hasCurrency ?value . }
+		?this rdf:type epo:TenderReceiver .
+		?this epo:hasBuyerProfile / epo:hasURL ?value . }

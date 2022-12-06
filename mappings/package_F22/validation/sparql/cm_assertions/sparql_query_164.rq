@@ -1,10 +1,10 @@
-#title: V.2.4.4 - Highest offer
-#description: “V.2.4.4 - Highest offer” in SF corresponds to “BT-711 Tender Value Highest” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_RANGE_TOTAL/HIGH. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / MonetaryValue / xsd:decimal .
-#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_RANGE_TOTAL/HIGH
+#title: V.2.3.4 - Town
+#description: “V.2.3.4 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/TOWN. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/TOWN
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX legal: <https://www.w3.org/ns/legal#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 
 ASK WHERE { 
-		?this rdf:type epo:SubmissionStatisticalInformation .
-		?this epo:hasHighestReceivedTenderValue / epo:hasAmountValue ?value . }
+		?this epo:playedBy / legal:registeredAddress / locn:postName ?value . }

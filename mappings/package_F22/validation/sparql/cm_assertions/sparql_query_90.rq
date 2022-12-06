@@ -1,10 +1,10 @@
-#title: II.2.7.3 - End
-#description: “II.2.7.3 - End” in SF corresponds to “BT-537 Duration End Date” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/OBJECT_DESCR/DATE_END. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / epo:Period / xsd:datetime .
-#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/OBJECT_DESCR/DATE_END
+#title: II.1.7.3 - Highest offer
+#description: “II.1.7.3 - Highest offer” in SF corresponds to “BT-711 Tender Value Highest” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/VAL_RANGE_TOTAL/HIGH. The expected ontology instances are epo: epo:ResultNotice / epo:NoticeAwardInformation / epo:MonetaryValue / xsd:decimal .
+#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/VAL_RANGE_TOTAL/HIGH
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Lot .
-		?this epo:foreseesContractSpecificTerm / epo:definesContractPeriod / epo:hasEnd ?value . }
+		?this rdf:type epo:ResultNotice .
+		?this epo:announcesNoticeAwardInformation / epo:hasProcurementHighestReceivedTenderValue / epo:hasAmountValue ?value . }

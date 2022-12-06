@@ -1,10 +1,10 @@
-#title: IV.2.2.1 - Time limit for receipt of expressions of interest (Date/Time)
-#description: “IV.2.2.1 - Time limit for receipt of expressions of interest (Date/Time)” in SF corresponds to “BT-630 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/PROCEDURE/TIME_RECEIPT_TENDERS. The expected ontology instances are epo: epo:Procedure / epo:SubmissionTerm / xsd:datetime .
-#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/PROCEDURE/TIME_RECEIPT_TENDERS
+#title: III.2.3.1 - Obligation to indicate the names and professional qualifications of the staff assigned to performing the contract
+#description: “III.2.3.1 - Obligation to indicate the names and professional qualifications of the staff assigned to performing the contract” in SF corresponds to “BT-79 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/LEFTI/PERFORMANCE_STAFF_QUALIFICATION. The expected ontology instances are epo: epo:Lot / at-voc:requirement-stage .
+#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/LEFTI/PERFORMANCE_STAFF_QUALIFICATION
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Procedure .
-		?this epo:isSubjectToProcedureSpecificTerm  / epo:hasReceiptExpressionsDeadline ?value . }
+		?this rdf:type epo:Lot .
+		?this epo:hasPerformingStaffQualificationInformation <http://publications.europa.eu/resource/authority/requirement-stage/t-requ>. }

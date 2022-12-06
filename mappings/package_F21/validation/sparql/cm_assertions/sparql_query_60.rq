@@ -1,11 +1,12 @@
-#title: I.4.1 - Type of the contracting authority
-#description: “I.4.1 - Type of the contracting authority” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/CONTRACTING_BODY/CA_TYPE_OTHER. The expected ontology instances are epo: org:Organization / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/CONTRACTING_BODY/CA_TYPE_OTHER
+#title: I.3.4.3.3 - Postal address
+#description: “I.3.4.3.3 - Postal address” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/CONTRACTING_BODY/ADDRESS_PARTICIPATION/ADDRESS. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/CONTRACTING_BODY/ADDRESS_PARTICIPATION/ADDRESS
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX legal: <https://www.w3.org/ns/legal#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type org:Organization .
-		?this epo:hasBuyerLegalTypeDescription ?value . }
+		?this rdf:type epo:TenderReceiver .
+		?this epo:playedBy / legal:registeredAddress / locn:thoroughfare ?value . }

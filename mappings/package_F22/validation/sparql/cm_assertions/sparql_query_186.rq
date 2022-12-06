@@ -1,10 +1,10 @@
-#title: VI.4.2.1 - Official name
-#description: “VI.4.2.1 - Official name” in SF corresponds to “BT-500 Organisation Name” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/COMPLEMENTARY_INFO/ADDRESS_MEDIATION_BODY/OFFICIALNAME. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/COMPLEMENTARY_INFO/ADDRESS_MEDIATION_BODY/OFFICIALNAME
+#title: V.2.5.6 - Short description of the part of the contract to be subcontracted
+#description: “V.2.5.6 - Short description of the part of the contract to be subcontracted” in SF corresponds to “BT-554 Subcontracting Description” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/AWARDED_CONTRACT/INFO_ADD_SUBCONTRACTING. The expected ontology instances are epo: epo:Tender / epo:SubcontractingEstimate / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/AWARDED_CONTRACT/INFO_ADD_SUBCONTRACTING
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Mediator .
-		?this epo:playedBy / epo:hasLegalName ?value . }
+		?this rdf:type epo:Tender .
+		?this epo:foreseesSubcontracting /  epo:hasDescription ?value. }
