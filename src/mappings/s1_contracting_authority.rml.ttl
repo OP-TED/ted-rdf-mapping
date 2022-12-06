@@ -701,37 +701,10 @@ tedm:ProcurementProcedureInformationProvider a rr:TripleMap ;
             rr:predicate epo:hasBuyerProfile ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:InformationProviderProfile
+                    rr:parentTriplesMap tedm:InformationProviderBuyerProfile
                 ] ;
         ] .
-
-tedm:TenderReceiver a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:playedBy ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:TenderReceiverOrganisation
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasContactPointInRole ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:TenderReceiverOrganisationContactPoint
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasBuyerProfile ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:TenderReceiverOrganisationProfile
-                ] ;
-        ] .
-
-tedm:InformationProviderProfile a rr:TripleMap ;
+tedm:InformationProviderBuyerProfile a rr:TripleMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasURL;
@@ -740,7 +713,6 @@ tedm:InformationProviderProfile a rr:TripleMap ;
                     rml:reference "."
                 ]
         ] .
-
 tedm:InformationProviderOrganisation a rr:TripleMap ;
 #    rr:predicateObjectMap
 #        [
@@ -884,7 +856,40 @@ tedm:InformationProviderOrganisationAddress  a rr:TriplesMap ;
                     ];
                 ] ;
         ] .
-
+tedm:TenderReceiver a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:playedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:TenderReceiverOrganisation
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContactPointInRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:TenderReceiverOrganisationContactPoint
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasBuyerProfile ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:TenderReceiverBuyerProfile
+                ] ;
+        ] .
+tedm:TenderReceiverBuyerProfile a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasURL;
+            rr:objectMap
+                [
+                    rml:reference "."
+                ]
+        ] .
 tedm:TenderReceiverOrganisation a rr:TripleMap ;
     rr:predicateObjectMap
         [
@@ -910,7 +915,6 @@ tedm:TenderReceiverOrganisation a rr:TripleMap ;
                     rr:parentTriplesMap tedm:TenderReceiverOrganisationIdentifier
                 ]
         ] .
-
 tedm:TenderReceiverOrganisationIdentifier a rr:TripleMap ;
     rr:predicateObjectMap
         [
@@ -1005,14 +1009,4 @@ tedm:TenderReceiverOrganisationAddress  a rr:TriplesMap ;
                         rr:parent "code.value";
                     ];
                 ] ;
-        ] .
-
-tedm:TenderReceiverOrganisationProfile a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasURL;
-            rr:objectMap
-                [
-                    rml:reference "."
-                ]
         ] .
