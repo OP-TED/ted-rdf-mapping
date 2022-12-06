@@ -1124,7 +1124,6 @@ tedm:TenderAwardOutcome a rr:TripleMap ;
         [
             rr:template "http://data.europa.eu/a4g/resource/TenderAwardOutcome/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:TenderAwardOutcome
-
         ] .
 tedm:Tender a rr:TripleMap ;
     rml:logicalSource
@@ -1137,7 +1136,15 @@ tedm:Tender a rr:TripleMap ;
         [
             rr:template "http://data.europa.eu/a4g/resource/Tender/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:Tender
-
+#        ] ;
+#    rr:predicateObjectMap     #specific for F06    -  Not to be published!
+#        [
+#            rr:predicate epo:isVariant;
+#            rr:objectMap
+#                [
+#                    rml:reference "if(exists(AWARDED_TENDERER_VARIANT)) then 'true' else if(exists(NO_AWARDED_TENDERER_VARIANT)) then 'false' else null";
+#                    rr:datatype xsd:boolean
+#                ]
         ] .
 tedm:LotAwardOutcomeAwardedMonetaryValue a rr:TriplesMap ;
     rml:logicalSource
@@ -1625,11 +1632,8 @@ tedm:Duration a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
-           # rml:reference
-           #     "if(exists(MAIN_SITE)) then 'http://data.europa.eu/a4g/resource/ContractTerm/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:template "http://data.europa.eu/a4g/resource/Duration/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:Duration
-
         ] .
 
 tedm:Period a rr:TriplesMap ;
@@ -1643,9 +1647,7 @@ tedm:Period a rr:TriplesMap ;
         [
             rml:reference
                 "if(exists(DATE_START) or exists(DATE_END)) then 'http://data.europa.eu/a4g/resource/Period/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
-            #rr:template "http://data.europa.eu/a4g/resource/Duration/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:Period
-
         ] .
 
 #F22 TriplesMap
@@ -1943,7 +1945,7 @@ tedm:SubmissionTerm a rr:TriplesMap ;
 #    rml:logicalSource
 #        [
 #            rml:source "data/source.xml" ;
-#            rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014/OBJECT_CONTRACT/OBJECT_DESCR" ;
+#            rml:iterator "/TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/OBJECT_DESCR" ;
 #            rml:referenceFormulation ql:XPath
 #        ] ;
 #    rr:subjectMap
@@ -1990,6 +1992,7 @@ tedm:cpv a rr:TriplesMap ;
             rml:reference
                 "conceptURI.value" ;
         ] .
+#not needed for forms F06,F20,F22
 tedm:buyerType a rr:TriplesMap ;
     rml:logicalSource
         [
@@ -2013,6 +2016,7 @@ tedm:currency a rr:TriplesMap ;
             rml:reference
                 "conceptURI.value" ;
         ] .
+#not needed for forms F20
 tedm:mainActivity a rr:TriplesMap ;
     rml:logicalSource
         [
