@@ -1,10 +1,10 @@
-#title: II.1.7.1 - Value
-#description: “II.1.7.1 - Value” in SF corresponds to “BT-161 Estimated Value” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/VAL_TOTAL. The expected ontology instances are epo: epo:ResultNotice / epo:NoticeAwardInformation / epo:MonetaryValue / xsd:decimal .
-#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/VAL_TOTAL
+#title: I.3.4.3.12.2 - Address of the buyer profile
+#description: “I.3.4.3.12.2 - Address of the buyer profile” in SF corresponds to “BT-508 Buyer Profile URL” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_PARTICIPATION/URL_BUYER. The expected ontology instances are epo: epo:AgentInRole (from CL1) / epo:BuyerProfile / xsd:anyURI .
+#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_PARTICIPATION/URL_BUYER
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:ResultNotice .
-		?this epo:announcesNoticeAwardInformation / epo:hasTotalAwardedValue / epo:hasAmountValue ?value . }
+		?this rdf:type epo:TenderReceiver .
+		?this epo:hasBuyerProfile / epo:hasURL ?value . }

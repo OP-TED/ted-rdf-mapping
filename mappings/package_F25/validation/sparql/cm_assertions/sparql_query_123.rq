@@ -1,11 +1,12 @@
-#title: VI.4.4.7 - Telephone
-#description: “VI.4.4.7 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F25_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO/PHONE. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F25_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO/PHONE
+#title: VI.4.4.4 - Postal code
+#description: “VI.4.4.4 - Postal code” in SF corresponds to “BT-512 Organisation Post Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F25_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO/POSTAL_CODE. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F25_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO/POSTAL_CODE
 
-PREFIX cpov: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX legal: <https://www.w3.org/ns/legal#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:ReviewProcedureInformationProvider .
-		?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:telephone ?value . }
+		?this epo:playedBy / legal:registeredAddress / locn:postCode ?value . }

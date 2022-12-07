@@ -1,10 +1,10 @@
-#title: III.2.2 - Contract performance conditions
-#description: “III.2.2 - Contract performance conditions” in SF corresponds to “BT-70 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/LEFTI/PERFORMANCE_CONDITIONS. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/LEFTI/PERFORMANCE_CONDITIONS
+#title: II.2.6.2 - Currency
+#description: “II.2.6.2 - Currency” in SF corresponds to “no direct match nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/OBJECT_DESCR/VAL_OBJECT/@CURRENCY. The expected ontology instances are epo: epo:Lot / MonetaryValue /at-voc:currency (from currency.json) .
+#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/OBJECT_DESCR/VAL_OBJECT/@CURRENCY
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:foreseesContractSpecificTerm / epo:hasPerformanceConditions ?value }
+		?this epo:hasEstimatedValue / epo:hasCurrency ?value . }

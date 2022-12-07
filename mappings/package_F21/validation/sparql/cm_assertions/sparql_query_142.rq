@@ -1,8 +1,10 @@
-#title: V.2.3.1 - Official name
-#description: “V.2.3.1 - Official name” in SF corresponds to “BT-500 Organisation Name” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/OFFICIALNAME. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/OFFICIALNAME
+#title: V.0.3 - Title
+#description: “V.0.3 - Title” in SF corresponds to “BT-721 Contract Title” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/TITLE. The expected ontology instances are epo: epo:Contract / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/TITLE
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this epo:playedBy / epo:hasLegalName ?value . }
+		?this rdf:type epo:Contract .
+		?this epo:hasTitle ?value . }

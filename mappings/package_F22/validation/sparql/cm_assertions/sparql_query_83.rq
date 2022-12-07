@@ -1,10 +1,10 @@
-#title: II.2.6.1 - Value excluding VAT
-#description: “II.2.6.1 - Value excluding VAT” in SF corresponds to “BT-27 Estimated Value” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/OBJECT_DESCR/VAL_OBJECT. The expected ontology instances are epo: epo:Lot / epo:MonetaryValue / xsd:decimal .
-#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/OBJECT_DESCR/VAL_OBJECT
+#title: II.1.6.1.2 - Tenders may be submitted for maximum number of lots
+#description: “II.1.6.1.2 - Tenders may be submitted for maximum number of lots” in SF corresponds to “nan nb_lot” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/LOT_DIVISION/LOT_MAX_NUMBER. The expected ontology instances are epo: epo:Procedure / epo:ProcedureTerm / xsd:integer .
+#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/LOT_DIVISION/LOT_MAX_NUMBER
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Lot .
-		?this epo:hasEstimatedValue / epo:hasAmountValue ?value . }
+		?this rdf:type epo:Procedure .
+		?this epo:isSubjectToProcedureSpecificTerm / epo:hasMaximumLotSubmissionAllowed ?value }

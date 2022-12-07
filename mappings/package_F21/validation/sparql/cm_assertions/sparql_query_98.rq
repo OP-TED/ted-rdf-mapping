@@ -1,11 +1,10 @@
-#title: III.1.4.1 - List and brief description of rules and criteria
-#description: “III.1.4.1 - List and brief description of rules and criteria” in SF corresponds to “BT-749; BT-750 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/LEFTI/RULES_CRITERIA. The expected ontology instances are epo: epo:Lot / epo:SelectionCriterion / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/LEFTI/RULES_CRITERIA
+#title: II.2.2.1 - Main CPV code
+#description: “II.2.2.1 - Main CPV code” in SF corresponds to “BT-262 Main Classification Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/OBJECT_DESCR/CPV_ADDITIONAL/CPV_CODE/@CODE. The expected ontology instances are epo: epo:Lot / epo:Purpose / at-voc:cpv (from cpv.json) .
+#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/OBJECT_DESCR/CPV_ADDITIONAL/CPV_CODE/@CODE
 
-PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:specifiesSelectionCriterion / cccev:description ?value }
+		?this epo:hasPurpose / epo:hasAdditionalClassification ?value . }

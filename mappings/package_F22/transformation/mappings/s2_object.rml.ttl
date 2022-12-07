@@ -263,7 +263,7 @@ tedm:ProcedurePurpose a rr:TriplesMap ;
                 ] ;
         ] .
 
-tedm:Notice a rr:TriplesMap ;
+tedm:PreviousNotice a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate rdf:type ;
@@ -271,7 +271,6 @@ tedm:Notice a rr:TriplesMap ;
                 [
                     rml:reference "if(exists(PT_AWARD_CONTRACT_WITH_PRIOR_PUBLICATION)) then 'http://data.europa.eu/a4g/ontology#CompetitionNotice' else null";
                     rr:termType rr:IRI
-
                 ]
         ] ;
     rr:predicateObjectMap
@@ -279,14 +278,14 @@ tedm:Notice a rr:TriplesMap ;
             rr:predicate epo:hasID;
             rr:objectMap
             [
-                rr:parentTriplesMap tedm:NoticeIdentifier;
+                rr:parentTriplesMap tedm:PreviousNoticeIdentifier;
                 rr:joinCondition [
                     rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                     rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                 ];
             ]
         ] .
-tedm:NoticeIdentifier a rr:TripleMap ;
+tedm:PreviousNoticeIdentifier a rr:TripleMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasIdentifierValue;
@@ -349,8 +348,12 @@ tedm:Lot a rr:TriplesMap ;
             [
                 rr:parentTriplesMap tedm:LotPurpose;
                     rr:joinCondition [
-                        rr:child "./@ITEM";
-                        rr:parent "ancestor::OBJECT_DESCR/@ITEM";
+#                        rr:child "./@ITEM";
+#                        rr:parent "ancestor::OBJECT_DESCR/@ITEM";
+#                        rr:child "./CPV_ADDITIONAL";
+#                        rr:parent "ancestor::OBJECT_DESCR/CPV_ADDITIONAL";
+                        rr:child "if(exists(./@ITEM)) then ./@ITEM else 1";
+                        rr:parent "if(exists(ancestor::OBJECT_DESCR/@ITEM)) then ancestor::OBJECT_DESCR/@ITEM else 1";
                     ];
             ]
         ] ;
@@ -490,54 +493,20 @@ tedm:AwardCriterionCost a rr:TripleMap ;
                     rr:termType rr:IRI
                 ] ;
         ] .
-tedm:Period a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasBeginning ;
-            rr:objectMap
-                [
-                    rml:reference "DATE_START";
-                    rr:datatype xsd:datetime
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasEnd ;
-            rr:objectMap
-                [
-                    rml:reference "DATE_END";
-                    rr:datatype xsd:datetime
-                ] ;
-        ] .
-tedm:Duration a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate time:numericDuration ;
-            rr:objectMap
-                [
-                    rml:reference ".";
-                    rr:datatype xsd:decimal
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate time:unitType ;
-            rr:objectMap
-                [
-                    rml:reference "if(./@TYPE='MONTH') then 'http://www.w3.org/2006/time#unitMonth' else if (./@TYPE='DAY') then 'http://www.w3.org/2006/time#unitDay' else null ";
-                    rr:termType rr:IRI;
-                ] ;
-        ] .
 tedm:ContractTerm a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:definesSpecificPlaceOfPerformance ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ContractTermeLocation;
+                    rr:parentTriplesMap tedm:ContractTermLocation;
                     rr:joinCondition [
-                        rr:child "./@ITEM";
-                        rr:parent "./@ITEM";
+#                        rr:child "./@ITEM";
+#                        rr:parent "./@ITEM";
+#                         rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                         rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "if(exists(./@ITEM)) then ./@ITEM else 1";
+                        rr:parent "if(exists(./@ITEM)) then ./@ITEM else 1";
                     ];
                 ] ;
         ] ;
@@ -566,7 +535,7 @@ tedm:ContractTerm a rr:TriplesMap ;
                     rr:datatype xsd:boolean
                 ]
         ] .
-tedm:ContractTermeLocation a rr:TriplesMap ;
+tedm:ContractTermLocation a rr:TriplesMap ;
 #    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasNutsCode ;
@@ -594,11 +563,49 @@ tedm:ContractTermeLocation a rr:TriplesMap ;
             rr:predicate locn:address ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ContractTermeLocationAddress;
+                    rr:parentTriplesMap tedm:ContractTermLocationAddress;
                     rr:joinCondition [
-                        rr:child "./@ITEM";
-                        rr:parent "./@ITEM";
+                        rr:child "./MAIN_SITE";
+                        rr:parent "./MAIN_SITE";
                     ];
+                ] ;
+        ] .
+tedm:Duration a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate time:numericDuration ;
+            rr:objectMap
+                [
+                    rml:reference ".";
+                    rr:datatype xsd:decimal
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate time:unitType ;
+            rr:objectMap
+                [
+                    rml:reference "if(./@TYPE='MONTH') then 'http://www.w3.org/2006/time#unitMonth' else if (./@TYPE='DAY') then 'http://www.w3.org/2006/time#unitDay' else null ";
+                    rr:termType rr:IRI;
+                ] ;
+        ] .
+tedm:Period a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasBeginning ;
+            rr:objectMap
+                [
+                    rml:reference "DATE_START";
+                    rr:datatype xsd:datetime
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasEnd ;
+            rr:objectMap
+                [
+                    rml:reference "DATE_END";
+                    rr:datatype xsd:datetime
                 ] ;
         ] .
 
@@ -640,7 +647,7 @@ tedm:LotPurpose a rr:TriplesMap ;
         ] .
 #    rr:predicateObjectMap
 #        [
-#            rr:predicate epo:hasMainClassification ;
+#            rr:predicate epo:hasAdditionalClassification ;
 #            rr:objectMap
 #                [
 #                    rml:reference "if (not(exists(CPV_ADDITIONAL/CPV_CODE/@CODE))) then 'http://data.europa.eu/cpv/cpv/OP_DATPRO' else null";

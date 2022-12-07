@@ -1,10 +1,9 @@
-#title: V.2.5.1 - The contract is likely to be subcontracted
-#description: “V.2.5.1 - The contract is likely to be subcontracted” in SF corresponds to “BT-773 Subcontracting” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/AWARDED_CONTRACT/LIKELY_SUBCONTRACTED. The expected ontology instances are epo: epo:Tender / epo:SubcontractingEstimate  .
-#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/AWARDED_CONTRACT/LIKELY_SUBCONTRACTED
+#title: V.2.3.5 - NUTS code
+#description: “V.2.3.5 - NUTS code” in SF corresponds to “BT-507 Organisation Country Subdivision” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/NUTS/@CODE. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / at-voc:nuts (from nuts.json) .
+#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/NUTS/@CODE
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX legal: <https://www.w3.org/ns/legal#>
 
 ASK WHERE { 
-		?this rdf:type epo:Tender .
-		?this epo:foreseesSubcontracting ?value }
+		?this epo:playedBy / legal:registeredAddress / epo:hasNutsCode ?value . }

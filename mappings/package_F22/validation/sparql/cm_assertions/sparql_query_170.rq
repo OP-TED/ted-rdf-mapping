@@ -1,10 +1,8 @@
-#title: VI.2.1 - Electronic ordering will be used
-#description: “VI.2.1 - Electronic ordering will be used” in SF corresponds to “BT-92 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/COMPLEMENTARY_INFO/EORDERING. The expected ontology instances are epo: epo:Procedure / epo:ContractTerm / xsd:boolean .
-#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/COMPLEMENTARY_INFO/EORDERING
+#title: V.2.3.10 - Internet Addresses (URL)
+#description: “V.2.3.10 - Internet Addresses (URL)” in SF corresponds to “BT-505 Organisation Internet Address” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/URL. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / xsd:anyURI .
+#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/URL
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Procedure .
-		?this epo:foreseesContractSpecificTerm / epo:hasEOrdering true . }
+		?this epo:playedBy / epo:hasPrimaryContactPoint / epo:hasInternetAddress ?value . }

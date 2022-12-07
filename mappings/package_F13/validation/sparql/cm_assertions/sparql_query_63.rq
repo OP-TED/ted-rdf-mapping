@@ -1,0 +1,12 @@
+#title: V.3.2.3 - Number of participants from other countries
+#description: “V.3.2.3 - Number of participants from other countries” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/PARTICIPANTS/NB_PARTICIPANTS_OTHER_EU. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / xsd:integer .
+#xpath: /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/PARTICIPANTS/NB_PARTICIPANTS_OTHER_EU
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+		?this rdf:type epo:SubmissionStatisticalInformation .
+		  { ?this epo:hasEUReceivedTenders  ?value .  }
+UNION
+ { ?this epo:hasReceivedNonEUTenders ?value . } }

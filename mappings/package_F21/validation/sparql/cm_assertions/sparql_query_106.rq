@@ -1,10 +1,11 @@
-#title: III.2.3.1 - Obligation to indicate the names and professional qualifications of the staff assigned to performing the contract
-#description: “III.2.3.1 - Obligation to indicate the names and professional qualifications of the staff assigned to performing the contract” in SF corresponds to “BT-79 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/LEFTI/PERFORMANCE_STAFF_QUALIFICATION. The expected ontology instances are epo: epo:Lot / at-voc:requirement-stage .
-#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/LEFTI/PERFORMANCE_STAFF_QUALIFICATION
+#title: II.2.7.1.1 - Duration in months or days
+#description: “II.2.7.1.1 - Duration in months or days” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/OBJECT_DESCR/DURATION/@TYPE. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / epo:Duration / time:TemporalUnit .
+#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/OBJECT_DESCR/DURATION/@TYPE
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX time: <http://www.w3.org/2006/time#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:hasPerformingStaffQualificationInformation <http://publications.europa.eu/resource/authority/requirement-stage/not-requ>. }
+		?this epo:foreseesContractSpecificTerm / epo:definesContractDuration / time:unitType time:unitMonth. }

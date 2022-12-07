@@ -1,10 +1,10 @@
-#title: II.1.5.1 - Value excluding VAT
-#description: “II.1.5.1 - Value excluding VAT” in SF corresponds to “BT-161 Estimated Value” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/VAL_ESTIMATED_TOTAL. The expected ontology instances are epo: epo:Procedure / epo:MonetaryValue / xsd:decimal .
-#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/VAL_ESTIMATED_TOTAL
+#title: I.3.4.3.8 - Contact person
+#description: “I.3.4.3.8 - Contact person” in SF corresponds to “BT-502 Organisation Contact Point” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/CONTRACTING_BODY/ADDRESS_PARTICIPATION/CONTACT_POINT. The expected ontology instances are epo: epo:AgentInRole (from CL1) / cpov:ContactPoint / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/CONTRACTING_BODY/ADDRESS_PARTICIPATION/CONTACT_POINT
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Procedure .
-		?this epo:hasEstimatedValue / epo:hasAmountValue ?value . }
+		?this rdf:type epo:TenderReceiver .
+		?this epo:hasContactPointInRole / epo:hasContactName ?value . }

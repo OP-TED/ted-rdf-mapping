@@ -1,10 +1,11 @@
-#title: II.1.6.1.3 - Tenders may be submitted for one lot only
-#description: “II.1.6.1.3 - Tenders may be submitted for one lot only” in SF corresponds to “nan Boolean” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/LOT_DIVISION/LOT_ONE_ONLY. The expected ontology instances are epo: epo:Procedure / epo:ProcedureTerm / xsd:boolean .
-#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/LOT_DIVISION/LOT_ONE_ONLY
+#title: I.3.4.3.9 - Telephone
+#description: “I.3.4.3.9 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_PARTICIPATION/PHONE. The expected ontology instances are epo: epo:AgentInRole (from CL1) / cpov:ContactPoint / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_PARTICIPATION/PHONE
 
+PREFIX cpov: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Procedure .
-		?this epo:isSubjectToProcedureSpecificTerm / epo:isOneLotOnlyAllowed ?value }
+		?this rdf:type epo:TenderReceiver .
+		?this epo:hasContactPointInRole  / cpov:telephone ?value . }

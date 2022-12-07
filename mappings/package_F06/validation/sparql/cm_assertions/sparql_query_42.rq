@@ -1,10 +1,10 @@
-#title: II.1.7.2 - Lowest offer
-#description: “II.1.7.2 - Lowest offer” in SF corresponds to “BT-710 Tender Value Lowest” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/OBJECT_CONTRACT/VAL_RANGE_TOTAL/LOW. The expected ontology instances are epo: epo:ResultNotice / epo:NoticeAwardInformation / epo:MonetaryValue / xsd:decimal .
-#xpath: /TED_EXPORT/FORM_SECTION/F06_2014/OBJECT_CONTRACT/VAL_RANGE_TOTAL/LOW
+#title: II.1.7.1 - Value
+#description: “II.1.7.1 - Value” in SF corresponds to “BT-161 Estimated Value” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/OBJECT_CONTRACT/VAL_TOTAL. The expected ontology instances are epo: epo:Notice / epo:NoticeAwardInformation / epo:MonetaryValue / xsd:decimal .
+#xpath: /TED_EXPORT/FORM_SECTION/F06_2014/OBJECT_CONTRACT/VAL_TOTAL
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:ResultNotice .
-		?this epo:announcesNoticeAwardInformation / epo:hasProcurementLowestReceivedTenderValue / epo:hasAmountValue ?value . }
+		?this rdf:type epo:Notice .
+		?this epo:announcesNoticeAwardInformation / epo:hasTotalAwardedValue / epo:hasAmountValue ?value . }

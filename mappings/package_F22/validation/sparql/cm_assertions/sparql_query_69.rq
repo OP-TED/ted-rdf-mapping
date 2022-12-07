@@ -1,10 +1,10 @@
-#title: II.1.7 - Total value of the procurement (Excluding VAT)
-#description: “II.1.7 - Total value of the procurement (Excluding VAT)” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT. The expected ontology instances are epo: epo:ResultNotice / epo:NoticeAwardInformation .
-#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT
+#title: I.3.4.3.12.1 - Main address
+#description: “I.3.4.3.12.1 - Main address” in SF corresponds to “BT-505 Organisation Internet Address” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_PARTICIPATION/URL_GENERAL. The expected ontology instances are epo: epo:AgentInRole (from CL1) / cpov:ContactPoint / xsd:anyURI .
+#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/ADDRESS_PARTICIPATION/URL_GENERAL
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:ResultNotice .
-		?this epo:announcesNoticeAwardInformation ?value . }
+		?this rdf:type epo:TenderReceiver .
+		?this epo:hasContactPointInRole / epo:hasInternetAddress ?value . }

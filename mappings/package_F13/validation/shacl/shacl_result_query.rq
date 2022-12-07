@@ -1,0 +1,28 @@
+prefix dash: <http://datashapes.org/dash#>
+prefix sh: <http://www.w3.org/ns/shacl#>
+prefix message: <http://www.w3.org/ns/shacl#message>
+
+SELECT ?focusNode ?message ?resultPath ?resultSeverity ?sourceConstraintComponent ?sourceShape ?value
+WHERE {
+    ?vr a sh:ValidationResult .
+    ?vr sh:focusNode ?focusNode .
+    OPTIONAL {
+        ?vr sh:resultMessage ?message .
+    }
+    OPTIONAL {
+        ?vr sh:resultPath ?resultPath .
+    }
+    OPTIONAL {
+        ?vr sh:resultSeverity ?resultSeverity .
+    }
+    OPTIONAL {
+        ?vr sh:sourceConstraintComponent ?sourceConstraintComponent .
+    }
+    OPTIONAL {
+        ?vr sh:sourceShape ?sourceShape .
+    }
+    OPTIONAL {
+        ?vr sh:value ?value .
+    }
+}
+ORDER BY ?focusNode ?resultSeverity ?sourceConstraintComponent

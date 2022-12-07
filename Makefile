@@ -76,9 +76,12 @@ clear-output:
 
 install-dev:
 	@ echo -e "$(BUILD_PRINT)Installing the requirements$(END_BUILD_PRINT)"
-	@ pip install --upgrade --force-reinstall --no-deps ../ted-sws
+	@ pip install --upgrade --force-reinstall --no-deps ../ted-rdf-conversion-pipeline
 
 test:
 	@ mapping_suite_validator package_F03
-	@ mapping_suite_validator package_F03_test
+	@ mapping_suite_validator package_F06
+	@ mapping_suite_validator package_F21
+	@ mapping_suite_validator package_F22
+	@ mapping_suite_validator package_F25
 

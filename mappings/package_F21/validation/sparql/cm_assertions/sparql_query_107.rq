@@ -1,10 +1,11 @@
-#title: IV.1.1.1 - Open procedure
-#description: “IV.1.1.1 - Open procedure” in SF corresponds to “BT-105 Procedure Type” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/PROCEDURE/PT_OPEN. The expected ontology instances are epo: epo:Procedure / at-voc:procurement-procedure-type .
-#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/PROCEDURE/PT_OPEN
+#title: II.2.7.1.2 - Duration in months or days
+#description: “II.2.7.1.2 - Duration in months or days” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/OBJECT_DESCR/DURATION/@TYPE. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / epo:Duration / time:TemporalUnit .
+#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/OBJECT_DESCR/DURATION/@TYPE
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX time: <http://www.w3.org/2006/time#>
 
 ASK WHERE { 
-		?this rdf:type epo:Procedure .
-		?this epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open> . }
+		?this rdf:type epo:Lot .
+		?this epo:foreseesContractSpecificTerm / epo:definesContractDuration / time:unitType time:unitDay . }

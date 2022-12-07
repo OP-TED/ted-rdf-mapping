@@ -392,18 +392,18 @@ tedm:BuyerProfile a rr:TripleMap ;
         ] .
 
 tedm:Organisation a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasDeliveryGateway ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:OrganisationChannel;
-                    rr:joinCondition [
-                        rr:child "if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then 'true' else null";
-                        rr:parent "if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then 'true' else null";
-                    ];
-                ]
-        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasDeliveryGateway ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:OrganisationChannel;
+#                    rr:joinCondition [
+#                        rr:child "if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then 'true' else null";
+#                        rr:parent "if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then 'true' else null";
+#                    ];
+#                ]
+#        ] ;
     rr:predicateObjectMap
         [
             rr:predicate legal:registeredAddress ;
@@ -602,7 +602,7 @@ tedm:OrganisationChannel a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference ".";
-                    rr:termType rr:IRI;
+                    #--rr:termType rr:IRI;
 
                 ] ;
         ] .
@@ -631,7 +631,25 @@ tedm:AccessTerm  a rr:TriplesMap ;
             rr:predicate epo:hasPublicAccessURL ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(DOCUMENT_FULL)) then URL_DOCUMENT else null";
+                    rml:reference "if(exists(DOCUMENT_FULL) and starts-with(URL_DOCUMENT,'http')) then URL_DOCUMENT else null";
+                    rr:termType rr:IRI;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasPublicAccessURL ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(DOCUMENT_FULL) and not(starts-with(URL_DOCUMENT,'http'))) then URL_DOCUMENT else null";
+                    rr:termType rr:Literal;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasRestrictedAccessURL ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(DOCUMENT_RESTRICTED) and starts-with(URL_DOCUMENT,'http')) then URL_DOCUMENT else null";
                     rr:termType rr:IRI;
                 ] ;
         ] ;
@@ -640,10 +658,10 @@ tedm:AccessTerm  a rr:TriplesMap ;
             rr:predicate epo:hasRestrictedAccessURL ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(DOCUMENT_RESTRICTED)) then URL_DOCUMENT else null";
-                    rr:termType rr:IRI;
+                    rml:reference "if(exists(DOCUMENT_RESTRICTED) and not(starts-with(URL_DOCUMENT,'http'))) then URL_DOCUMENT else null";
+                    rr:termType rr:Literal;
                 ] ;
-        ] .
+        ].
 tedm:ResultNotice a rr:TriplesMap ;
     rr:predicateObjectMap
         [
