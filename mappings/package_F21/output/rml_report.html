@@ -1518,7 +1518,7 @@
     </dl>
 
 
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ResultNotice">http://data.europa.eu/a4g/mapping/sf-rml/ResultNotice</h2>
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/Notice">http://data.europa.eu/a4g/mapping/sf-rml/Notice</h2>
     
         
 
@@ -1536,8 +1536,8 @@
         <dt>Subject map</dt>
         
         <dd>
-            <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#ResultNotice<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/ResultNotice/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#Notice<br>
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/Notice/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -1545,6 +1545,44 @@
     <dl>
         <dt>Predicate object maps</dt>
         <dd>
+            
+                
+                    <dl>
+                        <dt>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if(../NOTICE/@TYPE='AWARD_CONTRACT' or ../NOTICE/@TYPE='CONCESSION_AWARD_CONTRACT') then 'http://data.europa.eu/a4g/ontology#ResultNotice' else if (../NOTICE/@TYPE='CONTRACT' or ../NOTICE/@TYPE='PRI' or ../NOTICE/@TYPE='PRI_CALL_COMPETITION') then 'http://data.europa.eu/a4g/ontology#CompetitionNotice' else null 
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Template term type:</em></strong>
+                
+                    http://www.w3.org/ns/r2rml#IRI
+                
+            </dd>
+        
+    
+
+
+                    </dl>
+                
             
                 
                     <dl>
@@ -1948,7 +1986,7 @@
         
             <dd><strong><em>Parent Triple Map:</em></strong>
                 
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/Notice">http://data.europa.eu/a4g/mapping/sf-rml/Notice</a>
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/PreviousNotice">http://data.europa.eu/a4g/mapping/sf-rml/PreviousNotice</a>
                 
             </dd>
         
@@ -4843,7 +4881,7 @@
     </dl>
 
 
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/Notice">http://data.europa.eu/a4g/mapping/sf-rml/Notice</h2>
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/PreviousNotice">http://data.europa.eu/a4g/mapping/sf-rml/PreviousNotice</h2>
     
         
 
@@ -4916,7 +4954,7 @@
         
             <dd><strong><em>Parent Triple Map:</em></strong>
                 
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/NoticeIdentifier">http://data.europa.eu/a4g/mapping/sf-rml/NoticeIdentifier</a>
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/PreviousNoticeIdentifier">http://data.europa.eu/a4g/mapping/sf-rml/PreviousNoticeIdentifier</a>
                 
             </dd>
         
@@ -7240,6 +7278,36 @@
             <dd><strong><em>Reference:</em></strong>
                 
                     LANGUAGES/LANGUAGE/@VALUE
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasSubmissionURL</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ../CONTRACTING_BODY/URL_PARTICIPATION
                 
             </dd>
         
