@@ -10,7 +10,7 @@
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 
-tedm:result_notice
+tedm:notice
   a owl:Ontology ;
   owl:imports dct:, <http://www.w3.org/2004/02/skos/core> ;
   dct:description """
@@ -18,7 +18,16 @@ tedm:result_notice
   rdfs:label "TED-SWS mapping of "@en ;
   dct:date "2022-06-28"^^xsd:date .
 
-tedm:ResultNotice a rr:TriplesMap ;
+tedm:Notice a rr:TriplesMap ;
+    rr:predicateObjectMap     # second (more specific) notice type depending on NOTICE TYPE
+        [
+            rr:predicate rdf:type ;
+            rr:objectMap
+            [
+                rml:reference "if(../NOTICE/@TYPE='AWARD_CONTRACT' or ../NOTICE/@TYPE='CONCESSION_AWARD_CONTRACT') then 'http://data.europa.eu/a4g/ontology#ResultNotice' else if (../NOTICE/@TYPE='CONTRACT' or ../NOTICE/@TYPE='PRI' or ../NOTICE/@TYPE='PRI_CALL_COMPETITION') then 'http://data.europa.eu/a4g/ontology#CompetitionNotice' else null ";
+                rr:termType rr:IRI;
+           ]
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate time:hasPublicationDate ;
@@ -137,7 +146,7 @@ tedm:ResultNotice a rr:TriplesMap ;
             rr:predicate epo:refersToPrevious;
             rr:objectMap
             [
-                rr:parentTriplesMap tedm:Notice;
+                rr:parentTriplesMap tedm:PreviousNotice;
             ]
         ] ;
     rr:predicateObjectMap
