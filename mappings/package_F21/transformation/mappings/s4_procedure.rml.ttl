@@ -163,7 +163,7 @@ tedm:ProcurementProcessInformation a rr:TriplesMap ;
 #            rr:predicate epo:concernsPreviousNotice;
 #            rr:objectMap
 #            [
-#                rr:parentTriplesMap tedm:Notice;
+#                rr:parentTriplesMap tedm:PreviousNotice;
 #            ]
 #        ] ;
     rr:predicateObjectMap
@@ -220,6 +220,16 @@ tedm:SubmissionTerm a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "LANGUAGES/LANGUAGE/@VALUE";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasSubmissionURL ;
+            rr:objectMap
+                [
+                    rml:reference "../CONTRACTING_BODY/URL_PARTICIPATION";
+                    ## some notices might have URL starting by www. and this type require a URL starting with http: #TODO:use "dynamic" typing, based on the value, as we did in another place
+                    ## rr:termType rr:IRI
                 ] ;
         ] .
 
