@@ -84,5 +84,4 @@ test:
 	@ mapping_suite_validator package_F21
 	@ mapping_suite_validator package_F22
 	@ mapping_suite_validator package_F25
-	@ mapping_suite_validator package_F03_test
 
