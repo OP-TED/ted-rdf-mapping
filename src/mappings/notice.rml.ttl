@@ -9,6 +9,7 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-not: <http://data.europa.eu/a4g/ontology#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 
 tedm:notice
@@ -31,11 +32,10 @@ tedm:Notice a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate time:hasPublicationDate ;
+            rr:predicate epo-not:announcesPlannedProcurementPart ;
             rr:objectMap
                 [
-                    rml:reference "DATE_PUBLICATION_NOTICE";
-                    rr:datatype xsd:datetime
+                    rr:parentTriplesMap tedm:PlannedProcurementPart
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -172,5 +172,24 @@ tedm:Notice a rr:TriplesMap ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:Tender
+                ] ;
+        ] .
+tedm:PlannedProcurementPart a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:isSubjectToTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ProcessPlanningTerm
+                ] ;
+        ] .
+tedm:ProcessPlanningTerm a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasEstimatedContractNoticePublicationDate ;
+            rr:objectMap
+                [
+                    rml:reference "DATE_PUBLICATION_NOTICE";
+                    rr:datatype xsd:datetime
                 ] ;
         ] .
