@@ -1,10 +1,11 @@
-#title: III.2.1.1 - Execution of the service is reserved to a particular profession
-#description: “III.2.1.1 - Execution of the service is reserved to a particular profession” in SF corresponds to “BT-747 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F23_2014/LEFTI/PARTICULAR_PROFESSION. The expected ontology instances are epo: epo:Lot / epo:SelectionCriterion / at-voc:selection-criterion .
-#xpath: /TED_EXPORT/FORM_SECTION/F23_2014/LEFTI/PARTICULAR_PROFESSION
+#title: II.2.3.2 - Main site or place of performance
+#description: “II.2.3.2 - Main site or place of performance” in SF corresponds to “BT-728 Place Performance Additional Information” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F23_2014/OBJECT_CONTRACT/OBJECT_DESCR/MAIN_SITE. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F23_2014/OBJECT_CONTRACT/OBJECT_DESCR/MAIN_SITE
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:specifiesSelectionCriterion / epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>. }
+		?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value . }
