@@ -316,7 +316,7 @@ tedm:PlannedProcurementPart a rr:TriplesMap ;
             rml:iterator "/TED_EXPORT/FORM_SECTION/F21_2014[1]/OBJECT_CONTRACT" ;
             rml:referenceFormulation ql:XPath
        ] .
-tedm:ProcessPlanningTerm a rr:TriplesMap ;
+tedm:ProcessPlanningTermLot a rr:TriplesMap ;
     rr:subjectMap
         [
             rml:reference "if (exists(DATE_PUBLICATION_NOTICE)) then 'http://data.europa.eu/a4g/resource/ProcessPlanningTerm/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
@@ -328,7 +328,18 @@ tedm:ProcessPlanningTerm a rr:TriplesMap ;
             rml:iterator "/TED_EXPORT/FORM_SECTION/F21_2014[1]/OBJECT_CONTRACT" ;
             rml:referenceFormulation ql:XPath
        ] .
-
+tedm:ProcessPlanningTermProcedure a rr:TriplesMap ;
+    rr:subjectMap
+        [
+            rml:reference "if (exists(DATE_AWARD_SCHEDULED)) then 'http://data.europa.eu/a4g/resource/ProcessPlanningTerm/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:ProcessPlanningTerm
+        ] ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F21_2014[1]/PROCEDURE" ;
+            rml:referenceFormulation ql:XPath
+       ] .
 tedm:ProcurementLowestReceivedTenderValue a rr:TriplesMap ;
     rml:logicalSource
         [
