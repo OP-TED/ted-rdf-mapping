@@ -961,12 +961,12 @@ tedm:Contract a rr:TripleMap ;
                     ]
                 ]
         ] ;
-    rr:predicateObjectMap   #specific for F3, F06, F21, F22 and perhaps others (different for F25 and F23, for example)
+    rr:predicateObjectMap   #specific for F03, F06, F21, F22, and F20 when used for directive 24 and 25 (different for F25, F23 and F20 with directive 23, for example)
         [
             rr:predicate epo:hasContractConclusionDate;
             rr:objectMap
                 [
-                    rml:reference "AWARDED_CONTRACT/DATE_CONCLUSION_CONTRACT";
+                    rml:reference "if (../@FORM='F03' or ../@FORM='F06' or ../@FORM='F21' or ../@FORM='F22' or (../@FORM='F20' and (../DIRECTIVE/@VALUE='2014/24/EU' or ../DIRECTIVE/@VALUE='2014/25/EU' or ../LEGAL_BASIS/@VALUE='32014L0024' or ../LEGAL_BASIS/@VALUE='32014L0025' or ../LEGAL_BASIS/@VALUE='32018R1046' or contains(../LEGAL_BASIS_OTHER, '24/EU') or contains(../LEGAL_BASIS_OTHER, 'L0024') or contains(../LEGAL_BASIS_OTHER, '25/EU') or contains(../LEGAL_BASIS_OTHER, 'L0025') ))) then AWARDED_CONTRACT/DATE_CONCLUSION_CONTRACT else null";
                     rr:datatype xsd:date;
                 ]
         ] .
@@ -981,16 +981,25 @@ tedm:LotAwardOutcome a rr:TripleMap ;
         [
             rr:template "http://data.europa.eu/a4g/resource/LotAwardOutcome/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:LotAwardOutcome
-#        ] ;
-#    rr:predicateObjectMap   #specific for F25 and F23 (different for F3 and F06, for example)
-#        [
-#            rr:predicate epo:hasAwardDecisionDate;
-#            rr:objectMap
-#                [
-#                    rml:reference "AWARDED_CONTRACT/DATE_CONCLUSION_CONTRACT";
-#                    rr:datatype xsd:date;
-#                ]
-        ] .
+        ] ;
+    rr:predicateObjectMap   #specific for F25, F23 and F20 with directive 23 (different for F03, F06, F21, F22, and F20 when used for directive 24 and 25, for example)
+        [
+            rr:predicate epo:hasAwardDecisionDate;
+            rr:objectMap
+                [
+                    rml:reference "if (../@FORM='F23' or ../@FORM='F25' or (../@FORM='F20' and (../DIRECTIVE/@VALUE='2014/23/EU' or ../LEGAL_BASIS/@VALUE='32014L0023' or contains(../LEGAL_BASIS_OTHER, '23/EU') or contains(../LEGAL_BASIS_OTHER, 'L0023') ))) then AWARDED_CONTRACT/DATE_CONCLUSION_CONTRACT else null";
+                    rr:datatype xsd:date;
+                ]
+         ] ;
+    rr:predicateObjectMap   #specific for F13 (similar to F25 and F23, but different from F03 and F06, for example)
+        [
+            rr:predicate epo:hasAwardDecisionDate;
+            rr:objectMap
+                [
+                    rml:reference "AWARDED_PRIZE/DATE_DECISION_JURY";
+                    rr:datatype xsd:date;
+                ]
+       ] .
 tedm:ContractIdentifier a rr:TripleMap ;
     rml:logicalSource
         [
