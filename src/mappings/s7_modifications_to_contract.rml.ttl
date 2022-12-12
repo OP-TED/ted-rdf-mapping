@@ -70,6 +70,83 @@ tedm:ProcedurePurposeModification a rr:TriplesMap ;
                     ];
                 ] ;
         ] .
+tedm:LotAwardOutcomeModification a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:describesLot ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:LotModification;
+#                    rr:joinCondition [
+##                        rr:parent "if (count(../OBJECT_DESCR)=1) then ./@ITEM else ./LOT_NO";
+##                        rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ./LOT_NO";
+##                        rr:parent "if (count(../OBJECT_DESCR)=1) then ../OBJECT_DESCR else ./LOT_NO";
+##                        rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)=1) then ../OBJECT_CONTRACT/OBJECT_DESCR else ./LOT_NO";
+#                        rr:parent "if (count(../OBJECT_DESCR)=1) then (if(exists(./@ITEM)) then ./@ITEM else 1) else ./LOT_NO";
+#                        rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ./LOT_NO";
+##                        rr:parent "if (count(../OBJECT_DESCR)>1) then ./LOT_NO else if(exists(./@ITEM)) then ./@ITEM else 1";
+##                        rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)>1) then ./LOT_NO else 1";
+#                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:comprisesTenderAwardOutcome ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:TenderAwardOutcomeModification;
+                    rr:joinCondition [
+#                        rr:child "./@ITEM";
+#                        rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
+#                        rr:child "./AWARDED_CONTRACT";
+#                        rr:parent "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT";
+                        rr:child "if(exists(./@ITEM)) then ./@ITEM else 1";
+                        rr:parent "if(exists(ancestor::AWARD_CONTRACT/@ITEM)) then ancestor::AWARD_CONTRACT/@ITEM else 1";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAwardedValue ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:LotAwardOutcomeAwardedMonetaryValue;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
+                ] ;
+        ] .
+tedm:TenderAwardOutcomeModification a rr:TripleMap ;
+        rr:predicateObjectMap
+        [
+            rr:predicate epo:awardsLotToWinner ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:WinnerModification;
+                    rr:joinCondition [
+#                        rr:child "ancestor::AWARD_CONTRACT/@ITEM";
+#                        rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
+#                        rr:child "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT";
+#                        rr:parent "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT";
+                        rr:child "if(exists(ancestor::AWARD_CONTRACT/@ITEM)) then ancestor::AWARD_CONTRACT/@ITEM else 1";
+                        rr:parent "if(exists(ancestor::AWARD_CONTRACT/@ITEM)) then ancestor::AWARD_CONTRACT/@ITEM else 1";
+                    ];
+                ] ;
+        ] .
+tedm:WinnerModification a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:playedBy;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ContractorOrganisationModification;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
+                ] ;
+        ] .
 tedm:LotModification a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -221,6 +298,28 @@ tedm:LotPurposeModification a rr:TriplesMap ;
 #                ]
 #
 #        ] ;
+tedm:LotAwardOutcomeAwardedMonetaryValueModification a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "DESCRIPTION_PROCUREMENT/VALUES/VAL_TOTAL";
+                    rr:datatype xsd:decimal
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:currency;
+                    rr:joinCondition [
+                        rr:child "DESCRIPTION_PROCUREMENT/VALUES/VAL_TOTAL/@CURRENCY";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] .
 tedm:ContractTermModification a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -328,14 +427,10 @@ tedm:PeriodModification a rr:TripleMap ;
 tedm:ContractModification a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:containsModificationsOn;
+            rr:predicate epo:describesNotice;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ContractorOrganisationModification ;
-                    rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    ];
+                    rr:parentTriplesMap tedm:Notice ;
                 ] ;
         ] ;
     rr:predicateObjectMap
