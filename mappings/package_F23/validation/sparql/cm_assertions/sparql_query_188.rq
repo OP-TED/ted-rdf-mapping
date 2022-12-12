@@ -1,10 +1,10 @@
-#title: D4.1.1 - No applications, no tenders or no suitable tenders/applications in response to a prior concession award procedure
-#description: “D4.1.1 - No applications, no tenders or no suitable tenders/applications in response to a prior concession award procedure” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F23_2014/PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_PUBLICATION/D_ACCORDANCE_ARTICLE/D_NO_TENDERS_REQUESTS. The expected ontology instances are epo: epo:Procedure / epo:DirectAwardTerm / at-voc:direct-award-justification .
-#xpath: /TED_EXPORT/FORM_SECTION/F23_2014/PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_PUBLICATION/D_ACCORDANCE_ARTICLE/D_NO_TENDERS_REQUESTS
+#title: VI.5 - Date of dispatch of this notice (dd/mm/yyyy)
+#description: “VI.5 - Date of dispatch of this notice (dd/mm/yyyy)” in SF corresponds to “BT-05 Notice Dispatch Date” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F23_2014/COMPLEMENTARY_INFO/DATE_DISPATCH_NOTICE. The expected ontology instances are epo: epo:Notice / xsd:date .
+#xpath: /TED_EXPORT/FORM_SECTION/F23_2014/COMPLEMENTARY_INFO/DATE_DISPATCH_NOTICE
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Procedure .
-		?this epo:isSubjectToProcedureSpecificTerm / epo:hasDirectAwardJustification <http://publications.europa.eu/resource/authority/direct-award-justification/unsuitable> . }
+		?this rdf:type epo:Notice .
+		?this epo:hasDispatchDate ?value . }

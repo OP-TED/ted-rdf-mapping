@@ -1,10 +1,10 @@
-#title: VI.5 - Date of dispatch of this notice (dd/mm/yyyy)
-#description: “VI.5 - Date of dispatch of this notice (dd/mm/yyyy)” in SF corresponds to “BT-05 Notice Dispatch Date” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F20_2014/COMPLEMENTARY_INFO/DATE_DISPATCH_NOTICE. The expected ontology instances are epo: epo:ResultNotice .
-#xpath: /TED_EXPORT/FORM_SECTION/F20_2014/COMPLEMENTARY_INFO/DATE_DISPATCH_NOTICE
+#title: VII.1.1 - Main CPV code
+#description: “VII.1.1 - Main CPV code” in SF corresponds to “BT-262 Main Classification Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CPV_MAIN/CPV_CODE/@CODE. The expected ontology instances are epo: epo:Procedure / epo:Purpose / at-voc:cpv (from cpv.json) .
+#xpath: /TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CPV_MAIN/CPV_CODE/@CODE
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:ResultNotice .
-		?this epo:hasDispatchDate ?value . }
+		?this rdf:type epo:Procedure .
+		?this epo:hasOverallPurpose / epo:hasMainClassification ?value . }

@@ -1,10 +1,8 @@
-#title: VI.4.1 - Review body
-#description: “VI.4.1 - Review body” in SF corresponds to “--- nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F23_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY. The expected ontology instances are epo: epo:ResultNotice / epo:AgentInRole (from CL1) .
-#xpath: /TED_EXPORT/FORM_SECTION/F23_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY
+#title: V.2.3.12 - The concessionaire is an SME
+#description: “V.2.3.12 - The concessionaire is an SME” in SF corresponds to “BT-165 Winner Size” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F23_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/SME. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2)  / at-voc:economic-operator-size .
+#xpath: /TED_EXPORT/FORM_SECTION/F23_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/SME
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:ResultNotice .
-		?this epo:announcesRole ?value }
+		?this epo:playedBy / epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme> }
