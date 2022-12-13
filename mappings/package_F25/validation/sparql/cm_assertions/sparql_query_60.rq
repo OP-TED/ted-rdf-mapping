@@ -1,5 +1,5 @@
 #title: V.0.4 - A concession/lot is awarded
-#description: “V.0.4 - A concession/lot is awarded” in SF corresponds to “BT-142 Winner Chosen” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F25_2014/AWARD_CONTRACT/AWARDED_CONTRACT. The expected ontology instances are epo: epo:Contract .
+#description: “V.0.4 - A concession/lot is awarded” in SF corresponds to “BT-142 Winner Chosen” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F25_2014/AWARD_CONTRACT/AWARDED_CONTRACT. The expected ontology instances are epo: epo:Contract / epo:LotAwardOutcome / at-voc:winner-selection-status .
 #xpath: /TED_EXPORT/FORM_SECTION/F25_2014/AWARD_CONTRACT/AWARDED_CONTRACT
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
@@ -7,4 +7,5 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Contract .
-		?this a epo:ConcessionContract . }
+		?this epo:includesLotAwardOutcome / epo:hasAwardStatus   <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> .
+ }

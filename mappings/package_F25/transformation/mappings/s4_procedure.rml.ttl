@@ -132,13 +132,30 @@ tedm:Procedure a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:isSubjectToTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ProcessPlanningTermProcedure
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate epo:usesTechnique ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:EauctionTechniqueUsage
                 ] ;
         ] .
-
+tedm:ProcessPlanningTermProcedure a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAwardDateScheduled ;
+            rr:objectMap
+                [
+                    rml:reference "DATE_AWARD_SCHEDULED";
+                    rr:datatype xsd:date
+                ] ;
+        ] .
 tedm:ProcurementProcessInformation a rr:TriplesMap ;
     rr:predicateObjectMap
         [
