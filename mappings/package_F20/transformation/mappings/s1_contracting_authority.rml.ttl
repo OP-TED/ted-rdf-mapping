@@ -392,18 +392,18 @@ tedm:BuyerProfile a rr:TripleMap ;
         ] .
 
 tedm:Organisation a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasDeliveryGateway ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:OrganisationChannel;
-                    rr:joinCondition [
-                        rr:child "if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then 'true' else null";
-                        rr:parent "if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then 'true' else null";
-                    ];
-                ]
-        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasDeliveryGateway ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:OrganisationChannel;
+#                    rr:joinCondition [
+#                        rr:child "if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then 'true' else null";
+#                        rr:parent "if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then 'true' else null";
+#                    ];
+#                ]
+#        ] ;
     rr:predicateObjectMap
         [
             rr:predicate legal:registeredAddress ;
@@ -603,6 +603,7 @@ tedm:OrganisationChannel a rr:TriplesMap ;
                 [
                     rml:reference ".";
                     #--rr:termType rr:IRI;
+
                 ] ;
         ] .
 
@@ -630,8 +631,17 @@ tedm:AccessTerm  a rr:TriplesMap ;
             rr:predicate epo:hasPublicAccessURL ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(DOCUMENT_FULL)) then URL_DOCUMENT else null";
-                    #--rr:termType rr:IRI;
+                    rml:reference "if(exists(DOCUMENT_FULL) and starts-with(URL_DOCUMENT,'http')) then URL_DOCUMENT else null";
+                    rr:termType rr:IRI;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasPublicAccessURL ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(DOCUMENT_FULL) and not(starts-with(URL_DOCUMENT,'http'))) then URL_DOCUMENT else null";
+                    rr:termType rr:Literal;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -639,11 +649,28 @@ tedm:AccessTerm  a rr:TriplesMap ;
             rr:predicate epo:hasRestrictedAccessURL ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(DOCUMENT_RESTRICTED)) then URL_DOCUMENT else null";
-                    #--rr:termType rr:IRI;
+                    rml:reference "if(exists(DOCUMENT_RESTRICTED) and starts-with(URL_DOCUMENT,'http')) then URL_DOCUMENT else null";
+                    rr:termType rr:IRI;
                 ] ;
-        ] .
-tedm:ResultNotice a rr:TriplesMap ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasRestrictedAccessURL ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(DOCUMENT_RESTRICTED) and not(starts-with(URL_DOCUMENT,'http'))) then URL_DOCUMENT else null";
+                    rr:termType rr:Literal;
+                ] ;
+        ].
+tedm:Notice a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:announcesRole;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:ProcurementProcedureInformationProviderIdem;
+            ]
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:announcesRole;
@@ -651,6 +678,47 @@ tedm:ResultNotice a rr:TriplesMap ;
             [
                 rr:parentTriplesMap tedm:ProcurementProcedureInformationProvider;
             ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:announcesRole;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:TenderReceiverIdem;
+            ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:announcesRole;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:TenderReceiver;
+            ]
+        ] .
+tedm:ProcurementProcedureInformationProviderIdem a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:playedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Organisation
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContactPointInRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ContactPoint
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasBuyerProfile ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:BuyerProfile
+                ] ;
         ] .
 tedm:ProcurementProcedureInformationProvider a rr:TripleMap ;
     rr:predicateObjectMap
@@ -674,11 +742,10 @@ tedm:ProcurementProcedureInformationProvider a rr:TripleMap ;
             rr:predicate epo:hasBuyerProfile ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:InformationProviderProfile
+                    rr:parentTriplesMap tedm:InformationProviderBuyerProfile
                 ] ;
         ] .
-
-tedm:InformationProviderProfile a rr:TripleMap ;
+tedm:InformationProviderBuyerProfile a rr:TripleMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasURL;
@@ -687,7 +754,6 @@ tedm:InformationProviderProfile a rr:TripleMap ;
                     rml:reference "."
                 ]
         ] .
-
 tedm:InformationProviderOrganisation a rr:TripleMap ;
 #    rr:predicateObjectMap
 #        [
@@ -831,9 +897,181 @@ tedm:InformationProviderOrganisationAddress  a rr:TriplesMap ;
                     ];
                 ] ;
         ] .
+tedm:TenderReceiverIdem a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:playedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Organisation
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContactPointInRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ContactPoint
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasBuyerProfile ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:BuyerProfile
+                ] ;
+        ] .
+tedm:TenderReceiver a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:playedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:TenderReceiverOrganisation
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContactPointInRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:TenderReceiverOrganisationContactPoint
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasBuyerProfile ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:TenderReceiverBuyerProfile
+                ] ;
+        ] .
+tedm:TenderReceiverBuyerProfile a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasURL;
+            rr:objectMap
+                [
+                    rml:reference "."
+                ]
+        ] .
+tedm:TenderReceiverOrganisation a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasPrimaryContactPoint ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:TenderReceiverOrganisationContactPoint
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate legal:registeredAddress ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:TenderReceiverOrganisationAddress
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasID;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:TenderReceiverOrganisationIdentifier
+                ]
+        ] .
+tedm:TenderReceiverOrganisationIdentifier a rr:TripleMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasIdentifierValue;
+            rr:objectMap
+                [
+                    rml:reference "NATIONALID"
+                ]
+        ] .
+tedm:TenderReceiverOrganisationContactPoint a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate cpov:email ;
+            rr:objectMap
+                [
+                    rml:reference "E_MAIL"
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasFax ;
+            rr:objectMap
+                [
+                    rml:reference "FAX"
+                ]
+        ] ;
 
+    rr:predicateObjectMap
+        [
+            rr:predicate cpov:telephone ;
+            rr:objectMap
+                [
+                    rml:reference "PHONE"
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasInternetAddress ;
+            rr:objectMap
+                [
+                    rml:reference "URL_GENERAL";
+                    #-rr:termType rr:IRI;
+                ] ;
+        ] .
+tedm:TenderReceiverOrganisationAddress  a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate locn:postName ;
+            rr:objectMap
+                [
+                    rml:reference "TOWN"
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate locn:thoroughfare ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS"
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate locn:postCode ;
+            rr:objectMap
+                [
+                    rml:reference "POSTAL_CODE"
+                ] ;
+        ] ;
 
-
-
-
-
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasNutsCode ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:nuts;
+                    rr:joinCondition [
+                        rr:child "*:NUTS/@CODE";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCountryCode ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:country;
+                    rr:joinCondition [
+                        rr:child "COUNTRY/@VALUE";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] .

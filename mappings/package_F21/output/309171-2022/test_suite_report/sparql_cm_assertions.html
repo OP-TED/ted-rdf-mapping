@@ -89,9 +89,9 @@
 	<hr>
     <h2>Report details: </h2>
     <ul>
-        <li>Date created: 2022-12-07T08:07:09.452606</li>
+        <li>Date created: 2022-12-13T01:34:36.419007</li>
         <li>SPARQL test suite identifier: cm_assertions</li>
-        <li>Mapping suite identifier: package_F21_v5.0.1</li>
+        <li>Mapping suite identifier: package_F21_v5.1.0</li>
         
         <li><div><hr></div>Notice identifier(s):
             <div data-role="collapsible" data-state=""
@@ -122,35 +122,35 @@
                 
                 <td class="strong valid">valid</td>
                 <td>47</td>
-                <td>20.17%</td>
+                <td>20.09%</td>
             </tr>
             <tr>
                 
                 
                 <td class="strong unverifiable">unverifiable</td>
                 <td>143</td>
-                <td>61.37%</td>
+                <td>61.11%</td>
             </tr>
             <tr>
                 
                 
                 <td class="strong warning">warning</td>
                 <td>41</td>
-                <td>17.6%</td>
+                <td>17.52%</td>
             </tr>
             <tr>
                 
                 
                 <td class="strong invalid">invalid</td>
                 <td>2</td>
-                <td>0.86%</td>
+                <td>0.85%</td>
             </tr>
             <tr>
                 
                 
                 <td class="strong error">error</td>
-                <td>0</td>
-                <td>0.0%</td>
+                <td>1</td>
+                <td>0.43%</td>
             </tr>
             </tbody>
         </table>
@@ -5294,18 +5294,18 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="II.3 - Estimated date of publication of contract notice">
-                        “II.3 - Estimated date of publication of contract notice” in SF corresponds to “BT-127 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/DATE_PUBLICATION_NOTICE. The expected ontology instances are epo: epo:Notice / xsd:date .
+                        “II.3 - Estimated date of publication of contract notice” in SF corresponds to “BT-127 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/DATE_PUBLICATION_NOTICE. The expected ontology instances are epo: epo:Notice / epo:PlannedProcurementPart / epo:ProcessPlanningTerm / xsd:date .
                     </div>
                 </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Notice .<br>		?this epo:hasPublicationDate ?value }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Notice .<br>		?this  epo-not:announcesPlannedProcurementPart / epo:isSubjectToTerm / epo:hasEstimatedContractNoticePublicationDate ?value }</td>
+                <td class="strong error">error</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="II.3 - Estimated date of publication of contract notice">
                     <ul>
-                    <li>Query result: False</li>
+                    <li>Query result: None</li>
                     
-                    <li>Fields are covered: False</li>
+                    <li>Fields are covered: True</li>
                     
                         <li>
                         <h4 class="info">Fields:</h4>
@@ -5317,15 +5317,11 @@
                         </li>
                     
                     
-                        <li>
-                        <h4 class="danger">Missing fields:</h4>
-                        <ol>
-                        
-                            <li>/TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/DATE_PUBLICATION_NOTICE</li>
-                        
-                        </ol>
-                        </li>
                     
+                        <li>
+                            <h4 class="danger strong">ERROR:</h4>
+                            Unknown namespace prefix : epo-not
+                        </li>
                     
                     </ul>
                     </div>
@@ -6234,6 +6230,49 @@
             </tr>
         
             <tr>
+                <td>IV.2.5 - Scheduled date for start of award procedures</td>
+                <td>
+                    <button class="open-dialog">Description</button>
+                    <div class="dialog" title="IV.2.5 - Scheduled date for start of award procedures">
+                        “IV.2.5 - Scheduled date for start of award procedures” in SF corresponds to “no match nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/PROCEDURE/DATE_AWARD_SCHEDULED. The expected ontology instances are epo: epo:Procedure / epo:ProcessPlanningTerm / xsd:date .
+                    </div>
+                </td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Procedure .<br>		?this  epo:isSubjectToTerm / epo:hasAwardDateScheduled ?value }</td>
+                <td class="strong unverifiable">unverifiable</td>
+                <td>
+                    <button class="open-dialog">Details</button>
+                    <div class="dialog" title="IV.2.5 - Scheduled date for start of award procedures">
+                    <ul>
+                    <li>Query result: False</li>
+                    
+                    <li>Fields are covered: False</li>
+                    
+                        <li>
+                        <h4 class="info">Fields:</h4>
+                        <ol>
+                        
+                            <li>/TED_EXPORT/FORM_SECTION/F21_2014/PROCEDURE/DATE_AWARD_SCHEDULED</li>
+                        
+                        </ol>
+                        </li>
+                    
+                    
+                        <li>
+                        <h4 class="danger">Missing fields:</h4>
+                        <ol>
+                        
+                            <li>/TED_EXPORT/FORM_SECTION/F21_2014/PROCEDURE/DATE_AWARD_SCHEDULED</li>
+                        
+                        </ol>
+                        </li>
+                    
+                    
+                    </ul>
+                    </div>
+                </td>
+            </tr>
+        
+            <tr>
                 <td>IV.2.9.1 - The contracting authority will not award any further contracts based on the above prior information notice</td>
                 <td>
                     <button class="open-dialog">Description</button>
@@ -6791,7 +6830,7 @@
                         “V.2.0.1 - Award of contract” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT. The expected ontology instances are epo: epo:LotAwardOutcome / epo:TenderAwardOutcome / epo:Winner .
                     </div>
                 </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:LotAwardOutcome .<br>		?this epo:comprisesTenderAwardOutcome / epo:awardsLotToWinner ?value }</td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:LotAwardOutcome .<br>		?this epo:comprisesTenderAwardOutcome / epo:indicatesAwardOfLotToWinner ?value }</td>
                 <td class="strong unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
@@ -6831,7 +6870,7 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="V.2.1 - Date of conclusion of the contract">
-                        “V.2.1 - Date of conclusion of the contract” in SF corresponds to “BT-145 Contract Conclusion Date” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/DATE_CONCLUSION_CONTRACT. The expected ontology instances are epo: epo:Contract / rdf:langString .
+                        “V.2.1 - Date of conclusion of the contract” in SF corresponds to “BT-145 Contract Conclusion Date” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/DATE_CONCLUSION_CONTRACT. The expected ontology instances are epo: epo:Contract / xsd:date .
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Contract .<br>		?this epo:hasContractConclusionDate ?value . }</td>
@@ -9717,7 +9756,7 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="VI.5 - Date of dispatch of this notice (dd/mm/yyyy)">
-                        “VI.5 - Date of dispatch of this notice (dd/mm/yyyy)” in SF corresponds to “BT-05 Notice Dispatch Date” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/COMPLEMENTARY_INFO/DATE_DISPATCH_NOTICE. The expected ontology instances are epo: epo:Notice .
+                        “VI.5 - Date of dispatch of this notice (dd/mm/yyyy)” in SF corresponds to “BT-05 Notice Dispatch Date” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/COMPLEMENTARY_INFO/DATE_DISPATCH_NOTICE. The expected ontology instances are epo: epo:Notice / xsd:date .
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Notice .<br>		?this epo:hasDispatchDate ?value . }</td>
@@ -9764,14 +9803,14 @@
             
             <td class="strong">True</td>
             <td>88</td>
-            <td>37.77%</td>
+            <td>37.61%</td>
         </tr>
         <tr>
             
             
             <td class="strong">False</td>
             <td>145</td>
-            <td>62.23%</td>
+            <td>61.97%</td>
         </tr>
         <tr>
             

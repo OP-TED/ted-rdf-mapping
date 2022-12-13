@@ -378,7 +378,7 @@
         
             <dd><strong><em>Reference:</em></strong>
                 
-                    if(exists(../PROCEDURE/PT_OPEN)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/open' else if(exists(../PROCEDURE/PT_RESTRICTED)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted' else if(exists(../PROCEDURE/PT_COMPETITIVE_NEGOTIATION)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call' else if(exists(../PROCEDURE/PT_INVOLVING_NEGOTIATION)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call' else if(exists(../PROCEDURE/PT_NEGOTIATED_WITH_PRIOR_CALL)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call' else if(exists(../PROCEDURE/PT_COMPETITIVE_DIALOGUE)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial' else if(exists(../PROCEDURE/PT_INNOVATION_PARTNERSHIP)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation' else if(exists(../PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call' else null
+                    if(exists(../PROCEDURE/PT_OPEN)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/open' else if(exists(../PROCEDURE/PT_RESTRICTED)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted' else if(exists(../PROCEDURE/PT_COMPETITIVE_NEGOTIATION) or exists(../PROCEDURE/PT_INVOLVING_NEGOTIATION) or exists(../PROCEDURE/PT_NEGOTIATED_WITH_PRIOR_CALL)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call' else if(exists(../PROCEDURE/PT_COMPETITIVE_DIALOGUE)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial' else if(exists(../PROCEDURE/PT_INNOVATION_PARTNERSHIP)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation' else if(exists(../PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL) or exists(../PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_PUBLICATION)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call' else null
                 
             </dd>
         
@@ -677,6 +677,36 @@
             <dd><strong><em>Parent Triple Map:</em></strong>
                 
                     <a href="#http://data.europa.eu/a4g/mapping/sf-rml/AccessTerm">http://data.europa.eu/a4g/mapping/sf-rml/AccessTerm</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#isSubjectToTerm</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ProcessPlanningTermProcedure">http://data.europa.eu/a4g/mapping/sf-rml/ProcessPlanningTermProcedure</a>
                 
             </dd>
         
@@ -1193,7 +1223,7 @@
         
             <dd><strong><em>Reference:</em></strong>
                 
-                    if(../NOTICE/@TYPE='AWARD_CONTRACT' or ../NOTICE/@TYPE='CONCESSION_AWARD_CONTRACT') then 'http://data.europa.eu/a4g/ontology#ResultNotice' else if (../NOTICE/@TYPE='CONTRACT' or ../NOTICE/@TYPE='PRI' or ../NOTICE/@TYPE='PRI_CALL_COMPETITION') then 'http://data.europa.eu/a4g/ontology#CompetitionNotice' else null 
+                    if(../NOTICE/@TYPE='AWARD_CONTRACT' or ../NOTICE/@TYPE='CONCESSION_AWARD_CONTRACT') then 'http://data.europa.eu/a4g/ontology#ResultNotice' else if (../NOTICE/@TYPE='CONTRACT' or ../NOTICE/@TYPE='PRI' or ../NOTICE/@TYPE='PRI_CALL_COMPETITION' or ../NOTICE/@TYPE='QSU_ONLY' or ../NOTICE/@TYPE='QSU_CALL_COMPETITION' or ../NOTICE/@TYPE='PER_CALL_COMPETITION') then 'http://data.europa.eu/a4g/ontology#CompetitionNotice' else if(../NOTICE/@TYPE='PRI_ONLY' or ../NOTICE/@TYPE='PRI_REDUCING_TIME_LIMITS' or ../NOTICE/@TYPE='PER_ONLY' or ../NOTICE/@TYPE='PER_REDUCING_TIME_LIMITS') then 'http://data.europa.eu/a4g/ontology#PlanningNotice' else null 
                 
             </dd>
         
@@ -1225,21 +1255,21 @@
             
                 
                     <dl>
-                        <dt>http://www.w3.org/2006/time#hasPublicationDate</dt>
+                        <dt>http://data.europa.eu/a4g/ontology#announcesPlannedProcurementPart</dt>
+
+                        
+
+                        
 
                         
         
-            <dd><strong><em>Reference:</em></strong>
+            <dd><strong><em>Parent Triple Map:</em></strong>
                 
-                    DATE_PUBLICATION_NOTICE
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/PlannedProcurementPart">http://data.europa.eu/a4g/mapping/sf-rml/PlannedProcurementPart</a>
                 
             </dd>
         
     
-
-                        
-
-                        
 
                         
 
@@ -1823,6 +1853,120 @@
                     </dl>
                 
             
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/PlannedProcurementPart">http://data.europa.eu/a4g/mapping/sf-rml/PlannedProcurementPart</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#isSubjectToTerm</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ProcessPlanningTermLot">http://data.europa.eu/a4g/mapping/sf-rml/ProcessPlanningTermLot</a>
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ProcessPlanningTermLot">http://data.europa.eu/a4g/mapping/sf-rml/ProcessPlanningTermLot</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasEstimatedContractNoticePublicationDate</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    DATE_PUBLICATION_NOTICE
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
                 
             
         </dd>
@@ -6226,6 +6370,63 @@
             <dd><strong><em>Reference:</em></strong>
                 
                     ./REFERENCE_NUMBER
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ProcessPlanningTermProcedure">http://data.europa.eu/a4g/mapping/sf-rml/ProcessPlanningTermProcedure</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasAwardDateScheduled</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    DATE_AWARD_SCHEDULED
                 
             </dd>
         

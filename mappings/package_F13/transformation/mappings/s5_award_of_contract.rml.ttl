@@ -28,7 +28,7 @@ tedm:award_of_contract
 #            rr:predicate epo:isWithinFrameworkAgreement;
 #            rr:objectMap
 #                [
-#                    rml:reference "if(exists(AWARDED_TO_GROUP)) then 'true' else 'null'";
+#                    rml:reference "if(exists(AWARDED_TO_GROUP)) then 'true' else if(exists(NO_AWARDED_TO_GROUP)) then 'false' else null";
 #                    rr:datatype xsd:boolean
 #
 #                ]
@@ -116,6 +116,15 @@ tedm:Contract a rr:TripleMap ;
 #                rr:parentTriplesMap tedm:BuyerCP;
 #            ] ;
 #    ] ;
+    rr:predicateObjectMap   #specific for F23 and F25
+        [
+            rr:predicate rdf:type;
+            rr:objectMap
+                [
+                    rml:reference "if ((../@FORM='F23' or ../@FORM='F25') and exists(AWARDED_CONTRACT)) then 'http://data.europa.eu/a4g/ontology#ConcessionContract' else null";
+                    rr:termType rr:IRI;
+                ]
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasID;
@@ -326,7 +335,7 @@ tedm:LotAwardOutcome a rr:TripleMap ;
             rr:predicate epo:hasNonAwardJustification;
             rr:objectMap
                 [
-                    rml:reference "if(exists(NO_AWARDED_CONTRACT/PROCUREMENT_UNSUCCESSFUL) or exists(NO_AWARDED_PRIZE/PROCUREMENT_UNSUCCESSFUL)) then 'http://publications.europa.eu/resource/authority/non-award-justification/all-rej' else if(exists(NO_AWARDED_CONTRACT/PROCUREMENT_DISCONTINUED)or exists(NO_AWARDED_PRIZE/PROCUREMENT_DISCONTINUED)) then 'http://publications.europa.eu/resource/authority/non-award-justification/other' else null";
+                    rml:reference "if(exists(NO_AWARDED_CONTRACT/PROCUREMENT_UNSUCCESSFUL) or exists(NO_AWARDED_PRIZE/PROCUREMENT_UNSUCCESSFUL)) then 'http://publications.europa.eu/resource/authority/non-award-justification/none-rej' else if(exists(NO_AWARDED_CONTRACT/PROCUREMENT_DISCONTINUED)or exists(NO_AWARDED_PRIZE/PROCUREMENT_DISCONTINUED)) then 'http://publications.europa.eu/resource/authority/non-award-justification/other' else null";
                     rr:termType rr:IRI;
                 ]
         ] .
@@ -607,7 +616,7 @@ tedm:TenderAwardOutcome a rr:TripleMap ;
         ] ;
         rr:predicateObjectMap
         [
-            rr:predicate epo:awardsLotToWinner ;
+            rr:predicate epo:indicatesAwardOfLotToWinner  ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:WinnerRole;
@@ -642,7 +651,7 @@ tedm:Tender a rr:TripleMap ;
                 [
                     rr:parentTriplesMap tedm:country;
                     rr:joinCondition [
-                        rr:child "COUNTRY_ORIGIN/NON_COMMUNITY_ORIGIN";
+                        rr:child "COUNTRY_ORIGIN/NON_COMMUNITY_ORIGIN/@VALUE";
                         rr:parent "code.value";
                     ];
                 ] ;

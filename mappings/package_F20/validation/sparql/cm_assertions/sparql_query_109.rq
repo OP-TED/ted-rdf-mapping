@@ -1,10 +1,10 @@
-#title: VII.1.5.5 - Directive 2014/25/EU – In the case of framework agreements, provide justification for any duration exceeding 8 years:
-#description: “VII.1.5.5 - Directive 2014/25/EU – In the case of framework agreements, provide justification for any duration exceeding 8 years:” in SF corresponds to “BT-109 Framework Duration Justification” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/JUSTIFICATION/P. The expected ontology instances are epo: epo:Lot / epo:FrameworkAgreementTerm / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/JUSTIFICATION/P
+#title: VII.1.6 - Information on value of the contract/lot/concession
+#description: “VII.1.6 - Information on value of the contract/lot/concession” in SF corresponds to “--- nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT. The expected ontology instances are epo: epo:LotAwardOutcome / epo:Lot .
+#xpath: /TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Lot .
-		?this  epo:isSubjectToLotSpecificTerm / epo:hasDurationExtensionJustification ?value }
+		?this rdf:type epo:LotAwardOutcome .
+		?this epo:describesLot ?value }

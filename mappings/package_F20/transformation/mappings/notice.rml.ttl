@@ -1,5 +1,6 @@
 #--- s6_complementary_information.rml.ttl ---
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
@@ -8,9 +9,10 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-not: <http://data.europa.eu/a4g/ontology#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 
-tedm:result_notice
+tedm:notice
   a owl:Ontology ;
   owl:imports dct:, <http://www.w3.org/2004/02/skos/core> ;
   dct:description """
@@ -18,14 +20,22 @@ tedm:result_notice
   rdfs:label "TED-SWS mapping of "@en ;
   dct:date "2022-06-28"^^xsd:date .
 
-tedm:ResultNotice a rr:TriplesMap ;
+tedm:Notice a rr:TriplesMap ;
+    rr:predicateObjectMap     # second (more specific) notice type depending on NOTICE TYPE
+        [
+            rr:predicate rdf:type ;
+            rr:objectMap
+            [
+                rml:reference "if(../NOTICE/@TYPE='AWARD_CONTRACT' or ../NOTICE/@TYPE='CONCESSION_AWARD_CONTRACT') then 'http://data.europa.eu/a4g/ontology#ResultNotice' else if (../NOTICE/@TYPE='CONTRACT' or ../NOTICE/@TYPE='PRI' or ../NOTICE/@TYPE='PRI_CALL_COMPETITION' or ../NOTICE/@TYPE='QSU_ONLY' or ../NOTICE/@TYPE='QSU_CALL_COMPETITION' or ../NOTICE/@TYPE='PER_CALL_COMPETITION') then 'http://data.europa.eu/a4g/ontology#CompetitionNotice' else if(../NOTICE/@TYPE='PRI_ONLY' or ../NOTICE/@TYPE='PRI_REDUCING_TIME_LIMITS' or ../NOTICE/@TYPE='PER_ONLY' or ../NOTICE/@TYPE='PER_REDUCING_TIME_LIMITS') then 'http://data.europa.eu/a4g/ontology#PlanningNotice' else null ";
+                rr:termType rr:IRI;
+           ]
+        ] ;
     rr:predicateObjectMap
         [
-            rr:predicate time:hasPublicationDate ;
+            rr:predicate epo-not:announcesPlannedProcurementPart ;
             rr:objectMap
                 [
-                    rml:reference "DATE_PUBLICATION_NOTICE";
-                    rr:datatype xsd:datetime
+                    rr:parentTriplesMap tedm:PlannedProcurementPart
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -33,7 +43,8 @@ tedm:ResultNotice a rr:TriplesMap ;
             rr:predicate epo:hasDispatchDate ;
             rr:objectMap
                 [
-                    rml:reference "../COMPLEMENTARY_INFO/DATE_DISPATCH_NOTICE"
+                    rml:reference "../COMPLEMENTARY_INFO/DATE_DISPATCH_NOTICE";
+                    rr:datatype xsd:date;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -137,7 +148,7 @@ tedm:ResultNotice a rr:TriplesMap ;
             rr:predicate epo:refersToPrevious;
             rr:objectMap
             [
-                rr:parentTriplesMap tedm:Notice;
+                rr:parentTriplesMap tedm:PreviousNotice;
             ]
         ] ;
     rr:predicateObjectMap
@@ -162,5 +173,24 @@ tedm:ResultNotice a rr:TriplesMap ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:Tender
+                ] ;
+        ] .
+tedm:PlannedProcurementPart a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:isSubjectToTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ProcessPlanningTermLot
+                ] ;
+        ] .
+tedm:ProcessPlanningTermLot a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasEstimatedContractNoticePublicationDate ;
+            rr:objectMap
+                [
+                    rml:reference "DATE_PUBLICATION_NOTICE";
+                    rr:datatype xsd:date
                 ] ;
         ] .

@@ -263,7 +263,7 @@ tedm:ProcedurePurpose a rr:TriplesMap ;
                 ] ;
         ] .
 
-tedm:Notice a rr:TriplesMap ;
+tedm:PreviousNotice a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate rdf:type ;
@@ -271,7 +271,6 @@ tedm:Notice a rr:TriplesMap ;
                 [
                     rml:reference "if(exists(PT_AWARD_CONTRACT_WITH_PRIOR_PUBLICATION)) then 'http://data.europa.eu/a4g/ontology#CompetitionNotice' else null";
                     rr:termType rr:IRI
-
                 ]
         ] ;
     rr:predicateObjectMap
@@ -279,14 +278,14 @@ tedm:Notice a rr:TriplesMap ;
             rr:predicate epo:hasID;
             rr:objectMap
             [
-                rr:parentTriplesMap tedm:NoticeIdentifier;
+                rr:parentTriplesMap tedm:PreviousNoticeIdentifier;
                 rr:joinCondition [
                     rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                     rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                 ];
             ]
         ] .
-tedm:NoticeIdentifier a rr:TripleMap ;
+tedm:PreviousNoticeIdentifier a rr:TripleMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasIdentifierValue;

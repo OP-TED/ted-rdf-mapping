@@ -1,11 +1,10 @@
-#title: II.2.7.1.1 - Duration in months or days
-#description: “II.2.7.1.1 - Duration in months or days” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F23_2014/OBJECT_CONTRACT/OBJECT_DESCR/DURATION/@TYPE. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / epo:Duration / time:TemporalUnit .
-#xpath: /TED_EXPORT/FORM_SECTION/F23_2014/OBJECT_CONTRACT/OBJECT_DESCR/DURATION/@TYPE
+#title: II.1.7.1 - Value
+#description: “II.1.7.1 - Value” in SF corresponds to “BT-161 Estimated Value” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F23_2014/OBJECT_CONTRACT/VAL_TOTAL. The expected ontology instances are epo: epo:Notice / epo:NoticeAwardInformation / epo:MonetaryValue / xsd:decimal .
+#xpath: /TED_EXPORT/FORM_SECTION/F23_2014/OBJECT_CONTRACT/VAL_TOTAL
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX time: <http://www.w3.org/2006/time#>
 
 ASK WHERE { 
-		?this rdf:type epo:Lot .
-		?this epo:foreseesContractSpecificTerm / epo:definesContractDuration / time:unitType time:unitMonth. }
+		?this rdf:type epo:Notice .
+		?this epo:announcesNoticeAwardInformation / epo:hasTotalAwardedValue / epo:hasAmountValue ?value . }

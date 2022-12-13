@@ -116,6 +116,15 @@ tedm:Contract a rr:TripleMap ;
 #                rr:parentTriplesMap tedm:BuyerCP;
 #            ] ;
 #    ] ;
+    rr:predicateObjectMap   #specific for F23 and F25
+        [
+            rr:predicate rdf:type;
+            rr:objectMap
+                [
+                    rml:reference "if ((../@FORM='F23' or ../@FORM='F25') and exists(AWARDED_CONTRACT)) then 'http://data.europa.eu/a4g/ontology#ConcessionContract' else null";
+                    rr:termType rr:IRI;
+                ]
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasID;
@@ -607,7 +616,7 @@ tedm:TenderAwardOutcome a rr:TripleMap ;
         ] ;
         rr:predicateObjectMap
         [
-            rr:predicate epo:awardsLotToWinner ;
+            rr:predicate epo:indicatesAwardOfLotToWinner  ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:WinnerRole;
