@@ -20,20 +20,83 @@
     table td {
         width: auto
     }
+
+    table.heading td,
+    table.heading th {
+        border: 1px solid #ddd;
+    }
+    table.heading th {
+        background-color: #eee;
+        text-align: left;
+    }
+    table.heading thead td {
+        text-align: left;
+        font-weight: bold;
+        width: 50%;
+    }
+    table.heading tbody th {
+        white-space: nowrap;
+    }
     </style>
   </head>
   <body>
 	<h1>Conceptual Mappings Diff HTML report </h1>
 	<hr>
-    <h3>
-    {<br>&nbsp;&nbsp;"branches":&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;"release/tx1.2.gamma"<br>&nbsp;&nbsp;],<br>&nbsp;&nbsp;"mapping_suite_ids":&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;"package_F03"<br>&nbsp;&nbsp;],<br>&nbsp;&nbsp;"files":&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;null,<br>&nbsp;&nbsp;&nbsp;&nbsp;"/Volumes/Macintosh_HD_Data/meaningfy/op-ted/ted-rdf-mapping/mappings/package_F03/transformation/conceptual_mappings.xlsx"<br>&nbsp;&nbsp;]<br>}
-    </h3>
+    <ul>
+        <li>Created at: 2022-12-14T09:08:09.476619</li>
+    </ul>
+	<hr>
+    <h2>
+        Conceptual Mappings
+    </h2>
+    <table class="heading">
+        <thead>
+            <tr>
+                <th></th>
+                <td>Conceptual Mapping 1</td>
+                <td>Conceptual Mapping 2</td>
+            </tr>
+        </thead>
+        <tbody>
+            
+            
+            <tr>
+                <th>Branch</th>
+                <td>tx1.2.gamma</td>
+                <td>tx1.3.beta</td>
+            </tr>
+            
+            
+            <tr>
+                <th>Mapping Suite</th>
+                <td>package_F03</td>
+                <td>package_F03</td>
+            </tr>
+            
+            
+            <tr>
+                <th>Conceptual Mapping File</th>
+                <td>transformation/conceptual_mappings.xlsx</td>
+                <td>transformation/conceptual_mappings.xlsx</td>
+            </tr>
+            <tr>
+                <th>Mapping Version</th>
+                <td>5.1.0</td>
+                <td>5.5.0</td>
+            </tr>
+        </tbody>
+    </table>
     <hr>
     <h2>Report details: </h2>
-
-    <table class="display" border="1"><tr><th>values_changed</th><td><table class="display" border="1"><tr><th>root[&#x27;metadata&#x27;][&#x27;mapping_version&#x27;]</th><td><table class="display" border="1"><tr><th>new_value</th><td>5.5.0</td></tr><tr><th>old_value</th><td>5.1.0</td></tr></table></td></tr><tr><th>root[&#x27;metadata&#x27;][&#x27;epo_version&#x27;]</th><td><table class="display" border="1"><tr><th>new_value</th><td>3.1.0</td></tr><tr><th>old_value</th><td>3.1.0-dev</td></tr></table></td></tr><tr><th>root[&#x27;rules&#x27;][132][&#x27;class_path&#x27;][0]</th><td><table class="display" border="1"><tr><th>new_value</th><td>epo:Contract / xsd:date</td></tr><tr><th>old_value</th><td>epo:Contract / rdf:langString</td></tr></table></td></tr><tr><th>root[&#x27;rules&#x27;][204][&#x27;class_path&#x27;][0]</th><td><table class="display" border="1"><tr><th>new_value</th><td>epo:Notice / xsd:date</td></tr><tr><th>old_value</th><td>epo:Notice</td></tr></table></td></tr><tr><th>root[&#x27;rules&#x27;][131][&#x27;property_path&#x27;][0]</th><td><table class="display" border="1"><tr><th>new_value</th><td>?this epo:comprisesTenderAwardOutcome / epo:indicatesAwardOfLotToWinner ?value</td></tr><tr><th>old_value</th><td>?this epo:comprisesTenderAwardOutcome / epo:awardsLotToWinner ?value</td></tr></table></td></tr></table></td></tr></table>
+    
+        <table class="display" border="1"><tr><th>values_changed</th><td><table class="display" border="1"><tr><th>root[&#x27;metadata&#x27;][&#x27;mapping_version&#x27;]</th><td><table class="display" border="1"><tr><th>new_value</th><td>5.5.0</td></tr><tr><th>old_value</th><td>5.1.0</td></tr></table></td></tr><tr><th>root[&#x27;metadata&#x27;][&#x27;epo_version&#x27;]</th><td><table class="display" border="1"><tr><th>new_value</th><td>3.1.0</td></tr><tr><th>old_value</th><td>3.1.0-dev</td></tr></table></td></tr><tr><th>root[&#x27;rules&#x27;][204][&#x27;class_path&#x27;][0]</th><td><table class="display" border="1"><tr><th>new_value</th><td>epo:Notice / xsd:date</td></tr><tr><th>old_value</th><td>epo:Notice</td></tr></table></td></tr><tr><th>root[&#x27;rules&#x27;][131][&#x27;property_path&#x27;][0]</th><td><table class="display" border="1"><tr><th>new_value</th><td>?this epo:comprisesTenderAwardOutcome / epo:indicatesAwardOfLotToWinner ?value</td></tr><tr><th>old_value</th><td>?this epo:comprisesTenderAwardOutcome / epo:awardsLotToWinner ?value</td></tr></table></td></tr><tr><th>root[&#x27;rules&#x27;][132][&#x27;class_path&#x27;][0]</th><td><table class="display" border="1"><tr><th>new_value</th><td>epo:Contract / xsd:date</td></tr><tr><th>old_value</th><td>epo:Contract / rdf:langString</td></tr></table></td></tr></table></td></tr></table>
+    
     <script>
-        document.querySelector('body>table').classList.add('dataTable');
+        const tables = document.querySelectorAll('body>table');
+        console.log(tables);
+        for (const table of tables) {
+          table.classList.add('dataTable');
+        }
     </script>
   </body>
 </html>
