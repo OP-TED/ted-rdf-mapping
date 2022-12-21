@@ -1,7 +1,7 @@
 [
     {
-        "created": "2022-12-13T00:58:25.551989",
-        "mapping_suite_identifier": "package_F20_v5.4.0",
+        "created": "2022-12-21T13:04:38.768444",
+        "mapping_suite_identifier": "package_F20_v5.6.0",
         "object_data": "SPARQLTestSuiteValidationReport",
         "test_suite_identifier": "cm_assertions",
         "validation_results": [
@@ -698,7 +698,7 @@
                 "missing_fields": [],
                 "query": {
                     "description": "\u201cV.2.0.1 - Award of contract / concession\u201d in SF corresponds to \u201cnan nan\u201d in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F20_2014/AWARD_CONTRACT/AWARDED_CONTRACT. The expected ontology instances are epo: epo:LotAwardOutcome / epo:TenderAwardOutcome / epo:Winner .",
-                    "query": "PREFIX epo: <http://data.europa.eu/a4g/ontology#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nASK WHERE { \n\t\t?this rdf:type epo:LotAwardOutcome .\n\t\t?this epo:comprisesTenderAwardOutcome / epo:awardsLotToWinner ?value }",
+                    "query": "PREFIX epo: <http://data.europa.eu/a4g/ontology#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nASK WHERE { \n\t\t?this rdf:type epo:LotAwardOutcome .\n\t\t?this epo:comprisesTenderAwardOutcome / epo:indicatesAwardOfLotToWinner ?value }",
                     "title": "V.2.0.1 - Award of contract / concession",
                     "xpath": [
                         "/TED_EXPORT/FORM_SECTION/F20_2014/AWARD_CONTRACT/AWARDED_CONTRACT"
@@ -745,8 +745,8 @@
                 "identifier": "sparql_query_45",
                 "missing_fields": [],
                 "query": {
-                    "description": "\u201cV.2.2 - Information about tenders\u201d in SF corresponds to \u201cnan nan\u201d in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F20_2014/AWARD_CONTRACT/AWARDED_CONTRACT. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / epo:Lot .",
-                    "query": "PREFIX epo: <http://data.europa.eu/a4g/ontology#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nASK WHERE { \n\t\t?this rdf:type epo:SubmissionStatisticalInformation .\n\t\t?this epo:concernsSubmissionsForLot ?value . }",
+                    "description": "\u201cV.2.2 - Information about tenders\u201d in SF corresponds to \u201cnan nan\u201d in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F20_2014/AWARD_CONTRACT/AWARDED_CONTRACT. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / epo:LotAwardOutcome .",
+                    "query": "PREFIX epo: <http://data.europa.eu/a4g/ontology#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nASK WHERE { \n\t\t?this rdf:type epo:SubmissionStatisticalInformation .\n\t\t?this epo:summarisesInformationForLotAwardOutcome ?value . }",
                     "title": "V.2.2 - Information about tenders",
                     "xpath": [
                         "/TED_EXPORT/FORM_SECTION/F20_2014/AWARD_CONTRACT/AWARDED_CONTRACT"
@@ -1821,17 +1821,19 @@
             },
             {
                 "error": null,
-                "fields_covered": false,
+                "fields_covered": true,
                 "identifier": "sparql_query_109",
                 "missing_fields": [],
                 "query": {
-                    "description": "\u201cVII.1.6 - Information on value of the contract/lot/concession\u201d in SF corresponds to \u201c--- nan\u201d in eForms. The corresponding XML element is . The expected ontology instances are epo: epo:LotAwardOutcome / epo:Lot .",
+                    "description": "\u201cVII.1.6 - Information on value of the contract/lot/concession\u201d in SF corresponds to \u201c--- nan\u201d in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT. The expected ontology instances are epo: epo:LotAwardOutcome / epo:Lot .",
                     "query": "PREFIX epo: <http://data.europa.eu/a4g/ontology#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nASK WHERE { \n\t\t?this rdf:type epo:LotAwardOutcome .\n\t\t?this epo:describesLot ?value }",
                     "title": "VII.1.6 - Information on value of the contract/lot/concession",
-                    "xpath": []
+                    "xpath": [
+                        "/TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT"
+                    ]
                 },
                 "query_result": "True",
-                "result": "warning"
+                "result": "valid"
             },
             {
                 "error": null,
@@ -2095,17 +2097,19 @@
             },
             {
                 "error": null,
-                "fields_covered": false,
+                "fields_covered": true,
                 "identifier": "sparql_query_126",
                 "missing_fields": [],
                 "query": {
-                    "description": "\u201cVII.2.1 - Description of the modifications\u201d in SF corresponds to \u201c--- nan\u201d in eForms. The corresponding XML element is . The expected ontology instances are epo: epo:ContractModificationNotice / epo:Notice .",
-                    "query": "PREFIX epo: <http://data.europa.eu/a4g/ontology#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nASK WHERE { \n\t\t?this rdf:type epo:ContractModificationNotice .\n\t\t?this epo:describesNotice ?value }",
+                    "description": "\u201cVII.2.1 - Description of the modifications\u201d in SF corresponds to \u201c--- nan\u201d in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/INFO_MODIFICATIONS. The expected ontology instances are epo: epo:ContractModification / epo:Notice .",
+                    "query": "PREFIX epo: <http://data.europa.eu/a4g/ontology#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nASK WHERE { \n\t\t?this rdf:type epo:ContractModification .\n\t\t?this epo:describesNotice ?value }",
                     "title": "VII.2.1 - Description of the modifications",
-                    "xpath": []
+                    "xpath": [
+                        "/TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/INFO_MODIFICATIONS"
+                    ]
                 },
-                "query_result": "False",
-                "result": "unverifiable"
+                "query_result": "True",
+                "result": "valid"
             },
             {
                 "error": null,
