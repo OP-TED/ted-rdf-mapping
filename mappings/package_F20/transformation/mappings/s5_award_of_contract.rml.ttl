@@ -945,22 +945,22 @@ tedm:SubmissionStatisticalInformation a rr:TripleMap ;
                     rr:datatype xsd:integer
                 ]
         ] ;
-
     rr:predicateObjectMap
         [
-            rr:predicate epo:concernsSubmissionsForLot ;
+            rr:predicate epo:summarisesInformationForLotAwardOutcome ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:Lot;
+                    rr:parentTriplesMap tedm:LotAwardOutcome;
                     rr:joinCondition [
-#                        rr:parent "if (count(../OBJECT_DESCR)=1) then ./@ITEM else ./LOT_NO";
+##                        rr:parent "if (count(../OBJECT_DESCR)=1) then ./@ITEM else ./LOT_NO";
+##                        rr:child "if (count(../../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ../LOT_NO";
+##                        rr:parent "if (count(../OBJECT_DESCR)=1) then ../OBJECT_DESCR else ./LOT_NO";
+##                        rr:child "if (count(../../OBJECT_CONTRACT/OBJECT_DESCR)=1) then ../../OBJECT_CONTRACT/OBJECT_DESCR else ../LOT_NO";
+#                        rr:parent "if (count(../OBJECT_DESCR)=1) then (if(exists(./@ITEM)) then ./@ITEM else 1) else ./LOT_NO";
 #                        rr:child "if (count(../../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ../LOT_NO";
-#                        rr:parent "if (count(../OBJECT_DESCR)=1) then ../OBJECT_DESCR else ./LOT_NO";
-#                        rr:child "if (count(../../OBJECT_CONTRACT/OBJECT_DESCR)=1) then ../../OBJECT_CONTRACT/OBJECT_DESCR else ../LOT_NO";
-                        rr:parent "if (count(../OBJECT_DESCR)=1) then (if(exists(./@ITEM)) then ./@ITEM else 1) else ./LOT_NO";
-                        rr:child "if (count(../../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ../LOT_NO";
-
-                    ];
+                        rr:parent "if(exists(./@ITEM)) then ./@ITEM else 1";
+                        rr:child "if(exists(../@ITEM)) then ../@ITEM else 1";
+                    ] ;
                 ] ;
         ] .
 
@@ -1003,19 +1003,10 @@ tedm:SubmissionStatisticalInformationFromResults a rr:TripleMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:concernsSubmissionsForLot ;
+            rr:predicate epo:summarisesInformationForLotAwardOutcome ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:Lot;
-                    rr:joinCondition [
-#                        rr:parent "if (count(../OBJECT_DESCR)=1) then ./@ITEM else ./LOT_NO";
-#                        rr:child "if (count(../../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ../LOT_NO";
-#                        rr:parent "if (count(../OBJECT_DESCR)=1) then ../OBJECT_DESCR else ./LOT_NO";
-#                        rr:child "if (count(../../OBJECT_CONTRACT/OBJECT_DESCR)=1) then ../../OBJECT_CONTRACT/OBJECT_DESCR else ../LOT_NO";
-                        rr:parent "if (count(../OBJECT_DESCR)=1) then (if(exists(./@ITEM)) then ./@ITEM else 1) else ./LOT_NO";
-                        rr:child "if (count(../../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ../LOT_NO";
-
-                    ];
+                    rr:parentTriplesMap tedm:LotAwardOutcome;
                 ] ;
         ] .
 
