@@ -1,0 +1,21 @@
+#TED 929/TED 932
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+select ?this ?pCount ?otherCount where {
+    {
+ select ?this (COUNT(?someValue) as ?pCount) (COUNT(?otherValue) as ?otherCount) where {
+  optional{?this ?property ?someValue.
+  filter (?property != rdf:type).
+  filter strstarts(str(?this),str(epd:)).
+   filter not exists {?someValue a ?class}}
+  optional{
+  ?otherValue ?otherProperty ?this.
+  filter (?otherProperty != rdf:type).
+  filter strstarts(str(?this),str(epd:)).
+  filter not exists {?otherValue a ?class}
+  }
+} group by ?this
+    }
+    filter (?pCount > 0 || ?otherCount > 0)
+}

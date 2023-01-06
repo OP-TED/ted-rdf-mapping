@@ -1,0 +1,10 @@
+#TED 929/TED 1132
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+select ?value ?class where {
+	?instance a epo:SubmissionStatisticalInformation.
+    ?instance epo:summarisesInformationForLotAwardOutcome ?value.
+    ?value a ?class
+    filter (?class != epo:LotAwardOutcome)
+}

@@ -1,12 +1,13 @@
-# Title: Unique ID for any object
-# Query to check if don't exist any object with more than one ID
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+#TED 929/Geraud's query
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-
-SELECT ?sub WHERE {
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+select ?sub ?pCount where {
+    {
+select ?sub (COUNT(?obj) as ?pCount) where {
     ?sub epo:hasID ?obj .
     ?obj rdf:type epo:Identifier .
     }
     GROUP BY ?sub
-   HAVING (count(?obj)>1)
+    }
+    filter (?pCount > 1)
+}

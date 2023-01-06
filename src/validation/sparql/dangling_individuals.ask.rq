@@ -1,0 +1,20 @@
+#TED 929/TED 932
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX epd: <http://data.europa.eu/a4g/resource/>
+ask {
+    {
+ select ?this (COUNT(?someValue) as ?pCount) (COUNT(?otherValue) as ?otherCount) where {
+  optional{?this ?property ?someValue.
+  filter (?property != rdf:type).
+  filter strstarts(str(?this),str(epd:)).
+   filter not exists {?someValue a ?class}}
+  optional{
+  ?otherValue ?otherProperty ?this.
+  filter (?otherProperty != rdf:type).
+  filter strstarts(str(?this),str(epd:)).
+  filter not exists {?otherValue a ?class}
+  }
+} group by ?this
+    }
+    filter (?pCount = 0 && ?otherCount = 0)
+}
