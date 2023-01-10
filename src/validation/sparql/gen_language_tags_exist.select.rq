@@ -1,0 +1,16 @@
+#TED-929/TED-1157 - Generic query checking for presence of language tags
+#Selects all the triples where the properties whose values need to have a language tag does not have one.
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX cccev: <http://data.europa.eu/m8g/>
+
+SELECT * WHERE {
+      VALUES ?property {epo:hasLegalName epo:hasContactName
+            epo:hasTitle epo:hasDescription epo:hasAdditionalInformation epo:hasOptionsDescription
+            locn:fullAddress cccev:name cccev:weight cccev:description}
+    ?s ?property ?value
+  FILTER (lang(?value) = "")
+}
+ORDER BY ?s
+
