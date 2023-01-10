@@ -1,13 +1,16 @@
-#TED-929/TED-1133 GH issues 277
-#Ask if the epo:hasCrossBorderLaw has a language tag, true if it does, false if it does not
+#TED-929/TED-1133 GH issue #277
+#Ask if all the epo:hasAcceleratedProcedureJustification values have a language tag. Return True if it does, False if it does not.
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
 
 ASK {
-    VALUES ?property {epo:hasAcceleratedProcedureJustification}
-    ?s ?property ?value
-    FILTER lang(?value)
+  {
+    SELECT (COUNT(?s) AS ?cNoLangTag) WHERE {
+      VALUES ?property {epo:hasAcceleratedProcedureJustification}
+      ?s ?property ?value
+      FILTER (lang(?value) = "")
+    }
+  }
+  FILTER (?cNoLangTag = 0)
 }
 

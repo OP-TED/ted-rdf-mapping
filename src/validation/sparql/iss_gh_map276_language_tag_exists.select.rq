@@ -1,13 +1,12 @@
-#TED-929/TED-1133 GH issues 276
-#Selects all the triples for which the epo:hasCrossBorderLaw does not have a language tag
+#TED-929/TED-1133 GH issue #276
+#Selects all the triples where the value of the epo:hasCrossBorderLaw property does not have a language tag
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
 
-select * where {
-    values ?property {epo:hasCrossBorderLaw}
+SELECT * WHERE {
+    VALUES ?property {epo:hasCrossBorderLaw}
     ?s ?property ?value
-  filter (lang(?value) = "")
+  FILTER (lang(?value) = "")
 }
+ORDER BY ?s
 
