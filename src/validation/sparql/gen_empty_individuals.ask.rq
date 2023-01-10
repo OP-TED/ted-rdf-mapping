@@ -1,0 +1,15 @@
+#TED-929/TED-933
+#Checks that there are no "empty" individuals, i.e. individuals that do not have any property values attached other than their type
+PREFIX epd: <http://data.europa.eu/a4g/resource/>
+
+ask {
+select ?this where {
+    {
+      select ?this (COUNT(?someValue) as ?vCount)  where {
+        ?this ?property ?someValue.
+  		filter strstarts(str(?this),str(epd:)).
+      } group by ?this
+    }
+    filter ((exists {?this a ?class}) && ?vCount > 1)
+}
+}

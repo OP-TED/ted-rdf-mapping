@@ -1,18 +1,20 @@
-#TED 929/Geraud's query
+#TED-929/TED-1151 Generic query but also GH issue 273
+#Checks that there are no instances multiple IDs on any of the generated individuals (e.g. epo:Contract)
+
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
 ask {
    {
-select (COUNT(?sub) as ?instanceCount) {
-    {
-select ?sub (COUNT(?obj) as ?pCount) where {
-    ?sub epo:hasID ?obj .
-    ?obj rdf:type epo:Identifier .
+    select (COUNT(?sub) as ?instanceCount) {
+      {
+       select ?sub (COUNT(?obj) as ?pCount) where {
+         ?sub epo:hasID ?obj .
+         ?obj a epo:Identifier .
+       }
+       GROUP BY ?sub
+      }
+      filter (?pCount > 1)
     }
-    GROUP BY ?sub
-    }
-    filter (?pCount > 1)
-}
    }
-    filter(?instanceCount = 0)
+   filter(?instanceCount = 0)
 }

@@ -1,0 +1,15 @@
+#TED-929/TED-1132 GH issues 237
+#Finds instances of epo:SubmissionStatisticalInformation whose connection was not updated as specified in GH issue 237,
+# i.e. which are connected to an epo:Lot instance and/or with a epo:concernsSubmissionsForLot property instead of to
+# an epo:LotAwardOutcome instance with the epo:summarisesInformationForLotAwardOutcome property
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+
+select ?instance ?p ?value ?class where {
+  VALUES ?p {epo:summarisesInformationForLotAwardOutcome epo:concernsSubmissionsForLot}
+	?instance a epo:SubmissionStatisticalInformation.
+    ?instance ?p ?value.
+    ?value a ?class
+    filter (?class != epo:LotAwardOutcome || ?p != epo:summarisesInformationForLotAwardOutcome ||
+            ?class = epo:Lot || ?p = epo:concernsSubmissionsForLot)
+}

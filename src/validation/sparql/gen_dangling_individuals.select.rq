@@ -1,0 +1,21 @@
+#TED-929/TED-932
+#Finds "dangling" individuals, i.e. individuals that do not have any relationships to another generated instance (we ignore relationships to/from literals, types and terms from controlled vocabularies)
+PREFIX epd: <http://data.europa.eu/a4g/resource/>
+
+select ?this where {
+    {
+      select ?this (COUNT(?someValue) as ?vCount)  where {
+      { ?this ?outProp ?someValue.
+        FILTER isIRI(?someValue)
+      }
+      UNION
+      { ?someValue ?inProp ?this.
+      }
+
+      filter strstarts(str(?this),str(epd:)).
+      filter strstarts(str(?someValue),str(epd:)).
+      } group by ?this
+    }
+    filter (?vCount = 0)
+}
+ORDER BY ?this
