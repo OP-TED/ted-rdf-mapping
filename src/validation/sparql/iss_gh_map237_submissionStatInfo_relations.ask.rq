@@ -13,8 +13,8 @@ ASK {
   }
 
   {
-    SELECT (COUNT(?instance) as ?cInstancesWithNewLinks) {
-      select ?instance where {
+    SELECT (COUNT(?instance) AS ?cInstancesWithNewLinks) {
+      SELECT ?instance WHERE {
         ?instance a epo:SubmissionStatisticalInformation.
         ?instance epo:summarisesInformationForLotAwardOutcome ?value.
         ?value a epo:LotAwardOutcome.
@@ -23,13 +23,13 @@ ASK {
   }
 
   {
-    SELECT (COUNT(?instance) as ?cInstancesWithOldLinks) {
-      select ?instance where {
+    SELECT (COUNT(?instance) AS ?cInstancesWithOldLinks) {
+      SELECT ?instance WHERE {
         VALUES ?p {epo:summarisesInformationForLotAwardOutcome epo:concernsSubmissionsForLot}
         ?instance a epo:SubmissionStatisticalInformation.
         ?instance ?p ?value.
         ?value a ?class
-        filter (?class = epo:Lot || ?p = epo:concernsSubmissionsForLot)
+        FILTER (?class = epo:Lot || ?p = epo:concernsSubmissionsForLot)
       } GROUP BY ?instance
     }
   }

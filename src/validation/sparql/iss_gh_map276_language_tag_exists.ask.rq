@@ -1,0 +1,13 @@
+#TED-929/TED-1133 GH issues 276
+#Ask if the epo:hasCrossBorderLaw has a language tag, true if it does, false if it does not
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+ASK {
+    VALUES ?property {epo:hasCrossBorderLaw}
+    ?s ?property ?value
+    FILTER lang(?value)
+}
+

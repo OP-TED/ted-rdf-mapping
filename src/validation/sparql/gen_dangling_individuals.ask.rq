@@ -1,11 +1,12 @@
 #TED-929/TED-932
 #Check that there are no "dangling" individuals, i.e. individuals that do not have any relationships to another generated instance (we ignore relationships to/from literals, types and terms from controlled vocabularies)
+
 PREFIX epd: <http://data.europa.eu/a4g/resource/>
 
-ask {
-  select ?this where {
+ASK {
+  SELECT ?this WHERE {
     {
-      select ?this (COUNT(?someValue) as ?vCount)  where {
+      SELECT ?this (COUNT(?someValue) AS ?vCount)  WHERE {
       { ?this ?outProp ?someValue.
         FILTER isIRI(?someValue)
       }
@@ -13,10 +14,10 @@ ask {
       { ?someValue ?inProp ?this.
       }
 
-      filter strstarts(str(?this),str(epd:)).
-      filter strstarts(str(?someValue),str(epd:)).
-      } group by ?this
+      FILTER strstarts(str(?this),str(epd:)).
+      FILTER strstarts(str(?someValue),str(epd:)).
+      } GROUP BY ?this
     }
-    filter (?vCount > 0)
+    FILTER (?vCount > 0)
   }
 }

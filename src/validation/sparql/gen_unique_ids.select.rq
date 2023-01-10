@@ -3,13 +3,13 @@
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
-select ?sub ?pCount where {
+SELECT ?sub ?pCount WHERE {
       {
-       select ?sub (COUNT(?obj) as ?pCount) where {
+       SELECT ?sub (COUNT(?obj) AS ?pCount) WHERE {
          ?sub epo:hasID ?obj .
          ?obj a epo:Identifier .
        }
        GROUP BY ?sub
       }
-      filter (?pCount > 1)
+      FILTER (?pCount > 1)
 }

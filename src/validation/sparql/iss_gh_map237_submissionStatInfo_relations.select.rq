@@ -5,11 +5,11 @@
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
-select ?instance ?p ?value ?class where {
+SELECT ?instance ?p ?value ?class WHERE {
   VALUES ?p {epo:summarisesInformationForLotAwardOutcome epo:concernsSubmissionsForLot}
 	?instance a epo:SubmissionStatisticalInformation.
     ?instance ?p ?value.
     ?value a ?class
-    filter (?class != epo:LotAwardOutcome || ?p != epo:summarisesInformationForLotAwardOutcome ||
+    FILTER (?class != epo:LotAwardOutcome || ?p != epo:summarisesInformationForLotAwardOutcome ||
             ?class = epo:Lot || ?p = epo:concernsSubmissionsForLot)
 }
