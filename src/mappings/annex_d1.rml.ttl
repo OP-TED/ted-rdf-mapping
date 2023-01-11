@@ -167,8 +167,17 @@ tedm:DirectAwardTerm a rr:TriplesMap ;
                     rr:termType rr:IRI;
                 ]
 
-        ] ;
+       ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasDirectAwardJustification ;
+            rr:objectMap
+                [
+                    rml:reference "if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_OUTSIDE_SCOPE)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/dir24-list' else null";
+                    rr:termType rr:IRI;
+                ]
 
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasJustification ;
@@ -178,16 +187,6 @@ tedm:DirectAwardTerm a rr:TriplesMap ;
                     rml:languageMap [
                          rml:reference "lower-case(ancestor::*/@LG)"
                     ]
-                ]
-
-       ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasDirectAwardJustification ;
-            rr:objectMap
-                [
-                    rml:reference "if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_OUTSIDE_SCOPE)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/dir24-list' else null";
-                    rr:termType rr:IRI;
                 ]
 
         ] .
