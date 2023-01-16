@@ -1,0 +1,11 @@
+#title: Class type checker for the property
+#description: A SPARQL query that checks if the values of the property epo:isSubjectToProcedureSpecificTerm are instances of the class epo:ProcedureSpecificTerm. Currently all the values in our data are instances of the classes epo:ProcedureTerm, epo:ProcedureSpecificTerm, epo:FrameworkAgreementTerm, epo:DirectAwardTerm, epo:AccessTerm, and epo:SubmissionTerm which are subclasses of the class epo:ProcedureSpecificTerm.
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK {
+    ?s epo:isSubjectToProcedureSpecificTerm ?o .
+    ?o rdf:type ?type
+    FILTER (?type = epo:ProcedureTerm || ?type = epo:ProcedureSpecificTerm || ?type = epo:FrameworkAgreementTerm || ?type = epo:DirectAwardTerm || ?type = epo:AccessTerm || ?type = epo:SubmissionTerm)
+    }
