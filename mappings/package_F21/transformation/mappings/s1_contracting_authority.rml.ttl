@@ -631,17 +631,9 @@ tedm:AccessTerm  a rr:TriplesMap ;
             rr:predicate epo:hasPublicAccessURL ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(DOCUMENT_FULL) and starts-with(URL_DOCUMENT,'http')) then URL_DOCUMENT else null";
-                    rr:termType rr:IRI;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasPublicAccessURL ;
-            rr:objectMap
-                [
-                    rml:reference "if(exists(DOCUMENT_FULL) and not(starts-with(URL_DOCUMENT,'http'))) then URL_DOCUMENT else null";
+                    rml:reference "DOCUMENT_FULL";
                     rr:termType rr:Literal;
+                    rr:datatype: xsd:anyURI;
                 ] ;
         ] ;
     rr:predicateObjectMap

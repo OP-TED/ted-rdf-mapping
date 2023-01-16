@@ -1,0 +1,10 @@
+#title: Query for datetime value for the property epo:hasReceiptDeadline
+#description: A SPARQL query that checks if the datatype values of the epo:hasReceiptDeadline property are of type datetime
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+
+ASK {
+    ?s epo:hasReceiptDeadline ?o .
+    FILTER ( datatype(?o) = xsd:datetime)
+    }
