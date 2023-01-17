@@ -186,7 +186,8 @@ tedm:AdditionalBuyerProfile a rr:TripleMap ;
             rr:predicate epo:hasURL;
             rr:objectMap
                 [
-                    rml:reference "URL_BUYER"
+                    rml:reference "URL_BUYER";
+                    rr:datatype xsd:anyURI;
                 ]
         ] .
 
@@ -231,7 +232,7 @@ tedm:AdditionalContactPoint a rr:TriplesMap ;
         rr:objectMap
             [
                 rml:reference "URL_GENERAL";
-                #-rr:termType rr:IRI;
+                rr:datatype xsd:anyURI
             ] ;
     ] ;
     rr:predicateObjectMap
@@ -387,7 +388,8 @@ tedm:BuyerProfile a rr:TripleMap ;
             rr:predicate epo:hasURL;
             rr:objectMap
                 [
-                    rml:reference "."
+                    rml:reference ".";
+                    rr:datatype xsd:anyURI;
                 ]
         ] .
 
@@ -521,7 +523,7 @@ tedm:ContactPoint a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "URL_GENERAL";
-                    #-rr:termType rr:IRI;
+                    rr:datatype xsd:anyURI
                 ] ;
         ] .
 tedm:OrganisationAddress  a rr:TriplesMap ;
@@ -602,7 +604,7 @@ tedm:OrganisationChannel a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference ".";
-                    #--rr:termType rr:IRI;
+                    rr:datatype xsd:anyURI;
 
                 ] ;
         ] .
@@ -631,17 +633,9 @@ tedm:AccessTerm  a rr:TriplesMap ;
             rr:predicate epo:hasPublicAccessURL ;
             rr:objectMap
                 [
+                    #rml:reference "DOCUMENT_FULL";
                     rml:reference "if(exists(DOCUMENT_FULL) and starts-with(URL_DOCUMENT,'http')) then URL_DOCUMENT else null";
-                    rr:termType rr:IRI;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasPublicAccessURL ;
-            rr:objectMap
-                [
-                    rml:reference "if(exists(DOCUMENT_FULL) and not(starts-with(URL_DOCUMENT,'http'))) then URL_DOCUMENT else null";
-                    rr:termType rr:Literal;
+                    rr:datatype xsd:anyURI
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -650,7 +644,7 @@ tedm:AccessTerm  a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if(exists(DOCUMENT_RESTRICTED) and starts-with(URL_DOCUMENT,'http')) then URL_DOCUMENT else null";
-                    rr:termType rr:IRI;
+                    rr:datatype xsd:anyURI;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -659,7 +653,7 @@ tedm:AccessTerm  a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if(exists(DOCUMENT_RESTRICTED) and not(starts-with(URL_DOCUMENT,'http'))) then URL_DOCUMENT else null";
-                    rr:termType rr:Literal;
+                    rr:datatype xsd:anyURI;
                 ] ;
         ].
 tedm:Notice a rr:TriplesMap ;
@@ -751,7 +745,8 @@ tedm:InformationProviderBuyerProfile a rr:TripleMap ;
             rr:predicate epo:hasURL;
             rr:objectMap
                 [
-                    rml:reference "."
+                    rml:reference ".";
+                    rr:datatype xsd:anyURI;
                 ]
         ] .
 tedm:InformationProviderOrganisation a rr:TripleMap ;
@@ -824,7 +819,7 @@ tedm:InformationProviderContactPoint a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "URL_GENERAL";
-                    #-rr:termType rr:IRI;
+                    rr:datatype xsd:anyURI
                 ] ;
         ] .
 tedm:InformationProviderOrganisationAddress  a rr:TriplesMap ;
@@ -953,7 +948,8 @@ tedm:TenderReceiverBuyerProfile a rr:TripleMap ;
             rr:predicate epo:hasURL;
             rr:objectMap
                 [
-                    rml:reference "."
+                    rml:reference ".";
+                    rr:datatype xsd:anyURI;
                 ]
         ] .
 tedm:TenderReceiverOrganisation a rr:TripleMap ;
@@ -1022,7 +1018,7 @@ tedm:TenderReceiverOrganisationContactPoint a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "URL_GENERAL";
-                    #-rr:termType rr:IRI;
+                    rr:datatype xsd:anyURI
                 ] ;
         ] .
 tedm:TenderReceiverOrganisationAddress  a rr:TriplesMap ;
