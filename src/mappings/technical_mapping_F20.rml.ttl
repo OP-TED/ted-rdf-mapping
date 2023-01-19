@@ -2143,7 +2143,7 @@ tedm:LotAwardOutcomeAwardedMonetaryValueModification a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
-            rml:reference "if (exists(DESCRIPTION_PROCUREMENT/VALUES/VAL_TOTAL)) then 'http://data.europa.eu/a4g/resource/LotAwardOutcomeAwardedMonetaryValueModification/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(DESCRIPTION_PROCUREMENT/VALUES/VAL_TOTAL) or exists(DESCRIPTION_PROCUREMENT/VAL_TOTAL)) then 'http://data.europa.eu/a4g/resource/LotAwardOutcomeAwardedMonetaryValueModification/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:MonetaryValue
         ] .
 #tedm:LotAwardOutcomeRestatedAwardedMonetaryValue a rr:TriplesMap ;
