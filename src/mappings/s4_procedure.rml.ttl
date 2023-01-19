@@ -47,7 +47,7 @@ tedm:Procedure a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if(exists(../PROCEDURE/PT_OPEN)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/open' else if(exists(../PROCEDURE/PT_RESTRICTED)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted' else if(exists(../PROCEDURE/PT_COMPETITIVE_NEGOTIATION) or exists(../PROCEDURE/PT_INVOLVING_NEGOTIATION) or exists(../PROCEDURE/PT_NEGOTIATED_WITH_PRIOR_CALL)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call' else if(exists(../PROCEDURE/PT_COMPETITIVE_DIALOGUE)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial' else if(exists(../PROCEDURE/PT_INNOVATION_PARTNERSHIP)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation' else if(exists(../PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL) or exists(../PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_PUBLICATION)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call' else null";
-                     rr:datatype xsd:anyURI;
+                    rr:termType rr:IRI
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -209,7 +209,7 @@ tedm:ProcedureTerm a rr:TriplesMap ;
                 [
                     rml:reference "../PROCEDURE/URL_NATIONAL_PROCEDURE";
                     ## one of the test notices is having a URL starting by www. and this type require a URL starting with http:
-                     ##rr:termType rr:IRI
+                     rr:datatype xsd:anyURI;
                 ] ;
         ] .
 tedm:SubmissionTerm a rr:TriplesMap ;
