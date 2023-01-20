@@ -41,8 +41,8 @@ tedm:ContractOrganisationGroup a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:ContractOrganisation;
                     rr:joinCondition [
-                        rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
                         rr:child "ancestor::AWARD_CONTRACT/@ITEM";
+                        rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
                     ];
                 ]
         ] ;
@@ -54,8 +54,8 @@ tedm:ContractOrganisationGroup a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:ContractOrganisation;
                     rr:joinCondition [
-                        rr:parent "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR | ancestor::AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR";
                         rr:child "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR | ancestor::AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR";
+                        rr:parent "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR | ancestor::AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR";
                     ];
                 ]
         ] .
@@ -132,8 +132,8 @@ tedm:Contract a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:ContractIdentifier;
                     rr:joinCondition [
-                        rr:parent "./CONTRACT_NO";
                         rr:child "./CONTRACT_NO";
+                        rr:parent "./CONTRACT_NO";
                     ];
                 ]
         ] ;
@@ -145,14 +145,14 @@ tedm:Contract a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:Lot;
                     rr:joinCondition [
-#                        rr:parent "if (count(../OBJECT_DESCR)=1) then ./@ITEM else ./LOT_NO";
 #                        rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ./LOT_NO";
-#                        rr:parent "if (count(../OBJECT_DESCR)=1) then ../OBJECT_DESCR else ./LOT_NO";
+#                        rr:parent "if (count(../OBJECT_DESCR)=1) then ./@ITEM else ./LOT_NO";
 #                        rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)=1) then ../OBJECT_CONTRACT/OBJECT_DESCR else ./LOT_NO";
-                        rr:parent "if (count(../OBJECT_DESCR)=1) then (if(exists(./@ITEM)) then ./@ITEM else 1) else ./LOT_NO   ";
+#                        rr:parent "if (count(../OBJECT_DESCR)=1) then ../OBJECT_DESCR else ./LOT_NO";
                         rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ./LOT_NO";
-#                        rr:parent "if (count(../OBJECT_DESCR)>1) then ./LOT_NO else if(exists(./@ITEM)) then ./@ITEM else 1";
+                        rr:parent "if (count(../OBJECT_DESCR)=1) then (if(exists(./@ITEM)) then ./@ITEM else 1) else ./LOT_NO   ";
 #                        rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)>1) then ./LOT_NO else 1";
+#                        rr:parent "if (count(../OBJECT_DESCR)>1) then ./LOT_NO else if(exists(./@ITEM)) then ./@ITEM else 1";
                     ];
                 ] ;
         ] ;
@@ -171,8 +171,8 @@ tedm:Contract a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:LotAwardOutcome;
                     rr:joinCondition [
-                        rr:parent "./@ITEM";
                         rr:child "./@ITEM";
+                        rr:parent "./@ITEM";
                     ];
                 ]
         ] .
@@ -193,8 +193,8 @@ tedm:Lot a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:MonetaryValueLot;
                     rr:joinCondition [
-                        rr:parent "if (count(../../OBJECT_CONTRACT/OBJECT_DESCR)=1) then ../@ITEM else ../LOT_NO";
                         rr:child "if (count(../OBJECT_DESCR)=1) then 1 else ./LOT_NO";
+                        rr:parent "if (count(../../OBJECT_CONTRACT/OBJECT_DESCR)=1) then ../@ITEM else ../LOT_NO";
                     ];
 
                 ] ;
@@ -275,14 +275,14 @@ tedm:LotAwardOutcome a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:Lot;
                     rr:joinCondition [
-#                        rr:parent "if (count(../OBJECT_DESCR)=1) then ./@ITEM else ./LOT_NO";
 #                        rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ./LOT_NO";
-#                        rr:parent "if (count(../OBJECT_DESCR)=1) then ../OBJECT_DESCR else ./LOT_NO";
+#                        rr:parent "if (count(../OBJECT_DESCR)=1) then ./@ITEM else ./LOT_NO";
 #                        rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)=1) then ../OBJECT_CONTRACT/OBJECT_DESCR else ./LOT_NO";
-                        rr:parent "if (count(../OBJECT_DESCR)=1) then (if(exists(./@ITEM)) then ./@ITEM else 1) else ./LOT_NO";
+#                        rr:parent "if (count(../OBJECT_DESCR)=1) then ../OBJECT_DESCR else ./LOT_NO";
                         rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ./LOT_NO";
-#                        rr:parent "if (count(../OBJECT_DESCR)>1) then ./LOT_NO else if(exists(./@ITEM)) then ./@ITEM else 1";
+                        rr:parent "if (count(../OBJECT_DESCR)=1) then (if(exists(./@ITEM)) then ./@ITEM else 1) else ./LOT_NO";
 #                        rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)>1) then ./LOT_NO else 1";
+#                        rr:parent "if (count(../OBJECT_DESCR)>1) then ./LOT_NO else if(exists(./@ITEM)) then ./@ITEM else 1";
                     ];
                 ] ;
         ] ;
@@ -357,10 +357,10 @@ tedm:ContractIdentifier a rr:TriplesMap ;
 #            rr:objectMap
 #                [
 #                    rr:parentTriplesMap tedm:ContractOrganisation;
-#                   rr:joinCondition [
-#                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-#                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-#                ];
+#                    rr:joinCondition [
+#                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                    ];
 #                ] ;
 #        ] .
 tedm:WinnerRole a rr:TriplesMap ;
@@ -382,10 +382,10 @@ tedm:WinnerRole a rr:TriplesMap ;
 #            rr:objectMap
 #                [
 #                    rr:parentTriplesMap tedm:Business;
-#                   rr:joinCondition [
-#                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-#                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-#                ];
+#                    rr:joinCondition [
+#                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                    ];
 #                ] ;
 #        ] .
 #tedm:Business a rr:TriplesMap ;
@@ -406,10 +406,10 @@ tedm:WinnerRole a rr:TriplesMap ;
 #            rr:objectMap
 #                [
 #                    rr:parentTriplesMap tedm:ContractOrganisation;
-#                   rr:joinCondition [
-#                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-#                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-#                ];
+#                    rr:joinCondition [
+#                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                    ];
 #                ] ;
 #        ] .
 #tedm:ContractorRole a rr:TriplesMap ;
@@ -419,10 +419,10 @@ tedm:WinnerRole a rr:TriplesMap ;
 #            rr:objectMap
 #                [
 #                    rr:parentTriplesMap tedm:ContractOrganisation;
-#                   rr:joinCondition [
-#                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-#                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-#                ];
+#                    rr:joinCondition [
+#                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                    ];
 #                ] ;
 #        ] .
 
@@ -607,8 +607,8 @@ tedm:TenderAwardOutcome a rr:TriplesMap ;
                     rr:joinCondition [
 #                        rr:child "ancestor::AWARD_CONTRACT/@ITEM";
 #                        rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
-#                         rr:child "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT";
-#                         rr:parent "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT";
+#                        rr:child "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT";
+#                        rr:parent "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT";
                         rr:child "if(exists(ancestor::AWARD_CONTRACT/@ITEM)) then ancestor::AWARD_CONTRACT/@ITEM else 1";
                         rr:parent "if(exists(ancestor::AWARD_CONTRACT/@ITEM)) then ancestor::AWARD_CONTRACT/@ITEM else 1";
                     ];
@@ -638,10 +638,10 @@ tedm:Tender a rr:TriplesMap ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ConcessionEstimate;
-                                        rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        ];
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -684,9 +684,9 @@ tedm:Tender a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:SubcontractingEstimate;
                     rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        ];
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
                 ] ;
         ] .
 tedm:SubcontractingEstimate a rr:TriplesMap ;
@@ -696,10 +696,10 @@ tedm:SubcontractingEstimate a rr:TriplesMap ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:SubcontractingEstimatedValueMonetaryValue;
-                   rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                ];
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -824,10 +824,10 @@ tedm:ConcessionEstimate a rr:TriplesMap ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:UserConcessionRevenueMonetaryValue;
-                                        rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        ];
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -836,10 +836,10 @@ tedm:ConcessionEstimate a rr:TriplesMap ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:BuyerConcessionRevenueMonetaryValue;
-                                        rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        ];
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
                 ] ;
         ] .
 tedm:MonetaryValueLot a rr:TriplesMap ;
@@ -952,14 +952,14 @@ tedm:SubmissionStatisticalInformation a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:LotAwardOutcome;
                     rr:joinCondition [
-##                        rr:parent "if (count(../OBJECT_DESCR)=1) then ./@ITEM else ./LOT_NO";
 ##                        rr:child "if (count(../../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ../LOT_NO";
-##                        rr:parent "if (count(../OBJECT_DESCR)=1) then ../OBJECT_DESCR else ./LOT_NO";
+##                        rr:parent "if (count(../OBJECT_DESCR)=1) then ./@ITEM else ./LOT_NO";
 ##                        rr:child "if (count(../../OBJECT_CONTRACT/OBJECT_DESCR)=1) then ../../OBJECT_CONTRACT/OBJECT_DESCR else ../LOT_NO";
-#                        rr:parent "if (count(../OBJECT_DESCR)=1) then (if(exists(./@ITEM)) then ./@ITEM else 1) else ./LOT_NO";
+##                        rr:parent "if (count(../OBJECT_DESCR)=1) then ../OBJECT_DESCR else ./LOT_NO";
 #                        rr:child "if (count(../../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ../LOT_NO";
-                        rr:parent "if(exists(./@ITEM)) then ./@ITEM else 1";
+#                        rr:parent "if (count(../OBJECT_DESCR)=1) then (if(exists(./@ITEM)) then ./@ITEM else 1) else ./LOT_NO";
                         rr:child "if(exists(../@ITEM)) then ../@ITEM else 1";
+                        rr:parent "if(exists(./@ITEM)) then ./@ITEM else 1";
                     ] ;
                 ] ;
         ] .
@@ -1083,9 +1083,9 @@ tedm:WinnerRoleFromResults a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:ContractOrganisationFromResults;
                     rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                ];
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
                 ] ;
         ] .
 
@@ -1141,8 +1141,8 @@ tedm:ContractOrganisationFromResults a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:ContractOrganisationFromResultsContactPoint ;
                     rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                     ];
                 ] ;
         ] .
