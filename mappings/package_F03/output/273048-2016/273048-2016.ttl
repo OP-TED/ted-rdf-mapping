@@ -16,6 +16,23 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+<http://data.europa.eu/a4g/resource/AwardCriterionPrice/2016-S-151-273048/21874766-e803-3ea2-9c7a-6bbdae46d399>
+  a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/price>;
+  cccev:weight "40"@fr .
+
+<http://data.europa.eu/a4g/resource/AwardCriterionQuality/2016-S-151-273048/5d51dcd0-a114-38ec-87d3-b6e3ff1e21a5>
+  a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality>;
+  cccev:name "Valeur technique"@fr;
+  cccev:weight "55"@fr .
+
+<http://data.europa.eu/a4g/resource/AwardCriterionQuality/2016-S-151-273048/c2abe8c0-b915-3fbb-86b0-5e77865d4a50>
+  a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality>;
+  cccev:name "Engagement en matière de développement durable"@fr;
+  cccev:weight "5"@fr .
+
 <http://data.europa.eu/a4g/resource/Buyer/2016-S-151-273048/f3b5cfa6-95c6-37b5-9667-808a141fe995>
   a epo:Buyer;
   epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2016-S-151-273048/377f62e9-9c36-31da-9724-7f6a137d8a68>;
@@ -61,13 +78,22 @@ Fourniture de repas en liaison froide pour 2 établissements de l'Ugecam Langued
 Fourniture de repas en liaison froide et de denrées pour la MECSS de Castelnouvel à Léguevin (31) et à l'ITEP Sessad La Tour-du-Crieu (09).
 """@fr;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/LotPurpose/2016-S-151-273048/cbac108a-b047-3e09-a114-28c43d5b8706>;
-  epo:isUsingEUFunds false .
+  epo:isUsingEUFunds false;
+  epo:specifiesAwardCriterion <http://data.europa.eu/a4g/resource/AwardCriterionPrice/2016-S-151-273048/21874766-e803-3ea2-9c7a-6bbdae46d399>,
+    <http://data.europa.eu/a4g/resource/AwardCriterionQuality/2016-S-151-273048/5d51dcd0-a114-38ec-87d3-b6e3ff1e21a5>,
+    <http://data.europa.eu/a4g/resource/AwardCriterionQuality/2016-S-151-273048/c2abe8c0-b915-3fbb-86b0-5e77865d4a50> .
 
 <http://data.europa.eu/a4g/resource/LotAwardOutcome/2016-S-151-273048/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>
   a epo:LotAwardOutcome;
   epo:comprisesTenderAwardOutcome <http://data.europa.eu/a4g/resource/TenderAwardOutcome/2016-S-151-273048/82b174c6-1f18-3b11-acf2-00977eeddafc>;
   epo:describesLot <http://data.europa.eu/a4g/resource/Lot/2016-S-151-273048/cbac108a-b047-3e09-a114-28c43d5b8706>;
-  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> .
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue <http://data.europa.eu/a4g/resource/LotAwardOutcomeAwardedMonetaryValue/2016-S-151-273048/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
+
+<http://data.europa.eu/a4g/resource/LotAwardOutcomeAwardedMonetaryValue/2016-S-151-273048/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>
+  a epo:MonetaryValue;
+  epo:hasAmountValue 616783.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
 
 <http://data.europa.eu/a4g/resource/LotPurpose/2016-S-151-273048/cbac108a-b047-3e09-a114-28c43d5b8706>
   a epo:Purpose;
@@ -107,7 +133,9 @@ Fourniture de repas en liaison froide et de denrées pour la MECSS de Castelnouv
 <http://data.europa.eu/a4g/resource/Procedure/2016-S-151-273048/58509ec4-99dc-3865-9935-58d7ebd66d29>
   a epo:Procedure;
   epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2016-S-151-273048/cbac108a-b047-3e09-a114-28c43d5b8706>;
-  epo:hasAcceleratedProcedureJustification "Procédure négociée après publicité préalable et mise en concurrence définie aux articles 35-I-1er, 65 et 66 du code des marchés publics 2006 consolidé.";
+  epo:hasAcceleratedProcedureJustification """
+Procédure négociée après publicité préalable et mise en concurrence définie aux articles 35-I-1er, 65 et 66 du code des marchés publics 2006 consolidé.
+"""@fr;
   epo:hasAdditionalInformation """
 2 offres reçues dans les délais dont 1 offre irrégulière.
 1 offre hors délai.

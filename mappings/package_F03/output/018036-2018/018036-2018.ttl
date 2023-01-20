@@ -1,11 +1,31 @@
 @prefix cccev: <http://data.europa.eu/m8g/> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.europa.eu/a4g/resource/AwardCriterionPrice/2018-S-010-018036/21874766-e803-3ea2-9c7a-6bbdae46d399>
+  a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/price>;
+  cccev:weight "30"@it .
+
+<http://data.europa.eu/a4g/resource/AwardCriterionQuality/2018-S-010-018036/5d51dcd0-a114-38ec-87d3-b6e3ff1e21a5>
+  a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality>;
+  cccev:name "offerta tecnica max punti"@it;
+  cccev:weight "70"@it .
 
 <http://data.europa.eu/a4g/resource/Buyer/2018-S-010-018036/f3b5cfa6-95c6-37b5-9667-808a141fe995>
   a epo:Buyer;
@@ -48,7 +68,7 @@
     <http://publications.europa.eu/resource/authority/direct-award-justification/urgency>;
   epo:hasJustification """
                   La Ditta aggiudicataria è l'unica in grado di aggiornare le licenze in argomento ed è l'unica che può fornire il servizio di supporto operazionale-manutenzionale delle licenze esistenti.
-               """ .
+               """@it .
 
 <http://data.europa.eu/a4g/resource/Lot/2018-S-010-018036/cbac108a-b047-3e09-a114-28c43d5b8706>
   a epo:Lot;
@@ -57,13 +77,21 @@
                   Acquisto e aggiornamento di licenze di tipo campus per l'INFN, relativamnete al prodotto software Spectrum Scale e relativo servizio di supporto operazionale-manutenzionale per Linux su hardware multipiattaforma per la durata di tre anni, nonché l'acquisto di 512 licenze di Spectrum Protect per il Tier1.
                """@it;
   epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/ReviewTerm/2018-S-010-018036/c396feff-0750-3296-8f73-f0464e1726ac>;
-  epo:isUsingEUFunds false .
+  epo:isUsingEUFunds false;
+  epo:specifiesAwardCriterion <http://data.europa.eu/a4g/resource/AwardCriterionPrice/2018-S-010-018036/21874766-e803-3ea2-9c7a-6bbdae46d399>,
+    <http://data.europa.eu/a4g/resource/AwardCriterionQuality/2018-S-010-018036/5d51dcd0-a114-38ec-87d3-b6e3ff1e21a5> .
 
 <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-010-018036/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>
   a epo:LotAwardOutcome;
   epo:comprisesTenderAwardOutcome <http://data.europa.eu/a4g/resource/TenderAwardOutcome/2018-S-010-018036/82b174c6-1f18-3b11-acf2-00977eeddafc>;
   epo:describesLot <http://data.europa.eu/a4g/resource/Lot/2018-S-010-018036/cbac108a-b047-3e09-a114-28c43d5b8706>;
-  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> .
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue <http://data.europa.eu/a4g/resource/LotAwardOutcomeAwardedMonetaryValue/2018-S-010-018036/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
+
+<http://data.europa.eu/a4g/resource/LotAwardOutcomeAwardedMonetaryValue/2018-S-010-018036/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>
+  a epo:MonetaryValue;
+  epo:hasAmountValue 550000.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
 
 <http://data.europa.eu/a4g/resource/Notice/2018-S-010-018036/58509ec4-99dc-3865-9935-58d7ebd66d29>
   a epo:Notice, epo:ResultNotice;

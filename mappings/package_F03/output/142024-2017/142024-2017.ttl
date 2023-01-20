@@ -16,6 +16,10 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+<http://data.europa.eu/a4g/resource/AwardCriterionPrice/2017-S-074-142024/21874766-e803-3ea2-9c7a-6bbdae46d399>
+  a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/price> .
+
 <http://data.europa.eu/a4g/resource/Buyer/2017-S-074-142024/f3b5cfa6-95c6-37b5-9667-808a141fe995>
   a epo:Buyer;
   epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-074-142024/377f62e9-9c36-31da-9724-7f6a137d8a68>;
@@ -63,7 +67,7 @@ Suministro medicamento Azaticidina
     <http://publications.europa.eu/resource/authority/direct-award-justification/unsuitable>;
   epo:hasJustification """
 Procedimiento negociado sin publicidad por exclusividad.
-""";
+"""@es;
   epo:refersToPreviousProcedure <http://data.europa.eu/a4g/resource/PreviousProcedure/2017-S-074-142024/97b6402e-19e8-3f52-a3da-e1a4d0df1dfe> .
 
 <http://data.europa.eu/a4g/resource/Lot/2017-S-074-142024/cbac108a-b047-3e09-a114-28c43d5b8706>
@@ -73,17 +77,30 @@ Procedimiento negociado sin publicidad por exclusividad.
 Suministro del medicamento Azaticidina.
 """@es;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/LotPurpose/2017-S-074-142024/cbac108a-b047-3e09-a114-28c43d5b8706>;
-  epo:isUsingEUFunds false .
+  epo:hasRestatedEstimatedValue <http://data.europa.eu/a4g/resource/MonetaryValueLot/2017-S-074-142024/82b174c6-1f18-3b11-acf2-00977eeddafc>;
+  epo:isUsingEUFunds false;
+  epo:specifiesAwardCriterion <http://data.europa.eu/a4g/resource/AwardCriterionPrice/2017-S-074-142024/21874766-e803-3ea2-9c7a-6bbdae46d399> .
 
 <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-074-142024/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>
   a epo:LotAwardOutcome;
   epo:comprisesTenderAwardOutcome <http://data.europa.eu/a4g/resource/TenderAwardOutcome/2017-S-074-142024/82b174c6-1f18-3b11-acf2-00977eeddafc>;
   epo:describesLot <http://data.europa.eu/a4g/resource/Lot/2017-S-074-142024/cbac108a-b047-3e09-a114-28c43d5b8706>;
-  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> .
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue <http://data.europa.eu/a4g/resource/LotAwardOutcomeAwardedMonetaryValue/2017-S-074-142024/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
+
+<http://data.europa.eu/a4g/resource/LotAwardOutcomeAwardedMonetaryValue/2017-S-074-142024/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>
+  a epo:MonetaryValue;
+  epo:hasAmountValue 129541.5;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
 
 <http://data.europa.eu/a4g/resource/LotPurpose/2017-S-074-142024/cbac108a-b047-3e09-a114-28c43d5b8706>
   a epo:Purpose;
   epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/33600000> .
+
+<http://data.europa.eu/a4g/resource/MonetaryValueLot/2017-S-074-142024/82b174c6-1f18-3b11-acf2-00977eeddafc>
+  a epo:MonetaryValue;
+  epo:hasAmountValue 297953.73;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
 
 <http://data.europa.eu/a4g/resource/Notice/2017-S-074-142024/58509ec4-99dc-3865-9935-58d7ebd66d29>
   a epo:Notice, epo:ResultNotice;

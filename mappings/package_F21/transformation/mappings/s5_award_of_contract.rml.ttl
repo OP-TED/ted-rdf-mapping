@@ -205,7 +205,7 @@ tedm:LotAwardOutcomeAwardedMonetaryValue a rr:TriplesMap ;
             rr:predicate epo:hasAmountValue ;
             rr:objectMap
                 [
-                    rml:reference "AWARDED_CONTRACT/VALUES/VAL_TOTAL";
+                    rml:reference "AWARDED_CONTRACT/VALUES/VAL_TOTAL | AWARDED_CONTRACT/VALUE/VAL_TOTAL | AWARDED_CONTRACT/VAL_TOTAL";
                     rr:datatype xsd:decimal
                 ] ;
         ] ;
@@ -216,7 +216,7 @@ tedm:LotAwardOutcomeAwardedMonetaryValue a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:currency;
                     rr:joinCondition [
-                        rr:child "AWARDED_CONTRACT/VALUES/VAL_TOTAL/@CURRENCY";
+                        rr:child "AWARDED_CONTRACT/VALUES/VAL_TOTAL/@CURRENCY | AWARDED_CONTRACT/VALUE/VAL_TOTAL/@CURRENCY | AWARDED_CONTRACT/VAL_TOTAL/@CURRENCY";
                         rr:parent "code.value";
                     ];
                 ] ;
@@ -758,7 +758,7 @@ tedm:UserConcessionRevenueMonetaryValue a rr:TriplesMap ;
 #            rr:predicate epo:hasCurrency ;
 #            rr:objectMap
 #                [
-#                    rml:reference "if (not(exists(VALUES/VAL_TOTAL/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
+#                    rml:reference "if (not(exists(VALUES/VAL_TOTAL/@CURRENCY)) and not(exists(VALUE/VAL_TOTAL/@CURRENCY)) and not(exists(VAL_TOTAL/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
 #                    rr:termType rr:IRI;
 #                ]
 #
@@ -790,7 +790,7 @@ tedm:BuyerConcessionRevenueMonetaryValue a rr:TriplesMap ;
 #            rr:predicate epo:hasCurrency ;
 #            rr:objectMap
 #                [
-#                    rml:reference "if (not(exists(VALUES/VAL_TOTAL/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
+#                    rml:reference "if (not(exists(VALUES/VAL_TOTAL/@CURRENCY)) and not(exists(VALUE/VAL_TOTAL/@CURRENCY)) and not(exists(VAL_TOTAL/@CURRENCY))) then 'http://publications.europa.eu/resource/authority/currency/OP_DATPRO' else null";
 #                    rr:termType rr:IRI;
 #                ]
 #
@@ -848,7 +848,7 @@ tedm:MonetaryValueLot a rr:TriplesMap ;
             rr:predicate epo:hasAmountValue ;
             rr:objectMap
                 [
-                    rml:reference "VALUES/VAL_ESTIMATED_TOTAL";
+                    rml:reference "VALUES/VAL_ESTIMATED_TOTAL | VALUE/VAL_ESTIMATED_TOTAL | VAL_ESTIMATED_TOTAL";
                     rr:datatype xsd:decimal
                 ] ;
         ] ;
@@ -869,7 +869,7 @@ tedm:MonetaryValueLot a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:currency;
                     rr:joinCondition [
-                        rr:child "VALUES/VAL_ESTIMATED_TOTAL/@CURRENCY";
+                        rr:child "VALUES/VAL_ESTIMATED_TOTAL/@CURRENCY | VALUE/VAL_ESTIMATED_TOTAL/@CURRENCY | VAL_ESTIMATED_TOTAL/@CURRENCY";
                         rr:parent "code.value";
                     ];
                 ] ;
@@ -1016,7 +1016,7 @@ tedm:MonetaryValueSubmissionHighest a rr:TriplesMap ;
             rr:predicate epo:hasAmountValue ;
             rr:objectMap
                 [
-                    rml:reference "VALUES/VAL_RANGE_TOTAL/HIGH";
+                    rml:reference "VALUES/VAL_RANGE_TOTAL/HIGH | VALUE/VAL_RANGE_TOTAL/HIGH | VAL_RANGE_TOTAL/HIGH";
                     rr:datatype xsd:decimal
                 ] ;
         ] ;
@@ -1037,7 +1037,7 @@ tedm:MonetaryValueSubmissionHighest a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:currency;
                     rr:joinCondition [
-                        rr:child "VALUES/VAL_RANGE_TOTAL/@CURRENCY";
+                        rr:child "VALUES/VAL_RANGE_TOTAL/@CURRENCY | VALUE/VAL_RANGE_TOTAL/@CURRENCY | VAL_RANGE_TOTAL/@CURRENCY";
                         rr:parent "code.value";
                     ];
                 ] ;
@@ -1048,7 +1048,7 @@ tedm:MonetaryValueSubmissionLowest a rr:TriplesMap ;
             rr:predicate epo:hasAmountValue ;
             rr:objectMap
                 [
-                    rml:reference "VALUES/VAL_RANGE_TOTAL/LOW";
+                    rml:reference "VALUES/VAL_RANGE_TOTAL/LOW | VALUE/VAL_RANGE_TOTAL/LOW | VAL_RANGE_TOTAL/LOW";
                     rr:datatype xsd:decimal
                 ] ;
         ] ;
@@ -1069,7 +1069,7 @@ tedm:MonetaryValueSubmissionLowest a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:currency;
                     rr:joinCondition [
-                        rr:child "VALUES/VAL_RANGE_TOTAL/@CURRENCY";
+                        rr:child "VALUES/VAL_RANGE_TOTAL/@CURRENCY | VALUE/VAL_RANGE_TOTAL/@CURRENCY | VAL_RANGE_TOTAL/@CURRENCY";
                         rr:parent "code.value";
                     ];
                 ] ;
