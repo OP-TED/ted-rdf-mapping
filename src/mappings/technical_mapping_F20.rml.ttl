@@ -939,12 +939,12 @@ tedm:ContractOrganisationGroup a rr:TripleMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
         [
-            rml:reference "if(exists(AWARDED_TO_GROUP)) then 'http://data.europa.eu/a4g/resource/ContractOrganisationGroup/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if(exists(CONTRACTORS/AWARDED_TO_GROUP) or exists(AWARDED_TO_GROUP)) then 'http://data.europa.eu/a4g/resource/ContractOrganisationGroup/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:OrganisationGroup
 
         ] .
@@ -1027,7 +1027,7 @@ tedm:ContractIdentifier a rr:TripleMap ;
 #    rml:logicalSource
 #        [
 #            rml:source "data/source.xml" ;
-#            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR" ;
+#            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR | /TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR" ;
 #            rml:referenceFormulation ql:XPath
 #        ] ;
 #    rr:subjectMap
@@ -1040,7 +1040,7 @@ tedm:ContractIdentifier a rr:TripleMap ;
 #    rml:logicalSource
 #        [
 #            rml:source "data/source.xml" ;
-#            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR" ;
+#            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR | /TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR" ;
 #            rml:referenceFormulation ql:XPath
 #        ] ;
 #    rr:subjectMap
@@ -1053,7 +1053,7 @@ tedm:ContractIdentifier a rr:TripleMap ;
 #    rml:logicalSource
 #        [
 #            rml:source "data/source.xml" ;
-#            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR" ;
+#            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR | /TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR" ;
 #            rml:referenceFormulation ql:XPath
 #        ] ;
 #    rr:subjectMap
@@ -1066,7 +1066,7 @@ tedm:WinnerRole a rr:TripleMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR | /TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -1079,7 +1079,7 @@ tedm:WinnerRole a rr:TripleMap ;
 #    rml:logicalSource
 #        [
 #            rml:source "data/source.xml" ;
-#            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR" ;
+#            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR | /TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR" ;
 #            rml:referenceFormulation ql:XPath
 #        ] ;
 #    rr:subjectMap
@@ -1092,7 +1092,7 @@ tedm:ContractOrganisation a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR | /TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -1117,7 +1117,7 @@ tedm:ContractOrganisationIdentifier a rr:TripleMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR";
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR | /TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR";
             rml:referenceFormulation ql:XPath
         ];
     rr:subjectMap
@@ -1129,7 +1129,7 @@ tedm:ContractContactPoint a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR | /TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -1154,7 +1154,7 @@ tedm:ContractOrganisationAddress a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR | /TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -2083,7 +2083,7 @@ tedm:WinnerModification a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTORS/CONTRACTOR" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTORS/CONTRACTOR | /TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTOR" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -2364,7 +2364,7 @@ tedm:ContractorOrganisationModification a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTORS/CONTRACTOR" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTORS/CONTRACTOR | /TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTOR" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -2389,7 +2389,7 @@ tedm:ContractorOrganisationIdentifierModification a rr:TripleMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTORS/CONTRACTOR";
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTORS/CONTRACTOR | /TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTOR";
             rml:referenceFormulation ql:XPath
         ];
     rr:subjectMap
@@ -2402,7 +2402,7 @@ tedm:ContractorContactPointModification a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTORS/CONTRACTOR" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTORS/CONTRACTOR | /TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTOR" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -2428,7 +2428,7 @@ tedm:ContractorOrganisationAddressModification a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTORS/CONTRACTOR" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTORS/CONTRACTOR | /TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTOR" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
