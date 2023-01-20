@@ -304,7 +304,7 @@ tedm:LotAwardOutcomeAwardedMonetaryValueModification a rr:TriplesMap ;
             rr:predicate epo:hasAmountValue ;
             rr:objectMap
                 [
-                    rml:reference "DESCRIPTION_PROCUREMENT/VALUES/VAL_TOTAL";
+                    rml:reference "DESCRIPTION_PROCUREMENT/VALUES/VAL_TOTAL | DESCRIPTION_PROCUREMENT/VAL_TOTAL";
                     rr:datatype xsd:decimal
                 ] ;
         ] ;
@@ -315,7 +315,7 @@ tedm:LotAwardOutcomeAwardedMonetaryValueModification a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:currency;
                     rr:joinCondition [
-                        rr:child "DESCRIPTION_PROCUREMENT/VALUES/VAL_TOTAL/@CURRENCY";
+                        rr:child "DESCRIPTION_PROCUREMENT/VALUES/VAL_TOTAL/@CURRENCY | DESCRIPTION_PROCUREMENT/VAL_TOTAL/@CURRENCY";
                         rr:parent "code.value";
                     ];
                 ] ;
@@ -450,18 +450,7 @@ tedm:ElementModificationDescription a rr:TriplesMap ;
                 [
                     rml:reference "SHORT_DESCR" ;
                     rml:languageMap [
-                         rml:reference "lower-case(ancestor::F20_2014/@LG)"
-                    ]
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasModificationReasonDescription ;
-            rr:objectMap
-                [
-                    rml:reference ".";
-                    rml:languageMap [
-                         rml:reference "lower-case(ancestor::F20_2014/@LG)"
+                         rml:reference "lower-case(ancestor::*/@LG)"
                     ]
                 ] ;
         ] ;
@@ -470,8 +459,19 @@ tedm:ElementModificationDescription a rr:TriplesMap ;
             rr:predicate epo:hasModificationJustification ;
             rr:objectMap
                 [
-                    rml:reference "if (.) then 'http://publications.europa.eu/resource/authority/modification-justification/add-wss' else null";
+                    rml:reference "if (exists(ADDITIONAL_NEED)) then 'http://publications.europa.eu/resource/authority/modification-justification/add-wss' else null";
                     rr:termType rr:IRI
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasModificationReasonDescription ;
+            rr:objectMap
+                [
+                    rml:reference "ADDITIONAL_NEED";
+                    rml:languageMap [
+                         rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -483,15 +483,14 @@ tedm:ElementModificationDescription a rr:TriplesMap ;
                     rr:termType rr:IRI
                 ] ;
         ] ;
-
     rr:predicateObjectMap
         [
             rr:predicate epo:hasModificationReasonDescription ;
             rr:objectMap
                 [
-                    rml:reference "UNFORESEEN_CIRCUMSTANCE/P";
+                    rml:reference "UNFORESEEN_CIRCUMSTANCE";
                     rml:languageMap [
-                         rml:reference "lower-case(ancestor::F20_2014/@LG)"
+                         rml:reference "lower-case(ancestor::*/@LG)"
                     ]
                 ] ;
         ] .
@@ -502,7 +501,10 @@ tedm:FrameworkAgreementTermLot a rr:TriplesMap ;
             rr:predicate epo:hasDurationExtensionJustification ;
             rr:objectMap
                 [
-                    rml:reference "JUSTIFICATION/P"
+                    rml:reference "JUSTIFICATION";
+                    rml:languageMap [
+                         rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
                 ] ;
         ] .
 
