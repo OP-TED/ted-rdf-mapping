@@ -160,6 +160,17 @@ tedm:LotModification a rr:TriplesMap ;
                     ];
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasDescription ;
+            rr:objectMap
+                [
+                    rml:reference "SHORT_DESCR";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ] ;
+        ] ;
    rr:predicateObjectMap
         [
             rr:predicate epo:isSubjectToProcedureSpecificTerm ;
@@ -385,6 +396,18 @@ tedm:ContractTermLocationModification a rr:TriplesMap ;
 #                    ];
                 ] ;
         ] .
+tedm:ContractTermLocationAddressModification a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate locn:fullAddress ;
+            rr:objectMap
+                 [
+                    rml:reference "MAIN_SITE";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ] ;
+        ] .
 tedm:DurationModification a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -450,7 +473,7 @@ tedm:ElementModificationDescription a rr:TriplesMap ;
                 [
                     rml:reference "SHORT_DESCR" ;
                     rml:languageMap [
-                         rml:reference "lower-case(ancestor::*/@LG)"
+                        rml:reference "lower-case(ancestor::*/@LG)"
                     ]
                 ] ;
         ] ;
@@ -470,7 +493,7 @@ tedm:ElementModificationDescription a rr:TriplesMap ;
                 [
                     rml:reference "ADDITIONAL_NEED";
                     rml:languageMap [
-                         rml:reference "lower-case(ancestor::*/@LG)"
+                        rml:reference "lower-case(ancestor::*/@LG)"
                     ]
                 ] ;
         ] ;
@@ -490,7 +513,7 @@ tedm:ElementModificationDescription a rr:TriplesMap ;
                 [
                     rml:reference "UNFORESEEN_CIRCUMSTANCE";
                     rml:languageMap [
-                         rml:reference "lower-case(ancestor::*/@LG)"
+                        rml:reference "lower-case(ancestor::*/@LG)"
                     ]
                 ] ;
         ] .
@@ -503,7 +526,7 @@ tedm:FrameworkAgreementTermLot a rr:TriplesMap ;
                 [
                     rml:reference "JUSTIFICATION";
                     rml:languageMap [
-                         rml:reference "lower-case(ancestor::*/@LG)"
+                        rml:reference "lower-case(ancestor::*/@LG)"
                     ]
                 ] ;
         ] .
@@ -517,7 +540,6 @@ tedm:ContractorOrganisationModification a rr:TriplesMap ;
                     rml:reference "if(exists(SME)) then 'http://publications.europa.eu/resource/authority/economic-operator-size/sme' else null";
                     rr:termType rr:IRI;
                 ]
-
         ] ;
     rr:predicateObjectMap
         [
@@ -527,14 +549,24 @@ tedm:ContractorOrganisationModification a rr:TriplesMap ;
                     rml:reference "if(exists(SME)) then 'http://data.europa.eu/a4g/ontology#Business' else null";
                     rr:termType rr:IRI;
                 ]
-
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasPrimaryContactPoint ;
+            rr:predicate epo:hasLegalName ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_CONTRACTOR/OFFICIALNAME";
+                    rml:languageMap [
+                         rml:reference "lower-case(ancestor::F20_2014/@LG)"
+                    ]
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasID;
             rr:objectMap
             [
-                rr:parentTriplesMap tedm:ContractorContactPointModification;
+                rr:parentTriplesMap tedm:ContractorOrganisationIdentifierModification;
                 rr:joinCondition [
                     rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                     rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
@@ -552,14 +584,13 @@ tedm:ContractorOrganisationModification a rr:TriplesMap ;
                     rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                 ];
             ] ;
-    ] ;
-
+        ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasID;
+            rr:predicate epo:hasPrimaryContactPoint ;
             rr:objectMap
             [
-                rr:parentTriplesMap tedm:ContractorOrganisationIdentifierModification;
+                rr:parentTriplesMap tedm:ContractorContactPointModification;
                 rr:joinCondition [
                     rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                     rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
@@ -608,6 +639,17 @@ tedm:ContractorContactPointModification a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "ADDRESS_CONTRACTOR/PHONE"
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContactName ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_CONTRACTOR/CONTACT_POINT";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
                 ]
         ] .
 tedm:ContractorOrganisationAddressModification a rr:TriplesMap ;

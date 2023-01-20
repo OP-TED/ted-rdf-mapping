@@ -193,6 +193,17 @@ tedm:AdditionalBuyerProfile a rr:TriplesMap ;
 tedm:AdditionalOrganisation a rr:TriplesMap ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:hasLegalName ;
+            rr:objectMap
+                [
+                    rml:reference "OFFICIALNAME";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate legal:registeredAddress ;
             rr:objectMap
                 [
@@ -226,15 +237,6 @@ tedm:AdditionalOrganisationIdentifier a rr:TriplesMap ;
         ] .
 tedm:AdditionalContactPoint a rr:TriplesMap ;
     rr:predicateObjectMap
-    [
-        rr:predicate epo:hasInternetAddress ;
-        rr:objectMap
-            [
-                rml:reference "URL_GENERAL";
-                #-rr:termType rr:IRI;
-            ] ;
-    ] ;
-    rr:predicateObjectMap
         [
             rr:predicate cpov:email ;
             rr:objectMap
@@ -250,7 +252,6 @@ tedm:AdditionalContactPoint a rr:TriplesMap ;
                     rml:reference "FAX"
                 ]
         ] ;
-
     rr:predicateObjectMap
         [
             rr:predicate cpov:telephone ;
@@ -258,6 +259,26 @@ tedm:AdditionalContactPoint a rr:TriplesMap ;
                 [
                     rml:reference "PHONE"
                 ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContactName ;
+            rr:objectMap
+                [
+                    rml:reference "CONTACT_POINT";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasInternetAddress ;
+            rr:objectMap
+                [
+                    rml:reference "URL_GENERAL";
+                    #-rr:termType rr:IRI;
+                ] ;
         ] .
 tedm:AdditionalOrganisationAddress  a rr:TriplesMap ;
     rr:predicateObjectMap
@@ -392,6 +413,17 @@ tedm:BuyerProfile a rr:TriplesMap ;
         ] .
 
 tedm:Organisation a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasLegalName ;
+            rr:objectMap
+                [
+                    rml:reference "OFFICIALNAME";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ] ;
+        ] ;
 #    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasDeliveryGateway ;
@@ -513,6 +545,17 @@ tedm:ContactPoint a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "PHONE"
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContactName ;
+            rr:objectMap
+                [
+                    rml:reference "CONTACT_POINT";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
                 ]
         ] ;
     rr:predicateObjectMap
@@ -755,6 +798,17 @@ tedm:InformationProviderBuyerProfile a rr:TriplesMap ;
                 ]
         ] .
 tedm:InformationProviderOrganisation a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasLegalName ;
+            rr:objectMap
+                [
+                    rml:reference "OFFICIALNAME";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ] ;
+        ] ;
 #    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasDeliveryGateway ;
@@ -826,7 +880,18 @@ tedm:InformationProviderContactPoint a rr:TriplesMap ;
                     rml:reference "URL_GENERAL";
                     #-rr:termType rr:IRI;
                 ] ;
-        ] .
+         ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContactName ;
+            rr:objectMap
+                [
+                    rml:reference "CONTACT_POINT";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ]
+       ] .
 tedm:InformationProviderOrganisationAddress  a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -959,6 +1024,17 @@ tedm:TenderReceiverBuyerProfile a rr:TriplesMap ;
 tedm:TenderReceiverOrganisation a rr:TriplesMap ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:hasLegalName ;
+            rr:objectMap
+                [
+                    rml:reference "OFFICIALNAME";
+                    rml:languageMap [
+                         rml:reference "lower-case(ancestor::F06_2014/@LG)"
+                    ]
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate epo:hasPrimaryContactPoint ;
             rr:objectMap
                 [
@@ -1024,6 +1100,17 @@ tedm:TenderReceiverOrganisationContactPoint a rr:TriplesMap ;
                     rml:reference "URL_GENERAL";
                     #-rr:termType rr:IRI;
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContactName ;
+            rr:objectMap
+                [
+                    rml:reference "CONTACT_POINT";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ]
         ] .
 tedm:TenderReceiverOrganisationAddress  a rr:TriplesMap ;
     rr:predicateObjectMap

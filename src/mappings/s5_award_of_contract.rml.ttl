@@ -127,6 +127,17 @@ tedm:Contract a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:hasTitle;
+            rr:objectMap
+                [
+                    rml:reference "TITLE";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate epo:hasID;
             rr:objectMap
                 [
@@ -137,7 +148,6 @@ tedm:Contract a rr:TriplesMap ;
                     ];
                 ]
         ] ;
-
     rr:predicateObjectMap
         [
             rr:predicate epo:includesLot ;
@@ -435,7 +445,6 @@ tedm:ContractOrganisation a rr:TriplesMap ;
                     rml:reference "if(exists(SME)) then 'http://publications.europa.eu/resource/authority/economic-operator-size/sme' else null";
                     rr:termType rr:IRI;
                 ]
-
         ] ;
     rr:predicateObjectMap
         [
@@ -445,33 +454,18 @@ tedm:ContractOrganisation a rr:TriplesMap ;
                     rml:reference "if(exists(SME)) then 'http://data.europa.eu/a4g/ontology#Business' else null";
                     rr:termType rr:IRI;
                 ]
-
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasPrimaryContactPoint ;
+            rr:predicate epo:hasLegalName ;
             rr:objectMap
-            [
-                rr:parentTriplesMap tedm:ContractContactPoint;
-                rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                ];
-            ] ;
+                [
+                    rml:reference "ADDRESS_CONTRACTOR/OFFICIALNAME";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ]
         ] ;
-    rr:predicateObjectMap
-    [
-        rr:predicate legal:registeredAddress ;
-        rr:objectMap
-            [
-                rr:parentTriplesMap tedm:ContractOrganisationAddress;
-                rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                ];
-            ] ;
-    ] ;
-
     rr:predicateObjectMap
         [
             rr:predicate epo:hasID;
@@ -483,6 +477,30 @@ tedm:ContractOrganisation a rr:TriplesMap ;
                     rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                 ];
             ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate legal:registeredAddress ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ContractOrganisationAddress;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasPrimaryContactPoint ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ContractContactPoint;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
+                ] ;
         ] .
 tedm:ContractOrganisationIdentifier a rr:TriplesMap ;
     rr:predicateObjectMap
@@ -519,13 +537,23 @@ tedm:ContractContactPoint a rr:TriplesMap ;
                     rml:reference "ADDRESS_CONTRACTOR/FAX"
                 ]
         ] ;
-
     rr:predicateObjectMap
         [
             rr:predicate cpov:telephone ;
             rr:objectMap
                 [
                     rml:reference "ADDRESS_CONTRACTOR/PHONE"
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContactName ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_CONTRACTOR/CONTACT_POINT";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
                 ]
         ] .
 tedm:ContractOrganisationAddress a rr:TriplesMap ;
@@ -710,6 +738,17 @@ tedm:SubcontractingEstimate a rr:TriplesMap ;
                     rml:reference "PCT_SUBCONTRACTING";
                     rr:datatype xsd:decimal
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasDescription ;
+            rr:objectMap
+                [
+                    rml:reference "INFO_ADD_SUBCONTRACTING";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ]
         ] .
 tedm:SubcontractingEstimatedValueMonetaryValue a rr:TriplesMap ;
     rr:predicateObjectMap
@@ -1098,7 +1137,6 @@ tedm:ContractOrganisationFromResults a rr:TriplesMap ;
                     rml:reference "if(exists(SME)) then 'http://publications.europa.eu/resource/authority/economic-operator-size/sme' else null";
                     rr:termType rr:IRI;
                 ]
-
         ] ;
     rr:predicateObjectMap
         [
@@ -1108,7 +1146,17 @@ tedm:ContractOrganisationFromResults a rr:TriplesMap ;
                     rml:reference "if(exists(SME)) then 'http://data.europa.eu/a4g/ontology#Business' else null";
                     rr:termType rr:IRI;
                 ]
-
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasLegalName ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_WINNER/OFFICIALNAME";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ] ;
         ] ;
     rr:predicateObjectMap
         [
