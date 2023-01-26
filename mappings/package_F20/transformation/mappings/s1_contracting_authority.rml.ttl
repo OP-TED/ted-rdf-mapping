@@ -46,7 +46,7 @@ tedm:BuyerOrganisationGroup a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasMainActivityType ;
+            rr:predicate epo:hasMainActivity ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:mainActivity;
@@ -58,7 +58,7 @@ tedm:BuyerOrganisationGroup a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasMainActivityType ;
+            rr:predicate epo:hasMainActivity ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:mainActivity;
@@ -86,10 +86,10 @@ tedm:BuyerOrganisationGroup a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasBuyerType ;
+            rr:predicate epo:hasBuyerLegalType ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:buyerType;
+                    rr:parentTriplesMap tedm:buyerLegalType;
                     rr:joinCondition [
                         rr:child "../CA_TYPE/@VALUE";
                         rr:parent "xmlElement";
@@ -186,7 +186,8 @@ tedm:AdditionalBuyerProfile a rr:TriplesMap ;
             rr:predicate epo:hasURL;
             rr:objectMap
                 [
-                    rml:reference "URL_BUYER"
+                    rml:reference "URL_BUYER";
+                    rr:datatype xsd:anyURI;
                 ]
         ] .
 
@@ -277,7 +278,7 @@ tedm:AdditionalContactPoint a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "URL_GENERAL";
-                    #-rr:termType rr:IRI;
+                    rr:datatype xsd:anyURI
                 ] ;
         ] .
 tedm:AdditionalOrganisationAddress  a rr:TriplesMap ;
@@ -408,7 +409,8 @@ tedm:BuyerProfile a rr:TriplesMap ;
             rr:predicate epo:hasURL;
             rr:objectMap
                 [
-                    rml:reference "."
+                    rml:reference ".";
+                    rr:datatype xsd:anyURI;
                 ]
         ] .
 
@@ -454,7 +456,7 @@ tedm:Organisation a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasMainActivityType ;
+            rr:predicate epo:hasMainActivity ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:mainActivity;
@@ -466,7 +468,7 @@ tedm:Organisation a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasMainActivityType ;
+            rr:predicate epo:hasMainActivity ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:mainActivity;
@@ -494,10 +496,10 @@ tedm:Organisation a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasBuyerType ;
+            rr:predicate epo:hasBuyerLegalType ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:buyerType;
+                    rr:parentTriplesMap tedm:buyerLegalType;
                     rr:joinCondition [
                         rr:child "if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then ../CA_TYPE/@VALUE else null";
                         rr:parent "xmlElement";
@@ -564,7 +566,7 @@ tedm:ContactPoint a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "URL_GENERAL";
-                    #-rr:termType rr:IRI;
+                    rr:datatype xsd:anyURI
                 ] ;
         ] .
 tedm:OrganisationAddress  a rr:TriplesMap ;
@@ -645,11 +647,15 @@ tedm:OrganisationChannel a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference ".";
-                    #--rr:termType rr:IRI;
+                    rr:datatype xsd:anyURI;
 
                 ] ;
         ] .
 
+
+
+
+###some changes required for the shacl violations
 tedm:AccessTerm  a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -669,22 +675,17 @@ tedm:AccessTerm  a rr:TriplesMap ;
                     rr:datatype xsd:boolean
                 ] ;
         ] ;
+
+
+
     rr:predicateObjectMap
         [
             rr:predicate epo:hasPublicAccessURL ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(DOCUMENT_FULL) and starts-with(URL_DOCUMENT,'http')) then URL_DOCUMENT else null";
-                    rr:termType rr:IRI;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasPublicAccessURL ;
-            rr:objectMap
-                [
-                    rml:reference "if(exists(DOCUMENT_FULL) and not(starts-with(URL_DOCUMENT,'http'))) then URL_DOCUMENT else null";
-                    rr:termType rr:Literal;
+                    #rml:reference "DOCUMENT_FULL";
+                    rml:reference "if(exists(DOCUMENT_FULL)) then URL_DOCUMENT else null";
+                    rr:datatype xsd:anyURI
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -692,19 +693,13 @@ tedm:AccessTerm  a rr:TriplesMap ;
             rr:predicate epo:hasRestrictedAccessURL ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(DOCUMENT_RESTRICTED) and starts-with(URL_DOCUMENT,'http')) then URL_DOCUMENT else null";
-                    rr:termType rr:IRI;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasRestrictedAccessURL ;
-            rr:objectMap
-                [
-                    rml:reference "if(exists(DOCUMENT_RESTRICTED) and not(starts-with(URL_DOCUMENT,'http'))) then URL_DOCUMENT else null";
-                    rr:termType rr:Literal;
+                    rml:reference "if(exists(DOCUMENT_RESTRICTED)) then URL_DOCUMENT else null";
+                    rr:datatype xsd:anyURI;
                 ] ;
         ].
+
+
+
 tedm:Notice a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -794,7 +789,8 @@ tedm:InformationProviderBuyerProfile a rr:TriplesMap ;
             rr:predicate epo:hasURL;
             rr:objectMap
                 [
-                    rml:reference "."
+                    rml:reference ".";
+                    rr:datatype xsd:anyURI;
                 ]
         ] .
 tedm:InformationProviderOrganisation a rr:TriplesMap ;
@@ -878,7 +874,7 @@ tedm:InformationProviderContactPoint a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "URL_GENERAL";
-                    #-rr:termType rr:IRI;
+                    rr:datatype xsd:anyURI
                 ] ;
          ] ;
     rr:predicateObjectMap
@@ -1018,7 +1014,8 @@ tedm:TenderReceiverBuyerProfile a rr:TriplesMap ;
             rr:predicate epo:hasURL;
             rr:objectMap
                 [
-                    rml:reference "."
+                    rml:reference ".";
+                    rr:datatype xsd:anyURI;
                 ]
         ] .
 tedm:TenderReceiverOrganisation a rr:TriplesMap ;
@@ -1029,7 +1026,7 @@ tedm:TenderReceiverOrganisation a rr:TriplesMap ;
                 [
                     rml:reference "OFFICIALNAME";
                     rml:languageMap [
-                         rml:reference "lower-case(ancestor::F06_2014/@LG)"
+                        rml:reference "lower-case(ancestor::*/@LG)"
                     ]
                 ] ;
         ] ;
@@ -1098,7 +1095,7 @@ tedm:TenderReceiverOrganisationContactPoint a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "URL_GENERAL";
-                    #-rr:termType rr:IRI;
+                    rr:datatype xsd:anyURI
                 ] ;
         ] ;
     rr:predicateObjectMap

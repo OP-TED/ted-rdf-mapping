@@ -37,7 +37,7 @@ tedm:ProcedureModification a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasOverallPurpose ;
+            rr:predicate epo:hasPurpose ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ProcedurePurposeModification
@@ -424,7 +424,7 @@ tedm:DurationModification a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if(./@TYPE='MONTH') then 'http://www.w3.org/2006/time#unitMonth' else if (./@TYPE='DAY') then 'http://www.w3.org/2006/time#unitDay' else null ";
-                    rr:termType rr:IRI;
+                     rr:datatype xsd:anyURI;
                 ] ;
         ] .
 tedm:PeriodModification a rr:TriplesMap ;
@@ -434,7 +434,7 @@ tedm:PeriodModification a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "DATE_START";
-                    rr:datatype xsd:datetime
+                    rr:datatype xsd:dateTime
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -443,7 +443,7 @@ tedm:PeriodModification a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "DATE_END";
-                    rr:datatype xsd:datetime
+                    rr:datatype xsd:dateTime
                 ] ;
         ] .
 
@@ -503,7 +503,7 @@ tedm:ElementModificationDescription a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if (exists(UNFORESEEN_CIRCUMSTANCE)) then 'http://publications.europa.eu/resource/authority/modification-justification/mod-cir' else null";
-                    rr:termType rr:IRI
+                     rr:datatype xsd:anyURI;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -538,7 +538,7 @@ tedm:ContractorOrganisationModification a rr:TriplesMap ;
                 rr:objectMap
                 [
                     rml:reference "if(exists(SME)) then 'http://publications.europa.eu/resource/authority/economic-operator-size/sme' else null";
-                    rr:termType rr:IRI;
+                     rr:datatype xsd:anyURI;
                 ]
         ] ;
     rr:predicateObjectMap
@@ -547,7 +547,7 @@ tedm:ContractorOrganisationModification a rr:TriplesMap ;
                 rr:objectMap
                 [
                     rml:reference "if(exists(SME)) then 'http://data.europa.eu/a4g/ontology#Business' else null";
-                    rr:termType rr:IRI;
+                     rr:datatype xsd:anyURI;
                 ]
         ] ;
     rr:predicateObjectMap
@@ -557,7 +557,7 @@ tedm:ContractorOrganisationModification a rr:TriplesMap ;
                 [
                     rml:reference "ADDRESS_CONTRACTOR/OFFICIALNAME";
                     rml:languageMap [
-                         rml:reference "lower-case(ancestor::F20_2014/@LG)"
+                        rml:reference "lower-case(ancestor::*/@LG)"
                     ]
                 ]
         ] ;
@@ -621,7 +621,7 @@ tedm:ContractorContactPointModification a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "ADDRESS_CONTRACTOR/URL";
-                    #-rr:termType rr:IRI;
+                    rr:datatype xsd:anyURI
                 ] ;
         ] ;
     rr:predicateObjectMap
