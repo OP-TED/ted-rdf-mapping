@@ -223,7 +223,10 @@ tedm:SubmissionTerm a rr:TriplesMap ;
             rr:predicate epo:hasReceiptDeadline ;
             rr:objectMap
                 [
-                    rml:reference "DATE_RECEIPT_TENDERS";
+                    # We likely don't need to add the conditions for notice types:
+                    # - "PRI", as in case of F23 this information will only appear in the "PRI notices (and should not appear in "CONCESSION_AWARD_CONTRACT" notices
+                    # - "QSU_ONLY" and "PER_ONLY", as for those type of notices we should not have this type of infomration specified; however, in case they are (by mistake/oveersight), we will map it to this property
+                    rml:reference "if(../NOTICE/@TYPE='CONTRACT' or ../NOTICE/@TYPE='PRI' or ../NOTICE/@TYPE='QSU_ONLY' or ../NOTICE/@TYPE='QSU_CALL_COMPETITION' or ../NOTICE/@TYPE='PER_ONLY') then  DATE_RECEIPT_TENDERS || 'T' || TIME_RECEIPT_TENDERS || ':00' else null";
                     rr:datatype xsd:dateTime
                 ] ;
         ] ;
@@ -232,7 +235,7 @@ tedm:SubmissionTerm a rr:TriplesMap ;
             rr:predicate epo:hasReceiptExpressionDeadline ;
             rr:objectMap
                 [
-                    rml:reference "TIME_RECEIPT_TENDERS";
+                    rml:reference "if(../NOTICE/@TYPE='PRI_CALL_COMPETITION' or ../NOTICE/@TYPE='PER_CALL_COMPETITION') then  DATE_RECEIPT_TENDERS || 'T' || TIME_RECEIPT_TENDERS || ':00' else null";
                     rr:datatype xsd:dateTime
                 ] ;
         ] ;
