@@ -135,12 +135,9 @@ tedm:AdditionalBuyer a rr:TriplesMap ;
             rr:predicate epo:hasBuyerProfile ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:AdditionalBuyerProfile;
-                    rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    ];
-                ] ;
+                    rml:reference "URL_BUYER";
+                    rr:datatype xsd:anyURI;
+                ]
         ] .
 tedm:AdditionalBuyerCP a rr:TriplesMap ;
     rr:predicateObjectMap
@@ -172,25 +169,10 @@ tedm:AdditionalBuyerCP a rr:TriplesMap ;
             rr:predicate epo:hasBuyerProfile ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:AdditionalBuyerProfile;
-                    rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    ];
-                ] ;
-        ] .
-
-tedm:AdditionalBuyerProfile a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasURL;
-            rr:objectMap
-                [
                     rml:reference "URL_BUYER";
                     rr:datatype xsd:anyURI;
                 ]
         ] .
-
 tedm:AdditionalOrganisation a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -374,7 +356,8 @@ tedm:BuyerCP a rr:TriplesMap ;
             rr:predicate epo:hasBuyerProfile ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:BuyerProfile
+                    rml:reference "ADDRESS_CONTRACTING_BODY/URL_BUYER";
+                    rr:datatype xsd:anyURI;
                 ] ;
         ] .
 tedm:Buyer a rr:TriplesMap ;
@@ -399,21 +382,10 @@ tedm:Buyer a rr:TriplesMap ;
             rr:predicate epo:hasBuyerProfile ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:BuyerProfile
+                    rml:reference "ADDRESS_CONTRACTING_BODY/URL_BUYER";
+                    rr:datatype xsd:anyURI;
                 ] ;
         ] .
-		
-tedm:BuyerProfile a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasURL;
-            rr:objectMap
-                [
-                    rml:reference ".";
-                    rr:datatype xsd:anyURI;
-                ]
-        ] .
-
 tedm:Organisation a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -743,7 +715,8 @@ tedm:ProcurementProcedureInformationProviderIdem a rr:TriplesMap ;
             rr:predicate epo:hasBuyerProfile ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:BuyerProfile
+                    rml:reference "../ADDRESS_CONTRACTING_BODY/URL_BUYER";
+                    rr:datatype xsd:anyURI;
                 ] ;
         ] .
 tedm:ProcurementProcedureInformationProvider a rr:TriplesMap ;
@@ -768,18 +741,9 @@ tedm:ProcurementProcedureInformationProvider a rr:TriplesMap ;
             rr:predicate epo:hasBuyerProfile ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:InformationProviderBuyerProfile
-                ] ;
-        ] .
-tedm:InformationProviderBuyerProfile a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasURL;
-            rr:objectMap
-                [
-                    rml:reference ".";
+                    rml:reference "URL_BUYER";
                     rr:datatype xsd:anyURI;
-                ]
+                ] ;
         ] .
 tedm:InformationProviderOrganisation a rr:TriplesMap ;
     rr:predicateObjectMap
@@ -968,7 +932,8 @@ tedm:TenderReceiverIdem a rr:TriplesMap ;
             rr:predicate epo:hasBuyerProfile ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:BuyerProfile
+                    rml:reference "../ADDRESS_CONTRACTING_BODY/URL_BUYER";
+                    rr:datatype xsd:anyURI;
                 ] ;
         ] .
 tedm:TenderReceiver a rr:TriplesMap ;
@@ -993,18 +958,9 @@ tedm:TenderReceiver a rr:TriplesMap ;
             rr:predicate epo:hasBuyerProfile ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:TenderReceiverBuyerProfile
-                ] ;
-        ] .
-tedm:TenderReceiverBuyerProfile a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasURL;
-            rr:objectMap
-                [
-                    rml:reference ".";
+                    rml:reference "URL_BUYER";
                     rr:datatype xsd:anyURI;
-                ]
+                ] ;
         ] .
 tedm:TenderReceiverOrganisation a rr:TriplesMap ;
     rr:predicateObjectMap

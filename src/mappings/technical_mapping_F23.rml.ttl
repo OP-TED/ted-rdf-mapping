@@ -158,21 +158,6 @@ tedm:AdditionalBuyer a rr:TriplesMap;
         rml:iterator "/TED_EXPORT/FORM_SECTION/F23_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL" ;
         rml:referenceFormulation ql:XPath
     ] .
-
-
-tedm:AdditionalBuyerProfile a rr:TriplesMap ;
-    rr:subjectMap
-        [
-            rml:reference
-                "if(exists(URL_BUYER)) then 'http://data.europa.eu/a4g/resource/AdditionalBuyerProfile/' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '/' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
-            rr:class epo:BuyerProfile
-        ] ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F23_2014[1]/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL";
-            rml:referenceFormulation ql:XPath
-        ].
 tedm:Organisation a rr:TriplesMap ;
     rr:subjectMap
         [
@@ -214,20 +199,6 @@ tedm:BuyerCP a rr:TriplesMap;
         rml:iterator "/TED_EXPORT/FORM_SECTION/F23_2014[1]/CONTRACTING_BODY" ;
         rml:referenceFormulation ql:XPath
     ] .
-
-tedm:BuyerProfile a rr:TriplesMap ;
-    rr:subjectMap
-        [
-
-            rr:template "http://data.europa.eu/a4g/resource/BuyerProfile/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class epo:BuyerProfile
-        ] ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F23_2014[1]/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/URL_BUYER";
-            rml:referenceFormulation ql:XPath
-        ].
 tedm:NoticeAwardInformation a rr:TriplesMap ;
     rr:subjectMap
         [
@@ -1401,18 +1372,6 @@ tedm:ProcurementProcedureInformationProvider  a rr:TriplesMap ;
             rr:template "http://data.europa.eu/a4g/resource/ProcurementProcedureInformationProvider/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:ProcurementProcedureInformationProvider
         ] .
-tedm:InformationProviderBuyerProfile a rr:TriplesMap ;
-    rr:subjectMap
-        [
-            rr:template "http://data.europa.eu/a4g/resource/InformationProviderBuyerProfile/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class epo:BuyerProfile
-        ] ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F23_2014[1]/CONTRACTING_BODY/ADDRESS_FURTHER_INFO/URL_BUYER";
-            rml:referenceFormulation ql:XPath
-        ].
 tedm:InformationProviderOrganisation a rr:TriplesMap ;
     rr:subjectMap
         [
@@ -1485,18 +1444,6 @@ tedm:TenderReceiver  a rr:TriplesMap ;
             rr:template "http://data.europa.eu/a4g/resource/TenderReceiver/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:TenderReceiver
         ] .
-tedm:TenderReceiverBuyerProfile a rr:TriplesMap ;
-    rr:subjectMap
-        [
-            rr:template "http://data.europa.eu/a4g/resource/TenderReceiverBuyerProfile/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}/{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class epo:BuyerProfile
-        ] ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F23_2014[1]/CONTRACTING_BODY/ADDRESS_PARTICIPATION/URL_BUYER";
-            rml:referenceFormulation ql:XPath
-        ].
 tedm:TenderReceiverOrganisation a rr:TriplesMap ;
     rr:subjectMap
         [
