@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -25,7 +24,7 @@
   a cccev:ContactPoint;
   epo:hasContactName "Katja Monréal"@de;
   epo:hasFax "+49 40/42847-2305";
-  epo:hasInternetAddress "www.hamburg-port-authority.de";
+  epo:hasInternetAddress "www.hamburg-port-authority.de"^^xsd:anyURI;
   cccev:email "ZentralerEinkauf@hpa.hamburg.de";
   cccev:telephone "+49 40/42847-2926" .
 
@@ -37,25 +36,11 @@
 Richtfeuer Blankenese – Überarbeitung Tragwerks- und Objektplanung, Brandschutzkonzept
 """@de;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2017-S-054-100184/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-054-100184/527e871b-562d-3858-b2cb-c75e9b69e338> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-054-100184/527e871b-562d-3858-b2cb-c75e9b69e338> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2017-S-054-100184/527e871b-562d-3858-b2cb-c75e9b69e338>
   a epo:Identifier;
   epo:hasIdentifierValue "E-0223-17-V-EU" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-054-100184/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasLegalName "KramerAlbrecht Ingenieurgesellschaft mbH & Co. KG"@de;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-054-100184/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-054-100184/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE600>;
-  locn:postCode "20095";
-  locn:postName "Hamburg";
-  locn:thoroughfare "Glockengießerwall 1" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2017-S-054-100184/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a epo:ContractTerm;
@@ -72,6 +57,20 @@ Richtfeuer Blankenese – Überarbeitung Tragwerks- und Objektplanung, Brandschu
   locn:fullAddress """
 Hamburg.
 """@de .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-054-100184/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "KramerAlbrecht Ingenieurgesellschaft mbH & Co. KG"@de;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-054-100184/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-054-100184/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE600>;
+  locn:postCode "20095";
+  locn:postName "Hamburg";
+  locn:thoroughfare "Glockengießerwall 1" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2017-S-054-100184/b68f1feb-885d-37f5-ac99-4287870dfd15>
   a epo:DirectAwardTerm;
@@ -127,8 +126,8 @@ Die Vergabe erfolgt gem. § 13 (2) Nr. 3b und 4 SektVO.
 <http://data.europa.eu/a4g/resource/Organisation/2017-S-054-100184/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a org:Organization;
   epo:hasLegalName "HPA Hamburg Port Authority AöR"@de;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/port>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-054-100184/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/port>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-054-100184/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-054-100184/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a locn:Address;
@@ -145,9 +144,9 @@ Die Vergabe erfolgt gem. § 13 (2) Nr. 3b und 4 SektVO.
 Überarbeitung der Tragwerks- und Objektplanung und Erstellung eines Brandschutzkonzeptes.
 """@de;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2017-S-054-100184/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-054-100184/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2017-S-054-100184/636e3166-5ecc-350b-867b-7bf2072a2c03>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-054-100184/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasTitle """
 Richtfeuer Blankenese – Überarbeitung Tragwerks- und Objektplanung, Brandschutzkonzept.
 """@de;
@@ -180,7 +179,7 @@ Gemäß § 135 GWB 2016.
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2017-S-054-100184/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a org:Organization;
   epo:hasLegalName "Vergabekammer bei der Behörde für Stadtentwicklung und Wohnen"@de;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-054-100184/13730a07-65b0-306c-a9b5-a8929927a6a1> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-054-100184/13730a07-65b0-306c-a9b5-a8929927a6a1> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-054-100184/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a locn:Address;
@@ -204,4 +203,4 @@ Gemäß § 135 GWB 2016.
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2017-S-054-100184/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-054-100184/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-054-100184/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .

@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,23 +17,19 @@
 
 <http://data.europa.eu/a4g/resource/AccessTerm/2017-S-210-436913/08cc6b87-fd77-3965-a6c4-7bd72326900e>
   a epo:AccessTerm;
-  epo:hasPublicAccessURL <https://permalink.mercell.com/75845071.aspx>;
+  epo:hasPublicAccessURL "https://permalink.mercell.com/75845071.aspx"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
 
 <http://data.europa.eu/a4g/resource/Buyer/2017-S-210-436913/08cc6b87-fd77-3965-a6c4-7bd72326900e>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-210-436913/5eeafc96-605e-3b6c-9ca0-91010603c507>;
+  epo:hasBuyerProfile "http://www.fredericia.dk/"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-210-436913/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2017-S-210-436913/97c28c49-5587-3e91-95b4-4e48e30ed684> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-210-436913/5eeafc96-605e-3b6c-9ca0-91010603c507>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.fredericia.dk/" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-210-436913/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a cccev:ContactPoint;
   epo:hasContactName "Anders Gjerløv"@da;
-  epo:hasInternetAddress "https://permalink.mercell.com/75845071.aspx";
+  epo:hasInternetAddress "https://permalink.mercell.com/75845071.aspx"^^xsd:anyURI;
   cccev:email "anders.gjerlov@fredericia.dk";
   cccev:telephone "+45 72107138" .
 
@@ -82,13 +77,13 @@
 
 <http://data.europa.eu/a4g/resource/InformationProviderContactPoint/2017-S-210-436913/0e97bbcf-a1e9-3b4e-bfbe-79eb02cbb87e>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "https://permalink.mercell.com/75845071.aspx";
+  epo:hasInternetAddress "https://permalink.mercell.com/75845071.aspx"^^xsd:anyURI;
   cccev:email "support.dk@mercell.com" .
 
 <http://data.europa.eu/a4g/resource/InformationProviderOrganisation/2017-S-210-436913/0e97bbcf-a1e9-3b4e-bfbe-79eb02cbb87e>
   a org:Organization;
   epo:hasLegalName "Mercell Danmark A/S"@da;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/InformationProviderOrganisationAddress/2017-S-210-436913/0e97bbcf-a1e9-3b4e-bfbe-79eb02cbb87e> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/InformationProviderOrganisationAddress/2017-S-210-436913/0e97bbcf-a1e9-3b4e-bfbe-79eb02cbb87e> .
 
 <http://data.europa.eu/a4g/resource/InformationProviderOrganisationAddress/2017-S-210-436913/0e97bbcf-a1e9-3b4e-bfbe-79eb02cbb87e>
   a locn:Address;
@@ -200,11 +195,11 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2017-S-210-436913/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2017-S-210-436913/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:hasLegalName "Fredericia Kommune"@da;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-210-436913/97c28c49-5587-3e91-95b4-4e48e30ed684> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-210-436913/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-210-436913/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a locn:Address;
@@ -220,18 +215,18 @@
 
 <http://data.europa.eu/a4g/resource/Period/2017-S-210-436913/10a954c5-4b3f-3ea1-add9-eda3a9735c67>
   a epo:Period;
-  epo:hasBeginning "2018-01-01"^^xsd:datetime;
-  epo:hasEnd "2021-12-31"^^xsd:datetime .
+  epo:hasBeginning "2018-01-01T00:00:00"^^xsd:dateTime;
+  epo:hasEnd "2021-12-31T00:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/Period/2017-S-210-436913/363f871b-34f9-360a-8206-9b7373cf0235>
   a epo:Period;
-  epo:hasBeginning "2018-01-01"^^xsd:datetime;
-  epo:hasEnd "2021-12-31"^^xsd:datetime .
+  epo:hasBeginning "2018-01-01T00:00:00"^^xsd:dateTime;
+  epo:hasEnd "2021-12-31T00:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/Period/2017-S-210-436913/e3c5791a-e132-3d09-8ef5-af0f6ebfdc2c>
   a epo:Period;
-  epo:hasBeginning "2018-01-01"^^xsd:datetime;
-  epo:hasEnd "2021-12-31"^^xsd:datetime .
+  epo:hasBeginning "2018-01-01T00:00:00"^^xsd:dateTime;
+  epo:hasEnd "2021-12-31T00:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/Procedure/2017-S-210-436913/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>
   a epo:Procedure;
@@ -249,11 +244,11 @@
   epo:hasMainFeature """
                Rammeaftale vil blive tildelt den anden aktør (1 aktør på delområde 1, 1 aktør på delområde 2 og 2 aktører på delområde 3), der afgiver det økonomisk mest fordelagtige tilbud i form af bedste forhold mellem pris og kvalitet.
             """;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-210-436913/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2017-S-210-436913/10a954c5-4b3f-3ea1-add9-eda3a9735c67>,
     <http://data.europa.eu/a4g/resource/Lot/2017-S-210-436913/363f871b-34f9-360a-8206-9b7373cf0235>,
     <http://data.europa.eu/a4g/resource/Lot/2017-S-210-436913/e3c5791a-e132-3d09-8ef5-af0f6ebfdc2c>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-210-436913/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasTitle """
                Udbud af beskæftigelsesindsats til Fredericia Kommune.
             """@da;
@@ -298,7 +293,7 @@
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2017-S-210-436913/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3>
   a cccev:ContactPoint;
   epo:hasFax "+45 41715100";
-  epo:hasInternetAddress "http://www.kfst.dk";
+  epo:hasInternetAddress "http://www.kfst.dk"^^xsd:anyURI;
   cccev:email "kfst@kfst.dk";
   cccev:telephone "+45 41715000" .
 
@@ -306,7 +301,7 @@
   a org:Organization;
   epo:hasLegalName "Konkurrence- og Forbrugerstyrelsen"@da;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2017-S-210-436913/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-210-436913/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-210-436913/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2017-S-210-436913/b717835d-5424-3d82-9a2a-3dedd6cdfaaa>
   a epo:ReviewTerm;
@@ -325,7 +320,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-210-436913/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a cccev:ContactPoint;
   epo:hasFax "+45 33307799";
-  epo:hasInternetAddress "http://www.klfu.dk";
+  epo:hasInternetAddress "http://www.klfu.dk"^^xsd:anyURI;
   cccev:email "klfu@naevneneshus.dk";
   cccev:telephone "+45 35291000" .
 
@@ -333,7 +328,7 @@
   a org:Organization;
   epo:hasLegalName "Klagenævnet for Udbud"@da;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-210-436913/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-210-436913/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-210-436913/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-210-436913/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a locn:Address;
@@ -352,6 +347,5 @@
 <http://data.europa.eu/a4g/resource/SubmissionTerm/2017-S-210-436913/168a6c96-75f8-304a-bff5-0d0cf3c2f20c>
   a epo:SubmissionTerm;
   epo:hasLanguage "DA";
-  epo:hasReceiptDeadline "2017-11-24"^^xsd:datetime;
-  epo:hasReceiptExpressionsDeadline "12:00"^^xsd:datetime;
-  epo:hasSubmissionURL "https://permalink.mercell.com/75845071.aspx" .
+  epo:hasReceiptDeadline "2017-11-24T12:00:00"^^xsd:dateTime;
+  epo:hasSubmissionURL "https://permalink.mercell.com/75845071.aspx"^^xsd:anyURI .

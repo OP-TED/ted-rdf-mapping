@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,23 +17,19 @@
 
 <http://data.europa.eu/a4g/resource/AccessTerm/2019-S-189-460696/08cc6b87-fd77-3965-a6c4-7bd72326900e>
   a epo:AccessTerm;
-  epo:hasPublicAccessURL <http://www.synapse-ouest.com>;
+  epo:hasPublicAccessURL "http://www.synapse-ouest.com"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
 
 <http://data.europa.eu/a4g/resource/Buyer/2019-S-189-460696/08cc6b87-fd77-3965-a6c4-7bd72326900e>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2019-S-189-460696/5eeafc96-605e-3b6c-9ca0-91010603c507>;
+  epo:hasBuyerProfile "http://www.synapse-ouest.com"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2019-S-189-460696/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2019-S-189-460696/97c28c49-5587-3e91-95b4-4e48e30ed684> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2019-S-189-460696/5eeafc96-605e-3b6c-9ca0-91010603c507>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.synapse-ouest.com" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2019-S-189-460696/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a cccev:ContactPoint;
   epo:hasFax "+33 240640466";
-  epo:hasInternetAddress "http://www.pornic.fr";
+  epo:hasInternetAddress "http://www.pornic.fr"^^xsd:anyURI;
   cccev:email "opinault@pornic.fr";
   cccev:telephone "+33 251740989" .
 
@@ -128,10 +123,10 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2019-S-189-460696/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasLegalName "Commune de Pornic"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-189-460696/97c28c49-5587-3e91-95b4-4e48e30ed684> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-189-460696/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-189-460696/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a locn:Address;
@@ -149,10 +144,10 @@
   epo:hasDescription "La prestation a pour objet la mise en place d'actions d'insertion sociale et professionnelle de personnes exclues du marché du travail et/ou en difficulté ou de maintien dans l'emploi. Le support des démarches d'insertion intervient dans le cadre de l'entretien de la végétation des espaces sensibles à caractère environnemental et des espaces à caractères ornemental de la ville de Pornic."@fr;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2019-S-189-460696/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2019-S-189-460696/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2019-S-189-460696/10a954c5-4b3f-3ea1-add9-eda3a9735c67>,
     <http://data.europa.eu/a4g/resource/Lot/2019-S-189-460696/e3c5791a-e132-3d09-8ef5-af0f6ebfdc2c>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2019-S-189-460696/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasTitle "Prestation de service d'insertion et de professionnalisation lié à l'entretien d'espaces verts"@fr;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/AccessTerm/2019-S-189-460696/08cc6b87-fd77-3965-a6c4-7bd72326900e>,
     <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2019-S-189-460696/08cc6b87-fd77-3965-a6c4-7bd72326900e>,
@@ -177,7 +172,6 @@
 
 <http://data.europa.eu/a4g/resource/ProcurementProcedureInformationProvider/2019-S-189-460696/1a05a258-a8c2-3b59-8ae4-16e3430dd96e>
   a epo:ProcurementProcedureInformationProvider;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2019-S-189-460696/5eeafc96-605e-3b6c-9ca0-91010603c507>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2019-S-189-460696/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2019-S-189-460696/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
@@ -202,7 +196,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Nantes"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2019-S-189-460696/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2019-S-189-460696/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2019-S-189-460696/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3> .
 
 <http://data.europa.eu/a4g/resource/Reviewer/2019-S-189-460696/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a epo:Reviewer;
@@ -218,7 +212,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Nantes"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2019-S-189-460696/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-189-460696/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-189-460696/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-189-460696/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a locn:Address;
@@ -235,11 +229,9 @@
 <http://data.europa.eu/a4g/resource/SubmissionTerm/2019-S-189-460696/168a6c96-75f8-304a-bff5-0d0cf3c2f20c>
   a epo:SubmissionTerm;
   epo:hasLanguage "FR";
-  epo:hasReceiptDeadline "2019-10-21"^^xsd:datetime;
-  epo:hasReceiptExpressionsDeadline "12:00"^^xsd:datetime .
+  epo:hasReceiptDeadline "2019-10-21T12:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/TenderReceiver/2019-S-189-460696/041b5ded-d3df-3217-99a0-c86f556f60c7>
   a epo:TenderReceiver;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2019-S-189-460696/5eeafc96-605e-3b6c-9ca0-91010603c507>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2019-S-189-460696/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2019-S-189-460696/97c28c49-5587-3e91-95b4-4e48e30ed684> .

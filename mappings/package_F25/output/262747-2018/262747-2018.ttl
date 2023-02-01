@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -50,19 +49,15 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2018-S-115-262747/5a0e0822-353f-34b8-9001-b27f293ef321>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-115-262747/41c3580d-d7b5-3ead-a7df-4e886771daad>;
+  epo:hasBuyerProfile "http://www.marches-publics.gouv.fr"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-115-262747/188615bc-907f-376a-b3e0-b7f440ca4c64>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-115-262747/188615bc-907f-376a-b3e0-b7f440ca4c64> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-115-262747/41c3580d-d7b5-3ead-a7df-4e886771daad>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.marches-publics.gouv.fr" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-115-262747/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a cccev:ContactPoint;
   epo:hasContactName "Activité marchés publics"@fr;
   epo:hasFax "+33 491394033";
-  epo:hasInternetAddress "http://www.marseille-port.fr";
+  epo:hasInternetAddress "http://www.marseille-port.fr"^^xsd:anyURI;
   cccev:email "marches-gpmm@marseille-port.fr";
   cccev:telephone "+33 491134813" .
 
@@ -72,7 +67,7 @@
                Le lot 2 optionnel est constitué des terre-pleins situés au droit des postes à quai 59 et 63 pour une surface cumulée de 70 000 m2. Il comprend les surfaces du Hangar 3 (H3).
             """@fr;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2018-S-115-262747/0c5e91a9-27f4-38c7-882c-89370600ac69>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-115-262747/19fd72b6-8ce1-3e49-9e83-601fc3ab6305> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-115-262747/19fd72b6-8ce1-3e49-9e83-601fc3ab6305> .
 
 <http://data.europa.eu/a4g/resource/Contract/2018-S-115-262747/2b425ab1-553e-3915-a060-80f1d3cff764>
   a epo:ConcessionContract, epo:Contract;
@@ -80,45 +75,7 @@
                Mise à disposition des terre-pleins situés au droit des postes à quai 50 à 58 pour une surface cumulée de 103 000 m2. Le lot 1 comprend les Hangars 5 et 4 (H5 et H4) sauf leurs toitures.
             """@fr;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2018-S-115-262747/5a50554f-89ac-3a44-9d4f-643949ca9831>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-115-262747/2b425ab1-553e-3915-a060-80f1d3cff764> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2018-S-115-262747/5de49af6-b9bb-3695-9912-754e8f3dfd4f>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2018-S-115-262747/5de49af6-b9bb-3695-9912-754e8f3dfd4f>;
-  epo:hasLegalName "Marseille Manutention"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2018-S-115-262747/5de49af6-b9bb-3695-9912-754e8f3dfd4f> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2018-S-115-262747/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2018-S-115-262747/8f833010-0b39-361a-9ea9-959275ccdc19>;
-  epo:hasLegalName "Marseille Manutention"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2018-S-115-262747/8f833010-0b39-361a-9ea9-959275ccdc19> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2018-S-115-262747/5de49af6-b9bb-3695-9912-754e8f3dfd4f>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRL04>;
-  locn:postCode "13015";
-  locn:postName "Marseille";
-  locn:thoroughfare "Terminal conteneurs Mourepiane PTE4, zone portuaire" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2018-S-115-262747/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRL04>;
-  locn:postCode "13015";
-  locn:postName "Marseille";
-  locn:thoroughfare "Terminal conteneurs Mourepiane PTE4, zone portuaire" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2018-S-115-262747/5de49af6-b9bb-3695-9912-754e8f3dfd4f>
-  a epo:Identifier;
-  epo:hasIdentifierValue "389 384 165" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2018-S-115-262747/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a epo:Identifier;
-  epo:hasIdentifierValue "389 384 165" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-115-262747/2b425ab1-553e-3915-a060-80f1d3cff764> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2018-S-115-262747/0c5e91a9-27f4-38c7-882c-89370600ac69>
   a epo:ContractTerm;
@@ -139,6 +96,44 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2018-S-115-262747/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/FRL04> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2018-S-115-262747/5de49af6-b9bb-3695-9912-754e8f3dfd4f>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasID <http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2018-S-115-262747/5de49af6-b9bb-3695-9912-754e8f3dfd4f>;
+  epo:hasLegalName "Marseille Manutention"@fr;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2018-S-115-262747/5de49af6-b9bb-3695-9912-754e8f3dfd4f> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2018-S-115-262747/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasID <http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2018-S-115-262747/8f833010-0b39-361a-9ea9-959275ccdc19>;
+  epo:hasLegalName "Marseille Manutention"@fr;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2018-S-115-262747/8f833010-0b39-361a-9ea9-959275ccdc19> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2018-S-115-262747/5de49af6-b9bb-3695-9912-754e8f3dfd4f>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRL04>;
+  locn:postCode "13015";
+  locn:postName "Marseille";
+  locn:thoroughfare "Terminal conteneurs Mourepiane PTE4, zone portuaire" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2018-S-115-262747/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRL04>;
+  locn:postCode "13015";
+  locn:postName "Marseille";
+  locn:thoroughfare "Terminal conteneurs Mourepiane PTE4, zone portuaire" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2018-S-115-262747/5de49af6-b9bb-3695-9912-754e8f3dfd4f>
+  a epo:Identifier;
+  epo:hasIdentifierValue "389 384 165" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2018-S-115-262747/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a epo:Identifier;
+  epo:hasIdentifierValue "389 384 165" .
 
 <http://data.europa.eu/a4g/resource/Duration/2018-S-115-262747/1d09e8e7-ef82-30d4-befb-d86c000a8e5a>
   a epo:Duration;
@@ -273,8 +268,8 @@
 <http://data.europa.eu/a4g/resource/Organisation/2018-S-115-262747/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a org:Organization;
   epo:hasLegalName "Grand Port Maritime de Marseille"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/port>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-115-262747/188615bc-907f-376a-b3e0-b7f440ca4c64> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/port>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-115-262747/188615bc-907f-376a-b3e0-b7f440ca4c64> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-115-262747/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a locn:Address;
@@ -295,9 +290,9 @@
                La présente procédure de mise en concurrence, de façon ouverte, transparente et non discriminatoire, a pour objet de choisir un opérateur avec lequel sera conclue une convention de terminal en application des dispositions des articles R. 5312-83 et suivants du code des transports pour un terminal marchandises dédié principalement au trafic roulant situé dans le secteur Arenc Saint -Cassien du Grand Port Maritime de Marseille.
             """@fr;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2018-S-115-262747/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-115-262747/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2018-S-115-262747/0c5e91a9-27f4-38c7-882c-89370600ac69>,
     <http://data.europa.eu/a4g/resource/Lot/2018-S-115-262747/5a50554f-89ac-3a44-9d4f-643949ca9831>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-115-262747/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasTitle """
                Processus de mise en concurrence pour le développement d'un terminal principalement roulier dans le Grand Port Maritime de Marseille, secteur Arenc Saint-Cassien
             """@fr;
@@ -338,7 +333,7 @@
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2018-S-115-262747/fdc5fccd-dd12-3226-8a44-ee7b6f769c12>
   a cccev:ContactPoint;
   epo:hasFax "+33 491811387";
-  epo:hasInternetAddress "http://marseille.tribunal-administratif.fr";
+  epo:hasInternetAddress "http://marseille.tribunal-administratif.fr"^^xsd:anyURI;
   cccev:email "greffe.ta-marseille@juradm.fr";
   cccev:telephone "+33 491134813" .
 
@@ -346,7 +341,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Marseille"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2018-S-115-262747/fdc5fccd-dd12-3226-8a44-ee7b6f769c12>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2018-S-115-262747/fdc5fccd-dd12-3226-8a44-ee7b6f769c12> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2018-S-115-262747/fdc5fccd-dd12-3226-8a44-ee7b6f769c12> .
 
 <http://data.europa.eu/a4g/resource/Reviewer/2018-S-115-262747/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a epo:Reviewer;
@@ -355,7 +350,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-115-262747/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a cccev:ContactPoint;
   epo:hasFax "+33 491811387";
-  epo:hasInternetAddress "http://marseille.tribunal-administratif.fr";
+  epo:hasInternetAddress "http://marseille.tribunal-administratif.fr"^^xsd:anyURI;
   cccev:email "greffe.ta-marseille@juradm.fr";
   cccev:telephone "+33 491134813" .
 
@@ -363,7 +358,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Marseille"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-115-262747/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-115-262747/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-115-262747/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-115-262747/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a locn:Address;
@@ -410,8 +405,8 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2018-S-115-262747/5de49af6-b9bb-3695-9912-754e8f3dfd4f>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2018-S-115-262747/5de49af6-b9bb-3695-9912-754e8f3dfd4f> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2018-S-115-262747/5de49af6-b9bb-3695-9912-754e8f3dfd4f> .
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2018-S-115-262747/8f833010-0b39-361a-9ea9-959275ccdc19>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2018-S-115-262747/8f833010-0b39-361a-9ea9-959275ccdc19> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2018-S-115-262747/8f833010-0b39-361a-9ea9-959275ccdc19> .

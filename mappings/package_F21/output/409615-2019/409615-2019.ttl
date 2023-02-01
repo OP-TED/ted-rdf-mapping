@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -24,7 +23,7 @@
 <http://data.europa.eu/a4g/resource/ContactPoint/2019-S-167-409615/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a cccev:ContactPoint;
   epo:hasContactName "Katarzyna Ryciuk"@pl;
-  epo:hasInternetAddress "www.kowr.gov.pl";
+  epo:hasInternetAddress "www.kowr.gov.pl"^^xsd:anyURI;
   cccev:email "zamowienia.publiczne@kowr.gov.pl" .
 
 <http://data.europa.eu/a4g/resource/Contract/2019-S-167-409615/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172>
@@ -32,26 +31,7 @@
   epo:hasContractConclusionDate "2019-08-07"^^xsd:date;
   epo:hasTitle "Usługa zabudowy 54 m2 powierzchni targowo-wystawienniczej w ramach targów Vietfood&Beverage 2019 odbywających się w terminie 7-10.8.2019 r. w Ho Chi Minh, w Wietnamie"@pl;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2019-S-167-409615/10a954c5-4b3f-3ea1-add9-eda3a9735c67>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2019-S-167-409615/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2019-S-167-409615/2c83355d-939c-3603-bdc9-70a1c649caee>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2019-S-167-409615/2c83355d-939c-3603-bdc9-70a1c649caee>;
-  epo:hasLegalName "Krajowa Izba Gospodarcza Centrum Promocji Sp. z o.o."@pl;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2019-S-167-409615/2c83355d-939c-3603-bdc9-70a1c649caee> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2019-S-167-409615/2c83355d-939c-3603-bdc9-70a1c649caee>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/PL911>;
-  locn:postCode "00-074";
-  locn:postName "Warszawa";
-  locn:thoroughfare "ul. Trębacka 4" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2019-S-167-409615/2c83355d-939c-3603-bdc9-70a1c649caee>
-  a epo:Identifier;
-  epo:hasIdentifierValue "REGON: 367849538" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2019-S-167-409615/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2019-S-167-409615/10a954c5-4b3f-3ea1-add9-eda3a9735c67>
   a epo:ContractTerm;
@@ -64,6 +44,25 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2019-S-167-409615/10a954c5-4b3f-3ea1-add9-eda3a9735c67>
   a locn:Address;
   locn:fullAddress "Ho Chi Minh w Wietnamie"@pl .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2019-S-167-409615/2c83355d-939c-3603-bdc9-70a1c649caee>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasID <http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2019-S-167-409615/2c83355d-939c-3603-bdc9-70a1c649caee>;
+  epo:hasLegalName "Krajowa Izba Gospodarcza Centrum Promocji Sp. z o.o."@pl;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2019-S-167-409615/2c83355d-939c-3603-bdc9-70a1c649caee> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2019-S-167-409615/2c83355d-939c-3603-bdc9-70a1c649caee>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/PL911>;
+  locn:postCode "00-074";
+  locn:postName "Warszawa";
+  locn:thoroughfare "ul. Trębacka 4" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2019-S-167-409615/2c83355d-939c-3603-bdc9-70a1c649caee>
+  a epo:Identifier;
+  epo:hasIdentifierValue "REGON: 367849538" .
 
 <http://data.europa.eu/a4g/resource/Fund/2019-S-167-409615/10a954c5-4b3f-3ea1-add9-eda3a9735c67>
   a epo:Fund;
@@ -130,10 +129,10 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2019-S-167-409615/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
   epo:hasLegalName "Krajowy Ośrodek Wsparcia Rolnictwa"@pl;
   epo:hasMainActivityDescription "Agencja wykonawcza";
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-167-409615/97c28c49-5587-3e91-95b4-4e48e30ed684> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-167-409615/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-167-409615/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a locn:Address;
@@ -150,9 +149,9 @@
   epo:hasDescription "1. Przedmiotem zamówienia jest:1) wykonanie zabudowy 54 m2 powierzchni wystawowej (stoisko promocyjne), zgodnie z opracowanym przez Wykonawcę projektem zabudowy stoiska;2) obsługa techniczna stoiska promocyjnego;3) obsługa stoiska promocyjnego przez 2 hostessy posługujące się językiem polskim oraz angielskim lub wietnamskim w stopniu komunikatywnym;4) demontaż wykonanej zabudowy;5) zapewnienie polisy ubezpieczenia OCW ramach targów Vietfood&Beverage 2019 (targi) odbywających się w terminie 7-10.8.2019 r. w Ho Chi Minh, w Wietnamie na warunkach określonych w Załączniku nr 1 do umowy, pt. Szczegółowy opis przedmiotu zamówienia (przedmiot umowy).2. Warunki realizacji przedmiotu zamówienia zostały określone w istotnych postanowieniach umowy, dalej IPU (załącznik nr 4 do SIWZ)."@pl;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2019-S-167-409615/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2019-S-167-409615/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2019-S-167-409615/10a954c5-4b3f-3ea1-add9-eda3a9735c67>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2019-S-167-409615/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasTitle "Usługa zabudowy 54 m2 powierzchni targowo-wystawienniczej w ramach targów Vietfood&Beverage 2019 odbywających się w terminie 7-10.8.2019 r. w Ho Chi Minh, w Wietnamie"@pl;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2019-S-167-409615/08cc6b87-fd77-3965-a6c4-7bd72326900e> .
 
@@ -187,7 +186,7 @@
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2019-S-167-409615/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3>
   a cccev:ContactPoint;
   epo:hasFax "+48 224587800/ +48 224587803";
-  epo:hasInternetAddress "www.uzp.gov.pl";
+  epo:hasInternetAddress "www.uzp.gov.pl"^^xsd:anyURI;
   cccev:email "odwolania@uzp.gov.pl";
   cccev:telephone "+48 224587801" .
 
@@ -195,7 +194,7 @@
   a org:Organization;
   epo:hasLegalName "Krajowa Izba Odwoławcza"@pl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2019-S-167-409615/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2019-S-167-409615/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2019-S-167-409615/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2019-S-167-409615/b717835d-5424-3d82-9a2a-3dedd6cdfaaa>
   a epo:ReviewTerm;
@@ -208,7 +207,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2019-S-167-409615/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a cccev:ContactPoint;
   epo:hasFax "+48 224587800/ +48 224587803";
-  epo:hasInternetAddress "www.uzp.gov.pl";
+  epo:hasInternetAddress "www.uzp.gov.pl"^^xsd:anyURI;
   cccev:email "odwolania@uzp.gov.pl";
   cccev:telephone "+48 224587801" .
 
@@ -216,7 +215,7 @@
   a org:Organization;
   epo:hasLegalName "Krajowa Izba Odwoławcza"@pl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2019-S-167-409615/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-167-409615/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-167-409615/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-167-409615/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a locn:Address;
@@ -245,4 +244,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2019-S-167-409615/2c83355d-939c-3603-bdc9-70a1c649caee>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2019-S-167-409615/2c83355d-939c-3603-bdc9-70a1c649caee> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2019-S-167-409615/2c83355d-939c-3603-bdc9-70a1c649caee> .

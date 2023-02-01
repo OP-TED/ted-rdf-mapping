@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -38,7 +37,7 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2018-S-049-109210/5a0e0822-353f-34b8-9001-b27f293ef321>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-049-109210/41c3580d-d7b5-3ead-a7df-4e886771daad>;
+  epo:hasBuyerProfile "https://www.achatpublic.com/sdm/ent/gen/index.jsp"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-049-109210/188615bc-907f-376a-b3e0-b7f440ca4c64>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-049-109210/188615bc-907f-376a-b3e0-b7f440ca4c64> .
 
@@ -46,10 +45,6 @@
   a epo:MonetaryValue;
   epo:hasAmountValue 6300000.0;
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-049-109210/41c3580d-d7b5-3ead-a7df-4e886771daad>
-  a epo:BuyerProfile;
-  epo:hasURL "https://www.achatpublic.com/sdm/ent/gen/index.jsp" .
 
 <http://data.europa.eu/a4g/resource/ConcessionEstimate/2018-S-049-109210/3953b71b-e4b8-307b-8fcc-3e7ecb01d94b>
   a epo:ConcessionEstimate;
@@ -59,7 +54,7 @@
 <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-049-109210/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a cccev:ContactPoint;
   epo:hasContactName "Direction du contrôle des gestions déléguées"@fr;
-  epo:hasInternetAddress "http://www.toulouse-metropole.fr/";
+  epo:hasInternetAddress "http://www.toulouse-metropole.fr/"^^xsd:anyURI;
   cccev:email "gestion.deleguee@marie-toulouse.fr";
   cccev:telephone "+33 561222261" .
 
@@ -69,27 +64,7 @@
                Délégation de service public pour l'exploitation de la halle des mécaniques de Toulouse
             """@fr;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2018-S-049-109210/5a50554f-89ac-3a44-9d4f-643949ca9831>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-049-109210/2b425ab1-553e-3915-a060-80f1d3cff764> .
-
-<http://data.europa.eu/a4g/resource/ContractContactPoint/2018-S-049-109210/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a cccev:ContactPoint;
-  epo:hasInternetAddress "http://www.lamachine.fr/";
-  cccev:email "contact@lamachine.fr";
-  cccev:telephone "+33 240475808" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2018-S-049-109210/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a org:Organization;
-  epo:hasLegalName "Compagnie La Machine"@fr;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractContactPoint/2018-S-049-109210/8f833010-0b39-361a-9ea9-959275ccdc19>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2018-S-049-109210/8f833010-0b39-361a-9ea9-959275ccdc19> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2018-S-049-109210/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR>;
-  locn:postCode "44200";
-  locn:postName "Nantes";
-  locn:thoroughfare "2 boulevard Léon Bureau" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-049-109210/2b425ab1-553e-3915-a060-80f1d3cff764> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2018-S-049-109210/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:ContractTerm;
@@ -106,6 +81,26 @@
   locn:fullAddress """
                   Toulouse
                """@fr .
+
+<http://data.europa.eu/a4g/resource/ContractorContactPoint/2018-S-049-109210/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a cccev:ContactPoint;
+  epo:hasInternetAddress "http://www.lamachine.fr/"^^xsd:anyURI;
+  cccev:email "contact@lamachine.fr";
+  cccev:telephone "+33 240475808" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2018-S-049-109210/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a org:Organization;
+  epo:hasLegalName "Compagnie La Machine"@fr;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorContactPoint/2018-S-049-109210/8f833010-0b39-361a-9ea9-959275ccdc19>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2018-S-049-109210/8f833010-0b39-361a-9ea9-959275ccdc19> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2018-S-049-109210/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR>;
+  locn:postCode "44200";
+  locn:postName "Nantes";
+  locn:thoroughfare "2 boulevard Léon Bureau" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2018-S-049-109210/3ff3e293-06ca-390c-bee2-dd28ba2e570e>
   a epo:DirectAwardTerm;
@@ -180,10 +175,10 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2018-S-049-109210/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasLegalName "Toulouse Métropole"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-049-109210/188615bc-907f-376a-b3e0-b7f440ca4c64> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-049-109210/188615bc-907f-376a-b3e0-b7f440ca4c64> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-049-109210/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a locn:Address;
@@ -204,9 +199,9 @@
   epo:hasMainFeature """
                Négociation de gré à gré, sans publicité ni mise en concurrence préalable.
             """;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-049-109210/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2018-S-049-109210/5a50554f-89ac-3a44-9d4f-643949ca9831>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-049-109210/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasTitle """
                Délégation de service public pour l'exploitation de la halle des mécaniques de Toulouse
             """@fr;
@@ -243,7 +238,7 @@
 
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2018-S-049-109210/fdc5fccd-dd12-3226-8a44-ee7b6f769c12>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://toulouse.tribunal-administratif.fr/";
+  epo:hasInternetAddress "http://toulouse.tribunal-administratif.fr/"^^xsd:anyURI;
   cccev:email "greffe.ta-toulouse@juradm.fr";
   cccev:telephone "+33 562735757" .
 
@@ -251,7 +246,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Toulouse"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2018-S-049-109210/fdc5fccd-dd12-3226-8a44-ee7b6f769c12>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2018-S-049-109210/fdc5fccd-dd12-3226-8a44-ee7b6f769c12> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2018-S-049-109210/fdc5fccd-dd12-3226-8a44-ee7b6f769c12> .
 
 <http://data.europa.eu/a4g/resource/Reviewer/2018-S-049-109210/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a epo:Reviewer;
@@ -259,7 +254,7 @@
 
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-049-109210/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://toulouse.tribunal-administratif.fr/";
+  epo:hasInternetAddress "http://toulouse.tribunal-administratif.fr/"^^xsd:anyURI;
   cccev:email "greffe.ta-toulouse@juradm.fr";
   cccev:telephone "+33 562735757" .
 
@@ -267,7 +262,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Toulouse"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-049-109210/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-049-109210/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-049-109210/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-049-109210/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a locn:Address;
@@ -298,4 +293,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2018-S-049-109210/8f833010-0b39-361a-9ea9-959275ccdc19>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2018-S-049-109210/8f833010-0b39-361a-9ea9-959275ccdc19> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2018-S-049-109210/8f833010-0b39-361a-9ea9-959275ccdc19> .

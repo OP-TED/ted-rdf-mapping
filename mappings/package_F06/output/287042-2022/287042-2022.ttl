@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -22,18 +21,14 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2022-S-102-287042/15183658-b3d6-3d9d-88d4-6e02c7e3b7b9>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2022-S-102-287042/206f9015-5cd1-3fca-bf9c-23378a724274>;
+  epo:hasBuyerProfile "https://nen.nipez.cz/profil/CEZ"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2022-S-102-287042/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2022-S-102-287042/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2022-S-102-287042/206f9015-5cd1-3fca-bf9c-23378a724274>
-  a epo:BuyerProfile;
-  epo:hasURL "https://nen.nipez.cz/profil/CEZ" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2022-S-102-287042/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a cccev:ContactPoint;
   epo:hasContactName "Ing. Tomáš Pospíšil"@cs;
-  epo:hasInternetAddress "www.cez.cz";
+  epo:hasInternetAddress "www.cez.cz"^^xsd:anyURI;
   cccev:email "tomas.pospisil@cez.cz";
   cccev:telephone "+420 211043108" .
 
@@ -43,31 +38,11 @@
   epo:hasID <http://data.europa.eu/a4g/resource/ContractIdentifier/2022-S-102-287042/527e871b-562d-3858-b2cb-c75e9b69e338>;
   epo:hasTitle "D149 - Tepelný napáječ ETE České Budějovice a D315 - BVS -- odkup movitých věcí a práv od insolvenčního správce dlužníka TENZA, a.s."@cs;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2022-S-102-287042/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2022-S-102-287042/527e871b-562d-3858-b2cb-c75e9b69e338> .
-
-<http://data.europa.eu/a4g/resource/ContractContactPoint/2022-S-102-287042/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a cccev:ContactPoint;
-  cccev:email "tenza@tenza.cz";
-  cccev:telephone "+420 545539339" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2022-S-102-287042/527e871b-562d-3858-b2cb-c75e9b69e338> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2022-S-102-287042/527e871b-562d-3858-b2cb-c75e9b69e338>
   a epo:Identifier;
   epo:hasIdentifierValue "0" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2022-S-102-287042/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasLegalName "TENZA, a.s."@cs;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractContactPoint/2022-S-102-287042/11c6525a-cbf9-36a2-9b0b-e686c6668d03>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2022-S-102-287042/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2022-S-102-287042/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/CZ064>;
-  locn:postCode "61700";
-  locn:postName "Brno";
-  locn:thoroughfare "Svatopetrská 35 7" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2022-S-102-287042/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a epo:ContractTerm;
@@ -77,6 +52,26 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2022-S-102-287042/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/CZ031> .
+
+<http://data.europa.eu/a4g/resource/ContractorContactPoint/2022-S-102-287042/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a cccev:ContactPoint;
+  cccev:email "tenza@tenza.cz";
+  cccev:telephone "+420 545539339" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2022-S-102-287042/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "TENZA, a.s."@cs;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorContactPoint/2022-S-102-287042/11c6525a-cbf9-36a2-9b0b-e686c6668d03>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2022-S-102-287042/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2022-S-102-287042/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/CZ064>;
+  locn:postCode "61700";
+  locn:postName "Brno";
+  locn:thoroughfare "Svatopetrská 35 7" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2022-S-102-287042/b68f1feb-885d-37f5-ac99-4287870dfd15>
   a epo:DirectAwardTerm;
@@ -130,7 +125,7 @@
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2022-S-102-287042/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>;
   epo:hasLegalName "ČEZ, a. s."@cs;
   epo:hasMainActivityDescription "Elektřina";
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-102-287042/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-102-287042/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-102-287042/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a locn:Address;
@@ -149,9 +144,9 @@
   epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2022-S-102-287042/636e3166-5ecc-350b-867b-7bf2072a2c03>;
   epo:hasDescription "Předmětem zakázky je uzavření smlouvy k zajištění odkupu movitých věcí a práv od insolvenčního správce společnosti TENZA, a.s., IČO 255 70 722, sídlem Svatopetrská 35/7, Komárov, 617 00 Brno."@cs;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2022-S-102-287042/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2022-S-102-287042/636e3166-5ecc-350b-867b-7bf2072a2c03>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2022-S-102-287042/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasTitle "D149 - Tepelný napáječ ETE České Budějovice a D315 - BVS -- odkup movitých věcí a práv od insolvenčního správce dlužníka TENZA, a.s."@cs;
   epo:isCoveredByGPA true;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/DirectAwardTerm/2022-S-102-287042/b68f1feb-885d-37f5-ac99-4287870dfd15>,
@@ -184,7 +179,7 @@
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2022-S-102-287042/cda2e79a-2b54-3d8d-8cbd-025f430ee110>
   a cccev:ContactPoint;
   epo:hasFax "+420 542167112";
-  epo:hasInternetAddress "http://www.uohs.cz";
+  epo:hasInternetAddress "http://www.uohs.cz"^^xsd:anyURI;
   cccev:email "posta@uohs.cz";
   cccev:telephone "+420 542167111" .
 
@@ -192,7 +187,7 @@
   a org:Organization;
   epo:hasLegalName "Úřad pro ochranu hospodářské soutěže"@cs;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2022-S-102-287042/cda2e79a-2b54-3d8d-8cbd-025f430ee110>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2022-S-102-287042/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2022-S-102-287042/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2022-S-102-287042/9aa38039-a45b-3425-8be8-95054b97e247>
   a epo:ReviewTerm;
@@ -205,7 +200,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2022-S-102-287042/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a cccev:ContactPoint;
   epo:hasFax "+420 542167112";
-  epo:hasInternetAddress "http://www.uohs.cz";
+  epo:hasInternetAddress "http://www.uohs.cz"^^xsd:anyURI;
   cccev:email "posta@uohs.cz";
   cccev:telephone "+420 542167111" .
 
@@ -213,7 +208,7 @@
   a org:Organization;
   epo:hasLegalName "Úřad pro ochranu hospodářské soutěže"@cs;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2022-S-102-287042/13730a07-65b0-306c-a9b5-a8929927a6a1>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-102-287042/13730a07-65b0-306c-a9b5-a8929927a6a1> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-102-287042/13730a07-65b0-306c-a9b5-a8929927a6a1> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-102-287042/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a locn:Address;
@@ -239,4 +234,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2022-S-102-287042/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2022-S-102-287042/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2022-S-102-287042/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .

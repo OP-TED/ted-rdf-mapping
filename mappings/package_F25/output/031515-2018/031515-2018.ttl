@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -22,37 +21,20 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2018-S-015-031515/5a0e0822-353f-34b8-9001-b27f293ef321>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-015-031515/41c3580d-d7b5-3ead-a7df-4e886771daad>;
+  epo:hasBuyerProfile "http://www.sell2wales.gov.wales/search/Search_AuthProfile.aspx?ID=AA0007"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-015-031515/188615bc-907f-376a-b3e0-b7f440ca4c64>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-015-031515/188615bc-907f-376a-b3e0-b7f440ca4c64> .
 
-<http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-015-031515/41c3580d-d7b5-3ead-a7df-4e886771daad>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.sell2wales.gov.wales/search/Search_AuthProfile.aspx?ID=AA0007" .
-
 <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-015-031515/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://wales.gov.uk/?skip=1&lang=en";
+  epo:hasInternetAddress "http://wales.gov.uk/?skip=1&lang=en"^^xsd:anyURI;
   cccev:email "ICTProcurement@gov.wales";
   cccev:telephone "+44 3000628803" .
 
 <http://data.europa.eu/a4g/resource/Contract/2018-S-015-031515/2b425ab1-553e-3915-a060-80f1d3cff764>
   a epo:ConcessionContract, epo:Contract;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2018-S-015-031515/5a50554f-89ac-3a44-9d4f-643949ca9831>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-015-031515/2b425ab1-553e-3915-a060-80f1d3cff764> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2018-S-015-031515/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a org:Organization;
-  epo:hasLegalName "IBM"@en;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2018-S-015-031515/8f833010-0b39-361a-9ea9-959275ccdc19> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2018-S-015-031515/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/UKJ31>;
-  locn:postCode "PO6 3AU";
-  locn:postName "Portsmouth";
-  locn:thoroughfare "PO Box 41" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-015-031515/2b425ab1-553e-3915-a060-80f1d3cff764> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2018-S-015-031515/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:ContractTerm;
@@ -69,6 +51,19 @@
   locn:fullAddress """
                   All Wales.
                """@en .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2018-S-015-031515/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a org:Organization;
+  epo:hasLegalName "IBM"@en;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2018-S-015-031515/8f833010-0b39-361a-9ea9-959275ccdc19> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2018-S-015-031515/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/UKJ31>;
+  locn:postCode "PO6 3AU";
+  locn:postName "Portsmouth";
+  locn:thoroughfare "PO Box 41" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2018-S-015-031515/3ff3e293-06ca-390c-bee2-dd28ba2e570e>
   a epo:DirectAwardTerm;
@@ -127,10 +122,10 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2018-S-015-031515/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
   epo:hasLegalName "Welsh Government"@en;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-015-031515/188615bc-907f-376a-b3e0-b7f440ca4c64> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-015-031515/188615bc-907f-376a-b3e0-b7f440ca4c64> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-015-031515/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a locn:Address;
@@ -153,9 +148,9 @@
   epo:hasMainFeature """
                Price.
             """;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-015-031515/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2018-S-015-031515/5a50554f-89ac-3a44-9d4f-643949ca9831>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-015-031515/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasTitle """
                IBM International Passport Advantage Agreement
             """@en;
@@ -185,14 +180,14 @@
 
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-015-031515/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://wales.gov.uk/?skip=1&lang=en";
+  epo:hasInternetAddress "http://wales.gov.uk/?skip=1&lang=en"^^xsd:anyURI;
   cccev:telephone "+44 3000628803" .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2018-S-015-031515/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a org:Organization;
   epo:hasLegalName "Welsh Government"@en;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-015-031515/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-015-031515/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-015-031515/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-015-031515/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a locn:Address;
@@ -221,4 +216,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2018-S-015-031515/8f833010-0b39-361a-9ea9-959275ccdc19>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2018-S-015-031515/8f833010-0b39-361a-9ea9-959275ccdc19> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2018-S-015-031515/8f833010-0b39-361a-9ea9-959275ccdc19> .

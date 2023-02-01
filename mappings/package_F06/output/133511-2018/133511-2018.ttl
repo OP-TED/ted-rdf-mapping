@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,19 +17,15 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2018-S-060-133511/15183658-b3d6-3d9d-88d4-6e02c7e3b7b9>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-060-133511/206f9015-5cd1-3fca-bf9c-23378a724274>;
+  epo:hasBuyerProfile "http://espacefournisseurs.inter.laposte.fr/fr-FR"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-060-133511/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-060-133511/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-060-133511/206f9015-5cd1-3fca-bf9c-23378a724274>
-  a epo:BuyerProfile;
-  epo:hasURL "http://espacefournisseurs.inter.laposte.fr/fr-FR" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-060-133511/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a cccev:ContactPoint;
   epo:hasContactName "Nathalie Chuto"@fr;
   epo:hasFax "+262 262401680";
-  epo:hasInternetAddress "http://espacefournisseurs.inter.laposte.fr/fr-FR";
+  epo:hasInternetAddress "http://espacefournisseurs.inter.laposte.fr/fr-FR"^^xsd:anyURI;
   cccev:email "nathalie.chuto@laposte.fr";
   cccev:telephone "+262 262401596" .
 
@@ -42,7 +37,7 @@
                Saint-Pierre
             """@fr;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2018-S-060-133511/67c3ef79-07c0-3f03-94ca-26fdc292a668>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-060-133511/527e871b-562d-3858-b2cb-c75e9b69e338> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-060-133511/527e871b-562d-3858-b2cb-c75e9b69e338> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2018-S-060-133511/527e871b-562d-3858-b2cb-c75e9b69e338>
   a epo:Identifier;
@@ -222,7 +217,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal de grande instance de Paris"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/MediatorContactPoint/2018-S-060-133511/43c72ae4-1691-3a54-9e37-60dec613cbbd>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2018-S-060-133511/43c72ae4-1691-3a54-9e37-60dec613cbbd> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2018-S-060-133511/43c72ae4-1691-3a54-9e37-60dec613cbbd> .
 
 <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2018-S-060-133511/43c72ae4-1691-3a54-9e37-60dec613cbbd>
   a locn:Address;
@@ -252,8 +247,8 @@
 <http://data.europa.eu/a4g/resource/Organisation/2018-S-060-133511/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a org:Organization;
   epo:hasLegalName "[La Poste] Direction des achats du réseau La Poste (DHA-RLP)"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/post>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-060-133511/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/post>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-060-133511/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-060-133511/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a locn:Address;
@@ -279,11 +274,11 @@
                Le prestataire pourra également être amené à intervenir pour des prestations exceptionnelles et/ou à la demande de La Poste. La consultation est composée de 3 lots détaillés au § II.2 du présent document. À titre d'information, l'ensemble des lots représente environ 9 943 m2 répartis sur 7 sites avec un potentiel supplémentaire de 1 104 m2. Ces chiffres sont donnés à titre indicatif et ne constituent en aucun cas un engagement de volume pour le(s) futur(s) contrat(s). Un seul attributaire sera retenu pour chaque lot.
             """@fr;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2018-S-060-133511/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-060-133511/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2018-S-060-133511/636e3166-5ecc-350b-867b-7bf2072a2c03>,
     <http://data.europa.eu/a4g/resource/Lot/2018-S-060-133511/67c3ef79-07c0-3f03-94ca-26fdc292a668>,
     <http://data.europa.eu/a4g/resource/Lot/2018-S-060-133511/6890f8a0-039b-39ac-98cf-36d1dff298f1>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-060-133511/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasTitle """
                Prestations de nettoyage des sites de La Poste du département de La Réunion
             """@fr;
@@ -328,7 +323,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal de grande instance de Paris"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2018-S-060-133511/cda2e79a-2b54-3d8d-8cbd-025f430ee110>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2018-S-060-133511/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2018-S-060-133511/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
 
 <http://data.europa.eu/a4g/resource/Reviewer/2018-S-060-133511/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a epo:Reviewer;
@@ -343,7 +338,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal de grande instance de Paris"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-060-133511/13730a07-65b0-306c-a9b5-a8929927a6a1>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-060-133511/13730a07-65b0-306c-a9b5-a8929927a6a1> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-060-133511/13730a07-65b0-306c-a9b5-a8929927a6a1> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-060-133511/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a locn:Address;

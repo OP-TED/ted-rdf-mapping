@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -31,11 +30,11 @@
 <http://data.europa.eu/a4g/resource/AdditionalOrganisation/2021-S-099-262094/2e9df438-e4ea-3cb2-8b26-78f0765b1137>
   a org:Organization;
   epo:hasLegalName "UPE30 (Union pour les entreprises du Gard)"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-099-262094/2e9df438-e4ea-3cb2-8b26-78f0765b1137> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-099-262094/2e9df438-e4ea-3cb2-8b26-78f0765b1137> .
 
 <http://data.europa.eu/a4g/resource/Buyer/2021-S-099-262094/8a551eea-f8a4-3a92-a92e-0f220d0ba9d0>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2021-S-099-262094/1a7db7e1-758c-3b79-8e36-131fbe7ef3e3>;
+  epo:hasBuyerProfile "http://www.marches-publics.gouv.fr"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-099-262094/93f156bb-9604-37f9-a902-d2bc2c71ac19>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2021-S-099-262094/93f156bb-9604-37f9-a902-d2bc2c71ac19> .
 
@@ -46,10 +45,6 @@
   epo:hasMember <http://data.europa.eu/a4g/resource/AdditionalOrganisation/2021-S-099-262094/2e9df438-e4ea-3cb2-8b26-78f0765b1137>,
     <http://data.europa.eu/a4g/resource/Organisation/2021-S-099-262094/93f156bb-9604-37f9-a902-d2bc2c71ac19> .
 
-<http://data.europa.eu/a4g/resource/BuyerProfile/2021-S-099-262094/1a7db7e1-758c-3b79-8e36-131fbe7ef3e3>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.marches-publics.gouv.fr"^^xsd:anyURI .
-
 <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-099-262094/93f156bb-9604-37f9-a902-d2bc2c71ac19>
   a cccev:ContactPoint;
   epo:hasFax "+33 466366108";
@@ -57,14 +52,21 @@
   cccev:email "E.durfort@occitanie.cci.fr";
   cccev:telephone "+33 466879879" .
 
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-099-262094/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
+<http://data.europa.eu/a4g/resource/ContractTerm/2021-S-099-262094/d9717c09-a32e-34b8-99e6-1d890b633b16>
+  a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/ContractTermLocation/2021-S-099-262094/d9717c09-a32e-34b8-99e6-1d890b633b16> .
+
+<http://data.europa.eu/a4g/resource/ContractTermLocation/2021-S-099-262094/d9717c09-a32e-34b8-99e6-1d890b633b16>
+  a dct:Location .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-099-262094/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
   a epo:Business, org:Organisation;
   epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
   epo:hasLegalName "NM2A Architecture (mandataire)"@fr;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractOrganisationContactPoint/2021-S-099-262094/d2285c88-606a-3092-87f1-6f0d98b5d9ff>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-099-262094/d2285c88-606a-3092-87f1-6f0d98b5d9ff> .
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorOrganisationContactPoint/2021-S-099-262094/d2285c88-606a-3092-87f1-6f0d98b5d9ff>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-099-262094/d2285c88-606a-3092-87f1-6f0d98b5d9ff> .
 
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-099-262094/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-099-262094/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
   a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/FRJ13>;
@@ -72,18 +74,11 @@
   locn:postName "Montpellier";
   locn:thoroughfare "95 rue Pomier Layrargues" .
 
-<http://data.europa.eu/a4g/resource/ContractOrganisationContactPoint/2021-S-099-262094/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
+<http://data.europa.eu/a4g/resource/ContractorOrganisationContactPoint/2021-S-099-262094/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
   a cccev:ContactPoint;
   epo:hasInternetAddress "https://www.nm2a-architecture.com/"^^xsd:anyURI;
   cccev:email "Contact@nm2a-architecture.com";
   cccev:telephone "+33 467585386" .
-
-<http://data.europa.eu/a4g/resource/ContractTerm/2021-S-099-262094/d9717c09-a32e-34b8-99e6-1d890b633b16>
-  a epo:ContractTerm;
-  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/ContractTermLocation/2021-S-099-262094/d9717c09-a32e-34b8-99e6-1d890b633b16> .
-
-<http://data.europa.eu/a4g/resource/ContractTermLocation/2021-S-099-262094/d9717c09-a32e-34b8-99e6-1d890b633b16>
-  a dct:Location .
 
 <http://data.europa.eu/a4g/resource/DesignContestRegimeTerm/2021-S-099-262094/356edeab-f605-3fc3-abbb-c699db8248e6>
   a epo:DesignContestRegimeTerm;
@@ -141,7 +136,7 @@
   epo:hasBuyerLegalTypeDescription "Chambre de commerce et d'industrie";
   epo:hasLegalName "CCI territoriale du Gard"@fr;
   epo:hasMainActivityDescription "Institution consulaire";
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-099-262094/93f156bb-9604-37f9-a902-d2bc2c71ac19> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-099-262094/93f156bb-9604-37f9-a902-d2bc2c71ac19> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-099-262094/2e9df438-e4ea-3cb2-8b26-78f0765b1137>
   a locn:Address;
@@ -169,9 +164,9 @@
   epo:hasAdditionalInformation "Le lauréat du concours est le groupement constitué par les sociétés: NM2A Architecture/Sarl Pascual Architecte/AMG Architecte/BET Pialot Escande/Dexo Sarl/Biodynamique/Structure 2000/Seri/Bernard Poissonnier Économiste/Burgeap SAS."@fr;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2021-S-099-262094/4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-099-262094/4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2021-S-099-262094/d9717c09-a32e-34b8-99e6-1d890b633b16>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-099-262094/4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b>;
   epo:hasTitle "Concours restreint de maîtrise d'œuvre pour la construction de la maison de l'entreprise sur la ville de Nîmes"@fr;
   epo:isDesignContest true;
   epo:isJointProcurement true;
@@ -207,7 +202,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Nîmes"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2021-S-099-262094/5641ce6f-6854-3e39-9e76-44d671aacd65>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-099-262094/5641ce6f-6854-3e39-9e76-44d671aacd65> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-099-262094/5641ce6f-6854-3e39-9e76-44d671aacd65> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-099-262094/5641ce6f-6854-3e39-9e76-44d671aacd65>
   a locn:Address;
@@ -231,4 +226,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-099-262094/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-099-262094/d2285c88-606a-3092-87f1-6f0d98b5d9ff> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-099-262094/d2285c88-606a-3092-87f1-6f0d98b5d9ff> .

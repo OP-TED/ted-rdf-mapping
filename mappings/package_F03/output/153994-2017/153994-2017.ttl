@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -22,19 +21,15 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2017-S-080-153994/f3b5cfa6-95c6-37b5-9667-808a141fe995>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-080-153994/377f62e9-9c36-31da-9724-7f6a137d8a68>;
+  epo:hasBuyerProfile "http://www.uvo.gov.sk/profily/-/profil/pdetail/239"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-080-153994/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2017-S-080-153994/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-080-153994/377f62e9-9c36-31da-9724-7f6a137d8a68>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.uvo.gov.sk/profily/-/profil/pdetail/239" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-080-153994/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a cccev:ContactPoint;
   epo:hasContactName "Ing. Vladimír Tokár"@sk;
   epo:hasFax "+421 250944046";
-  epo:hasInternetAddress "http://www.minv.sk";
+  epo:hasInternetAddress "http://www.minv.sk"^^xsd:anyURI;
   cccev:email "vladimir.tokar@minv.sk";
   cccev:telephone "+421 250944590" .
 
@@ -43,35 +38,11 @@
   epo:hasContractConclusionDate "2017-01-11"^^xsd:date;
   epo:hasID <http://data.europa.eu/a4g/resource/ContractIdentifier/2017-S-080-153994/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2017-S-080-153994/cbac108a-b047-3e09-a114-28c43d5b8706>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-080-153994/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
-
-<http://data.europa.eu/a4g/resource/ContractContactPoint/2017-S-080-153994/3110be1b-1cf3-3851-b11c-869fbbca54c0>
-  a cccev:ContactPoint;
-  epo:hasInternetAddress "www.pergamon.sko.sk" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-080-153994/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2017-S-080-153994/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>
   a epo:Identifier;
   epo:hasIdentifierValue "K2016189" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-080-153994/3110be1b-1cf3-3851-b11c-869fbbca54c0>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2017-S-080-153994/3110be1b-1cf3-3851-b11c-869fbbca54c0>;
-  epo:hasLegalName "Pergamon spol. s r.o."@sk;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractContactPoint/2017-S-080-153994/3110be1b-1cf3-3851-b11c-869fbbca54c0>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-080-153994/3110be1b-1cf3-3851-b11c-869fbbca54c0> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-080-153994/3110be1b-1cf3-3851-b11c-869fbbca54c0>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/SVK>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/SK>;
-  locn:postCode "831 04";
-  locn:postName "Bratislava";
-  locn:thoroughfare "Chemická 1" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2017-S-080-153994/3110be1b-1cf3-3851-b11c-869fbbca54c0>
-  a epo:Identifier;
-  epo:hasIdentifierValue "31327681" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2017-S-080-153994/cbac108a-b047-3e09-a114-28c43d5b8706>
   a epo:ContractTerm;
@@ -88,6 +59,30 @@
   locn:fullAddress """
 Slovenská republika.
 """@sk .
+
+<http://data.europa.eu/a4g/resource/ContractorContactPoint/2017-S-080-153994/3110be1b-1cf3-3851-b11c-869fbbca54c0>
+  a cccev:ContactPoint;
+  epo:hasInternetAddress "www.pergamon.sko.sk"^^xsd:anyURI .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-080-153994/3110be1b-1cf3-3851-b11c-869fbbca54c0>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasID <http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2017-S-080-153994/3110be1b-1cf3-3851-b11c-869fbbca54c0>;
+  epo:hasLegalName "Pergamon spol. s r.o."@sk;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorContactPoint/2017-S-080-153994/3110be1b-1cf3-3851-b11c-869fbbca54c0>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-080-153994/3110be1b-1cf3-3851-b11c-869fbbca54c0> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-080-153994/3110be1b-1cf3-3851-b11c-869fbbca54c0>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/SVK>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/SK>;
+  locn:postCode "831 04";
+  locn:postName "Bratislava";
+  locn:thoroughfare "Chemická 1" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2017-S-080-153994/3110be1b-1cf3-3851-b11c-869fbbca54c0>
+  a epo:Identifier;
+  epo:hasIdentifierValue "31327681" .
 
 <http://data.europa.eu/a4g/resource/DynamicPurchaseSystemTechniqueUsage/2017-S-080-153994/1f8688eb-32e7-368b-ad1c-2e76f17321dd>
   a epo:DynamicPurchaseSystemTechniqueUsage .
@@ -153,11 +148,11 @@ Dodávka originálneho spotrebného materiálu pre tlačiace zariadenia, t. j. o
 
 <http://data.europa.eu/a4g/resource/Organisation/2017-S-080-153994/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/cga>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/cga>;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2017-S-080-153994/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>;
   epo:hasLegalName "Ministerstvo vnútra Slovenskej republiky"@sk;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/pub-os>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-080-153994/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/pub-os>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-080-153994/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-080-153994/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a locn:Address;
@@ -180,9 +175,9 @@ Zákazka zadávaná elektronicky prostredníctvom systému EKS, elektronická ko
   epo:hasDescription """
 Dodávka originálneho spotrebného materiálu pre tlačiace zariadenia, t. j. originálnych tonerov, farbiacich pások, atramentové cartridge (nerepasovaných), optických valcov, odpadových nádob, zapekacích jednotiek, prenosových pásov a tlačových hláv, novovyrobených podľa štandardov výrobcu príslušných zariadení, v prípade, že výrobca predmetného originálneho spotrebného materiálu tento v dobe zadávania konkrétnej zákazky už nevyrába a teda je End Of Live (ďalej ako EOL), čo potvrdí výrobca príslušnej značky zariadení, môže verejný obstarávateľ v rámci tohto DNS umožniť dodanie alternatívneho (neoriginálneho) spotrebného materiálu, poskytnutie služieb súvisiacich s dodaním tovaru na miesto dodania,
 """@sk;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-080-153994/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2017-S-080-153994/cbac108a-b047-3e09-a114-28c43d5b8706>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-080-153994/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasTitle """
 Spotrebný materiál pre tlačiace zariadenia DNS.
 """@sk;
@@ -224,14 +219,14 @@ Spotrebný materiál pre tlačiace zariadenia DNS.
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2017-S-080-153994/53dcddfe-05e0-31c2-ab22-d770b015238d>
   a cccev:ContactPoint;
   epo:hasFax "+421 250264219";
-  epo:hasInternetAddress "http://www.uvo.gov.sk";
+  epo:hasInternetAddress "http://www.uvo.gov.sk"^^xsd:anyURI;
   cccev:telephone "+421 250264176" .
 
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2017-S-080-153994/53dcddfe-05e0-31c2-ab22-d770b015238d>
   a org:Organization;
   epo:hasLegalName "Úrad pre verejné obstarávanie"@sk;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2017-S-080-153994/53dcddfe-05e0-31c2-ab22-d770b015238d>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-080-153994/53dcddfe-05e0-31c2-ab22-d770b015238d> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-080-153994/53dcddfe-05e0-31c2-ab22-d770b015238d> .
 
 <http://data.europa.eu/a4g/resource/Reviewer/2017-S-080-153994/de2507f9-ae25-37c8-809c-0109efe10669>
   a epo:Reviewer;
@@ -240,14 +235,14 @@ Spotrebný materiál pre tlačiace zariadenia DNS.
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-080-153994/de2507f9-ae25-37c8-809c-0109efe10669>
   a cccev:ContactPoint;
   epo:hasFax "+421 250264219";
-  epo:hasInternetAddress "http://www.uvo.gov.sk";
+  epo:hasInternetAddress "http://www.uvo.gov.sk"^^xsd:anyURI;
   cccev:telephone "+421 250264176" .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2017-S-080-153994/de2507f9-ae25-37c8-809c-0109efe10669>
   a org:Organization;
   epo:hasLegalName "Úrad pre verejné obstarávanie"@sk;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-080-153994/de2507f9-ae25-37c8-809c-0109efe10669>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-080-153994/de2507f9-ae25-37c8-809c-0109efe10669> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-080-153994/de2507f9-ae25-37c8-809c-0109efe10669> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-080-153994/de2507f9-ae25-37c8-809c-0109efe10669>
   a locn:Address;
@@ -276,4 +271,4 @@ Spotrebný materiál pre tlačiace zariadenia DNS.
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2017-S-080-153994/3110be1b-1cf3-3851-b11c-869fbbca54c0>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-080-153994/3110be1b-1cf3-3851-b11c-869fbbca54c0> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-080-153994/3110be1b-1cf3-3851-b11c-869fbbca54c0> .

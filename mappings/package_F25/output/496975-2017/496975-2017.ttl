@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -58,7 +57,7 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2017-S-239-496975/5a0e0822-353f-34b8-9001-b27f293ef321>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-239-496975/41c3580d-d7b5-3ead-a7df-4e886771daad>;
+  epo:hasBuyerProfile "http://www.e-aveyron.fr"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-239-496975/188615bc-907f-376a-b3e0-b7f440ca4c64>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2017-S-239-496975/188615bc-907f-376a-b3e0-b7f440ca4c64> .
 
@@ -66,10 +65,6 @@
   a epo:MonetaryValue;
   epo:hasAmountValue 128731134.0;
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-239-496975/41c3580d-d7b5-3ead-a7df-4e886771daad>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.e-aveyron.fr" .
 
 <http://data.europa.eu/a4g/resource/ConcessionEstimate/2017-S-239-496975/3953b71b-e4b8-307b-8fcc-3e7ecb01d94b>
   a epo:ConcessionEstimate;
@@ -80,27 +75,14 @@
   a cccev:ContactPoint;
   epo:hasContactName "dpougenq@sieda.net"@fr;
   epo:hasFax "+33 565733160";
-  epo:hasInternetAddress "http://www.sieda.fr";
+  epo:hasInternetAddress "http://www.sieda.fr"^^xsd:anyURI;
   cccev:email "sieda@sieda.net";
   cccev:telephone "+33 565733160" .
 
 <http://data.europa.eu/a4g/resource/Contract/2017-S-239-496975/2b425ab1-553e-3915-a060-80f1d3cff764>
   a epo:ConcessionContract, epo:Contract;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2017-S-239-496975/5a50554f-89ac-3a44-9d4f-643949ca9831>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-239-496975/2b425ab1-553e-3915-a060-80f1d3cff764> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-239-496975/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a org:Organization;
-  epo:hasLegalName "Orange SA"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-239-496975/8f833010-0b39-361a-9ea9-959275ccdc19> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-239-496975/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR>;
-  locn:postCode "75015";
-  locn:postName "Paris";
-  locn:thoroughfare "78 rue des Olivier de Serres" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-239-496975/2b425ab1-553e-3915-a060-80f1d3cff764> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2017-S-239-496975/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:ContractTerm;
@@ -110,6 +92,19 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2017-S-239-496975/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/FRJ> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-239-496975/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a org:Organization;
+  epo:hasLegalName "Orange SA"@fr;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-239-496975/8f833010-0b39-361a-9ea9-959275ccdc19> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-239-496975/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR>;
+  locn:postCode "75015";
+  locn:postName "Paris";
+  locn:thoroughfare "78 rue des Olivier de Serres" .
 
 <http://data.europa.eu/a4g/resource/Duration/2017-S-239-496975/1d09e8e7-ef82-30d4-befb-d86c000a8e5a>
   a epo:Duration;
@@ -197,8 +192,8 @@
 <http://data.europa.eu/a4g/resource/Organisation/2017-S-239-496975/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a org:Organization;
   epo:hasLegalName "SIEDA"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gas-heat>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-239-496975/188615bc-907f-376a-b3e0-b7f440ca4c64> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gas-heat>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-239-496975/188615bc-907f-376a-b3e0-b7f440ca4c64> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-239-496975/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a locn:Address;
@@ -219,8 +214,8 @@
   epo:hasMainFeature """
                Réception candidatures: 6.10.2016, CDSP du 10.10.2016 ouverture de 6 plis réceptionnés. La CDSP du 21.10.2016 a jugé recevable les 6 candidatures. Les 6 candidats ont été invités à remettre une offre au 10.2.2017. Seuls 5 ont déposé une offre. La CDSP a analysé les 5 offres et les a classées. La CDSP du 31.3.2017 a émis un avis favorable pour ouvrir les négociations. À l'issue de l'analyse des offres finales, en application des critères de notation, l'offre d'orange a été classée en 1er.
             """;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-239-496975/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2017-S-239-496975/5a50554f-89ac-3a44-9d4f-643949ca9831>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-239-496975/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasTitle """
                Délégation de service public relative à la conception, l'établissement, l'exploitation, la commercialisation et le financement d'un réseau très haut débit de type FTTX sur le territoire des départements
             """@fr;
@@ -264,7 +259,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de TOULOUSE"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-239-496975/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-239-496975/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-239-496975/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-239-496975/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a locn:Address;
@@ -295,4 +290,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2017-S-239-496975/8f833010-0b39-361a-9ea9-959275ccdc19>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-239-496975/8f833010-0b39-361a-9ea9-959275ccdc19> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-239-496975/8f833010-0b39-361a-9ea9-959275ccdc19> .

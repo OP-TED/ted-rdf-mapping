@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -30,13 +29,9 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2021-S-005-008441/5a0e0822-353f-34b8-9001-b27f293ef321>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2021-S-005-008441/41c3580d-d7b5-3ead-a7df-4e886771daad>;
+  epo:hasBuyerProfile "http://www.eadministrationlafibre64.fr"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-005-008441/188615bc-907f-376a-b3e0-b7f440ca4c64>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2021-S-005-008441/188615bc-907f-376a-b3e0-b7f440ca4c64> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2021-S-005-008441/41c3580d-d7b5-3ead-a7df-4e886771daad>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.eadministrationlafibre64.fr"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/ConcessionEstimate/2021-S-005-008441/3953b71b-e4b8-307b-8fcc-3e7ecb01d94b>
   a epo:ConcessionEstimate;
@@ -53,32 +48,7 @@
   a epo:ConcessionContract, epo:Contract;
   epo:hasTitle "Concession du service public"@fr;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2021-S-005-008441/5a50554f-89ac-3a44-9d4f-643949ca9831>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-005-008441/2b425ab1-553e-3915-a060-80f1d3cff764> .
-
-<http://data.europa.eu/a4g/resource/ContractContactPoint/2021-S-005-008441/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
-  a cccev:ContactPoint;
-  cccev:email "herve.bouhineau@agur.fr";
-  cccev:telephone "+33 559528790" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-005-008441/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2021-S-005-008441/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>;
-  epo:hasLegalName "SAS Aquitaine de gestion urbaine et rurale (AGUR)"@fr;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractContactPoint/2021-S-005-008441/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-005-008441/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-005-008441/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR>;
-  locn:postCode "64110";
-  locn:postName "Bayonne";
-  locn:thoroughfare "5 rue de la Feuillée" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2021-S-005-008441/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
-  a epo:Identifier;
-  epo:hasIdentifierValue "38772996500013" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-005-008441/2b425ab1-553e-3915-a060-80f1d3cff764> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2021-S-005-008441/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:ContractTerm;
@@ -93,6 +63,31 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2021-S-005-008441/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a locn:Address;
   locn:fullAddress "Territoire syndical."@fr .
+
+<http://data.europa.eu/a4g/resource/ContractorContactPoint/2021-S-005-008441/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
+  a cccev:ContactPoint;
+  cccev:email "herve.bouhineau@agur.fr";
+  cccev:telephone "+33 559528790" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-005-008441/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasID <http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2021-S-005-008441/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>;
+  epo:hasLegalName "SAS Aquitaine de gestion urbaine et rurale (AGUR)"@fr;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorContactPoint/2021-S-005-008441/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-005-008441/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-005-008441/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR>;
+  locn:postCode "64110";
+  locn:postName "Bayonne";
+  locn:thoroughfare "5 rue de la Feuillée" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2021-S-005-008441/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
+  a epo:Identifier;
+  epo:hasIdentifierValue "38772996500013" .
 
 <http://data.europa.eu/a4g/resource/Duration/2021-S-005-008441/1d09e8e7-ef82-30d4-befb-d86c000a8e5a>
   a epo:Duration;
@@ -166,8 +161,8 @@
   a org:Organization;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2021-S-005-008441/188615bc-907f-376a-b3e0-b7f440ca4c64>;
   epo:hasLegalName "SMEP de la région de Jurançon"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/water>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-005-008441/188615bc-907f-376a-b3e0-b7f440ca4c64> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/water>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-005-008441/188615bc-907f-376a-b3e0-b7f440ca4c64> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-005-008441/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a locn:Address;
@@ -188,8 +183,8 @@
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/MonetaryValueProcedure/2021-S-005-008441/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2021-S-005-008441/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0023>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-005-008441/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2021-S-005-008441/5a50554f-89ac-3a44-9d4f-643949ca9831>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-005-008441/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasTitle "Concession du service public d'eau potable"@fr;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2021-S-005-008441/5a0e0822-353f-34b8-9001-b27f293ef321> .
 
@@ -224,7 +219,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Pau"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2021-S-005-008441/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-005-008441/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-005-008441/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-005-008441/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a locn:Address;
@@ -254,4 +249,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-005-008441/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-005-008441/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-005-008441/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .

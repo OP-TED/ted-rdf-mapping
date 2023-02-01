@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -26,18 +25,14 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2021-S-074-190252/5a0e0822-353f-34b8-9001-b27f293ef321>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2021-S-074-190252/41c3580d-d7b5-3ead-a7df-4e886771daad>;
+  epo:hasBuyerProfile "http://www.bls.info/"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-074-190252/188615bc-907f-376a-b3e0-b7f440ca4c64>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2021-S-074-190252/188615bc-907f-376a-b3e0-b7f440ca4c64> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2021-S-074-190252/41c3580d-d7b5-3ead-a7df-4e886771daad>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.bls.info/" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-074-190252/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a cccev:ContactPoint;
   epo:hasContactName "Dr. Valeria Filippi"@de, "dott.ssa Valeria Filippi"@it;
-  epo:hasInternetAddress "http://www.provincia.bz.it/acp/", "http://www.provinz.bz.it/aov/";
+  epo:hasInternetAddress "http://www.provincia.bz.it/acp/"^^xsd:anyURI, "http://www.provinz.bz.it/aov/"^^xsd:anyURI;
   cccev:email "acp.serv-forniture@provincia.bz.it", "aov.dienst-lieferung@provinz.bz.it";
   cccev:telephone "+39 0471414012" .
 
@@ -46,40 +41,7 @@
   epo:hasTitle "AOV/SUA-SF 43/2017 – Concessione gestione parcheggio NOI Techpark Bolzano."@it,
     "AOV/SUA-SF 43/2017 – Konzession Parkplatzbetreiber NOI Techpark Bozen"@de;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2021-S-074-190252/5a50554f-89ac-3a44-9d4f-643949ca9831>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-074-190252/2b425ab1-553e-3915-a060-80f1d3cff764> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-074-190252/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasLegalName "CSU Soc. coop."@de, "CSU soc. coop."@it;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-074-190252/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-074-190252/df034bc3-a457-3f50-8e6d-a6a4faaca925>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasLegalName "Skidata GmbH"@de, "Skidata GmbH"@it;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-074-190252/df034bc3-a457-3f50-8e6d-a6a4faaca925> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-074-190252/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ITA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/ITH10>;
-  locn:postCode "39100";
-  locn:postName "Bozen (BZ)";
-  locn:thoroughfare "via E. Ferrari 5" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-074-190252/df034bc3-a457-3f50-8e6d-a6a4faaca925>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ITA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/ITH10>;
-  locn:postCode "39100";
-  locn:postName "Bozen (BZ)";
-  locn:thoroughfare "J. Ressel 2F" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationGroup/2021-S-074-190252/3953b71b-e4b8-307b-8fcc-3e7ecb01d94b>
-  a epo:OrganisationGroup;
-  epo:hasMember <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-074-190252/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>,
-    <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-074-190252/df034bc3-a457-3f50-8e6d-a6a4faaca925> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-074-190252/2b425ab1-553e-3915-a060-80f1d3cff764> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2021-S-074-190252/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:ContractTerm;
@@ -89,6 +51,39 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2021-S-074-190252/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/ITH10> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-074-190252/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "CSU Soc. coop."@de, "CSU soc. coop."@it;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-074-190252/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-074-190252/df034bc3-a457-3f50-8e6d-a6a4faaca925>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "Skidata GmbH"@de, "Skidata GmbH"@it;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-074-190252/df034bc3-a457-3f50-8e6d-a6a4faaca925> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-074-190252/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ITA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ITH10>;
+  locn:postCode "39100";
+  locn:postName "Bozen (BZ)";
+  locn:thoroughfare "via E. Ferrari 5" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-074-190252/df034bc3-a457-3f50-8e6d-a6a4faaca925>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ITA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ITH10>;
+  locn:postCode "39100";
+  locn:postName "Bozen (BZ)";
+  locn:thoroughfare "J. Ressel 2F" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationGroup/2021-S-074-190252/3953b71b-e4b8-307b-8fcc-3e7ecb01d94b>
+  a epo:OrganisationGroup;
+  epo:hasMember <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-074-190252/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>,
+    <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-074-190252/df034bc3-a457-3f50-8e6d-a6a4faaca925> .
 
 <http://data.europa.eu/a4g/resource/Duration/2021-S-074-190252/1d09e8e7-ef82-30d4-befb-d86c000a8e5a>
   a epo:Duration;
@@ -158,11 +153,11 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2021-S-074-190252/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
   epo:hasLegalName "Agentur für die Verfahren und die Aufsicht im Bereich öffentliche Bau-, Dienstleistungs- und Lieferaufträge"@de,
     "Agenzia per i procedimenti e la vigilanza in materia di contratti pubblici di lavori, servizi e forniture"@it;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-074-190252/188615bc-907f-376a-b3e0-b7f440ca4c64> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-074-190252/188615bc-907f-376a-b3e0-b7f440ca4c64> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-074-190252/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a locn:Address;
@@ -178,8 +173,8 @@
   epo:hasDescription "Affidamento in concessione del seguente servizio: gestione del parcheggio NOI Techpark Bolzano."@it,
     "Vergabe der Konzession folgender Dienstleistung: Betrieb des Parkhauses NOI Techpark Bozen."@de;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0023>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-074-190252/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2021-S-074-190252/5a50554f-89ac-3a44-9d4f-643949ca9831>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-074-190252/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasTitle "AOV/SUA-SF 43/2017 – Concessione gestione parcheggio NOI Techpark Bolzano"@it,
     "AOV/SUA-SF 43/2017- Konzession Parkplatzbetreiber NOI Techpark Bozen"@de;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2021-S-074-190252/5a0e0822-353f-34b8-9001-b27f293ef321> .
@@ -209,7 +204,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunale regionale di giustizia amministrativa — Sezione autonoma per la Provincia di Bolzano"@it,
     "Verwaltungsgericht – Autonome Sektion für die Provinz Bozen"@de;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-074-190252/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-074-190252/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-074-190252/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a locn:Address;
@@ -236,8 +231,8 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-074-190252/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-074-190252/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-074-190252/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-074-190252/df034bc3-a457-3f50-8e6d-a6a4faaca925>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-074-190252/df034bc3-a457-3f50-8e6d-a6a4faaca925> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-074-190252/df034bc3-a457-3f50-8e6d-a6a4faaca925> .

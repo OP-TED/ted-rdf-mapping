@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -24,18 +23,14 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2017-S-085-165110/f3b5cfa6-95c6-37b5-9667-808a141fe995>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-085-165110/377f62e9-9c36-31da-9724-7f6a137d8a68>;
+  epo:hasBuyerProfile "www.hafen-wyk.de"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-085-165110/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2017-S-085-165110/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-085-165110/377f62e9-9c36-31da-9724-7f6a137d8a68>
-  a epo:BuyerProfile;
-  epo:hasURL "www.hafen-wyk.de" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-085-165110/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a cccev:ContactPoint;
   epo:hasFax "+49 46812606";
-  epo:hasInternetAddress "www.hafen-wyk.de";
+  epo:hasInternetAddress "www.hafen-wyk.de"^^xsd:anyURI;
   cccev:email "gruen-bau-wyk@t-online.de";
   cccev:telephone "+49 46812606" .
 
@@ -46,29 +41,7 @@
 Neubau und Erweiterung der Alten Mole sowie der Quermole
 """@de;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2017-S-085-165110/cbac108a-b047-3e09-a114-28c43d5b8706>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-085-165110/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
-
-<http://data.europa.eu/a4g/resource/ContractContactPoint/2017-S-085-165110/3110be1b-1cf3-3851-b11c-869fbbca54c0>
-  a cccev:ContactPoint;
-  epo:hasFax "+49 4481928866";
-  epo:hasInternetAddress "www.heckerbau.de";
-  cccev:email "info@hecker-bau.de";
-  cccev:telephone "+49 448192880" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-085-165110/3110be1b-1cf3-3851-b11c-869fbbca54c0>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasLegalName "Bietergemeinschaft Hecker Bau GmbH & Co. KG / Colcrete – von Essen GmbH & Co. KG"@de;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractContactPoint/2017-S-085-165110/3110be1b-1cf3-3851-b11c-869fbbca54c0>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-085-165110/3110be1b-1cf3-3851-b11c-869fbbca54c0> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-085-165110/3110be1b-1cf3-3851-b11c-869fbbca54c0>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE94D>;
-  locn:postCode "26209";
-  locn:postName "Hatten";
-  locn:thoroughfare "Hatter Landstraße 27" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-085-165110/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2017-S-085-165110/cbac108a-b047-3e09-a114-28c43d5b8706>
   a epo:ContractTerm;
@@ -85,6 +58,28 @@ Neubau und Erweiterung der Alten Mole sowie der Quermole
   locn:fullAddress """
 25938 Wyk auf Föhr.
 """@de .
+
+<http://data.europa.eu/a4g/resource/ContractorContactPoint/2017-S-085-165110/3110be1b-1cf3-3851-b11c-869fbbca54c0>
+  a cccev:ContactPoint;
+  epo:hasFax "+49 4481928866";
+  epo:hasInternetAddress "www.heckerbau.de"^^xsd:anyURI;
+  cccev:email "info@hecker-bau.de";
+  cccev:telephone "+49 448192880" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-085-165110/3110be1b-1cf3-3851-b11c-869fbbca54c0>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "Bietergemeinschaft Hecker Bau GmbH & Co. KG / Colcrete – von Essen GmbH & Co. KG"@de;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorContactPoint/2017-S-085-165110/3110be1b-1cf3-3851-b11c-869fbbca54c0>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-085-165110/3110be1b-1cf3-3851-b11c-869fbbca54c0> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-085-165110/3110be1b-1cf3-3851-b11c-869fbbca54c0>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE94D>;
+  locn:postCode "26209";
+  locn:postName "Hatten";
+  locn:thoroughfare "Hatter Landstraße 27" .
 
 <http://data.europa.eu/a4g/resource/Fund/2017-S-085-165110/cbac108a-b047-3e09-a114-28c43d5b8706>
   a epo:Fund;
@@ -166,7 +161,7 @@ rd. 750 m2 Oberfläche wiederherstellen.
   epo:hasBuyerLegalTypeDescription "Eigenbetrieb der Stadt Wyk auf Föhr";
   epo:hasLegalName "Städtischer Hafenbetrieb der Stadt Wyk auf Föhr"@de;
   epo:hasMainActivityDescription "Betrieb und Unterhaltung der Hafenanlagen";
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-085-165110/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-085-165110/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-085-165110/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a locn:Address;
@@ -184,9 +179,9 @@ Nach der letzten Umgestaltung in den 80-er Jahren weist die Alte Mole einen erh�
 Aufgrund der Verschwenkung des Fährbettes ist daneben eine Erweiterung der Alten Mole erforderlich. Es ist daher eine Anpassung der Südseite der Mole an die Lage des neuen Fährbeckens vorgesehen. Dadurch wird die Molenfläche um rd. 800 m2 erweitert.
 Die Quermole stellt den südwestlichen Abschluss des Sportboothafens dar. Hier ist das Auffüllen von Hohlräumen sowie die Erneuerung der Oberfläche und des Stahlholms erforderlich.
 """@de;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-085-165110/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2017-S-085-165110/cbac108a-b047-3e09-a114-28c43d5b8706>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-085-165110/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasTitle """
 Hafen Wyk auf Föhr – Neubau und Erweiterung der Alten Mole sowie der Quermole.
 """@de;
@@ -221,7 +216,7 @@ Hafen Wyk auf Föhr – Neubau und Erweiterung der Alten Mole sowie der Quermole
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2017-S-085-165110/53dcddfe-05e0-31c2-ab22-d770b015238d>
   a org:Organization;
   epo:hasLegalName "Innenministerium des Landes Schleswig-Holstein – Referat IV 66"@de;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-085-165110/53dcddfe-05e0-31c2-ab22-d770b015238d> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-085-165110/53dcddfe-05e0-31c2-ab22-d770b015238d> .
 
 <http://data.europa.eu/a4g/resource/Reviewer/2017-S-085-165110/de2507f9-ae25-37c8-809c-0109efe10669>
   a epo:Reviewer;
@@ -230,7 +225,7 @@ Hafen Wyk auf Föhr – Neubau und Erweiterung der Alten Mole sowie der Quermole
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-085-165110/de2507f9-ae25-37c8-809c-0109efe10669>
   a cccev:ContactPoint;
   epo:hasFax "+49 04319882833";
-  epo:hasInternetAddress "www.schleswig-holstein.de";
+  epo:hasInternetAddress "www.schleswig-holstein.de"^^xsd:anyURI;
   cccev:email "Poststelle@im.landsh.de";
   cccev:telephone "+49 04319880" .
 
@@ -238,7 +233,7 @@ Hafen Wyk auf Föhr – Neubau und Erweiterung der Alten Mole sowie der Quermole
   a org:Organization;
   epo:hasLegalName "Innenministerium des Landes Schleswig-Holstein – Referat IV 66"@de;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-085-165110/de2507f9-ae25-37c8-809c-0109efe10669>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-085-165110/de2507f9-ae25-37c8-809c-0109efe10669> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-085-165110/de2507f9-ae25-37c8-809c-0109efe10669> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-085-165110/de2507f9-ae25-37c8-809c-0109efe10669>
   a locn:Address;
@@ -281,4 +276,4 @@ Beweissicherung, SiGeKo, Technische Bearbeitung, Mikro-Verpresspfähle, Taucherl
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2017-S-085-165110/3110be1b-1cf3-3851-b11c-869fbbca54c0>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-085-165110/3110be1b-1cf3-3851-b11c-869fbbca54c0> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-085-165110/3110be1b-1cf3-3851-b11c-869fbbca54c0> .

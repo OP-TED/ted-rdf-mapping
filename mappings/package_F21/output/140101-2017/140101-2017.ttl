@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,19 +17,15 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2017-S-073-140101/08cc6b87-fd77-3965-a6c4-7bd72326900e>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-073-140101/5eeafc96-605e-3b6c-9ca0-91010603c507>;
+  epo:hasBuyerProfile "www.auftragsboerse.de"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-073-140101/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2017-S-073-140101/97c28c49-5587-3e91-95b4-4e48e30ed684> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-073-140101/5eeafc96-605e-3b6c-9ca0-91010603c507>
-  a epo:BuyerProfile;
-  epo:hasURL "www.auftragsboerse.de" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-073-140101/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a cccev:ContactPoint;
   epo:hasContactName "Zentrale Vergabe- und Beschaffungsstelle"@de;
   epo:hasFax "+49 6232-142458";
-  epo:hasInternetAddress "www.speyer.de";
+  epo:hasInternetAddress "www.speyer.de"^^xsd:anyURI;
   cccev:email "vergabe@stadt-speyer.de";
   cccev:telephone "+49 6232-142428" .
 
@@ -42,7 +37,7 @@
 Bewachungsdienste für den Birkenweg
 """@de;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2017-S-073-140101/10a954c5-4b3f-3ea1-add9-eda3a9735c67>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-073-140101/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-073-140101/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172> .
 
 <http://data.europa.eu/a4g/resource/Contract/2017-S-073-140101/3a97df4e-32d4-3487-a4f3-269a492ac4e1>
   a epo:Contract;
@@ -52,19 +47,7 @@ Bewachungsdienste für den Birkenweg
 Bewachungsdienste für die Engelsgasse/Industriestraße
 """@de;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2017-S-073-140101/e3c5791a-e132-3d09-8ef5-af0f6ebfdc2c>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-073-140101/3a97df4e-32d4-3487-a4f3-269a492ac4e1> .
-
-<http://data.europa.eu/a4g/resource/ContractContactPoint/2017-S-073-140101/e8edffbf-d4e1-35b9-89bb-8f4e555e18d6>
-  a cccev:ContactPoint;
-  epo:hasFax "+49 6995412501";
-  cccev:email "sued.info@ciborius-gruppe.de";
-  cccev:telephone "+49 6995412500" .
-
-<http://data.europa.eu/a4g/resource/ContractContactPoint/2017-S-073-140101/ee813f4d-93e5-3fe8-8e46-545a60837d07>
-  a cccev:ContactPoint;
-  epo:hasFax "+49 6995412501";
-  cccev:email "sued.info@ciborius-gruppe.de";
-  cccev:telephone "+49 6995412500" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-073-140101/3a97df4e-32d4-3487-a4f3-269a492ac4e1> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2017-S-073-140101/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172>
   a epo:Identifier;
@@ -73,34 +56,6 @@ Bewachungsdienste für die Engelsgasse/Industriestraße
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2017-S-073-140101/3a97df4e-32d4-3487-a4f3-269a492ac4e1>
   a epo:Identifier;
   epo:hasIdentifierValue "2.1" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-073-140101/e8edffbf-d4e1-35b9-89bb-8f4e555e18d6>
-  a org:Organization;
-  epo:hasLegalName "Ciborius Sicherheits- und Serviceleistungen GmbH"@de;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractContactPoint/2017-S-073-140101/e8edffbf-d4e1-35b9-89bb-8f4e555e18d6>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-073-140101/e8edffbf-d4e1-35b9-89bb-8f4e555e18d6> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-073-140101/ee813f4d-93e5-3fe8-8e46-545a60837d07>
-  a org:Organization;
-  epo:hasLegalName "Ciborius Sicherheits- und Serviceleistungen GmbH"@de;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractContactPoint/2017-S-073-140101/ee813f4d-93e5-3fe8-8e46-545a60837d07>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-073-140101/ee813f4d-93e5-3fe8-8e46-545a60837d07> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-073-140101/e8edffbf-d4e1-35b9-89bb-8f4e555e18d6>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE712>;
-  locn:postCode "60322";
-  locn:postName "Frankfurt am Main";
-  locn:thoroughfare "Eschersheimer Landstraße 23" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-073-140101/ee813f4d-93e5-3fe8-8e46-545a60837d07>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE712>;
-  locn:postCode "60322";
-  locn:postName "Frankfurt am Main";
-  locn:thoroughfare "Eschersheimer Landstraße 23" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2017-S-073-140101/10a954c5-4b3f-3ea1-add9-eda3a9735c67>
   a epo:ContractTerm;
@@ -124,6 +79,46 @@ Bewachungsdienste für die Engelsgasse/Industriestraße
   locn:fullAddress """
 Kurpfalz-Kaserne, Birkenweg 94 a) und b) in 67346 Speyer.
 """@de .
+
+<http://data.europa.eu/a4g/resource/ContractorContactPoint/2017-S-073-140101/e8edffbf-d4e1-35b9-89bb-8f4e555e18d6>
+  a cccev:ContactPoint;
+  epo:hasFax "+49 6995412501";
+  cccev:email "sued.info@ciborius-gruppe.de";
+  cccev:telephone "+49 6995412500" .
+
+<http://data.europa.eu/a4g/resource/ContractorContactPoint/2017-S-073-140101/ee813f4d-93e5-3fe8-8e46-545a60837d07>
+  a cccev:ContactPoint;
+  epo:hasFax "+49 6995412501";
+  cccev:email "sued.info@ciborius-gruppe.de";
+  cccev:telephone "+49 6995412500" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-073-140101/e8edffbf-d4e1-35b9-89bb-8f4e555e18d6>
+  a org:Organization;
+  epo:hasLegalName "Ciborius Sicherheits- und Serviceleistungen GmbH"@de;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorContactPoint/2017-S-073-140101/e8edffbf-d4e1-35b9-89bb-8f4e555e18d6>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-073-140101/e8edffbf-d4e1-35b9-89bb-8f4e555e18d6> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-073-140101/ee813f4d-93e5-3fe8-8e46-545a60837d07>
+  a org:Organization;
+  epo:hasLegalName "Ciborius Sicherheits- und Serviceleistungen GmbH"@de;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorContactPoint/2017-S-073-140101/ee813f4d-93e5-3fe8-8e46-545a60837d07>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-073-140101/ee813f4d-93e5-3fe8-8e46-545a60837d07> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-073-140101/e8edffbf-d4e1-35b9-89bb-8f4e555e18d6>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE712>;
+  locn:postCode "60322";
+  locn:postName "Frankfurt am Main";
+  locn:thoroughfare "Eschersheimer Landstraße 23" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-073-140101/ee813f4d-93e5-3fe8-8e46-545a60837d07>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE712>;
+  locn:postCode "60322";
+  locn:postName "Frankfurt am Main";
+  locn:thoroughfare "Eschersheimer Landstraße 23" .
 
 <http://data.europa.eu/a4g/resource/FrameworkAgreementTechniqueUsage/2017-S-073-140101/168a6c96-75f8-304a-bff5-0d0cf3c2f20c>
   a epo:FrameworkAgreementTechniqueUsage .
@@ -198,7 +193,7 @@ Bewachungsdienste für die Engelsgasse/Industriestraße
 <http://data.europa.eu/a4g/resource/MediatorContactPoint/2017-S-073-140101/9e01d479-a67f-3d93-baab-0b5363959e9c>
   a cccev:ContactPoint;
   epo:hasFax "+49 6131-164331";
-  epo:hasInternetAddress "www.fm.rlp.de";
+  epo:hasInternetAddress "www.fm.rlp.de"^^xsd:anyURI;
   cccev:email "poststelle@fm.rlp.de";
   cccev:telephone "+49 6131-16-0" .
 
@@ -206,7 +201,7 @@ Bewachungsdienste für die Engelsgasse/Industriestraße
   a org:Organization;
   epo:hasLegalName "Ministerium der Finanzen RLP"@de;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/MediatorContactPoint/2017-S-073-140101/9e01d479-a67f-3d93-baab-0b5363959e9c>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2017-S-073-140101/9e01d479-a67f-3d93-baab-0b5363959e9c> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2017-S-073-140101/9e01d479-a67f-3d93-baab-0b5363959e9c> .
 
 <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2017-S-073-140101/9e01d479-a67f-3d93-baab-0b5363959e9c>
   a locn:Address;
@@ -279,10 +274,10 @@ Bewachungsdienste für die Engelsgasse/Industriestraße
 
 <http://data.europa.eu/a4g/resource/Organisation/2017-S-073-140101/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasLegalName "Stadtverwaltung Speyer, – Zentrale Vergabestelle -"@de;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-073-140101/97c28c49-5587-3e91-95b4-4e48e30ed684> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-073-140101/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-073-140101/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a locn:Address;
@@ -300,10 +295,10 @@ Bewachungsdienste für die Engelsgasse/Industriestraße
 Wahrnehmung von Bewachungs-, Sicherungs-, Ordnungs-, Überwachungs- und Kontrollaufgaben für die Asylbewerberunterkünfte.
 """@de;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2017-S-073-140101/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-073-140101/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2017-S-073-140101/10a954c5-4b3f-3ea1-add9-eda3a9735c67>,
     <http://data.europa.eu/a4g/resource/Lot/2017-S-073-140101/e3c5791a-e132-3d09-8ef5-af0f6ebfdc2c>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-073-140101/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasTitle """
 Bewachung von Asylunterkünften.
 """@de;
@@ -350,7 +345,7 @@ Bewachung von Asylunterkünften.
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2017-S-073-140101/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3>
   a cccev:ContactPoint;
   epo:hasFax "+49 6232-142286";
-  epo:hasInternetAddress "www.speyer.de";
+  epo:hasInternetAddress "www.speyer.de"^^xsd:anyURI;
   cccev:email "recht@stadt-speyer.de";
   cccev:telephone "+49 6232-142208" .
 
@@ -358,7 +353,7 @@ Bewachung von Asylunterkünften.
   a org:Organization;
   epo:hasLegalName "Stadtverwaltung Speyer – Rechtsabteilung"@de;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2017-S-073-140101/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-073-140101/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-073-140101/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3> .
 
 <http://data.europa.eu/a4g/resource/Reviewer/2017-S-073-140101/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a epo:Reviewer;
@@ -374,7 +369,7 @@ Bewachung von Asylunterkünften.
   a org:Organization;
   epo:hasLegalName "Vergabekammer Rheinland-Pfalz Ministerium für Wirtschaft, Verkehr. Landwirtschaft und Weinbau"@de;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-073-140101/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-073-140101/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-073-140101/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-073-140101/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a locn:Address;
@@ -419,8 +414,8 @@ Bewachung von Asylunterkünften.
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2017-S-073-140101/e8edffbf-d4e1-35b9-89bb-8f4e555e18d6>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-073-140101/e8edffbf-d4e1-35b9-89bb-8f4e555e18d6> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-073-140101/e8edffbf-d4e1-35b9-89bb-8f4e555e18d6> .
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2017-S-073-140101/ee813f4d-93e5-3fe8-8e46-545a60837d07>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-073-140101/ee813f4d-93e5-3fe8-8e46-545a60837d07> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-073-140101/ee813f4d-93e5-3fe8-8e46-545a60837d07> .

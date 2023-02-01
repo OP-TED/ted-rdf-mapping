@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -26,7 +25,7 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2016-S-112-199316/5a0e0822-353f-34b8-9001-b27f293ef321>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2016-S-112-199316/41c3580d-d7b5-3ead-a7df-4e886771daad>;
+  epo:hasBuyerProfile "http://achats.versailles.fr"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2016-S-112-199316/188615bc-907f-376a-b3e0-b7f440ca4c64>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2016-S-112-199316/188615bc-907f-376a-b3e0-b7f440ca4c64> .
 
@@ -34,10 +33,6 @@
   a epo:MonetaryValue;
   epo:hasAmountValue 2949368.0;
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2016-S-112-199316/41c3580d-d7b5-3ead-a7df-4e886771daad>
-  a epo:BuyerProfile;
-  epo:hasURL "http://achats.versailles.fr" .
 
 <http://data.europa.eu/a4g/resource/ConcessionEstimate/2016-S-112-199316/3953b71b-e4b8-307b-8fcc-3e7ecb01d94b>
   a epo:ConcessionEstimate;
@@ -51,7 +46,7 @@ Le montant de 2 949 368 EUR (net de TVA) correspond à la subvention pour contra
   a cccev:ContactPoint;
   epo:hasContactName "Service des marchés publics"@fr;
   epo:hasFax "+33 130972844";
-  epo:hasInternetAddress "http://www.achats.versailles.fr";
+  epo:hasInternetAddress "http://www.achats.versailles.fr"^^xsd:anyURI;
   cccev:email "corinne.berthezene@versailles.fr";
   cccev:telephone "+33 130972832" .
 
@@ -61,20 +56,7 @@ Le montant de 2 949 368 EUR (net de TVA) correspond à la subvention pour contra
 Gestion et exploitation, sous forme d'affermage, de la piscine Montbauron à Versailles
 """@fr;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2016-S-112-199316/5a50554f-89ac-3a44-9d4f-643949ca9831>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2016-S-112-199316/2b425ab1-553e-3915-a060-80f1d3cff764> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2016-S-112-199316/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a org:Organization;
-  epo:hasLegalName "Vert Marine"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2016-S-112-199316/8f833010-0b39-361a-9ea9-959275ccdc19> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2016-S-112-199316/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR232>;
-  locn:postCode "76130";
-  locn:postName "Saint-Aignan";
-  locn:thoroughfare "1 rue Gosselin" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2016-S-112-199316/2b425ab1-553e-3915-a060-80f1d3cff764> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2016-S-112-199316/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:ContractTerm;
@@ -91,6 +73,19 @@ Gestion et exploitation, sous forme d'affermage, de la piscine Montbauron à Ver
   locn:fullAddress """
 1 rue Gosselin à Versailles (78000).
 """@fr .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2016-S-112-199316/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a org:Organization;
+  epo:hasLegalName "Vert Marine"@fr;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2016-S-112-199316/8f833010-0b39-361a-9ea9-959275ccdc19> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2016-S-112-199316/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR232>;
+  locn:postCode "76130";
+  locn:postName "Saint-Aignan";
+  locn:thoroughfare "1 rue Gosselin" .
 
 <http://data.europa.eu/a4g/resource/Duration/2016-S-112-199316/1d09e8e7-ef82-30d4-befb-d86c000a8e5a>
   a epo:Duration;
@@ -153,10 +148,10 @@ Gestion et exploitation de la piscine Montbauron à Versailles ainsi que la mise
 
 <http://data.europa.eu/a4g/resource/Organisation/2016-S-112-199316/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasLegalName "Monsieur le maire de Versailles"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-112-199316/188615bc-907f-376a-b3e0-b7f440ca4c64> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-112-199316/188615bc-907f-376a-b3e0-b7f440ca4c64> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-112-199316/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a locn:Address;
@@ -173,8 +168,8 @@ Gestion et exploitation de la piscine Montbauron à Versailles ainsi que la mise
 Gestion et exploitation, sous forme d'affermage, de la piscine Montbauron à Versailles.
 """@fr;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2016-S-112-199316/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-112-199316/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2016-S-112-199316/5a50554f-89ac-3a44-9d4f-643949ca9831>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-112-199316/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasTitle """
 Gestion et exploitation, sous forme d'affermage, de la piscine Montbauron à Versailles.
 """@fr;
@@ -217,7 +212,7 @@ La justice peut être saisie au plus tard le 31ème jours suivant la publication
   a org:Organization;
   epo:hasLegalName "Tribunal administratif"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2016-S-112-199316/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-112-199316/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-112-199316/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-112-199316/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a locn:Address;
@@ -243,4 +238,4 @@ La justice peut être saisie au plus tard le 31ème jours suivant la publication
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2016-S-112-199316/8f833010-0b39-361a-9ea9-959275ccdc19>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2016-S-112-199316/8f833010-0b39-361a-9ea9-959275ccdc19> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2016-S-112-199316/8f833010-0b39-361a-9ea9-959275ccdc19> .

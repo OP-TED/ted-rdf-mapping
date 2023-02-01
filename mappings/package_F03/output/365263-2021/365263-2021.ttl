@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -54,7 +53,7 @@
   a cccev:ContactPoint;
   epo:hasContactName "Zentrale Vergabe und Zivilrecht"@de;
   epo:hasFax "+49 56150600799";
-  epo:hasInternetAddress "www.vitos.de";
+  epo:hasInternetAddress "www.vitos.de"^^xsd:anyURI;
   cccev:email "ausschreibungen@vitos.de";
   cccev:telephone "+49 56150600101" .
 
@@ -64,30 +63,11 @@
   epo:hasID <http://data.europa.eu/a4g/resource/ContractIdentifier/2021-S-137-365263/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>;
   epo:hasTitle "0001-V.-DigGes Plattform-2020"@de;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2021-S-137-365263/cbac108a-b047-3e09-a114-28c43d5b8706>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-137-365263/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
-
-<http://data.europa.eu/a4g/resource/ContractContactPoint/2021-S-137-365263/b9a7c460-794b-36b5-a069-6e9a637315f4>
-  a cccev:ContactPoint;
-  cccev:email "ausschreibung@x-tention.at";
-  cccev:telephone "+49 000000000" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-137-365263/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2021-S-137-365263/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>
   a epo:Identifier;
   epo:hasIdentifierValue "1" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-137-365263/b9a7c460-794b-36b5-a069-6e9a637315f4>
-  a org:Organization;
-  epo:hasLegalName "x-tention Informationstechnologie GmbH"@de;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractContactPoint/2021-S-137-365263/b9a7c460-794b-36b5-a069-6e9a637315f4>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-137-365263/b9a7c460-794b-36b5-a069-6e9a637315f4> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-137-365263/b9a7c460-794b-36b5-a069-6e9a637315f4>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE271>;
-  locn:postCode "86167";
-  locn:postName "Augsburg";
-  locn:thoroughfare "Bürgermeister-Wegele-Str." .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2021-S-137-365263/cbac108a-b047-3e09-a114-28c43d5b8706>
   a epo:ContractTerm;
@@ -98,6 +78,25 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2021-S-137-365263/cbac108a-b047-3e09-a114-28c43d5b8706>
   a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/DE731> .
+
+<http://data.europa.eu/a4g/resource/ContractorContactPoint/2021-S-137-365263/b9a7c460-794b-36b5-a069-6e9a637315f4>
+  a cccev:ContactPoint;
+  cccev:email "ausschreibung@x-tention.at";
+  cccev:telephone "+49 000000000" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-137-365263/b9a7c460-794b-36b5-a069-6e9a637315f4>
+  a org:Organization;
+  epo:hasLegalName "x-tention Informationstechnologie GmbH"@de;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorContactPoint/2021-S-137-365263/b9a7c460-794b-36b5-a069-6e9a637315f4>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-137-365263/b9a7c460-794b-36b5-a069-6e9a637315f4> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-137-365263/b9a7c460-794b-36b5-a069-6e9a637315f4>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE271>;
+  locn:postCode "86167";
+  locn:postName "Augsburg";
+  locn:thoroughfare "Bürgermeister-Wegele-Str." .
 
 <http://data.europa.eu/a4g/resource/Lot/2021-S-137-365263/cbac108a-b047-3e09-a114-28c43d5b8706>
   a epo:Lot;
@@ -158,8 +157,8 @@
   a org:Organization;
   epo:hasBuyerLegalTypeDescription "GmbH";
   epo:hasLegalName "Vitos GmbH für Vitos digitale Gesundheit GmbH"@de;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/health>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-137-365263/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/health>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-137-365263/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-137-365263/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a locn:Address;
@@ -175,9 +174,9 @@
   epo:hasDescription "Gegenstand der vorliegenden Vergabe ist die Entwicklung, Implementierung und der Betrieb einer digitalen Daten- und Kommunikationsplattform im psychiatrischen Versorgungssystem für Patienten, deren Angehörige, Behandler und weitere Stakeholder."@de;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2021-S-137-365263/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-137-365263/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2021-S-137-365263/cbac108a-b047-3e09-a114-28c43d5b8706>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-137-365263/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasTitle "0001-V.-DigGes Plattform-2020"@de;
   epo:isCoveredByGPA true;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2021-S-137-365263/f3b5cfa6-95c6-37b5-9667-808a141fe995> .
@@ -220,7 +219,7 @@
   a org:Organization;
   epo:hasLegalName "Vergabekammer des Landes Hessen beim Regierungspräsidium Darmstadt"@de;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2021-S-137-365263/53dcddfe-05e0-31c2-ab22-d770b015238d>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2021-S-137-365263/53dcddfe-05e0-31c2-ab22-d770b015238d> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2021-S-137-365263/53dcddfe-05e0-31c2-ab22-d770b015238d> .
 
 <http://data.europa.eu/a4g/resource/Reviewer/2021-S-137-365263/de2507f9-ae25-37c8-809c-0109efe10669>
   a epo:Reviewer;
@@ -235,7 +234,7 @@
   a org:Organization;
   epo:hasLegalName "Vergabekammer des Landes Hessen beim Regierungspräsidium Darmstadt"@de;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2021-S-137-365263/de2507f9-ae25-37c8-809c-0109efe10669>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-137-365263/de2507f9-ae25-37c8-809c-0109efe10669> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-137-365263/de2507f9-ae25-37c8-809c-0109efe10669> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-137-365263/de2507f9-ae25-37c8-809c-0109efe10669>
   a locn:Address;
@@ -264,4 +263,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-137-365263/b9a7c460-794b-36b5-a069-6e9a637315f4>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-137-365263/b9a7c460-794b-36b5-a069-6e9a637315f4> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-137-365263/b9a7c460-794b-36b5-a069-6e9a637315f4> .

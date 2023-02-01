@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,13 +17,9 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2017-S-216-450176/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-216-450176/34655f62-8001-38ad-a804-119bb9c85d23>;
+  epo:hasBuyerProfile "http://www.comune.tr.it"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-216-450176/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2017-S-216-450176/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-216-450176/34655f62-8001-38ad-a804-119bb9c85d23>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.comune.tr.it" .
 
 <http://data.europa.eu/a4g/resource/ConcessionEstimate/2017-S-216-450176/5a5721a0-4258-3cfd-89c8-805fdb0d3c88>
   a epo:ConcessionEstimate;
@@ -35,27 +30,14 @@
 <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-216-450176/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a cccev:ContactPoint;
   epo:hasContactName "dott.ssa Vincenza Farinelli"@it;
-  epo:hasInternetAddress "http://www.comune.tr.it";
+  epo:hasInternetAddress "http://www.comune.tr.it"^^xsd:anyURI;
   cccev:email "vincenza.farinelli@comune.tr.it";
   cccev:telephone "+39 0744549909" .
 
 <http://data.europa.eu/a4g/resource/Contract/2017-S-216-450176/70e1fca2-f8e6-3a32-8dca-713ccb185cf6>
   a epo:ConcessionContract, epo:Contract;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2017-S-216-450176/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-216-450176/70e1fca2-f8e6-3a32-8dca-713ccb185cf6> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-216-450176/7553cd03-f6c0-3d87-a53e-90dd8e57b083>
-  a org:Organization;
-  epo:hasLegalName "Gemos Società Cooperativa"@it;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-216-450176/7553cd03-f6c0-3d87-a53e-90dd8e57b083> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-216-450176/7553cd03-f6c0-3d87-a53e-90dd8e57b083>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ITA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/ITH57>;
-  locn:postCode "48018";
-  locn:postName "Faenza (RA)";
-  locn:thoroughfare "Via della Punta 21" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-216-450176/70e1fca2-f8e6-3a32-8dca-713ccb185cf6> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2017-S-216-450176/64592fe7-40a4-3c6b-85ce-08fd4c446531>
   a epo:ContractTerm;
@@ -72,6 +54,19 @@
   locn:fullAddress """
                   Terni vaie località del territorio comunale.
                """@it .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-216-450176/7553cd03-f6c0-3d87-a53e-90dd8e57b083>
+  a org:Organization;
+  epo:hasLegalName "Gemos Società Cooperativa"@it;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-216-450176/7553cd03-f6c0-3d87-a53e-90dd8e57b083> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-216-450176/7553cd03-f6c0-3d87-a53e-90dd8e57b083>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ITA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ITH57>;
+  locn:postCode "48018";
+  locn:postName "Faenza (RA)";
+  locn:thoroughfare "Via della Punta 21" .
 
 <http://data.europa.eu/a4g/resource/Duration/2017-S-216-450176/1d20f563-6060-39ce-a62d-de87c1a9defd>
   a epo:Duration;
@@ -116,7 +111,7 @@
 
 <http://data.europa.eu/a4g/resource/MediatorContactPoint/2017-S-216-450176/3e3334c3-bfc3-3694-9c83-6b654f3b82b2>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "www.comune.tr.it";
+  epo:hasInternetAddress "www.comune.tr.it"^^xsd:anyURI;
   cccev:email "danila.virili@comune.tr.it";
   cccev:telephone "+39 0744549375" .
 
@@ -124,7 +119,7 @@
   a org:Organization;
   epo:hasLegalName "Comune di Terni — Responsabile del Procedimento — dott.ssa Danila Virili"@it;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/MediatorContactPoint/2017-S-216-450176/3e3334c3-bfc3-3694-9c83-6b654f3b82b2>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2017-S-216-450176/3e3334c3-bfc3-3694-9c83-6b654f3b82b2> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2017-S-216-450176/3e3334c3-bfc3-3694-9c83-6b654f3b82b2> .
 
 <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2017-S-216-450176/3e3334c3-bfc3-3694-9c83-6b654f3b82b2>
   a locn:Address;
@@ -173,8 +168,8 @@
   a org:Organization;
   epo:hasBuyerLegalTypeDescription "ente locale";
   epo:hasLegalName "Comune di Terni"@it;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-216-450176/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-216-450176/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-216-450176/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a locn:Address;
@@ -195,8 +190,8 @@
   epo:hasMainFeature """
                Procedura aperta offerta economicamente più vantaggiosa.
             """;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-216-450176/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2017-S-216-450176/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-216-450176/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasTitle """
                Concessione del servizio di ristorazione scolastica del Comune di Terni a ridotto impatto ambientale.
             """@it;
@@ -232,7 +227,7 @@
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2017-S-216-450176/05b8f927-9591-3b74-af26-202fe3171464>
   a cccev:ContactPoint;
   epo:hasFax "+39 0755732548";
-  epo:hasInternetAddress "www.giustizia-amministrativa.it";
+  epo:hasInternetAddress "www.giustizia-amministrativa.it"^^xsd:anyURI;
   cccev:email "tarpgsegrprotocolloamm@ga-cert.it";
   cccev:telephone "+039 0755755311" .
 
@@ -240,7 +235,7 @@
   a org:Organization;
   epo:hasLegalName "TAR Umbria"@it;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2017-S-216-450176/05b8f927-9591-3b74-af26-202fe3171464>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-216-450176/05b8f927-9591-3b74-af26-202fe3171464> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-216-450176/05b8f927-9591-3b74-af26-202fe3171464> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2017-S-216-450176/47e9b87d-92c4-3448-9a4e-937646b178e8>
   a epo:ReviewTerm;
@@ -255,7 +250,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-216-450176/2a666ce1-cebc-31d9-b200-113ebf473883>
   a cccev:ContactPoint;
   epo:hasFax "+39 0755732548";
-  epo:hasInternetAddress "www.giustizia-amministrativa.it";
+  epo:hasInternetAddress "www.giustizia-amministrativa.it"^^xsd:anyURI;
   cccev:email "tarpgsegrprotocolloamm@ga-cert.it";
   cccev:telephone "+039 0755755311" .
 
@@ -263,7 +258,7 @@
   a org:Organization;
   epo:hasLegalName "TAR Umbria"@it;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-216-450176/2a666ce1-cebc-31d9-b200-113ebf473883>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-216-450176/2a666ce1-cebc-31d9-b200-113ebf473883> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-216-450176/2a666ce1-cebc-31d9-b200-113ebf473883> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-216-450176/2a666ce1-cebc-31d9-b200-113ebf473883>
   a locn:Address;
@@ -289,4 +284,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2017-S-216-450176/7553cd03-f6c0-3d87-a53e-90dd8e57b083>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-216-450176/7553cd03-f6c0-3d87-a53e-90dd8e57b083> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-216-450176/7553cd03-f6c0-3d87-a53e-90dd8e57b083> .

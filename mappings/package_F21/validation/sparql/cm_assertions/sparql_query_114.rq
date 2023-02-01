@@ -1,10 +1,10 @@
-#title: II.3 - Estimated date of publication of contract notice
-#description: “II.3 - Estimated date of publication of contract notice” in SF corresponds to “BT-127 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/DATE_PUBLICATION_NOTICE. The expected ontology instances are epo: epo:Notice / epo:PlannedProcurementPart / epo:ProcessPlanningTerm / xsd:date .
-#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/DATE_PUBLICATION_NOTICE
+#title: III.1.5.1 - The contract is reserved to sheltered workshops and economic operators aiming at the social and professional integration of disabled or disadvantaged persons
+#description: “III.1.5.1 - The contract is reserved to sheltered workshops and economic operators aiming at the social and professional integration of disabled or disadvantaged persons” in SF corresponds to “BT-71 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/LEFTI/RESTRICTED_SHELTERED_WORKSHOP. The expected ontology instances are epo: epo:Lot  / at-voc:reserved-procurement .
+#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/LEFTI/RESTRICTED_SHELTERED_WORKSHOP
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Notice .
-		?this  epo-not:announcesPlannedProcurementPart / epo:isSubjectToTerm / epo:hasEstimatedContractNoticePublicationDate ?value }
+		?this rdf:type epo:Lot  .
+		?this epo:hasReservedProcurement <http://publications.europa.eu/resource/authority/reserved-procurement/res-ws> }

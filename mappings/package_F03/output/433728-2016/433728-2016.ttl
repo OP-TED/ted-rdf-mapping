@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -24,17 +23,13 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2016-S-238-433728/f3b5cfa6-95c6-37b5-9667-808a141fe995>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2016-S-238-433728/377f62e9-9c36-31da-9724-7f6a137d8a68>;
+  epo:hasBuyerProfile "https://marches-publics.info/accueil.htm"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2016-S-238-433728/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2016-S-238-433728/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
 
-<http://data.europa.eu/a4g/resource/BuyerProfile/2016-S-238-433728/377f62e9-9c36-31da-9724-7f6a137d8a68>
-  a epo:BuyerProfile;
-  epo:hasURL "https://marches-publics.info/accueil.htm" .
-
 <http://data.europa.eu/a4g/resource/ContactPoint/2016-S-238-433728/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "https://marches-publics.info/accueil.htm";
+  epo:hasInternetAddress "https://marches-publics.info/accueil.htm"^^xsd:anyURI;
   cccev:email "sandra.celestin@actionlogement.fr";
   cccev:telephone "+33 144858100" .
 
@@ -42,20 +37,7 @@
   a epo:Contract;
   epo:hasContractConclusionDate "2016-10-03"^^xsd:date;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2016-S-238-433728/cbac108a-b047-3e09-a114-28c43d5b8706>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2016-S-238-433728/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2016-S-238-433728/3110be1b-1cf3-3851-b11c-869fbbca54c0>
-  a org:Organization;
-  epo:hasLegalName "KLEE Group"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2016-S-238-433728/3110be1b-1cf3-3851-b11c-869fbbca54c0> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2016-S-238-433728/3110be1b-1cf3-3851-b11c-869fbbca54c0>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR105>;
-  locn:postCode "92350";
-  locn:postName "Le Plessis-Robinson";
-  locn:thoroughfare "La Boursidière" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2016-S-238-433728/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2016-S-238-433728/cbac108a-b047-3e09-a114-28c43d5b8706>
   a epo:ContractTerm;
@@ -68,6 +50,19 @@ Possibilité de conclure un ou plusieurs marchés complémentaires.
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2016-S-238-433728/cbac108a-b047-3e09-a114-28c43d5b8706>
   a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/FR1> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2016-S-238-433728/3110be1b-1cf3-3851-b11c-869fbbca54c0>
+  a org:Organization;
+  epo:hasLegalName "KLEE Group"@fr;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2016-S-238-433728/3110be1b-1cf3-3851-b11c-869fbbca54c0> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2016-S-238-433728/3110be1b-1cf3-3851-b11c-869fbbca54c0>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR105>;
+  locn:postCode "92350";
+  locn:postName "Le Plessis-Robinson";
+  locn:thoroughfare "La Boursidière" .
 
 <http://data.europa.eu/a4g/resource/Lot/2016-S-238-433728/cbac108a-b047-3e09-a114-28c43d5b8706>
   a epo:Lot;
@@ -125,11 +120,11 @@ Dans le contexte de la réforme d'action logement, le marché a pour objectif:
 
 <http://data.europa.eu/a4g/resource/Organisation/2016-S-238-433728/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2016-S-238-433728/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>;
   epo:hasLegalName "UESL"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/hc-am>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-238-433728/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/hc-am>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-238-433728/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-238-433728/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a locn:Address;
@@ -156,9 +151,9 @@ Dans le contexte de la réforme d'action logement, le marché a pour objectif:
 — La création d'un site client unique action logement services en vue du remplacement des sites des CIL. Ce site grand public proposera une offre d'aides et de services lisible à l'ensemble des parties prenantes (client). Ce site responsive devra intégrer techniquement les différents extranets facilitant l'accès à cette offre.
 """@fr;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2016-S-238-433728/58509ec4-99dc-3865-9935-58d7ebd66d29>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-238-433728/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2016-S-238-433728/cbac108a-b047-3e09-a114-28c43d5b8706>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-238-433728/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasTitle """
 Création d'un site institutionnel et d'un site client action logement.
 """@fr;
@@ -195,14 +190,14 @@ Création d'un site institutionnel et d'un site client action logement.
 
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2016-S-238-433728/53dcddfe-05e0-31c2-ab22-d770b015238d>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://www.ca-paris.justice.fr";
+  epo:hasInternetAddress "http://www.ca-paris.justice.fr"^^xsd:anyURI;
   cccev:telephone "+33 144325151" .
 
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2016-S-238-433728/53dcddfe-05e0-31c2-ab22-d770b015238d>
   a org:Organization;
   epo:hasLegalName "Greffe du TGI de Paris"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2016-S-238-433728/53dcddfe-05e0-31c2-ab22-d770b015238d>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2016-S-238-433728/53dcddfe-05e0-31c2-ab22-d770b015238d> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2016-S-238-433728/53dcddfe-05e0-31c2-ab22-d770b015238d> .
 
 <http://data.europa.eu/a4g/resource/Reviewer/2016-S-238-433728/de2507f9-ae25-37c8-809c-0109efe10669>
   a epo:Reviewer;
@@ -210,14 +205,14 @@ Création d'un site institutionnel et d'un site client action logement.
 
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2016-S-238-433728/de2507f9-ae25-37c8-809c-0109efe10669>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://www.ca-paris.justice.fr";
+  epo:hasInternetAddress "http://www.ca-paris.justice.fr"^^xsd:anyURI;
   cccev:telephone "+33 144325151" .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2016-S-238-433728/de2507f9-ae25-37c8-809c-0109efe10669>
   a org:Organization;
   epo:hasLegalName "Tribunal de grande instance de Paris"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2016-S-238-433728/de2507f9-ae25-37c8-809c-0109efe10669>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-238-433728/de2507f9-ae25-37c8-809c-0109efe10669> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-238-433728/de2507f9-ae25-37c8-809c-0109efe10669> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-238-433728/de2507f9-ae25-37c8-809c-0109efe10669>
   a locn:Address;
@@ -242,4 +237,4 @@ Création d'un site institutionnel et d'un site client action logement.
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2016-S-238-433728/3110be1b-1cf3-3851-b11c-869fbbca54c0>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2016-S-238-433728/3110be1b-1cf3-3851-b11c-869fbbca54c0> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2016-S-238-433728/3110be1b-1cf3-3851-b11c-869fbbca54c0> .

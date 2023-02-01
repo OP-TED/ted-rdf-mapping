@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,27 +17,23 @@
 
 <http://data.europa.eu/a4g/resource/AccessTerm/2020-S-028-065927/08cc6b87-fd77-3965-a6c4-7bd72326900e>
   a epo:AccessTerm;
-  epo:hasRestrictedAccessURL <https://Procontract.due-north.com>;
+  epo:hasRestrictedAccessURL "https://Procontract.due-north.com"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted true .
 
 <http://data.europa.eu/a4g/resource/Buyer/2020-S-028-065927/08cc6b87-fd77-3965-a6c4-7bd72326900e>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2020-S-028-065927/5eeafc96-605e-3b6c-9ca0-91010603c507>;
+  epo:hasBuyerProfile "www.stockton.gov.uk"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2020-S-028-065927/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2020-S-028-065927/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
-<http://data.europa.eu/a4g/resource/BuyerProfile/2020-S-028-065927/5eeafc96-605e-3b6c-9ca0-91010603c507>
-  a epo:BuyerProfile;
-  epo:hasURL "www.stockton.gov.uk" .
-
 <http://data.europa.eu/a4g/resource/Channel/2020-S-028-065927/adac0654-7bf7-3f27-95fa-9f16f2a66d41>
   a cccev:Channel;
-  epo:hasURL "https://www.nepo.org/" .
+  epo:hasURL "https://www.nepo.org/"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2020-S-028-065927/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a cccev:ContactPoint;
   epo:hasContactName "Rose Hammond-McKie"@en;
-  epo:hasInternetAddress "www.stockton.gov.uk";
+  epo:hasInternetAddress "www.stockton.gov.uk"^^xsd:anyURI;
   cccev:email "rose.hammond-mckie@stockton.gov.uk";
   cccev:telephone "+44 16425288443" .
 
@@ -141,7 +136,7 @@
 
 <http://data.europa.eu/a4g/resource/MediatorContactPoint/2020-S-028-065927/9e01d479-a67f-3d93-baab-0b5363959e9c>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "https://www.stockton.gov.uk";
+  epo:hasInternetAddress "https://www.stockton.gov.uk"^^xsd:anyURI;
   cccev:email "rose.hammond-mckie@stockton.gov.uk";
   cccev:telephone "+44 1642528443" .
 
@@ -149,7 +144,7 @@
   a org:Organization;
   epo:hasLegalName "Stockton-On-Tees Borough Council"@en;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/MediatorContactPoint/2020-S-028-065927/9e01d479-a67f-3d93-baab-0b5363959e9c>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2020-S-028-065927/9e01d479-a67f-3d93-baab-0b5363959e9c> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2020-S-028-065927/9e01d479-a67f-3d93-baab-0b5363959e9c> .
 
 <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2020-S-028-065927/9e01d479-a67f-3d93-baab-0b5363959e9c>
   a locn:Address;
@@ -182,10 +177,10 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2020-S-028-065927/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasLegalName "Stockton-On-Tees Borough Council"@en;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2020-S-028-065927/97c28c49-5587-3e91-95b4-4e48e30ed684> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2020-S-028-065927/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2020-S-028-065927/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a locn:Address;
@@ -197,13 +192,13 @@
 
 <http://data.europa.eu/a4g/resource/Period/2020-S-028-065927/10a954c5-4b3f-3ea1-add9-eda3a9735c67>
   a epo:Period;
-  epo:hasBeginning "2020-05-18"^^xsd:datetime;
-  epo:hasEnd "2024-09-30"^^xsd:datetime .
+  epo:hasBeginning "2020-05-18T00:00:00"^^xsd:dateTime;
+  epo:hasEnd "2024-09-30T00:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/Period/2020-S-028-065927/e3c5791a-e132-3d09-8ef5-af0f6ebfdc2c>
   a epo:Period;
-  epo:hasBeginning "2020-05-18"^^xsd:datetime;
-  epo:hasEnd "2024-09-30"^^xsd:datetime .
+  epo:hasBeginning "2020-05-18T00:00:00"^^xsd:dateTime;
+  epo:hasEnd "2024-09-30T00:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/Procedure/2020-S-028-065927/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>
   a epo:Procedure;
@@ -214,10 +209,10 @@
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/MonetaryValueProcedure/2020-S-028-065927/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasMainFeature "As described within the tender documentation.";
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2020-S-028-065927/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2020-S-028-065927/10a954c5-4b3f-3ea1-add9-eda3a9735c67>,
     <http://data.europa.eu/a4g/resource/Lot/2020-S-028-065927/e3c5791a-e132-3d09-8ef5-af0f6ebfdc2c>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2020-S-028-065927/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasTitle "Care At Home — Framework Agreement Areas 9 and 10 — Standard Homecare including an Extra Care Scheme"@en;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/AccessTerm/2020-S-028-065927/08cc6b87-fd77-3965-a6c4-7bd72326900e>,
     <http://data.europa.eu/a4g/resource/FrameworkAgreementTerm/2020-S-028-065927/168a6c96-75f8-304a-bff5-0d0cf3c2f20c>,
@@ -243,7 +238,6 @@
 
 <http://data.europa.eu/a4g/resource/ProcurementProcedureInformationProvider/2020-S-028-065927/1a05a258-a8c2-3b59-8ae4-16e3430dd96e>
   a epo:ProcurementProcedureInformationProvider;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2020-S-028-065927/5eeafc96-605e-3b6c-9ca0-91010603c507>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2020-S-028-065927/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2020-S-028-065927/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
@@ -260,7 +254,7 @@
 
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2020-S-028-065927/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "www.stockton.gov.uk";
+  epo:hasInternetAddress "www.stockton.gov.uk"^^xsd:anyURI;
   cccev:email "rose.hammond-mckie@stockton.gov.uk";
   cccev:telephone "+44 1642528443" .
 
@@ -268,7 +262,7 @@
   a org:Organization;
   epo:hasLegalName "Stockton-On-Tees Borough Council"@en;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2020-S-028-065927/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2020-S-028-065927/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2020-S-028-065927/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3> .
 
 <http://data.europa.eu/a4g/resource/Reviewer/2020-S-028-065927/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a epo:Reviewer;
@@ -276,7 +270,7 @@
 
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2020-S-028-065927/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "www.stockton.gov.uk";
+  epo:hasInternetAddress "www.stockton.gov.uk"^^xsd:anyURI;
   cccev:email "rose.hammond-mckie@stockton.gov.uk";
   cccev:telephone "+44 1642528443" .
 
@@ -284,7 +278,7 @@
   a org:Organization;
   epo:hasLegalName "Stockton-On-Tees Borough Council"@en;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2020-S-028-065927/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2020-S-028-065927/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2020-S-028-065927/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2020-S-028-065927/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a locn:Address;
@@ -300,12 +294,10 @@
 <http://data.europa.eu/a4g/resource/SubmissionTerm/2020-S-028-065927/168a6c96-75f8-304a-bff5-0d0cf3c2f20c>
   a epo:SubmissionTerm;
   epo:hasLanguage "EN";
-  epo:hasReceiptDeadline "2020-03-09"^^xsd:datetime;
-  epo:hasReceiptExpressionsDeadline "12:00"^^xsd:datetime;
-  epo:hasSubmissionURL "https://www.nepo.org/" .
+  epo:hasReceiptDeadline "2020-03-09T12:00:00"^^xsd:dateTime;
+  epo:hasSubmissionURL "https://www.nepo.org/"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/TenderReceiver/2020-S-028-065927/041b5ded-d3df-3217-99a0-c86f556f60c7>
   a epo:TenderReceiver;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2020-S-028-065927/5eeafc96-605e-3b6c-9ca0-91010603c507>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2020-S-028-065927/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2020-S-028-065927/97c28c49-5587-3e91-95b4-4e48e30ed684> .

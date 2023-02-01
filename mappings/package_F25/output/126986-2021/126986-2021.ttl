@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -22,13 +21,9 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2021-S-050-126986/5a0e0822-353f-34b8-9001-b27f293ef321>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2021-S-050-126986/41c3580d-d7b5-3ead-a7df-4e886771daad>;
+  epo:hasBuyerProfile "http://www.marches-esbly.com"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-050-126986/188615bc-907f-376a-b3e0-b7f440ca4c64>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2021-S-050-126986/188615bc-907f-376a-b3e0-b7f440ca4c64> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2021-S-050-126986/41c3580d-d7b5-3ead-a7df-4e886771daad>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.marches-esbly.com" .
 
 <http://data.europa.eu/a4g/resource/ConcessionEstimate/2021-S-050-126986/3953b71b-e4b8-307b-8fcc-3e7ecb01d94b>
   a epo:ConcessionEstimate;
@@ -37,26 +32,14 @@
 <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-050-126986/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a cccev:ContactPoint;
   epo:hasContactName "Mairie — service des finances"@fr;
-  epo:hasInternetAddress "http://www.esbly.org";
+  epo:hasInternetAddress "http://www.esbly.org"^^xsd:anyURI;
   cccev:email "ville.esbly@mairie-esbly.fr";
   cccev:telephone "+33 164634400" .
 
 <http://data.europa.eu/a4g/resource/Contract/2021-S-050-126986/2b425ab1-553e-3915-a060-80f1d3cff764>
   a epo:ConcessionContract, epo:Contract;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2021-S-050-126986/5a50554f-89ac-3a44-9d4f-643949ca9831>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-050-126986/2b425ab1-553e-3915-a060-80f1d3cff764> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-050-126986/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
-  a org:Organization;
-  epo:hasLegalName "Enedis"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-050-126986/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-050-126986/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR>;
-  locn:postCode "77000";
-  locn:postName "Melun" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-050-126986/2b425ab1-553e-3915-a060-80f1d3cff764> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2021-S-050-126986/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:ContractTerm;
@@ -71,6 +54,18 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2021-S-050-126986/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a locn:Address;
   locn:fullAddress "Lieu de la concession."@fr .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-050-126986/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
+  a org:Organization;
+  epo:hasLegalName "Enedis"@fr;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-050-126986/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-050-126986/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR>;
+  locn:postCode "77000";
+  locn:postName "Melun" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2021-S-050-126986/3ff3e293-06ca-390c-bee2-dd28ba2e570e>
   a epo:DirectAwardTerm;
@@ -134,8 +129,8 @@
   a org:Organization;
   epo:hasBuyerLegalTypeDescription "Collectivité territoriale";
   epo:hasLegalName "Ville d'Esbly"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-050-126986/188615bc-907f-376a-b3e0-b7f440ca4c64> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-050-126986/188615bc-907f-376a-b3e0-b7f440ca4c64> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-050-126986/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a locn:Address;
@@ -152,9 +147,9 @@
   epo:hasDescription "Concession pour le service public du développement et de l'exploitation du réseau de distribution d'électricité et de la fourniture d'énergie électrique aux tarifs réglementés de vente."@fr;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0023>;
   epo:hasMainFeature "Existence d'un droit exclusif.";
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-050-126986/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2021-S-050-126986/5a50554f-89ac-3a44-9d4f-643949ca9831>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-050-126986/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasTitle "Distribution publique d'électricité"@fr;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/DirectAwardTerm/2021-S-050-126986/3ff3e293-06ca-390c-bee2-dd28ba2e570e>,
     <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2021-S-050-126986/5a0e0822-353f-34b8-9001-b27f293ef321> .
@@ -184,7 +179,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2021-S-050-126986/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Melun"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-050-126986/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-050-126986/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-050-126986/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a locn:Address;
@@ -210,4 +205,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-050-126986/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-050-126986/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-050-126986/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .

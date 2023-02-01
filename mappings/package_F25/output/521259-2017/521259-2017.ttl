@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -30,18 +29,14 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2017-S-247-521259/5a0e0822-353f-34b8-9001-b27f293ef321>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-247-521259/41c3580d-d7b5-3ead-a7df-4e886771daad>;
+  epo:hasBuyerProfile "https://alm.marches-securises.fr"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-247-521259/188615bc-907f-376a-b3e0-b7f440ca4c64>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2017-S-247-521259/188615bc-907f-376a-b3e0-b7f440ca4c64> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-247-521259/41c3580d-d7b5-3ead-a7df-4e886771daad>
-  a epo:BuyerProfile;
-  epo:hasURL "https://alm.marches-securises.fr" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-247-521259/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a cccev:ContactPoint;
   epo:hasContactName "Mme Chich-Bourgine — Direction des assemblées et des affaires juridiques"@fr;
-  epo:hasInternetAddress "http://www.agglo.angers.fr";
+  epo:hasInternetAddress "http://www.agglo.angers.fr"^^xsd:anyURI;
   cccev:email "elisabeth.chich-bourgine@angersloiremetropole.fr";
   cccev:telephone "+33 241055209" .
 
@@ -51,20 +46,7 @@
                DSP maison du partenariat Angers-Bamako
             """@fr;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2017-S-247-521259/5a50554f-89ac-3a44-9d4f-643949ca9831>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-247-521259/2b425ab1-553e-3915-a060-80f1d3cff764> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-247-521259/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a org:Organization;
-  epo:hasLegalName "Fédération Leo Lagrange ouest"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-247-521259/8f833010-0b39-361a-9ea9-959275ccdc19> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-247-521259/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRG01>;
-  locn:postCode "44615";
-  locn:postName "Saint-Nazaire Cedex";
-  locn:thoroughfare "23 rue de l'Étoile du Matin — BP 324" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-247-521259/2b425ab1-553e-3915-a060-80f1d3cff764> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2017-S-247-521259/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:ContractTerm;
@@ -80,6 +62,19 @@
   locn:fullAddress """
                   Territoire de la commune de Bamako (Mali)
                """@fr .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-247-521259/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a org:Organization;
+  epo:hasLegalName "Fédération Leo Lagrange ouest"@fr;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-247-521259/8f833010-0b39-361a-9ea9-959275ccdc19> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-247-521259/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRG01>;
+  locn:postCode "44615";
+  locn:postName "Saint-Nazaire Cedex";
+  locn:thoroughfare "23 rue de l'Étoile du Matin — BP 324" .
 
 <http://data.europa.eu/a4g/resource/Lot/2017-S-247-521259/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:Lot;
@@ -126,7 +121,7 @@
 
 <http://data.europa.eu/a4g/resource/MediatorContactPoint/2017-S-247-521259/5833b6b8-dd30-3289-9016-fb64e7bb3c6e>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://nantes.tribunal-administratif.fr";
+  epo:hasInternetAddress "http://nantes.tribunal-administratif.fr"^^xsd:anyURI;
   cccev:email "greffe.ta-nantes@juradm.fr";
   cccev:telephone "+33 240994600" .
 
@@ -134,7 +129,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Nantes"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/MediatorContactPoint/2017-S-247-521259/5833b6b8-dd30-3289-9016-fb64e7bb3c6e>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2017-S-247-521259/5833b6b8-dd30-3289-9016-fb64e7bb3c6e> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2017-S-247-521259/5833b6b8-dd30-3289-9016-fb64e7bb3c6e> .
 
 <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2017-S-247-521259/5833b6b8-dd30-3289-9016-fb64e7bb3c6e>
   a locn:Address;
@@ -177,10 +172,10 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2017-S-247-521259/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasLegalName "Ville d'Angers"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-247-521259/188615bc-907f-376a-b3e0-b7f440ca4c64> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-247-521259/188615bc-907f-376a-b3e0-b7f440ca4c64> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-247-521259/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a locn:Address;
@@ -192,8 +187,8 @@
 
 <http://data.europa.eu/a4g/resource/Period/2017-S-247-521259/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:Period;
-  epo:hasBeginning "2018-01-01"^^xsd:datetime;
-  epo:hasEnd "2021-12-31"^^xsd:datetime .
+  epo:hasBeginning "2018-01-01T00:00:00"^^xsd:dateTime;
+  epo:hasEnd "2021-12-31T00:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/Procedure/2017-S-247-521259/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>
   a epo:Procedure;
@@ -206,8 +201,8 @@
                Avis de concession nº 17-17869 paru au BOAMP du 28.2.2017 et au JOUE 2017-OJS050-092966 du 11.3.2017.
                Avis d'intention de conclure nº 17-164323 paru au BOAMP du 28.11.2017.
             """;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-247-521259/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2017-S-247-521259/5a50554f-89ac-3a44-9d4f-643949ca9831>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-247-521259/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasTitle """
                DSP maison du partenariat Angers Bamako
             """@fr;
@@ -239,7 +234,7 @@
 
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2017-S-247-521259/fdc5fccd-dd12-3226-8a44-ee7b6f769c12>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://nantes.tribunal-administratif.fr";
+  epo:hasInternetAddress "http://nantes.tribunal-administratif.fr"^^xsd:anyURI;
   cccev:email "greffe.ta-nantes@juradm.fr";
   cccev:telephone "+33 240994600" .
 
@@ -247,7 +242,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Nantes"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2017-S-247-521259/fdc5fccd-dd12-3226-8a44-ee7b6f769c12>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-247-521259/fdc5fccd-dd12-3226-8a44-ee7b6f769c12> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-247-521259/fdc5fccd-dd12-3226-8a44-ee7b6f769c12> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2017-S-247-521259/278f6fb6-6256-3e2e-b2d2-c98da96e5a94>
   a epo:ReviewTerm;
@@ -262,7 +257,7 @@
 
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-247-521259/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://nantes.tribunal-administratif.fr";
+  epo:hasInternetAddress "http://nantes.tribunal-administratif.fr"^^xsd:anyURI;
   cccev:email "greffe.ta-nantes@juradm.fr";
   cccev:telephone "+33 240994600" .
 
@@ -270,7 +265,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Nantes"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-247-521259/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-247-521259/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-247-521259/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-247-521259/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a locn:Address;
@@ -295,4 +290,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2017-S-247-521259/8f833010-0b39-361a-9ea9-959275ccdc19>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-247-521259/8f833010-0b39-361a-9ea9-959275ccdc19> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-247-521259/8f833010-0b39-361a-9ea9-959275ccdc19> .

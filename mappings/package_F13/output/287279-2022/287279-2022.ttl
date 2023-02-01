@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,39 +17,16 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2022-S-102-287279/8a551eea-f8a4-3a92-a92e-0f220d0ba9d0>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2022-S-102-287279/1a7db7e1-758c-3b79-8e36-131fbe7ef3e3>;
+  epo:hasBuyerProfile "https://zakazky.spravazeleznic.cz/"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2022-S-102-287279/93f156bb-9604-37f9-a902-d2bc2c71ac19>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2022-S-102-287279/93f156bb-9604-37f9-a902-d2bc2c71ac19> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2022-S-102-287279/1a7db7e1-758c-3b79-8e36-131fbe7ef3e3>
-  a epo:BuyerProfile;
-  epo:hasURL "https://zakazky.spravazeleznic.cz/" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2022-S-102-287279/93f156bb-9604-37f9-a902-d2bc2c71ac19>
   a cccev:ContactPoint;
   epo:hasContactName "Petr Dušek"@cs;
-  epo:hasInternetAddress "http://www.spravazeleznic.cz";
+  epo:hasInternetAddress "http://www.spravazeleznic.cz"^^xsd:anyURI;
   cccev:email "dusekp@spravazeleznic.cz";
   cccev:telephone "+420 725994040" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2022-S-102-287279/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
-  a epo:Business, org:Organisation;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2022-S-102-287279/d2285c88-606a-3092-87f1-6f0d98b5d9ff>;
-  epo:hasLegalName "Rusina Frei, s.r.o."@cs;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2022-S-102-287279/d2285c88-606a-3092-87f1-6f0d98b5d9ff> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2022-S-102-287279/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/CZ010>;
-  locn:postCode "170 00";
-  locn:postName "Praha";
-  locn:thoroughfare "Bubenská 225/49" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2022-S-102-287279/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
-  a epo:Identifier;
-  epo:hasIdentifierValue "2308002" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2022-S-102-287279/d9717c09-a32e-34b8-99e6-1d890b633b16>
   a epo:ContractTerm;
@@ -58,6 +34,25 @@
 
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2022-S-102-287279/d9717c09-a32e-34b8-99e6-1d890b633b16>
   a dct:Location .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2022-S-102-287279/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
+  a epo:Business, org:Organisation;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasID <http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2022-S-102-287279/d2285c88-606a-3092-87f1-6f0d98b5d9ff>;
+  epo:hasLegalName "Rusina Frei, s.r.o."@cs;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2022-S-102-287279/d2285c88-606a-3092-87f1-6f0d98b5d9ff> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2022-S-102-287279/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/CZ010>;
+  locn:postCode "170 00";
+  locn:postName "Praha";
+  locn:thoroughfare "Bubenská 225/49" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2022-S-102-287279/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
+  a epo:Identifier;
+  epo:hasIdentifierValue "2308002" .
 
 <http://data.europa.eu/a4g/resource/DesignContestRegimeTerm/2022-S-102-287279/356edeab-f605-3fc3-abbb-c699db8248e6>
   a epo:DesignContestRegimeTerm;
@@ -115,8 +110,8 @@
   a org:Organization;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2022-S-102-287279/93f156bb-9604-37f9-a902-d2bc2c71ac19>;
   epo:hasLegalName "Správa železnic, státní organizace"@cs;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/rail>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-102-287279/93f156bb-9604-37f9-a902-d2bc2c71ac19> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/rail>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-102-287279/93f156bb-9604-37f9-a902-d2bc2c71ac19> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-102-287279/93f156bb-9604-37f9-a902-d2bc2c71ac19>
   a locn:Address;
@@ -139,9 +134,9 @@
   epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2022-S-102-287279/d9717c09-a32e-34b8-99e6-1d890b633b16>;
   epo:hasAdditionalInformation "II. místo (750 000Kč) - dh architekti (IČO: 09769391) + METROPROJEKT v zastoupení METROPROJEKT Praha a.s. (IČO: 45271895);III. místo (500 000Kč)- SARMA & NORDE Arhitekti Ltd. (IČO: 40103084449)IV. - VI. místo (150 000Kč)VII. - X. místo (75 000Kč)"@cs;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2022-S-102-287279/4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2022-S-102-287279/d9717c09-a32e-34b8-99e6-1d890b633b16>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2022-S-102-287279/4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b>;
   epo:hasTitle "RS 4 VRT PRAHA-BALABENKA - SJEZD LOVOSICE; ARCHITEKTONICKÁ SOUTĚŽ TERMINÁL ROUDNICE NAD LABEM VRT"@cs;
   epo:isDesignContest true;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2022-S-102-287279/8a551eea-f8a4-3a92-a92e-0f220d0ba9d0> .
@@ -167,7 +162,7 @@
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2022-S-102-287279/90128279-8438-3575-b354-674c4cad7995>
   a cccev:ContactPoint;
   epo:hasFax "+420 542167112";
-  epo:hasInternetAddress "https://www.uohs.cz/";
+  epo:hasInternetAddress "https://www.uohs.cz/"^^xsd:anyURI;
   cccev:email "posta@uohs.cz";
   cccev:telephone "+420 542167111" .
 
@@ -175,7 +170,7 @@
   a org:Organization;
   epo:hasLegalName "Úřad pro ochranu hospodářské soutěže"@cs;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2022-S-102-287279/90128279-8438-3575-b354-674c4cad7995>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2022-S-102-287279/90128279-8438-3575-b354-674c4cad7995> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2022-S-102-287279/90128279-8438-3575-b354-674c4cad7995> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2022-S-102-287279/2cfdb4b2-13ab-3831-af1f-73dd9c2f9b4a>
   a epo:ReviewTerm;
@@ -188,7 +183,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2022-S-102-287279/5641ce6f-6854-3e39-9e76-44d671aacd65>
   a cccev:ContactPoint;
   epo:hasFax "+420 542167112";
-  epo:hasInternetAddress "https://www.uohs.cz/";
+  epo:hasInternetAddress "https://www.uohs.cz/"^^xsd:anyURI;
   cccev:email "posta@uohs.cz";
   cccev:telephone "+420 542167111" .
 
@@ -196,7 +191,7 @@
   a org:Organization;
   epo:hasLegalName "Úřad pro ochranu hospodářské soutěže"@cs;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2022-S-102-287279/5641ce6f-6854-3e39-9e76-44d671aacd65>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-102-287279/5641ce6f-6854-3e39-9e76-44d671aacd65> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-102-287279/5641ce6f-6854-3e39-9e76-44d671aacd65> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-102-287279/5641ce6f-6854-3e39-9e76-44d671aacd65>
   a locn:Address;
@@ -222,4 +217,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2022-S-102-287279/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2022-S-102-287279/d2285c88-606a-3092-87f1-6f0d98b5d9ff> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2022-S-102-287279/d2285c88-606a-3092-87f1-6f0d98b5d9ff> .

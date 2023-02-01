@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -23,52 +22,37 @@
 
 <http://data.europa.eu/a4g/resource/AdditionalContactPoint/2021-S-006-010107/ae940a40-9549-31d6-9cb6-8424b79bf0b3>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://www.sncf.com/";
+  epo:hasInternetAddress "http://www.sncf.com/"^^xsd:anyURI;
   cccev:email "stephane.bataille@reseau.sncf.fr" .
 
 <http://data.europa.eu/a4g/resource/AdditionalOrganisation/2021-S-006-010107/ae940a40-9549-31d6-9cb6-8424b79bf0b3>
   a org:Organization;
   epo:hasLegalName "SNCF"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-006-010107/ae940a40-9549-31d6-9cb6-8424b79bf0b3> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-006-010107/ae940a40-9549-31d6-9cb6-8424b79bf0b3> .
 
 <http://data.europa.eu/a4g/resource/Buyer/2021-S-006-010107/15183658-b3d6-3d9d-88d4-6e02c7e3b7b9>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2021-S-006-010107/206f9015-5cd1-3fca-bf9c-23378a724274>;
+  epo:hasBuyerProfile "https://sncf.bravosolution.com/web/login.html"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-006-010107/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2021-S-006-010107/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
 
 <http://data.europa.eu/a4g/resource/BuyerOrganisationGroup/2021-S-006-010107/ae940a40-9549-31d6-9cb6-8424b79bf0b3>
   a epo:OrganisationGroup;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/rail>;
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/rail>;
   epo:hasMember <http://data.europa.eu/a4g/resource/AdditionalOrganisation/2021-S-006-010107/ae940a40-9549-31d6-9cb6-8424b79bf0b3>,
     <http://data.europa.eu/a4g/resource/Organisation/2021-S-006-010107/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2021-S-006-010107/206f9015-5cd1-3fca-bf9c-23378a724274>
-  a epo:BuyerProfile;
-  epo:hasURL "https://sncf.bravosolution.com/web/login.html" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-006-010107/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a cccev:ContactPoint;
   epo:hasContactName "SNCF Réseau — direction achats DTA — pôle achats HDF Normandie"@fr;
-  epo:hasInternetAddress "http://www.sncf.com/";
+  epo:hasInternetAddress "http://www.sncf.com/"^^xsd:anyURI;
   cccev:email "stephane.bataille@sncf.fr" .
 
 <http://data.europa.eu/a4g/resource/Contract/2021-S-006-010107/527e871b-562d-3858-b2cb-c75e9b69e338>
   a epo:Contract;
   epo:hasContractConclusionDate "2020-12-17"^^xsd:date;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2021-S-006-010107/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-006-010107/527e871b-562d-3858-b2cb-c75e9b69e338> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-006-010107/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a org:Organization;
-  epo:hasLegalName "Bouygues TP Region France"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-006-010107/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-006-010107/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRE11>;
-  locn:postName "Villeneuve-d'Ascq" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-006-010107/527e871b-562d-3858-b2cb-c75e9b69e338> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2021-S-006-010107/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a epo:ContractTerm;
@@ -83,6 +67,17 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2021-S-006-010107/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a locn:Address;
   locn:fullAddress "Gare de Saint-Amand-les-Eaux."@fr .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-006-010107/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a org:Organization;
+  epo:hasLegalName "Bouygues TP Region France"@fr;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-006-010107/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-006-010107/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRE11>;
+  locn:postName "Villeneuve-d'Ascq" .
 
 <http://data.europa.eu/a4g/resource/Lot/2021-S-006-010107/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a epo:Lot;
@@ -116,7 +111,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/MediatorContactPoint/2021-S-006-010107/43c72ae4-1691-3a54-9e37-60dec613cbbd>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2021-S-006-010107/43c72ae4-1691-3a54-9e37-60dec613cbbd> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2021-S-006-010107/43c72ae4-1691-3a54-9e37-60dec613cbbd> .
 
 <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2021-S-006-010107/43c72ae4-1691-3a54-9e37-60dec613cbbd>
   a locn:Address;
@@ -156,7 +151,7 @@
   a org:Organization;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2021-S-006-010107/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>;
   epo:hasLegalName "SNCF"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-006-010107/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-006-010107/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-006-010107/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a locn:Address;
@@ -182,9 +177,9 @@
   epo:hasDescription "Mise en accessibilité PMR de la gare de Saint-Amand comprenant:— réalisation de deux rampes d’accès au passage souterrain, dont une partiellement couverte;— allongement du passage souterrain existant;— raccordement aux réseaux d’assainissement provisoire pour les eaux d’exhaure chantier (réseau Noréade) et définitifs dans le réseau privé SNCF alimentant les noues;— réalisation du débroussaillage conformément à la NRE;— gestion des terres excavées;— dépose de voies de service;— dévoiement de réseaux;— mise aux normes PMR des deux escaliers d’accès au souterrain;— réalisation de bandes de guidages pour aveugles et malvoyants;— réalisation de bandes de peinture en zébras;— adaptation du mobilier de quai et d’équipements télécom-sono;— mise aux normes de l’éclairage des quais et du souterrain, éclairage des rampes;— mise au rail et mise à la terre de l’ensemble des éléments métalliques concernés;— mise en conformité de la signalétique directionnelle;— réfection du passage."@fr;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2021-S-006-010107/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-006-010107/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2021-S-006-010107/636e3166-5ecc-350b-867b-7bf2072a2c03>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-006-010107/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasTitle "Mise en accessibilité PMR de la gare de Saint-Amand-les-Eaux (59)"@fr;
   epo:isCoveredByGPA true;
   epo:isJointProcurement true;
@@ -215,7 +210,7 @@
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2021-S-006-010107/cda2e79a-2b54-3d8d-8cbd-025f430ee110>
   a org:Organization;
   epo:hasLegalName "Tribunal administratif"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2021-S-006-010107/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2021-S-006-010107/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2021-S-006-010107/9aa38039-a45b-3425-8be8-95054b97e247>
   a epo:ReviewTerm;
@@ -227,13 +222,13 @@
 
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2021-S-006-010107/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://paris.tribunal-administratif.fr/" .
+  epo:hasInternetAddress "http://paris.tribunal-administratif.fr/"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2021-S-006-010107/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a org:Organization;
   epo:hasLegalName "Tribunal administratif"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2021-S-006-010107/13730a07-65b0-306c-a9b5-a8929927a6a1>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-006-010107/13730a07-65b0-306c-a9b5-a8929927a6a1> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-006-010107/13730a07-65b0-306c-a9b5-a8929927a6a1> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-006-010107/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a locn:Address;
@@ -256,4 +251,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-006-010107/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-006-010107/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-006-010107/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .

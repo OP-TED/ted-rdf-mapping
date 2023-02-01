@@ -1,10 +1,10 @@
-#title: IV.2.0 - Administrative information
-#description: “IV.2.0 - Administrative information” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/PROCEDURE. The expected ontology instances are epo: epo:ProcurementProcessInformation / epo:Procedure .
-#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/PROCEDURE
+#title: IV.2.2 - Time limit for receipt of tenders or requests to participate (Date/Time)
+#description: “IV.2.2 - Time limit for receipt of tenders or requests to participate (Date/Time)” in SF corresponds to “no match nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/PROCEDURE/DATE_RECEIPT_TENDERS, /TED_EXPORT/FORM_SECTION/F22_2014/PROCEDURE/TIME_RECEIPT_TENDERS. The expected ontology instances are epo: epo:Procedure / epo:SubmissionTerm / xsd:dateTime .
+#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/PROCEDURE/DATE_RECEIPT_TENDERS,/TED_EXPORT/FORM_SECTION/F22_2014/PROCEDURE/TIME_RECEIPT_TENDERS
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:ProcurementProcessInformation .
-		?this epo:concernsProcedure ?value }
+		?this rdf:type epo:Procedure .
+		?this epo:isSubjectToProcedureSpecificTerm  / epo:hasReceiptDeadline ?value . }

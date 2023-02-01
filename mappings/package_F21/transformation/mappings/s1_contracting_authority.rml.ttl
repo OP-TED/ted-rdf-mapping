@@ -11,7 +11,8 @@
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix cpov: <http://data.europa.eu/m8g/> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
+@prefix cv: <http://data.europa.eu/m8g/> .
+
 tedm:contracting_authority
   a owl:Ontology ;
   owl:imports dct:, <http://www.w3.org/2004/02/skos/core> ;
@@ -187,7 +188,7 @@ tedm:AdditionalOrganisation a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate legal:registeredAddress ;
+            rr:predicate cv:registeredAddress ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:AdditionalOrganisationAddress;
@@ -412,7 +413,7 @@ tedm:Organisation a rr:TriplesMap ;
 #        ] ;
     rr:predicateObjectMap
         [
-            rr:predicate legal:registeredAddress ;
+            rr:predicate cv:registeredAddress ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:OrganisationAddress
@@ -709,15 +710,18 @@ tedm:ProcurementProcedureInformationProviderIdem a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:ContactPoint
                 ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasBuyerProfile ;
-            rr:objectMap
-                [
-                    rml:reference "../ADDRESS_CONTRACTING_BODY/URL_BUYER";
-                    rr:datatype xsd:anyURI;
-                ] ;
+#        ] ;
+# Although the URL_BUYER XML is present in the ADDRESS_CONTRACTING_BODY, which is used to specify the
+# address of the ProcurementProcedureInformationProviderIdem, EPO does not foresee any property to link the value
+# stored in that XML element (only the epo:Buyer has a property to express buyer profile, not on any other roles)
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasBuyerProfile ;
+#            rr:objectMap
+#                [
+#                    rml:reference "../ADDRESS_CONTRACTING_BODY/URL_BUYER";
+#                    rr:datatype xsd:anyURI;
+#                ] ;
         ] .
 tedm:ProcurementProcedureInformationProvider a rr:TriplesMap ;
     rr:predicateObjectMap
@@ -735,15 +739,18 @@ tedm:ProcurementProcedureInformationProvider a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:InformationProviderContactPoint
                 ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasBuyerProfile ;
-            rr:objectMap
-                [
-                    rml:reference "URL_BUYER";
-                    rr:datatype xsd:anyURI;
-                ] ;
+#        ] ;
+# Although the URL_BUYER XML is present in the ADDRESS_FURTHER_INFO, which is used to specify the
+# address of the ProcurementProcedureInformationProvider, EPO does not foresee any property to link the value
+# stored in that XML element (only the epo:Buyer has a property to express buyer profile, not on any other roles)
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasBuyerProfile ;
+#            rr:objectMap
+#                [
+#                    rml:reference "URL_BUYER";
+#                    rr:datatype xsd:anyURI;
+#                ] ;
         ] .
 tedm:InformationProviderOrganisation a rr:TriplesMap ;
     rr:predicateObjectMap
@@ -771,7 +778,7 @@ tedm:InformationProviderOrganisation a rr:TriplesMap ;
 #        ] ;
     rr:predicateObjectMap
         [
-            rr:predicate legal:registeredAddress ;
+            rr:predicate cv:registeredAddress ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:InformationProviderOrganisationAddress
@@ -926,15 +933,18 @@ tedm:TenderReceiverIdem a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:ContactPoint
                 ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasBuyerProfile ;
-            rr:objectMap
-                [
-                    rml:reference "../ADDRESS_CONTRACTING_BODY/URL_BUYER";
-                    rr:datatype xsd:anyURI;
-                ] ;
+#        ] ;
+# Although the URL_BUYER XML is present in the ADDRESS_CONTRACTING_BODY, which is used to specify the
+# address of the TenderReceiverIdem, EPO does not foresee any property to link the value
+# stored in that XML element (only the epo:Buyer has a property to express buyer profile, not on any other roles)
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasBuyerProfile ;
+#            rr:objectMap
+#                [
+#                    rml:reference "../ADDRESS_CONTRACTING_BODY/URL_BUYER";
+#                    rr:datatype xsd:anyURI;
+#                ] ;
         ] .
 tedm:TenderReceiver a rr:TriplesMap ;
     rr:predicateObjectMap
@@ -952,15 +962,18 @@ tedm:TenderReceiver a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:TenderReceiverOrganisationContactPoint
                 ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasBuyerProfile ;
-            rr:objectMap
-                [
-                    rml:reference "URL_BUYER";
-                    rr:datatype xsd:anyURI;
-                ] ;
+#        ] ;
+# Although the URL_BUYER XML is present in the ADDRESS_PARTICIPATION, which is used to specify the
+# address of the TenderReceiver, EPO does not foresee any property to link the value
+# stored in that XML element (only the epo:Buyer has a property to express buyer profile, not on any other roles)
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasBuyerProfile ;
+#            rr:objectMap
+#                [
+#                    rml:reference "URL_BUYER";
+#                    rr:datatype xsd:anyURI;
+#                ] ;
         ] .
 tedm:TenderReceiverOrganisation a rr:TriplesMap ;
     rr:predicateObjectMap
@@ -984,7 +997,7 @@ tedm:TenderReceiverOrganisation a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate legal:registeredAddress ;
+            rr:predicate cv:registeredAddress ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:TenderReceiverOrganisationAddress

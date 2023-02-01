@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -41,7 +40,7 @@
 <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-117-308400/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a cccev:ContactPoint;
   epo:hasContactName "Mme Anne Geais"@fr;
-  epo:hasInternetAddress "http://www.aeroportsdeparis.fr";
+  epo:hasInternetAddress "http://www.aeroportsdeparis.fr"^^xsd:anyURI;
   cccev:email "anne.geais@adp.fr";
   cccev:telephone "+33 786270061" .
 
@@ -51,40 +50,11 @@
   epo:hasID <http://data.europa.eu/a4g/resource/ContractIdentifier/2021-S-117-308400/527e871b-562d-3858-b2cb-c75e9b69e338>;
   epo:hasTitle "SGP Gare — marche 10 — passerelles F\" — (charpente métallique) et auvents extérieurs"@fr;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2021-S-117-308400/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-117-308400/527e871b-562d-3858-b2cb-c75e9b69e338> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-117-308400/527e871b-562d-3858-b2cb-c75e9b69e338> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2021-S-117-308400/527e871b-562d-3858-b2cb-c75e9b69e338>
   a epo:Identifier;
   epo:hasIdentifierValue "1" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-117-308400/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasLegalName "Brézillon"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-117-308400/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-117-308400/2ae90609-3f1d-354a-b166-5acd6e29b555>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasLegalName "ACML Fayat"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-117-308400/2ae90609-3f1d-354a-b166-5acd6e29b555> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-117-308400/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRE22>;
-  locn:postName "Margny-les-Compiègne" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-117-308400/2ae90609-3f1d-354a-b166-5acd6e29b555>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRG02>;
-  locn:postName "Bellevigne-les-Châteaux" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationGroup/2021-S-117-308400/14955bf6-88af-3773-b2c5-6a1cddff388a>
-  a epo:OrganisationGroup;
-  epo:hasMember <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-117-308400/11c6525a-cbf9-36a2-9b0b-e686c6668d03>,
-    <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-117-308400/2ae90609-3f1d-354a-b166-5acd6e29b555> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2021-S-117-308400/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a epo:ContractTerm;
@@ -100,6 +70,35 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2021-S-117-308400/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a locn:Address;
   locn:fullAddress "Paris-Orly"@fr .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-117-308400/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "Brézillon"@fr;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-117-308400/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-117-308400/2ae90609-3f1d-354a-b166-5acd6e29b555>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "ACML Fayat"@fr;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-117-308400/2ae90609-3f1d-354a-b166-5acd6e29b555> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-117-308400/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRE22>;
+  locn:postName "Margny-les-Compiègne" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-117-308400/2ae90609-3f1d-354a-b166-5acd6e29b555>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRG02>;
+  locn:postName "Bellevigne-les-Châteaux" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationGroup/2021-S-117-308400/14955bf6-88af-3773-b2c5-6a1cddff388a>
+  a epo:OrganisationGroup;
+  epo:hasMember <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-117-308400/11c6525a-cbf9-36a2-9b0b-e686c6668d03>,
+    <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-117-308400/2ae90609-3f1d-354a-b166-5acd6e29b555> .
 
 <http://data.europa.eu/a4g/resource/Lot/2021-S-117-308400/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a epo:Lot;
@@ -160,8 +159,8 @@
 <http://data.europa.eu/a4g/resource/Organisation/2021-S-117-308400/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a org:Organization;
   epo:hasLegalName "Aéroports de Paris"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/airport>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-117-308400/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/airport>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-117-308400/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-117-308400/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a locn:Address;
@@ -178,9 +177,9 @@
   epo:hasDescription "Études d’exécution et travaux pour la réalisation d'une passerelle en charpente métallique (avec plancher collaborant) fondée sur micropieux et la réalisation de deux auvents en charpente métallique et vitreries extérieures.Cette passerelle se situe à l'Aéroport de Paris-Orly, à l'extrémité du Viaduc d'accès à l'aérogare d'Orly 1 et 2, devant l'aérogare d'Orly 3. Elle permet la circulation verticale entre le niveau 0 (près des sorties «émergences» de la nouvelle gare de métro SGP de l'Aéroport de Paris-Orly) et le niveau 1 de l'Aérogare d'Orly 3.Les travaux du présent marché seront exécutés en parallèle et en interface avec les travaux de gros œuvre, de 2nd-œuvre, des corps d’état techniques et des ascenseurs et escaliers mécaniques de la gare SGP à l'Aéroport de Paris-Orly."@fr;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2021-S-117-308400/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-117-308400/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2021-S-117-308400/636e3166-5ecc-350b-867b-7bf2072a2c03>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-117-308400/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasTitle "SGP Gare — marche 10 — passerelles f\" — (charpente métallique) et auvents extérieurs"@fr;
   epo:isCoveredByGPA true;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2021-S-117-308400/15183658-b3d6-3d9d-88d4-6e02c7e3b7b9> .
@@ -216,7 +215,7 @@
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2021-S-117-308400/cda2e79a-2b54-3d8d-8cbd-025f430ee110>
   a org:Organization;
   epo:hasLegalName "Greffe du Tribunal de grande instance de Paris"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2021-S-117-308400/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2021-S-117-308400/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2021-S-117-308400/9aa38039-a45b-3425-8be8-95054b97e247>
   a epo:ReviewTerm;
@@ -229,7 +228,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2021-S-117-308400/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a org:Organization;
   epo:hasLegalName "Tribunal de grand instance de Paris"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-117-308400/13730a07-65b0-306c-a9b5-a8929927a6a1> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-117-308400/13730a07-65b0-306c-a9b5-a8929927a6a1> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-117-308400/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a locn:Address;
@@ -256,8 +255,8 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-117-308400/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-117-308400/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-117-308400/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-117-308400/2ae90609-3f1d-354a-b166-5acd6e29b555>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-117-308400/2ae90609-3f1d-354a-b166-5acd6e29b555> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-117-308400/2ae90609-3f1d-354a-b166-5acd6e29b555> .

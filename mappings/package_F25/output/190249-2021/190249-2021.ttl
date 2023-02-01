@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -22,18 +21,14 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2021-S-074-190249/5a0e0822-353f-34b8-9001-b27f293ef321>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2021-S-074-190249/41c3580d-d7b5-3ead-a7df-4e886771daad>;
+  epo:hasBuyerProfile "https://www.achatpublic.com"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-074-190249/188615bc-907f-376a-b3e0-b7f440ca4c64>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2021-S-074-190249/188615bc-907f-376a-b3e0-b7f440ca4c64> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2021-S-074-190249/41c3580d-d7b5-3ead-a7df-4e886771daad>
-  a epo:BuyerProfile;
-  epo:hasURL "https://www.achatpublic.com" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-074-190249/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a cccev:ContactPoint;
   epo:hasContactName "M. Laurent Probst, directeur général d'Île-de-France Mobilités — Mme Aurélie Gibut — Mme Ombeline Morand-Monteil — finance, achats, contrats, service pilotage contractuel"@fr;
-  epo:hasInternetAddress "https://www.iledefrance-mobilites.fr/";
+  epo:hasInternetAddress "https://www.iledefrance-mobilites.fr/"^^xsd:anyURI;
   cccev:email "dsp@iledefrance-mobilites.fr";
   cccev:telephone "+33 10147532800" .
 
@@ -41,25 +36,7 @@
   a epo:ConcessionContract, epo:Contract;
   epo:hasTitle "Délégation de service public pour l'exploitation des lignes de bus desservant l'ouest de la Communauté urbaine Grand Paris Seine et Oise et la Communauté de communes des Portes de l'Île-de-France"@fr;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2021-S-074-190249/5a50554f-89ac-3a44-9d4f-643949ca9831>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-074-190249/2b425ab1-553e-3915-a060-80f1d3cff764> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-074-190249/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
-  a org:Organization;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2021-S-074-190249/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>;
-  epo:hasLegalName "RATP Développement"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-074-190249/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-074-190249/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR101>;
-  locn:postCode "75012";
-  locn:postName "Paris";
-  locn:thoroughfare "54 quai de la Rapée" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2021-S-074-190249/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
-  a epo:Identifier;
-  epo:hasIdentifierValue "38979500600029" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-074-190249/2b425ab1-553e-3915-a060-80f1d3cff764> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2021-S-074-190249/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:ContractTerm;
@@ -74,6 +51,24 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2021-S-074-190249/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a locn:Address;
   locn:fullAddress "Mantes-la-Jolie, Mantes-la-Ville, Limay, Buchelay, Magnanville, Gargenville, Epône, Aubergenville, Rosny-sur-Seine, Rolleboise, Bonnières-sur-Seine, Bréval."@fr .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-074-190249/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
+  a org:Organization;
+  epo:hasID <http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2021-S-074-190249/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>;
+  epo:hasLegalName "RATP Développement"@fr;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-074-190249/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-074-190249/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR101>;
+  locn:postCode "75012";
+  locn:postName "Paris";
+  locn:thoroughfare "54 quai de la Rapée" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2021-S-074-190249/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
+  a epo:Identifier;
+  epo:hasIdentifierValue "38979500600029" .
 
 <http://data.europa.eu/a4g/resource/Duration/2021-S-074-190249/1d09e8e7-ef82-30d4-befb-d86c000a8e5a>
   a epo:Duration;
@@ -147,8 +142,8 @@
   a org:Organization;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2021-S-074-190249/188615bc-907f-376a-b3e0-b7f440ca4c64>;
   epo:hasLegalName "Île-de-France Mobilités"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/urttb>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-074-190249/188615bc-907f-376a-b3e0-b7f440ca4c64> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/urttb>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-074-190249/188615bc-907f-376a-b3e0-b7f440ca4c64> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-074-190249/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a locn:Address;
@@ -170,8 +165,8 @@
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2021-S-074-190249/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0023>;
   epo:hasMainFeature "Procédure négociée restreinte.";
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-074-190249/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2021-S-074-190249/5a50554f-89ac-3a44-9d4f-643949ca9831>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-074-190249/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasTitle "Délégation de service public pour l'exploitation des lignes de bus desservant l'ouest de la Communauté urbaine Grand Paris Seine et Oise et la Communauté de communes des Portes de l'Île-de-France"@fr;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2021-S-074-190249/5a0e0822-353f-34b8-9001-b27f293ef321> .
 
@@ -206,7 +201,7 @@
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2021-S-074-190249/fdc5fccd-dd12-3226-8a44-ee7b6f769c12>
   a cccev:ContactPoint;
   epo:hasFax "+33 1044594646";
-  epo:hasInternetAddress "http://paris.tribunal-administratif.fr/";
+  epo:hasInternetAddress "http://paris.tribunal-administratif.fr/"^^xsd:anyURI;
   cccev:email "greffe.ta-paris@juradm.fr";
   cccev:telephone "+33 1044594400" .
 
@@ -214,7 +209,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Paris"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2021-S-074-190249/fdc5fccd-dd12-3226-8a44-ee7b6f769c12>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2021-S-074-190249/fdc5fccd-dd12-3226-8a44-ee7b6f769c12> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2021-S-074-190249/fdc5fccd-dd12-3226-8a44-ee7b6f769c12> .
 
 <http://data.europa.eu/a4g/resource/Reviewer/2021-S-074-190249/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a epo:Reviewer;
@@ -223,7 +218,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2021-S-074-190249/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a cccev:ContactPoint;
   epo:hasFax "+33 1044594646";
-  epo:hasInternetAddress "http://paris.tribunal-administratif.fr/";
+  epo:hasInternetAddress "http://paris.tribunal-administratif.fr/"^^xsd:anyURI;
   cccev:email "greffe.ta-paris@juradm.fr";
   cccev:telephone "+33 1044594400" .
 
@@ -231,7 +226,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Paris"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2021-S-074-190249/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-074-190249/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-074-190249/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-074-190249/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a locn:Address;
@@ -257,4 +252,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-074-190249/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-074-190249/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-074-190249/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .

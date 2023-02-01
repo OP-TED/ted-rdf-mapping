@@ -1,7 +1,6 @@
 @prefix cccev: <http://data.europa.eu/m8g/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -9,33 +8,17 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2018-S-095-216943/8a551eea-f8a4-3a92-a92e-0f220d0ba9d0>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-095-216943/1a7db7e1-758c-3b79-8e36-131fbe7ef3e3>;
+  epo:hasBuyerProfile "https://marchespublics596280.fr"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-095-216943/93f156bb-9604-37f9-a902-d2bc2c71ac19>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-095-216943/93f156bb-9604-37f9-a902-d2bc2c71ac19> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-095-216943/1a7db7e1-758c-3b79-8e36-131fbe7ef3e3>
-  a epo:BuyerProfile;
-  epo:hasURL "https://marchespublics596280.fr" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-095-216943/93f156bb-9604-37f9-a902-d2bc2c71ac19>
   a cccev:ContactPoint;
   epo:hasContactName "Ville: M. Sauvage Stéphane — AMO TW Ingenierie référent Vincent Dubar"@fr;
   epo:hasFax "+33 328623948";
-  epo:hasInternetAddress "http://www.bourbourg.fr";
+  epo:hasInternetAddress "http://www.bourbourg.fr"^^xsd:anyURI;
   cccev:email "urbanisme@mairie-bourbourg.fr";
   cccev:telephone "+33 328659640" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2018-S-095-216943/3d7b590a-2bfb-3014-b2ff-ec8ab5f56ea1>
-  a epo:Business, org:Organisation;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasLegalName "BPLUSB Architectures"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2018-S-095-216943/3d7b590a-2bfb-3014-b2ff-ec8ab5f56ea1> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2018-S-095-216943/3d7b590a-2bfb-3014-b2ff-ec8ab5f56ea1>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRE11>;
-  locn:postName "Lille" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2018-S-095-216943/d9717c09-a32e-34b8-99e6-1d890b633b16>
   a epo:ContractTerm;
@@ -43,6 +26,18 @@
 
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2018-S-095-216943/d9717c09-a32e-34b8-99e6-1d890b633b16>
   a dct:Location .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2018-S-095-216943/3d7b590a-2bfb-3014-b2ff-ec8ab5f56ea1>
+  a epo:Business, org:Organisation;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "BPLUSB Architectures"@fr;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2018-S-095-216943/3d7b590a-2bfb-3014-b2ff-ec8ab5f56ea1> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2018-S-095-216943/3d7b590a-2bfb-3014-b2ff-ec8ab5f56ea1>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRE11>;
+  locn:postName "Lille" .
 
 <http://data.europa.eu/a4g/resource/DesignContestRegimeTerm/2018-S-095-216943/356edeab-f605-3fc3-abbb-c699db8248e6>
   a epo:DesignContestRegimeTerm;
@@ -97,10 +92,10 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2018-S-095-216943/93f156bb-9604-37f9-a902-d2bc2c71ac19>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasLegalName "Ville de Bourbourg"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-095-216943/93f156bb-9604-37f9-a902-d2bc2c71ac19> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-095-216943/93f156bb-9604-37f9-a902-d2bc2c71ac19> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-095-216943/93f156bb-9604-37f9-a902-d2bc2c71ac19>
   a locn:Address;
@@ -116,9 +111,9 @@
 <http://data.europa.eu/a4g/resource/Procedure/2018-S-095-216943/4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b>
   a epo:Procedure;
   epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2018-S-095-216943/d9717c09-a32e-34b8-99e6-1d890b633b16>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-095-216943/4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2018-S-095-216943/d9717c09-a32e-34b8-99e6-1d890b633b16>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-095-216943/4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b>;
   epo:hasTitle """
                Concours de maîtrise d'œuvre sur esquisse pour la réhabilitation et l'extension du centre socio-éducatif de Bourbourg
             """@fr;
@@ -139,7 +134,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2018-S-095-216943/5641ce6f-6854-3e39-9e76-44d671aacd65>
   a org:Organization;
   epo:hasLegalName "Tribunal administratif"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-095-216943/5641ce6f-6854-3e39-9e76-44d671aacd65> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-095-216943/5641ce6f-6854-3e39-9e76-44d671aacd65> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-095-216943/5641ce6f-6854-3e39-9e76-44d671aacd65>
   a locn:Address;
@@ -162,4 +157,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2018-S-095-216943/3d7b590a-2bfb-3014-b2ff-ec8ab5f56ea1>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2018-S-095-216943/3d7b590a-2bfb-3014-b2ff-ec8ab5f56ea1> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2018-S-095-216943/3d7b590a-2bfb-3014-b2ff-ec8ab5f56ea1> .

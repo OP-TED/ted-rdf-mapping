@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -26,18 +25,14 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2022-S-131-374864/5a0e0822-353f-34b8-9001-b27f293ef321>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2022-S-131-374864/41c3580d-d7b5-3ead-a7df-4e886771daad>;
+  epo:hasBuyerProfile "http://www.Rijswijk.nl"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2022-S-131-374864/188615bc-907f-376a-b3e0-b7f440ca4c64>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2022-S-131-374864/188615bc-907f-376a-b3e0-b7f440ca4c64> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2022-S-131-374864/41c3580d-d7b5-3ead-a7df-4e886771daad>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.Rijswijk.nl" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2022-S-131-374864/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a cccev:ContactPoint;
   epo:hasContactName "Arjan Storm"@nl;
-  epo:hasInternetAddress "http://www.Rijswijk.nl";
+  epo:hasInternetAddress "http://www.Rijswijk.nl"^^xsd:anyURI;
   cccev:email "inkoop@rijswijk.nl";
   cccev:telephone "+31 703261601" .
 
@@ -45,33 +40,7 @@
   a epo:ConcessionContract, epo:Contract;
   epo:hasTitle "Concessieopdracht horecavoorziening  Wilhelminapark Rijswijk"@nl;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2022-S-131-374864/5a50554f-89ac-3a44-9d4f-643949ca9831>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2022-S-131-374864/2b425ab1-553e-3915-a060-80f1d3cff764> .
-
-<http://data.europa.eu/a4g/resource/ContractContactPoint/2022-S-131-374864/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
-  a cccev:ContactPoint;
-  epo:hasInternetAddress "http://www.cesant.nl";
-  cccev:email "patrick@cesant.nl";
-  cccev:telephone "+31 104269473" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2022-S-131-374864/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2022-S-131-374864/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>;
-  epo:hasLegalName "Césant Catering B.V."@nl;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractContactPoint/2022-S-131-374864/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2022-S-131-374864/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2022-S-131-374864/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NLD>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/NL>;
-  locn:postCode "3125BN";
-  locn:postName "SCHIEDAM";
-  locn:thoroughfare "Van Heekstraat 27 G" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2022-S-131-374864/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
-  a epo:Identifier;
-  epo:hasIdentifierValue "24214692" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2022-S-131-374864/2b425ab1-553e-3915-a060-80f1d3cff764> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2022-S-131-374864/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:ContractTerm;
@@ -86,6 +55,32 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2022-S-131-374864/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a locn:Address;
   locn:fullAddress "Rijswijk"@nl .
+
+<http://data.europa.eu/a4g/resource/ContractorContactPoint/2022-S-131-374864/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
+  a cccev:ContactPoint;
+  epo:hasInternetAddress "http://www.cesant.nl"^^xsd:anyURI;
+  cccev:email "patrick@cesant.nl";
+  cccev:telephone "+31 104269473" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2022-S-131-374864/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasID <http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2022-S-131-374864/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>;
+  epo:hasLegalName "Césant Catering B.V."@nl;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorContactPoint/2022-S-131-374864/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2022-S-131-374864/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2022-S-131-374864/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NLD>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/NL>;
+  locn:postCode "3125BN";
+  locn:postName "SCHIEDAM";
+  locn:thoroughfare "Van Heekstraat 27 G" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2022-S-131-374864/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
+  a epo:Identifier;
+  epo:hasIdentifierValue "24214692" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2022-S-131-374864/3ff3e293-06ca-390c-bee2-dd28ba2e570e>
   a epo:DirectAwardTerm;
@@ -121,7 +116,7 @@
 <http://data.europa.eu/a4g/resource/MediatorContactPoint/2022-S-131-374864/5833b6b8-dd30-3289-9016-fb64e7bb3c6e>
   a cccev:ContactPoint;
   epo:hasFax "+31 703261010";
-  epo:hasInternetAddress "http://www.rijswijk.nl";
+  epo:hasInternetAddress "http://www.rijswijk.nl"^^xsd:anyURI;
   cccev:email "inkoop@rijswijk.nl";
   cccev:telephone "+31 703261000" .
 
@@ -129,7 +124,7 @@
   a org:Organization;
   epo:hasLegalName "Klachtenmeldpunt aanbesteden van de gemeente  Rijswijk, zie http://www.rijswijk.nl/inkoop-aanbesteding"@nl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/MediatorContactPoint/2022-S-131-374864/5833b6b8-dd30-3289-9016-fb64e7bb3c6e>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2022-S-131-374864/5833b6b8-dd30-3289-9016-fb64e7bb3c6e> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2022-S-131-374864/5833b6b8-dd30-3289-9016-fb64e7bb3c6e> .
 
 <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2022-S-131-374864/5833b6b8-dd30-3289-9016-fb64e7bb3c6e>
   a locn:Address;
@@ -167,11 +162,11 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2022-S-131-374864/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2022-S-131-374864/188615bc-907f-376a-b3e0-b7f440ca4c64>;
   epo:hasLegalName "Gemeente Rijswijk"@nl;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-131-374864/188615bc-907f-376a-b3e0-b7f440ca4c64> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-131-374864/188615bc-907f-376a-b3e0-b7f440ca4c64> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-131-374864/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a locn:Address;
@@ -187,8 +182,8 @@
 
 <http://data.europa.eu/a4g/resource/Period/2022-S-131-374864/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:Period;
-  epo:hasBeginning "2022-07-06"^^xsd:datetime;
-  epo:hasEnd "2052-07-07"^^xsd:datetime .
+  epo:hasBeginning "2022-07-06T00:00:00"^^xsd:dateTime;
+  epo:hasEnd "2052-07-07T00:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/Procedure/2022-S-131-374864/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>
   a epo:Procedure;
@@ -198,9 +193,9 @@
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/MonetaryValueProcedure/2022-S-131-374864/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2022-S-131-374864/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0023>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2022-S-131-374864/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2022-S-131-374864/5a50554f-89ac-3a44-9d4f-643949ca9831>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2022-S-131-374864/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasTitle "Concessieopdracht horecavoorziening  Wilhelminapark Rijswijk"@nl;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/DirectAwardTerm/2022-S-131-374864/3ff3e293-06ca-390c-bee2-dd28ba2e570e>,
     <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2022-S-131-374864/5a0e0822-353f-34b8-9001-b27f293ef321> .
@@ -228,14 +223,14 @@
 
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2022-S-131-374864/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://www.rechtspraak.nl";
+  epo:hasInternetAddress "http://www.rechtspraak.nl"^^xsd:anyURI;
   cccev:email "info@rechtspraak.nl" .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2022-S-131-374864/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a org:Organization;
   epo:hasLegalName "Rechtbank te Den Haag"@nl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2022-S-131-374864/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-131-374864/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-131-374864/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-131-374864/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a locn:Address;
@@ -261,4 +256,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2022-S-131-374864/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2022-S-131-374864/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2022-S-131-374864/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .

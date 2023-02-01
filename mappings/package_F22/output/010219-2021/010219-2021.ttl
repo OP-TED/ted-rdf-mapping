@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,13 +17,9 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2021-S-006-010219/841f832b-8a2b-3a73-a4a6-85439d64c6be>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2021-S-006-010219/869d5405-9b33-3f2f-8a44-38f4bf6c8f11>;
+  epo:hasBuyerProfile "https://hub.negometrix.com/buyer/1286"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-006-010219/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2021-S-006-010219/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2021-S-006-010219/869d5405-9b33-3f2f-8a44-38f4bf6c8f11>
-  a epo:BuyerProfile;
-  epo:hasURL "https://hub.negometrix.com/buyer/1286"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-006-010219/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
   a cccev:ContactPoint;
@@ -37,19 +32,7 @@
   a epo:Contract;
   epo:hasContractConclusionDate "2020-12-17"^^xsd:date;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2021-S-006-010219/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-006-010219/67f40fa4-0fdc-31df-a278-a9ec4e2c34ff> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-006-010219/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasLegalName "Van der Heide Opleidingen & Inspecties"@nl;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-006-010219/46d95603-a3e1-3d2c-8e32-b10fa665dec4> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-006-010219/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NLD>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/NL>;
-  locn:postName "Drachten" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-006-010219/67f40fa4-0fdc-31df-a278-a9ec4e2c34ff> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2021-S-006-010219/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
   a epo:ContractTerm;
@@ -58,6 +41,18 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2021-S-006-010219/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
   a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/NL> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-006-010219/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "Van der Heide Opleidingen & Inspecties"@nl;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-006-010219/46d95603-a3e1-3d2c-8e32-b10fa665dec4> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-006-010219/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NLD>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/NL>;
+  locn:postName "Drachten" .
 
 <http://data.europa.eu/a4g/resource/Lot/2021-S-006-010219/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
   a epo:Lot;
@@ -113,8 +108,8 @@
   a org:Organization;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2021-S-006-010219/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>;
   epo:hasLegalName "TenneT TSO bv"@nl;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/electricity>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-006-010219/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/electricity>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-006-010219/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-006-010219/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
   a locn:Address;
@@ -134,8 +129,8 @@
   epo:hasDescription "Het doel van deze aanbesteding is om te komen tot een opleider om de daarvoor aangewezen medewerkers van TenneT op te leiden en te examineren voor het behalen van een certificaat voor een van de aanwijzingen binnen het domein Transport, conform de Stipel criteria."@nl;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2021-S-006-010219/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-006-010219/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2021-S-006-010219/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-006-010219/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
   epo:hasTitle "Veiligheidsopleiding BEI-Stipel"@nl;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2021-S-006-010219/841f832b-8a2b-3a73-a4a6-85439d64c6be> .
 
@@ -168,7 +163,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2021-S-006-010219/f408af29-86f8-3547-8427-ccade0632c83>
   a org:Organization;
   epo:hasLegalName "Rechtbank Arnhem"@nl;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-006-010219/f408af29-86f8-3547-8427-ccade0632c83> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-006-010219/f408af29-86f8-3547-8427-ccade0632c83> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-006-010219/f408af29-86f8-3547-8427-ccade0632c83>
   a locn:Address;
@@ -195,4 +190,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-006-010219/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-006-010219/46d95603-a3e1-3d2c-8e32-b10fa665dec4> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-006-010219/46d95603-a3e1-3d2c-8e32-b10fa665dec4> .

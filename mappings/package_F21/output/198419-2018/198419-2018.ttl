@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,22 +17,18 @@
 
 <http://data.europa.eu/a4g/resource/AccessTerm/2018-S-088-198419/08cc6b87-fd77-3965-a6c4-7bd72326900e>
   a epo:AccessTerm;
-  epo:hasPublicAccessURL <https://marches.maximilien.fr>;
+  epo:hasPublicAccessURL "https://marches.maximilien.fr"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
 
 <http://data.europa.eu/a4g/resource/Buyer/2018-S-088-198419/08cc6b87-fd77-3965-a6c4-7bd72326900e>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-088-198419/5eeafc96-605e-3b6c-9ca0-91010603c507>;
+  epo:hasBuyerProfile "https://marches.maximilien.fr"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-088-198419/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-088-198419/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
-<http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-088-198419/5eeafc96-605e-3b6c-9ca0-91010603c507>
-  a epo:BuyerProfile;
-  epo:hasURL "https://marches.maximilien.fr" .
-
 <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-088-198419/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://nanterre.fr";
+  epo:hasInternetAddress "http://nanterre.fr"^^xsd:anyURI;
   cccev:email "marches.publics@mairie-nanterre.fr" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2018-S-088-198419/10a954c5-4b3f-3ea1-add9-eda3a9735c67>
@@ -72,22 +67,18 @@
 <http://data.europa.eu/a4g/resource/FrameworkAgreementTerm/2018-S-088-198419/168a6c96-75f8-304a-bff5-0d0cf3c2f20c>
   a epo:FrameworkAgreementTerm .
 
-<http://data.europa.eu/a4g/resource/InformationProviderBuyerProfile/2018-S-088-198419/30e83b1e-5bd7-3252-a301-e640e8bd88a6>
-  a epo:BuyerProfile;
-  epo:hasURL "https://marches.maximilien.fr" .
-
 <http://data.europa.eu/a4g/resource/InformationProviderContactPoint/2018-S-088-198419/0e97bbcf-a1e9-3b4e-bfbe-79eb02cbb87e>
   a cccev:ContactPoint;
   epo:hasContactName "Service des marchés"@fr;
   epo:hasFax "+33 147295399";
-  epo:hasInternetAddress "http://nanterre.fr";
+  epo:hasInternetAddress "http://nanterre.fr"^^xsd:anyURI;
   cccev:email "marches.publics@mairie-nanterre.fr";
   cccev:telephone "+33 147295244" .
 
 <http://data.europa.eu/a4g/resource/InformationProviderOrganisation/2018-S-088-198419/0e97bbcf-a1e9-3b4e-bfbe-79eb02cbb87e>
   a org:Organization;
   epo:hasLegalName "Mairie de Nanterre"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/InformationProviderOrganisationAddress/2018-S-088-198419/0e97bbcf-a1e9-3b4e-bfbe-79eb02cbb87e> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/InformationProviderOrganisationAddress/2018-S-088-198419/0e97bbcf-a1e9-3b4e-bfbe-79eb02cbb87e> .
 
 <http://data.europa.eu/a4g/resource/InformationProviderOrganisationAddress/2018-S-088-198419/0e97bbcf-a1e9-3b4e-bfbe-79eb02cbb87e>
   a locn:Address;
@@ -173,10 +164,10 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2018-S-088-198419/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasLegalName "Mairie de Nanterre"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-088-198419/97c28c49-5587-3e91-95b4-4e48e30ed684> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-088-198419/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-088-198419/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a locn:Address;
@@ -213,10 +204,10 @@
                Lot no 1: maximum de 1 000 000 EUR (HT) / Lot no 2: maximum de 200 000 EUR (HT).
             """@fr;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2018-S-088-198419/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-088-198419/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2018-S-088-198419/10a954c5-4b3f-3ea1-add9-eda3a9735c67>,
     <http://data.europa.eu/a4g/resource/Lot/2018-S-088-198419/e3c5791a-e132-3d09-8ef5-af0f6ebfdc2c>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-088-198419/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasTitle """
                Prestations de surveillance, de gardiennage et de sécurité incendie
             """@fr;
@@ -248,7 +239,6 @@
 
 <http://data.europa.eu/a4g/resource/ProcurementProcedureInformationProvider/2018-S-088-198419/0e97bbcf-a1e9-3b4e-bfbe-79eb02cbb87e>
   a epo:ProcurementProcedureInformationProvider;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/InformationProviderBuyerProfile/2018-S-088-198419/30e83b1e-5bd7-3252-a301-e640e8bd88a6>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/InformationProviderContactPoint/2018-S-088-198419/0e97bbcf-a1e9-3b4e-bfbe-79eb02cbb87e>;
   epo:playedBy <http://data.europa.eu/a4g/resource/InformationProviderOrganisation/2018-S-088-198419/0e97bbcf-a1e9-3b4e-bfbe-79eb02cbb87e> .
 
@@ -266,7 +256,7 @@
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2018-S-088-198419/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3>
   a cccev:ContactPoint;
   epo:hasFax "+33 130173459";
-  epo:hasInternetAddress "http://cergy-pontoise.tribunal-administratif.fr";
+  epo:hasInternetAddress "http://cergy-pontoise.tribunal-administratif.fr"^^xsd:anyURI;
   cccev:email "greffe.ta-cergy-pontoise@juradm.fr";
   cccev:telephone "+33 130173400" .
 
@@ -274,7 +264,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2018-S-088-198419/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2018-S-088-198419/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2018-S-088-198419/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3> .
 
 <http://data.europa.eu/a4g/resource/Reviewer/2018-S-088-198419/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a epo:Reviewer;
@@ -283,7 +273,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-088-198419/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a cccev:ContactPoint;
   epo:hasFax "+33 130173459";
-  epo:hasInternetAddress "http://cergy-pontoise.tribunal-administratif.fr";
+  epo:hasInternetAddress "http://cergy-pontoise.tribunal-administratif.fr"^^xsd:anyURI;
   cccev:email "greffe.ta-cergy-pontoise@juradm.fr";
   cccev:telephone "+33 130173400" .
 
@@ -291,7 +281,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-088-198419/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-088-198419/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-088-198419/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-088-198419/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a locn:Address;
@@ -309,24 +299,18 @@
 <http://data.europa.eu/a4g/resource/SubmissionTerm/2018-S-088-198419/168a6c96-75f8-304a-bff5-0d0cf3c2f20c>
   a epo:SubmissionTerm;
   epo:hasLanguage "FR";
-  epo:hasReceiptDeadline "2018-05-25"^^xsd:datetime;
-  epo:hasReceiptExpressionsDeadline "16:00"^^xsd:datetime .
+  epo:hasReceiptDeadline "2018-05-25T16:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/TenderReceiver/2018-S-088-198419/da9ce01b-78f4-3796-add3-a587a42e6219>
   a epo:TenderReceiver;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/TenderReceiverBuyerProfile/2018-S-088-198419/54b05395-09ed-36e0-b967-a174e3ebef21>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/TenderReceiverOrganisationContactPoint/2018-S-088-198419/da9ce01b-78f4-3796-add3-a587a42e6219>;
   epo:playedBy <http://data.europa.eu/a4g/resource/TenderReceiverOrganisation/2018-S-088-198419/da9ce01b-78f4-3796-add3-a587a42e6219> .
-
-<http://data.europa.eu/a4g/resource/TenderReceiverBuyerProfile/2018-S-088-198419/54b05395-09ed-36e0-b967-a174e3ebef21>
-  a epo:BuyerProfile;
-  epo:hasURL "https://marches.maximilien.fr" .
 
 <http://data.europa.eu/a4g/resource/TenderReceiverOrganisation/2018-S-088-198419/da9ce01b-78f4-3796-add3-a587a42e6219>
   a org:Organization;
   epo:hasLegalName "Mairie de Nanterre"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/TenderReceiverOrganisationContactPoint/2018-S-088-198419/da9ce01b-78f4-3796-add3-a587a42e6219>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/TenderReceiverOrganisationAddress/2018-S-088-198419/da9ce01b-78f4-3796-add3-a587a42e6219> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/TenderReceiverOrganisationAddress/2018-S-088-198419/da9ce01b-78f4-3796-add3-a587a42e6219> .
 
 <http://data.europa.eu/a4g/resource/TenderReceiverOrganisationAddress/2018-S-088-198419/da9ce01b-78f4-3796-add3-a587a42e6219>
   a locn:Address;
@@ -340,6 +324,6 @@
   a cccev:ContactPoint;
   epo:hasContactName "Service des marchés"@fr;
   epo:hasFax "+33 147295399";
-  epo:hasInternetAddress "http://nanterre.fr";
+  epo:hasInternetAddress "http://nanterre.fr"^^xsd:anyURI;
   cccev:email "marches.publics@mairie-nanterre.fr";
   cccev:telephone "+33 147295244" .

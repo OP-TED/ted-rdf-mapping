@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -24,7 +23,7 @@
 <http://data.europa.eu/a4g/resource/ContactPoint/2020-S-138-340396/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a cccev:ContactPoint;
   epo:hasFax "+49 6116939-400";
-  epo:hasInternetAddress "https://vergabe.hessen.de";
+  epo:hasInternetAddress "https://vergabe.hessen.de"^^xsd:anyURI;
   cccev:email "Beschaffung@hcc.hessen.de";
   cccev:telephone "+49 6116939-484" .
 
@@ -34,25 +33,11 @@
   epo:hasID <http://data.europa.eu/a4g/resource/ContractIdentifier/2020-S-138-340396/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172>;
   epo:hasTitle "Beherbergung 2.-49. KW 2020, 1.-49. KW 2021, 1.-41. KW 2022"@de;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2020-S-138-340396/10a954c5-4b3f-3ea1-add9-eda3a9735c67>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2020-S-138-340396/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2020-S-138-340396/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2020-S-138-340396/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172>
   a epo:Identifier;
   epo:hasIdentifierValue "1" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2020-S-138-340396/2c83355d-939c-3603-bdc9-70a1c649caee>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasLegalName "Göbels Hotel Rodenberg"@de;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2020-S-138-340396/2c83355d-939c-3603-bdc9-70a1c649caee> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2020-S-138-340396/2c83355d-939c-3603-bdc9-70a1c649caee>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE733>;
-  locn:postCode "36199";
-  locn:postName "Rotenburg a. d. Fulda";
-  locn:thoroughfare "Heinz-Meise-Straße 96-98" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2020-S-138-340396/10a954c5-4b3f-3ea1-add9-eda3a9735c67>
   a epo:ContractTerm;
@@ -66,6 +51,20 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2020-S-138-340396/10a954c5-4b3f-3ea1-add9-eda3a9735c67>
   a locn:Address;
   locn:fullAddress "Rotenburg an der Fulda"@de .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2020-S-138-340396/2c83355d-939c-3603-bdc9-70a1c649caee>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "Göbels Hotel Rodenberg"@de;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2020-S-138-340396/2c83355d-939c-3603-bdc9-70a1c649caee> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2020-S-138-340396/2c83355d-939c-3603-bdc9-70a1c649caee>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE733>;
+  locn:postCode "36199";
+  locn:postName "Rotenburg a. d. Fulda";
+  locn:thoroughfare "Heinz-Meise-Straße 96-98" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2020-S-138-340396/168a6c96-75f8-304a-bff5-0d0cf3c2f20c>
   a epo:DirectAwardTerm;
@@ -115,10 +114,10 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2020-S-138-340396/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasLegalName "Land Hessen, vertreten durch das HCC Hessisches Competence Center für Neue Verwaltungssteuerung – Zentrale Beschaffung"@de;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2020-S-138-340396/97c28c49-5587-3e91-95b4-4e48e30ed684> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2020-S-138-340396/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2020-S-138-340396/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a locn:Address;
@@ -140,9 +139,9 @@
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2020-S-138-340396/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasMainFeature "Der öffentliche Auftraggeber behält sich das Recht vor, den Auftrag auf der Grundlage der Erstangebote zu vergeben, ohne Verhandlungen durchzuführen.";
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2020-S-138-340396/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2020-S-138-340396/10a954c5-4b3f-3ea1-add9-eda3a9735c67>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2020-S-138-340396/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasTitle "Beherbergungsdienst Rotenburg an der Fulda 2020-2022"@de;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/DirectAwardTerm/2020-S-138-340396/168a6c96-75f8-304a-bff5-0d0cf3c2f20c>,
     <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2020-S-138-340396/08cc6b87-fd77-3965-a6c4-7bd72326900e> .
@@ -176,7 +175,7 @@
   a org:Organization;
   epo:hasLegalName "Vergabekammer des Landes Hessen beim Regierungspräsidium Darmstadt"@de;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2020-S-138-340396/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2020-S-138-340396/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2020-S-138-340396/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2020-S-138-340396/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a locn:Address;
@@ -205,4 +204,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2020-S-138-340396/2c83355d-939c-3603-bdc9-70a1c649caee>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2020-S-138-340396/2c83355d-939c-3603-bdc9-70a1c649caee> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2020-S-138-340396/2c83355d-939c-3603-bdc9-70a1c649caee> .

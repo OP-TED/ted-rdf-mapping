@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,26 +17,22 @@
 
 <http://data.europa.eu/a4g/resource/AccessTerm/2020-S-103-249142/08cc6b87-fd77-3965-a6c4-7bd72326900e>
   a epo:AccessTerm;
-  epo:hasPublicAccessURL <http://www.marches-publics.gouv.fr>;
+  epo:hasPublicAccessURL "http://www.marches-publics.gouv.fr"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
 
 <http://data.europa.eu/a4g/resource/Buyer/2020-S-103-249142/08cc6b87-fd77-3965-a6c4-7bd72326900e>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2020-S-103-249142/5eeafc96-605e-3b6c-9ca0-91010603c507>;
+  epo:hasBuyerProfile "http://www.marches-publics.gouv.fr/"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2020-S-103-249142/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2020-S-103-249142/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
-<http://data.europa.eu/a4g/resource/BuyerProfile/2020-S-103-249142/5eeafc96-605e-3b6c-9ca0-91010603c507>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.marches-publics.gouv.fr/" .
-
 <http://data.europa.eu/a4g/resource/Channel/2020-S-103-249142/adac0654-7bf7-3f27-95fa-9f16f2a66d41>
   a cccev:Channel;
-  epo:hasURL "http://www.marches-publics.gouv.fr" .
+  epo:hasURL "http://www.marches-publics.gouv.fr"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2020-S-103-249142/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://www.pole-emploi.fr";
+  epo:hasInternetAddress "http://www.pole-emploi.fr"^^xsd:anyURI;
   cccev:email "Drmarches.33312@pole-emploi.fr" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2020-S-103-249142/10a954c5-4b3f-3ea1-add9-eda3a9735c67>
@@ -219,7 +214,7 @@
   a org:Organization;
   epo:hasLegalName "CCIRA de Bordeaux"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/MediatorContactPoint/2020-S-103-249142/9e01d479-a67f-3d93-baab-0b5363959e9c>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2020-S-103-249142/9e01d479-a67f-3d93-baab-0b5363959e9c> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2020-S-103-249142/9e01d479-a67f-3d93-baab-0b5363959e9c> .
 
 <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2020-S-103-249142/9e01d479-a67f-3d93-baab-0b5363959e9c>
   a locn:Address;
@@ -248,10 +243,10 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2020-S-103-249142/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
   epo:hasLegalName "Pôle emploi — DR ALPC"@fr;
   epo:hasMainActivityDescription "Emploi";
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2020-S-103-249142/97c28c49-5587-3e91-95b4-4e48e30ed684> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2020-S-103-249142/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2020-S-103-249142/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a locn:Address;
@@ -272,12 +267,12 @@
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2020-S-103-249142/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasMainFeature "— procédure adaptée prévue à l'article R. 2123-1 3o) du code de la commande publique, selon des modalités librement définies par le pouvoir adjudicateur; — sous réserve de la recevabilité des offres, pour chaque lot, Pôle emploi engage des négociations avec l'ensemble des candidats ayant présenté une offre; — Pôle emploi se réserve cependant la possibilité d'attribuer le marché sans négociation.";
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2020-S-103-249142/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2020-S-103-249142/10a954c5-4b3f-3ea1-add9-eda3a9735c67>,
     <http://data.europa.eu/a4g/resource/Lot/2020-S-103-249142/363f871b-34f9-360a-8206-9b7373cf0235>,
     <http://data.europa.eu/a4g/resource/Lot/2020-S-103-249142/5a4c86a1-d345-3fd6-8731-13573d19eb7c>,
     <http://data.europa.eu/a4g/resource/Lot/2020-S-103-249142/e3c5791a-e132-3d09-8ef5-af0f6ebfdc2c>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2020-S-103-249142/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasTitle "Prestations de services d'insertion professionnelle de type «Accélèr'Emploi» (ACL) à mettre en œuvre auprès des demandeurs d'emploi de la région Nouvelle-Aquitaine"@fr;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/AccessTerm/2020-S-103-249142/08cc6b87-fd77-3965-a6c4-7bd72326900e>,
     <http://data.europa.eu/a4g/resource/FrameworkAgreementTerm/2020-S-103-249142/168a6c96-75f8-304a-bff5-0d0cf3c2f20c>,
@@ -305,7 +300,6 @@
 
 <http://data.europa.eu/a4g/resource/ProcurementProcedureInformationProvider/2020-S-103-249142/1a05a258-a8c2-3b59-8ae4-16e3430dd96e>
   a epo:ProcurementProcedureInformationProvider;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2020-S-103-249142/5eeafc96-605e-3b6c-9ca0-91010603c507>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2020-S-103-249142/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2020-S-103-249142/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
@@ -323,7 +317,7 @@
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2020-S-103-249142/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3>
   a org:Organization;
   epo:hasLegalName "Direction régionale de Pôle emploi Nouvelle-Aquitaine"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2020-S-103-249142/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2020-S-103-249142/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2020-S-103-249142/b717835d-5424-3d82-9a2a-3dedd6cdfaaa>
   a epo:ReviewTerm;
@@ -336,14 +330,14 @@
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2020-S-103-249142/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a cccev:ContactPoint;
   epo:hasFax "+33 556993800";
-  epo:hasInternetAddress "http://Ta-bordeaux.juradm.fr";
+  epo:hasInternetAddress "http://Ta-bordeaux.juradm.fr"^^xsd:anyURI;
   cccev:telephone "+33 556993800" .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2020-S-103-249142/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Bordeaux"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2020-S-103-249142/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2020-S-103-249142/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2020-S-103-249142/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2020-S-103-249142/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a locn:Address;
@@ -361,6 +355,5 @@
 <http://data.europa.eu/a4g/resource/SubmissionTerm/2020-S-103-249142/168a6c96-75f8-304a-bff5-0d0cf3c2f20c>
   a epo:SubmissionTerm;
   epo:hasLanguage "FR";
-  epo:hasReceiptDeadline "2020-06-29"^^xsd:datetime;
-  epo:hasReceiptExpressionsDeadline "16:00"^^xsd:datetime;
-  epo:hasSubmissionURL "https://www.marches-publics.gouv.fr/?page=entreprise.EntrepriseAdvancedSearch&AllCons&refConsultation=584431&orgAcronyme=h8j" .
+  epo:hasReceiptDeadline "2020-06-29T16:00:00"^^xsd:dateTime;
+  epo:hasSubmissionURL "https://www.marches-publics.gouv.fr/?page=entreprise.EntrepriseAdvancedSearch&AllCons&refConsultation=584431&orgAcronyme=h8j"^^xsd:anyURI .

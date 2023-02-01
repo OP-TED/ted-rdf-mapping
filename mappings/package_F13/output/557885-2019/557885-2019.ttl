@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -23,14 +22,14 @@
 
 <http://data.europa.eu/a4g/resource/AdditionalContactPoint/2019-S-227-557885/2e9df438-e4ea-3cb2-8b26-78f0765b1137>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "www.alveringem.be";
+  epo:hasInternetAddress "www.alveringem.be"^^xsd:anyURI;
   cccev:email "info@ocmwalveringem.be" .
 
 <http://data.europa.eu/a4g/resource/AdditionalOrganisation/2019-S-227-557885/2e9df438-e4ea-3cb2-8b26-78f0765b1137>
   a org:Organization;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2019-S-227-557885/2e9df438-e4ea-3cb2-8b26-78f0765b1137>;
   epo:hasLegalName "Openbaar centrum voor maatschappelijk welzijn van Alveringem"@nl;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-227-557885/2e9df438-e4ea-3cb2-8b26-78f0765b1137> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-227-557885/2e9df438-e4ea-3cb2-8b26-78f0765b1137> .
 
 <http://data.europa.eu/a4g/resource/Buyer/2019-S-227-557885/8a551eea-f8a4-3a92-a92e-0f220d0ba9d0>
   a epo:Buyer;
@@ -39,8 +38,8 @@
 
 <http://data.europa.eu/a4g/resource/BuyerOrganisationGroup/2019-S-227-557885/2e9df438-e4ea-3cb2-8b26-78f0765b1137>
   a epo:OrganisationGroup;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
   epo:hasMember <http://data.europa.eu/a4g/resource/AdditionalOrganisation/2019-S-227-557885/2e9df438-e4ea-3cb2-8b26-78f0765b1137>,
     <http://data.europa.eu/a4g/resource/Organisation/2019-S-227-557885/93f156bb-9604-37f9-a902-d2bc2c71ac19> .
 
@@ -48,27 +47,9 @@
   a cccev:ContactPoint;
   epo:hasContactName "De heer Steve Lansens"@nl;
   epo:hasFax "+32 58288883";
-  epo:hasInternetAddress "www.alveringem.be";
+  epo:hasInternetAddress "www.alveringem.be"^^xsd:anyURI;
   cccev:email "steve.lansens@alveringem.be";
   cccev:telephone "+32 58288881" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2019-S-227-557885/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
-  a org:Organisation;
-  epo:hasLegalName "Belfius Insurance"@nl;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractOrganisationContactPoint/2019-S-227-557885/d2285c88-606a-3092-87f1-6f0d98b5d9ff>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2019-S-227-557885/d2285c88-606a-3092-87f1-6f0d98b5d9ff> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2019-S-227-557885/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BEL>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/BE>;
-  locn:postCode "1210";
-  locn:postName "Brussel";
-  locn:thoroughfare "Karel Rogierplein 11" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationContactPoint/2019-S-227-557885/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
-  a cccev:ContactPoint;
-  cccev:telephone "+32 22867079" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2019-S-227-557885/d9717c09-a32e-34b8-99e6-1d890b633b16>
   a epo:ContractTerm;
@@ -76,6 +57,24 @@
 
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2019-S-227-557885/d9717c09-a32e-34b8-99e6-1d890b633b16>
   a dct:Location .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2019-S-227-557885/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
+  a org:Organisation;
+  epo:hasLegalName "Belfius Insurance"@nl;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorOrganisationContactPoint/2019-S-227-557885/d2285c88-606a-3092-87f1-6f0d98b5d9ff>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2019-S-227-557885/d2285c88-606a-3092-87f1-6f0d98b5d9ff> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2019-S-227-557885/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BEL>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/BE>;
+  locn:postCode "1210";
+  locn:postName "Brussel";
+  locn:thoroughfare "Karel Rogierplein 11" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationContactPoint/2019-S-227-557885/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
+  a cccev:ContactPoint;
+  cccev:telephone "+32 22867079" .
 
 <http://data.europa.eu/a4g/resource/Lot/2019-S-227-557885/d9717c09-a32e-34b8-99e6-1d890b633b16>
   a epo:Lot;
@@ -115,7 +114,7 @@
 <http://data.europa.eu/a4g/resource/Organisation/2019-S-227-557885/93f156bb-9604-37f9-a902-d2bc2c71ac19>
   a org:Organization;
   epo:hasLegalName "Gemeente Alveringem"@nl;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-227-557885/93f156bb-9604-37f9-a902-d2bc2c71ac19> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-227-557885/93f156bb-9604-37f9-a902-d2bc2c71ac19> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-227-557885/2e9df438-e4ea-3cb2-8b26-78f0765b1137>
   a locn:Address;
@@ -142,9 +141,9 @@
   epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2019-S-227-557885/d9717c09-a32e-34b8-99e6-1d890b633b16>;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2019-S-227-557885/4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2019-S-227-557885/4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2019-S-227-557885/d9717c09-a32e-34b8-99e6-1d890b633b16>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2019-S-227-557885/4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b>;
   epo:hasTitle "Het aanleggen van een pensioenreserve via een verzekeringscontract ten einde voor het bestuur de stijging van de pensioenlasten voor de statutaire personeelsleden aangesloten bij de RSZ op te vangen"@nl;
   epo:isDesignContest true;
   epo:isJointProcurement true;
@@ -168,7 +167,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2019-S-227-557885/5641ce6f-6854-3e39-9e76-44d671aacd65>
   a org:Organization;
   epo:hasLegalName "Raad van State"@nl;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-227-557885/5641ce6f-6854-3e39-9e76-44d671aacd65> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-227-557885/5641ce6f-6854-3e39-9e76-44d671aacd65> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-227-557885/5641ce6f-6854-3e39-9e76-44d671aacd65>
   a locn:Address;
@@ -194,4 +193,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2019-S-227-557885/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2019-S-227-557885/d2285c88-606a-3092-87f1-6f0d98b5d9ff> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2019-S-227-557885/d2285c88-606a-3092-87f1-6f0d98b5d9ff> .

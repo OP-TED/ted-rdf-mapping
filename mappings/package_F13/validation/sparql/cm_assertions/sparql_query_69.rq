@@ -1,11 +1,12 @@
-#title: V.3.3.5 - NUTS code
-#description: “V.3.3.5 - NUTS code” in SF corresponds to “BT-507 Organisation Country Subdivision” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/NUTS/@CODE. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / at-voc:nuts (from nuts.json) .
-#xpath: /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/NUTS/@CODE
+#title: V.3.3.4 - Town
+#description: “V.3.3.4 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/TOWN, /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/TOWN. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/TOWN,/TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/TOWN
 
+PREFIX cv: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX legal: <https://www.w3.org/ns/legal#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Winner .
-		?this epo:playedBy / legal:registeredAddress / epo:hasNutsCode ?value . }
+		?this epo:playedBy / cv:registeredAddress / locn:postName ?value . }

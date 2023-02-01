@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -30,19 +29,15 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2018-S-086-194293/5a0e0822-353f-34b8-9001-b27f293ef321>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-086-194293/41c3580d-d7b5-3ead-a7df-4e886771daad>;
+  epo:hasBuyerProfile "https://marches.maximilien.fr"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-086-194293/188615bc-907f-376a-b3e0-b7f440ca4c64>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-086-194293/188615bc-907f-376a-b3e0-b7f440ca4c64> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-086-194293/41c3580d-d7b5-3ead-a7df-4e886771daad>
-  a epo:BuyerProfile;
-  epo:hasURL "https://marches.maximilien.fr" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-086-194293/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a cccev:ContactPoint;
   epo:hasContactName "Mme la Cheffe de la section du stationnement concédé"@fr;
   epo:hasFax "+33 143370253";
-  epo:hasInternetAddress "http://www.paris.fr";
+  epo:hasInternetAddress "http://www.paris.fr"^^xsd:anyURI;
   cccev:email "dvd-ssc-mib@paris.fr";
   cccev:telephone "+33 144672919" .
 
@@ -52,20 +47,7 @@
                Délégation de service public, d'une durée de 12 ans pour assurer l'exploitation et la modernisation du parc de stationnement souterrain Haussmann Berri d'une capacité d'environ 2 182 places VL et 8 places réservées pour les deux-roues réparties sur 6 niveaux et destiné aux usagers horaires et aux abonnés
             """@fr;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2018-S-086-194293/5a50554f-89ac-3a44-9d4f-643949ca9831>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-086-194293/2b425ab1-553e-3915-a060-80f1d3cff764> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2018-S-086-194293/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a org:Organization;
-  epo:hasLegalName "société Anonyme d'economie Mixte d'exploitation du Stationnement"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2018-S-086-194293/8f833010-0b39-361a-9ea9-959275ccdc19> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2018-S-086-194293/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR101>;
-  locn:postCode "75002";
-  locn:postName "Paris";
-  locn:thoroughfare "1 rue Léon Cladel" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-086-194293/2b425ab1-553e-3915-a060-80f1d3cff764> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2018-S-086-194293/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:ContractTerm;
@@ -82,6 +64,19 @@
   locn:fullAddress """
                   Parc de stationnement « Haussmann Berri » implanté sous le boulevard Haussmann à Paris 8ème.
                """@fr .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2018-S-086-194293/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a org:Organization;
+  epo:hasLegalName "société Anonyme d'economie Mixte d'exploitation du Stationnement"@fr;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2018-S-086-194293/8f833010-0b39-361a-9ea9-959275ccdc19> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2018-S-086-194293/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR101>;
+  locn:postCode "75002";
+  locn:postName "Paris";
+  locn:thoroughfare "1 rue Léon Cladel" .
 
 <http://data.europa.eu/a4g/resource/Lot/2018-S-086-194293/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:Lot;
@@ -144,10 +139,10 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2018-S-086-194293/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasLegalName "Ville de Paris"@fr;
   epo:hasMainActivityDescription "Collectivité terittoriale";
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-086-194293/188615bc-907f-376a-b3e0-b7f440ca4c64> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-086-194293/188615bc-907f-376a-b3e0-b7f440ca4c64> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-086-194293/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a locn:Address;
@@ -159,8 +154,8 @@
 
 <http://data.europa.eu/a4g/resource/Period/2018-S-086-194293/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:Period;
-  epo:hasBeginning "2018-06-01"^^xsd:datetime;
-  epo:hasEnd "2030-05-31"^^xsd:datetime .
+  epo:hasBeginning "2018-06-01T00:00:00"^^xsd:dateTime;
+  epo:hasEnd "2030-05-31T00:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/Procedure/2018-S-086-194293/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>
   a epo:Procedure;
@@ -169,8 +164,8 @@
                Délégation de service public, d'une durée de 12 ans pour assurer l'exploitation et la modernisation du parc de stationnement souterrain Haussmann Berri d'une capacité d'environ 2 182 places VL et 8 places réservées pour les deux-roues réparties sur 6 niveaux et destiné aux usagers horaires et aux abonnés. Il est précisé que la station-service est intégrée dans le périmètre de la DSP.
             """@fr;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2018-S-086-194293/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-086-194293/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2018-S-086-194293/5a50554f-89ac-3a44-9d4f-643949ca9831>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-086-194293/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasTitle """
                Exploitation et modernisation du parc de stationnement souterrain « Haussmann Berri » à Paris 8ème
                
@@ -215,7 +210,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Paris"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2018-S-086-194293/fdc5fccd-dd12-3226-8a44-ee7b6f769c12>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2018-S-086-194293/fdc5fccd-dd12-3226-8a44-ee7b6f769c12> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2018-S-086-194293/fdc5fccd-dd12-3226-8a44-ee7b6f769c12> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2018-S-086-194293/278f6fb6-6256-3e2e-b2d2-c98da96e5a94>
   a epo:ReviewTerm;
@@ -237,7 +232,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Paris"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-086-194293/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-086-194293/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-086-194293/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-086-194293/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a locn:Address;
@@ -262,4 +257,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2018-S-086-194293/8f833010-0b39-361a-9ea9-959275ccdc19>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2018-S-086-194293/8f833010-0b39-361a-9ea9-959275ccdc19> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2018-S-086-194293/8f833010-0b39-361a-9ea9-959275ccdc19> .

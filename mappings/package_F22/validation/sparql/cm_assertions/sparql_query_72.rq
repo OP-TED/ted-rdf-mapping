@@ -1,11 +1,10 @@
-#title: I.6 - Main activity
-#description: “I.6 - Main activity” in SF corresponds to “BT-10 Activity Authority” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/CE_ACTIVITY. The expected ontology instances are epo: org:Organization / at-voc:main-activity (from main_activity.csv) .
-#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/CONTRACTING_BODY/CE_ACTIVITY
+#title: II.1.1 - Title
+#description: “II.1.1 - Title” in SF corresponds to “BT-21 Title” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/TITLE. The expected ontology instances are epo: epo:Procedure / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/OBJECT_CONTRACT/TITLE
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type org:Organization .
-		?this epo:hasMainActivityType ?value . }
+		?this rdf:type epo:Procedure .
+		?this epo:hasTitle ?value . }

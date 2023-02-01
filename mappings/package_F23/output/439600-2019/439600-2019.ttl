@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,19 +17,15 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2019-S-180-439600/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2019-S-180-439600/34655f62-8001-38ad-a804-119bb9c85d23>;
+  epo:hasBuyerProfile "http://www.debrecen.hu"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2019-S-180-439600/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2019-S-180-439600/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2019-S-180-439600/34655f62-8001-38ad-a804-119bb9c85d23>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.debrecen.hu" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2019-S-180-439600/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a cccev:ContactPoint;
   epo:hasContactName "Dr. Paróczai Bernadett"@hu;
   epo:hasFax "+36 52511556";
-  epo:hasInternetAddress "http://www.debrecen.hu";
+  epo:hasInternetAddress "http://www.debrecen.hu"^^xsd:anyURI;
   cccev:email "krajczar@ph.debrecen.hu";
   cccev:telephone "+36 52511550" .
 
@@ -93,11 +88,11 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2019-S-180-439600/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2019-S-180-439600/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
   epo:hasLegalName "Debrecen Megyei Jogú Város Önkormányzata"@hu;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-180-439600/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-180-439600/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-180-439600/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a locn:Address;
@@ -117,9 +112,9 @@
   epo:hasDescription "A debreceni strandfürdő (Aquaticum Strandfürdő) üzemeltetése a közbeszerzési dokumentumokban foglaltak szerint."@hu;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2019-S-180-439600/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0023>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2019-S-180-439600/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2019-S-180-439600/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2019-S-180-439600/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasTitle "Debreceni Strandfürdő üzemeltetése"@hu;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/DirectAwardTerm/2019-S-180-439600/64850f6d-a341-38ae-bc98-ed98207d0890>,
     <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2019-S-180-439600/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209> .
@@ -157,7 +152,7 @@
   a org:Organization;
   epo:hasLegalName "Közbeszerzési Hatóság Közbeszerzési Döntőbizottság"@hu;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2019-S-180-439600/05b8f927-9591-3b74-af26-202fe3171464>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2019-S-180-439600/05b8f927-9591-3b74-af26-202fe3171464> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2019-S-180-439600/05b8f927-9591-3b74-af26-202fe3171464> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2019-S-180-439600/47e9b87d-92c4-3448-9a4e-937646b178e8>
   a epo:ReviewTerm;
@@ -177,7 +172,7 @@
   a org:Organization;
   epo:hasLegalName "Közbeszerzési Hatóság Közbeszerzési Döntőbizottság"@hu;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2019-S-180-439600/2a666ce1-cebc-31d9-b200-113ebf473883>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-180-439600/2a666ce1-cebc-31d9-b200-113ebf473883> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-180-439600/2a666ce1-cebc-31d9-b200-113ebf473883> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-180-439600/2a666ce1-cebc-31d9-b200-113ebf473883>
   a locn:Address;

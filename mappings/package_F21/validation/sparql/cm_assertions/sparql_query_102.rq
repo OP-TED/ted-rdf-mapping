@@ -1,10 +1,10 @@
-#title: II.2.4 - Description of the procurement
-#description: “II.2.4 - Description of the procurement” in SF corresponds to “BT-24 Description” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/OBJECT_DESCR/SHORT_DESCR. The expected ontology instances are epo: epo:Lot / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/OBJECT_DESCR/SHORT_DESCR
+#title: II.2.6.2 - Currency
+#description: “II.2.6.2 - Currency” in SF corresponds to “no direct match nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/OBJECT_DESCR/VAL_OBJECT/@CURRENCY. The expected ontology instances are epo: epo:Lot / epo:MonetaryValue /at-voc:currency (from currency.json) .
+#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/OBJECT_DESCR/VAL_OBJECT/@CURRENCY
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:hasDescription ?value . }
+		?this epo:hasEstimatedValue / epo:hasCurrency ?value . }

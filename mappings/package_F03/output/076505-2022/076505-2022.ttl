@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -47,18 +46,14 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2022-S-030-076505/f3b5cfa6-95c6-37b5-9667-808a141fe995>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2022-S-030-076505/377f62e9-9c36-31da-9724-7f6a137d8a68>;
+  epo:hasBuyerProfile "https://my.vergabe.bayern.de"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2022-S-030-076505/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2022-S-030-076505/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2022-S-030-076505/377f62e9-9c36-31da-9724-7f6a137d8a68>
-  a epo:BuyerProfile;
-  epo:hasURL "https://my.vergabe.bayern.de" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2022-S-030-076505/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a cccev:ContactPoint;
   epo:hasFax "+49 89/693321-291";
-  epo:hasInternetAddress "https://my.vergabe.bayern.de";
+  epo:hasInternetAddress "https://my.vergabe.bayern.de"^^xsd:anyURI;
   cccev:email "vergabestelle@stbam2.bayern.de";
   cccev:telephone "+49 89/693321-0" .
 
@@ -68,36 +63,11 @@
   epo:hasID <http://data.europa.eu/a4g/resource/ContractIdentifier/2022-S-030-076505/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>;
   epo:hasTitle "Tragwerksplanung Leistungsphasen 1 - 6"@de;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2022-S-030-076505/cbac108a-b047-3e09-a114-28c43d5b8706>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2022-S-030-076505/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
-
-<http://data.europa.eu/a4g/resource/ContractContactPoint/2022-S-030-076505/b9a7c460-794b-36b5-a069-6e9a637315f4>
-  a cccev:ContactPoint;
-  epo:hasInternetAddress "www.klingconsult.de";
-  cccev:email "vgv@klingconsult.de" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2022-S-030-076505/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2022-S-030-076505/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>
   a epo:Identifier;
   epo:hasIdentifierValue "21 D 0613" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2022-S-030-076505/b9a7c460-794b-36b5-a069-6e9a637315f4>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2022-S-030-076505/b9a7c460-794b-36b5-a069-6e9a637315f4>;
-  epo:hasLegalName "Kling Consult GmbH"@de;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractContactPoint/2022-S-030-076505/b9a7c460-794b-36b5-a069-6e9a637315f4>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2022-S-030-076505/b9a7c460-794b-36b5-a069-6e9a637315f4> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2022-S-030-076505/b9a7c460-794b-36b5-a069-6e9a637315f4>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE278>;
-  locn:postCode "86381";
-  locn:postName "Krumbach";
-  locn:thoroughfare "Burgauer Straße 30" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2022-S-030-076505/b9a7c460-794b-36b5-a069-6e9a637315f4>
-  a epo:Identifier;
-  epo:hasIdentifierValue "DE130849846" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2022-S-030-076505/cbac108a-b047-3e09-a114-28c43d5b8706>
   a epo:ContractTerm;
@@ -113,6 +83,31 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2022-S-030-076505/cbac108a-b047-3e09-a114-28c43d5b8706>
   a locn:Address;
   locn:fullAddress "Ismaninger Str. 22, 81675 München"@de .
+
+<http://data.europa.eu/a4g/resource/ContractorContactPoint/2022-S-030-076505/b9a7c460-794b-36b5-a069-6e9a637315f4>
+  a cccev:ContactPoint;
+  epo:hasInternetAddress "www.klingconsult.de"^^xsd:anyURI;
+  cccev:email "vgv@klingconsult.de" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2022-S-030-076505/b9a7c460-794b-36b5-a069-6e9a637315f4>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasID <http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2022-S-030-076505/b9a7c460-794b-36b5-a069-6e9a637315f4>;
+  epo:hasLegalName "Kling Consult GmbH"@de;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorContactPoint/2022-S-030-076505/b9a7c460-794b-36b5-a069-6e9a637315f4>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2022-S-030-076505/b9a7c460-794b-36b5-a069-6e9a637315f4> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2022-S-030-076505/b9a7c460-794b-36b5-a069-6e9a637315f4>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE278>;
+  locn:postCode "86381";
+  locn:postName "Krumbach";
+  locn:thoroughfare "Burgauer Straße 30" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2022-S-030-076505/b9a7c460-794b-36b5-a069-6e9a637315f4>
+  a epo:Identifier;
+  epo:hasIdentifierValue "DE130849846" .
 
 <http://data.europa.eu/a4g/resource/Lot/2022-S-030-076505/cbac108a-b047-3e09-a114-28c43d5b8706>
   a epo:Lot;
@@ -172,10 +167,10 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2022-S-030-076505/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasLegalName "Staatliche Bauamt München 2"@de;
   epo:hasMainActivityDescription "Hochbau";
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-030-076505/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-030-076505/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-030-076505/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a locn:Address;
@@ -193,9 +188,9 @@
   epo:hasDescription "Das Klinikum rechts der Isar der TU München plant die Erweiterung der best. Strahlentherapie. Die Maßnahme umfasst die unterirdische Erweiterung mit Tunnelanbindung an den Bestand Bau 557 und best. Versorgungstunnel (rd. 1.180 m2 NRF), Umbaumaßnahmen in der best. Strahlentherapie Bau 557 (rd. 198 m2 NRF) und den Anbau eines Eingangspavillons im EG Bau 557 (rd. 66 m2 NRF). Das Raumprogramm mit 508 m2 NUF 1-7 beinhaltet Behandlungsräume (MR Linac, Linearbeschleuniger, MRT) mit Nebenräumen, Arzt- und Untersuchungszimmer, Anmeldung, Wartebereiche und Personalräume. Die infrastrukturelle Erschließung ist Inhalt einer eigenen Maßnahme, aber unabdingbar zur Funktionstüchtigkeit mit diesem verbunden und baulich / logistisch abhängig. Die Techn. Erschließungsmaßnahme umfasst den Ausbau bzw. die Erneuerung der vorh. Versorgungsanlagen im Bau 557 + 556, sowie die Anbindung der Neubauerweiterung Strahlenbunker. Siehe hierzu alle Informationen in der beiliegenden A_21_D_0613_Aufgabenbeschreibung."@de;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2022-S-030-076505/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2022-S-030-076505/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2022-S-030-076505/cbac108a-b047-3e09-a114-28c43d5b8706>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2022-S-030-076505/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasTitle "Tragwerksplanung Leistungsphasen 1 bis 6 und LPH 8"@de;
   epo:isAccelerated true;
   epo:isCoveredByGPA true;
@@ -243,7 +238,7 @@
   a org:Organization;
   epo:hasLegalName "Staatliches Bauamt München 2"@de;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2022-S-030-076505/53dcddfe-05e0-31c2-ab22-d770b015238d>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2022-S-030-076505/53dcddfe-05e0-31c2-ab22-d770b015238d> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2022-S-030-076505/53dcddfe-05e0-31c2-ab22-d770b015238d> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2022-S-030-076505/c396feff-0750-3296-8f73-f0464e1726ac>
   a epo:ReviewTerm;
@@ -261,7 +256,7 @@
   a org:Organization;
   epo:hasLegalName "Vergabekammer Südbayern Regierung von Oberbayern"@de;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2022-S-030-076505/de2507f9-ae25-37c8-809c-0109efe10669>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-030-076505/de2507f9-ae25-37c8-809c-0109efe10669> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-030-076505/de2507f9-ae25-37c8-809c-0109efe10669> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-030-076505/de2507f9-ae25-37c8-809c-0109efe10669>
   a locn:Address;
@@ -290,4 +285,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2022-S-030-076505/b9a7c460-794b-36b5-a069-6e9a637315f4>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2022-S-030-076505/b9a7c460-794b-36b5-a069-6e9a637315f4> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2022-S-030-076505/b9a7c460-794b-36b5-a069-6e9a637315f4> .

@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -24,13 +23,13 @@
 <http://data.europa.eu/a4g/resource/AdditionalContactPoint/2016-S-225-410490/ae940a40-9549-31d6-9cb6-8424b79bf0b3>
   a cccev:ContactPoint;
   epo:hasContactName "Sebastian Scholz"@en;
-  epo:hasInternetAddress "www.50hertz.com";
+  epo:hasInternetAddress "www.50hertz.com"^^xsd:anyURI;
   cccev:email "Sebastian.Scholz@50hertz.com" .
 
 <http://data.europa.eu/a4g/resource/AdditionalOrganisation/2016-S-225-410490/ae940a40-9549-31d6-9cb6-8424b79bf0b3>
   a org:Organization;
   epo:hasLegalName "50Hertz Transmission GmbH"@en;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-225-410490/ae940a40-9549-31d6-9cb6-8424b79bf0b3> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-225-410490/ae940a40-9549-31d6-9cb6-8424b79bf0b3> .
 
 <http://data.europa.eu/a4g/resource/Buyer/2016-S-225-410490/15183658-b3d6-3d9d-88d4-6e02c7e3b7b9>
   a epo:Buyer;
@@ -39,14 +38,14 @@
 
 <http://data.europa.eu/a4g/resource/BuyerOrganisationGroup/2016-S-225-410490/ae940a40-9549-31d6-9cb6-8424b79bf0b3>
   a epo:OrganisationGroup;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/electricity>;
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/electricity>;
   epo:hasMember <http://data.europa.eu/a4g/resource/AdditionalOrganisation/2016-S-225-410490/ae940a40-9549-31d6-9cb6-8424b79bf0b3>,
     <http://data.europa.eu/a4g/resource/Organisation/2016-S-225-410490/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2016-S-225-410490/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a cccev:ContactPoint;
   epo:hasContactName "Lene Ritz"@en;
-  epo:hasInternetAddress "www.energinet.dk";
+  epo:hasInternetAddress "www.energinet.dk"^^xsd:anyURI;
   cccev:email "ler@energinet.dk" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2016-S-225-410490/636e3166-5ecc-350b-867b-7bf2072a2c03>
@@ -170,7 +169,7 @@ Third Party Liability (TPL)
 <http://data.europa.eu/a4g/resource/Organisation/2016-S-225-410490/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a org:Organization;
   epo:hasLegalName "Energinet.dk"@en;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-225-410490/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-225-410490/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-225-410490/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a locn:Address;
@@ -195,10 +194,10 @@ Third Party Liability (TPL)
   epo:hasDescription """
 On behalf of themselves and 50Hertz, Energinet.dk wishes to purchase the below mentioned insurance lines as a part of the construction project Krieger's Flak Combined Grid Solution. The purpose of the project is to construct an infrastructure for the transmission of electricity between Germany and Denmark, using inter alia both the existing and future offshore facilities in the Baltic Sea. Construction period is scheduled from April 2016 to December 2018, subject to change of time schedule.
 """@en;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-225-410490/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2016-S-225-410490/636e3166-5ecc-350b-867b-7bf2072a2c03>,
     <http://data.europa.eu/a4g/resource/Lot/2016-S-225-410490/6890f8a0-039b-39ac-98cf-36d1dff298f1>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-225-410490/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasTitle """
 Public procurement of insurance services KF CGS — DK.
 """@en;
@@ -235,7 +234,7 @@ Danish.
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2016-S-225-410490/cda2e79a-2b54-3d8d-8cbd-025f430ee110>
   a org:Organization;
   epo:hasLegalName "Konkurrence- og Forbrugerstyrelsen"@en;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2016-S-225-410490/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2016-S-225-410490/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2016-S-225-410490/9aa38039-a45b-3425-8be8-95054b97e247>
   a epo:ReviewTerm;
@@ -251,7 +250,7 @@ If a complaint is not submitted before the 10 days of standstill period is over 
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2016-S-225-410490/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a cccev:ContactPoint;
   epo:hasFax "+45 33307799";
-  epo:hasInternetAddress "http://www.klfu.dk";
+  epo:hasInternetAddress "http://www.klfu.dk"^^xsd:anyURI;
   cccev:email "klfu@erst.dk";
   cccev:telephone "+45 33307621" .
 
@@ -259,7 +258,7 @@ If a complaint is not submitted before the 10 days of standstill period is over 
   a org:Organization;
   epo:hasLegalName "Klagenævnet for Udbud"@en;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2016-S-225-410490/13730a07-65b0-306c-a9b5-a8929927a6a1>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-225-410490/13730a07-65b0-306c-a9b5-a8929927a6a1> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-225-410490/13730a07-65b0-306c-a9b5-a8929927a6a1> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-225-410490/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a locn:Address;

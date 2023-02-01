@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -24,7 +23,7 @@
 <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-088-172696/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a cccev:ContactPoint;
   epo:hasContactName "Jannie van Lohuizen"@nl;
-  epo:hasInternetAddress "http://www.zaanstad.nl";
+  epo:hasInternetAddress "http://www.zaanstad.nl"^^xsd:anyURI;
   cccev:email "inkoop.contracten@zaanstad.nl";
   cccev:telephone "+31 14075" .
 
@@ -36,25 +35,11 @@
 Buurtbemiddeling
 """@nl;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2017-S-088-172696/10a954c5-4b3f-3ea1-add9-eda3a9735c67>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-088-172696/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-088-172696/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2017-S-088-172696/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172>
   a epo:Identifier;
   epo:hasIdentifierValue "1" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-088-172696/ee813f4d-93e5-3fe8-8e46-545a60837d07>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasLegalName "Beterburen"@nl;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-088-172696/ee813f4d-93e5-3fe8-8e46-545a60837d07> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-088-172696/ee813f4d-93e5-3fe8-8e46-545a60837d07>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NLD>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/NL>;
-  locn:postCode "1079 HA";
-  locn:postName "Amsterdam";
-  locn:thoroughfare "Rijnstraat 115" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2017-S-088-172696/10a954c5-4b3f-3ea1-add9-eda3a9735c67>
   a epo:ContractTerm;
@@ -70,6 +55,20 @@ Buurtbemiddeling
   locn:fullAddress """
 Zaanstreek.
 """@nl .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-088-172696/ee813f4d-93e5-3fe8-8e46-545a60837d07>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "Beterburen"@nl;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-088-172696/ee813f4d-93e5-3fe8-8e46-545a60837d07> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-088-172696/ee813f4d-93e5-3fe8-8e46-545a60837d07>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NLD>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/NL>;
+  locn:postCode "1079 HA";
+  locn:postName "Amsterdam";
+  locn:thoroughfare "Rijnstraat 115" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2017-S-088-172696/168a6c96-75f8-304a-bff5-0d0cf3c2f20c>
   a epo:DirectAwardTerm;
@@ -123,11 +122,11 @@ De vooraankondiging was gepubliceerd onder nr. 2016/S 066-115205 het betreft nu 
 
 <http://data.europa.eu/a4g/resource/Organisation/2017-S-088-172696/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2017-S-088-172696/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:hasLegalName "Gemeente Zaanstad namens gemeente Wormerland en de woningcorporaties: Parteon, ZVH, Rochdale, WormerWonen, Woonzorg Nederland en Eigen Haard"@nl;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-088-172696/97c28c49-5587-3e91-95b4-4e48e30ed684> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-088-172696/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-088-172696/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a locn:Address;
@@ -153,9 +152,9 @@ Doel van buurtbemiddeling is woonoverlast te verminderen en ruzies in de buurt t
 Op basis van ervaringscijfers van de afgelopen jaren verzorgt de aanbieder jaarlijks zo'n 375 bemiddelingen, waarvan tenminste 60 % van de aangemelde en voor buurtbemiddeling in aanmerking komende cases dient te leiden tot een positief resultaat. Buurbemiddeling gratis voor bewoners en dient te worden uitgevoerd door gekwalificeerde vrijwilligers die worden aangestuurd door een professionele coördinator in dienst van de aanbieder.
 """@nl;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2017-S-088-172696/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-088-172696/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2017-S-088-172696/10a954c5-4b3f-3ea1-add9-eda3a9735c67>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-088-172696/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasTitle """
 Buurtbemiddeling.
 """@nl;
@@ -184,14 +183,14 @@ Buurtbemiddeling.
 
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-088-172696/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://www.rechtbankhaarlem.nl";
+  epo:hasInternetAddress "http://www.rechtbankhaarlem.nl"^^xsd:anyURI;
   cccev:email "kanton.rb-nho.haarlem@rechtspraak.nl" .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2017-S-088-172696/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a org:Organization;
   epo:hasLegalName "Rechtbank Haarlem"@nl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-088-172696/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-088-172696/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-088-172696/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-088-172696/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a locn:Address;
@@ -216,4 +215,4 @@ Buurtbemiddeling.
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2017-S-088-172696/ee813f4d-93e5-3fe8-8e46-545a60837d07>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-088-172696/ee813f4d-93e5-3fe8-8e46-545a60837d07> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-088-172696/ee813f4d-93e5-3fe8-8e46-545a60837d07> .

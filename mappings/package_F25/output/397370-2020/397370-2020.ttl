@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -28,19 +27,15 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2020-S-163-397370/5a0e0822-353f-34b8-9001-b27f293ef321>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2020-S-163-397370/41c3580d-d7b5-3ead-a7df-4e886771daad>;
+  epo:hasBuyerProfile "http://www.mtitc.government.bg"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2020-S-163-397370/188615bc-907f-376a-b3e0-b7f440ca4c64>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2020-S-163-397370/188615bc-907f-376a-b3e0-b7f440ca4c64> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2020-S-163-397370/41c3580d-d7b5-3ead-a7df-4e886771daad>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.mtitc.government.bg" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2020-S-163-397370/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a cccev:ContactPoint;
   epo:hasContactName "Albena Lazarova"@en, "Албена Лазарова"@bg;
   epo:hasFax "+359 29885149";
-  epo:hasInternetAddress "http://www.mtitc.government.bg";
+  epo:hasInternetAddress "http://www.mtitc.government.bg"^^xsd:anyURI;
   cccev:email "alazarova@mtitc.government.bg";
   cccev:telephone "+359 29409-419" .
 
@@ -49,21 +44,7 @@
   epo:hasTitle "Awarding a Works Concession for ‘Civil Airport for Public use Sofia’"@en,
     "Възлагане на концесия за строителство на обект „Гражданско летище за обществено ползване София“"@bg;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2020-S-163-397370/5a50554f-89ac-3a44-9d4f-643949ca9831>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2020-S-163-397370/2b425ab1-553e-3915-a060-80f1d3cff764> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2020-S-163-397370/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasLegalName "‘SOF Connect’ AD"@en, "„СОФ Кънект“ АД"@bg;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2020-S-163-397370/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2020-S-163-397370/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG411>;
-  locn:postCode "1404";
-  locn:postName "Sofia";
-  locn:thoroughfare "District ‘Triaditsa’, 69 Bulgaria Blvd., Infinity Tower, floor 14" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2020-S-163-397370/2b425ab1-553e-3915-a060-80f1d3cff764> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2020-S-163-397370/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:ContractTerm;
@@ -79,6 +60,20 @@
   a locn:Address;
   locn:fullAddress "Civil airport for public use Sofia, city of Sofia, Sofia municipality, Sofia region, districts — ‘Slatina’, ‘Kremikovtzi’ and ‘Poduyane’."@en,
     "Гражданско летище за обществено ползване София, град София, община Столична, област София, райони „Слатина“, „Кремиковци“ и „Подуяне“"@bg .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2020-S-163-397370/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "‘SOF Connect’ AD"@en, "„СОФ Кънект“ АД"@bg;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2020-S-163-397370/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2020-S-163-397370/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG411>;
+  locn:postCode "1404";
+  locn:postName "Sofia";
+  locn:thoroughfare "District ‘Triaditsa’, 69 Bulgaria Blvd., Infinity Tower, floor 14" .
 
 <http://data.europa.eu/a4g/resource/Duration/2020-S-163-397370/1d09e8e7-ef82-30d4-befb-d86c000a8e5a>
   a epo:Duration;
@@ -151,12 +146,12 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2020-S-163-397370/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/cga>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/cga>;
   epo:hasLegalName "Ministry of Transport, Information Technology and Communications"@en,
     "Министерство на транспорта, информационните технологии и съобщенията"@bg;
   epo:hasMainActivityDescription "Transport, information technology and communications",
     "транспорт, информационни технологии и съобщения";
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2020-S-163-397370/188615bc-907f-376a-b3e0-b7f440ca4c64> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2020-S-163-397370/188615bc-907f-376a-b3e0-b7f440ca4c64> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2020-S-163-397370/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a locn:Address;
@@ -175,8 +170,8 @@
     "Обект на концесията е гражданско летище за обществено ползване София с концесионна територия 5 128 460 кв. м, подробно описан в концесионния договор и включващ:1. поземлени имоти и сгради  —  публична държавна собственост;2. съоръжения и прилежаща инфраструктура;3. имоти и вещи — публична държавна собственост, представляващи сгради, съоръжения и системи на визуалните аеронавигационни средства (светотехническо осигуряване), намиращи се на територията на летище София;4. сградите, съоръженията и оборудването, които ще бъдат изградени и/или монтирани от концесионера на негов риск и с негови средства при условия и по ред, определени в концесионния договор.С допълнително споразумение към концесионния договор като част от обекта на концесия могат да бъдат включени и други имоти при определени условия."@bg;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/MonetaryValueProcedure/2020-S-163-397370/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0023>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2020-S-163-397370/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2020-S-163-397370/5a50554f-89ac-3a44-9d4f-643949ca9831>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2020-S-163-397370/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasTitle "Awarding a Works Concession for ‘Civil Airport for Public use Sofia’"@en,
     "Възлагане на концесия за строителство на обект „Гражданско летище за обществено ползване София“"@bg;
   epo:isCoveredByGPA false;
@@ -202,7 +197,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2020-S-163-397370/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a cccev:ContactPoint;
   epo:hasFax "+359 29813740";
-  epo:hasInternetAddress "https://sgs.justice.bg";
+  epo:hasInternetAddress "https://sgs.justice.bg"^^xsd:anyURI;
   cccev:email "cabinet@sgs.justice.bg";
   cccev:telephone "+359 29808262" .
 
@@ -210,7 +205,7 @@
   a org:Organization;
   epo:hasLegalName "Sofia City Court"@en, "Софийски градски съд"@bg;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2020-S-163-397370/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2020-S-163-397370/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2020-S-163-397370/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2020-S-163-397370/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a locn:Address;
@@ -235,4 +230,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2020-S-163-397370/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2020-S-163-397370/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2020-S-163-397370/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .

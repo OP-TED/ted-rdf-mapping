@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,23 +17,19 @@
 
 <http://data.europa.eu/a4g/resource/AccessTerm/2016-S-112-199225/08cc6b87-fd77-3965-a6c4-7bd72326900e>
   a epo:AccessTerm;
-  epo:hasPublicAccessURL "www.barnetsourcing.co.uk";
+  epo:hasPublicAccessURL "www.barnetsourcing.co.uk"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
 
 <http://data.europa.eu/a4g/resource/Buyer/2016-S-112-199225/08cc6b87-fd77-3965-a6c4-7bd72326900e>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2016-S-112-199225/5eeafc96-605e-3b6c-9ca0-91010603c507>;
+  epo:hasBuyerProfile "www.barnetsourcing.co.uk"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2016-S-112-199225/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2016-S-112-199225/97c28c49-5587-3e91-95b4-4e48e30ed684> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2016-S-112-199225/5eeafc96-605e-3b6c-9ca0-91010603c507>
-  a epo:BuyerProfile;
-  epo:hasURL "www.barnetsourcing.co.uk" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2016-S-112-199225/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a cccev:ContactPoint;
   epo:hasContactName "Susan Lowe"@en;
-  epo:hasInternetAddress "www.barnet.gov.uk";
+  epo:hasInternetAddress "www.barnet.gov.uk"^^xsd:anyURI;
   cccev:email "susan.lowe@barnet.gov.uk";
   cccev:telephone "+44 2083597212" .
 
@@ -106,10 +101,10 @@ Expressions of interest are to be registered through current opportunity advert 
 
 <http://data.europa.eu/a4g/resource/Organisation/2016-S-112-199225/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasLegalName "London Borough of Barnet Council"@en;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-112-199225/97c28c49-5587-3e91-95b4-4e48e30ed684> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-112-199225/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-112-199225/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a locn:Address;
@@ -121,8 +116,8 @@ Expressions of interest are to be registered through current opportunity advert 
 
 <http://data.europa.eu/a4g/resource/Period/2016-S-112-199225/10a954c5-4b3f-3ea1-add9-eda3a9735c67>
   a epo:Period;
-  epo:hasBeginning "2017-04-01"^^xsd:datetime;
-  epo:hasEnd "2027-03-31"^^xsd:datetime .
+  epo:hasBeginning "2017-04-01T00:00:00"^^xsd:dateTime;
+  epo:hasEnd "2027-03-31T00:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/Procedure/2016-S-112-199225/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>
   a epo:Procedure;
@@ -146,9 +141,9 @@ The Council will be responsible for providing the library space, grant funding, 
   epo:hasMainFeature """
 This requirement is in accordance with Public Contract Regulation 76 (8) because of Council adoption of Library Strategy which includes community based delivery. Expressions of interest are invited from community groups, not-for-profit and voluntary organisations and groups of residents. Expressions of interest will be evaluated to inform short-list to 2nd stage provision of business case.
 """;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-112-199225/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2016-S-112-199225/10a954c5-4b3f-3ea1-add9-eda3a9735c67>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-112-199225/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasTitle """
 Provision of Partnership Libraries.
 """@en;
@@ -171,11 +166,10 @@ Provision of Partnership Libraries.
 
 <http://data.europa.eu/a4g/resource/ProcedureTerm/2016-S-112-199225/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>
   a epo:ProcedureTerm;
-  epo:hasNationalProcedureRules "http://www.legislation.gov.uk/uksi/2015/102/contents/made" .
+  epo:hasNationalProcedureRules "http://www.legislation.gov.uk/uksi/2015/102/contents/made"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/ProcurementProcedureInformationProvider/2016-S-112-199225/1a05a258-a8c2-3b59-8ae4-16e3430dd96e>
   a epo:ProcurementProcedureInformationProvider;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2016-S-112-199225/5eeafc96-605e-3b6c-9ca0-91010603c507>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2016-S-112-199225/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2016-S-112-199225/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
@@ -186,7 +180,7 @@ Provision of Partnership Libraries.
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2016-S-112-199225/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a org:Organization;
   epo:hasLegalName "Royal Courts of Justice"@en;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-112-199225/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-112-199225/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-112-199225/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a locn:Address;
@@ -204,6 +198,5 @@ The economic operator must meet the requirements set out in Regulation 57 (Exclu
 <http://data.europa.eu/a4g/resource/SubmissionTerm/2016-S-112-199225/168a6c96-75f8-304a-bff5-0d0cf3c2f20c>
   a epo:SubmissionTerm;
   epo:hasLanguage "EN";
-  epo:hasReceiptDeadline "2016-08-01"^^xsd:datetime;
-  epo:hasReceiptExpressionsDeadline "12:00"^^xsd:datetime;
-  epo:hasSubmissionURL "www.barnetsourcing.co.uk" .
+  epo:hasReceiptDeadline "2016-08-01T12:00:00"^^xsd:dateTime;
+  epo:hasSubmissionURL "www.barnetsourcing.co.uk"^^xsd:anyURI .

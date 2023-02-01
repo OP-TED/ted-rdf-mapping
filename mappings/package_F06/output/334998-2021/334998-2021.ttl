@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -24,7 +23,7 @@
 <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-126-334998/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a cccev:ContactPoint;
   epo:hasFax "+49 3883616150";
-  epo:hasInternetAddress "www.vlp-lup.de";
+  epo:hasInternetAddress "www.vlp-lup.de"^^xsd:anyURI;
   cccev:email "s.loesel@vl-p.de";
   cccev:telephone "+49 3883616114" .
 
@@ -34,25 +33,11 @@
   epo:hasID <http://data.europa.eu/a4g/resource/ContractIdentifier/2021-S-126-334998/527e871b-562d-3858-b2cb-c75e9b69e338>;
   epo:hasTitle "Ladesystem inkl. Transformatorstation Ludwigslust"@de;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2021-S-126-334998/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-126-334998/527e871b-562d-3858-b2cb-c75e9b69e338> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-126-334998/527e871b-562d-3858-b2cb-c75e9b69e338> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2021-S-126-334998/527e871b-562d-3858-b2cb-c75e9b69e338>
   a epo:Identifier;
   epo:hasIdentifierValue "02-2021" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-126-334998/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasLegalName "eMIS Deutschland GmbH"@de;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-126-334998/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-126-334998/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE804>;
-  locn:postCode "19055";
-  locn:postName "Schwerin";
-  locn:thoroughfare "Werderstraße 135" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2021-S-126-334998/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a epo:ContractTerm;
@@ -67,6 +52,20 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2021-S-126-334998/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a locn:Address;
   locn:fullAddress "Verkehrsgesellschaft Ludwigslust-Parchim mbH Bahnhofstraße 125 19230 Hagenow"@de .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-126-334998/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "eMIS Deutschland GmbH"@de;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-126-334998/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-126-334998/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE804>;
+  locn:postCode "19055";
+  locn:postName "Schwerin";
+  locn:thoroughfare "Werderstraße 135" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2021-S-126-334998/b68f1feb-885d-37f5-ac99-4287870dfd15>
   a epo:DirectAwardTerm;
@@ -106,8 +105,8 @@
 <http://data.europa.eu/a4g/resource/Organisation/2021-S-126-334998/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a org:Organization;
   epo:hasLegalName "Verkehrsgesellschaft Ludwigslust-Parchim mbH"@de;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/urttb>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-126-334998/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/urttb>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-126-334998/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-126-334998/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a locn:Address;
@@ -124,9 +123,9 @@
   epo:hasDescription "Beschaffung eines modularen Ladesystems mit 12 Ladepunkten inkl. Transformatorstation für den Standort Ludwigslust."@de;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2021-S-126-334998/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-126-334998/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2021-S-126-334998/636e3166-5ecc-350b-867b-7bf2072a2c03>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-126-334998/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasTitle "Ladesystem inkl. Transformatorstation Ludwigslust"@de;
   epo:isCoveredByGPA false;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/DirectAwardTerm/2021-S-126-334998/b68f1feb-885d-37f5-ac99-4287870dfd15>,
@@ -151,7 +150,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2021-S-126-334998/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a cccev:ContactPoint;
   epo:hasFax "+49 3855884855817";
-  epo:hasInternetAddress "https://www.regierung-mv.de/Landesregierung/wm/Das-Ministerium/Vergabekammern/";
+  epo:hasInternetAddress "https://www.regierung-mv.de/Landesregierung/wm/Das-Ministerium/Vergabekammern/"^^xsd:anyURI;
   cccev:email "vergabekammer@wm.mv-regierung.de";
   cccev:telephone "+49 3855885165" .
 
@@ -159,7 +158,7 @@
   a org:Organization;
   epo:hasLegalName "Vergabekammern des Landes Mecklenburg-Vorpommern"@de;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2021-S-126-334998/13730a07-65b0-306c-a9b5-a8929927a6a1>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-126-334998/13730a07-65b0-306c-a9b5-a8929927a6a1> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-126-334998/13730a07-65b0-306c-a9b5-a8929927a6a1> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-126-334998/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a locn:Address;
@@ -183,4 +182,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-126-334998/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-126-334998/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-126-334998/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .

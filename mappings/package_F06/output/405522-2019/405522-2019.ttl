@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -25,7 +24,7 @@
   a cccev:ContactPoint;
   epo:hasContactName "Bonsack, Caroline"@de;
   epo:hasFax "+49 6926543457";
-  epo:hasInternetAddress "http://www.deutschebahn.com/bieterportal";
+  epo:hasInternetAddress "http://www.deutschebahn.com/bieterportal"^^xsd:anyURI;
   cccev:email "caroline.bonsack@deutschebahn.com";
   cccev:telephone "+49 6926545687" .
 
@@ -34,19 +33,7 @@
   epo:hasContractConclusionDate "2019-08-13"^^xsd:date;
   epo:hasTitle "Gateway Gardens Station Wand- und Deckenverkleidungen"@de;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2019-S-165-405522/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2019-S-165-405522/527e871b-562d-3858-b2cb-c75e9b69e338> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2019-S-165-405522/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a org:Organization;
-  epo:hasLegalName "Wayss & Freytag Ingenieurbau AG"@de;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2019-S-165-405522/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2019-S-165-405522/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE712>;
-  locn:postCode "60055";
-  locn:postName "Frankfurt" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2019-S-165-405522/527e871b-562d-3858-b2cb-c75e9b69e338> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2019-S-165-405522/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a epo:ContractTerm;
@@ -61,6 +48,18 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2019-S-165-405522/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a locn:Address;
   locn:fullAddress "Frankfurt am Main"@de .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2019-S-165-405522/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a org:Organization;
+  epo:hasLegalName "Wayss & Freytag Ingenieurbau AG"@de;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2019-S-165-405522/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2019-S-165-405522/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE712>;
+  locn:postCode "60055";
+  locn:postName "Frankfurt" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2019-S-165-405522/b68f1feb-885d-37f5-ac99-4287870dfd15>
   a epo:DirectAwardTerm;
@@ -107,8 +106,8 @@
 <http://data.europa.eu/a4g/resource/Organisation/2019-S-165-405522/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a org:Organization;
   epo:hasLegalName "DB Station&Service AG (Bukr 11)"@de;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/rail>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-165-405522/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/rail>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-165-405522/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-165-405522/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a locn:Address;
@@ -124,9 +123,9 @@
   epo:hasDescription "Gateway Gardens Station Wand-und Deckenverkleidungen:— Wand- und Deckenverkleidungen (Tunnelwand und Stationsbereich),— Doppelboden (Betriebsräume),— Reinigungsarbeiten (Bauendreinigung)."@de;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2019-S-165-405522/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2019-S-165-405522/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2019-S-165-405522/636e3166-5ecc-350b-867b-7bf2072a2c03>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2019-S-165-405522/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasTitle "Gateway Gardens Station Wand- und Deckenverkleidungen"@de;
   epo:isCoveredByGPA false;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/DirectAwardTerm/2019-S-165-405522/b68f1feb-885d-37f5-ac99-4287870dfd15>,
@@ -155,7 +154,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2019-S-165-405522/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a org:Organization;
   epo:hasLegalName "Vergabekammer des Bundes"@de;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-165-405522/13730a07-65b0-306c-a9b5-a8929927a6a1> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-165-405522/13730a07-65b0-306c-a9b5-a8929927a6a1> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-165-405522/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a locn:Address;
@@ -179,4 +178,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2019-S-165-405522/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2019-S-165-405522/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2019-S-165-405522/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .

@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -27,7 +26,7 @@
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2016-S-202-365521/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://www.cc-sudestuaire.fr/";
+  epo:hasInternetAddress "http://www.cc-sudestuaire.fr/"^^xsd:anyURI;
   cccev:email "info@cc-sudestuaire.fr";
   cccev:telephone "+33 0240277012" .
 
@@ -37,20 +36,7 @@
 Contrat de concession d'aménagement ZAC Guerche Sud
 """@fr;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2016-S-202-365521/5a50554f-89ac-3a44-9d4f-643949ca9831>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2016-S-202-365521/2b425ab1-553e-3915-a060-80f1d3cff764> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2016-S-202-365521/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a org:Organization;
-  epo:hasLegalName "Loire-Atlantique Développement — SPL"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2016-S-202-365521/8f833010-0b39-361a-9ea9-959275ccdc19> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2016-S-202-365521/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR511>;
-  locn:postCode "44262";
-  locn:postName "Nantes";
-  locn:thoroughfare "2 boulevard de l'Estuaire — CS 66207" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2016-S-202-365521/2b425ab1-553e-3915-a060-80f1d3cff764> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2016-S-202-365521/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:ContractTerm;
@@ -60,6 +46,19 @@ Contrat de concession d'aménagement ZAC Guerche Sud
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2016-S-202-365521/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/FR511> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2016-S-202-365521/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a org:Organization;
+  epo:hasLegalName "Loire-Atlantique Développement — SPL"@fr;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2016-S-202-365521/8f833010-0b39-361a-9ea9-959275ccdc19> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2016-S-202-365521/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR511>;
+  locn:postCode "44262";
+  locn:postName "Nantes";
+  locn:thoroughfare "2 boulevard de l'Estuaire — CS 66207" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2016-S-202-365521/3ff3e293-06ca-390c-bee2-dd28ba2e570e>
   a epo:DirectAwardTerm;
@@ -127,8 +126,8 @@ Concession d'aménagement pour la réalisation de la ZAC de la Guerche Sud.
   a org:Organization;
   epo:hasBuyerLegalTypeDescription "EPCI";
   epo:hasLegalName "Communauté de communes du Sud-Estuaire"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-202-365521/188615bc-907f-376a-b3e0-b7f440ca4c64> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-202-365521/188615bc-907f-376a-b3e0-b7f440ca4c64> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-202-365521/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a locn:Address;
@@ -142,9 +141,9 @@ Concession d'aménagement pour la réalisation de la ZAC de la Guerche Sud.
   epo:hasDescription """
 Concession d'aménagement pour la réalisation de la ZAC de la Guerche Sud à vocation économique à Saint-Brevin-les-Pins.
 """@fr;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-202-365521/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2016-S-202-365521/5a50554f-89ac-3a44-9d4f-643949ca9831>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-202-365521/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasTitle """
 Concession d'aménagement.
 """@fr;
@@ -184,7 +183,7 @@ Concession d'aménagement.
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Nantes"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2016-S-202-365521/fdc5fccd-dd12-3226-8a44-ee7b6f769c12>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2016-S-202-365521/fdc5fccd-dd12-3226-8a44-ee7b6f769c12> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2016-S-202-365521/fdc5fccd-dd12-3226-8a44-ee7b6f769c12> .
 
 <http://data.europa.eu/a4g/resource/Reviewer/2016-S-202-365521/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a epo:Reviewer;
@@ -198,7 +197,7 @@ Concession d'aménagement.
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Nantes"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2016-S-202-365521/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-202-365521/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-202-365521/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-202-365521/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a locn:Address;
@@ -223,4 +222,4 @@ Concession d'aménagement.
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2016-S-202-365521/8f833010-0b39-361a-9ea9-959275ccdc19>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2016-S-202-365521/8f833010-0b39-361a-9ea9-959275ccdc19> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2016-S-202-365521/8f833010-0b39-361a-9ea9-959275ccdc19> .

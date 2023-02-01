@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,19 +17,15 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2019-S-195-475030/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2019-S-195-475030/34655f62-8001-38ad-a804-119bb9c85d23>;
+  epo:hasBuyerProfile "http://www.debrecen.hu"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2019-S-195-475030/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2019-S-195-475030/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2019-S-195-475030/34655f62-8001-38ad-a804-119bb9c85d23>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.debrecen.hu" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2019-S-195-475030/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a cccev:ContactPoint;
   epo:hasContactName "Dr. Paróczai Bernadett"@hu;
   epo:hasFax "+36 52511556";
-  epo:hasInternetAddress "http://www.debrecen.hu";
+  epo:hasInternetAddress "http://www.debrecen.hu"^^xsd:anyURI;
   cccev:email "krajczar@ph.debrecen.hu";
   cccev:telephone "+36 52511550" .
 
@@ -38,32 +33,7 @@
   a epo:ConcessionContract, epo:Contract;
   epo:hasTitle "Debreceni Strandfürdő üzemeltetése"@hu;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2019-S-195-475030/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2019-S-195-475030/70e1fca2-f8e6-3a32-8dca-713ccb185cf6> .
-
-<http://data.europa.eu/a4g/resource/ContractContactPoint/2019-S-195-475030/15a5bf74-f364-3b6a-8f6c-92ab57374118>
-  a cccev:ContactPoint;
-  epo:hasFax "+36 52346883";
-  cccev:email "kb@aquaticum.hu";
-  cccev:telephone "+36 52416041" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2019-S-195-475030/15a5bf74-f364-3b6a-8f6c-92ab57374118>
-  a org:Organization;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2019-S-195-475030/15a5bf74-f364-3b6a-8f6c-92ab57374118>;
-  epo:hasLegalName "Debreceni Gyógyfürdő Korlátolt Felelősségű Társaság"@hu;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractContactPoint/2019-S-195-475030/15a5bf74-f364-3b6a-8f6c-92ab57374118>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2019-S-195-475030/15a5bf74-f364-3b6a-8f6c-92ab57374118> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2019-S-195-475030/15a5bf74-f364-3b6a-8f6c-92ab57374118>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/HUN>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/HU321>;
-  locn:postCode "4032";
-  locn:postName "Debrecen";
-  locn:thoroughfare "Nagyerdei park 1." .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2019-S-195-475030/15a5bf74-f364-3b6a-8f6c-92ab57374118>
-  a epo:Identifier;
-  epo:hasIdentifierValue "EKRSZ_64762034" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2019-S-195-475030/70e1fca2-f8e6-3a32-8dca-713ccb185cf6> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2019-S-195-475030/64592fe7-40a4-3c6b-85ce-08fd4c446531>
   a epo:ContractTerm;
@@ -78,6 +48,31 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2019-S-195-475030/64592fe7-40a4-3c6b-85ce-08fd4c446531>
   a locn:Address;
   locn:fullAddress "Debrecen, 22330/4 hrsz-ú, „kivett fürdő” megnevezésű, 8 ha 5671 m2 nagyságú ingatlan mintegy 4 ha nagyságú területrésze"@hu .
+
+<http://data.europa.eu/a4g/resource/ContractorContactPoint/2019-S-195-475030/15a5bf74-f364-3b6a-8f6c-92ab57374118>
+  a cccev:ContactPoint;
+  epo:hasFax "+36 52346883";
+  cccev:email "kb@aquaticum.hu";
+  cccev:telephone "+36 52416041" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2019-S-195-475030/15a5bf74-f364-3b6a-8f6c-92ab57374118>
+  a org:Organization;
+  epo:hasID <http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2019-S-195-475030/15a5bf74-f364-3b6a-8f6c-92ab57374118>;
+  epo:hasLegalName "Debreceni Gyógyfürdő Korlátolt Felelősségű Társaság"@hu;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorContactPoint/2019-S-195-475030/15a5bf74-f364-3b6a-8f6c-92ab57374118>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2019-S-195-475030/15a5bf74-f364-3b6a-8f6c-92ab57374118> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2019-S-195-475030/15a5bf74-f364-3b6a-8f6c-92ab57374118>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/HUN>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/HU321>;
+  locn:postCode "4032";
+  locn:postName "Debrecen";
+  locn:thoroughfare "Nagyerdei park 1." .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2019-S-195-475030/15a5bf74-f364-3b6a-8f6c-92ab57374118>
+  a epo:Identifier;
+  epo:hasIdentifierValue "EKRSZ_64762034" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2019-S-195-475030/64850f6d-a341-38ae-bc98-ed98207d0890>
   a epo:DirectAwardTerm;
@@ -136,11 +131,11 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2019-S-195-475030/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2019-S-195-475030/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
   epo:hasLegalName "Debrecen Megyei Jogú Város Önkormányzata"@hu;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-195-475030/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-195-475030/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-195-475030/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a locn:Address;
@@ -162,9 +157,9 @@
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2019-S-195-475030/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0023>;
   epo:hasMainFeature "Az Üzemeltető koncessziós díjat fizet az Önkormányzat felé, melynek minimális összege 20 910 000 Ft/hó+áfa. A megajánlott koncessziós díj mértéke az értékelési szempont keretében értékelésre kerül.";
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2019-S-195-475030/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2019-S-195-475030/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2019-S-195-475030/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasTitle "Debreceni Strandfürdő üzemeltetése"@hu;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/DirectAwardTerm/2019-S-195-475030/64850f6d-a341-38ae-bc98-ed98207d0890>,
     <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2019-S-195-475030/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209> .
@@ -207,7 +202,7 @@
   a org:Organization;
   epo:hasLegalName "Közbeszerzési Hatóság Közbeszerzési Döntőbizottság"@hu;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2019-S-195-475030/05b8f927-9591-3b74-af26-202fe3171464>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2019-S-195-475030/05b8f927-9591-3b74-af26-202fe3171464> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2019-S-195-475030/05b8f927-9591-3b74-af26-202fe3171464> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2019-S-195-475030/47e9b87d-92c4-3448-9a4e-937646b178e8>
   a epo:ReviewTerm;
@@ -227,7 +222,7 @@
   a org:Organization;
   epo:hasLegalName "Közbeszerzési Hatóság Közbeszerzési Döntőbizottság"@hu;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2019-S-195-475030/2a666ce1-cebc-31d9-b200-113ebf473883>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-195-475030/2a666ce1-cebc-31d9-b200-113ebf473883> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-195-475030/2a666ce1-cebc-31d9-b200-113ebf473883> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-195-475030/2a666ce1-cebc-31d9-b200-113ebf473883>
   a locn:Address;
@@ -259,4 +254,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2019-S-195-475030/15a5bf74-f364-3b6a-8f6c-92ab57374118>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2019-S-195-475030/15a5bf74-f364-3b6a-8f6c-92ab57374118> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2019-S-195-475030/15a5bf74-f364-3b6a-8f6c-92ab57374118> .

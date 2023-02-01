@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,7 +17,7 @@
 
 <http://data.europa.eu/a4g/resource/AccessTerm/2018-S-104-238368/841f832b-8a2b-3a73-a4a6-85439d64c6be>
   a epo:AccessTerm;
-  epo:hasPublicAccessURL "www.pkpsa.pl/pkpsa/przetarg/przetargi.html";
+  epo:hasPublicAccessURL "www.pkpsa.pl/pkpsa/przetarg/przetargi.html"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
 
 <http://data.europa.eu/a4g/resource/Buyer/2018-S-104-238368/841f832b-8a2b-3a73-a4a6-85439d64c6be>
@@ -29,7 +28,7 @@
 <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-104-238368/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
   a cccev:ContactPoint;
   epo:hasContactName "PKP S.A. Centrala, Biuro Zakupów, Al. Jerozolimskie 142 A, 02-305 Warszawa"@pl;
-  epo:hasInternetAddress "www.pkpsa.pl";
+  epo:hasInternetAddress "www.pkpsa.pl"^^xsd:anyURI;
   cccev:email "przetargi@pkp.pl";
   cccev:telephone "+48 224749177" .
 
@@ -852,7 +851,7 @@
 <http://data.europa.eu/a4g/resource/MediatorContactPoint/2018-S-104-238368/511b8aa2-091b-34ca-b157-4fec69db9fd2>
   a cccev:ContactPoint;
   epo:hasFax "+48 224587800";
-  epo:hasInternetAddress "www.uzp.gov.pl";
+  epo:hasInternetAddress "www.uzp.gov.pl"^^xsd:anyURI;
   cccev:email "odwolania@uzp.gov.pl";
   cccev:telephone "+48 224587801" .
 
@@ -860,7 +859,7 @@
   a org:Organization;
   epo:hasLegalName "Krajowa Izba Odwoławcza"@pl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/MediatorContactPoint/2018-S-104-238368/511b8aa2-091b-34ca-b157-4fec69db9fd2>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2018-S-104-238368/511b8aa2-091b-34ca-b157-4fec69db9fd2> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2018-S-104-238368/511b8aa2-091b-34ca-b157-4fec69db9fd2> .
 
 <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2018-S-104-238368/511b8aa2-091b-34ca-b157-4fec69db9fd2>
   a locn:Address;
@@ -901,8 +900,8 @@
 <http://data.europa.eu/a4g/resource/Organisation/2018-S-104-238368/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
   a org:Organization;
   epo:hasLegalName "Polskie Koleje Państwowe S.A."@pl;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/rail>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-104-238368/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/rail>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-104-238368/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-104-238368/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
   a locn:Address;
@@ -946,7 +945,6 @@
   epo:hasMainFeature """
                Postępowanie o udzielenie zamówienia publicznego na usługi społeczne prowadzone jest w oparciu o przepisy uregulowane w art. 138g-n oraz art. 138p-s ustawy Pzp (Rozdział 6 Działu III ustawy Pzp).
             """;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-104-238368/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2018-S-104-238368/0111c4ec-bd7e-33a1-a2ef-777a29a258cc>,
     <http://data.europa.eu/a4g/resource/Lot/2018-S-104-238368/0dfa9214-dcf4-363c-b1f9-27dd240eefb6>,
@@ -962,6 +960,7 @@
     <http://data.europa.eu/a4g/resource/Lot/2018-S-104-238368/c49181fc-2c81-3d8d-8ab7-3fa6b4793760>,
     <http://data.europa.eu/a4g/resource/Lot/2018-S-104-238368/fc88f074-3ab0-3274-9189-ecbbe8879bdf>,
     <http://data.europa.eu/a4g/resource/Lot/2018-S-104-238368/ff6ae1b7-301c-368b-9f87-0657ba988b9d>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-104-238368/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
   epo:hasTitle """
                Świadczenie usług ochrony fizycznej osób i mienia na dworcach kolejowych oraz w budynkach niedworcowych, znajdujących się w zarządzie Zamawiającego
             """@pl;
@@ -983,7 +982,7 @@
 
 <http://data.europa.eu/a4g/resource/ProcedureTerm/2018-S-104-238368/1d9ef4ec-53be-3d2d-b473-d791c9090e39>
   a epo:ProcedureTerm;
-  epo:hasNationalProcedureRules "https://www.uzp.gov.pl";
+  epo:hasNationalProcedureRules "https://www.uzp.gov.pl"^^xsd:anyURI;
   epo:isSubmissionForAllLotsAllowed true .
 
 <http://data.europa.eu/a4g/resource/ProcurementProcedureInformationProvider/2018-S-104-238368/cd1f8e5f-b72a-3163-a598-b8e32f275d54>
@@ -1005,7 +1004,7 @@
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2018-S-104-238368/72314151-edeb-3d6c-ad80-79e218cb58cf>
   a cccev:ContactPoint;
   epo:hasFax "+48 224587840";
-  epo:hasInternetAddress "http://www.uzp.gov.pl";
+  epo:hasInternetAddress "http://www.uzp.gov.pl"^^xsd:anyURI;
   cccev:email "odwolania@uzp.gov.pl";
   cccev:telephone "+48 224587840" .
 
@@ -1013,7 +1012,7 @@
   a org:Organization;
   epo:hasLegalName "Krajowa Izba Odwoławcza"@pl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2018-S-104-238368/72314151-edeb-3d6c-ad80-79e218cb58cf>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2018-S-104-238368/72314151-edeb-3d6c-ad80-79e218cb58cf> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2018-S-104-238368/72314151-edeb-3d6c-ad80-79e218cb58cf> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2018-S-104-238368/3371e348-14a7-3e56-9dde-a3904d7fe886>
   a epo:ReviewTerm;
@@ -1039,7 +1038,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-104-238368/f408af29-86f8-3547-8427-ccade0632c83>
   a cccev:ContactPoint;
   epo:hasFax "+48 224587840";
-  epo:hasInternetAddress "http://www.uzp.gov.pl";
+  epo:hasInternetAddress "http://www.uzp.gov.pl"^^xsd:anyURI;
   cccev:email "odwolania@uzp.gov.pl";
   cccev:telephone "+48 224587840" .
 
@@ -1047,7 +1046,7 @@
   a org:Organization;
   epo:hasLegalName "Krajowa Izba Odwoławcza"@pl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-104-238368/f408af29-86f8-3547-8427-ccade0632c83>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-104-238368/f408af29-86f8-3547-8427-ccade0632c83> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-104-238368/f408af29-86f8-3547-8427-ccade0632c83> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-104-238368/f408af29-86f8-3547-8427-ccade0632c83>
   a locn:Address;
@@ -1069,8 +1068,7 @@
 <http://data.europa.eu/a4g/resource/SubmissionTerm/2018-S-104-238368/d5eb64bb-60fc-33e6-91a2-96bf252d3a17>
   a epo:SubmissionTerm;
   epo:hasLanguage "PL";
-  epo:hasReceiptDeadline "2018-06-20"^^xsd:datetime;
-  epo:hasReceiptExpressionsDeadline "12:00"^^xsd:datetime .
+  epo:hasReceiptDeadline "2018-06-20T12:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/TenderReceiver/2018-S-104-238368/ac0de271-9725-30be-817c-5414d868ef49>
   a epo:TenderReceiver;

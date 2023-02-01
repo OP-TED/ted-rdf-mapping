@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -32,27 +31,14 @@
 <http://data.europa.eu/a4g/resource/ContactPoint/2016-S-171-307694/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a cccev:ContactPoint;
   epo:hasContactName "François Binoux-Rémy"@fr;
-  epo:hasInternetAddress "http://www.marches.agglo-belfort.fr";
+  epo:hasInternetAddress "http://www.marches.agglo-belfort.fr"^^xsd:anyURI;
   cccev:email "fbinoux-remy@mairie-belfort.fr";
   cccev:telephone "+33 384545623" .
 
 <http://data.europa.eu/a4g/resource/Contract/2016-S-171-307694/2b425ab1-553e-3915-a060-80f1d3cff764>
   a epo:ConcessionContract, epo:Contract;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2016-S-171-307694/5a50554f-89ac-3a44-9d4f-643949ca9831>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2016-S-171-307694/2b425ab1-553e-3915-a060-80f1d3cff764> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2016-S-171-307694/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a org:Organization;
-  epo:hasLegalName "Sodeb"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2016-S-171-307694/8f833010-0b39-361a-9ea9-959275ccdc19> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2016-S-171-307694/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR434>;
-  locn:postCode "90400";
-  locn:postName "Meroux";
-  locn:thoroughfare "La Jonxion — 1 avenue de la Gare TGV" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2016-S-171-307694/2b425ab1-553e-3915-a060-80f1d3cff764> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2016-S-171-307694/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:ContractTerm;
@@ -62,6 +48,19 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2016-S-171-307694/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/FR434> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2016-S-171-307694/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a org:Organization;
+  epo:hasLegalName "Sodeb"@fr;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2016-S-171-307694/8f833010-0b39-361a-9ea9-959275ccdc19> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2016-S-171-307694/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR434>;
+  locn:postCode "90400";
+  locn:postName "Meroux";
+  locn:thoroughfare "La Jonxion — 1 avenue de la Gare TGV" .
 
 <http://data.europa.eu/a4g/resource/Duration/2016-S-171-307694/1d09e8e7-ef82-30d4-befb-d86c000a8e5a>
   a epo:Duration;
@@ -110,7 +109,7 @@ Voir Ii.1.4.
 <http://data.europa.eu/a4g/resource/MediatorOrganisation/2016-S-171-307694/5833b6b8-dd30-3289-9016-fb64e7bb3c6e>
   a org:Organization;
   epo:hasLegalName "CCIRA"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2016-S-171-307694/5833b6b8-dd30-3289-9016-fb64e7bb3c6e> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2016-S-171-307694/5833b6b8-dd30-3289-9016-fb64e7bb3c6e> .
 
 <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2016-S-171-307694/5833b6b8-dd30-3289-9016-fb64e7bb3c6e>
   a locn:Address;
@@ -147,10 +146,10 @@ Voir Ii.1.4.
 
 <http://data.europa.eu/a4g/resource/Organisation/2016-S-171-307694/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasLegalName "Ville de Belfort"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-171-307694/188615bc-907f-376a-b3e0-b7f440ca4c64> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-171-307694/188615bc-907f-376a-b3e0-b7f440ca4c64> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-171-307694/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a locn:Address;
@@ -168,8 +167,8 @@ Désignation d'un aménageur en vue de la passation d'un contrat de concession p
 Conformément aux articles R.300-4 à R.300-11 du code de l'urbanisme et en application de l'ordonnance n° 2016-65 du 29.1.2016 et du Décret n° 2016-86 du 1.2.2016.
 """@fr;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2016-S-171-307694/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-171-307694/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2016-S-171-307694/5a50554f-89ac-3a44-9d4f-643949ca9831>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-171-307694/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasTitle """
 Choix d'un aménageur pour la zone d'aménagement Concerté du site de l'ancien hôpital de Belfort.
 """@fr;
@@ -211,7 +210,7 @@ Articles L 551-1 à L 551-4 du code de justice administrative pour le référé 
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Besançon"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2016-S-171-307694/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-171-307694/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-171-307694/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-171-307694/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a locn:Address;
@@ -236,4 +235,4 @@ Articles L 551-1 à L 551-4 du code de justice administrative pour le référé 
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2016-S-171-307694/8f833010-0b39-361a-9ea9-959275ccdc19>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2016-S-171-307694/8f833010-0b39-361a-9ea9-959275ccdc19> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2016-S-171-307694/8f833010-0b39-361a-9ea9-959275ccdc19> .

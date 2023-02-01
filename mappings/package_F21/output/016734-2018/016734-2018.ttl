@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -24,7 +23,7 @@
 <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-009-016734/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a cccev:ContactPoint;
   epo:hasContactName "G. Tichelaar"@nl;
-  epo:hasInternetAddress "http://www.amstelveen.nl";
+  epo:hasInternetAddress "http://www.amstelveen.nl"^^xsd:anyURI;
   cccev:email "g.tichelaar@amstelveen.nl";
   cccev:telephone "+31 205404911" .
 
@@ -36,25 +35,11 @@
                Preventieve zorg en ondersteuning
             """@nl;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2018-S-009-016734/10a954c5-4b3f-3ea1-add9-eda3a9735c67>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-009-016734/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-009-016734/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2018-S-009-016734/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172>
   a epo:Identifier;
   epo:hasIdentifierValue "1" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2018-S-009-016734/ee813f4d-93e5-3fe8-8e46-545a60837d07>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasLegalName "Vita Amstelland"@nl;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2018-S-009-016734/ee813f4d-93e5-3fe8-8e46-545a60837d07> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2018-S-009-016734/ee813f4d-93e5-3fe8-8e46-545a60837d07>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NLD>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/NL>;
-  locn:postCode "1185VB";
-  locn:postName "Amstelveen";
-  locn:thoroughfare "Dr. Willemdreesweg 2" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2018-S-009-016734/10a954c5-4b3f-3ea1-add9-eda3a9735c67>
   a epo:ContractTerm;
@@ -70,6 +55,20 @@
   locn:fullAddress """
                   Amstelveen en Aalsmeer.
                """@nl .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2018-S-009-016734/ee813f4d-93e5-3fe8-8e46-545a60837d07>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "Vita Amstelland"@nl;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2018-S-009-016734/ee813f4d-93e5-3fe8-8e46-545a60837d07> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2018-S-009-016734/ee813f4d-93e5-3fe8-8e46-545a60837d07>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NLD>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/NL>;
+  locn:postCode "1185VB";
+  locn:postName "Amstelveen";
+  locn:thoroughfare "Dr. Willemdreesweg 2" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2018-S-009-016734/168a6c96-75f8-304a-bff5-0d0cf3c2f20c>
   a epo:DirectAwardTerm;
@@ -110,14 +109,14 @@
 
 <http://data.europa.eu/a4g/resource/MediatorContactPoint/2018-S-009-016734/9e01d479-a67f-3d93-baab-0b5363959e9c>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://www.amstelveen.nl";
+  epo:hasInternetAddress "http://www.amstelveen.nl"^^xsd:anyURI;
   cccev:email "KlachtenAanbesteden@amstelveen.nl" .
 
 <http://data.europa.eu/a4g/resource/MediatorOrganisation/2018-S-009-016734/9e01d479-a67f-3d93-baab-0b5363959e9c>
   a org:Organization;
   epo:hasLegalName "Toetsingscommissie inkoop en aanbesteding"@nl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/MediatorContactPoint/2018-S-009-016734/9e01d479-a67f-3d93-baab-0b5363959e9c>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2018-S-009-016734/9e01d479-a67f-3d93-baab-0b5363959e9c> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2018-S-009-016734/9e01d479-a67f-3d93-baab-0b5363959e9c> .
 
 <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2018-S-009-016734/9e01d479-a67f-3d93-baab-0b5363959e9c>
   a locn:Address;
@@ -155,11 +154,11 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2018-S-009-016734/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2018-S-009-016734/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:hasLegalName "Gemeente Amstelveen"@nl;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-009-016734/97c28c49-5587-3e91-95b4-4e48e30ed684> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-009-016734/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-009-016734/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a locn:Address;
@@ -180,9 +179,9 @@
                Preventie zorg en ondersteuning gemeenten Aalsmeer en Amstelveen.
             """@nl;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2018-S-009-016734/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-009-016734/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2018-S-009-016734/10a954c5-4b3f-3ea1-add9-eda3a9735c67>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-009-016734/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasTitle """
                Preventieve zorg en ondersteuning
             """@nl;
@@ -217,7 +216,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-009-016734/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a cccev:ContactPoint;
   epo:hasFax "+31 205412111";
-  epo:hasInternetAddress "https://www.rechtspraak.nl/organisatie-en-contact/organisatie/rechtbanken/rechtbank-amsterdam/contact/";
+  epo:hasInternetAddress "https://www.rechtspraak.nl/organisatie-en-contact/organisatie/rechtbanken/rechtbank-amsterdam/contact/"^^xsd:anyURI;
   cccev:email "info@rechtbankamsterdam.nl";
   cccev:telephone "+31 883617000" .
 
@@ -225,7 +224,7 @@
   a org:Organization;
   epo:hasLegalName "Rechtbank Amsterdam"@nl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-009-016734/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-009-016734/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-009-016734/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-009-016734/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a locn:Address;
@@ -250,4 +249,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2018-S-009-016734/ee813f4d-93e5-3fe8-8e46-545a60837d07>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2018-S-009-016734/ee813f4d-93e5-3fe8-8e46-545a60837d07> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2018-S-009-016734/ee813f4d-93e5-3fe8-8e46-545a60837d07> .

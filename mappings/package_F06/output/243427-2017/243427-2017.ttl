@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -24,35 +23,31 @@
 <http://data.europa.eu/a4g/resource/AdditionalContactPoint/2017-S-120-243427/ae940a40-9549-31d6-9cb6-8424b79bf0b3>
   a cccev:ContactPoint;
   epo:hasContactName "Ron Van Den Thillart"@en;
-  epo:hasInternetAddress "www.tennet.eu";
+  epo:hasInternetAddress "www.tennet.eu"^^xsd:anyURI;
   cccev:email "communicatie@tennet.eu" .
 
 <http://data.europa.eu/a4g/resource/AdditionalOrganisation/2017-S-120-243427/ae940a40-9549-31d6-9cb6-8424b79bf0b3>
   a org:Organization;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2017-S-120-243427/ae940a40-9549-31d6-9cb6-8424b79bf0b3>;
   epo:hasLegalName "TenneT TSO BV"@en;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-120-243427/ae940a40-9549-31d6-9cb6-8424b79bf0b3> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-120-243427/ae940a40-9549-31d6-9cb6-8424b79bf0b3> .
 
 <http://data.europa.eu/a4g/resource/Buyer/2017-S-120-243427/15183658-b3d6-3d9d-88d4-6e02c7e3b7b9>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-120-243427/206f9015-5cd1-3fca-bf9c-23378a724274>;
+  epo:hasBuyerProfile "https://eu.eu-supply.com/ctm/Company/CompanyInformation/Index/228008"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-120-243427/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2017-S-120-243427/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
 
 <http://data.europa.eu/a4g/resource/BuyerOrganisationGroup/2017-S-120-243427/ae940a40-9549-31d6-9cb6-8424b79bf0b3>
   a epo:OrganisationGroup;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/electricity>;
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/electricity>;
   epo:hasMember <http://data.europa.eu/a4g/resource/AdditionalOrganisation/2017-S-120-243427/ae940a40-9549-31d6-9cb6-8424b79bf0b3>,
     <http://data.europa.eu/a4g/resource/Organisation/2017-S-120-243427/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-120-243427/206f9015-5cd1-3fca-bf9c-23378a724274>
-  a epo:BuyerProfile;
-  epo:hasURL "https://eu.eu-supply.com/ctm/Company/CompanyInformation/Index/228008" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-120-243427/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a cccev:ContactPoint;
   epo:hasContactName "Helle Barløse"@en;
-  epo:hasInternetAddress "https://eu.eu-supply.com/ctm/supplier/publictenders?B=ENERGINET";
+  epo:hasInternetAddress "https://eu.eu-supply.com/ctm/supplier/publictenders?B=ENERGINET"^^xsd:anyURI;
   cccev:email "hha@energinet.dk";
   cccev:telephone "+45 76224352" .
 
@@ -64,35 +59,11 @@
                Procurement of consultancy services for Marine Warranty Surveyor (MWS) to COBRA cable
             """@en;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2017-S-120-243427/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-120-243427/527e871b-562d-3858-b2cb-c75e9b69e338> .
-
-<http://data.europa.eu/a4g/resource/ContractContactPoint/2017-S-120-243427/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a cccev:ContactPoint;
-  cccev:email "chris.sturgeon@redpenguinmarine.com" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-120-243427/527e871b-562d-3858-b2cb-c75e9b69e338> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2017-S-120-243427/527e871b-562d-3858-b2cb-c75e9b69e338>
   a epo:Identifier;
   epo:hasIdentifierValue "1" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-120-243427/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2017-S-120-243427/11c6525a-cbf9-36a2-9b0b-e686c6668d03>;
-  epo:hasLegalName "Red Penguin Marine"@en;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractContactPoint/2017-S-120-243427/11c6525a-cbf9-36a2-9b0b-e686c6668d03>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-120-243427/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-120-243427/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/UK>;
-  locn:postCode "PO19 1ES";
-  locn:postName "Chichester";
-  locn:thoroughfare "Avenue House, Southgate" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2017-S-120-243427/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a epo:Identifier;
-  epo:hasIdentifierValue "05346019" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2017-S-120-243427/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a epo:ContractTerm;
@@ -109,6 +80,30 @@
   locn:fullAddress """
                   Offshore between Esbjerg in Denmark and Eemshaven in the Netherlands.
                """@en .
+
+<http://data.europa.eu/a4g/resource/ContractorContactPoint/2017-S-120-243427/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a cccev:ContactPoint;
+  cccev:email "chris.sturgeon@redpenguinmarine.com" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-120-243427/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasID <http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2017-S-120-243427/11c6525a-cbf9-36a2-9b0b-e686c6668d03>;
+  epo:hasLegalName "Red Penguin Marine"@en;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorContactPoint/2017-S-120-243427/11c6525a-cbf9-36a2-9b0b-e686c6668d03>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-120-243427/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-120-243427/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/UK>;
+  locn:postCode "PO19 1ES";
+  locn:postName "Chichester";
+  locn:thoroughfare "Avenue House, Southgate" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2017-S-120-243427/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a epo:Identifier;
+  epo:hasIdentifierValue "05346019" .
 
 <http://data.europa.eu/a4g/resource/Fund/2017-S-120-243427/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a epo:Fund;
@@ -171,7 +166,7 @@
   a org:Organization;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2017-S-120-243427/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>;
   epo:hasLegalName "Energinet.dk"@en;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-120-243427/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-120-243427/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-120-243427/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a locn:Address;
@@ -223,9 +218,9 @@
                The Contracting Entity wants to purchase consultancy services in form of Marine Warranty Surveyor (MWS) to the COBRA cable in relation to offshore cable laying and transportation which includes laying and protection of offshore cable for the COBRA project.
             """@en;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2017-S-120-243427/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-120-243427/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2017-S-120-243427/636e3166-5ecc-350b-867b-7bf2072a2c03>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-120-243427/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasTitle """
                Procurement of consultancy services for Marine Warranty Surveyor (MWS) to COBRA cable.
             """@en;
@@ -261,7 +256,7 @@
 
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2017-S-120-243427/cda2e79a-2b54-3d8d-8cbd-025f430ee110>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://www.kfst.dk";
+  epo:hasInternetAddress "http://www.kfst.dk"^^xsd:anyURI;
   cccev:email "kfst@kfst.dk";
   cccev:telephone "+45 41715000" .
 
@@ -269,7 +264,7 @@
   a org:Organization;
   epo:hasLegalName "Konkurrence- og Forbrugerstyrelsen"@en;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2017-S-120-243427/cda2e79a-2b54-3d8d-8cbd-025f430ee110>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-120-243427/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-120-243427/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2017-S-120-243427/9aa38039-a45b-3425-8be8-95054b97e247>
   a epo:ReviewTerm;
@@ -287,7 +282,7 @@
 
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-120-243427/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://www.kfst.dk/";
+  epo:hasInternetAddress "http://www.kfst.dk/"^^xsd:anyURI;
   cccev:email "klfu@erst.dk";
   cccev:telephone "+45 35291095" .
 
@@ -295,7 +290,7 @@
   a org:Organization;
   epo:hasLegalName "Klagenævntet for Udbud"@en;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-120-243427/13730a07-65b0-306c-a9b5-a8929927a6a1>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-120-243427/13730a07-65b0-306c-a9b5-a8929927a6a1> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-120-243427/13730a07-65b0-306c-a9b5-a8929927a6a1> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-120-243427/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a locn:Address;
@@ -319,4 +314,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2017-S-120-243427/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-120-243427/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-120-243427/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .

@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -29,7 +28,7 @@
   a cccev:ContactPoint;
   epo:hasContactName "Stefan Lösel"@de;
   epo:hasFax "+49 3883616150";
-  epo:hasInternetAddress "http://www.vlp-lup.de";
+  epo:hasInternetAddress "http://www.vlp-lup.de"^^xsd:anyURI;
   cccev:email "s.loesel@vl-p.de";
   cccev:telephone "+49 38836161-0" .
 
@@ -37,20 +36,7 @@
   a epo:Contract;
   epo:hasContractConclusionDate "2019-09-17"^^xsd:date;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2019-S-182-444400/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2019-S-182-444400/527e871b-562d-3858-b2cb-c75e9b69e338> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2019-S-182-444400/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a org:Organization;
-  epo:hasLegalName "Iveco Magirus AG"@de;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2019-S-182-444400/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2019-S-182-444400/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE144>;
-  locn:postCode "89079";
-  locn:postName "Ulm";
-  locn:thoroughfare "Nicolaus-Otto-Straße 27" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2019-S-182-444400/527e871b-562d-3858-b2cb-c75e9b69e338> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2019-S-182-444400/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a epo:ContractTerm;
@@ -65,6 +51,19 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2019-S-182-444400/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a locn:Address;
   locn:fullAddress "Hagenow"@de .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2019-S-182-444400/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a org:Organization;
+  epo:hasLegalName "Iveco Magirus AG"@de;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2019-S-182-444400/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2019-S-182-444400/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE144>;
+  locn:postCode "89079";
+  locn:postName "Ulm";
+  locn:thoroughfare "Nicolaus-Otto-Straße 27" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2019-S-182-444400/b68f1feb-885d-37f5-ac99-4287870dfd15>
   a epo:DirectAwardTerm;
@@ -99,13 +98,13 @@
 
 <http://data.europa.eu/a4g/resource/MediatorContactPoint/2019-S-182-444400/43c72ae4-1691-3a54-9e37-60dec613cbbd>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "https://www.mv-regierung.de" .
+  epo:hasInternetAddress "https://www.mv-regierung.de"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/MediatorOrganisation/2019-S-182-444400/43c72ae4-1691-3a54-9e37-60dec613cbbd>
   a org:Organization;
   epo:hasLegalName "Ministerium für Wirtschaft, Arbeit und Tourismus Mecklenburg-Vorpommern, Vergabekollegium"@de;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/MediatorContactPoint/2019-S-182-444400/43c72ae4-1691-3a54-9e37-60dec613cbbd>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2019-S-182-444400/43c72ae4-1691-3a54-9e37-60dec613cbbd> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2019-S-182-444400/43c72ae4-1691-3a54-9e37-60dec613cbbd> .
 
 <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2019-S-182-444400/43c72ae4-1691-3a54-9e37-60dec613cbbd>
   a locn:Address;
@@ -134,7 +133,7 @@
   a org:Organization;
   epo:hasLegalName "Verkehrsgesellschaft Ludwigslust-Parchim mbH"@de;
   epo:hasMainActivityDescription "Regionaler Busverkehr";
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-182-444400/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-182-444400/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-182-444400/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a locn:Address;
@@ -149,9 +148,9 @@
   epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2019-S-182-444400/636e3166-5ecc-350b-867b-7bf2072a2c03>;
   epo:hasDescription "Lieferung von 7 gebrauchten Diesel-Niederflurbussen (3-Achser) zum Einsatz im Linienverkehr und im freigestellten Schülerverkehr."@de;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2019-S-182-444400/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2019-S-182-444400/636e3166-5ecc-350b-867b-7bf2072a2c03>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2019-S-182-444400/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasTitle "Lieferung von 7 gebrauchten Bussen"@de;
   epo:isCoveredByGPA false;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/DirectAwardTerm/2019-S-182-444400/b68f1feb-885d-37f5-ac99-4287870dfd15>,
@@ -184,7 +183,7 @@
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2019-S-182-444400/cda2e79a-2b54-3d8d-8cbd-025f430ee110>
   a cccev:ContactPoint;
   epo:hasFax "+49 3855885873";
-  epo:hasInternetAddress "https://www.mv-regierung.de";
+  epo:hasInternetAddress "https://www.mv-regierung.de"^^xsd:anyURI;
   cccev:email "vergabekammer@wm.mv-regierung.de";
   cccev:telephone "+49 3855885813" .
 
@@ -192,7 +191,7 @@
   a org:Organization;
   epo:hasLegalName "Ministerium für Wirtschaft, Arbeit und Tourismus Mecklenburg-Vorpommern, Vergabekollegium"@de;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2019-S-182-444400/cda2e79a-2b54-3d8d-8cbd-025f430ee110>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2019-S-182-444400/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2019-S-182-444400/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2019-S-182-444400/9aa38039-a45b-3425-8be8-95054b97e247>
   a epo:ReviewTerm;
@@ -205,7 +204,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2019-S-182-444400/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a cccev:ContactPoint;
   epo:hasFax "+49 3855885873";
-  epo:hasInternetAddress "https://www.mv-regierung.de";
+  epo:hasInternetAddress "https://www.mv-regierung.de"^^xsd:anyURI;
   cccev:email "vergabekammer@wm.mv-regierung.de";
   cccev:telephone "+49 3855885813" .
 
@@ -213,7 +212,7 @@
   a org:Organization;
   epo:hasLegalName "Ministerium für Wirtschaft, Arbeit und Tourismus Mecklenburg-Vorpommern, Vergabekollegium"@de;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2019-S-182-444400/13730a07-65b0-306c-a9b5-a8929927a6a1>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-182-444400/13730a07-65b0-306c-a9b5-a8929927a6a1> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-182-444400/13730a07-65b0-306c-a9b5-a8929927a6a1> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-182-444400/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a locn:Address;
@@ -238,4 +237,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2019-S-182-444400/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2019-S-182-444400/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2019-S-182-444400/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .

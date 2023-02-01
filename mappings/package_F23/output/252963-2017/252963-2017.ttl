@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -30,27 +29,14 @@
 <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-124-252963/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a cccev:ContactPoint;
   epo:hasContactName "Mme le maire, Patricia Olivero"@fr;
-  epo:hasInternetAddress "http://www.suzette-village.fr/";
+  epo:hasInternetAddress "http://www.suzette-village.fr/"^^xsd:anyURI;
   cccev:email "commande-publique@ventoux-comtat.com";
   cccev:telephone "+33 490629639" .
 
 <http://data.europa.eu/a4g/resource/Contract/2017-S-124-252963/70e1fca2-f8e6-3a32-8dca-713ccb185cf6>
   a epo:ConcessionContract, epo:Contract;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2017-S-124-252963/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-124-252963/70e1fca2-f8e6-3a32-8dca-713ccb185cf6> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-124-252963/7553cd03-f6c0-3d87-a53e-90dd8e57b083>
-  a org:Organization;
-  epo:hasLegalName "Olivier Tilmant"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-124-252963/7553cd03-f6c0-3d87-a53e-90dd8e57b083> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-124-252963/7553cd03-f6c0-3d87-a53e-90dd8e57b083>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR826>;
-  locn:postCode "84190";
-  locn:postName "Suzette";
-  locn:thoroughfare "Domaine des Garances — la Treille" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-124-252963/70e1fca2-f8e6-3a32-8dca-713ccb185cf6> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2017-S-124-252963/64592fe7-40a4-3c6b-85ce-08fd4c446531>
   a epo:ContractTerm;
@@ -60,6 +46,19 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2017-S-124-252963/64592fe7-40a4-3c6b-85ce-08fd4c446531>
   a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/FR826> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-124-252963/7553cd03-f6c0-3d87-a53e-90dd8e57b083>
+  a org:Organization;
+  epo:hasLegalName "Olivier Tilmant"@fr;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-124-252963/7553cd03-f6c0-3d87-a53e-90dd8e57b083> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-124-252963/7553cd03-f6c0-3d87-a53e-90dd8e57b083>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR826>;
+  locn:postCode "84190";
+  locn:postName "Suzette";
+  locn:thoroughfare "Domaine des Garances — la Treille" .
 
 <http://data.europa.eu/a4g/resource/Duration/2017-S-124-252963/1d20f563-6060-39ce-a62d-de87c1a9defd>
   a epo:Duration;
@@ -120,10 +119,10 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2017-S-124-252963/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasLegalName "Commune de Suzette"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-124-252963/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-124-252963/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-124-252963/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a locn:Address;
@@ -139,8 +138,8 @@
   epo:hasDescription """
                Exploitation d'un établissement de restauration et débit de boissons, avec services de proximité sur le modèle des Bistrots de Pays.
             """@fr;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-124-252963/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2017-S-124-252963/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-124-252963/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasTitle """
                Exploitation d'un établissement de restauration et services de proximité.
             """@fr;
@@ -172,7 +171,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-124-252963/2a666ce1-cebc-31d9-b200-113ebf473883>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-124-252963/2a666ce1-cebc-31d9-b200-113ebf473883> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-124-252963/2a666ce1-cebc-31d9-b200-113ebf473883> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-124-252963/2a666ce1-cebc-31d9-b200-113ebf473883>
   a locn:Address;
@@ -198,4 +197,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2017-S-124-252963/7553cd03-f6c0-3d87-a53e-90dd8e57b083>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-124-252963/7553cd03-f6c0-3d87-a53e-90dd8e57b083> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-124-252963/7553cd03-f6c0-3d87-a53e-90dd8e57b083> .

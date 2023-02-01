@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -25,7 +24,7 @@
   a cccev:ContactPoint;
   epo:hasContactName "Stadtwerke Jena GmbH"@de;
   epo:hasFax "+49 3641 / 688-345";
-  epo:hasInternetAddress "www.stadtwerke-jena.de";
+  epo:hasInternetAddress "www.stadtwerke-jena.de"^^xsd:anyURI;
   cccev:email "einkauf@stadtwerke-jena.de";
   cccev:telephone "+49 3641688-340" .
 
@@ -35,42 +34,11 @@
   epo:hasID <http://data.europa.eu/a4g/resource/ContractIdentifier/2021-S-077-198522/527e871b-562d-3858-b2cb-c75e9b69e338>;
   epo:hasTitle "JNV Infrastrukturmaßnahmen zum Projekt „Der 800er“ — Umbau Betriebshof"@de;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2021-S-077-198522/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-077-198522/527e871b-562d-3858-b2cb-c75e9b69e338> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-077-198522/527e871b-562d-3858-b2cb-c75e9b69e338> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2021-S-077-198522/527e871b-562d-3858-b2cb-c75e9b69e338>
   a epo:Identifier;
   epo:hasIdentifierValue "4400076537" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-077-198522/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasLegalName "ARGE JNV — Prokonzept GmbH Industrieanlagenplanung / Glass Ingenieurbau Leipzig GmbH"@de;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-077-198522/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-077-198522/2ae90609-3f1d-354a-b166-5acd6e29b555>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasLegalName "ARGE JNV — Prokonzept GmbH Industrieanlagenplanung / Glass Ingenieurbau Leipzig GmbH"@de;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-077-198522/2ae90609-3f1d-354a-b166-5acd6e29b555> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-077-198522/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE300>;
-  locn:postCode "10178";
-  locn:postName "Berlin" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-077-198522/2ae90609-3f1d-354a-b166-5acd6e29b555>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE300>;
-  locn:postCode "10178";
-  locn:postName "Berlin" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationGroup/2021-S-077-198522/14955bf6-88af-3773-b2c5-6a1cddff388a>
-  a epo:OrganisationGroup;
-  epo:hasMember <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-077-198522/11c6525a-cbf9-36a2-9b0b-e686c6668d03>,
-    <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-077-198522/2ae90609-3f1d-354a-b166-5acd6e29b555> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2021-S-077-198522/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a epo:ContractTerm;
@@ -86,6 +54,37 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2021-S-077-198522/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a locn:Address;
   locn:fullAddress "Jenaer Nahverkehr GmbHKeßlerstraße 2907745 Jena"@de .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-077-198522/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "ARGE JNV — Prokonzept GmbH Industrieanlagenplanung / Glass Ingenieurbau Leipzig GmbH"@de;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-077-198522/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-077-198522/2ae90609-3f1d-354a-b166-5acd6e29b555>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "ARGE JNV — Prokonzept GmbH Industrieanlagenplanung / Glass Ingenieurbau Leipzig GmbH"@de;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-077-198522/2ae90609-3f1d-354a-b166-5acd6e29b555> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-077-198522/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE300>;
+  locn:postCode "10178";
+  locn:postName "Berlin" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-077-198522/2ae90609-3f1d-354a-b166-5acd6e29b555>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE300>;
+  locn:postCode "10178";
+  locn:postName "Berlin" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationGroup/2021-S-077-198522/14955bf6-88af-3773-b2c5-6a1cddff388a>
+  a epo:OrganisationGroup;
+  epo:hasMember <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-077-198522/11c6525a-cbf9-36a2-9b0b-e686c6668d03>,
+    <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-077-198522/2ae90609-3f1d-354a-b166-5acd6e29b555> .
 
 <http://data.europa.eu/a4g/resource/Lot/2021-S-077-198522/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a epo:Lot;
@@ -132,8 +131,8 @@
 <http://data.europa.eu/a4g/resource/Organisation/2021-S-077-198522/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a org:Organization;
   epo:hasLegalName "Jenaer Nahverkehr GmbH"@de;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/urttb>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-077-198522/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/urttb>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-077-198522/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-077-198522/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a locn:Address;
@@ -149,9 +148,9 @@
   epo:hasAdditionalInformation "1. Für die Bewerbung stellt der Auftraggeber unter der in I.3) genannten Adresse Formulare zur Verfügung. Diese sind zwingend zu verwenden. Der Auftraggeber behält sich vor, Bewerbungen andernfalls nicht zu berücksichtigen. In jedem Falle werden interessierte Bewerber gebeten, sich als Bewerber mit Ihren Kontaktdaten registrieren zu lassen, damit sie gegebenenfalls über Antworten zu Bewerberfragen und Klarstellungen informiert werden können.2. Teile der Vergabeunterlagen zu diesem Vergabeverfahren sind vertraulich und zugleich Betriebs- und Geschäftsgeheimnisse. Aus diesem Grund sind Teile der Vergabeunterlagen nicht unter der in I.3) genannten Adresse abrufbar. Den Bewerbern werden unmittelbar nach Zusendung der mit den Vergabeunterlagen unter I.3) abrufbaren, ausgefüllten und unterzeichneten Vertraulichkeitsvereinbarung die vollständigen Vergabeunterlagen übermittelt. Die Übersendung der Vertraulichkeitsvereinbarung durch den Bewerber hat an die unter I.1) genannte E-Mail-Adresse zu erfolgen. Darauf folgend wird dem Bewerber der Zugang zu den Vergabeunterlagen über die Ausschreibungsplattform ermöglicht.3. Der Teilnahmeantrag ist in elektronischer Form unter der in I.3) genannten Adresse einzureichen.4. Im Falle einer Bewerbergemeinschaft ist mit dem Teilnahmeantrag eine Erklärung aller Mitglieder der Bewerbergemeinschaft abzugeben, wonach diese im Auftragsfalle eine Arbeitsgemeinschaft mit gesamtschuldnerischer Haftung gründen. Die Erklärung hat zudem ein Mitglied der Bewerbergemeinschaft zur Durchführung des Vergabeverfahrens zu bevollmächtigen.5. Beruft sich der Bewerber hinsichtlich seiner technischen und beruflichen Leistungsfähigkeit auf die Ressourcen von Drittunternehmen, so ist dem Teilnahmeantrag eine Erklärung der Drittunternehmen beizufügen, wonach diese dem Bewerber im Auftragsfalle ihre Ressourcen zur Verfügung stellen. Gleiches gilt für verbundene Unternehmen."@de;
   epo:hasDescription "Jenaer Nahverkehr GmbH — Umbau Betriebshof in drei Teilprojekten Multifunktionsgebäude, Umbau Werkstatthalle, Abstellfläche."@de;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-077-198522/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2021-S-077-198522/636e3166-5ecc-350b-867b-7bf2072a2c03>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-077-198522/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasTitle "JNV Infrastrukturmaßnahmen zum Projekt „Der 800er“ — Umbau Betriebshof"@de;
   epo:isCoveredByGPA true;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2021-S-077-198522/15183658-b3d6-3d9d-88d4-6e02c7e3b7b9> .
@@ -171,7 +170,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2021-S-077-198522/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a cccev:ContactPoint;
   epo:hasFax "+49 361 / 57332-1059";
-  epo:hasInternetAddress "http://www.thueringen.de/th3/tlvwa/vergabekammer/";
+  epo:hasInternetAddress "http://www.thueringen.de/th3/tlvwa/vergabekammer/"^^xsd:anyURI;
   cccev:email "vergabekammer@tlvwa.thueringen.de";
   cccev:telephone "+49 361 / 57332-1254" .
 
@@ -179,7 +178,7 @@
   a org:Organization;
   epo:hasLegalName "Vergabekammer des Freistaates Thüringen beim Thüringer Landesverwaltungsamt"@de;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2021-S-077-198522/13730a07-65b0-306c-a9b5-a8929927a6a1>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-077-198522/13730a07-65b0-306c-a9b5-a8929927a6a1> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-077-198522/13730a07-65b0-306c-a9b5-a8929927a6a1> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-077-198522/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a locn:Address;
@@ -204,8 +203,8 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-077-198522/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-077-198522/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-077-198522/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-077-198522/2ae90609-3f1d-354a-b166-5acd6e29b555>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-077-198522/2ae90609-3f1d-354a-b166-5acd6e29b555> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-077-198522/2ae90609-3f1d-354a-b166-5acd6e29b555> .

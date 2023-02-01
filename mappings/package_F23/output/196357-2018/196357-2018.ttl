@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,24 +17,20 @@
 
 <http://data.europa.eu/a4g/resource/AccessTerm/2018-S-087-196357/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209>
   a epo:AccessTerm;
-  epo:hasPublicAccessURL "www.lds.sachsen.de/index.asp?ID=13932&art_param=138";
+  epo:hasPublicAccessURL "www.lds.sachsen.de/index.asp?ID=13932&art_param=138"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
 
 <http://data.europa.eu/a4g/resource/Buyer/2018-S-087-196357/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-087-196357/34655f62-8001-38ad-a804-119bb9c85d23>;
+  epo:hasBuyerProfile "https://www.lds.sachsen.de/vergabe"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-087-196357/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-087-196357/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-087-196357/34655f62-8001-38ad-a804-119bb9c85d23>
-  a epo:BuyerProfile;
-  epo:hasURL "https://www.lds.sachsen.de/vergabe" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-087-196357/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a cccev:ContactPoint;
   epo:hasContactName "Zentrale Vergabestelle"@de;
   epo:hasFax "+49 371532-1119";
-  epo:hasInternetAddress "https://www.lds.sachsen.de";
+  epo:hasInternetAddress "https://www.lds.sachsen.de"^^xsd:anyURI;
   cccev:email "rene.rosenbaum@lds.sachsen.de";
   cccev:telephone "+49 371532-1165" .
 
@@ -148,10 +143,10 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2018-S-087-196357/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasLegalName "Landesdirektion Sachsen"@de;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-087-196357/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-087-196357/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-087-196357/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a locn:Address;
@@ -163,13 +158,13 @@
 
 <http://data.europa.eu/a4g/resource/Period/2018-S-087-196357/64592fe7-40a4-3c6b-85ce-08fd4c446531>
   a epo:Period;
-  epo:hasBeginning "2019-01-01"^^xsd:datetime;
-  epo:hasEnd "2026-12-31"^^xsd:datetime .
+  epo:hasBeginning "2019-01-01T00:00:00"^^xsd:dateTime;
+  epo:hasEnd "2026-12-31T00:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/Period/2018-S-087-196357/bce76c7c-7a7a-3da2-9e1f-8c42898f2212>
   a epo:Period;
-  epo:hasBeginning "2019-01-01"^^xsd:datetime;
-  epo:hasEnd "2026-12-31"^^xsd:datetime .
+  epo:hasBeginning "2019-01-01T00:00:00"^^xsd:dateTime;
+  epo:hasEnd "2026-12-31T00:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/Procedure/2018-S-087-196357/3b2748c6-16de-3218-af2c-e7456a886558>
   a epo:Procedure;
@@ -185,9 +180,9 @@
   epo:hasDescription """
                Dienstleistungskonzessionen zur Durchführung des Luftrettungsdienstes gemäß § 31 SächsBRKG im Freistaat Sachsen an den Luftrettungsstationen Bautzen, Dresden, Leipzig und Zwickau vom 1.1.2019 bis zum 31.12.2026
             """@de;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-087-196357/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2018-S-087-196357/64592fe7-40a4-3c6b-85ce-08fd4c446531>,
     <http://data.europa.eu/a4g/resource/Lot/2018-S-087-196357/bce76c7c-7a7a-3da2-9e1f-8c42898f2212>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-087-196357/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasTitle """
                Dienstleistungskonzessionen zur Durchführung des Luftrettungsdienstes im Freistaat Sachsen in den Jahren 2019 bis 2026 (öffentlich-rechtlicher Konzessionsvertrag)
             """@de;
@@ -210,7 +205,6 @@
 
 <http://data.europa.eu/a4g/resource/ProcurementProcedureInformationProvider/2018-S-087-196357/c5ef9a83-cf56-3b09-b28d-e41cf4342af1>
   a epo:ProcurementProcedureInformationProvider;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-087-196357/34655f62-8001-38ad-a804-119bb9c85d23>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-087-196357/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-087-196357/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
 
@@ -233,7 +227,7 @@
   a org:Organization;
   epo:hasLegalName "1. Vergabekammer des Freistaates Sachsen bei der Landesdirektion Sachsen"@de;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-087-196357/2a666ce1-cebc-31d9-b200-113ebf473883>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-087-196357/2a666ce1-cebc-31d9-b200-113ebf473883> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-087-196357/2a666ce1-cebc-31d9-b200-113ebf473883> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-087-196357/2a666ce1-cebc-31d9-b200-113ebf473883>
   a locn:Address;
@@ -251,11 +245,9 @@
 <http://data.europa.eu/a4g/resource/SubmissionTerm/2018-S-087-196357/64850f6d-a341-38ae-bc98-ed98207d0890>
   a epo:SubmissionTerm;
   epo:hasLanguage "DE";
-  epo:hasReceiptDeadline "2018-06-26"^^xsd:datetime;
-  epo:hasReceiptExpressionsDeadline "10:00"^^xsd:datetime .
+  epo:hasReceiptDeadline "2018-06-26T10:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/TenderReceiver/2018-S-087-196357/af83754e-446b-3253-855d-ef754d0f9e5e>
   a epo:TenderReceiver;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-087-196357/34655f62-8001-38ad-a804-119bb9c85d23>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-087-196357/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-087-196357/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .

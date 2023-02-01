@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,13 +17,9 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2021-S-075-193091/841f832b-8a2b-3a73-a4a6-85439d64c6be>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2021-S-075-193091/869d5405-9b33-3f2f-8a44-38f4bf6c8f11>;
+  epo:hasBuyerProfile "https://ppl.bip.gov.pl/search/publiccontracts/"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-075-193091/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2021-S-075-193091/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2021-S-075-193091/869d5405-9b33-3f2f-8a44-38f4bf6c8f11>
-  a epo:BuyerProfile;
-  epo:hasURL "https://ppl.bip.gov.pl/search/publiccontracts/"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-075-193091/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
   a cccev:ContactPoint;
@@ -40,24 +35,11 @@
   epo:hasID <http://data.europa.eu/a4g/resource/ContractIdentifier/2021-S-075-193091/67f40fa4-0fdc-31df-a278-a9ec4e2c34ff>;
   epo:hasTitle "Świadczenie usług medycznych z zakresu medycyny pracy oraz dodatkowej opieki medycznej dla pracowników PPL."@pl;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2021-S-075-193091/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-075-193091/67f40fa4-0fdc-31df-a278-a9ec4e2c34ff> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-075-193091/67f40fa4-0fdc-31df-a278-a9ec4e2c34ff> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2021-S-075-193091/67f40fa4-0fdc-31df-a278-a9ec4e2c34ff>
   a epo:Identifier;
   epo:hasIdentifierValue "1" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-075-193091/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
-  a org:Organization;
-  epo:hasLegalName "PZU Zdrowie S.A."@pl;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-075-193091/46d95603-a3e1-3d2c-8e32-b10fa665dec4> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-075-193091/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/PL911>;
-  locn:postCode "02-673";
-  locn:postName "Warszawa";
-  locn:thoroughfare "ul. Konstruktorska 13" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2021-S-075-193091/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
   a epo:ContractTerm;
@@ -71,6 +53,19 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2021-S-075-193091/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
   a locn:Address;
   locn:fullAddress "Terytorium Rzeczypospolitej Polskiej."@pl .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-075-193091/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
+  a org:Organization;
+  epo:hasLegalName "PZU Zdrowie S.A."@pl;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-075-193091/46d95603-a3e1-3d2c-8e32-b10fa665dec4> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-075-193091/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/PL911>;
+  locn:postCode "02-673";
+  locn:postName "Warszawa";
+  locn:thoroughfare "ul. Konstruktorska 13" .
 
 <http://data.europa.eu/a4g/resource/Lot/2021-S-075-193091/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
   a epo:Lot;
@@ -129,8 +124,8 @@
 <http://data.europa.eu/a4g/resource/Organisation/2021-S-075-193091/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
   a org:Organization;
   epo:hasLegalName "Przedsiębiorstwo Państwowe „Porty Lotnicze”"@pl;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/airport>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-075-193091/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/airport>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-075-193091/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-075-193091/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
   a locn:Address;
@@ -148,9 +143,9 @@
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2021-S-075-193091/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
   epo:hasMainFeature "Postępowanie prowadzone jest zgodnie z art. 359 pkt 1 ustawy z dnia 11 września 2019 r. Prawo zamówień publicznych (Dz.U. z 2019 r., poz. 2019 ze zm.).";
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-075-193091/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2021-S-075-193091/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-075-193091/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
   epo:hasTitle "Świadczenie usług medycznych z zakresu medycyny pracy oraz dodatkowej opieki medycznej dla pracowników PPL."@pl;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2021-S-075-193091/841f832b-8a2b-3a73-a4a6-85439d64c6be>,
     <http://data.europa.eu/a4g/resource/ProcedureTerm/2021-S-075-193091/1d9ef4ec-53be-3d2d-b473-d791c9090e39> .
@@ -202,7 +197,7 @@
   a org:Organization;
   epo:hasLegalName "Krajowa Izba Odowławcza"@pl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2021-S-075-193091/72314151-edeb-3d6c-ad80-79e218cb58cf>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2021-S-075-193091/72314151-edeb-3d6c-ad80-79e218cb58cf> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2021-S-075-193091/72314151-edeb-3d6c-ad80-79e218cb58cf> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2021-S-075-193091/3371e348-14a7-3e56-9dde-a3904d7fe886>
   a epo:ReviewTerm;
@@ -222,7 +217,7 @@
   a org:Organization;
   epo:hasLegalName "Krajowa Izba Odowławcza"@pl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2021-S-075-193091/f408af29-86f8-3547-8427-ccade0632c83>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-075-193091/f408af29-86f8-3547-8427-ccade0632c83> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-075-193091/f408af29-86f8-3547-8427-ccade0632c83> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-075-193091/f408af29-86f8-3547-8427-ccade0632c83>
   a locn:Address;
@@ -256,4 +251,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-075-193091/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-075-193091/46d95603-a3e1-3d2c-8e32-b10fa665dec4> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-075-193091/46d95603-a3e1-3d2c-8e32-b10fa665dec4> .

@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -34,19 +33,15 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2021-S-211-557373/5a0e0822-353f-34b8-9001-b27f293ef321>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2021-S-211-557373/41c3580d-d7b5-3ead-a7df-4e886771daad>;
+  epo:hasBuyerProfile "www.sandanskibg.com"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-211-557373/188615bc-907f-376a-b3e0-b7f440ca4c64>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2021-S-211-557373/188615bc-907f-376a-b3e0-b7f440ca4c64> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2021-S-211-557373/41c3580d-d7b5-3ead-a7df-4e886771daad>
-  a epo:BuyerProfile;
-  epo:hasURL "www.sandanskibg.com" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-211-557373/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a cccev:ContactPoint;
   epo:hasContactName "Евелина Велинова "@bg;
   epo:hasFax "+359 74689099";
-  epo:hasInternetAddress "www.sandanskibg.com";
+  epo:hasInternetAddress "www.sandanskibg.com"^^xsd:anyURI;
   cccev:email "ev.velinova@sandanskibg.com";
   cccev:telephone "+359 74689008" .
 
@@ -54,31 +49,7 @@
   a epo:ConcessionContract, epo:Contract;
   epo:hasTitle "Концесия за строителство и управление на Търговски център Сандански в град Сандански, община Сандански, област Благоевград "@bg;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2021-S-211-557373/5a50554f-89ac-3a44-9d4f-643949ca9831>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-211-557373/2b425ab1-553e-3915-a060-80f1d3cff764> .
-
-<http://data.europa.eu/a4g/resource/ContractContactPoint/2021-S-211-557373/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
-  a cccev:ContactPoint;
-  cccev:email "scsandanski@gmail.com";
-  cccev:telephone "+359 888209077" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-211-557373/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
-  a org:Organization;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2021-S-211-557373/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>;
-  epo:hasLegalName "\"Търговски център Сандански\" ООД"@bg;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractContactPoint/2021-S-211-557373/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-211-557373/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-211-557373/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG413>;
-  locn:postCode "2800";
-  locn:postName "Сандански";
-  locn:thoroughfare "ул. \"Станке Димитров № 7" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2021-S-211-557373/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
-  a epo:Identifier;
-  epo:hasIdentifierValue "206427534" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-211-557373/2b425ab1-553e-3915-a060-80f1d3cff764> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2021-S-211-557373/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:ContractTerm;
@@ -93,6 +64,30 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2021-S-211-557373/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a locn:Address;
   locn:fullAddress "гр.Сандански, община Сандански , област Благоевград"@bg .
+
+<http://data.europa.eu/a4g/resource/ContractorContactPoint/2021-S-211-557373/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
+  a cccev:ContactPoint;
+  cccev:email "scsandanski@gmail.com";
+  cccev:telephone "+359 888209077" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-211-557373/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
+  a org:Organization;
+  epo:hasID <http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2021-S-211-557373/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>;
+  epo:hasLegalName "\"Търговски център Сандански\" ООД"@bg;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorContactPoint/2021-S-211-557373/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-211-557373/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-211-557373/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG413>;
+  locn:postCode "2800";
+  locn:postName "Сандански";
+  locn:thoroughfare "ул. \"Станке Димитров № 7" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2021-S-211-557373/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
+  a epo:Identifier;
+  epo:hasIdentifierValue "206427534" .
 
 <http://data.europa.eu/a4g/resource/Duration/2021-S-211-557373/1d09e8e7-ef82-30d4-befb-d86c000a8e5a>
   a epo:Duration;
@@ -167,11 +162,11 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2021-S-211-557373/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2021-S-211-557373/188615bc-907f-376a-b3e0-b7f440ca4c64>;
   epo:hasLegalName "Община Сандански "@bg;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-211-557373/188615bc-907f-376a-b3e0-b7f440ca4c64> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-211-557373/188615bc-907f-376a-b3e0-b7f440ca4c64> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-211-557373/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a locn:Address;
@@ -192,8 +187,8 @@
   epo:hasDescription "Възлагане на основание чл.10, ал.1 от ЗК на:- изпълнение на строителство по чл.7, ал.2, т.2 от ЗК чрез което ще се изпълни едновременно проектиране и изпълнение на строителни и монтажни работи за основен ремонт, за реконструкция и/или изграждане на ново строителни елементи и инсталации за подобряване на функционалните и потребителските качества на сградата на Търговски център Сандански (ТЦС); - предоставяне и управление на услуги по чл.8, ал.1 и ал.2 от ЗК предназначени за ползване от обществото чрез управление на ТЦС за срока на концесията, което включва най-малко поддържане на ТЦС в експлоатационна годност за целия срок на концесията, предоставяне изцяло или частично от трети лица на търговски услуги от обществен интерес за търговия на дребно, както и за предоставяне на допълнителни търговски услуги и/или извършване на стопански дейности, съвместими с предназначението на обекта на концесията като търговски център и допустими съгласно устройственото предназначение на конц.. територия."@bg;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/MonetaryValueProcedure/2021-S-211-557373/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0023>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-211-557373/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2021-S-211-557373/5a50554f-89ac-3a44-9d4f-643949ca9831>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-211-557373/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasTitle "Концесия за строителство и управление на Търговски център Сандански в град Сандански, община Сандански, област Благоевград "@bg;
   epo:isCoveredByGPA false;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2021-S-211-557373/5a0e0822-353f-34b8-9001-b27f293ef321> .
@@ -225,7 +220,7 @@
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2021-S-211-557373/fdc5fccd-dd12-3226-8a44-ee7b6f769c12>
   a cccev:ContactPoint;
   epo:hasFax "+359 74689099";
-  epo:hasInternetAddress "www.sandanskibg.com";
+  epo:hasInternetAddress "www.sandanskibg.com"^^xsd:anyURI;
   cccev:email "ev.velinova@sandanskibg.com";
   cccev:telephone "+359 74689008" .
 
@@ -233,7 +228,7 @@
   a org:Organization;
   epo:hasLegalName "Община Сандански"@bg;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2021-S-211-557373/fdc5fccd-dd12-3226-8a44-ee7b6f769c12>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2021-S-211-557373/fdc5fccd-dd12-3226-8a44-ee7b6f769c12> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2021-S-211-557373/fdc5fccd-dd12-3226-8a44-ee7b6f769c12> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2021-S-211-557373/278f6fb6-6256-3e2e-b2d2-c98da96e5a94>
   a epo:ReviewTerm;
@@ -246,7 +241,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2021-S-211-557373/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a cccev:ContactPoint;
   epo:hasFax "+359 29807315";
-  epo:hasInternetAddress "www.cpc.bg";
+  epo:hasInternetAddress "www.cpc.bg"^^xsd:anyURI;
   cccev:email "cpcadmin@cpc.bg";
   cccev:telephone "+359 29356113" .
 
@@ -254,7 +249,7 @@
   a org:Organization;
   epo:hasLegalName "Комисия за защита на конкуренцията"@bg;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2021-S-211-557373/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-211-557373/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-211-557373/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-211-557373/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a locn:Address;
@@ -279,4 +274,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-211-557373/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-211-557373/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-211-557373/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .

@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -22,17 +21,13 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2017-S-112-226340/15183658-b3d6-3d9d-88d4-6e02c7e3b7b9>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-112-226340/206f9015-5cd1-3fca-bf9c-23378a724274>;
+  epo:hasBuyerProfile "http://www.renfe.com/empresa/perfilcontratante/index.html"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-112-226340/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2017-S-112-226340/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
 
-<http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-112-226340/206f9015-5cd1-3fca-bf9c-23378a724274>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.renfe.com/empresa/perfilcontratante/index.html" .
-
 <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-112-226340/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://www.renfe.com";
+  epo:hasInternetAddress "http://www.renfe.com"^^xsd:anyURI;
   cccev:email "jgpastrana@renfe.es";
   cccev:telephone "+34 661270903" .
 
@@ -44,27 +39,11 @@
 Asistencia técnica para la redacción de proyectos y dirección facultativa en obras en estaciones gestionadas por Renfe Viajeros SME, S.A
 """@es;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2017-S-112-226340/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-112-226340/527e871b-562d-3858-b2cb-c75e9b69e338> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-112-226340/527e871b-562d-3858-b2cb-c75e9b69e338> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2017-S-112-226340/527e871b-562d-3858-b2cb-c75e9b69e338>
   a epo:Identifier;
   epo:hasIdentifierValue "4600000524" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-112-226340/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a org:Organization;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2017-S-112-226340/11c6525a-cbf9-36a2-9b0b-e686c6668d03>;
-  epo:hasLegalName "UTE TRN Ingenieria y Planificacion de Infraestructura, S.A.U. - Getinsa Payma, S.L"@es;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-112-226340/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-112-226340/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES>;
-  locn:postName "Madrid" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2017-S-112-226340/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a epo:Identifier;
-  epo:hasIdentifierValue "U87787925" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2017-S-112-226340/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a epo:ContractTerm;
@@ -74,6 +53,22 @@ Asistencia técnica para la redacción de proyectos y dirección facultativa en 
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2017-S-112-226340/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/ES> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-112-226340/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a org:Organization;
+  epo:hasID <http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2017-S-112-226340/11c6525a-cbf9-36a2-9b0b-e686c6668d03>;
+  epo:hasLegalName "UTE TRN Ingenieria y Planificacion de Infraestructura, S.A.U. - Getinsa Payma, S.L"@es;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-112-226340/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-112-226340/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES>;
+  locn:postName "Madrid" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2017-S-112-226340/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a epo:Identifier;
+  epo:hasIdentifierValue "U87787925" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2017-S-112-226340/b68f1feb-885d-37f5-ac99-4287870dfd15>
   a epo:DirectAwardTerm;
@@ -123,8 +118,8 @@ Asistencia técnica para la redacción de proyectos y dirección facultativa en 
   a org:Organization;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2017-S-112-226340/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>;
   epo:hasLegalName "Renfe Viajeros, S.A. — Gerencia de Área de Control de Gestión y Compras"@es;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/rail>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-112-226340/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/rail>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-112-226340/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-112-226340/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a locn:Address;
@@ -145,9 +140,9 @@ Asistencia técnica para la redacción de proyectos y dirección facultativa en 
 Asistencia técnica para la redacción de proyectos y dirección facultativa en obras en estaciones gestionadas por Renfe Viajeros SME, S.A.
 """@es;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2017-S-112-226340/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-112-226340/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2017-S-112-226340/636e3166-5ecc-350b-867b-7bf2072a2c03>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-112-226340/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasTitle """
 Asistencia técnica para la redacción de proyectos y dirección facultativa en obras en estaciones gestionadas por Renfe Viajeros SME, S.A.
 """@es;
@@ -186,7 +181,7 @@ Asistencia técnica para la redacción de proyectos y dirección facultativa en 
   a org:Organization;
   epo:hasLegalName "Tribunal Administrativo Central de Recursos Contractuales"@es;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-112-226340/13730a07-65b0-306c-a9b5-a8929927a6a1>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-112-226340/13730a07-65b0-306c-a9b5-a8929927a6a1> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-112-226340/13730a07-65b0-306c-a9b5-a8929927a6a1> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-112-226340/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a locn:Address;
@@ -215,4 +210,4 @@ Asistencia técnica para la redacción de proyectos y dirección facultativa en 
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2017-S-112-226340/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-112-226340/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-112-226340/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .

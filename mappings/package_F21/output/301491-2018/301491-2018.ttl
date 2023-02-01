@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -25,7 +24,7 @@
   a cccev:ContactPoint;
   epo:hasContactName "Gerente del Organismo Autónomo «Madrid Salud»"@es;
   epo:hasFax "+34 914801307";
-  epo:hasInternetAddress "https://contrataciondelestado.es/wps/portal/plataforma";
+  epo:hasInternetAddress "https://contrataciondelestado.es/wps/portal/plataforma"^^xsd:anyURI;
   cccev:email "mscontratacion@madrid.es";
   cccev:telephone "+34 914801320" .
 
@@ -35,29 +34,11 @@
   epo:hasID <http://data.europa.eu/a4g/resource/ContractIdentifier/2018-S-132-301491/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172>;
   epo:hasTitle "Centro Español de Solidaridad"@es;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2018-S-132-301491/10a954c5-4b3f-3ea1-add9-eda3a9735c67>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-132-301491/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-132-301491/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2018-S-132-301491/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172>
   a epo:Identifier;
   epo:hasIdentifierValue "300201702332" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2018-S-132-301491/2c83355d-939c-3603-bdc9-70a1c649caee>
-  a org:Organization;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2018-S-132-301491/2c83355d-939c-3603-bdc9-70a1c649caee>;
-  epo:hasLegalName "Centro Español de Solidaridad"@es;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2018-S-132-301491/2c83355d-939c-3603-bdc9-70a1c649caee> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2018-S-132-301491/2c83355d-939c-3603-bdc9-70a1c649caee>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES300>;
-  locn:postCode "28008";
-  locn:postName "Madrid";
-  locn:thoroughfare "C/ Martín de los Heros, 68" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2018-S-132-301491/2c83355d-939c-3603-bdc9-70a1c649caee>
-  a epo:Identifier;
-  epo:hasIdentifierValue "G-28948990" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2018-S-132-301491/10a954c5-4b3f-3ea1-add9-eda3a9735c67>
   a epo:ContractTerm;
@@ -66,6 +47,24 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2018-S-132-301491/10a954c5-4b3f-3ea1-add9-eda3a9735c67>
   a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/ES300> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2018-S-132-301491/2c83355d-939c-3603-bdc9-70a1c649caee>
+  a org:Organization;
+  epo:hasID <http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2018-S-132-301491/2c83355d-939c-3603-bdc9-70a1c649caee>;
+  epo:hasLegalName "Centro Español de Solidaridad"@es;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2018-S-132-301491/2c83355d-939c-3603-bdc9-70a1c649caee> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2018-S-132-301491/2c83355d-939c-3603-bdc9-70a1c649caee>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES300>;
+  locn:postCode "28008";
+  locn:postName "Madrid";
+  locn:thoroughfare "C/ Martín de los Heros, 68" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2018-S-132-301491/2c83355d-939c-3603-bdc9-70a1c649caee>
+  a epo:Identifier;
+  epo:hasIdentifierValue "G-28948990" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2018-S-132-301491/168a6c96-75f8-304a-bff5-0d0cf3c2f20c>
   a epo:DirectAwardTerm;
@@ -121,11 +120,11 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2018-S-132-301491/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2018-S-132-301491/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:hasLegalName "Organismo Autónomo «Madrid Salud»"@es;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/health>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-132-301491/97c28c49-5587-3e91-95b4-4e48e30ed684> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/health>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-132-301491/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-132-301491/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a locn:Address;
@@ -150,9 +149,9 @@
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2018-S-132-301491/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasMainFeature "El contrato se tramitó por procedimiento negociado sin publicidad, al no haberse presentado ninguna oferta al anterior procedimiento abierto, publicado tanto en el DOUE (anuncio licitación S 174, número 357090 de 12.9.2017), como en el BOE (14.9.2017).Es un supuesto previsto tanto en las directivas comunitarias, como en la normativa interna (artículo 170 c. del T.R. de la Ley de Contratos del Sector Público RDL 3/2011, de 14 de noviembre).";
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-132-301491/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2018-S-132-301491/10a954c5-4b3f-3ea1-add9-eda3a9735c67>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-132-301491/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasTitle "Servicios para el concierto de 14 plazas en recursos convivenciales de apoyo a la reinserción para drogodependientes en tratamiento en el Instituto de Adicciones de «Madrid Salud»"@es;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/DirectAwardTerm/2018-S-132-301491/168a6c96-75f8-304a-bff5-0d0cf3c2f20c>,
     <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2018-S-132-301491/08cc6b87-fd77-3965-a6c4-7bd72326900e> .
@@ -195,7 +194,7 @@
   a org:Organization;
   epo:hasLegalName "Unidad Técnica de Contratación"@es;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2018-S-132-301491/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2018-S-132-301491/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2018-S-132-301491/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2018-S-132-301491/b717835d-5424-3d82-9a2a-3dedd6cdfaaa>
   a epo:ReviewTerm;
@@ -214,7 +213,7 @@
   a org:Organization;
   epo:hasLegalName "Gerente del Organismo Autónomo Madrid Salud"@es;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-132-301491/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-132-301491/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-132-301491/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-132-301491/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a locn:Address;
@@ -245,4 +244,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2018-S-132-301491/2c83355d-939c-3603-bdc9-70a1c649caee>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2018-S-132-301491/2c83355d-939c-3603-bdc9-70a1c649caee> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2018-S-132-301491/2c83355d-939c-3603-bdc9-70a1c649caee> .

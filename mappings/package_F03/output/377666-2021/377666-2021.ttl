@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -28,7 +27,7 @@
 <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-142-377666/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a cccev:ContactPoint;
   epo:hasContactName "Anna Adamkiewicz"@pl;
-  epo:hasInternetAddress "http://www.infish.com.pl/";
+  epo:hasInternetAddress "http://www.infish.com.pl/"^^xsd:anyURI;
   cccev:email "a.adamkiewicz@infish.com.pl";
   cccev:telephone "+48 503017181" .
 
@@ -36,20 +35,7 @@
   a epo:Contract;
   epo:hasContractConclusionDate "2021-05-28"^^xsd:date;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2021-S-142-377666/cbac108a-b047-3e09-a114-28c43d5b8706>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-142-377666/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-142-377666/b9a7c460-794b-36b5-a069-6e9a637315f4>
-  a org:Organization;
-  epo:hasLegalName "EELNED Hanna Teodorowicz z siedzibą przy"@pl;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-142-377666/b9a7c460-794b-36b5-a069-6e9a637315f4> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-142-377666/b9a7c460-794b-36b5-a069-6e9a637315f4>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/PL>;
-  locn:postCode "10-763";
-  locn:postName "Olsztyn";
-  locn:thoroughfare "ul. prof. A. Martyniaka 16 B" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-142-377666/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2021-S-142-377666/cbac108a-b047-3e09-a114-28c43d5b8706>
   a epo:ContractTerm;
@@ -64,6 +50,19 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2021-S-142-377666/cbac108a-b047-3e09-a114-28c43d5b8706>
   a locn:Address;
   locn:fullAddress "Dorzecze Wisły w akwenach Zalew Wiślany, Miejsce zarybienia: Tolkmicko."@pl .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-142-377666/b9a7c460-794b-36b5-a069-6e9a637315f4>
+  a org:Organization;
+  epo:hasLegalName "EELNED Hanna Teodorowicz z siedzibą przy"@pl;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-142-377666/b9a7c460-794b-36b5-a069-6e9a637315f4> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-142-377666/b9a7c460-794b-36b5-a069-6e9a637315f4>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/PL>;
+  locn:postCode "10-763";
+  locn:postName "Olsztyn";
+  locn:thoroughfare "ul. prof. A. Martyniaka 16 B" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2021-S-142-377666/1f8688eb-32e7-368b-ad1c-2e76f17321dd>
   a epo:DirectAwardTerm;
@@ -108,14 +107,14 @@
 <http://data.europa.eu/a4g/resource/MediatorContactPoint/2021-S-142-377666/a6bfbb35-d109-3491-8d64-1fff4418e45e>
   a cccev:ContactPoint;
   epo:hasFax "+48 224587700";
-  epo:hasInternetAddress "http://www.uzp.gov.pl";
+  epo:hasInternetAddress "http://www.uzp.gov.pl"^^xsd:anyURI;
   cccev:telephone "+48 224587801" .
 
 <http://data.europa.eu/a4g/resource/MediatorOrganisation/2021-S-142-377666/a6bfbb35-d109-3491-8d64-1fff4418e45e>
   a org:Organization;
   epo:hasLegalName "Urząd Zamówień Publicznych"@pl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/MediatorContactPoint/2021-S-142-377666/a6bfbb35-d109-3491-8d64-1fff4418e45e>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2021-S-142-377666/a6bfbb35-d109-3491-8d64-1fff4418e45e> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2021-S-142-377666/a6bfbb35-d109-3491-8d64-1fff4418e45e> .
 
 <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2021-S-142-377666/a6bfbb35-d109-3491-8d64-1fff4418e45e>
   a locn:Address;
@@ -162,7 +161,7 @@
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2021-S-142-377666/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>;
   epo:hasLegalName "Instytut Rybactwa Śródlądowego im. Stanisława Sakowicza w Olsztynie"@pl;
   epo:hasMainActivityDescription "naukowo-badawcza";
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-142-377666/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-142-377666/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-142-377666/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a locn:Address;
@@ -186,9 +185,9 @@
   epo:hasDescription "Dostawa wraz z wykonaniem zarybienia w Dorzeczu Wisły, żywego narybku węgorza europejskiego Anguilla anguilla (L.) o masie od 2 do 10 g/szt. realizowana na potrzeby operacji pt. Monitoring zasobów i zarybienie dorzecza Odry i Wisły węgorzem europejskim Anguilla anguilla (L.) w ramach opracowania i wdrażania środków ochrony i współpracy regionalnej”, w zakresie priorytetu „Promowanie rybołówstwa zrównoważonego środowiskowo, zasobooszczędnego, innowacyjnego, konkurencyjnego i opartego na wiedzy zawartego w Programie Operacyjnym „Rybactwo i Morze”. Środki pozyskane z pomocy pochodzącej z publicznych środków krajowych oraz Europejskiego Funduszu Rybackiego. Umowa nr 00001-6520.1-OR1400001/18/19, z 23.8.2019."@pl;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2021-S-142-377666/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-142-377666/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2021-S-142-377666/cbac108a-b047-3e09-a114-28c43d5b8706>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-142-377666/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasTitle "Dostawa wraz z wykonaniem zarybienia w Dorzeczu Wisły, żywego narybku węgorza europejskiego Anguilla anguilla (L.) o masie od 2 do 10 g/szt."@pl;
   epo:isCoveredByGPA false;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/DirectAwardTerm/2021-S-142-377666/1f8688eb-32e7-368b-ad1c-2e76f17321dd>,
@@ -225,7 +224,7 @@
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2021-S-142-377666/53dcddfe-05e0-31c2-ab22-d770b015238d>
   a cccev:ContactPoint;
   epo:hasFax "+48 224587700";
-  epo:hasInternetAddress "http://www.uzp.gov.pl";
+  epo:hasInternetAddress "http://www.uzp.gov.pl"^^xsd:anyURI;
   cccev:email "odwolania@uzp.gov.pl";
   cccev:telephone "+48 224587801" .
 
@@ -233,7 +232,7 @@
   a org:Organization;
   epo:hasLegalName "Urząd Zamówień Publicznych, Departament Odwołań"@pl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2021-S-142-377666/53dcddfe-05e0-31c2-ab22-d770b015238d>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2021-S-142-377666/53dcddfe-05e0-31c2-ab22-d770b015238d> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2021-S-142-377666/53dcddfe-05e0-31c2-ab22-d770b015238d> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2021-S-142-377666/c396feff-0750-3296-8f73-f0464e1726ac>
   a epo:ReviewTerm;
@@ -246,7 +245,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2021-S-142-377666/de2507f9-ae25-37c8-809c-0109efe10669>
   a cccev:ContactPoint;
   epo:hasFax "+48 224587700";
-  epo:hasInternetAddress "http://www.uzp.gov.pl";
+  epo:hasInternetAddress "http://www.uzp.gov.pl"^^xsd:anyURI;
   cccev:email "odwolania@uzp.gov.pl";
   cccev:telephone "+48 224587801" .
 
@@ -254,7 +253,7 @@
   a org:Organization;
   epo:hasLegalName "Urząd Zamówień Publicznych, Departament Odwołań"@pl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2021-S-142-377666/de2507f9-ae25-37c8-809c-0109efe10669>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-142-377666/de2507f9-ae25-37c8-809c-0109efe10669> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-142-377666/de2507f9-ae25-37c8-809c-0109efe10669> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-142-377666/de2507f9-ae25-37c8-809c-0109efe10669>
   a locn:Address;
@@ -283,4 +282,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-142-377666/b9a7c460-794b-36b5-a069-6e9a637315f4>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-142-377666/b9a7c460-794b-36b5-a069-6e9a637315f4> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-142-377666/b9a7c460-794b-36b5-a069-6e9a637315f4> .

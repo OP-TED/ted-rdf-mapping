@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -27,28 +26,14 @@
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2016-S-233-424971/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "www.noevog.at";
+  epo:hasInternetAddress "www.noevog.at"^^xsd:anyURI;
   cccev:email "Markus.Schreilechner@noevog.at" .
 
 <http://data.europa.eu/a4g/resource/Contract/2016-S-233-424971/527e871b-562d-3858-b2cb-c75e9b69e338>
   a epo:Contract;
   epo:hasContractConclusionDate "2016-11-22"^^xsd:date;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2016-S-233-424971/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2016-S-233-424971/527e871b-562d-3858-b2cb-c75e9b69e338> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2016-S-233-424971/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasLegalName "ARGE Instandhaltung Niederösterreich (kurz: AINÖ)"@de;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2016-S-233-424971/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2016-S-233-424971/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/AUT>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/AT12>;
-  locn:postCode "3100";
-  locn:postName "St. Pölten";
-  locn:thoroughfare "Daniel-Gran-Straße 48/1" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2016-S-233-424971/527e871b-562d-3858-b2cb-c75e9b69e338> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2016-S-233-424971/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a epo:ContractTerm;
@@ -58,6 +43,20 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2016-S-233-424971/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/AT12> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2016-S-233-424971/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "ARGE Instandhaltung Niederösterreich (kurz: AINÖ)"@de;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2016-S-233-424971/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2016-S-233-424971/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/AUT>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/AT12>;
+  locn:postCode "3100";
+  locn:postName "St. Pölten";
+  locn:thoroughfare "Daniel-Gran-Straße 48/1" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2016-S-233-424971/b68f1feb-885d-37f5-ac99-4287870dfd15>
   a epo:DirectAwardTerm;
@@ -108,7 +107,7 @@ Kauf Geräte, Materialen, Kfz und Werkzeuge im Zuge der Einstellung der Geschäf
   a org:Organization;
   epo:hasLegalName "Amt der NÖ Landesregierung, NÖ Schlichtungsstelle"@de;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/MediatorContactPoint/2016-S-233-424971/43c72ae4-1691-3a54-9e37-60dec613cbbd>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2016-S-233-424971/43c72ae4-1691-3a54-9e37-60dec613cbbd> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2016-S-233-424971/43c72ae4-1691-3a54-9e37-60dec613cbbd> .
 
 <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2016-S-233-424971/43c72ae4-1691-3a54-9e37-60dec613cbbd>
   a locn:Address;
@@ -147,8 +146,8 @@ Kauf Geräte, Materialen, Kfz und Werkzeuge im Zuge der Einstellung der Geschäf
 <http://data.europa.eu/a4g/resource/Organisation/2016-S-233-424971/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a org:Organization;
   epo:hasLegalName "Niederösterreichische Verkehrsorganisationsges. m.b.H. (NÖVOG)"@de;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/rail>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-233-424971/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/rail>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-233-424971/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-233-424971/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a locn:Address;
@@ -163,9 +162,9 @@ Kauf Geräte, Materialen, Kfz und Werkzeuge im Zuge der Einstellung der Geschäf
   epo:hasDescription """
 Kauf Geräte, Materialien, Kfz und Werkzeuge im Zuge der Einstellung der Geschäftstätigkeit (Instandhaltung Bahnstrecken NÖVOG) der AINÖ.
 """@de;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-233-424971/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2016-S-233-424971/636e3166-5ecc-350b-867b-7bf2072a2c03>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-233-424971/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasTitle """
 Kauf Geräte, Materialien, Kfz und Werkzeuge im Zuge der Einstellung der Geschäftstätigkeit (Instandhaltung Bahnstrecken NÖVOG) der AINÖ.
 """@de;
@@ -204,7 +203,7 @@ Kauf Geräte, Materialien, Kfz und Werkzeuge im Zuge der Einstellung der Geschä
   a org:Organization;
   epo:hasLegalName "Landesverwaltungsgericht Niederösterreich"@de;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2016-S-233-424971/cda2e79a-2b54-3d8d-8cbd-025f430ee110>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2016-S-233-424971/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2016-S-233-424971/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
 
 <http://data.europa.eu/a4g/resource/Reviewer/2016-S-233-424971/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a epo:Reviewer;
@@ -218,7 +217,7 @@ Kauf Geräte, Materialien, Kfz und Werkzeuge im Zuge der Einstellung der Geschä
   a org:Organization;
   epo:hasLegalName "Landesverwaltungsgericht Niederösterreich"@de;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2016-S-233-424971/13730a07-65b0-306c-a9b5-a8929927a6a1>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-233-424971/13730a07-65b0-306c-a9b5-a8929927a6a1> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-233-424971/13730a07-65b0-306c-a9b5-a8929927a6a1> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-233-424971/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a locn:Address;
@@ -243,4 +242,4 @@ Kauf Geräte, Materialien, Kfz und Werkzeuge im Zuge der Einstellung der Geschä
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2016-S-233-424971/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2016-S-233-424971/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2016-S-233-424971/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .

@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -27,7 +26,7 @@
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-104-207833/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://www.chu-nantes.fr";
+  epo:hasInternetAddress "http://www.chu-nantes.fr"^^xsd:anyURI;
   cccev:email "bureau.desmarches@chu-nantes.fr";
   cccev:telephone "+33 240846887" .
 
@@ -39,24 +38,11 @@
 Acquisition de générateurs de dialyse en néphrologie
 """@fr;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2017-S-104-207833/cbac108a-b047-3e09-a114-28c43d5b8706>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-104-207833/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-104-207833/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2017-S-104-207833/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>
   a epo:Identifier;
   epo:hasIdentifierValue "17-0160" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-104-207833/3110be1b-1cf3-3851-b11c-869fbbca54c0>
-  a org:Organization;
-  epo:hasLegalName "Baxter"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-104-207833/3110be1b-1cf3-3851-b11c-869fbbca54c0> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-104-207833/3110be1b-1cf3-3851-b11c-869fbbca54c0>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR>;
-  locn:postCode "78180";
-  locn:postName "Guyancourt";
-  locn:thoroughfare "4 bis rue de la Redoute" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2017-S-104-207833/cbac108a-b047-3e09-a114-28c43d5b8706>
   a epo:ContractTerm;
@@ -66,6 +52,19 @@ Acquisition de générateurs de dialyse en néphrologie
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2017-S-104-207833/cbac108a-b047-3e09-a114-28c43d5b8706>
   a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/FR511> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-104-207833/3110be1b-1cf3-3851-b11c-869fbbca54c0>
+  a org:Organization;
+  epo:hasLegalName "Baxter"@fr;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-104-207833/3110be1b-1cf3-3851-b11c-869fbbca54c0> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-104-207833/3110be1b-1cf3-3851-b11c-869fbbca54c0>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR>;
+  locn:postCode "78180";
+  locn:postName "Guyancourt";
+  locn:thoroughfare "4 bis rue de la Redoute" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2017-S-104-207833/1f8688eb-32e7-368b-ad1c-2e76f17321dd>
   a epo:DirectAwardTerm;
@@ -125,10 +124,10 @@ Acquisition de générateurs de dialyse en néphrologie.
 
 <http://data.europa.eu/a4g/resource/Organisation/2017-S-104-207833/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
   epo:hasLegalName "CHU de Nantes"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/health>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-104-207833/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/health>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-104-207833/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-104-207833/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a locn:Address;
@@ -148,9 +147,9 @@ Le marché public est consultable dans le respect des secrets protégés par la 
 Acquisition de générateurs de dialyse en néphrologie — marché complémentaire.
 """@fr;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2017-S-104-207833/58509ec4-99dc-3865-9935-58d7ebd66d29>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-104-207833/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2017-S-104-207833/cbac108a-b047-3e09-a114-28c43d5b8706>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-104-207833/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasTitle """
 Acquisition de générateurs de dialyse en néphrologie — marché complémentaire.
 """@fr;
@@ -198,7 +197,7 @@ Acquisition de générateurs de dialyse en néphrologie — marché complémenta
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Nantes"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-104-207833/de2507f9-ae25-37c8-809c-0109efe10669>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-104-207833/de2507f9-ae25-37c8-809c-0109efe10669> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-104-207833/de2507f9-ae25-37c8-809c-0109efe10669> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-104-207833/de2507f9-ae25-37c8-809c-0109efe10669>
   a locn:Address;
@@ -223,4 +222,4 @@ Acquisition de générateurs de dialyse en néphrologie — marché complémenta
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2017-S-104-207833/3110be1b-1cf3-3851-b11c-869fbbca54c0>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-104-207833/3110be1b-1cf3-3851-b11c-869fbbca54c0> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-104-207833/3110be1b-1cf3-3851-b11c-869fbbca54c0> .

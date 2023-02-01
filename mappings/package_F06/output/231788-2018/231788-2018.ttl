@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,17 +17,13 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2018-S-101-231788/15183658-b3d6-3d9d-88d4-6e02c7e3b7b9>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-101-231788/206f9015-5cd1-3fca-bf9c-23378a724274>;
+  epo:hasBuyerProfile "https://pha.edf.com"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-101-231788/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-101-231788/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
 
-<http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-101-231788/206f9015-5cd1-3fca-bf9c-23378a724274>
-  a epo:BuyerProfile;
-  epo:hasURL "https://pha.edf.com" .
-
 <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-101-231788/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "www.edf.com";
+  epo:hasInternetAddress "www.edf.com"^^xsd:anyURI;
   cccev:email "jerome.monbel@edf.fr";
   cccev:telephone "+33 469654253" .
 
@@ -40,7 +35,7 @@
                Lot Est
             """@fr;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2018-S-101-231788/6890f8a0-039b-39ac-98cf-36d1dff298f1>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-101-231788/1eedd1a4-9441-3416-a149-6a0762e2142a> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-101-231788/1eedd1a4-9441-3416-a149-6a0762e2142a> .
 
 <http://data.europa.eu/a4g/resource/Contract/2018-S-101-231788/527e871b-562d-3858-b2cb-c75e9b69e338>
   a epo:Contract;
@@ -50,7 +45,7 @@
                Lot Ouest
             """@fr;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2018-S-101-231788/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-101-231788/527e871b-562d-3858-b2cb-c75e9b69e338> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-101-231788/527e871b-562d-3858-b2cb-c75e9b69e338> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2018-S-101-231788/1eedd1a4-9441-3416-a149-6a0762e2142a>
   a epo:Identifier;
@@ -194,8 +189,8 @@
 <http://data.europa.eu/a4g/resource/Organisation/2018-S-101-231788/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a org:Organization;
   epo:hasLegalName "EDF SA — Direction des achats groupe — DAPI — AAI Rhône"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/electricity>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-101-231788/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/electricity>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-101-231788/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-101-231788/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a locn:Address;
@@ -219,10 +214,10 @@
                — l’ordonnancement, la planification et les méthodes.
             """@fr;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2018-S-101-231788/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-101-231788/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2018-S-101-231788/636e3166-5ecc-350b-867b-7bf2072a2c03>,
     <http://data.europa.eu/a4g/resource/Lot/2018-S-101-231788/6890f8a0-039b-39ac-98cf-36d1dff298f1>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-101-231788/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasTitle """
                Assistance à maîtrise d’ouvrage pour les sites en déconstruction d'électricité de France
             """@fr;
@@ -258,14 +253,14 @@
 
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2018-S-101-231788/cda2e79a-2b54-3d8d-8cbd-025f430ee110>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://www.ca-paris.justice.fr";
+  epo:hasInternetAddress "http://www.ca-paris.justice.fr"^^xsd:anyURI;
   cccev:telephone "+33 144325151" .
 
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2018-S-101-231788/cda2e79a-2b54-3d8d-8cbd-025f430ee110>
   a org:Organization;
   epo:hasLegalName "Greffe du tribunal de grande instance de Paris — Parvis du tribunal de Paris"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2018-S-101-231788/cda2e79a-2b54-3d8d-8cbd-025f430ee110>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2018-S-101-231788/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2018-S-101-231788/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
 
 <http://data.europa.eu/a4g/resource/Reviewer/2018-S-101-231788/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a epo:Reviewer;
@@ -273,14 +268,14 @@
 
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-101-231788/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://www.ca-paris.justice.fr";
+  epo:hasInternetAddress "http://www.ca-paris.justice.fr"^^xsd:anyURI;
   cccev:telephone "+33 144325151" .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2018-S-101-231788/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a org:Organization;
   epo:hasLegalName "Tribunal de grande instance de Paris — Parvis du tribunal de Paris"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-101-231788/13730a07-65b0-306c-a9b5-a8929927a6a1>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-101-231788/13730a07-65b0-306c-a9b5-a8929927a6a1> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-101-231788/13730a07-65b0-306c-a9b5-a8929927a6a1> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-101-231788/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a locn:Address;

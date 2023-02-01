@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -23,7 +22,7 @@
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2022-S-070-187781/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "www.epshp.fi";
+  epo:hasInternetAddress "www.epshp.fi"^^xsd:anyURI;
   cccev:email "terhi.peltola@epshp.fi" .
 
 <http://data.europa.eu/a4g/resource/Contract/2022-S-070-187781/67f40fa4-0fdc-31df-a278-a9ec4e2c34ff>
@@ -31,22 +30,11 @@
   epo:hasContractConclusionDate "2021-12-17"^^xsd:date;
   epo:hasID <http://data.europa.eu/a4g/resource/ContractIdentifier/2022-S-070-187781/67f40fa4-0fdc-31df-a278-a9ec4e2c34ff>;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2022-S-070-187781/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2022-S-070-187781/67f40fa4-0fdc-31df-a278-a9ec4e2c34ff> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2022-S-070-187781/67f40fa4-0fdc-31df-a278-a9ec4e2c34ff> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2022-S-070-187781/67f40fa4-0fdc-31df-a278-a9ec4e2c34ff>
   a epo:Identifier;
   epo:hasIdentifierValue "2022-097841-001-001" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2022-S-070-187781/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
-  a org:Organization;
-  epo:hasLegalName "Patologipalvelu Parkkinen Oy"@fi;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2022-S-070-187781/46d95603-a3e1-3d2c-8e32-b10fa665dec4> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2022-S-070-187781/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FIN>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FI197>;
-  locn:postName "Tampere" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2022-S-070-187781/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
   a epo:ContractTerm;
@@ -55,6 +43,17 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2022-S-070-187781/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
   a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/FI194> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2022-S-070-187781/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
+  a org:Organization;
+  epo:hasLegalName "Patologipalvelu Parkkinen Oy"@fi;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2022-S-070-187781/46d95603-a3e1-3d2c-8e32-b10fa665dec4> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2022-S-070-187781/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FIN>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FI197>;
+  locn:postName "Tampere" .
 
 <http://data.europa.eu/a4g/resource/Lot/2022-S-070-187781/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
   a epo:Lot;
@@ -111,7 +110,7 @@
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2022-S-070-187781/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>;
   epo:hasLegalName "Etelä-Pohjanmaan Sairaanhoitopiirin kuntayhtymä"@fi;
   epo:hasMainActivityDescription "Terveyspalvelut";
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-070-187781/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-070-187781/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-070-187781/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
   a locn:Address;
@@ -131,9 +130,9 @@
   epo:hasDescription "Etelä-Pohjanmaan sairaanhoitopiirin kuntayhtymä pyytää tarjoustanne tarjouspyyntöasiakirjojen mukaisista patologian tutkimusten asiantuntijapalveluista sopimuskaudelle 1.1.2022-31.12.2023 ja vuosittaisena optiona ajalle 1.1.2024-31.12.2025. Optio on mahdollisuus jatkosopimukseen, jonka käyttämisestä tehdään erikseen päätös ennen kuluvan  sopimuskauden päättymistä. Tämä tarjouspyyntö koskee palvelua, joka korvaa osan tarvittavista patologian tutkimuspalveluista."@fi;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2022-S-070-187781/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2022-S-070-187781/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2022-S-070-187781/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2022-S-070-187781/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
   epo:hasTitle "Patologian tutkimusten asiantuntijapalvelut"@fi;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2022-S-070-187781/841f832b-8a2b-3a73-a4a6-85439d64c6be> .
 
@@ -165,7 +164,7 @@
 
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2022-S-070-187781/f408af29-86f8-3547-8427-ccade0632c83>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://www.oikeus.fi/markkinaoikeus";
+  epo:hasInternetAddress "http://www.oikeus.fi/markkinaoikeus"^^xsd:anyURI;
   cccev:email "markkinaoikeus@oikeus.fi";
   cccev:telephone "+358 295643300" .
 
@@ -173,7 +172,7 @@
   a org:Organization;
   epo:hasLegalName "Markkinaoikeus"@fi;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2022-S-070-187781/f408af29-86f8-3547-8427-ccade0632c83>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-070-187781/f408af29-86f8-3547-8427-ccade0632c83> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-070-187781/f408af29-86f8-3547-8427-ccade0632c83> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-070-187781/f408af29-86f8-3547-8427-ccade0632c83>
   a locn:Address;
@@ -203,4 +202,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2022-S-070-187781/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2022-S-070-187781/46d95603-a3e1-3d2c-8e32-b10fa665dec4> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2022-S-070-187781/46d95603-a3e1-3d2c-8e32-b10fa665dec4> .

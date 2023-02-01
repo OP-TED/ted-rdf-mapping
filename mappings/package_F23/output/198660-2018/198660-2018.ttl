@@ -1,40 +1,27 @@
 @prefix cccev: <http://data.europa.eu/m8g/> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
-@prefix rr: <http://www.w3.org/ns/r2rml#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://data.europa.eu/a4g/resource/AccessTerm/2018-S-088-198660/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209>
   a epo:AccessTerm;
-  epo:hasRestrictedAccessURL <http://www.marches-publics.info/accueil.htm>;
+  epo:hasRestrictedAccessURL "http://www.marches-publics.info/accueil.htm"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted true .
 
 <http://data.europa.eu/a4g/resource/Buyer/2018-S-088-198660/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-088-198660/34655f62-8001-38ad-a804-119bb9c85d23>;
+  epo:hasBuyerProfile "http://www.marches-publics.info/accueil.htm"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-088-198660/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-088-198660/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-088-198660/34655f62-8001-38ad-a804-119bb9c85d23>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.marches-publics.info/accueil.htm" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-088-198660/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a cccev:ContactPoint;
   epo:hasContactName "Direction Transports et Services de mobilité"@fr;
-  epo:hasInternetAddress "http://www.smtc-grenoble.org/";
+  epo:hasInternetAddress "http://www.smtc-grenoble.org/"^^xsd:anyURI;
   cccev:email "marchespublicsmetro@lametro.fr";
   cccev:telephone "+33 476595959" .
 
@@ -99,8 +86,8 @@
 <http://data.europa.eu/a4g/resource/Organisation/2018-S-088-198660/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a org:Organization;
   epo:hasLegalName "Smtc de l'agglomération grenobloise"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/urttb>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-088-198660/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/urttb>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-088-198660/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-088-198660/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a locn:Address;
@@ -120,8 +107,8 @@
                Il s'agit de l'exploitation du réseau de transport sur les 49 communes qui constituent le ressort territorial du SMTC.
             """@fr;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/MonetaryValueProcedure/2018-S-088-198660/3b2748c6-16de-3218-af2c-e7456a886558>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-088-198660/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2018-S-088-198660/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-088-198660/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasTitle """
                Concession de service public: exploitation du réseau de transport urbain de l'agglomération grenobloise
             """@fr;
@@ -138,7 +125,6 @@
 
 <http://data.europa.eu/a4g/resource/ProcurementProcedureInformationProvider/2018-S-088-198660/c5ef9a83-cf56-3b09-b28d-e41cf4342af1>
   a epo:ProcurementProcedureInformationProvider;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-088-198660/34655f62-8001-38ad-a804-119bb9c85d23>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-088-198660/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-088-198660/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
 
@@ -148,14 +134,14 @@
 
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-088-198660/2a666ce1-cebc-31d9-b200-113ebf473883>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://grenoble.tribunal-administratif.fr";
+  epo:hasInternetAddress "http://grenoble.tribunal-administratif.fr"^^xsd:anyURI;
   cccev:email "greffe.ta-grenoble@juradm.fr" .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2018-S-088-198660/2a666ce1-cebc-31d9-b200-113ebf473883>
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Grenoble"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-088-198660/2a666ce1-cebc-31d9-b200-113ebf473883>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-088-198660/2a666ce1-cebc-31d9-b200-113ebf473883> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-088-198660/2a666ce1-cebc-31d9-b200-113ebf473883> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-088-198660/2a666ce1-cebc-31d9-b200-113ebf473883>
   a locn:Address;
@@ -175,11 +161,9 @@
 <http://data.europa.eu/a4g/resource/SubmissionTerm/2018-S-088-198660/64850f6d-a341-38ae-bc98-ed98207d0890>
   a epo:SubmissionTerm;
   epo:hasLanguage "FR";
-  epo:hasReceiptDeadline "2019-05-15"^^xsd:datetime;
-  epo:hasReceiptExpressionsDeadline "15:00"^^xsd:datetime .
+  epo:hasReceiptDeadline "2019-05-15T15:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/TenderReceiver/2018-S-088-198660/af83754e-446b-3253-855d-ef754d0f9e5e>
   a epo:TenderReceiver;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-088-198660/34655f62-8001-38ad-a804-119bb9c85d23>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-088-198660/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-088-198660/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .

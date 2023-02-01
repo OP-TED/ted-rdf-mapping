@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,13 +17,9 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2020-S-131-322139/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2020-S-131-322139/34655f62-8001-38ad-a804-119bb9c85d23>;
+  epo:hasBuyerProfile "https://tender.konnect.dk/invite/707"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2020-S-131-322139/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2020-S-131-322139/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2020-S-131-322139/34655f62-8001-38ad-a804-119bb9c85d23>
-  a epo:BuyerProfile;
-  epo:hasURL "https://tender.konnect.dk/invite/707" .
 
 <http://data.europa.eu/a4g/resource/ConcessionEstimate/2020-S-131-322139/5a5721a0-4258-3cfd-89c8-805fdb0d3c88>
   a epo:ConcessionEstimate;
@@ -33,27 +28,14 @@
 <http://data.europa.eu/a4g/resource/ContactPoint/2020-S-131-322139/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a cccev:ContactPoint;
   epo:hasContactName "Christian Lindemer"@da;
-  epo:hasInternetAddress "http://www.tec.dk";
+  epo:hasInternetAddress "http://www.tec.dk"^^xsd:anyURI;
   cccev:email "kontakt@tohv.dk" .
 
 <http://data.europa.eu/a4g/resource/Contract/2020-S-131-322139/70e1fca2-f8e6-3a32-8dca-713ccb185cf6>
   a epo:ConcessionContract, epo:Contract;
   epo:hasTitle "Konkurrenceudsættelse af koncessionskontrakt på drift af kantiner for Technical Education Copenhagen (TEC)"@da;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2020-S-131-322139/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2020-S-131-322139/70e1fca2-f8e6-3a32-8dca-713ccb185cf6> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2020-S-131-322139/15a5bf74-f364-3b6a-8f6c-92ab57374118>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasLegalName "DinnerdeLuxe ApS"@da;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2020-S-131-322139/15a5bf74-f364-3b6a-8f6c-92ab57374118> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2020-S-131-322139/15a5bf74-f364-3b6a-8f6c-92ab57374118>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DNK>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/DK04>;
-  locn:postCode "8230";
-  locn:postName "Åbyhøj" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2020-S-131-322139/70e1fca2-f8e6-3a32-8dca-713ccb185cf6> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2020-S-131-322139/64592fe7-40a4-3c6b-85ce-08fd4c446531>
   a epo:ContractTerm;
@@ -68,6 +50,19 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2020-S-131-322139/64592fe7-40a4-3c6b-85ce-08fd4c446531>
   a locn:Address;
   locn:fullAddress "Ordregivers kantiner beliggende:Stæhr Johansens Vej 7,2000 FrederiksbergTelegrafvej 9,2750 BallerupTobaksvejen2860 SøborgStamholmen 193 – 2152650 HvidovreAkademivej,2800 Lyngby.H.C. Ø"@da .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2020-S-131-322139/15a5bf74-f364-3b6a-8f6c-92ab57374118>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "DinnerdeLuxe ApS"@da;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2020-S-131-322139/15a5bf74-f364-3b6a-8f6c-92ab57374118> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2020-S-131-322139/15a5bf74-f364-3b6a-8f6c-92ab57374118>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DNK>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DK04>;
+  locn:postCode "8230";
+  locn:postName "Åbyhøj" .
 
 <http://data.europa.eu/a4g/resource/Duration/2020-S-131-322139/1d20f563-6060-39ce-a62d-de87c1a9defd>
   a epo:Duration;
@@ -108,7 +103,7 @@
 <http://data.europa.eu/a4g/resource/MediatorOrganisation/2020-S-131-322139/3e3334c3-bfc3-3694-9c83-6b654f3b82b2>
   a org:Organization;
   epo:hasLegalName "Finder ikke anvendelse"@da;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2020-S-131-322139/3e3334c3-bfc3-3694-9c83-6b654f3b82b2> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2020-S-131-322139/3e3334c3-bfc3-3694-9c83-6b654f3b82b2> .
 
 <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2020-S-131-322139/3e3334c3-bfc3-3694-9c83-6b654f3b82b2>
   a locn:Address;
@@ -148,7 +143,7 @@
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2020-S-131-322139/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
   epo:hasLegalName "TEC"@da;
   epo:hasMainActivityDescription "Uddannelse";
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2020-S-131-322139/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2020-S-131-322139/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2020-S-131-322139/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a locn:Address;
@@ -168,8 +163,8 @@
   epo:hasDescription "Ordregiver agter at indgå en koncessionskontrakt på drift af 4 kantiner og levering af en to-go løsning til en lokation uden køkkenproduktion, samt levering af forplejning til møder, kurser og særarrangementer til alle lokationer.Nærværende udbud angår 5 lokationer, og rummer erhvervsuddannelser samt EUX og Gymnasium, kurser og efteruddannelse.TEC ønsker et nyt kantinetilbud, der økonomisk afspejler at den største kundegruppe er unge studerende elever, og som tilbydes et sund og varieret madtilbud, der i smag og udtryk er tilpasset et ungt publikum."@da;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0023>;
   epo:hasMainFeature "Konkurrenceudsættelsen gennemførtes efter følgende to (2) faser:— Tilbudsrunde 1 (Indledende tilbud med efterfølgende forhandling)— Tilbudsrunde 2 (Endeligt tilbud).";
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2020-S-131-322139/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2020-S-131-322139/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2020-S-131-322139/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasTitle "Konkurrenceudsættelse af koncessionskontrakt på drift af kantiner for Technical Education Copenhagen (TEC)"@da;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2020-S-131-322139/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209> .
 
@@ -204,7 +199,7 @@
 
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2020-S-131-322139/05b8f927-9591-3b74-af26-202fe3171464>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://www.kfst.dk";
+  epo:hasInternetAddress "http://www.kfst.dk"^^xsd:anyURI;
   cccev:email "kfst@kfst.dk";
   cccev:telephone "+45 41715000" .
 
@@ -212,7 +207,7 @@
   a org:Organization;
   epo:hasLegalName "Konkurrence- og Forbrugerstyrelsen"@da;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2020-S-131-322139/05b8f927-9591-3b74-af26-202fe3171464>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2020-S-131-322139/05b8f927-9591-3b74-af26-202fe3171464> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2020-S-131-322139/05b8f927-9591-3b74-af26-202fe3171464> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2020-S-131-322139/47e9b87d-92c4-3448-9a4e-937646b178e8>
   a epo:ReviewTerm;
@@ -224,7 +219,7 @@
 
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2020-S-131-322139/2a666ce1-cebc-31d9-b200-113ebf473883>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "https://erhvervsstyrelsen.dk/klagenaevnet-for-udbud";
+  epo:hasInternetAddress "https://erhvervsstyrelsen.dk/klagenaevnet-for-udbud"^^xsd:anyURI;
   cccev:email "klfu@naevneneshus.dk";
   cccev:telephone "+45 72405708" .
 
@@ -232,7 +227,7 @@
   a org:Organization;
   epo:hasLegalName "Klagenævnet for Udbud"@da;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2020-S-131-322139/2a666ce1-cebc-31d9-b200-113ebf473883>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2020-S-131-322139/2a666ce1-cebc-31d9-b200-113ebf473883> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2020-S-131-322139/2a666ce1-cebc-31d9-b200-113ebf473883> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2020-S-131-322139/2a666ce1-cebc-31d9-b200-113ebf473883>
   a locn:Address;
@@ -263,4 +258,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2020-S-131-322139/15a5bf74-f364-3b6a-8f6c-92ab57374118>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2020-S-131-322139/15a5bf74-f364-3b6a-8f6c-92ab57374118> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2020-S-131-322139/15a5bf74-f364-3b6a-8f6c-92ab57374118> .

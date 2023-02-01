@@ -1,10 +1,10 @@
-#title: V.3.3.12 - The winner is an SME
-#description: “V.3.3.12 - The winner is an SME” in SF corresponds to “BT-165 Winner Size” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/SME. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2)  / at-voc:economic-operator-size .
-#xpath: /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/SME
+#title: V.3.3.11 - Fax
+#description: “V.3.3.11 - Fax” in SF corresponds to “BT-739 Organisation Contact Fax” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/FAX, /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/FAX. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/FAX,/TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/FAX
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Winner .
-		?this epo:playedBy / epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme> }
+		?this epo:playedBy / epo:hasPrimaryContactPoint / epo:hasFax ?value . }

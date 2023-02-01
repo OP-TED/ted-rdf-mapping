@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,38 +17,15 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2019-S-141-348157/8a551eea-f8a4-3a92-a92e-0f220d0ba9d0>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2019-S-141-348157/1a7db7e1-758c-3b79-8e36-131fbe7ef3e3>;
+  epo:hasBuyerProfile "http://www.klekoon.com"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2019-S-141-348157/93f156bb-9604-37f9-a902-d2bc2c71ac19>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2019-S-141-348157/93f156bb-9604-37f9-a902-d2bc2c71ac19> .
 
-<http://data.europa.eu/a4g/resource/BuyerProfile/2019-S-141-348157/1a7db7e1-758c-3b79-8e36-131fbe7ef3e3>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.klekoon.com" .
-
 <http://data.europa.eu/a4g/resource/ContactPoint/2019-S-141-348157/93f156bb-9604-37f9-a902-d2bc2c71ac19>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://www.klekoon.com";
+  epo:hasInternetAddress "http://www.klekoon.com"^^xsd:anyURI;
   cccev:email "service.juridique@lespavillonssousbois.fr";
   cccev:telephone "+33 172591911" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2019-S-141-348157/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
-  a epo:Business, org:Organisation;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasLegalName "Atelier 2A"@fr;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractOrganisationContactPoint/2019-S-141-348157/d2285c88-606a-3092-87f1-6f0d98b5d9ff>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2019-S-141-348157/d2285c88-606a-3092-87f1-6f0d98b5d9ff> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2019-S-141-348157/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR>;
-  locn:postCode "78000";
-  locn:postName "Versailles";
-  locn:thoroughfare "8 rue des Réservoirs" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationContactPoint/2019-S-141-348157/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
-  a cccev:ContactPoint;
-  cccev:email "architectes@atelier2a.fr" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2019-S-141-348157/d9717c09-a32e-34b8-99e6-1d890b633b16>
   a epo:ContractTerm;
@@ -57,6 +33,25 @@
 
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2019-S-141-348157/d9717c09-a32e-34b8-99e6-1d890b633b16>
   a dct:Location .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2019-S-141-348157/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
+  a epo:Business, org:Organisation;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "Atelier 2A"@fr;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorOrganisationContactPoint/2019-S-141-348157/d2285c88-606a-3092-87f1-6f0d98b5d9ff>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2019-S-141-348157/d2285c88-606a-3092-87f1-6f0d98b5d9ff> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2019-S-141-348157/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR>;
+  locn:postCode "78000";
+  locn:postName "Versailles";
+  locn:thoroughfare "8 rue des Réservoirs" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationContactPoint/2019-S-141-348157/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
+  a cccev:ContactPoint;
+  cccev:email "architectes@atelier2a.fr" .
 
 <http://data.europa.eu/a4g/resource/DesignContestRegimeTerm/2019-S-141-348157/356edeab-f605-3fc3-abbb-c699db8248e6>
   a epo:DesignContestRegimeTerm;
@@ -111,10 +106,10 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2019-S-141-348157/93f156bb-9604-37f9-a902-d2bc2c71ac19>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasLegalName "Ville de Pavillons-sous-Bois"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-141-348157/93f156bb-9604-37f9-a902-d2bc2c71ac19> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-141-348157/93f156bb-9604-37f9-a902-d2bc2c71ac19> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-141-348157/93f156bb-9604-37f9-a902-d2bc2c71ac19>
   a locn:Address;
@@ -133,9 +128,9 @@
   epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2019-S-141-348157/d9717c09-a32e-34b8-99e6-1d890b633b16>;
   epo:hasAdditionalInformation "En première séance, le 15.3.2019, le jury de concours a, en fonction des critères de sélection des candidatures indiqués dans les documents de la consultation, sélectionné les trois premiers candidats suivants dans l'ordre du classement: Atelier 2A + Nomade AP Architecture, ces 3 candidats ont donc été admis à présenter leur projet dans le cadre du concours restreint sur esquisse. Le jury, dans sa 2de séance du 11.6.2019, valide le choix suivant pour le présent concours de maîtrise d'ouvre en désignant le lauréat suivant parmi les 3 candidats sélectionnés lors de la première séance du jury: lauréat désigné par le jury: Atelier 2A. À l'issue du concours, le marché de maîtrise d'ouvre sera attribué selon la procédure négociée conformément à l'article 30-I-6º du décret nº 2016-360 du 25.3.2016 relatif aux marchés publics. Chaque concurrent ayant remis des prestations complètes recevra une indemnité d'un montant de 10 080 EUR (HT)."@fr;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2019-S-141-348157/4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2019-S-141-348157/d9717c09-a32e-34b8-99e6-1d890b633b16>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2019-S-141-348157/4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b>;
   epo:hasTitle "Concours de maîtrise d'œuvre concernant la construction de la 2e partie de l'école élémentaire sur le site de l'école Jean Macé"@fr;
   epo:isDesignContest true;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2019-S-141-348157/8a551eea-f8a4-3a92-a92e-0f220d0ba9d0> .
@@ -160,14 +155,14 @@
 
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2019-S-141-348157/90128279-8438-3575-b354-674c4cad7995>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://montreuil.tribunal-administratif.fr";
+  epo:hasInternetAddress "http://montreuil.tribunal-administratif.fr"^^xsd:anyURI;
   cccev:email "greffe.ta-montreuil@juradm.fr" .
 
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2019-S-141-348157/90128279-8438-3575-b354-674c4cad7995>
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Montreuil"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2019-S-141-348157/90128279-8438-3575-b354-674c4cad7995>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2019-S-141-348157/90128279-8438-3575-b354-674c4cad7995> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2019-S-141-348157/90128279-8438-3575-b354-674c4cad7995> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2019-S-141-348157/2cfdb4b2-13ab-3831-af1f-73dd9c2f9b4a>
   a epo:ReviewTerm;
@@ -179,14 +174,14 @@
 
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2019-S-141-348157/5641ce6f-6854-3e39-9e76-44d671aacd65>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://montreuil.tribunal-administratif.fr";
+  epo:hasInternetAddress "http://montreuil.tribunal-administratif.fr"^^xsd:anyURI;
   cccev:email "greffe.ta-montreuil@juradm.fr" .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2019-S-141-348157/5641ce6f-6854-3e39-9e76-44d671aacd65>
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Montreuil"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2019-S-141-348157/5641ce6f-6854-3e39-9e76-44d671aacd65>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-141-348157/5641ce6f-6854-3e39-9e76-44d671aacd65> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-141-348157/5641ce6f-6854-3e39-9e76-44d671aacd65> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-141-348157/5641ce6f-6854-3e39-9e76-44d671aacd65>
   a locn:Address;
@@ -210,4 +205,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2019-S-141-348157/d2285c88-606a-3092-87f1-6f0d98b5d9ff>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2019-S-141-348157/d2285c88-606a-3092-87f1-6f0d98b5d9ff> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2019-S-141-348157/d2285c88-606a-3092-87f1-6f0d98b5d9ff> .

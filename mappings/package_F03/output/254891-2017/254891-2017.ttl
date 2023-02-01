@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -22,19 +21,15 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2017-S-125-254891/f3b5cfa6-95c6-37b5-9667-808a141fe995>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-125-254891/377f62e9-9c36-31da-9724-7f6a137d8a68>;
+  epo:hasBuyerProfile "http://militaryclubs.bg/node/873"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-125-254891/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2017-S-125-254891/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-125-254891/377f62e9-9c36-31da-9724-7f6a137d8a68>
-  a epo:BuyerProfile;
-  epo:hasURL "http://militaryclubs.bg/node/873" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-125-254891/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a cccev:ContactPoint;
   epo:hasContactName "Васил Пенов"@bg;
   epo:hasFax "+359 29810731";
-  epo:hasInternetAddress "www.militaryclubs.bg";
+  epo:hasInternetAddress "www.militaryclubs.bg"^^xsd:anyURI;
   cccev:email "v_penov@militaryclubs.bg";
   cccev:telephone "+359 29221774" .
 
@@ -46,37 +41,11 @@
                „Извършване на абонаментна софтуерна денонощна поддръжка на внедрените и работещи в хотелите, военно-почивните домове и отдели на ИА „Военни клубове и военно-почивно дело” софтуерни продукти”
             """@bg;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2017-S-125-254891/cbac108a-b047-3e09-a114-28c43d5b8706>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-125-254891/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
-
-<http://data.europa.eu/a4g/resource/ContractContactPoint/2017-S-125-254891/3110be1b-1cf3-3851-b11c-869fbbca54c0>
-  a cccev:ContactPoint;
-  epo:hasFax "+359 9556114";
-  epo:hasInternetAddress "www.eltour95.com";
-  cccev:email "office@eltur95.com";
-  cccev:telephone "+359 889225575" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-125-254891/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2017-S-125-254891/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>
   a epo:Identifier;
   epo:hasIdentifierValue "ОП-60" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-125-254891/3110be1b-1cf3-3851-b11c-869fbbca54c0>
-  a org:Organization;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2017-S-125-254891/3110be1b-1cf3-3851-b11c-869fbbca54c0>;
-  epo:hasLegalName "„ЕЛТУР — 95“ ООД"@bg;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractContactPoint/2017-S-125-254891/3110be1b-1cf3-3851-b11c-869fbbca54c0>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-125-254891/3110be1b-1cf3-3851-b11c-869fbbca54c0> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-125-254891/3110be1b-1cf3-3851-b11c-869fbbca54c0>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG412>;
-  locn:postCode "2160";
-  locn:postName "Трудовец";
-  locn:thoroughfare "общ. Ботевград, обл. София, ул. „Марин Димитров“ № 6, бл. 1, ап. 2" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2017-S-125-254891/3110be1b-1cf3-3851-b11c-869fbbca54c0>
-  a epo:Identifier;
-  epo:hasIdentifierValue "832096228" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2017-S-125-254891/cbac108a-b047-3e09-a114-28c43d5b8706>
   a epo:ContractTerm;
@@ -93,6 +62,32 @@
   locn:fullAddress """
                   Хотели, военно-почивни домове и отдели управлявани от Изпълнителна агенция „Военни клубове и военно-почивно дело“: ТО — София; ТО-Пловдив; ТО-Варна; ТО-Бургас.
                """@bg .
+
+<http://data.europa.eu/a4g/resource/ContractorContactPoint/2017-S-125-254891/3110be1b-1cf3-3851-b11c-869fbbca54c0>
+  a cccev:ContactPoint;
+  epo:hasFax "+359 9556114";
+  epo:hasInternetAddress "www.eltour95.com"^^xsd:anyURI;
+  cccev:email "office@eltur95.com";
+  cccev:telephone "+359 889225575" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-125-254891/3110be1b-1cf3-3851-b11c-869fbbca54c0>
+  a org:Organization;
+  epo:hasID <http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2017-S-125-254891/3110be1b-1cf3-3851-b11c-869fbbca54c0>;
+  epo:hasLegalName "„ЕЛТУР — 95“ ООД"@bg;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorContactPoint/2017-S-125-254891/3110be1b-1cf3-3851-b11c-869fbbca54c0>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-125-254891/3110be1b-1cf3-3851-b11c-869fbbca54c0> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-125-254891/3110be1b-1cf3-3851-b11c-869fbbca54c0>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG412>;
+  locn:postCode "2160";
+  locn:postName "Трудовец";
+  locn:thoroughfare "общ. Ботевград, обл. София, ул. „Марин Димитров“ № 6, бл. 1, ап. 2" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2017-S-125-254891/3110be1b-1cf3-3851-b11c-869fbbca54c0>
+  a epo:Identifier;
+  epo:hasIdentifierValue "832096228" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2017-S-125-254891/1f8688eb-32e7-368b-ad1c-2e76f17321dd>
   a epo:DirectAwardTerm;
@@ -147,11 +142,11 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2017-S-125-254891/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/cga>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/cga>;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2017-S-125-254891/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>;
   epo:hasLegalName "Изпълнителен директор на Изпълнителна агенция „Военни клубове и военно-почивно дело“ — публичен възложител по чл. 5, ал. 2, т. 12 от ЗОП"@bg;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/hc-am>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-125-254891/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/hc-am>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-125-254891/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-125-254891/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a locn:Address;
@@ -171,9 +166,9 @@
   epo:hasDescription """
                „Извършване на абонаментна софтуерна денонощна поддръжка на внедрените и работещи в хотелите, военно-почивните домове и отдели на Изпълнителна агенция „Военни клубове и военно-почивно дело” софтуерни продукти: Хотелска компютърна система „Рецепция”, Ресторантска компютърна система „B.A.R.B.Q”, „Складов организатор”, Модул за отдалечен достъп чрез Интернет и „Система за централно резервиране и издаване на карти от Централно управление на Изпълнителната агенция”.
             """@bg;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-125-254891/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2017-S-125-254891/cbac108a-b047-3e09-a114-28c43d5b8706>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-125-254891/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasTitle """
                „Извършване на абонаментна софтуерна денонощна поддръжка на внедрените и работещи в хотелите, военно-почивните домове и отдели на ИА „Военни клубове и военно-почивно дело” софтуерни продукти.
             """@bg;
@@ -207,7 +202,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-125-254891/de2507f9-ae25-37c8-809c-0109efe10669>
   a cccev:ContactPoint;
   epo:hasFax "+359 29807315";
-  epo:hasInternetAddress "http://www.cpc.bg";
+  epo:hasInternetAddress "http://www.cpc.bg"^^xsd:anyURI;
   cccev:email "cpcadmin@cpc.bg";
   cccev:telephone "+359 29884070" .
 
@@ -215,7 +210,7 @@
   a org:Organization;
   epo:hasLegalName "Комисия за защита на конкуренцията"@bg;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-125-254891/de2507f9-ae25-37c8-809c-0109efe10669>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-125-254891/de2507f9-ae25-37c8-809c-0109efe10669> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-125-254891/de2507f9-ae25-37c8-809c-0109efe10669> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-125-254891/de2507f9-ae25-37c8-809c-0109efe10669>
   a locn:Address;
@@ -244,4 +239,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2017-S-125-254891/3110be1b-1cf3-3851-b11c-869fbbca54c0>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-125-254891/3110be1b-1cf3-3851-b11c-869fbbca54c0> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-125-254891/3110be1b-1cf3-3851-b11c-869fbbca54c0> .

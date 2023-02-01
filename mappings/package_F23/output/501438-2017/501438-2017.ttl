@@ -1,7 +1,6 @@
 @prefix cccev: <http://data.europa.eu/m8g/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -9,7 +8,7 @@
 
 <http://data.europa.eu/a4g/resource/AccessTerm/2017-S-241-501438/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209>
   a epo:AccessTerm;
-  epo:hasPublicAccessURL <https://cloud.3p.eu/Downloads/1/1005/1P/2017>;
+  epo:hasPublicAccessURL "https://cloud.3p.eu/Downloads/1/1005/1P/2017"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
 
 <http://data.europa.eu/a4g/resource/Buyer/2017-S-241-501438/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209>
@@ -21,7 +20,7 @@
   a cccev:ContactPoint;
   epo:hasContactName "Eric Stiens"@nl;
   epo:hasFax "+32 23314490";
-  epo:hasInternetAddress "www.sint-pieters-leeuw.be";
+  epo:hasInternetAddress "www.sint-pieters-leeuw.be"^^xsd:anyURI;
   cccev:email "eric.stiens@sint-pieters-leeuw.be";
   cccev:telephone "+32 23712296" .
 
@@ -67,10 +66,10 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2017-S-241-501438/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasLegalName "Gemeente Sint-Pieters-Leeuw"@nl;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-241-501438/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-241-501438/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-241-501438/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a locn:Address;
@@ -82,8 +81,8 @@
 
 <http://data.europa.eu/a4g/resource/Period/2017-S-241-501438/64592fe7-40a4-3c6b-85ce-08fd4c446531>
   a epo:Period;
-  epo:hasBeginning "2018-04-01"^^xsd:datetime;
-  epo:hasEnd "2055-03-31"^^xsd:datetime .
+  epo:hasBeginning "2018-04-01T00:00:00"^^xsd:dateTime;
+  epo:hasEnd "2055-03-31T00:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/Procedure/2017-S-241-501438/3b2748c6-16de-3218-af2c-e7456a886558>
   a epo:Procedure;
@@ -95,8 +94,8 @@
                Zie II.2.4.
             """@nl;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2017-S-241-501438/3b2748c6-16de-3218-af2c-e7456a886558>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-241-501438/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2017-S-241-501438/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-241-501438/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasTitle """
                Concessie voormalig gemeentehuis Vlezenbeek.
             """@nl;
@@ -127,7 +126,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2017-S-241-501438/2a666ce1-cebc-31d9-b200-113ebf473883>
   a org:Organization;
   epo:hasLegalName "Raad van State"@nl;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-241-501438/2a666ce1-cebc-31d9-b200-113ebf473883> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-241-501438/2a666ce1-cebc-31d9-b200-113ebf473883> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-241-501438/2a666ce1-cebc-31d9-b200-113ebf473883>
   a locn:Address;
@@ -147,8 +146,7 @@
 <http://data.europa.eu/a4g/resource/SubmissionTerm/2017-S-241-501438/64850f6d-a341-38ae-bc98-ed98207d0890>
   a epo:SubmissionTerm;
   epo:hasLanguage "NL";
-  epo:hasReceiptDeadline "2018-02-01"^^xsd:datetime;
-  epo:hasReceiptExpressionsDeadline "11:00"^^xsd:datetime .
+  epo:hasReceiptDeadline "2018-02-01T11:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/TenderReceiver/2017-S-241-501438/af83754e-446b-3253-855d-ef754d0f9e5e>
   a epo:TenderReceiver;

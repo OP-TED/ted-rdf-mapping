@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,19 +17,15 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2016-S-166-299086/15183658-b3d6-3d9d-88d4-6e02c7e3b7b9>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2016-S-166-299086/206f9015-5cd1-3fca-bf9c-23378a724274>;
+  epo:hasBuyerProfile "https://ratp.bravosolution.com/web/login.html"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2016-S-166-299086/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2016-S-166-299086/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2016-S-166-299086/206f9015-5cd1-3fca-bf9c-23378a724274>
-  a epo:BuyerProfile;
-  epo:hasURL "https://ratp.bravosolution.com/web/login.html" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2016-S-166-299086/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a cccev:ContactPoint;
   epo:hasContactName "Pierre Nicot"@fr;
   epo:hasFax "+33 158769468";
-  epo:hasInternetAddress "www.ratp.fr";
+  epo:hasInternetAddress "www.ratp.fr"^^xsd:anyURI;
   cccev:email "pierre.nicot@ratp.fr";
   cccev:telephone "+33 158769348" .
 
@@ -42,30 +37,11 @@
 Lot 1b — fourniture, pose, déplacement et dépose de palissades de chantier
 """@fr;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2016-S-166-299086/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2016-S-166-299086/527e871b-562d-3858-b2cb-c75e9b69e338> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2016-S-166-299086/527e871b-562d-3858-b2cb-c75e9b69e338> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2016-S-166-299086/527e871b-562d-3858-b2cb-c75e9b69e338>
   a epo:Identifier;
   epo:hasIdentifierValue "MOP161115" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2016-S-166-299086/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2016-S-166-299086/11c6525a-cbf9-36a2-9b0b-e686c6668d03>;
-  epo:hasLegalName "NVM BAT"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2016-S-166-299086/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2016-S-166-299086/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR102>;
-  locn:postCode "77350";
-  locn:postName "Le Mée-sur-Seine";
-  locn:thoroughfare "160 rue Robert Schuman" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2016-S-166-299086/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a epo:Identifier;
-  epo:hasIdentifierValue "435 037 890" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2016-S-166-299086/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a epo:ContractTerm;
@@ -85,6 +61,25 @@ Des avenants et marchés complémentaires pourront être conclus sans mise en co
   locn:fullAddress """
 Paris 1er arrondissement — France.
 """@fr .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2016-S-166-299086/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasID <http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2016-S-166-299086/11c6525a-cbf9-36a2-9b0b-e686c6668d03>;
+  epo:hasLegalName "NVM BAT"@fr;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2016-S-166-299086/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2016-S-166-299086/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR102>;
+  locn:postCode "77350";
+  locn:postName "Le Mée-sur-Seine";
+  locn:thoroughfare "160 rue Robert Schuman" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2016-S-166-299086/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a epo:Identifier;
+  epo:hasIdentifierValue "435 037 890" .
 
 <http://data.europa.eu/a4g/resource/Lot/2016-S-166-299086/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a epo:Lot;
@@ -142,8 +137,8 @@ Autres prestations:
   a org:Organization;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2016-S-166-299086/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>;
   epo:hasLegalName "RATP"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/urttb>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-166-299086/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/urttb>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-166-299086/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-166-299086/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a locn:Address;
@@ -167,9 +162,9 @@ Le montant indiqué au V.2.4) est le montant maximum de l'accord cadre à bons d
 Les travaux du présent accord-cadre à bons de commande comprennent l'exécution et la mise en œuvre d'ouvrages complémentaires de protection d'emprises de chantier, à réaliser dans le cadre de la rénovation et du réaménagement du pôle d'échanges de la gare RER Châtelet-Les Halles, située dans le 1er arrondissement de Paris.
 """@fr;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2016-S-166-299086/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-166-299086/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2016-S-166-299086/636e3166-5ecc-350b-867b-7bf2072a2c03>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-166-299086/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasTitle """
 Réaménagement du pôle RER Châtelet-Les Halles — lot 1b — fourniture, pose, déplacement et dépose de palissades de chantier.
 """@fr;
@@ -209,7 +204,7 @@ Réaménagement du pôle RER Châtelet-Les Halles — lot 1b — fourniture, pos
   a org:Organization;
   epo:hasLegalName "RATP département juridique — Unité projets et contrats"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2016-S-166-299086/cda2e79a-2b54-3d8d-8cbd-025f430ee110>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2016-S-166-299086/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2016-S-166-299086/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
 
 <http://data.europa.eu/a4g/resource/Reviewer/2016-S-166-299086/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a epo:Reviewer;
@@ -218,7 +213,7 @@ Réaménagement du pôle RER Châtelet-Les Halles — lot 1b — fourniture, pos
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2016-S-166-299086/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a cccev:ContactPoint;
   epo:hasFax "+33 144594646";
-  epo:hasInternetAddress "http://paris.tribunal-administratif.fr";
+  epo:hasInternetAddress "http://paris.tribunal-administratif.fr"^^xsd:anyURI;
   cccev:email "greffe.ta-paris@juradm.fr";
   cccev:telephone "+33 144594400" .
 
@@ -226,7 +221,7 @@ Réaménagement du pôle RER Châtelet-Les Halles — lot 1b — fourniture, pos
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Paris"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2016-S-166-299086/13730a07-65b0-306c-a9b5-a8929927a6a1>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-166-299086/13730a07-65b0-306c-a9b5-a8929927a6a1> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-166-299086/13730a07-65b0-306c-a9b5-a8929927a6a1> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-166-299086/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a locn:Address;
@@ -254,4 +249,4 @@ Réaménagement du pôle RER Châtelet-Les Halles — lot 1b — fourniture, pos
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2016-S-166-299086/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2016-S-166-299086/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2016-S-166-299086/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .

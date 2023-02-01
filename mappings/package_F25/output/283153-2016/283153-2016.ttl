@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -30,13 +29,9 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2016-S-156-283153/5a0e0822-353f-34b8-9001-b27f293ef321>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2016-S-156-283153/41c3580d-d7b5-3ead-a7df-4e886771daad>;
+  epo:hasBuyerProfile "http://www.boamp.fr/avis/detail/16-119567"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2016-S-156-283153/188615bc-907f-376a-b3e0-b7f440ca4c64>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2016-S-156-283153/188615bc-907f-376a-b3e0-b7f440ca4c64> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2016-S-156-283153/41c3580d-d7b5-3ead-a7df-4e886771daad>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.boamp.fr/avis/detail/16-119567" .
 
 <http://data.europa.eu/a4g/resource/ConcessionEstimate/2016-S-156-283153/3953b71b-e4b8-307b-8fcc-3e7ecb01d94b>
   a epo:ConcessionEstimate;
@@ -48,7 +43,7 @@ Néant.
   a cccev:ContactPoint;
   epo:hasContactName "Mme Christine Leboulanger"@fr;
   epo:hasFax "+33 0231238454";
-  epo:hasInternetAddress "http://bretteville-sur-laize.a3w.fr/";
+  epo:hasInternetAddress "http://bretteville-sur-laize.a3w.fr/"^^xsd:anyURI;
   cccev:email "christine.leboulanger@commune-brettevillesurlaize.com";
   cccev:telephone "+33 0231235002" .
 
@@ -58,27 +53,7 @@ Néant.
 Concession d'aménagement pour la zone d'aménagement concerté Le Grand Clos à Bretteville-sur-Laize
 """@fr;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2016-S-156-283153/5a50554f-89ac-3a44-9d4f-643949ca9831>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2016-S-156-283153/2b425ab1-553e-3915-a060-80f1d3cff764> .
-
-<http://data.europa.eu/a4g/resource/ContractContactPoint/2016-S-156-283153/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a cccev:ContactPoint;
-  epo:hasInternetAddress "http://www.foncim.fr/fr/";
-  cccev:email "direction@foncim.fr";
-  cccev:telephone "+33 0231389494" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2016-S-156-283153/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a org:Organization;
-  epo:hasLegalName "Foncim"@fr;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractContactPoint/2016-S-156-283153/8f833010-0b39-361a-9ea9-959275ccdc19>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2016-S-156-283153/8f833010-0b39-361a-9ea9-959275ccdc19> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2016-S-156-283153/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR251>;
-  locn:postCode "14000";
-  locn:postName "Caen";
-  locn:thoroughfare "2 bis boulevard Georges Pompidou" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2016-S-156-283153/2b425ab1-553e-3915-a060-80f1d3cff764> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2016-S-156-283153/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:ContractTerm;
@@ -95,6 +70,26 @@ Concession d'aménagement pour la zone d'aménagement concerté Le Grand Clos à
   locn:fullAddress """
 Secteur du Grand Clos — commune de Bretteville-sur-Laize (Calvados).
 """@fr .
+
+<http://data.europa.eu/a4g/resource/ContractorContactPoint/2016-S-156-283153/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a cccev:ContactPoint;
+  epo:hasInternetAddress "http://www.foncim.fr/fr/"^^xsd:anyURI;
+  cccev:email "direction@foncim.fr";
+  cccev:telephone "+33 0231389494" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2016-S-156-283153/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a org:Organization;
+  epo:hasLegalName "Foncim"@fr;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorContactPoint/2016-S-156-283153/8f833010-0b39-361a-9ea9-959275ccdc19>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2016-S-156-283153/8f833010-0b39-361a-9ea9-959275ccdc19> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2016-S-156-283153/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR251>;
+  locn:postCode "14000";
+  locn:postName "Caen";
+  locn:thoroughfare "2 bis boulevard Georges Pompidou" .
 
 <http://data.europa.eu/a4g/resource/Duration/2016-S-156-283153/1d09e8e7-ef82-30d4-befb-d86c000a8e5a>
   a epo:Duration;
@@ -173,11 +168,11 @@ La concession comprend les études nécessaires à la réalisation de l'opérati
 
 <http://data.europa.eu/a4g/resource/Organisation/2016-S-156-283153/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/cga>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/cga>;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2016-S-156-283153/188615bc-907f-376a-b3e0-b7f440ca4c64>;
   epo:hasLegalName "Mairie"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-156-283153/188615bc-907f-376a-b3e0-b7f440ca4c64> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-156-283153/188615bc-907f-376a-b3e0-b7f440ca4c64> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-156-283153/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a locn:Address;
@@ -211,8 +206,8 @@ Constitution commission AD-HOC CM 26.11.2015.
 3 réunions: analyses offres, choix candidat pour négociations, proposition au maire de retenir Foncim pour attribution.
 Sur avis et conclusions des négociations, désignation par CM 18.7.2016 de Foncim en qualité de concessionnaire.
 """;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-156-283153/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2016-S-156-283153/5a50554f-89ac-3a44-9d4f-643949ca9831>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-156-283153/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasTitle """
 Concession d'aménagement pour la zone d'aménagement concerté le Grand Clos à Bretteville-sur-Laize.
 """@fr;
@@ -246,7 +241,7 @@ Concession d'aménagement pour la zone d'aménagement concerté le Grand Clos à
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2016-S-156-283153/fdc5fccd-dd12-3226-8a44-ee7b6f769c12>
   a cccev:ContactPoint;
   epo:hasFax "+33 0231524217";
-  epo:hasInternetAddress "http://caen.tribunal-administratif.fr";
+  epo:hasInternetAddress "http://caen.tribunal-administratif.fr"^^xsd:anyURI;
   cccev:email "greffe.ta-caen@juradm.fr";
   cccev:telephone "+33 0231707272" .
 
@@ -254,7 +249,7 @@ Concession d'aménagement pour la zone d'aménagement concerté le Grand Clos à
   a org:Organization;
   epo:hasLegalName "Greffe du tribunal administratif de Caen"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2016-S-156-283153/fdc5fccd-dd12-3226-8a44-ee7b6f769c12>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2016-S-156-283153/fdc5fccd-dd12-3226-8a44-ee7b6f769c12> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2016-S-156-283153/fdc5fccd-dd12-3226-8a44-ee7b6f769c12> .
 
 <http://data.europa.eu/a4g/resource/Reviewer/2016-S-156-283153/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a epo:Reviewer;
@@ -263,7 +258,7 @@ Concession d'aménagement pour la zone d'aménagement concerté le Grand Clos à
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2016-S-156-283153/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a cccev:ContactPoint;
   epo:hasFax "+33 0231524217";
-  epo:hasInternetAddress "http://caen.tribunal-administratif.fr";
+  epo:hasInternetAddress "http://caen.tribunal-administratif.fr"^^xsd:anyURI;
   cccev:email "greffe.ta-caen@juradm.fr";
   cccev:telephone "+33 0231707272" .
 
@@ -271,7 +266,7 @@ Concession d'aménagement pour la zone d'aménagement concerté le Grand Clos à
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Caen"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2016-S-156-283153/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-156-283153/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-156-283153/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-156-283153/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a locn:Address;
@@ -301,4 +296,4 @@ Concession d'aménagement pour la zone d'aménagement concerté le Grand Clos à
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2016-S-156-283153/8f833010-0b39-361a-9ea9-959275ccdc19>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2016-S-156-283153/8f833010-0b39-361a-9ea9-959275ccdc19> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2016-S-156-283153/8f833010-0b39-361a-9ea9-959275ccdc19> .

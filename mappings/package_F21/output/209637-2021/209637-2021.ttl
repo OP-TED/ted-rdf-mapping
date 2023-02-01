@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,22 +17,18 @@
 
 <http://data.europa.eu/a4g/resource/AccessTerm/2021-S-081-209637/08cc6b87-fd77-3965-a6c4-7bd72326900e>
   a epo:AccessTerm;
-  epo:hasPublicAccessURL <https://www.marches-publics.gouv.fr/?page=entreprise.EntrepriseAdvancedSearch&AllCons&refConsultation=742438&orgAcronyme=h8j>;
+  epo:hasPublicAccessURL "https://www.marches-publics.gouv.fr/?page=entreprise.EntrepriseAdvancedSearch&AllCons&refConsultation=742438&orgAcronyme=h8j"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
 
 <http://data.europa.eu/a4g/resource/Buyer/2021-S-081-209637/08cc6b87-fd77-3965-a6c4-7bd72326900e>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2021-S-081-209637/5eeafc96-605e-3b6c-9ca0-91010603c507>;
+  epo:hasBuyerProfile "http://www.marches-public.gouv.fr"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-081-209637/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2021-S-081-209637/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
-<http://data.europa.eu/a4g/resource/BuyerProfile/2021-S-081-209637/5eeafc96-605e-3b6c-9ca0-91010603c507>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.marches-public.gouv.fr" .
-
 <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-081-209637/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://www.pole-emploi.fr";
+  epo:hasInternetAddress "http://www.pole-emploi.fr"^^xsd:anyURI;
   cccev:email "Marches.reunion@pole-emploi.fr" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2021-S-081-209637/10a954c5-4b3f-3ea1-add9-eda3a9735c67>
@@ -456,10 +451,10 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2021-S-081-209637/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
   epo:hasLegalName "Pôle emploi"@fr;
   epo:hasMainActivityDescription "Emploi";
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-081-209637/97c28c49-5587-3e91-95b4-4e48e30ed684> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-081-209637/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-081-209637/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a locn:Address;
@@ -484,7 +479,6 @@
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2021-S-081-209637/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasMainFeature "Procédure prévue à l'article R. 2123-1 3o) du code de la commande publique, selon des modalités librement définies par le pouvoir adjudicateur. Les marchés publics sont conclus sans minimum ni maximum, avec plusieurs titulaires (dont le nombre est fixé au DCE), sauf si, à l'issue de la consultation, le nombre de titulaires n'est pas suffisant.";
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-081-209637/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2021-S-081-209637/10a954c5-4b3f-3ea1-add9-eda3a9735c67>,
     <http://data.europa.eu/a4g/resource/Lot/2021-S-081-209637/138f8418-5513-3d40-8ae4-fabd65393226>,
@@ -494,6 +488,7 @@
     <http://data.europa.eu/a4g/resource/Lot/2021-S-081-209637/8648bce9-982e-36bf-80f7-9228ad392d91>,
     <http://data.europa.eu/a4g/resource/Lot/2021-S-081-209637/cb2c25fe-9834-348c-8ac3-5c554fb2f6f3>,
     <http://data.europa.eu/a4g/resource/Lot/2021-S-081-209637/e3c5791a-e132-3d09-8ef5-af0f6ebfdc2c>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-081-209637/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasTitle "Marche de la région Réunion de services de formation professionnelle au bénéfice des personnes à la recherche d'un emploi"@fr;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/AccessTerm/2021-S-081-209637/08cc6b87-fd77-3965-a6c4-7bd72326900e>,
     <http://data.europa.eu/a4g/resource/FrameworkAgreementTerm/2021-S-081-209637/168a6c96-75f8-304a-bff5-0d0cf3c2f20c>,
@@ -520,7 +515,6 @@
 
 <http://data.europa.eu/a4g/resource/ProcurementProcedureInformationProvider/2021-S-081-209637/1a05a258-a8c2-3b59-8ae4-16e3430dd96e>
   a epo:ProcurementProcedureInformationProvider;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2021-S-081-209637/5eeafc96-605e-3b6c-9ca0-91010603c507>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-081-209637/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2021-S-081-209637/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
@@ -534,13 +528,13 @@
 
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2021-S-081-209637/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://La-reunion.tribunal-administratif.fr/" .
+  epo:hasInternetAddress "http://La-reunion.tribunal-administratif.fr/"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2021-S-081-209637/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de La Réunion"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2021-S-081-209637/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-081-209637/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-081-209637/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-081-209637/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a locn:Address;
@@ -558,6 +552,5 @@
 <http://data.europa.eu/a4g/resource/SubmissionTerm/2021-S-081-209637/168a6c96-75f8-304a-bff5-0d0cf3c2f20c>
   a epo:SubmissionTerm;
   epo:hasLanguage "FR";
-  epo:hasReceiptDeadline "2021-06-01"^^xsd:datetime;
-  epo:hasReceiptExpressionsDeadline "14:00"^^xsd:datetime;
-  epo:hasSubmissionURL "https://www.marches-publics.gouv.fr/?page=entreprise.EntrepriseAdvancedSearch&AllCons&refConsultation=742438&orgAcronyme=h8j" .
+  epo:hasReceiptDeadline "2021-06-01T14:00:00"^^xsd:dateTime;
+  epo:hasSubmissionURL "https://www.marches-publics.gouv.fr/?page=entreprise.EntrepriseAdvancedSearch&AllCons&refConsultation=742438&orgAcronyme=h8j"^^xsd:anyURI .

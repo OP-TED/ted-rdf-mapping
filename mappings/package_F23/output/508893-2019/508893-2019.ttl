@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,44 +17,21 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2019-S-208-508893/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2019-S-208-508893/34655f62-8001-38ad-a804-119bb9c85d23>;
+  epo:hasBuyerProfile "http://www.nissewaard.nl"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2019-S-208-508893/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2019-S-208-508893/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2019-S-208-508893/34655f62-8001-38ad-a804-119bb9c85d23>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.nissewaard.nl" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2019-S-208-508893/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a cccev:ContactPoint;
   epo:hasContactName "Jorien Heemskerk"@nl;
-  epo:hasInternetAddress "http://www.nissewaard.nl";
+  epo:hasInternetAddress "http://www.nissewaard.nl"^^xsd:anyURI;
   cccev:email "j.hollaar@nissewaard.nl" .
 
 <http://data.europa.eu/a4g/resource/Contract/2019-S-208-508893/70e1fca2-f8e6-3a32-8dca-713ccb185cf6>
   a epo:ConcessionContract, epo:Contract;
   epo:hasTitle "Collectieve zorgverzekering voor minima"@nl;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2019-S-208-508893/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2019-S-208-508893/70e1fca2-f8e6-3a32-8dca-713ccb185cf6> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2019-S-208-508893/15a5bf74-f364-3b6a-8f6c-92ab57374118>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2019-S-208-508893/15a5bf74-f364-3b6a-8f6c-92ab57374118>;
-  epo:hasLegalName "CZ Groep Zorgverzekeraar"@nl;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2019-S-208-508893/15a5bf74-f364-3b6a-8f6c-92ab57374118> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2019-S-208-508893/15a5bf74-f364-3b6a-8f6c-92ab57374118>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NLD>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/NL>;
-  locn:postCode "5038 KE";
-  locn:postName "Tilburg";
-  locn:thoroughfare "Ringbaan-West 236" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2019-S-208-508893/15a5bf74-f364-3b6a-8f6c-92ab57374118>
-  a epo:Identifier;
-  epo:hasIdentifierValue "41095222" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2019-S-208-508893/70e1fca2-f8e6-3a32-8dca-713ccb185cf6> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2019-S-208-508893/64592fe7-40a4-3c6b-85ce-08fd4c446531>
   a epo:ContractTerm;
@@ -65,6 +41,25 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2019-S-208-508893/64592fe7-40a4-3c6b-85ce-08fd4c446531>
   a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/NL> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2019-S-208-508893/15a5bf74-f364-3b6a-8f6c-92ab57374118>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasID <http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2019-S-208-508893/15a5bf74-f364-3b6a-8f6c-92ab57374118>;
+  epo:hasLegalName "CZ Groep Zorgverzekeraar"@nl;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2019-S-208-508893/15a5bf74-f364-3b6a-8f6c-92ab57374118> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2019-S-208-508893/15a5bf74-f364-3b6a-8f6c-92ab57374118>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NLD>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/NL>;
+  locn:postCode "5038 KE";
+  locn:postName "Tilburg";
+  locn:thoroughfare "Ringbaan-West 236" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2019-S-208-508893/15a5bf74-f364-3b6a-8f6c-92ab57374118>
+  a epo:Identifier;
+  epo:hasIdentifierValue "41095222" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2019-S-208-508893/64850f6d-a341-38ae-bc98-ed98207d0890>
   a epo:DirectAwardTerm;
@@ -97,14 +92,14 @@
 
 <http://data.europa.eu/a4g/resource/MediatorContactPoint/2019-S-208-508893/3e3334c3-bfc3-3694-9c83-6b654f3b82b2>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "https://formulieren.nissewaard.nl/formulier/nl-NL/evNissewaard/scKlachtOverDeGemeente_Corsa.aspx/fKlachtOverDeGemeente";
+  epo:hasInternetAddress "https://formulieren.nissewaard.nl/formulier/nl-NL/evNissewaard/scKlachtOverDeGemeente_Corsa.aspx/fKlachtOverDeGemeente"^^xsd:anyURI;
   cccev:email "info@nissewaard.nl" .
 
 <http://data.europa.eu/a4g/resource/MediatorOrganisation/2019-S-208-508893/3e3334c3-bfc3-3694-9c83-6b654f3b82b2>
   a org:Organization;
   epo:hasLegalName "Klacht over de aanbesteding"@nl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/MediatorContactPoint/2019-S-208-508893/3e3334c3-bfc3-3694-9c83-6b654f3b82b2>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2019-S-208-508893/3e3334c3-bfc3-3694-9c83-6b654f3b82b2> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2019-S-208-508893/3e3334c3-bfc3-3694-9c83-6b654f3b82b2> .
 
 <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2019-S-208-508893/3e3334c3-bfc3-3694-9c83-6b654f3b82b2>
   a locn:Address;
@@ -139,11 +134,11 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2019-S-208-508893/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2019-S-208-508893/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
   epo:hasLegalName "gemeente Nissewaard"@nl;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-208-508893/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-208-508893/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-208-508893/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a locn:Address;
@@ -159,8 +154,8 @@
 
 <http://data.europa.eu/a4g/resource/Period/2019-S-208-508893/64592fe7-40a4-3c6b-85ce-08fd4c446531>
   a epo:Period;
-  epo:hasBeginning "2020-01-01"^^xsd:datetime;
-  epo:hasEnd "2022-12-31"^^xsd:datetime .
+  epo:hasBeginning "2020-01-01T00:00:00"^^xsd:dateTime;
+  epo:hasEnd "2022-12-31T00:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/Procedure/2019-S-208-508893/3b2748c6-16de-3218-af2c-e7456a886558>
   a epo:Procedure;
@@ -168,9 +163,9 @@
   epo:hasDescription "Deze vrijwillige aankondiging betreft het voornemen van de gemeente Nissewaard tot het vestigen van een uitsluitend recht aan CZ zorgverzekeringen en totstandkoming van een concessieovereenkomst overeenkomstig artikel 4.16 van de Aanbestedingswet voor een collectieve zorgverzekering voor minima van de gemeente Nissewaard."@nl;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2019-S-208-508893/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0023>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2019-S-208-508893/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2019-S-208-508893/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2019-S-208-508893/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasTitle "Collectieve zorgverzekering voor minima"@nl;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/DirectAwardTerm/2019-S-208-508893/64850f6d-a341-38ae-bc98-ed98207d0890>,
     <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2019-S-208-508893/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209> .
@@ -198,14 +193,14 @@
 
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2019-S-208-508893/2a666ce1-cebc-31d9-b200-113ebf473883>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://www.rechtspraak.nl/Organisatie/Rechtbanken/Rotterdam/Bezoekinformatie/Pages/default.aspx";
+  epo:hasInternetAddress "http://www.rechtspraak.nl/Organisatie/Rechtbanken/Rotterdam/Bezoekinformatie/Pages/default.aspx"^^xsd:anyURI;
   cccev:email "voorlichting@rotarr.drp.minjus.nl" .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2019-S-208-508893/2a666ce1-cebc-31d9-b200-113ebf473883>
   a org:Organization;
   epo:hasLegalName "Rechtbank Rotterdam"@nl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2019-S-208-508893/2a666ce1-cebc-31d9-b200-113ebf473883>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-208-508893/2a666ce1-cebc-31d9-b200-113ebf473883> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-208-508893/2a666ce1-cebc-31d9-b200-113ebf473883> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-208-508893/2a666ce1-cebc-31d9-b200-113ebf473883>
   a locn:Address;
@@ -230,4 +225,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2019-S-208-508893/15a5bf74-f364-3b6a-8f6c-92ab57374118>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2019-S-208-508893/15a5bf74-f364-3b6a-8f6c-92ab57374118> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2019-S-208-508893/15a5bf74-f364-3b6a-8f6c-92ab57374118> .

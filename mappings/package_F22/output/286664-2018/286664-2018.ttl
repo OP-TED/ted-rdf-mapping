@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,24 +17,20 @@
 
 <http://data.europa.eu/a4g/resource/AccessTerm/2018-S-125-286664/841f832b-8a2b-3a73-a4a6-85439d64c6be>
   a epo:AccessTerm;
-  epo:hasRestrictedAccessURL <https://contrataciondelestado.es/wps/poc?uri=deeplink%3AperfilContratante&idBp=TsK3PKG7wqQ%3D>;
+  epo:hasRestrictedAccessURL "https://contrataciondelestado.es/wps/poc?uri=deeplink%3AperfilContratante&idBp=TsK3PKG7wqQ%3D"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted true .
 
 <http://data.europa.eu/a4g/resource/Buyer/2018-S-125-286664/841f832b-8a2b-3a73-a4a6-85439d64c6be>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-125-286664/869d5405-9b33-3f2f-8a44-38f4bf6c8f11>;
+  epo:hasBuyerProfile "https://contrataciondelestado.es/wps/poc?uri=deeplink%3AperfilContratante&idBp=TsK3PKG7wqQ%3D"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-125-286664/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-125-286664/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-125-286664/869d5405-9b33-3f2f-8a44-38f4bf6c8f11>
-  a epo:BuyerProfile;
-  epo:hasURL "https://contrataciondelestado.es/wps/poc?uri=deeplink%3AperfilContratante&idBp=TsK3PKG7wqQ%3D" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-125-286664/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
   a cccev:ContactPoint;
   epo:hasContactName "jlmartin@renfe.es; smendez@renfe.es; cvillar@renfe.es"@es;
   epo:hasFax "+34 913007479";
-  epo:hasInternetAddress "http://www.renfe.es";
+  epo:hasInternetAddress "http://www.renfe.es"^^xsd:anyURI;
   cccev:email "jlmartin@renfe.es" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2018-S-125-286664/0111c4ec-bd7e-33a1-a2ef-777a29a258cc>
@@ -1077,8 +1072,8 @@
   a org:Organization;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2018-S-125-286664/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>;
   epo:hasLegalName "Entidad Pública Empresarial Renfe-Operadora — Dirección General Económico-Financiera — Gerencia de Área de Compras y Patrimonio"@es;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/rail>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-125-286664/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/rail>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-125-286664/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-125-286664/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
   a locn:Address;
@@ -1120,7 +1115,6 @@
   epo:hasMainFeature """
                Tal y como se indica en el apartado II.1.6 del presente anuncio.
             """;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-125-286664/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2018-S-125-286664/0111c4ec-bd7e-33a1-a2ef-777a29a258cc>,
     <http://data.europa.eu/a4g/resource/Lot/2018-S-125-286664/0dfa9214-dcf4-363c-b1f9-27dd240eefb6>,
@@ -1136,6 +1130,7 @@
     <http://data.europa.eu/a4g/resource/Lot/2018-S-125-286664/c49181fc-2c81-3d8d-8ab7-3fa6b4793760>,
     <http://data.europa.eu/a4g/resource/Lot/2018-S-125-286664/fc88f074-3ab0-3274-9189-ecbbe8879bdf>,
     <http://data.europa.eu/a4g/resource/Lot/2018-S-125-286664/ff6ae1b7-301c-368b-9f87-0657ba988b9d>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-125-286664/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
   epo:hasTitle """
                Servicios de vigilancia y seguridad para el grupo Renfe
             """@es;
@@ -1162,7 +1157,6 @@
 
 <http://data.europa.eu/a4g/resource/ProcurementProcedureInformationProvider/2018-S-125-286664/cd1f8e5f-b72a-3163-a598-b8e32f275d54>
   a epo:ProcurementProcedureInformationProvider;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-125-286664/869d5405-9b33-3f2f-8a44-38f4bf6c8f11>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-125-286664/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-125-286664/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
 
@@ -1186,7 +1180,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal Administrativo Central de Recursos Contractuales"@es;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-125-286664/f408af29-86f8-3547-8427-ccade0632c83>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-125-286664/f408af29-86f8-3547-8427-ccade0632c83> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-125-286664/f408af29-86f8-3547-8427-ccade0632c83> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-125-286664/f408af29-86f8-3547-8427-ccade0632c83>
   a locn:Address;
@@ -1205,11 +1199,9 @@
 <http://data.europa.eu/a4g/resource/SubmissionTerm/2018-S-125-286664/d5eb64bb-60fc-33e6-91a2-96bf252d3a17>
   a epo:SubmissionTerm;
   epo:hasLanguage "ES";
-  epo:hasReceiptDeadline "2018-07-16"^^xsd:datetime;
-  epo:hasReceiptExpressionsDeadline "12:00"^^xsd:datetime .
+  epo:hasReceiptDeadline "2018-07-16T12:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/TenderReceiver/2018-S-125-286664/ac0de271-9725-30be-817c-5414d868ef49>
   a epo:TenderReceiver;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-125-286664/869d5405-9b33-3f2f-8a44-38f4bf6c8f11>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-125-286664/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-125-286664/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .

@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -25,7 +24,7 @@
   a cccev:ContactPoint;
   epo:hasContactName "A 11 - Amt für Recht und Finanzen"@de;
   epo:hasFax "+49 34739-58920";
-  epo:hasInternetAddress "www.aschersleben.de";
+  epo:hasInternetAddress "www.aschersleben.de"^^xsd:anyURI;
   cccev:email "vergabestelle@aschersleben.de";
   cccev:telephone "+49 34739-58635" .
 
@@ -33,27 +32,7 @@
   a epo:ConcessionContract, epo:Contract;
   epo:hasTitle "Essenversorgung im Bildungszentrum Bestehornpark"@de;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2021-S-225-593670/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-225-593670/70e1fca2-f8e6-3a32-8dca-713ccb185cf6> .
-
-<http://data.europa.eu/a4g/resource/ContractContactPoint/2021-S-225-593670/15a5bf74-f364-3b6a-8f6c-92ab57374118>
-  a cccev:ContactPoint;
-  cccev:email "j.kloss@cc-leipzig.de";
-  cccev:telephone "+49 15254761166" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-225-593670/15a5bf74-f364-3b6a-8f6c-92ab57374118>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasLegalName "Saxonia Catering GmbH & Co.KG"@de;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractContactPoint/2021-S-225-593670/15a5bf74-f364-3b6a-8f6c-92ab57374118>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-225-593670/15a5bf74-f364-3b6a-8f6c-92ab57374118> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-225-593670/15a5bf74-f364-3b6a-8f6c-92ab57374118>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/DED5>;
-  locn:postCode "04178";
-  locn:postName "Leipzig";
-  locn:thoroughfare "Gutenbergstraße 11" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-225-593670/70e1fca2-f8e6-3a32-8dca-713ccb185cf6> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2021-S-225-593670/64592fe7-40a4-3c6b-85ce-08fd4c446531>
   a epo:ContractTerm;
@@ -63,6 +42,26 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2021-S-225-593670/64592fe7-40a4-3c6b-85ce-08fd4c446531>
   a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/DEE0C> .
+
+<http://data.europa.eu/a4g/resource/ContractorContactPoint/2021-S-225-593670/15a5bf74-f364-3b6a-8f6c-92ab57374118>
+  a cccev:ContactPoint;
+  cccev:email "j.kloss@cc-leipzig.de";
+  cccev:telephone "+49 15254761166" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-225-593670/15a5bf74-f364-3b6a-8f6c-92ab57374118>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "Saxonia Catering GmbH & Co.KG"@de;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorContactPoint/2021-S-225-593670/15a5bf74-f364-3b6a-8f6c-92ab57374118>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-225-593670/15a5bf74-f364-3b6a-8f6c-92ab57374118> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-225-593670/15a5bf74-f364-3b6a-8f6c-92ab57374118>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DED5>;
+  locn:postCode "04178";
+  locn:postName "Leipzig";
+  locn:thoroughfare "Gutenbergstraße 11" .
 
 <http://data.europa.eu/a4g/resource/Lot/2021-S-225-593670/64592fe7-40a4-3c6b-85ce-08fd4c446531>
   a epo:Lot;
@@ -112,10 +111,10 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2021-S-225-593670/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasLegalName "Stadt Aschersleben"@de;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-225-593670/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-225-593670/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-225-593670/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a locn:Address;
@@ -127,8 +126,8 @@
 
 <http://data.europa.eu/a4g/resource/Period/2021-S-225-593670/64592fe7-40a4-3c6b-85ce-08fd4c446531>
   a epo:Period;
-  epo:hasBeginning "2021-12-06"^^xsd:datetime;
-  epo:hasEnd "2022-08-01"^^xsd:datetime .
+  epo:hasBeginning "2021-12-06T00:00:00"^^xsd:dateTime;
+  epo:hasEnd "2022-08-01T00:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/Procedure/2021-S-225-593670/3b2748c6-16de-3218-af2c-e7456a886558>
   a epo:Procedure;
@@ -136,8 +135,8 @@
   epo:hasDescription "Essensversorgung Bildungszentrum Bestehornpark in Aschersleben"@de;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2021-S-225-593670/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0023>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-225-593670/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2021-S-225-593670/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-225-593670/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasTitle "Essenversorgung im Bildungszentrum Bestehornpark"@de;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2021-S-225-593670/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209> .
 
@@ -165,7 +164,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2021-S-225-593670/2a666ce1-cebc-31d9-b200-113ebf473883>
   a org:Organization;
   epo:hasLegalName "Vergabekammer beim Landesverwaltungsamt"@de;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-225-593670/2a666ce1-cebc-31d9-b200-113ebf473883> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-225-593670/2a666ce1-cebc-31d9-b200-113ebf473883> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-225-593670/2a666ce1-cebc-31d9-b200-113ebf473883>
   a locn:Address;
@@ -194,4 +193,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-225-593670/15a5bf74-f364-3b6a-8f6c-92ab57374118>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-225-593670/15a5bf74-f364-3b6a-8f6c-92ab57374118> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-225-593670/15a5bf74-f364-3b6a-8f6c-92ab57374118> .

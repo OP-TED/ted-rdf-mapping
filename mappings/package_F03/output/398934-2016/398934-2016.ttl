@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -29,7 +28,7 @@
   a cccev:ContactPoint;
   epo:hasContactName "Małgorzata Warszawska"@pl;
   epo:hasFax "+32 2623422";
-  epo:hasInternetAddress "www.zco-dg.pl";
+  epo:hasInternetAddress "www.zco-dg.pl"^^xsd:anyURI;
   cccev:email "zamowienia.publiczne@szpital-dg.pl";
   cccev:telephone "+32 2623422" .
 
@@ -41,30 +40,11 @@
 Zakup zorganizowanej części przedsiębiorstwa w postaci pracowni TK w związku z likwidacją pracowni przez dotychczasowego właściciela
 """@pl;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2016-S-219-398934/cbac108a-b047-3e09-a114-28c43d5b8706>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2016-S-219-398934/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
-
-<http://data.europa.eu/a4g/resource/ContractContactPoint/2016-S-219-398934/3110be1b-1cf3-3851-b11c-869fbbca54c0>
-  a cccev:ContactPoint;
-  epo:hasFax "+48 327604600";
-  cccev:telephone "+48 327604600" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2016-S-219-398934/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2016-S-219-398934/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>
   a epo:Identifier;
   epo:hasIdentifierValue "1" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2016-S-219-398934/3110be1b-1cf3-3851-b11c-869fbbca54c0>
-  a org:Organization;
-  epo:hasLegalName "American Heart of Poland SA"@pl;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractContactPoint/2016-S-219-398934/3110be1b-1cf3-3851-b11c-869fbbca54c0>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2016-S-219-398934/3110be1b-1cf3-3851-b11c-869fbbca54c0> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2016-S-219-398934/3110be1b-1cf3-3851-b11c-869fbbca54c0>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/PL225>;
-  locn:postCode "43-450";
-  locn:postName "Ustroń";
-  locn:thoroughfare "ul. Sanatoryjna 1" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2016-S-219-398934/cbac108a-b047-3e09-a114-28c43d5b8706>
   a epo:ContractTerm;
@@ -74,6 +54,25 @@ Zakup zorganizowanej części przedsiębiorstwa w postaci pracowni TK w związku
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2016-S-219-398934/cbac108a-b047-3e09-a114-28c43d5b8706>
   a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/PL22B> .
+
+<http://data.europa.eu/a4g/resource/ContractorContactPoint/2016-S-219-398934/3110be1b-1cf3-3851-b11c-869fbbca54c0>
+  a cccev:ContactPoint;
+  epo:hasFax "+48 327604600";
+  cccev:telephone "+48 327604600" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2016-S-219-398934/3110be1b-1cf3-3851-b11c-869fbbca54c0>
+  a org:Organization;
+  epo:hasLegalName "American Heart of Poland SA"@pl;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorContactPoint/2016-S-219-398934/3110be1b-1cf3-3851-b11c-869fbbca54c0>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2016-S-219-398934/3110be1b-1cf3-3851-b11c-869fbbca54c0> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2016-S-219-398934/3110be1b-1cf3-3851-b11c-869fbbca54c0>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/PL225>;
+  locn:postCode "43-450";
+  locn:postName "Ustroń";
+  locn:thoroughfare "ul. Sanatoryjna 1" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2016-S-219-398934/1f8688eb-32e7-368b-ad1c-2e76f17321dd>
   a epo:DirectAwardTerm;
@@ -117,7 +116,7 @@ Zakup zorganizowanej części przedsiębiorstwa w postaci pracowni TK w związku
   a org:Organization;
   epo:hasLegalName "Krajowa Izba Odwoławcza"@pl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/MediatorContactPoint/2016-S-219-398934/a6bfbb35-d109-3491-8d64-1fff4418e45e>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2016-S-219-398934/a6bfbb35-d109-3491-8d64-1fff4418e45e> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2016-S-219-398934/a6bfbb35-d109-3491-8d64-1fff4418e45e> .
 
 <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2016-S-219-398934/a6bfbb35-d109-3491-8d64-1fff4418e45e>
   a locn:Address;
@@ -151,10 +150,10 @@ Zakup zorganizowanej części przedsiębiorstwa w postaci pracowni TK w związku
 
 <http://data.europa.eu/a4g/resource/Organisation/2016-S-219-398934/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
   epo:hasLegalName "Zagłębiowskie Centrum Onkologii Szpital Specjalistyczny im. Sz. Starkiewicza w Dąbrowie Górniczej"@pl;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/health>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-219-398934/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/health>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-219-398934/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-219-398934/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a locn:Address;
@@ -171,9 +170,9 @@ Zakup zorganizowanej części przedsiębiorstwa w postaci pracowni TK w związku
 Zakup zorganizowanej części przedsiębiorstwa w postaci pracowni TK w związku z likwidacją pracowni przez dotychczasowego właściciela.
 """@pl;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2016-S-219-398934/58509ec4-99dc-3865-9935-58d7ebd66d29>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-219-398934/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2016-S-219-398934/cbac108a-b047-3e09-a114-28c43d5b8706>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-219-398934/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasTitle """
 Zakup zorganizowanej części przedsiębiorstwa w postaci pracowni TK w związku z likwidacją pracowni przez dotychczasowego właściciela.
 """@pl;
@@ -218,7 +217,7 @@ Zakup zorganizowanej części przedsiębiorstwa w postaci pracowni TK w związku
   a org:Organization;
   epo:hasLegalName "Krajowa Izba Odwoławcza"@pl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2016-S-219-398934/53dcddfe-05e0-31c2-ab22-d770b015238d>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2016-S-219-398934/53dcddfe-05e0-31c2-ab22-d770b015238d> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2016-S-219-398934/53dcddfe-05e0-31c2-ab22-d770b015238d> .
 
 <http://data.europa.eu/a4g/resource/Reviewer/2016-S-219-398934/de2507f9-ae25-37c8-809c-0109efe10669>
   a epo:Reviewer;
@@ -233,7 +232,7 @@ Zakup zorganizowanej części przedsiębiorstwa w postaci pracowni TK w związku
   a org:Organization;
   epo:hasLegalName "Krajowa Izba Odwoławcza"@pl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2016-S-219-398934/de2507f9-ae25-37c8-809c-0109efe10669>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-219-398934/de2507f9-ae25-37c8-809c-0109efe10669> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-219-398934/de2507f9-ae25-37c8-809c-0109efe10669> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-219-398934/de2507f9-ae25-37c8-809c-0109efe10669>
   a locn:Address;
@@ -258,4 +257,4 @@ Zakup zorganizowanej części przedsiębiorstwa w postaci pracowni TK w związku
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2016-S-219-398934/3110be1b-1cf3-3851-b11c-869fbbca54c0>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2016-S-219-398934/3110be1b-1cf3-3851-b11c-869fbbca54c0> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2016-S-219-398934/3110be1b-1cf3-3851-b11c-869fbbca54c0> .

@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,22 +17,18 @@
 
 <http://data.europa.eu/a4g/resource/AccessTerm/2016-S-100-178451/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209>
   a epo:AccessTerm;
-  epo:hasPublicAccessURL <https://in-tendhost.co.uk/walsallcouncil/aspx/Home>;
+  epo:hasPublicAccessURL "https://in-tendhost.co.uk/walsallcouncil/aspx/Home"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
 
 <http://data.europa.eu/a4g/resource/Buyer/2016-S-100-178451/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2016-S-100-178451/34655f62-8001-38ad-a804-119bb9c85d23>;
+  epo:hasBuyerProfile "https://in-tendhost.co.uk/walsallcouncil/aspx/Home"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2016-S-100-178451/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2016-S-100-178451/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
 
-<http://data.europa.eu/a4g/resource/BuyerProfile/2016-S-100-178451/34655f62-8001-38ad-a804-119bb9c85d23>
-  a epo:BuyerProfile;
-  epo:hasURL "https://in-tendhost.co.uk/walsallcouncil/aspx/Home" .
-
 <http://data.europa.eu/a4g/resource/ContactPoint/2016-S-100-178451/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "https://www.walsall.gov.uk";
+  epo:hasInternetAddress "https://www.walsall.gov.uk"^^xsd:anyURI;
   cccev:email "procurement@walsall.gov.uk" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2016-S-100-178451/64592fe7-40a4-3c6b-85ce-08fd4c446531>
@@ -160,10 +155,10 @@ Second Referral Enforcement Agent Collection Service
 
 <http://data.europa.eu/a4g/resource/Organisation/2016-S-100-178451/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasLegalName "Walsall Metropolitan Borough Council"@en;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-100-178451/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-100-178451/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-100-178451/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a locn:Address;
@@ -174,13 +169,13 @@ Second Referral Enforcement Agent Collection Service
 
 <http://data.europa.eu/a4g/resource/Period/2016-S-100-178451/64592fe7-40a4-3c6b-85ce-08fd4c446531>
   a epo:Period;
-  epo:hasBeginning "2016-08-08"^^xsd:datetime;
-  epo:hasEnd "2019-07-31"^^xsd:datetime .
+  epo:hasBeginning "2016-08-08T00:00:00"^^xsd:dateTime;
+  epo:hasEnd "2019-07-31T00:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/Period/2016-S-100-178451/bce76c7c-7a7a-3da2-9e1f-8c42898f2212>
   a epo:Period;
-  epo:hasBeginning "2016-08-08"^^xsd:datetime;
-  epo:hasEnd "2019-07-31"^^xsd:datetime .
+  epo:hasBeginning "2016-08-08T00:00:00"^^xsd:dateTime;
+  epo:hasEnd "2019-07-31T00:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/Procedure/2016-S-100-178451/3b2748c6-16de-3218-af2c-e7456a886558>
   a epo:Procedure;
@@ -205,9 +200,9 @@ Note: The estimated total value quoted is the estimated amount of fees collected
 """@en;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/MonetaryValueProcedure/2016-S-100-178451/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2016-S-100-178451/3b2748c6-16de-3218-af2c-e7456a886558>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-100-178451/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2016-S-100-178451/64592fe7-40a4-3c6b-85ce-08fd4c446531>,
     <http://data.europa.eu/a4g/resource/Lot/2016-S-100-178451/bce76c7c-7a7a-3da2-9e1f-8c42898f2212>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-100-178451/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasTitle """
 Enforcement Agency Services.
 """@en;
@@ -234,7 +229,6 @@ Enforcement Agency Services.
 
 <http://data.europa.eu/a4g/resource/ProcurementProcedureInformationProvider/2016-S-100-178451/c5ef9a83-cf56-3b09-b28d-e41cf4342af1>
   a epo:ProcurementProcedureInformationProvider;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2016-S-100-178451/34655f62-8001-38ad-a804-119bb9c85d23>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2016-S-100-178451/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2016-S-100-178451/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
 
@@ -253,11 +247,9 @@ See Tender Pack and associated tender documents.
 <http://data.europa.eu/a4g/resource/SubmissionTerm/2016-S-100-178451/64850f6d-a341-38ae-bc98-ed98207d0890>
   a epo:SubmissionTerm;
   epo:hasLanguage "EN";
-  epo:hasReceiptDeadline "2016-06-23"^^xsd:datetime;
-  epo:hasReceiptExpressionsDeadline "12:00"^^xsd:datetime .
+  epo:hasReceiptDeadline "2016-06-23T12:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/TenderReceiver/2016-S-100-178451/af83754e-446b-3253-855d-ef754d0f9e5e>
   a epo:TenderReceiver;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2016-S-100-178451/34655f62-8001-38ad-a804-119bb9c85d23>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2016-S-100-178451/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2016-S-100-178451/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .

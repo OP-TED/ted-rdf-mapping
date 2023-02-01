@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,18 +17,14 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2016-S-121-215596/08cc6b87-fd77-3965-a6c4-7bd72326900e>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2016-S-121-215596/5eeafc96-605e-3b6c-9ca0-91010603c507>;
+  epo:hasBuyerProfile "http://www.terrorhaza.hu"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2016-S-121-215596/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2016-S-121-215596/97c28c49-5587-3e91-95b4-4e48e30ed684> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2016-S-121-215596/5eeafc96-605e-3b6c-9ca0-91010603c507>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.terrorhaza.hu" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2016-S-121-215596/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a cccev:ContactPoint;
   epo:hasFax "+36 13742617";
-  epo:hasInternetAddress "http://www.terrorhaza.hu";
+  epo:hasInternetAddress "http://www.terrorhaza.hu"^^xsd:anyURI;
   cccev:email "szantner.lorant@terrorhaza.hu";
   cccev:telephone "+36 13742670" .
 
@@ -41,24 +36,11 @@
 Vállalkozási szerződés
 """@hu;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2016-S-121-215596/10a954c5-4b3f-3ea1-add9-eda3a9735c67>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2016-S-121-215596/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2016-S-121-215596/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2016-S-121-215596/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172>
   a epo:Identifier;
   epo:hasIdentifierValue "1" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2016-S-121-215596/ee813f4d-93e5-3fe8-8e46-545a60837d07>
-  a org:Organization;
-  epo:hasLegalName "Sziget Kulturális Menedzser Iroda Kft."@hu;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2016-S-121-215596/ee813f4d-93e5-3fe8-8e46-545a60837d07> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2016-S-121-215596/ee813f4d-93e5-3fe8-8e46-545a60837d07>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/HUN>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/HU101>;
-  locn:postCode "1033";
-  locn:postName "Budapest";
-  locn:thoroughfare "Hajógyári sziget 23796/58. hrsz." .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2016-S-121-215596/10a954c5-4b3f-3ea1-add9-eda3a9735c67>
   a epo:ContractTerm;
@@ -74,6 +56,19 @@ Vállalkozási szerződés
   locn:fullAddress """
 Ajánlatkérővel előre egyeztetett fesztivál helyszíneken (Magyarország egész területén).
 """@hu .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2016-S-121-215596/ee813f4d-93e5-3fe8-8e46-545a60837d07>
+  a org:Organization;
+  epo:hasLegalName "Sziget Kulturális Menedzser Iroda Kft."@hu;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2016-S-121-215596/ee813f4d-93e5-3fe8-8e46-545a60837d07> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2016-S-121-215596/ee813f4d-93e5-3fe8-8e46-545a60837d07>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/HUN>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/HU101>;
+  locn:postCode "1033";
+  locn:postName "Budapest";
+  locn:thoroughfare "Hajógyári sziget 23796/58. hrsz." .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2016-S-121-215596/168a6c96-75f8-304a-bff5-0d0cf3c2f20c>
   a epo:DirectAwardTerm;
@@ -143,8 +138,8 @@ Nyertes Ajánlattevő feladata 1956-os emlékév tevékenységéhez kapcsolódó
   epo:hasBuyerLegalTypeDescription "közalapítvány";
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2016-S-121-215596/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:hasLegalName "KKETTK Közalapítvány"@hu;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/rcr>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-121-215596/97c28c49-5587-3e91-95b4-4e48e30ed684> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/rcr>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-121-215596/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-121-215596/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a locn:Address;
@@ -164,9 +159,9 @@ Nyertes Ajánlattevő feladata 1956-os emlékév tevékenységéhez kapcsolódó
   epo:hasDescription """
 A Kormány megbízta a KKETTK Közalapítványt az 1956-os forradalom és szabadságharc emlékév keretében a programok megvalósításával, valamint a pályázatok lebonyolításával (továbbiakban: Projekt). A kormányhatározat azonosítója: 1017/2016 (I.22.) Korm. határozat. A program megvalósítása érdekében a KKETTK Közalapítvány olyan rendezvényt kíván megvalósítani, mely széles körben lehetőséget biztosít arra, hogy az 1956-os forradalom és szabadságharc emlékév üzenete minél nagyobb látogatottságú rendezvényeken juthasson el a társadalom széles rétegeihez, ezen belül a fiatal generációhoz. Ezért a KKETTK Közalapítvány a Gyerek Sziget, a VOLT Fesztivál, a Balaton Sound, a Sziget Fesztivál és a Strand Fesztivál rendezvényeken is szeretné megjeleníteni az 1956-os emlékévet.
 """@hu;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-121-215596/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2016-S-121-215596/10a954c5-4b3f-3ea1-add9-eda3a9735c67>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-121-215596/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasTitle """
 Az 1956-os Emlékév megjelenítéshez kapcsolódó rendezvényszervezési, kulturális esemény-szervezési feladatok elvégzése.
 """@hu;
@@ -206,7 +201,7 @@ Az 1956-os Emlékév megjelenítéshez kapcsolódó rendezvényszervezési, kult
   a org:Organization;
   epo:hasLegalName "Közbeszerzési Döntőbizottság"@hu;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2016-S-121-215596/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2016-S-121-215596/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2016-S-121-215596/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2016-S-121-215596/b717835d-5424-3d82-9a2a-3dedd6cdfaaa>
   a epo:ReviewTerm;
@@ -228,7 +223,7 @@ Kbt. 189. § (1) bekezdés szerint továbbá a Kbt. 148. § (3) bekezdés szerin
   a org:Organization;
   epo:hasLegalName "Közbeszerzési Döntőbizottság"@hu;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2016-S-121-215596/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-121-215596/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-121-215596/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-121-215596/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a locn:Address;
@@ -257,4 +252,4 @@ Kbt. 189. § (1) bekezdés szerint továbbá a Kbt. 148. § (3) bekezdés szerin
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2016-S-121-215596/ee813f4d-93e5-3fe8-8e46-545a60837d07>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2016-S-121-215596/ee813f4d-93e5-3fe8-8e46-545a60837d07> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2016-S-121-215596/ee813f4d-93e5-3fe8-8e46-545a60837d07> .

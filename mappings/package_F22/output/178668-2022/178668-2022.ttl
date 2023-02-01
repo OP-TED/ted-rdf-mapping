@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,18 +17,14 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2022-S-067-178668/841f832b-8a2b-3a73-a4a6-85439d64c6be>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2022-S-067-178668/869d5405-9b33-3f2f-8a44-38f4bf6c8f11>;
+  epo:hasBuyerProfile "https://app.eop.bg/buyer/18283"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2022-S-067-178668/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2022-S-067-178668/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2022-S-067-178668/869d5405-9b33-3f2f-8a44-38f4bf6c8f11>
-  a epo:BuyerProfile;
-  epo:hasURL "https://app.eop.bg/buyer/18283" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2022-S-067-178668/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
   a cccev:ContactPoint;
   epo:hasContactName "Нели Иванова Русева"@bg;
-  epo:hasInternetAddress "https://www.metropolitan.bg/";
+  epo:hasInternetAddress "https://www.metropolitan.bg/"^^xsd:anyURI;
   cccev:email "nruseva@metropolitan.bg";
   cccev:telephone "+359 29212069" .
 
@@ -39,29 +34,11 @@
   epo:hasID <http://data.europa.eu/a4g/resource/ContractIdentifier/2022-S-067-178668/67f40fa4-0fdc-31df-a278-a9ec4e2c34ff>;
   epo:hasTitle "Осигуряване на доболнични здравни услуги за служителите на Метрополитен ЕАД"@bg;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2022-S-067-178668/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2022-S-067-178668/67f40fa4-0fdc-31df-a278-a9ec4e2c34ff> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2022-S-067-178668/67f40fa4-0fdc-31df-a278-a9ec4e2c34ff> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2022-S-067-178668/67f40fa4-0fdc-31df-a278-a9ec4e2c34ff>
   a epo:Identifier;
   epo:hasIdentifierValue "37809" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2022-S-067-178668/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
-  a org:Organization;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2022-S-067-178668/46d95603-a3e1-3d2c-8e32-b10fa665dec4>;
-  epo:hasLegalName "АМБУЛАТОРИЯ ЗА СПЕЦИАЛИЗИРАНА МЕДИЦИНСКА ИЗВЪНБОЛНИЧНА ПОМОЩ - МЕДИЦИНСКИ ЦЕНТЪР СВ. ПАНТЕЛЕЙМОН ЕООД"@bg;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2022-S-067-178668/46d95603-a3e1-3d2c-8e32-b10fa665dec4> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2022-S-067-178668/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG411>;
-  locn:postCode "1000";
-  locn:postName "гр. София";
-  locn:thoroughfare "- Александър Стамболийски №.15 бл.- вх.- ет.- ап.-" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2022-S-067-178668/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
-  a epo:Identifier;
-  epo:hasIdentifierValue "121057557" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2022-S-067-178668/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
   a epo:ContractTerm;
@@ -75,6 +52,24 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2022-S-067-178668/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
   a locn:Address;
   locn:fullAddress "гр. София"@bg .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2022-S-067-178668/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
+  a org:Organization;
+  epo:hasID <http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2022-S-067-178668/46d95603-a3e1-3d2c-8e32-b10fa665dec4>;
+  epo:hasLegalName "АМБУЛАТОРИЯ ЗА СПЕЦИАЛИЗИРАНА МЕДИЦИНСКА ИЗВЪНБОЛНИЧНА ПОМОЩ - МЕДИЦИНСКИ ЦЕНТЪР СВ. ПАНТЕЛЕЙМОН ЕООД"@bg;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2022-S-067-178668/46d95603-a3e1-3d2c-8e32-b10fa665dec4> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2022-S-067-178668/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG411>;
+  locn:postCode "1000";
+  locn:postName "гр. София";
+  locn:thoroughfare "- Александър Стамболийски №.15 бл.- вх.- ет.- ап.-" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2022-S-067-178668/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
+  a epo:Identifier;
+  epo:hasIdentifierValue "121057557" .
 
 <http://data.europa.eu/a4g/resource/Lot/2022-S-067-178668/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
   a epo:Lot;
@@ -135,8 +130,8 @@
   a org:Organization;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2022-S-067-178668/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>;
   epo:hasLegalName "МЕТРОПОЛИТЕН ЕАД"@bg;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/urttb>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-067-178668/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/urttb>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-067-178668/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-067-178668/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
   a locn:Address;
@@ -157,9 +152,9 @@
   epo:hasDescription "Предметът на настоящата обществена поръчка е осигуряване на доболнични здравни услуги, определени по вид, обем и цена за работници и служители на „Метрополитен” ЕАД, отстъпка от 20% /двадесет процента/ от стойността на услугите за членовете на техните семейства и безплатно обслужване на децата до 5-годишна възраст на персонала на \"Метрополитен\" ЕАД. Числеността на персонала на „Метрополитен“ЕАД към датата на обявяване на поръчката е около 2 137 (две хиляди сто тридесет и седем) човека.Изпълнението на поръчката следва да са в пълно съответствие със Спецификацията."@bg;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
   epo:hasMainFeature "Обществената поръчка е възложена въз основа на \"икономически най-изгодната оферта\", определена въз основа на критерий за възлагане \"Най-ниска цена\"";
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2022-S-067-178668/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2022-S-067-178668/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2022-S-067-178668/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
   epo:hasTitle "Осигуряване на доболнични здравни услуги за служителите на Метрополитен ЕАД"@bg;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2022-S-067-178668/841f832b-8a2b-3a73-a4a6-85439d64c6be> .
 
@@ -183,7 +178,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2022-S-067-178668/f408af29-86f8-3547-8427-ccade0632c83>
   a cccev:ContactPoint;
   epo:hasFax "+359 29807315";
-  epo:hasInternetAddress "http://www.cpc.bg";
+  epo:hasInternetAddress "http://www.cpc.bg"^^xsd:anyURI;
   cccev:email "delovodstvo@cpc.bg";
   cccev:telephone "+359 29356113" .
 
@@ -191,7 +186,7 @@
   a org:Organization;
   epo:hasLegalName "Комисия за защита на конкуренцията"@bg;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2022-S-067-178668/f408af29-86f8-3547-8427-ccade0632c83>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-067-178668/f408af29-86f8-3547-8427-ccade0632c83> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-067-178668/f408af29-86f8-3547-8427-ccade0632c83> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-067-178668/f408af29-86f8-3547-8427-ccade0632c83>
   a locn:Address;
@@ -229,4 +224,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2022-S-067-178668/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2022-S-067-178668/46d95603-a3e1-3d2c-8e32-b10fa665dec4> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2022-S-067-178668/46d95603-a3e1-3d2c-8e32-b10fa665dec4> .

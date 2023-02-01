@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -48,7 +47,7 @@
   a cccev:ContactPoint;
   epo:hasContactName "M. Daniel Godard — responsable marchés et contrats de la mission LNPCA"@fr;
   epo:hasFax "+33 496170497";
-  epo:hasInternetAddress "http://www.marches-publics.gouv.fr";
+  epo:hasInternetAddress "http://www.marches-publics.gouv.fr"^^xsd:anyURI;
   cccev:email "daniel.godard@reseau.sncf.fr";
   cccev:telephone "+33 496170294" .
 
@@ -60,30 +59,11 @@
 Expertises tous domaines techniques de conception d'infrastructures ferroviaires et optimisations
 """@fr;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2017-S-015-024552/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-015-024552/527e871b-562d-3858-b2cb-c75e9b69e338> .
-
-<http://data.europa.eu/a4g/resource/ContractContactPoint/2017-S-015-024552/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a cccev:ContactPoint;
-  cccev:telephone "+33 490905485" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-015-024552/527e871b-562d-3858-b2cb-c75e9b69e338> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2017-S-015-024552/527e871b-562d-3858-b2cb-c75e9b69e338>
   a epo:Identifier;
   epo:hasIdentifierValue "LNPCA-EPEUP2-ACME1" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-015-024552/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasLegalName "Société Rail Concept"@fr;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractContactPoint/2017-S-015-024552/11c6525a-cbf9-36a2-9b0b-e686c6668d03>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-015-024552/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-015-024552/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR812>;
-  locn:postCode "30133";
-  locn:postName "Les Angles";
-  locn:thoroughfare "2 allée de la Tramontane" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2017-S-015-024552/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a epo:ContractTerm;
@@ -103,6 +83,25 @@ Cet accord-cadre (lot 1) est susceptible de faire l'objet d'avenants et/ou de ma
   locn:fullAddress """
 Marseille.
 """@fr .
+
+<http://data.europa.eu/a4g/resource/ContractorContactPoint/2017-S-015-024552/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a cccev:ContactPoint;
+  cccev:telephone "+33 490905485" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-015-024552/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "Société Rail Concept"@fr;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorContactPoint/2017-S-015-024552/11c6525a-cbf9-36a2-9b0b-e686c6668d03>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-015-024552/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-015-024552/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR812>;
+  locn:postCode "30133";
+  locn:postName "Les Angles";
+  locn:thoroughfare "2 allée de la Tramontane" .
 
 <http://data.europa.eu/a4g/resource/FrameworkAgreementTechniqueUsage/2017-S-015-024552/b68f1feb-885d-37f5-ac99-4287870dfd15>
   a epo:FrameworkAgreementTechniqueUsage .
@@ -190,8 +189,8 @@ Expertises tous domaines techniques de conception d'infrastructures ferroviaires
 <http://data.europa.eu/a4g/resource/Organisation/2017-S-015-024552/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a org:Organization;
   epo:hasLegalName "SNCF réseau — direction territoriale PACA"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/rail>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-015-024552/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/rail>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-015-024552/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-015-024552/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a locn:Address;
@@ -213,9 +212,9 @@ Le montant HT attribué au 1er marché d'application est de 87 050 EUR.
 Le lot 1 de l'accord-cadre mono-attributaire porte sur des missions d'expertises tous domaines techniques de conception d'infrastructures ferroviaires et optimisations (y compris réglementation) nécessaires pour la phase 2 des études préalables à l'enquête d'utilité publique (EPEUP) du projet de Ligne nouvelle Provence Côte-d'Azur (LNPCA). Cet accord-cadre ne comporte aucun engagement de SNCF réseau de commander des prestations pour un montant minimum ou maximum. Les prestations à réaliser seront définies dans les marchés d'application, lancés au fur et à mesure des besoins de la mission LNPCA de SNCF réseau.
 """@fr;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2017-S-015-024552/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-015-024552/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2017-S-015-024552/636e3166-5ecc-350b-867b-7bf2072a2c03>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-015-024552/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasTitle """
 Lot 1: expertises tous domaines techniques de conception d'infrastructures ferroviaires et optimisations.
 """@fr;
@@ -266,7 +265,7 @@ Lot 1: expertises tous domaines techniques de conception d'infrastructures ferro
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Paris"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2017-S-015-024552/cda2e79a-2b54-3d8d-8cbd-025f430ee110>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-015-024552/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-015-024552/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
 
 <http://data.europa.eu/a4g/resource/Reviewer/2017-S-015-024552/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a epo:Reviewer;
@@ -282,7 +281,7 @@ Lot 1: expertises tous domaines techniques de conception d'infrastructures ferro
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Paris"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-015-024552/13730a07-65b0-306c-a9b5-a8929927a6a1>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-015-024552/13730a07-65b0-306c-a9b5-a8929927a6a1> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-015-024552/13730a07-65b0-306c-a9b5-a8929927a6a1> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-015-024552/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a locn:Address;
@@ -312,4 +311,4 @@ Lot 1: expertises tous domaines techniques de conception d'infrastructures ferro
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2017-S-015-024552/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-015-024552/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-015-024552/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .

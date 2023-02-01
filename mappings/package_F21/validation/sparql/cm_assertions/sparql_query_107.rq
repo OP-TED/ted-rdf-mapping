@@ -1,11 +1,10 @@
-#title: II.2.7.1.2 - Duration in months or days
-#description: “II.2.7.1.2 - Duration in months or days” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/OBJECT_DESCR/DURATION/@TYPE. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / epo:Duration / time:TemporalUnit .
-#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/OBJECT_DESCR/DURATION/@TYPE
+#title: II.2.7.3 - End
+#description: “II.2.7.3 - End” in SF corresponds to “BT-537 Duration End Date” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/OBJECT_DESCR/DATE_END. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / epo:Period / xsd:dateTime .
+#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/OBJECT_DESCR/DATE_END
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX time: <http://www.w3.org/2006/time#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:foreseesContractSpecificTerm / epo:definesContractDuration / time:unitType time:unitDay . }
+		?this epo:foreseesContractSpecificTerm / epo:definesContractPeriod / epo:hasEnd ?value . }

@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -22,39 +21,21 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2017-S-250-528514/5a0e0822-353f-34b8-9001-b27f293ef321>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-250-528514/41c3580d-d7b5-3ead-a7df-4e886771daad>;
+  epo:hasBuyerProfile "http://www.marchespublics.hyeres.fr"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-250-528514/188615bc-907f-376a-b3e0-b7f440ca4c64>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2017-S-250-528514/188615bc-907f-376a-b3e0-b7f440ca4c64> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-250-528514/41c3580d-d7b5-3ead-a7df-4e886771daad>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.marchespublics.hyeres.fr" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-250-528514/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a cccev:ContactPoint;
   epo:hasFax "+33 494007981";
-  epo:hasInternetAddress "http://www.hyeres.fr";
+  epo:hasInternetAddress "http://www.hyeres.fr"^^xsd:anyURI;
   cccev:email "marches.publics@mairie-hyeres.com";
   cccev:telephone "+33 494007832" .
 
 <http://data.europa.eu/a4g/resource/Contract/2017-S-250-528514/2b425ab1-553e-3915-a060-80f1d3cff764>
   a epo:ConcessionContract, epo:Contract;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2017-S-250-528514/5a50554f-89ac-3a44-9d4f-643949ca9831>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-250-528514/2b425ab1-553e-3915-a060-80f1d3cff764> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-250-528514/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasLegalName "CDTH"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-250-528514/8f833010-0b39-361a-9ea9-959275ccdc19> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-250-528514/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRL05>;
-  locn:postCode "83400";
-  locn:postName "Hyères";
-  locn:thoroughfare "1 avenue Ambroise Thomas" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-250-528514/2b425ab1-553e-3915-a060-80f1d3cff764> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2017-S-250-528514/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:ContractTerm;
@@ -71,6 +52,20 @@
   locn:fullAddress """
                   Hyères les Palmiers 83400 Hyères
                """@fr .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-250-528514/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "CDTH"@fr;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-250-528514/8f833010-0b39-361a-9ea9-959275ccdc19> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-250-528514/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRL05>;
+  locn:postCode "83400";
+  locn:postName "Hyères";
+  locn:thoroughfare "1 avenue Ambroise Thomas" .
 
 <http://data.europa.eu/a4g/resource/Lot/2017-S-250-528514/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:Lot;
@@ -106,7 +101,7 @@
 <http://data.europa.eu/a4g/resource/MediatorContactPoint/2017-S-250-528514/5833b6b8-dd30-3289-9016-fb64e7bb3c6e>
   a cccev:ContactPoint;
   epo:hasFax "+33 494427989";
-  epo:hasInternetAddress "http://toulon.tribunal-administratif.fr/";
+  epo:hasInternetAddress "http://toulon.tribunal-administratif.fr/"^^xsd:anyURI;
   cccev:email "greffe.ta-toulon@juradm.fr";
   cccev:telephone "+33 494427930" .
 
@@ -114,7 +109,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Toulon"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/MediatorContactPoint/2017-S-250-528514/5833b6b8-dd30-3289-9016-fb64e7bb3c6e>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2017-S-250-528514/5833b6b8-dd30-3289-9016-fb64e7bb3c6e> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2017-S-250-528514/5833b6b8-dd30-3289-9016-fb64e7bb3c6e> .
 
 <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2017-S-250-528514/5833b6b8-dd30-3289-9016-fb64e7bb3c6e>
   a locn:Address;
@@ -152,11 +147,11 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2017-S-250-528514/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2017-S-250-528514/188615bc-907f-376a-b3e0-b7f440ca4c64>;
   epo:hasLegalName "Commune d'Hyères-les-Palmiers"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-250-528514/188615bc-907f-376a-b3e0-b7f440ca4c64> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-250-528514/188615bc-907f-376a-b3e0-b7f440ca4c64> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-250-528514/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a locn:Address;
@@ -172,8 +167,8 @@
 
 <http://data.europa.eu/a4g/resource/Period/2017-S-250-528514/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:Period;
-  epo:hasBeginning "2018-04-01"^^xsd:datetime;
-  epo:hasEnd "2036-03-31"^^xsd:datetime .
+  epo:hasBeginning "2018-04-01T00:00:00"^^xsd:dateTime;
+  epo:hasEnd "2036-03-31T00:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/Procedure/2017-S-250-528514/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>
   a epo:Procedure;
@@ -190,8 +185,8 @@
                La commune confie au concessionnaire le soin d'assurer, à ses risques et périls,la gestion et l'exploitation ducasino d'Hyères, la réalisation de travaux de rénovation du casino, ainsi que la réalisation d'activités contribuantà l'animation et au développement culturel et touristique de la commune et enfin la restauration. Le bâtiment àexploiter est détaillé dans les pièces de la consultation, notamment le projet de contrat de concession. Au titrede sa contribution à l'animation et au développement culturel et touristique de la commune, le concessionnairedevra organiser des manifestations artistiques, musicales, culturelles ou sportives. Le futur concessionnairedevra procéder à des investissements dont le détail et les limites sont communiqués dans le DCE. Enfin,2 / 4le concessionnaire aura la charge d'assurer l'entretien maintenance, le gros entretien renouvellement desbâtiments (intérieurs ; installations techniques etc?) dont le détail et les limites sont communiqués dans le DCE
             """@fr;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2017-S-250-528514/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-250-528514/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2017-S-250-528514/5a50554f-89ac-3a44-9d4f-643949ca9831>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-250-528514/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasTitle """
                Dsp pour la gestion et l'exploitation du Casino de Hyères ainsi que la réalisation d'activités contribuant à l'animation et au développement culturel et touristique de la commune
             """@fr;
@@ -228,7 +223,7 @@
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2017-S-250-528514/fdc5fccd-dd12-3226-8a44-ee7b6f769c12>
   a cccev:ContactPoint;
   epo:hasFax "+33 494427989";
-  epo:hasInternetAddress "http://toulon.tribunal-administratif.fr/";
+  epo:hasInternetAddress "http://toulon.tribunal-administratif.fr/"^^xsd:anyURI;
   cccev:email "greffe.ta-toulon@juradm.fr";
   cccev:telephone "+33 494427930" .
 
@@ -236,7 +231,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Toulon"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2017-S-250-528514/fdc5fccd-dd12-3226-8a44-ee7b6f769c12>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-250-528514/fdc5fccd-dd12-3226-8a44-ee7b6f769c12> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-250-528514/fdc5fccd-dd12-3226-8a44-ee7b6f769c12> .
 
 <http://data.europa.eu/a4g/resource/Reviewer/2017-S-250-528514/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a epo:Reviewer;
@@ -245,7 +240,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-250-528514/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a cccev:ContactPoint;
   epo:hasFax "+33 494427989";
-  epo:hasInternetAddress "http://toulon.tribunal-administratif.fr/";
+  epo:hasInternetAddress "http://toulon.tribunal-administratif.fr/"^^xsd:anyURI;
   cccev:email "greffe.ta-toulon@juradm.fr";
   cccev:telephone "+33 494427930" .
 
@@ -253,7 +248,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Toulon"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-250-528514/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-250-528514/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-250-528514/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-250-528514/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a locn:Address;
@@ -278,4 +273,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2017-S-250-528514/8f833010-0b39-361a-9ea9-959275ccdc19>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-250-528514/8f833010-0b39-361a-9ea9-959275ccdc19> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-250-528514/8f833010-0b39-361a-9ea9-959275ccdc19> .

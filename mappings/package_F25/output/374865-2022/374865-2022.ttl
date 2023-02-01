@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -28,7 +27,7 @@
 <http://data.europa.eu/a4g/resource/ContactPoint/2022-S-131-374865/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a cccev:ContactPoint;
   epo:hasFax "+30 2103332608";
-  epo:hasInternetAddress "www.minfin.gr";
+  epo:hasInternetAddress "www.minfin.gr"^^xsd:anyURI;
   cccev:email "Min.secretary@minfin.gr";
   cccev:telephone "+30 2103332000" .
 
@@ -36,25 +35,7 @@
   a epo:ConcessionContract, epo:Contract;
   epo:hasTitle "Σύμβαση Παραχώρησης Άδειας Λειτουργίας Επιχείρησης Καζίνο (ΕΚΑΖ) ευρέος φάσματος δραστηριοτήτων στον Μητροπολιτιικό Πόλο Ελληνικού-Αγίου Κοσμά."@el;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2022-S-131-374865/5a50554f-89ac-3a44-9d4f-643949ca9831>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2022-S-131-374865/2b425ab1-553e-3915-a060-80f1d3cff764> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2022-S-131-374865/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
-  a org:Organization;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2022-S-131-374865/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>;
-  epo:hasLegalName "ΕΠΙΧΕΙΡΗΣΗ ΚΑΖΙΝΟ ΕΥΡΕΟΣ ΦΑΣΜΑΤΟΣ ΕΛΛΗΝΙΚΟΎ ΑΝΩΝΥΜΗ ΕΤΑΙΡΕΙΑ με διακριτικό τίτλο \"ΕΚΑΖ ΕΛΛΗΝΙΚΟΎ Α.Ε.\""@el;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2022-S-131-374865/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2022-S-131-374865/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GRC>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/EL301>;
-  locn:postCode "11526";
-  locn:postName "ΑΘΗΝΑ";
-  locn:thoroughfare "ΛΕΩΦΟΡΟΣ ΜΕΣΟΓΕΙΩΝ 85" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2022-S-131-374865/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
-  a epo:Identifier;
-  epo:hasIdentifierValue "801804548" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2022-S-131-374865/2b425ab1-553e-3915-a060-80f1d3cff764> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2022-S-131-374865/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:ContractTerm;
@@ -69,6 +50,24 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2022-S-131-374865/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a locn:Address;
   locn:fullAddress "ΑΘΗΝΑ, ΕΛΛΑΔΑ"@el .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2022-S-131-374865/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
+  a org:Organization;
+  epo:hasID <http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2022-S-131-374865/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>;
+  epo:hasLegalName "ΕΠΙΧΕΙΡΗΣΗ ΚΑΖΙΝΟ ΕΥΡΕΟΣ ΦΑΣΜΑΤΟΣ ΕΛΛΗΝΙΚΟΎ ΑΝΩΝΥΜΗ ΕΤΑΙΡΕΙΑ με διακριτικό τίτλο \"ΕΚΑΖ ΕΛΛΗΝΙΚΟΎ Α.Ε.\""@el;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2022-S-131-374865/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2022-S-131-374865/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GRC>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/EL301>;
+  locn:postCode "11526";
+  locn:postName "ΑΘΗΝΑ";
+  locn:thoroughfare "ΛΕΩΦΟΡΟΣ ΜΕΣΟΓΕΙΩΝ 85" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2022-S-131-374865/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
+  a epo:Identifier;
+  epo:hasIdentifierValue "801804548" .
 
 <http://data.europa.eu/a4g/resource/Duration/2022-S-131-374865/1d09e8e7-ef82-30d4-befb-d86c000a8e5a>
   a epo:Duration;
@@ -143,10 +142,10 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2022-S-131-374865/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/cga>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/cga>;
   epo:hasLegalName "ΥΠΟΥΡΓΕΙΟ ΟΙΚΟΝΟΜΙΚΩΝ"@el;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/econ-aff>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-131-374865/188615bc-907f-376a-b3e0-b7f440ca4c64> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/econ-aff>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-131-374865/188615bc-907f-376a-b3e0-b7f440ca4c64> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-131-374865/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a locn:Address;
@@ -164,8 +163,8 @@
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2022-S-131-374865/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0023>;
   epo:hasMainFeature "Παραχώρηση Άδειας Λειτουργίας Επιχείρησης Καζίνο (ΕΚΑΖ) ευρέος φάσματος δραστηριοτήτων στον Μητροπολιτικό Πόλο Ελληνικού-Αγίου Κοσμά.";
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2022-S-131-374865/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2022-S-131-374865/5a50554f-89ac-3a44-9d4f-643949ca9831>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2022-S-131-374865/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasTitle "Σύμβαση Παραχώρησης Άδειας Λειτουργίας Επιχείρησης Καζίνο (ΕΚΑΖ) ευρέος φάσματος δραστηριοτήτων στον Μητροπολιτιικό Πόλο Ελληνικού-Αγίου Κοσμά."@el;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2022-S-131-374865/5a0e0822-353f-34b8-9001-b27f293ef321> .
 
@@ -200,7 +199,7 @@
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2022-S-131-374865/fdc5fccd-dd12-3226-8a44-ee7b6f769c12>
   a cccev:ContactPoint;
   epo:hasFax "+30 2132141229";
-  epo:hasInternetAddress "http://www.aepp-procurement.gr";
+  epo:hasInternetAddress "http://www.aepp-procurement.gr"^^xsd:anyURI;
   cccev:email "aepp@aepp-procurement.gr";
   cccev:telephone "+30 2132141216" .
 
@@ -208,7 +207,7 @@
   a org:Organization;
   epo:hasLegalName "ΕΝΙΑΙΑ ΑΡΧΗ ΔΗΜΟΣΙΩΝ ΣΥΜΒΑΣΕΩΝ (Ε.Α.ΔΗ.ΣΥ.)"@el;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2022-S-131-374865/fdc5fccd-dd12-3226-8a44-ee7b6f769c12>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2022-S-131-374865/fdc5fccd-dd12-3226-8a44-ee7b6f769c12> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2022-S-131-374865/fdc5fccd-dd12-3226-8a44-ee7b6f769c12> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2022-S-131-374865/278f6fb6-6256-3e2e-b2d2-c98da96e5a94>
   a epo:ReviewTerm;
@@ -221,7 +220,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2022-S-131-374865/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a cccev:ContactPoint;
   epo:hasFax "+30 2132141229";
-  epo:hasInternetAddress "http://www.aepp-procurement.gr";
+  epo:hasInternetAddress "http://www.aepp-procurement.gr"^^xsd:anyURI;
   cccev:email "aepp@aepp-procurement.gr";
   cccev:telephone "+30 2132141216" .
 
@@ -229,7 +228,7 @@
   a org:Organization;
   epo:hasLegalName "ΕΝΙΑΙΑ ΑΡΧΗ ΔΗΜΟΣΙΩΝ ΣΥΜΒΑΣΕΩΝ (Ε.Α.ΔΗ.ΣΥ.)"@el;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2022-S-131-374865/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-131-374865/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-131-374865/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-131-374865/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a locn:Address;
@@ -258,4 +257,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2022-S-131-374865/b0a5769e-c412-3b80-bcef-b03faa4a2bbe>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2022-S-131-374865/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2022-S-131-374865/b0a5769e-c412-3b80-bcef-b03faa4a2bbe> .

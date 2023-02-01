@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -24,18 +23,14 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2018-S-062-138386/15183658-b3d6-3d9d-88d4-6e02c7e3b7b9>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-062-138386/206f9015-5cd1-3fca-bf9c-23378a724274>;
+  epo:hasBuyerProfile "http://www.achatpublic.com"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-062-138386/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-062-138386/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-062-138386/206f9015-5cd1-3fca-bf9c-23378a724274>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.achatpublic.com" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-062-138386/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a cccev:ContactPoint;
   epo:hasFax "+33 562244197";
-  epo:hasInternetAddress "http://www.labege.fr";
+  epo:hasInternetAddress "http://www.labege.fr"^^xsd:anyURI;
   cccev:email "accueil@ville-labege.fr";
   cccev:telephone "+33 562244444" .
 
@@ -43,20 +38,7 @@
   a epo:Contract;
   epo:hasContractConclusionDate "2018-03-22"^^xsd:date;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2018-S-062-138386/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-062-138386/527e871b-562d-3858-b2cb-c75e9b69e338> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2018-S-062-138386/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a org:Organization;
-  epo:hasLegalName "Agence d'architecture Joyes"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2018-S-062-138386/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2018-S-062-138386/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR>;
-  locn:postCode "31000";
-  locn:postName "Toulouse";
-  locn:thoroughfare "16 rue Arnaud Vidal" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-062-138386/527e871b-562d-3858-b2cb-c75e9b69e338> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2018-S-062-138386/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a epo:ContractTerm;
@@ -66,6 +48,19 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2018-S-062-138386/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/FR> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2018-S-062-138386/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a org:Organization;
+  epo:hasLegalName "Agence d'architecture Joyes"@fr;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2018-S-062-138386/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2018-S-062-138386/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR>;
+  locn:postCode "31000";
+  locn:postName "Toulouse";
+  locn:thoroughfare "16 rue Arnaud Vidal" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2018-S-062-138386/b68f1feb-885d-37f5-ac99-4287870dfd15>
   a epo:DirectAwardTerm;
@@ -122,7 +117,7 @@
   a org:Organization;
   epo:hasLegalName "ville de Labège"@fr;
   epo:hasMainActivityDescription "Services généraux des administrations publiques";
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-062-138386/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-062-138386/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-062-138386/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a locn:Address;
@@ -138,9 +133,9 @@
   epo:hasDescription """
                Marché de maîtrise d'oeuvre négocié, en application du 6o du I de l'article 30 du décret nº 2016-360 du 25.3.2016, avec le lauréat du concours restreint.
             """@fr;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-062-138386/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2018-S-062-138386/636e3166-5ecc-350b-867b-7bf2072a2c03>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-062-138386/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasTitle """
                Marché de maîtrise d'œuvre relatif à la construction de la future salle des fêtes
             """@fr;
@@ -181,7 +176,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Toulouse"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2018-S-062-138386/cda2e79a-2b54-3d8d-8cbd-025f430ee110>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2018-S-062-138386/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2018-S-062-138386/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2018-S-062-138386/9aa38039-a45b-3425-8be8-95054b97e247>
   a epo:ReviewTerm;
@@ -206,7 +201,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Toulouse"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-062-138386/13730a07-65b0-306c-a9b5-a8929927a6a1>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-062-138386/13730a07-65b0-306c-a9b5-a8929927a6a1> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-062-138386/13730a07-65b0-306c-a9b5-a8929927a6a1> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-062-138386/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a locn:Address;
@@ -231,4 +226,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2018-S-062-138386/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2018-S-062-138386/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2018-S-062-138386/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .

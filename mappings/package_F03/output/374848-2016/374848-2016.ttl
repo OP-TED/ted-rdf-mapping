@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -28,7 +27,7 @@
 <http://data.europa.eu/a4g/resource/ContactPoint/2016-S-207-374848/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a cccev:ContactPoint;
   epo:hasContactName "Ing. Marta Gajdošíková"@sk;
-  epo:hasInternetAddress "http://www.nsat.sk";
+  epo:hasInternetAddress "http://www.nsat.sk"^^xsd:anyURI;
   cccev:email "marta.gajdosikova@nsat.sk";
   cccev:telephone "+421 248777507" .
 
@@ -40,35 +39,11 @@
 Zmluva o dielo číslo: 18469/2016/OLP-006
 """@sk;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2016-S-207-374848/cbac108a-b047-3e09-a114-28c43d5b8706>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2016-S-207-374848/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
-
-<http://data.europa.eu/a4g/resource/ContractContactPoint/2016-S-207-374848/3110be1b-1cf3-3851-b11c-869fbbca54c0>
-  a cccev:ContactPoint;
-  cccev:email "dagmar.denkova@ge.com";
-  cccev:telephone "+420 222538702" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2016-S-207-374848/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2016-S-207-374848/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>
   a epo:Identifier;
   epo:hasIdentifierValue "13963 – DES, č. 195/2016" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2016-S-207-374848/3110be1b-1cf3-3851-b11c-869fbbca54c0>
-  a org:Organization;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2016-S-207-374848/3110be1b-1cf3-3851-b11c-869fbbca54c0>;
-  epo:hasLegalName "GE Aviation Czech s.r.o."@sk;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractContactPoint/2016-S-207-374848/3110be1b-1cf3-3851-b11c-869fbbca54c0>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2016-S-207-374848/3110be1b-1cf3-3851-b11c-869fbbca54c0> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2016-S-207-374848/3110be1b-1cf3-3851-b11c-869fbbca54c0>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/CZ01>;
-  locn:postCode "199 02";
-  locn:postName "Praha 9";
-  locn:thoroughfare "Beranových 65" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2016-S-207-374848/3110be1b-1cf3-3851-b11c-869fbbca54c0>
-  a epo:Identifier;
-  epo:hasIdentifierValue "27928845" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2016-S-207-374848/cbac108a-b047-3e09-a114-28c43d5b8706>
   a epo:ContractTerm;
@@ -85,6 +60,30 @@ Zmluva o dielo číslo: 18469/2016/OLP-006
   locn:fullAddress """
 Na letisku M. R. Štefánika v Bratislave, kde je lietadlo hangárované a kde má bázu.
 """@sk .
+
+<http://data.europa.eu/a4g/resource/ContractorContactPoint/2016-S-207-374848/3110be1b-1cf3-3851-b11c-869fbbca54c0>
+  a cccev:ContactPoint;
+  cccev:email "dagmar.denkova@ge.com";
+  cccev:telephone "+420 222538702" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2016-S-207-374848/3110be1b-1cf3-3851-b11c-869fbbca54c0>
+  a org:Organization;
+  epo:hasID <http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2016-S-207-374848/3110be1b-1cf3-3851-b11c-869fbbca54c0>;
+  epo:hasLegalName "GE Aviation Czech s.r.o."@sk;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorContactPoint/2016-S-207-374848/3110be1b-1cf3-3851-b11c-869fbbca54c0>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2016-S-207-374848/3110be1b-1cf3-3851-b11c-869fbbca54c0> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2016-S-207-374848/3110be1b-1cf3-3851-b11c-869fbbca54c0>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/CZ01>;
+  locn:postCode "199 02";
+  locn:postName "Praha 9";
+  locn:thoroughfare "Beranových 65" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2016-S-207-374848/3110be1b-1cf3-3851-b11c-869fbbca54c0>
+  a epo:Identifier;
+  epo:hasIdentifierValue "27928845" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2016-S-207-374848/1f8688eb-32e7-368b-ad1c-2e76f17321dd>
   a epo:DirectAwardTerm;
@@ -149,11 +148,11 @@ Predmetom zákazky je nevyhnutne potrebné zabezpečiť v súvislosti s prevádz
 
 <http://data.europa.eu/a4g/resource/Organisation/2016-S-207-374848/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/cga>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/cga>;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2016-S-207-374848/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>;
   epo:hasLegalName "Dopravný úrad"@sk;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-207-374848/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-207-374848/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2016-S-207-374848/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a locn:Address;
@@ -174,9 +173,9 @@ Predmetom zákazky je nevyhnutne potrebné zabezpečiť v súvislosti s prevádz
 Predmetom zákazky je nevyhnutne potrebné zabezpečiť v súvislosti s prevádzkou kalibračného lietadla L410/OM-SYI na udržanie letovej spôsobilosti lietadla v nasledujúcom období vykonanie generálnej opravy motora M601E. Uvedené lietadlo na svoj pohon využíva dva motory typu M601E. Uvedená skutočnosť vyplýva zo sledovania prevádzkových parametrov motora, ktoré sú určené prepisom pre údržbu motora, vydaného výrobcom motora. Podľa predpisu pre údržbu, ktorý stanovuje rozsah a spôsob prehliadok, je povinnosťou prevádzkovateľa zabezpečiť zaznamenávanie prevádzkovej doby motora. Letová spôsobilosť motora je obmedzená niektorými sledovanými parametrami ako sú počet hodín, počet cyklov, počet dní prevádzky. Vyčerpaním jedného zo sledovaných limitov sa stáva motor letovo nespôsobilý.
 """@sk;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2016-S-207-374848/58509ec4-99dc-3865-9935-58d7ebd66d29>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-207-374848/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2016-S-207-374848/cbac108a-b047-3e09-a114-28c43d5b8706>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2016-S-207-374848/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasTitle """
 Generálna oprava motora typu M601-E pre kalibračné lietadlo L-410 UVP–E-LW.
 """@sk;
@@ -215,14 +214,14 @@ Generálna oprava motora typu M601-E pre kalibračné lietadlo L-410 UVP–E-LW.
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2016-S-207-374848/53dcddfe-05e0-31c2-ab22-d770b015238d>
   a cccev:ContactPoint;
   epo:hasFax "+421 250264219";
-  epo:hasInternetAddress "http://www.uvo.gov.sk";
+  epo:hasInternetAddress "http://www.uvo.gov.sk"^^xsd:anyURI;
   cccev:telephone "+421 250264176" .
 
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2016-S-207-374848/53dcddfe-05e0-31c2-ab22-d770b015238d>
   a org:Organization;
   epo:hasLegalName "Úrad pre verejné obstarávanie"@sk;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2016-S-207-374848/53dcddfe-05e0-31c2-ab22-d770b015238d>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2016-S-207-374848/53dcddfe-05e0-31c2-ab22-d770b015238d> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2016-S-207-374848/53dcddfe-05e0-31c2-ab22-d770b015238d> .
 
 <http://data.europa.eu/a4g/resource/Reviewer/2016-S-207-374848/de2507f9-ae25-37c8-809c-0109efe10669>
   a epo:Reviewer;
@@ -231,14 +230,14 @@ Generálna oprava motora typu M601-E pre kalibračné lietadlo L-410 UVP–E-LW.
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2016-S-207-374848/de2507f9-ae25-37c8-809c-0109efe10669>
   a cccev:ContactPoint;
   epo:hasFax "+421 250264219";
-  epo:hasInternetAddress "http://www.uvo.gov.sk";
+  epo:hasInternetAddress "http://www.uvo.gov.sk"^^xsd:anyURI;
   cccev:telephone "+421 250264176" .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2016-S-207-374848/de2507f9-ae25-37c8-809c-0109efe10669>
   a org:Organization;
   epo:hasLegalName "Úrad pre verejné obstarávanie"@sk;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2016-S-207-374848/de2507f9-ae25-37c8-809c-0109efe10669>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-207-374848/de2507f9-ae25-37c8-809c-0109efe10669> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-207-374848/de2507f9-ae25-37c8-809c-0109efe10669> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2016-S-207-374848/de2507f9-ae25-37c8-809c-0109efe10669>
   a locn:Address;
@@ -267,4 +266,4 @@ Generálna oprava motora typu M601-E pre kalibračné lietadlo L-410 UVP–E-LW.
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2016-S-207-374848/3110be1b-1cf3-3851-b11c-869fbbca54c0>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2016-S-207-374848/3110be1b-1cf3-3851-b11c-869fbbca54c0> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2016-S-207-374848/3110be1b-1cf3-3851-b11c-869fbbca54c0> .

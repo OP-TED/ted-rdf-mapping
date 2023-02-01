@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,24 +17,20 @@
 
 <http://data.europa.eu/a4g/resource/AccessTerm/2017-S-088-173028/841f832b-8a2b-3a73-a4a6-85439d64c6be>
   a epo:AccessTerm;
-  epo:hasPublicAccessURL <http://www.procura.co.hu>;
+  epo:hasPublicAccessURL "http://www.procura.co.hu"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
 
 <http://data.europa.eu/a4g/resource/Buyer/2017-S-088-173028/841f832b-8a2b-3a73-a4a6-85439d64c6be>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-088-173028/869d5405-9b33-3f2f-8a44-38f4bf6c8f11>;
+  epo:hasBuyerProfile "http://www.bud.hu/"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-088-173028/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2017-S-088-173028/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-088-173028/869d5405-9b33-3f2f-8a44-38f4bf6c8f11>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.bud.hu/" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-088-173028/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
   a cccev:ContactPoint;
   epo:hasContactName "Valkó Zsuzsanna"@hu;
   epo:hasFax "+36 12967696";
-  epo:hasInternetAddress "http://www.bud.hu/";
+  epo:hasInternetAddress "http://www.bud.hu/"^^xsd:anyURI;
   cccev:email "kozbeszerzes@bud.hu";
   cccev:telephone "+36 12966429" .
 
@@ -69,22 +64,18 @@ Budapest Liszt Ferenc Repülőtér.
   time:numericDuration 60.0;
   time:unitType time:unitMonth .
 
-<http://data.europa.eu/a4g/resource/InformationProviderBuyerProfile/2017-S-088-173028/3b253ddf-26e2-3f71-a8cb-7c2e548ce769>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.bud.hu" .
-
 <http://data.europa.eu/a4g/resource/InformationProviderContactPoint/2017-S-088-173028/f3743a7a-ceac-3b65-9bb1-f451a6d4f3b6>
   a cccev:ContactPoint;
   epo:hasContactName "Gál Erzsébet"@hu;
   epo:hasFax "+36 13920023";
-  epo:hasInternetAddress "http://www.bud.hu";
+  epo:hasInternetAddress "http://www.bud.hu"^^xsd:anyURI;
   cccev:email "procura@procura.co.hu";
   cccev:telephone "+36 13920024" .
 
 <http://data.europa.eu/a4g/resource/InformationProviderOrganisation/2017-S-088-173028/f3743a7a-ceac-3b65-9bb1-f451a6d4f3b6>
   a org:Organization;
   epo:hasLegalName "Procura Consulting Kft."@hu;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/InformationProviderOrganisationAddress/2017-S-088-173028/f3743a7a-ceac-3b65-9bb1-f451a6d4f3b6> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/InformationProviderOrganisationAddress/2017-S-088-173028/f3743a7a-ceac-3b65-9bb1-f451a6d4f3b6> .
 
 <http://data.europa.eu/a4g/resource/InformationProviderOrganisationAddress/2017-S-088-173028/f3743a7a-ceac-3b65-9bb1-f451a6d4f3b6>
   a locn:Address;
@@ -173,8 +164,8 @@ A teljesítési biztosíték határidőre történő nyújtására vonatkozóan 
   a org:Organization;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2017-S-088-173028/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>;
   epo:hasLegalName "Budapest Airport Budapest Liszt Ferenc Nemzetközi Repülőtér Üzemeltető Zártkörűen Működő Részvénytársaság"@hu;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/airport>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-088-173028/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/airport>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-088-173028/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-088-173028/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
   a locn:Address;
@@ -239,9 +230,9 @@ Pontskála: 1-100 doku szerint módszer.
 Ajánlatkérő nem alkalmazza a Kbt. 75.§ (2) bek e) pontját. 20.
 A szolgáltatást szervezési, és felelősségi okokból ajánlatkérő nem bontja részekre.
 """;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-088-173028/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2017-S-088-173028/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-088-173028/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
   epo:hasTitle """
 Repülőtéri sürgősségi egészségügyi szolgálat.
 """@hu;
@@ -258,7 +249,6 @@ Repülőtéri sürgősségi egészségügyi szolgálat.
 
 <http://data.europa.eu/a4g/resource/ProcurementProcedureInformationProvider/2017-S-088-173028/f3743a7a-ceac-3b65-9bb1-f451a6d4f3b6>
   a epo:ProcurementProcedureInformationProvider;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/InformationProviderBuyerProfile/2017-S-088-173028/3b253ddf-26e2-3f71-a8cb-7c2e548ce769>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/InformationProviderContactPoint/2017-S-088-173028/f3743a7a-ceac-3b65-9bb1-f451a6d4f3b6>;
   epo:playedBy <http://data.europa.eu/a4g/resource/InformationProviderOrganisation/2017-S-088-173028/f3743a7a-ceac-3b65-9bb1-f451a6d4f3b6> .
 
@@ -283,7 +273,7 @@ Repülőtéri sürgősségi egészségügyi szolgálat.
   a org:Organization;
   epo:hasLegalName "Közbeszerzési Hatóság"@hu;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2017-S-088-173028/72314151-edeb-3d6c-ad80-79e218cb58cf>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-088-173028/72314151-edeb-3d6c-ad80-79e218cb58cf> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-088-173028/72314151-edeb-3d6c-ad80-79e218cb58cf> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2017-S-088-173028/3371e348-14a7-3e56-9dde-a3904d7fe886>
   a epo:ReviewTerm;
@@ -321,7 +311,7 @@ FAKSZ: Gál Erzsébet, 00045.
   a org:Organization;
   epo:hasLegalName "Közbeszerzési Döntőbizottság"@hu;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-088-173028/f408af29-86f8-3547-8427-ccade0632c83>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-088-173028/f408af29-86f8-3547-8427-ccade0632c83> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-088-173028/f408af29-86f8-3547-8427-ccade0632c83> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-088-173028/f408af29-86f8-3547-8427-ccade0632c83>
   a locn:Address;
@@ -345,24 +335,18 @@ A kizáró okok fenn nem állására vonatkozó nyilatkozatnak az AF feladásán
 <http://data.europa.eu/a4g/resource/SubmissionTerm/2017-S-088-173028/d5eb64bb-60fc-33e6-91a2-96bf252d3a17>
   a epo:SubmissionTerm;
   epo:hasLanguage "HU";
-  epo:hasReceiptDeadline "2017-05-24"^^xsd:datetime;
-  epo:hasReceiptExpressionsDeadline "10:00"^^xsd:datetime .
+  epo:hasReceiptDeadline "2017-05-24T10:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/TenderReceiver/2017-S-088-173028/185c301f-1304-3f86-a653-df7a2daf09dc>
   a epo:TenderReceiver;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/TenderReceiverBuyerProfile/2017-S-088-173028/7f943b15-ecc1-370a-8a71-3a7c7444a4c1>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/TenderReceiverOrganisationContactPoint/2017-S-088-173028/185c301f-1304-3f86-a653-df7a2daf09dc>;
   epo:playedBy <http://data.europa.eu/a4g/resource/TenderReceiverOrganisation/2017-S-088-173028/185c301f-1304-3f86-a653-df7a2daf09dc> .
-
-<http://data.europa.eu/a4g/resource/TenderReceiverBuyerProfile/2017-S-088-173028/7f943b15-ecc1-370a-8a71-3a7c7444a4c1>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.bud.hu" .
 
 <http://data.europa.eu/a4g/resource/TenderReceiverOrganisation/2017-S-088-173028/185c301f-1304-3f86-a653-df7a2daf09dc>
   a org:Organization;
   epo:hasLegalName "Procura Consulting Kft."@hu;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/TenderReceiverOrganisationContactPoint/2017-S-088-173028/185c301f-1304-3f86-a653-df7a2daf09dc>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/TenderReceiverOrganisationAddress/2017-S-088-173028/185c301f-1304-3f86-a653-df7a2daf09dc> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/TenderReceiverOrganisationAddress/2017-S-088-173028/185c301f-1304-3f86-a653-df7a2daf09dc> .
 
 <http://data.europa.eu/a4g/resource/TenderReceiverOrganisationAddress/2017-S-088-173028/185c301f-1304-3f86-a653-df7a2daf09dc>
   a locn:Address;
@@ -376,6 +360,6 @@ A kizáró okok fenn nem állására vonatkozó nyilatkozatnak az AF feladásán
   a cccev:ContactPoint;
   epo:hasContactName "Gál Erzsébet"@hu;
   epo:hasFax "+36 13920023";
-  epo:hasInternetAddress "http://www.bud.hu";
+  epo:hasInternetAddress "http://www.bud.hu"^^xsd:anyURI;
   cccev:email "procura@procura.co.hu";
   cccev:telephone "+36 13920024" .

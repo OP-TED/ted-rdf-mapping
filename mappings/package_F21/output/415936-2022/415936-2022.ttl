@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,18 +17,14 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2022-S-145-415936/08cc6b87-fd77-3965-a6c4-7bd72326900e>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2022-S-145-415936/5eeafc96-605e-3b6c-9ca0-91010603c507>;
+  epo:hasBuyerProfile "https://www.achatpublic.com/"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2022-S-145-415936/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2022-S-145-415936/97c28c49-5587-3e91-95b4-4e48e30ed684> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2022-S-145-415936/5eeafc96-605e-3b6c-9ca0-91010603c507>
-  a epo:BuyerProfile;
-  epo:hasURL "https://www.achatpublic.com/" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2022-S-145-415936/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a cccev:ContactPoint;
   epo:hasContactName "MAIRIE MARINIER"@fr;
-  epo:hasInternetAddress "https://www.ville-bessancourt.fr/";
+  epo:hasInternetAddress "https://www.ville-bessancourt.fr/"^^xsd:anyURI;
   cccev:email "marches.publics@ville-bessancourt.fr";
   cccev:telephone "+33 130404483" .
 
@@ -39,29 +34,11 @@
   epo:hasID <http://data.europa.eu/a4g/resource/ContractIdentifier/2022-S-145-415936/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172>;
   epo:hasTitle "réservation de 6 berceaux"@fr;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2022-S-145-415936/10a954c5-4b3f-3ea1-add9-eda3a9735c67>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2022-S-145-415936/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2022-S-145-415936/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2022-S-145-415936/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172>
   a epo:Identifier;
   epo:hasIdentifierValue "2022FIN01" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2022-S-145-415936/2c83355d-939c-3603-bdc9-70a1c649caee>
-  a org:Organization;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2022-S-145-415936/2c83355d-939c-3603-bdc9-70a1c649caee>;
-  epo:hasLegalName "association IFAC"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2022-S-145-415936/2c83355d-939c-3603-bdc9-70a1c649caee> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2022-S-145-415936/2c83355d-939c-3603-bdc9-70a1c649caee>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR105>;
-  locn:postCode "92600";
-  locn:postName "Asnieres";
-  locn:thoroughfare "53 rue du Révérend Père Christian Gilbert" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2022-S-145-415936/2c83355d-939c-3603-bdc9-70a1c649caee>
-  a epo:Identifier;
-  epo:hasIdentifierValue "33273739400244" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2022-S-145-415936/10a954c5-4b3f-3ea1-add9-eda3a9735c67>
   a epo:ContractTerm;
@@ -70,6 +47,24 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2022-S-145-415936/10a954c5-4b3f-3ea1-add9-eda3a9735c67>
   a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/FR108> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2022-S-145-415936/2c83355d-939c-3603-bdc9-70a1c649caee>
+  a org:Organization;
+  epo:hasID <http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2022-S-145-415936/2c83355d-939c-3603-bdc9-70a1c649caee>;
+  epo:hasLegalName "association IFAC"@fr;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2022-S-145-415936/2c83355d-939c-3603-bdc9-70a1c649caee> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2022-S-145-415936/2c83355d-939c-3603-bdc9-70a1c649caee>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR105>;
+  locn:postCode "92600";
+  locn:postName "Asnieres";
+  locn:thoroughfare "53 rue du Révérend Père Christian Gilbert" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2022-S-145-415936/2c83355d-939c-3603-bdc9-70a1c649caee>
+  a epo:Identifier;
+  epo:hasIdentifierValue "33273739400244" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2022-S-145-415936/168a6c96-75f8-304a-bff5-0d0cf3c2f20c>
   a epo:DirectAwardTerm;
@@ -123,10 +118,10 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2022-S-145-415936/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
   epo:hasLegalName "mairie de Bessancourt"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-145-415936/97c28c49-5587-3e91-95b4-4e48e30ed684> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-145-415936/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-145-415936/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a locn:Address;
@@ -142,9 +137,9 @@
   epo:hasDescription "le présent marché a pour objet la réservation de 6 berceaux dans une structure d'accueil collectif de la petite enfance située dans une structure unique installée dans l'éco-quartier de la ZAC des Meuniers de Bessancourt pour une durée de 4 ans"@fr;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2022-S-145-415936/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2022-S-145-415936/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2022-S-145-415936/10a954c5-4b3f-3ea1-add9-eda3a9735c67>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2022-S-145-415936/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasTitle "réservation de 6 berceaux"@fr;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/DirectAwardTerm/2022-S-145-415936/168a6c96-75f8-304a-bff5-0d0cf3c2f20c>,
     <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2022-S-145-415936/08cc6b87-fd77-3965-a6c4-7bd72326900e> .
@@ -182,4 +177,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2022-S-145-415936/2c83355d-939c-3603-bdc9-70a1c649caee>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2022-S-145-415936/2c83355d-939c-3603-bdc9-70a1c649caee> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2022-S-145-415936/2c83355d-939c-3603-bdc9-70a1c649caee> .

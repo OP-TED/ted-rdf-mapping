@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -25,7 +24,7 @@
   a cccev:ContactPoint;
   epo:hasContactName "Agnieszka Minda"@pl;
   epo:hasFax "+48 225693712";
-  epo:hasInternetAddress "http://www.cmkp.edu.pl/";
+  epo:hasInternetAddress "http://www.cmkp.edu.pl/"^^xsd:anyURI;
   cccev:email "agnieszka.minda@cmkp.edu.pl";
   cccev:telephone "+48 225693777" .
 
@@ -33,20 +32,7 @@
   a epo:Contract;
   epo:hasContractConclusionDate "2017-11-30"^^xsd:date;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2017-S-250-528259/10a954c5-4b3f-3ea1-add9-eda3a9735c67>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-250-528259/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-250-528259/ee813f4d-93e5-3fe8-8e46-545a60837d07>
-  a org:Organization;
-  epo:hasLegalName "Centrum Onkologii, Instytut im. M. Skłodowskiej-Curie"@pl;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-250-528259/ee813f4d-93e5-3fe8-8e46-545a60837d07> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-250-528259/ee813f4d-93e5-3fe8-8e46-545a60837d07>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/PL911>;
-  locn:postCode "02-034";
-  locn:postName "Warszawa";
-  locn:thoroughfare "Wawelska 15B" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-250-528259/1edc0e09-c2f0-33c7-9dfb-5af3e49d4172> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2017-S-250-528259/10a954c5-4b3f-3ea1-add9-eda3a9735c67>
   a epo:ContractTerm;
@@ -71,6 +57,19 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2017-S-250-528259/e3c5791a-e132-3d09-8ef5-af0f6ebfdc2c>
   a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/PL> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-250-528259/ee813f4d-93e5-3fe8-8e46-545a60837d07>
+  a org:Organization;
+  epo:hasLegalName "Centrum Onkologii, Instytut im. M. Skłodowskiej-Curie"@pl;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-250-528259/ee813f4d-93e5-3fe8-8e46-545a60837d07> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-250-528259/ee813f4d-93e5-3fe8-8e46-545a60837d07>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/PL911>;
+  locn:postCode "02-034";
+  locn:postName "Warszawa";
+  locn:thoroughfare "Wawelska 15B" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2017-S-250-528259/168a6c96-75f8-304a-bff5-0d0cf3c2f20c>
   a epo:DirectAwardTerm;
@@ -207,11 +206,11 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2017-S-250-528259/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2017-S-250-528259/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:hasLegalName "Centrum Medyczne Kształcenia Podyplomowego"@pl;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/education>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-250-528259/97c28c49-5587-3e91-95b4-4e48e30ed684> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/education>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-250-528259/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-250-528259/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a locn:Address;
@@ -245,11 +244,11 @@
   epo:hasMainFeature """
                Niniejsze postępowanie prowadzone jest z uwzględnieniem zasad równego traktowania i konkurencji, przejrzystości oraz proporcjonalności, w trybie określonym w art. 138n pkt 3 w zw. z art. 138 i ust. 3 oraz art. 67 ust. 1 pkt 4 ustawy Pzp, w którym Zamawiający przeprowadza negocjacje z Wykonawcami dopuszczonymi do udziału w postępowaniu.
             """;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-250-528259/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2017-S-250-528259/10a954c5-4b3f-3ea1-add9-eda3a9735c67>,
     <http://data.europa.eu/a4g/resource/Lot/2017-S-250-528259/363f871b-34f9-360a-8206-9b7373cf0235>,
     <http://data.europa.eu/a4g/resource/Lot/2017-S-250-528259/e3c5791a-e132-3d09-8ef5-af0f6ebfdc2c>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-250-528259/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasTitle """
                Usługa edukacyjna polegająca na realizacji w 2017 roku kursów specjalizacyjnych dla lekarzy uczestniczących w projekcie współfinansowanym przez UE ze środków EFS w ramach POWER (nr sprawy: ZP-920/17).
             """@pl;
@@ -295,7 +294,7 @@
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2017-S-250-528259/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3>
   a cccev:ContactPoint;
   epo:hasFax "+48 224587800";
-  epo:hasInternetAddress "http://www.uzp.gov.pl";
+  epo:hasInternetAddress "http://www.uzp.gov.pl"^^xsd:anyURI;
   cccev:email "odwolania@uzp.gov.pl";
   cccev:telephone "+48 224587801" .
 
@@ -303,7 +302,7 @@
   a org:Organization;
   epo:hasLegalName "Departament Odwołań Urzędu Zamówień Publicznych"@pl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2017-S-250-528259/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-250-528259/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-250-528259/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2017-S-250-528259/b717835d-5424-3d82-9a2a-3dedd6cdfaaa>
   a epo:ReviewTerm;
@@ -326,7 +325,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-250-528259/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a cccev:ContactPoint;
   epo:hasFax "+48 224587800";
-  epo:hasInternetAddress "http://www.uzp.gov.pl";
+  epo:hasInternetAddress "http://www.uzp.gov.pl"^^xsd:anyURI;
   cccev:email "odwolania@uzp.gov.pl";
   cccev:telephone "+48 224587801" .
 
@@ -334,7 +333,7 @@
   a org:Organization;
   epo:hasLegalName "Krajowa Izba Odwoławcza"@pl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-250-528259/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-250-528259/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-250-528259/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-250-528259/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a locn:Address;
@@ -359,4 +358,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2017-S-250-528259/ee813f4d-93e5-3fe8-8e46-545a60837d07>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-250-528259/ee813f4d-93e5-3fe8-8e46-545a60837d07> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-250-528259/ee813f4d-93e5-3fe8-8e46-545a60837d07> .

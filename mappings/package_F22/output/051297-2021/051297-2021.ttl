@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -34,24 +33,11 @@
   epo:hasID <http://data.europa.eu/a4g/resource/ContractIdentifier/2021-S-021-051297/67f40fa4-0fdc-31df-a278-a9ec4e2c34ff>;
   epo:hasTitle "Świadczenie usług społecznych – „Badania osadzonych kierowanych do pracy w POL RD Wrocław”"@pl;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2021-S-021-051297/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-021-051297/67f40fa4-0fdc-31df-a278-a9ec4e2c34ff> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-021-051297/67f40fa4-0fdc-31df-a278-a9ec4e2c34ff> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2021-S-021-051297/67f40fa4-0fdc-31df-a278-a9ec4e2c34ff>
   a epo:Identifier;
   epo:hasIdentifierValue "1" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-021-051297/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
-  a org:Organization;
-  epo:hasLegalName "NZOZ Firma Lekarska „Kama” s.c."@pl;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-021-051297/46d95603-a3e1-3d2c-8e32-b10fa665dec4> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-021-051297/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/PL518>;
-  locn:postCode "55-080";
-  locn:postName "Kąty Wrocławskie";
-  locn:thoroughfare "ul. 1 Maja 78" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2021-S-021-051297/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
   a epo:ContractTerm;
@@ -65,6 +51,19 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2021-S-021-051297/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
   a locn:Address;
   locn:fullAddress "Przedmiotem zamówienia jest przeprowadzanie badań wstępnych, kontrolnych i okresowych w Zakładzie Karnym nr 2 we Wrocławiu osób kierowanych do pracy w POL RD Wrocław, ul. Awicenny 21."@pl .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-021-051297/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
+  a org:Organization;
+  epo:hasLegalName "NZOZ Firma Lekarska „Kama” s.c."@pl;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-021-051297/46d95603-a3e1-3d2c-8e32-b10fa665dec4> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-021-051297/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/PL518>;
+  locn:postCode "55-080";
+  locn:postName "Kąty Wrocławskie";
+  locn:thoroughfare "ul. 1 Maja 78" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2021-S-021-051297/d5eb64bb-60fc-33e6-91a2-96bf252d3a17>
   a epo:DirectAwardTerm;
@@ -112,8 +111,8 @@
 <http://data.europa.eu/a4g/resource/Organisation/2021-S-021-051297/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
   a org:Organization;
   epo:hasLegalName "Poczta Polska S.A."@pl;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/post>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-021-051297/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/post>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-021-051297/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-021-051297/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
   a locn:Address;
@@ -130,9 +129,9 @@
   epo:hasDescription "Przedmiotem zamówienia jest przeprowadzanie badań wstępnych, kontrolnych i okresowych (zwanych dalej badaniami profilaktycznymi) osadzonych odbywających karę w Zakładzie Karnym nr 2 we Wrocławiu przy ul. Fiołkowej 38, którzy są kierowani do pracy w POL RD we Wrocławiu."@pl;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2021-S-021-051297/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-021-051297/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2021-S-021-051297/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-021-051297/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
   epo:hasTitle "Świadczenie usług społecznych – „Badania osadzonych kierowanych do pracy w POL RD Wrocław”"@pl;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/DirectAwardTerm/2021-S-021-051297/d5eb64bb-60fc-33e6-91a2-96bf252d3a17>,
     <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2021-S-021-051297/841f832b-8a2b-3a73-a4a6-85439d64c6be> .
@@ -176,7 +175,7 @@
   a org:Organization;
   epo:hasLegalName "Krajowa Izba Odwoławcza"@pl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2021-S-021-051297/72314151-edeb-3d6c-ad80-79e218cb58cf>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2021-S-021-051297/72314151-edeb-3d6c-ad80-79e218cb58cf> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2021-S-021-051297/72314151-edeb-3d6c-ad80-79e218cb58cf> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2021-S-021-051297/3371e348-14a7-3e56-9dde-a3904d7fe886>
   a epo:ReviewTerm;
@@ -197,7 +196,7 @@
   a org:Organization;
   epo:hasLegalName "Krajowa Izba Odwoławcza"@pl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2021-S-021-051297/f408af29-86f8-3547-8427-ccade0632c83>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-021-051297/f408af29-86f8-3547-8427-ccade0632c83> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-021-051297/f408af29-86f8-3547-8427-ccade0632c83> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-021-051297/f408af29-86f8-3547-8427-ccade0632c83>
   a locn:Address;
@@ -224,4 +223,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-021-051297/46d95603-a3e1-3d2c-8e32-b10fa665dec4>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-021-051297/46d95603-a3e1-3d2c-8e32-b10fa665dec4> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-021-051297/46d95603-a3e1-3d2c-8e32-b10fa665dec4> .

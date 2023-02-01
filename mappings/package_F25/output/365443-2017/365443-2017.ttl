@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -23,45 +22,22 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2017-S-178-365443/5a0e0822-353f-34b8-9001-b27f293ef321>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-178-365443/41c3580d-d7b5-3ead-a7df-4e886771daad>;
+  epo:hasBuyerProfile "https://www.mtitc.government.bg/"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-178-365443/188615bc-907f-376a-b3e0-b7f440ca4c64>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2017-S-178-365443/188615bc-907f-376a-b3e0-b7f440ca4c64> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-178-365443/41c3580d-d7b5-3ead-a7df-4e886771daad>
-  a epo:BuyerProfile;
-  epo:hasURL "https://www.mtitc.government.bg/" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-178-365443/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a cccev:ContactPoint;
   epo:hasContactName "Albena Lazarova"@en, "Албена Лазарова"@bg;
   epo:hasFax "+359 29885149";
-  epo:hasInternetAddress "https://www.mtitc.government.bg/";
+  epo:hasInternetAddress "https://www.mtitc.government.bg/"^^xsd:anyURI;
   cccev:email "alazarova@mtitc.government.bg";
   cccev:telephone "+359 29409419" .
 
 <http://data.europa.eu/a4g/resource/Contract/2017-S-178-365443/2b425ab1-553e-3915-a060-80f1d3cff764>
   a epo:ConcessionContract, epo:Contract;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2017-S-178-365443/5a50554f-89ac-3a44-9d4f-643949ca9831>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-178-365443/2b425ab1-553e-3915-a060-80f1d3cff764> .
-
-<http://data.europa.eu/a4g/resource/ContractContactPoint/2017-S-178-365443/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a cccev:ContactPoint;
-  cccev:telephone "+359 882644177" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-178-365443/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasLegalName "Terminali EAD"@en;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractContactPoint/2017-S-178-365443/8f833010-0b39-361a-9ea9-959275ccdc19>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-178-365443/8f833010-0b39-361a-9ea9-959275ccdc19> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2017-S-178-365443/8f833010-0b39-361a-9ea9-959275ccdc19>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG421>;
-  locn:postCode "4003";
-  locn:postName "Plovdiv";
-  locn:thoroughfare "Northern area, 36 Rogoshko road" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-178-365443/2b425ab1-553e-3915-a060-80f1d3cff764> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2017-S-178-365443/5a50554f-89ac-3a44-9d4f-643949ca9831>
   a epo:ContractTerm;
@@ -81,6 +57,25 @@
     """
                   „Интермодален терминал в Южен централен район на планиране в България — Пловдив“, Oбласт Пловдив, община Родопи, в землището на село Златитрап, местността „Камиша“.
                """@bg .
+
+<http://data.europa.eu/a4g/resource/ContractorContactPoint/2017-S-178-365443/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a cccev:ContactPoint;
+  cccev:telephone "+359 882644177" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-178-365443/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "Terminali EAD"@en;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorContactPoint/2017-S-178-365443/8f833010-0b39-361a-9ea9-959275ccdc19>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-178-365443/8f833010-0b39-361a-9ea9-959275ccdc19> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-178-365443/8f833010-0b39-361a-9ea9-959275ccdc19>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG421>;
+  locn:postCode "4003";
+  locn:postName "Plovdiv";
+  locn:thoroughfare "Northern area, 36 Rogoshko road" .
 
 <http://data.europa.eu/a4g/resource/Duration/2017-S-178-365443/1d09e8e7-ef82-30d4-befb-d86c000a8e5a>
   a epo:Duration;
@@ -163,11 +158,11 @@
 
 <http://data.europa.eu/a4g/resource/Organisation/2017-S-178-365443/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a org:Organization;
-  epo:hasBuyerType <http://publications.europa.eu/resource/authority/buyer-legal-type/cga>;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/cga>;
   epo:hasLegalName "Ministry of transport, information technology and communications"@en,
     "Министерство на транспорта, информационните технологии и съобщенията"@bg;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-178-365443/188615bc-907f-376a-b3e0-b7f440ca4c64> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-178-365443/188615bc-907f-376a-b3e0-b7f440ca4c64> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-178-365443/188615bc-907f-376a-b3e0-b7f440ca4c64>
   a locn:Address;
@@ -195,8 +190,8 @@
                Пълното описание на обекта е дадено в Документацията за участие.
             """@bg;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/MonetaryValueProcedure/2017-S-178-365443/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-178-365443/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2017-S-178-365443/5a50554f-89ac-3a44-9d4f-643949ca9831>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-178-365443/af4ec50c-6067-3493-9ed2-3ea8079f5d1f>;
   epo:hasTitle """
                Granting a concession for service for object ‘Intermodal terminal in South central planning region in Bulgaria — Plovdiv’.
             """@en,
@@ -225,7 +220,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-178-365443/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a cccev:ContactPoint;
   epo:hasFax "+359 29807315";
-  epo:hasInternetAddress "www.cpc.bg";
+  epo:hasInternetAddress "www.cpc.bg"^^xsd:anyURI;
   cccev:email "cpcadmin@cpc.bg";
   cccev:telephone "+359 29356113" .
 
@@ -233,7 +228,7 @@
   a org:Organization;
   epo:hasLegalName "Commission for Protection of Competition"@en, "Комисия за защита на конкуренцията"@bg;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-178-365443/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-178-365443/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-178-365443/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-178-365443/5c7fb4ce-9b7b-353b-863a-f4cd3af80c79>
   a locn:Address;
@@ -258,4 +253,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2017-S-178-365443/8f833010-0b39-361a-9ea9-959275ccdc19>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2017-S-178-365443/8f833010-0b39-361a-9ea9-959275ccdc19> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-178-365443/8f833010-0b39-361a-9ea9-959275ccdc19> .

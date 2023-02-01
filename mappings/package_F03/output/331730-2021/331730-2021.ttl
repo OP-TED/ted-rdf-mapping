@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -22,35 +21,20 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2021-S-126-331730/f3b5cfa6-95c6-37b5-9667-808a141fe995>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2021-S-126-331730/377f62e9-9c36-31da-9724-7f6a137d8a68>;
+  epo:hasBuyerProfile "https://gareappalti.bancaditalia.it"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-126-331730/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2021-S-126-331730/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
 
-<http://data.europa.eu/a4g/resource/BuyerProfile/2021-S-126-331730/377f62e9-9c36-31da-9724-7f6a137d8a68>
-  a epo:BuyerProfile;
-  epo:hasURL "https://gareappalti.bancaditalia.it" .
-
 <http://data.europa.eu/a4g/resource/ContactPoint/2021-S-126-331730/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "https://www.bancaditalia.it";
+  epo:hasInternetAddress "https://www.bancaditalia.it"^^xsd:anyURI;
   cccev:email "servizio.app.postinfo@bancaditalia.it" .
 
 <http://data.europa.eu/a4g/resource/Contract/2021-S-126-331730/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2>
   a epo:Contract;
   epo:hasContractConclusionDate "2021-06-23"^^xsd:date;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2021-S-126-331730/cbac108a-b047-3e09-a114-28c43d5b8706>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-126-331730/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-126-331730/b9a7c460-794b-36b5-a069-6e9a637315f4>
-  a org:Organization;
-  epo:hasLegalName "Banca centrale di Irlanda"@it;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-126-331730/b9a7c460-794b-36b5-a069-6e9a637315f4> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2021-S-126-331730/b9a7c460-794b-36b5-a069-6e9a637315f4>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/IRL>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/IE061>;
-  locn:postName "Dublino" .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2021-S-126-331730/0c434fb4-13b2-3f81-9fb1-7ec07b891bd2> .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2021-S-126-331730/cbac108a-b047-3e09-a114-28c43d5b8706>
   a epo:ContractTerm;
@@ -60,6 +44,17 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocation/2021-S-126-331730/cbac108a-b047-3e09-a114-28c43d5b8706>
   a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/ITI43> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-126-331730/b9a7c460-794b-36b5-a069-6e9a637315f4>
+  a org:Organization;
+  epo:hasLegalName "Banca centrale di Irlanda"@it;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-126-331730/b9a7c460-794b-36b5-a069-6e9a637315f4> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2021-S-126-331730/b9a7c460-794b-36b5-a069-6e9a637315f4>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/IRL>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/IE061>;
+  locn:postName "Dublino" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2021-S-126-331730/1f8688eb-32e7-368b-ad1c-2e76f17321dd>
   a epo:DirectAwardTerm;
@@ -93,7 +88,7 @@
 <http://data.europa.eu/a4g/resource/MediatorOrganisation/2021-S-126-331730/a6bfbb35-d109-3491-8d64-1fff4418e45e>
   a org:Organization;
   epo:hasLegalName "Tribunale amministravo regionale per il Lazio"@it;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2021-S-126-331730/a6bfbb35-d109-3491-8d64-1fff4418e45e> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2021-S-126-331730/a6bfbb35-d109-3491-8d64-1fff4418e45e> .
 
 <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2021-S-126-331730/a6bfbb35-d109-3491-8d64-1fff4418e45e>
   a locn:Address;
@@ -121,8 +116,8 @@
   a org:Organization;
   epo:hasBuyerLegalTypeDescription "Banca d'Italia";
   epo:hasLegalName "Banca d'Italia"@it;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/econ-aff>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-126-331730/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/econ-aff>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-126-331730/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2021-S-126-331730/ab152979-15bf-30c3-b6f3-e0c554cfa9d0>
   a locn:Address;
@@ -138,9 +133,9 @@
   epo:hasDescription "Cfr. II.2.4)."@it;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2021-S-126-331730/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-126-331730/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2021-S-126-331730/cbac108a-b047-3e09-a114-28c43d5b8706>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2021-S-126-331730/58509ec4-99dc-3865-9935-58d7ebd66d29>;
   epo:hasTitle "Acquisizione macchine da stampa cartevalori"@it;
   epo:isCoveredByGPA true;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/DirectAwardTerm/2021-S-126-331730/1f8688eb-32e7-368b-ad1c-2e76f17321dd>,
@@ -170,7 +165,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2021-S-126-331730/de2507f9-ae25-37c8-809c-0109efe10669>
   a org:Organization;
   epo:hasLegalName "Tribunale amministravo regionale per il Lazio"@it;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-126-331730/de2507f9-ae25-37c8-809c-0109efe10669> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-126-331730/de2507f9-ae25-37c8-809c-0109efe10669> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2021-S-126-331730/de2507f9-ae25-37c8-809c-0109efe10669>
   a locn:Address;
@@ -193,4 +188,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2021-S-126-331730/b9a7c460-794b-36b5-a069-6e9a637315f4>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2021-S-126-331730/b9a7c460-794b-36b5-a069-6e9a637315f4> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2021-S-126-331730/b9a7c460-794b-36b5-a069-6e9a637315f4> .

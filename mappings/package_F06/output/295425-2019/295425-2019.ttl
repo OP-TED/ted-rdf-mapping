@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -22,19 +21,15 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2019-S-120-295425/15183658-b3d6-3d9d-88d4-6e02c7e3b7b9>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2019-S-120-295425/206f9015-5cd1-3fca-bf9c-23378a724274>;
+  epo:hasBuyerProfile "https://fer.albofornitori.net/gare"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2019-S-120-295425/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2019-S-120-295425/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2019-S-120-295425/206f9015-5cd1-3fca-bf9c-23378a724274>
-  a epo:BuyerProfile;
-  epo:hasURL "https://fer.albofornitori.net/gare" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2019-S-120-295425/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a cccev:ContactPoint;
   epo:hasContactName "U.O. Gare"@it;
   epo:hasFax "+39 0532977619";
-  epo:hasInternetAddress "www.fer.it";
+  epo:hasInternetAddress "www.fer.it"^^xsd:anyURI;
   cccev:email "fer@legalmail.it";
   cccev:telephone "+39 0532979337" .
 
@@ -44,28 +39,11 @@
   epo:hasID <http://data.europa.eu/a4g/resource/ContractIdentifier/2019-S-120-295425/527e871b-562d-3858-b2cb-c75e9b69e338>;
   epo:hasTitle "Cod. prog. LG1.P3.1.07 estensione CTC Unico alla linea Suzzara-Ferrara"@it;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2019-S-120-295425/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2019-S-120-295425/527e871b-562d-3858-b2cb-c75e9b69e338> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2019-S-120-295425/527e871b-562d-3858-b2cb-c75e9b69e338> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2019-S-120-295425/527e871b-562d-3858-b2cb-c75e9b69e338>
   a epo:Identifier;
   epo:hasIdentifierValue "7846389509" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2019-S-120-295425/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2019-S-120-295425/11c6525a-cbf9-36a2-9b0b-e686c6668d03>;
-  epo:hasLegalName "Tecnau Transport Division S.r.l."@it;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2019-S-120-295425/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2019-S-120-295425/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ITA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/ITC4C>;
-  locn:postName "Trezzano sul Naviglio" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2019-S-120-295425/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a epo:Identifier;
-  epo:hasIdentifierValue "13075840150" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2019-S-120-295425/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a epo:ContractTerm;
@@ -81,6 +59,23 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2019-S-120-295425/636e3166-5ecc-350b-867b-7bf2072a2c03>
   a locn:Address;
   locn:fullAddress "Linea Suzzara-Ferrara."@it .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2019-S-120-295425/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasID <http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2019-S-120-295425/11c6525a-cbf9-36a2-9b0b-e686c6668d03>;
+  epo:hasLegalName "Tecnau Transport Division S.r.l."@it;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2019-S-120-295425/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2019-S-120-295425/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ITA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ITC4C>;
+  locn:postName "Trezzano sul Naviglio" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2019-S-120-295425/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+  a epo:Identifier;
+  epo:hasIdentifierValue "13075840150" .
 
 <http://data.europa.eu/a4g/resource/DirectAwardTerm/2019-S-120-295425/b68f1feb-885d-37f5-ac99-4287870dfd15>
   a epo:DirectAwardTerm;
@@ -118,7 +113,7 @@
 <http://data.europa.eu/a4g/resource/MediatorOrganisation/2019-S-120-295425/43c72ae4-1691-3a54-9e37-60dec613cbbd>
   a org:Organization;
   epo:hasLegalName "TAR dell'Emilia-Romagna"@it;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2019-S-120-295425/43c72ae4-1691-3a54-9e37-60dec613cbbd> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2019-S-120-295425/43c72ae4-1691-3a54-9e37-60dec613cbbd> .
 
 <http://data.europa.eu/a4g/resource/MediatorOrganisationAddress/2019-S-120-295425/43c72ae4-1691-3a54-9e37-60dec613cbbd>
   a locn:Address;
@@ -146,8 +141,8 @@
   a org:Organization;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2019-S-120-295425/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>;
   epo:hasLegalName "Ferrovie Emilia Romagna S.r.l."@it;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/rail>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-120-295425/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/rail>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-120-295425/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-120-295425/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
   a locn:Address;
@@ -166,9 +161,9 @@
   epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2019-S-120-295425/636e3166-5ecc-350b-867b-7bf2072a2c03>;
   epo:hasDescription "La linea Suzzara-Ferrara è ritenuta da FER di rilevanza strategica sia a livello locale, trovandosi in collegamento con n. 3 stazioni RFI (Suzzara, Poggio Rusco e Ferrara), che nazionale, facendo parte del corridoio ferroviario alternativo al nodo di Bologna per il collegamento dei porti del Mar Tirreno settentrionale con il Brennero e i porto di Ravenna sul Mar Adriatico.Nell’ambito del Piano Nazionale per la Sicurezza Ferroviaria-Piano Operativo Regione ER., è già in corso l’upgrade tecnologico della linea che prevede, fra l’altro, la sostituzione integrale degli apparati con nuovi impianti di tipo ACEI e l’adeguamento a standard V300 dei PL presenti e ancora non a schema, funzionali al completamento attrezzaggio con SCMT delle tratte «interne» tra le stazioni di Pegognaga-Schivenoglia e Magnacavallo-Vigarano Pieve."@it;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2019-S-120-295425/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2019-S-120-295425/636e3166-5ecc-350b-867b-7bf2072a2c03>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2019-S-120-295425/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
   epo:hasTitle "Cod. Prog. LG1.P3.1.07 estensione CTC Unico alla linea Suzzara-Ferrara"@it;
   epo:isCoveredByGPA false;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/DirectAwardTerm/2019-S-120-295425/b68f1feb-885d-37f5-ac99-4287870dfd15>,
@@ -195,7 +190,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2019-S-120-295425/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a cccev:ContactPoint;
   epo:hasFax "+39 0514293154";
-  epo:hasInternetAddress "https://www.giustizia-amministrativa.it/cdsintra/cdsintra/Organizzazione/Tribunaliamministrativiregionali/bologna/index.html";
+  epo:hasInternetAddress "https://www.giustizia-amministrativa.it/cdsintra/cdsintra/Organizzazione/Tribunaliamministrativiregionali/bologna/index.html"^^xsd:anyURI;
   cccev:email "tarbo-segrprotocolloamm@ga-cert.it";
   cccev:telephone "+39 051307834" .
 
@@ -203,7 +198,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunale amministrativo regionale dell'Emilia-Romagna"@it;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2019-S-120-295425/13730a07-65b0-306c-a9b5-a8929927a6a1>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-120-295425/13730a07-65b0-306c-a9b5-a8929927a6a1> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-120-295425/13730a07-65b0-306c-a9b5-a8929927a6a1> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-120-295425/13730a07-65b0-306c-a9b5-a8929927a6a1>
   a locn:Address;
@@ -232,4 +227,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2019-S-120-295425/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2019-S-120-295425/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2019-S-120-295425/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .

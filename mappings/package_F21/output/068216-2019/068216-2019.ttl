@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,19 +17,15 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2019-S-030-068216/08cc6b87-fd77-3965-a6c4-7bd72326900e>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2019-S-030-068216/5eeafc96-605e-3b6c-9ca0-91010603c507>;
+  epo:hasBuyerProfile "http://marchespublics.grandlyon.com"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2019-S-030-068216/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2019-S-030-068216/97c28c49-5587-3e91-95b4-4e48e30ed684> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2019-S-030-068216/5eeafc96-605e-3b6c-9ca0-91010603c507>
-  a epo:BuyerProfile;
-  epo:hasURL "http://marchespublics.grandlyon.com" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2019-S-030-068216/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a cccev:ContactPoint;
   epo:hasContactName "M. le président de la Métropole de Lyon"@fr;
   epo:hasFax "+33 426993058";
-  epo:hasInternetAddress "http://grandlyon.com";
+  epo:hasInternetAddress "http://grandlyon.com"^^xsd:anyURI;
   cccev:email "dgdeimarches@grandlyon.com" .
 
 <http://data.europa.eu/a4g/resource/Contract/2019-S-030-068216/3a97df4e-32d4-3487-a4f3-269a492ac4e1>
@@ -39,24 +34,11 @@
   epo:hasID <http://data.europa.eu/a4g/resource/ContractIdentifier/2019-S-030-068216/3a97df4e-32d4-3487-a4f3-269a492ac4e1>;
   epo:hasTitle "Fonctionnement du pôle entrepreneurial de Givors"@fr;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2019-S-030-068216/e3c5791a-e132-3d09-8ef5-af0f6ebfdc2c>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2019-S-030-068216/3a97df4e-32d4-3487-a4f3-269a492ac4e1> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2019-S-030-068216/3a97df4e-32d4-3487-a4f3-269a492ac4e1> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2019-S-030-068216/3a97df4e-32d4-3487-a4f3-269a492ac4e1>
   a epo:Identifier;
   epo:hasIdentifierValue "2019-21" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2019-S-030-068216/8b0364de-6e6e-352c-8603-64c03e10fe72>
-  a org:Organization;
-  epo:hasLegalName "BGE Rhône Alpes"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2019-S-030-068216/8b0364de-6e6e-352c-8603-64c03e10fe72> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2019-S-030-068216/8b0364de-6e6e-352c-8603-64c03e10fe72>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRK26>;
-  locn:postCode "69100";
-  locn:postName "Villeurbanne";
-  locn:thoroughfare "169 avenue Roger Salengro" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2019-S-030-068216/10a954c5-4b3f-3ea1-add9-eda3a9735c67>
   a epo:ContractTerm;
@@ -83,6 +65,19 @@
 <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2019-S-030-068216/e3c5791a-e132-3d09-8ef5-af0f6ebfdc2c>
   a locn:Address;
   locn:fullAddress "Pôle entrepreneurial de Givors"@fr .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2019-S-030-068216/8b0364de-6e6e-352c-8603-64c03e10fe72>
+  a org:Organization;
+  epo:hasLegalName "BGE Rhône Alpes"@fr;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2019-S-030-068216/8b0364de-6e6e-352c-8603-64c03e10fe72> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2019-S-030-068216/8b0364de-6e6e-352c-8603-64c03e10fe72>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRK26>;
+  locn:postCode "69100";
+  locn:postName "Villeurbanne";
+  locn:thoroughfare "169 avenue Roger Salengro" .
 
 <http://data.europa.eu/a4g/resource/Lot/2019-S-030-068216/10a954c5-4b3f-3ea1-add9-eda3a9735c67>
   a epo:Lot;
@@ -178,8 +173,8 @@
   epo:hasBuyerLegalTypeDescription "Collectivité territoriale à statut particulier";
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2019-S-030-068216/97c28c49-5587-3e91-95b4-4e48e30ed684>;
   epo:hasLegalName "Métropole de Lyon"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-030-068216/97c28c49-5587-3e91-95b4-4e48e30ed684> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-030-068216/97c28c49-5587-3e91-95b4-4e48e30ed684> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2019-S-030-068216/97c28c49-5587-3e91-95b4-4e48e30ed684>
   a locn:Address;
@@ -201,10 +196,10 @@
   epo:hasDescription "Les pôles entrepreneuriaux de la Duchère et de Givors ont vocation à offrir, au plus grand nombre d'entrepreneurs du territoire, un ensemble de services d'accompagnement personnalisé à la création tout au long de leur parcours répondant ainsi à un objectif affirmé de la politique de développement économique du territoire métropolitain. Pour chaque lot, la Métropole souhaite qu'un prestataire prenne en charge l'accueil et l'animation des lieux via la mission de chargé d'animation, et que le conseil et que l'accompagnement des créateurs d'entreprises soient pris en charge dans le cadre de la mission de chargé d'accompagnement."@fr;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2019-S-030-068216/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2019-S-030-068216/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2019-S-030-068216/10a954c5-4b3f-3ea1-add9-eda3a9735c67>,
     <http://data.europa.eu/a4g/resource/Lot/2019-S-030-068216/e3c5791a-e132-3d09-8ef5-af0f6ebfdc2c>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2019-S-030-068216/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3>;
   epo:hasTitle "Fonctionnement des pôles d'entrepreneurs situé à Lyon 9e La Duchère et à Givors: Accompagnement des entrepreneurs et animation des lieux — 2 lots"@fr;
   epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2019-S-030-068216/08cc6b87-fd77-3965-a6c4-7bd72326900e>,
     <http://data.europa.eu/a4g/resource/ProcedureTerm/2019-S-030-068216/a8ba8e24-e827-37a6-aeeb-ec567c2da2d3> .
@@ -242,7 +237,7 @@
 
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2019-S-030-068216/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://lyon.tribunal-administratif.fr";
+  epo:hasInternetAddress "http://lyon.tribunal-administratif.fr"^^xsd:anyURI;
   cccev:email "greffe.ta-lyon@juradm.fr";
   cccev:telephone "+33 478141010" .
 
@@ -250,7 +245,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Lyon"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2019-S-030-068216/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2019-S-030-068216/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2019-S-030-068216/7e86c5f3-6c3c-3526-8c28-a348b02ae6a3> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2019-S-030-068216/b717835d-5424-3d82-9a2a-3dedd6cdfaaa>
   a epo:ReviewTerm;
@@ -262,7 +257,7 @@
 
 <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2019-S-030-068216/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a cccev:ContactPoint;
-  epo:hasInternetAddress "http://lyon.tribunal-administratif.fr";
+  epo:hasInternetAddress "http://lyon.tribunal-administratif.fr"^^xsd:anyURI;
   cccev:email "greffe.ta-lyon@juradm.fr";
   cccev:telephone "+33 478141010" .
 
@@ -270,7 +265,7 @@
   a org:Organization;
   epo:hasLegalName "Tribunal administratif de Lyon"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2019-S-030-068216/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-030-068216/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-030-068216/1fb9e558-b90e-311d-9e34-f3b3a96f5d77> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2019-S-030-068216/1fb9e558-b90e-311d-9e34-f3b3a96f5d77>
   a locn:Address;
@@ -299,4 +294,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2019-S-030-068216/8b0364de-6e6e-352c-8603-64c03e10fe72>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2019-S-030-068216/8b0364de-6e6e-352c-8603-64c03e10fe72> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2019-S-030-068216/8b0364de-6e6e-352c-8603-64c03e10fe72> .

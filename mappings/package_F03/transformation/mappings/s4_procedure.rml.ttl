@@ -146,7 +146,7 @@ tedm:Procedure a rr:TriplesMap ;
             rr:predicate epo:usesTechnique ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:EauctionTechniqueUsage
+                    rr:parentTriplesMap tedm:EAuctionTechniqueUsage
                 ] ;
         ] .
 tedm:ProcessPlanningTermProcedure a rr:TriplesMap ;
@@ -214,8 +214,7 @@ tedm:ProcedureTerm a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "../PROCEDURE/URL_NATIONAL_PROCEDURE";
-                    ## one of the test notices is having a URL starting by www. and this type require a URL starting with http:
-                     rr:datatype xsd:anyURI;
+                    rr:datatype xsd:anyURI;
                 ] ;
         ] .
 tedm:SubmissionTerm a rr:TriplesMap ;
@@ -224,7 +223,10 @@ tedm:SubmissionTerm a rr:TriplesMap ;
             rr:predicate epo:hasReceiptDeadline ;
             rr:objectMap
                 [
-                    rml:reference "DATE_RECEIPT_TENDERS";
+#                   # We likely don't need to add the conditions for notice types:
+#                   # - "PRI", as in case of F23 this information will only appear in the "PRI notices (and should not appear in "CONCESSION_AWARD_CONTRACT" notices
+#                   # - "QSU_ONLY" and "PER_ONLY", as for those type of notices we should not have this type of information specified; however, in case they are (by mistake/oversight), we will map it to this property
+                    rml:reference "if(../NOTICE/@TYPE='CONTRACT' or ../NOTICE/@TYPE='PRI' or ../NOTICE/@TYPE='QSU_ONLY' or ../NOTICE/@TYPE='QSU_CALL_COMPETITION' or ../NOTICE/@TYPE='PER_ONLY') then (if(exists(DATE_RECEIPT_TENDERS) and exists(TIME_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T' || TIME_RECEIPT_TENDERS || ':00' else if(exists(DATE_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T00:00:00' else null) else null";
                     rr:datatype xsd:dateTime
                 ] ;
         ] ;
@@ -233,7 +235,7 @@ tedm:SubmissionTerm a rr:TriplesMap ;
             rr:predicate epo:hasReceiptExpressionDeadline ;
             rr:objectMap
                 [
-                    rml:reference "TIME_RECEIPT_TENDERS";
+                    rml:reference "if(../NOTICE/@TYPE='PRI_CALL_COMPETITION' or ../NOTICE/@TYPE='PER_CALL_COMPETITION') then (if(exists(DATE_RECEIPT_TENDERS) and exists(TIME_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T' || TIME_RECEIPT_TENDERS || ':00' else if(exists(DATE_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T00:00:00' else null) else null";
                     rr:datatype xsd:dateTime
                 ] ;
         ] ;
@@ -251,7 +253,6 @@ tedm:SubmissionTerm a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "../CONTRACTING_BODY/URL_PARTICIPATION";
-                    ## some notices might have URL starting by www. and this type require a URL starting with http: #TODO:use "dynamic" typing, based on the value, as we did in another place
                     rr:datatype xsd:anyURI;
                 ] ;
         ] .

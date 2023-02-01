@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,18 +17,14 @@
 
 <http://data.europa.eu/a4g/resource/Buyer/2018-S-124-283483/841f832b-8a2b-3a73-a4a6-85439d64c6be>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-124-283483/869d5405-9b33-3f2f-8a44-38f4bf6c8f11>;
+  epo:hasBuyerProfile "https://eu.eu-supply.com/ctm/Company/CompanyInformation/Index/101360"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-124-283483/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-124-283483/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2018-S-124-283483/869d5405-9b33-3f2f-8a44-38f4bf6c8f11>
-  a epo:BuyerProfile;
-  epo:hasURL "https://eu.eu-supply.com/ctm/Company/CompanyInformation/Index/101360" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-124-283483/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
   a cccev:ContactPoint;
   epo:hasContactName "Steen Nielsen"@da;
-  epo:hasInternetAddress "https://www.cph.dk/";
+  epo:hasInternetAddress "https://www.cph.dk/"^^xsd:anyURI;
   cccev:email "steen.nielsen@cph.dk";
   cccev:telephone "+45 31796981" .
 
@@ -41,29 +36,11 @@
                Persons With reduced Mobility (PRM)
             """@da;
   epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2018-S-124-283483/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
-  epo:includesLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-124-283483/67f40fa4-0fdc-31df-a278-a9ec4e2c34ff> .
+  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-124-283483/67f40fa4-0fdc-31df-a278-a9ec4e2c34ff> .
 
 <http://data.europa.eu/a4g/resource/ContractIdentifier/2018-S-124-283483/67f40fa4-0fdc-31df-a278-a9ec4e2c34ff>
   a epo:Identifier;
   epo:hasIdentifierValue "1" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisation/2018-S-124-283483/998a03d2-1c58-30a7-b401-bfa672624666>
-  a org:Organization;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2018-S-124-283483/998a03d2-1c58-30a7-b401-bfa672624666>;
-  epo:hasLegalName "Falck danmark A/S"@da;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2018-S-124-283483/998a03d2-1c58-30a7-b401-bfa672624666> .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationAddress/2018-S-124-283483/998a03d2-1c58-30a7-b401-bfa672624666>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DNK>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/DK01>;
-  locn:postCode "1780";
-  locn:postName "København V";
-  locn:thoroughfare "Polititorvet" .
-
-<http://data.europa.eu/a4g/resource/ContractOrganisationIdentifier/2018-S-124-283483/998a03d2-1c58-30a7-b401-bfa672624666>
-  a epo:Identifier;
-  epo:hasIdentifierValue "16271241" .
 
 <http://data.europa.eu/a4g/resource/ContractTerm/2018-S-124-283483/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
   a epo:ContractTerm;
@@ -79,6 +56,24 @@
   locn:fullAddress """
                   Københavns Lufthavn
                """@da .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisation/2018-S-124-283483/998a03d2-1c58-30a7-b401-bfa672624666>
+  a org:Organization;
+  epo:hasID <http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2018-S-124-283483/998a03d2-1c58-30a7-b401-bfa672624666>;
+  epo:hasLegalName "Falck danmark A/S"@da;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2018-S-124-283483/998a03d2-1c58-30a7-b401-bfa672624666> .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2018-S-124-283483/998a03d2-1c58-30a7-b401-bfa672624666>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DNK>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DK01>;
+  locn:postCode "1780";
+  locn:postName "København V";
+  locn:thoroughfare "Polititorvet" .
+
+<http://data.europa.eu/a4g/resource/ContractorOrganisationIdentifier/2018-S-124-283483/998a03d2-1c58-30a7-b401-bfa672624666>
+  a epo:Identifier;
+  epo:hasIdentifierValue "16271241" .
 
 <http://data.europa.eu/a4g/resource/FrameworkAgreementTechniqueUsage/2018-S-124-283483/d5eb64bb-60fc-33e6-91a2-96bf252d3a17>
   a epo:FrameworkAgreementTechniqueUsage .
@@ -147,8 +142,8 @@
   a org:Organization;
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2018-S-124-283483/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>;
   epo:hasLegalName "Københavns Lufthavne A/S"@da;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/airport>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-124-283483/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/airport>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-124-283483/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-124-283483/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
   a locn:Address;
@@ -169,9 +164,9 @@
                For dette udbud gælder Europa-parlamentet og Rådet for den europæiske unions forordning nr. 1107/2006 af 5.7.2006 om handicappede og bevægelseshæmmede personers (idet følgende kaldet Persons with Reduced Mobility – PRM) rettigheder, når de rejser med fly. Forordningen indeholder bl.a ansvar for at yde PRM bistand i EU-lufthavne på nærmere definerede vilkår. Forordningen er vedlagt som bilag til kravspecifikation. Bistanden er med forordningens ikræfttrædelse alene et ansvar, der påhviler EU-lufthavne. CPH er ansvarlig for den bistand/assistance, der skal ydes PRM i Københavns Lufthavn, der pt har 30 000 000 passagerer årligt.
             """@da;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2018-S-124-283483/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-124-283483/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2018-S-124-283483/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-124-283483/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
   epo:hasTitle """
                Persons With reduced Mobility (PRM)
             """@da;
@@ -213,7 +208,7 @@
   a org:Organization;
   epo:hasLegalName "Klagenævnet for udbud"@da;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-124-283483/f408af29-86f8-3547-8427-ccade0632c83>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-124-283483/f408af29-86f8-3547-8427-ccade0632c83> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-124-283483/f408af29-86f8-3547-8427-ccade0632c83> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-124-283483/f408af29-86f8-3547-8427-ccade0632c83>
   a locn:Address;
@@ -241,4 +236,4 @@
 
 <http://data.europa.eu/a4g/resource/WinnerRole/2018-S-124-283483/998a03d2-1c58-30a7-b401-bfa672624666>
   a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractOrganisation/2018-S-124-283483/998a03d2-1c58-30a7-b401-bfa672624666> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2018-S-124-283483/998a03d2-1c58-30a7-b401-bfa672624666> .

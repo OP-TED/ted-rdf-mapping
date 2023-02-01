@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,23 +17,19 @@
 
 <http://data.europa.eu/a4g/resource/AccessTerm/2017-S-142-292998/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209>
   a epo:AccessTerm;
-  epo:hasPublicAccessURL <http://www.marches-publics.gouv.fr>;
+  epo:hasPublicAccessURL "http://www.marches-publics.gouv.fr"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
 
 <http://data.europa.eu/a4g/resource/Buyer/2017-S-142-292998/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209>
   a epo:Buyer;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-142-292998/34655f62-8001-38ad-a804-119bb9c85d23>;
+  epo:hasBuyerProfile "http://www.marches-publics.gouv.fr"^^xsd:anyURI;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-142-292998/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
   epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2017-S-142-292998/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
-
-<http://data.europa.eu/a4g/resource/BuyerProfile/2017-S-142-292998/34655f62-8001-38ad-a804-119bb9c85d23>
-  a epo:BuyerProfile;
-  epo:hasURL "http://www.marches-publics.gouv.fr" .
 
 <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-142-292998/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a cccev:ContactPoint;
   epo:hasFax "+33 326832581";
-  epo:hasInternetAddress "http://www.chu-reims.fr";
+  epo:hasInternetAddress "http://www.chu-reims.fr"^^xsd:anyURI;
   cccev:email "cellulemarches@chu-reims.fr";
   cccev:telephone "+33 310736039" .
 
@@ -59,21 +54,17 @@
   time:numericDuration 240.0;
   time:unitType time:unitMonth .
 
-<http://data.europa.eu/a4g/resource/InformationProviderBuyerProfile/2017-S-142-292998/3b3bfe06-efda-3838-a9f0-72f92036e6fe>
-  a epo:BuyerProfile;
-  epo:hasURL "https://www.marches-publics.gouv.fr" .
-
 <http://data.europa.eu/a4g/resource/InformationProviderContactPoint/2017-S-142-292998/860f540c-530b-3a41-b77b-2fa3c5304839>
   a cccev:ContactPoint;
   epo:hasContactName "Mme Freudenreich"@fr;
-  epo:hasInternetAddress "http://www.chu-reims.fr";
+  epo:hasInternetAddress "http://www.chu-reims.fr"^^xsd:anyURI;
   cccev:email "cmfreudenreich@chu-reims.fr" .
 
 <http://data.europa.eu/a4g/resource/InformationProviderOrganisation/2017-S-142-292998/860f540c-530b-3a41-b77b-2fa3c5304839>
   a org:Organization;
   epo:hasID <http://data.europa.eu/a4g/resource/InformationProviderOrganisationIdentifier/2017-S-142-292998/860f540c-530b-3a41-b77b-2fa3c5304839>;
   epo:hasLegalName "Direction des ressources humaines"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/InformationProviderOrganisationAddress/2017-S-142-292998/860f540c-530b-3a41-b77b-2fa3c5304839> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/InformationProviderOrganisationAddress/2017-S-142-292998/860f540c-530b-3a41-b77b-2fa3c5304839> .
 
 <http://data.europa.eu/a4g/resource/InformationProviderOrganisationAddress/2017-S-142-292998/860f540c-530b-3a41-b77b-2fa3c5304839>
   a locn:Address;
@@ -151,8 +142,8 @@
   epo:hasBuyerLegalTypeDescription "Établissement de santé";
   epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2017-S-142-292998/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
   epo:hasLegalName "CHU Reims"@fr;
-  epo:hasMainActivityType <http://publications.europa.eu/resource/authority/main-activity/health>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-142-292998/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/health>;
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-142-292998/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
 
 <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-142-292998/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
   a locn:Address;
@@ -187,8 +178,8 @@
             """@fr;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/MonetaryValueProcedure/2017-S-142-292998/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2017-S-142-292998/3b2748c6-16de-3218-af2c-e7456a886558>;
-  epo:hasOverallPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-142-292998/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2017-S-142-292998/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-142-292998/3b2748c6-16de-3218-af2c-e7456a886558>;
   epo:hasTitle """
                Concession de service ayant pour objet la création et la gestion d'une structure multi- accueil collectif au sein du Centre Hospitalier Universitaire de Reims — phase candidature.
             """@fr;
@@ -213,7 +204,6 @@
 
 <http://data.europa.eu/a4g/resource/ProcurementProcedureInformationProvider/2017-S-142-292998/860f540c-530b-3a41-b77b-2fa3c5304839>
   a epo:ProcurementProcedureInformationProvider;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/InformationProviderBuyerProfile/2017-S-142-292998/3b3bfe06-efda-3838-a9f0-72f92036e6fe>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/InformationProviderContactPoint/2017-S-142-292998/860f540c-530b-3a41-b77b-2fa3c5304839>;
   epo:playedBy <http://data.europa.eu/a4g/resource/InformationProviderOrganisation/2017-S-142-292998/860f540c-530b-3a41-b77b-2fa3c5304839> .
 
@@ -231,7 +221,7 @@
 <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2017-S-142-292998/05b8f927-9591-3b74-af26-202fe3171464>
   a org:Organization;
   epo:hasLegalName "Tribunal de Châlons-en-Champagne"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-142-292998/05b8f927-9591-3b74-af26-202fe3171464> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-142-292998/05b8f927-9591-3b74-af26-202fe3171464> .
 
 <http://data.europa.eu/a4g/resource/ReviewTerm/2017-S-142-292998/47e9b87d-92c4-3448-9a4e-937646b178e8>
   a epo:ReviewTerm;
@@ -248,7 +238,7 @@
 <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2017-S-142-292998/2a666ce1-cebc-31d9-b200-113ebf473883>
   a org:Organization;
   epo:hasLegalName "Tribunal de Châlons-en-Champagne"@fr;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-142-292998/2a666ce1-cebc-31d9-b200-113ebf473883> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-142-292998/2a666ce1-cebc-31d9-b200-113ebf473883> .
 
 <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-142-292998/2a666ce1-cebc-31d9-b200-113ebf473883>
   a locn:Address;
@@ -277,26 +267,20 @@
 <http://data.europa.eu/a4g/resource/SubmissionTerm/2017-S-142-292998/64850f6d-a341-38ae-bc98-ed98207d0890>
   a epo:SubmissionTerm;
   epo:hasLanguage "FR";
-  epo:hasReceiptDeadline "2017-09-11"^^xsd:datetime;
-  epo:hasReceiptExpressionsDeadline "12:00"^^xsd:datetime;
-  epo:hasSubmissionURL "http://www.marches-publics.gouv.fr" .
+  epo:hasReceiptDeadline "2017-09-11T12:00:00"^^xsd:dateTime;
+  epo:hasSubmissionURL "http://www.marches-publics.gouv.fr"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/TenderReceiver/2017-S-142-292998/87dd561e-68f3-3d41-94c4-d7a8d3201315>
   a epo:TenderReceiver;
-  epo:hasBuyerProfile <http://data.europa.eu/a4g/resource/TenderReceiverBuyerProfile/2017-S-142-292998/8c9be3ea-f434-3010-9587-0bb8b4d836c6>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/TenderReceiverOrganisationContactPoint/2017-S-142-292998/87dd561e-68f3-3d41-94c4-d7a8d3201315>;
   epo:playedBy <http://data.europa.eu/a4g/resource/TenderReceiverOrganisation/2017-S-142-292998/87dd561e-68f3-3d41-94c4-d7a8d3201315> .
-
-<http://data.europa.eu/a4g/resource/TenderReceiverBuyerProfile/2017-S-142-292998/8c9be3ea-f434-3010-9587-0bb8b4d836c6>
-  a epo:BuyerProfile;
-  epo:hasURL "https://www.marches-publics.gouv.fr" .
 
 <http://data.europa.eu/a4g/resource/TenderReceiverOrganisation/2017-S-142-292998/87dd561e-68f3-3d41-94c4-d7a8d3201315>
   a org:Organization;
   epo:hasID <http://data.europa.eu/a4g/resource/TenderReceiverOrganisationIdentifier/2017-S-142-292998/87dd561e-68f3-3d41-94c4-d7a8d3201315>;
   epo:hasLegalName "CHU de Reims"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/TenderReceiverOrganisationContactPoint/2017-S-142-292998/87dd561e-68f3-3d41-94c4-d7a8d3201315>;
-  legal:registeredAddress <http://data.europa.eu/a4g/resource/TenderReceiverOrganisationAddress/2017-S-142-292998/87dd561e-68f3-3d41-94c4-d7a8d3201315> .
+  cccev:registeredAddress <http://data.europa.eu/a4g/resource/TenderReceiverOrganisationAddress/2017-S-142-292998/87dd561e-68f3-3d41-94c4-d7a8d3201315> .
 
 <http://data.europa.eu/a4g/resource/TenderReceiverOrganisationAddress/2017-S-142-292998/87dd561e-68f3-3d41-94c4-d7a8d3201315>
   a locn:Address;
@@ -309,7 +293,7 @@
 <http://data.europa.eu/a4g/resource/TenderReceiverOrganisationContactPoint/2017-S-142-292998/87dd561e-68f3-3d41-94c4-d7a8d3201315>
   a cccev:ContactPoint;
   epo:hasContactName "Mme Rossit CMP03"@fr;
-  epo:hasInternetAddress "http://www.chu-reims.fr";
+  epo:hasInternetAddress "http://www.chu-reims.fr"^^xsd:anyURI;
   cccev:email "cellulemarches@chu-reims.fr" .
 
 <http://data.europa.eu/a4g/resource/TenderReceiverOrganisationIdentifier/2017-S-142-292998/87dd561e-68f3-3d41-94c4-d7a8d3201315>
