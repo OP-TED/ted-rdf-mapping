@@ -825,7 +825,7 @@ tedm:ContractIdentifier a rr:TriplesMap ;
 #            rr:class epo:Tenderer
 #
 #        ] .
-tedm:WinnerRole a rr:TriplesMap ;
+tedm:Winner a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -834,12 +834,12 @@ tedm:WinnerRole a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_WinnerRole_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Winner_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:Winner
 
         ] .
 
-tedm:WinnerRoleFromResults a rr:TriplesMap ;
+tedm:WinnerFromResults a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -848,7 +848,7 @@ tedm:WinnerRoleFromResults a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_WinnerRole_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Winner_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:Winner
 
         ] .
@@ -992,7 +992,7 @@ tedm:TenderAwardOutcome a rr:TriplesMap ;
             rr:predicate epo:indicatesAwardOfLotToWinner ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:WinnerRoleFromResults;
+                    rr:parentTriplesMap tedm:WinnerFromResults;
                 ] ;
         ] .
 tedm:Tender a rr:TriplesMap ;
