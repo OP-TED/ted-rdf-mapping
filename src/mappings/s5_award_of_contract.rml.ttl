@@ -12,7 +12,7 @@
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix cpov: <http://data.europa.eu/m8g/> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
+@prefix cv: <http://data.europa.eu/m8g/> .
 
 tedm:award_of_contract
   a owl:Ontology ;
@@ -33,13 +33,13 @@ tedm:award_of_contract
 #
 #                ]
 #        ] .
-tedm:ContractOrganisationGroup a rr:TriplesMap ;
+tedm:ContractorOrganisationGroup a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasMember;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ContractOrganisation;
+                    rr:parentTriplesMap tedm:ContractorOrganisation;
                     rr:joinCondition [
                         rr:child "ancestor::AWARD_CONTRACT/@ITEM";
                         rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
@@ -52,7 +52,7 @@ tedm:ContractOrganisationGroup a rr:TriplesMap ;
             rr:predicate epo:hasMember;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ContractOrganisation;
+                    rr:parentTriplesMap tedm:ContractorOrganisation;
                     rr:joinCondition [
                         rr:child "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR | ancestor::AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR";
                         rr:parent "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR | ancestor::AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR";
@@ -366,20 +366,20 @@ tedm:ContractIdentifier a rr:TriplesMap ;
 #            rr:predicate epo:playedBy ;
 #            rr:objectMap
 #                [
-#                    rr:parentTriplesMap tedm:ContractOrganisation;
+#                    rr:parentTriplesMap tedm:ContractorOrganisation;
 #                    rr:joinCondition [
 #                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
 #                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
 #                    ];
 #                ] ;
 #        ] .
-tedm:WinnerRole a rr:TriplesMap ;
+tedm:Winner a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:playedBy ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ContractOrganisation;
+                    rr:parentTriplesMap tedm:ContractorOrganisation;
                     rr:joinCondition [
                     rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                     rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
@@ -415,7 +415,7 @@ tedm:WinnerRole a rr:TriplesMap ;
 #            rr:predicate epo:playedBy ;
 #            rr:objectMap
 #                [
-#                    rr:parentTriplesMap tedm:ContractOrganisation;
+#                    rr:parentTriplesMap tedm:ContractorOrganisation;
 #                    rr:joinCondition [
 #                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
 #                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
@@ -428,7 +428,7 @@ tedm:WinnerRole a rr:TriplesMap ;
 #            rr:predicate epo:playedBy ;
 #            rr:objectMap
 #                [
-#                    rr:parentTriplesMap tedm:ContractOrganisation;
+#                    rr:parentTriplesMap tedm:ContractorOrganisation;
 #                    rr:joinCondition [
 #                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
 #                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
@@ -436,7 +436,7 @@ tedm:WinnerRole a rr:TriplesMap ;
 #                ] ;
 #        ] .
 
-tedm:ContractOrganisation a rr:TriplesMap ;
+tedm:ContractorOrganisation a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasBusinessSize ;
@@ -471,7 +471,7 @@ tedm:ContractOrganisation a rr:TriplesMap ;
             rr:predicate epo:hasID;
             rr:objectMap
             [
-                rr:parentTriplesMap tedm:ContractOrganisationIdentifier;
+                rr:parentTriplesMap tedm:ContractorOrganisationIdentifier;
                 rr:joinCondition [
                     rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                     rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
@@ -480,10 +480,10 @@ tedm:ContractOrganisation a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate legal:registeredAddress ;
+            rr:predicate cv:registeredAddress ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ContractOrganisationAddress;
+                    rr:parentTriplesMap tedm:ContractorOrganisationAddress;
                     rr:joinCondition [
                         rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                         rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
@@ -495,14 +495,14 @@ tedm:ContractOrganisation a rr:TriplesMap ;
             rr:predicate epo:hasPrimaryContactPoint ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ContractContactPoint;
+                    rr:parentTriplesMap tedm:ContractorContactPoint;
                     rr:joinCondition [
                         rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                         rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                     ];
                 ] ;
         ] .
-tedm:ContractOrganisationIdentifier a rr:TriplesMap ;
+tedm:ContractorOrganisationIdentifier a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasIdentifierValue ;
@@ -511,7 +511,7 @@ tedm:ContractOrganisationIdentifier a rr:TriplesMap ;
                     rml:reference "ADDRESS_CONTRACTOR/NATIONALID"
                 ] ;
         ] .
-tedm:ContractContactPoint a rr:TriplesMap ;
+tedm:ContractorContactPoint a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate cpov:email ;
@@ -556,7 +556,7 @@ tedm:ContractContactPoint a rr:TriplesMap ;
                     ]
                 ]
         ] .
-tedm:ContractOrganisationAddress a rr:TriplesMap ;
+tedm:ContractorOrganisationAddress a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate locn:postName ;
@@ -647,7 +647,7 @@ tedm:TenderAwardOutcome a rr:TriplesMap ;
             rr:predicate epo:indicatesAwardOfLotToWinner  ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:WinnerRole;
+                    rr:parentTriplesMap tedm:Winner;
                     rr:joinCondition [
 #                        rr:child "ancestor::AWARD_CONTRACT/@ITEM";
 #                        rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
@@ -1114,13 +1114,13 @@ tedm:MonetaryValueSubmissionLowest a rr:TriplesMap ;
                 ] ;
         ] .
 
-tedm:WinnerRoleFromResults a rr:TriplesMap ;
+tedm:WinnerFromResults a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:playedBy ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ContractOrganisationFromResults;
+                    rr:parentTriplesMap tedm:ContractorOrganisationFromResults;
                     rr:joinCondition [
                         rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                         rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
@@ -1128,7 +1128,7 @@ tedm:WinnerRoleFromResults a rr:TriplesMap ;
                 ] ;
         ] .
 
-tedm:ContractOrganisationFromResults a rr:TriplesMap ;
+tedm:ContractorOrganisationFromResults a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasBusinessSize ;
@@ -1163,7 +1163,7 @@ tedm:ContractOrganisationFromResults a rr:TriplesMap ;
             rr:predicate epo:hasID;
             rr:objectMap
             [
-                rr:parentTriplesMap tedm:ContractOrganisationFromResultsIdentifier;
+                rr:parentTriplesMap tedm:ContractorOrganisationFromResultsIdentifier;
                 rr:joinCondition [
                     rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                     rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
@@ -1172,10 +1172,10 @@ tedm:ContractOrganisationFromResults a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate legal:registeredAddress ;
+            rr:predicate cv:registeredAddress ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ContractOrganisationFromResultsAddress;
+                    rr:parentTriplesMap tedm:ContractorOrganisationFromResultsAddress;
                     rr:joinCondition [
                         rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                         rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
@@ -1187,7 +1187,7 @@ tedm:ContractOrganisationFromResults a rr:TriplesMap ;
             rr:predicate epo:hasPrimaryContactPoint ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ContractOrganisationFromResultsContactPoint ;
+                    rr:parentTriplesMap tedm:ContractorOrganisationFromResultsContactPoint ;
                     rr:joinCondition [
                         rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                         rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
@@ -1195,7 +1195,7 @@ tedm:ContractOrganisationFromResults a rr:TriplesMap ;
                 ] ;
         ] .
 
-tedm:ContractOrganisationFromResultsIdentifier a rr:TriplesMap ;
+tedm:ContractorOrganisationFromResultsIdentifier a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasIdentifierValue;
@@ -1205,7 +1205,7 @@ tedm:ContractOrganisationFromResultsIdentifier a rr:TriplesMap ;
                 ]
         ] .
 
-tedm:ContractOrganisationFromResultsContactPoint a rr:TriplesMap ;
+tedm:ContractorOrganisationFromResultsContactPoint a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasInternetAddress ;
@@ -1239,7 +1239,7 @@ tedm:ContractOrganisationFromResultsContactPoint a rr:TriplesMap ;
                     rml:reference "ADDRESS_WINNER/PHONE"
                 ]
         ] .
-tedm:ContractOrganisationFromResultsAddress a rr:TriplesMap ;
+tedm:ContractorOrganisationFromResultsAddress a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate locn:postName ;

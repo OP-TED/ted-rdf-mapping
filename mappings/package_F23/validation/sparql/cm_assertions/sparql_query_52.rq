@@ -1,10 +1,11 @@
-#title: I.3.4.3.12.2 - Address of the buyer profile
-#description: “I.3.4.3.12.2 - Address of the buyer profile” in SF corresponds to “BT-508 Buyer Profile URL” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F23_2014/CONTRACTING_BODY/ADDRESS_PARTICIPATION/URL_BUYER. The expected ontology instances are epo: epo:AgentInRole (from CL1) / epo:BuyerProfile / xsd:anyURI .
-#xpath: /TED_EXPORT/FORM_SECTION/F23_2014/CONTRACTING_BODY/ADDRESS_PARTICIPATION/URL_BUYER
+#title: I.4 - Type of the contracting authority (in the case of a notice published by a contracting authority)
+#description: “I.4 - Type of the contracting authority (in the case of a notice published by a contracting authority)” in SF corresponds to “BT-11 Buyer Legal Type” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F23_2014/CONTRACTING_BODY/CA_TYPE. The expected ontology instances are epo: org:Organization / at-voc:buyer-legal-type (from buyer_legal_type.csv) .
+#xpath: /TED_EXPORT/FORM_SECTION/F23_2014/CONTRACTING_BODY/CA_TYPE
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:TenderReceiver .
-		?this epo:hasBuyerProfile / epo:hasURL ?value . }
+		?this rdf:type org:Organization .
+		?this epo:hasBuyerType ?value . }
