@@ -19,7 +19,7 @@ tedm:contracting_authority
         This module provides the mapping definitions for the ..."""@en ;
   rdfs:label "TED-SWS mapping of "@en ;  
   dct:date "2022-05-11"^^xsd:date .
-tedm:BuyerOrganisationGroup a rr:TripleMap ;
+tedm:BuyerOrganisationGroup a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasDeliveryGateway ;
@@ -46,7 +46,7 @@ tedm:BuyerOrganisationGroup a rr:TripleMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasMainActivityType ;
+            rr:predicate epo:hasMainActivity ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:mainActivity;
@@ -58,7 +58,7 @@ tedm:BuyerOrganisationGroup a rr:TripleMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasMainActivityType ;
+            rr:predicate epo:hasMainActivity ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:mainActivity;
@@ -86,10 +86,10 @@ tedm:BuyerOrganisationGroup a rr:TripleMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasBuyerType ;
+            rr:predicate epo:hasBuyerLegalType ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:buyerType;
+                    rr:parentTriplesMap tedm:buyerLegalType;
                     rr:joinCondition [
                         rr:child "../CA_TYPE/@VALUE";
                         rr:parent "xmlElement";
@@ -105,7 +105,7 @@ tedm:BuyerOrganisationGroup a rr:TripleMap ;
                 ] ;
         ] .
 
-tedm:AdditionalBuyer a rr:TripleMap ;
+tedm:AdditionalBuyer a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasContactPointInRole ;
@@ -133,65 +133,58 @@ tedm:AdditionalBuyer a rr:TripleMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasBuyerProfile ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:AdditionalBuyerProfile;
-                    rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    ];
-                ] ;
-        ] .
-tedm:AdditionalBuyerCP a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasContactPointInRole ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:AdditionalContactPoint;
-                    rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    ];
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:playedBy ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:AdditionalOrganisation;
-                    rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    ];
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasBuyerProfile ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:AdditionalBuyerProfile;
-                    rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    ];
-                ] ;
-        ] .
-
-tedm:AdditionalBuyerProfile a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasURL;
             rr:objectMap
                 [
                     rml:reference "URL_BUYER";
                     rr:datatype xsd:anyURI;
                 ]
         ] .
-
-tedm:AdditionalOrganisation a rr:TripleMap ;
+tedm:AdditionalBuyerCP a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContactPointInRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:AdditionalContactPoint;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:playedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:AdditionalOrganisation;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasBuyerProfile ;
+            rr:objectMap
+                [
+                    rml:reference "URL_BUYER";
+                    rr:datatype xsd:anyURI;
+                ]
+        ] .
+tedm:AdditionalOrganisation a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasLegalName ;
+            rr:objectMap
+                [
+                    rml:reference "OFFICIALNAME";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ] ;
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate legal:registeredAddress ;
@@ -216,7 +209,7 @@ tedm:AdditionalOrganisation a rr:TripleMap ;
                     ];
                 ]
         ] .
-tedm:AdditionalOrganisationIdentifier a rr:TripleMap ;
+tedm:AdditionalOrganisationIdentifier a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasIdentifierValue;
@@ -226,15 +219,6 @@ tedm:AdditionalOrganisationIdentifier a rr:TripleMap ;
                 ]
         ] .
 tedm:AdditionalContactPoint a rr:TriplesMap ;
-    rr:predicateObjectMap
-    [
-        rr:predicate epo:hasInternetAddress ;
-        rr:objectMap
-            [
-                rml:reference "URL_GENERAL";
-                rr:datatype xsd:anyURI
-            ] ;
-    ] ;
     rr:predicateObjectMap
         [
             rr:predicate cpov:email ;
@@ -251,7 +235,6 @@ tedm:AdditionalContactPoint a rr:TriplesMap ;
                     rml:reference "FAX"
                 ]
         ] ;
-
     rr:predicateObjectMap
         [
             rr:predicate cpov:telephone ;
@@ -259,6 +242,26 @@ tedm:AdditionalContactPoint a rr:TriplesMap ;
                 [
                     rml:reference "PHONE"
                 ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContactName ;
+            rr:objectMap
+                [
+                    rml:reference "CONTACT_POINT";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasInternetAddress ;
+            rr:objectMap
+                [
+                    rml:reference "URL_GENERAL";
+                    rr:datatype xsd:anyURI
+                ] ;
         ] .
 tedm:AdditionalOrganisationAddress  a rr:TriplesMap ;
     rr:predicateObjectMap
@@ -331,7 +334,7 @@ tedm:AdditionalOrganisationAddress  a rr:TriplesMap ;
                 ] ;
         ] .
 
-tedm:BuyerCP a rr:TripleMap ;
+tedm:BuyerCP a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:playedBy ;
@@ -353,47 +356,48 @@ tedm:BuyerCP a rr:TripleMap ;
             rr:predicate epo:hasBuyerProfile ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:BuyerProfile
-                ] ;
-        ] .
-tedm:Buyer a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:playedBy ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:Organisation
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasContactPointInRole ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ContactPoint
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasBuyerProfile ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:BuyerProfile
-                ] ;
-        ] .
-		
-tedm:BuyerProfile a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasURL;
-            rr:objectMap
-                [
-                    rml:reference ".";
+                    rml:reference "ADDRESS_CONTRACTING_BODY/URL_BUYER";
                     rr:datatype xsd:anyURI;
-                ]
+                ] ;
         ] .
-
-tedm:Organisation a rr:TripleMap ;
+tedm:Buyer a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:playedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Organisation
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContactPointInRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ContactPoint
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasBuyerProfile ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_CONTRACTING_BODY/URL_BUYER";
+                    rr:datatype xsd:anyURI;
+                ] ;
+        ] .
+tedm:Organisation a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasLegalName ;
+            rr:objectMap
+                [
+                    rml:reference "OFFICIALNAME";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ] ;
+        ] ;
 #    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasDeliveryGateway ;
@@ -424,7 +428,7 @@ tedm:Organisation a rr:TripleMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasMainActivityType ;
+            rr:predicate epo:hasMainActivity ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:mainActivity;
@@ -436,7 +440,7 @@ tedm:Organisation a rr:TripleMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasMainActivityType ;
+            rr:predicate epo:hasMainActivity ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:mainActivity;
@@ -464,10 +468,10 @@ tedm:Organisation a rr:TripleMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasBuyerType ;
+            rr:predicate epo:hasBuyerLegalType ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:buyerType;
+                    rr:parentTriplesMap tedm:buyerLegalType;
                     rr:joinCondition [
                         rr:child "if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then ../CA_TYPE/@VALUE else null";
                         rr:parent "xmlElement";
@@ -482,7 +486,7 @@ tedm:Organisation a rr:TripleMap ;
                     rml:reference "../CA_TYPE_OTHER"
                 ] ;
         ] .
-tedm:OrganisationIdentifier a rr:TripleMap ;
+tedm:OrganisationIdentifier a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasIdentifierValue;
@@ -515,6 +519,17 @@ tedm:ContactPoint a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "PHONE"
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContactName ;
+            rr:objectMap
+                [
+                    rml:reference "CONTACT_POINT";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
                 ]
         ] ;
     rr:predicateObjectMap
@@ -605,14 +620,8 @@ tedm:OrganisationChannel a rr:TriplesMap ;
                 [
                     rml:reference ".";
                     rr:datatype xsd:anyURI;
-
                 ] ;
         ] .
-
-
-
-
-###some changes required for the shacl violations
 tedm:AccessTerm  a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -632,9 +641,6 @@ tedm:AccessTerm  a rr:TriplesMap ;
                     rr:datatype xsd:boolean
                 ] ;
         ] ;
-
-
-
     rr:predicateObjectMap
         [
             rr:predicate epo:hasPublicAccessURL ;
@@ -654,9 +660,6 @@ tedm:AccessTerm  a rr:TriplesMap ;
                     rr:datatype xsd:anyURI;
                 ] ;
         ].
-
-
-
 tedm:Notice a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -690,7 +693,7 @@ tedm:Notice a rr:TriplesMap ;
                 rr:parentTriplesMap tedm:TenderReceiver;
             ]
         ] .
-tedm:ProcurementProcedureInformationProviderIdem a rr:TripleMap ;
+tedm:ProcurementProcedureInformationProviderIdem a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:playedBy ;
@@ -706,16 +709,20 @@ tedm:ProcurementProcedureInformationProviderIdem a rr:TripleMap ;
                 [
                     rr:parentTriplesMap tedm:ContactPoint
                 ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasBuyerProfile ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:BuyerProfile
-                ] ;
+#        ] ;
+# Although the URL_BUYER XML is present in the ADDRESS_CONTRACTING_BODY, which is used to specify the
+# address of the ProcurementProcedureInformationProviderIdem, EPO does not foresee any property to link the value
+# stored in that XML element (only the epo:Buyer has a property to express buyer profile, not on any other roles)
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasBuyerProfile ;
+#            rr:objectMap
+#                [
+#                    rml:reference "../ADDRESS_CONTRACTING_BODY/URL_BUYER";
+#                    rr:datatype xsd:anyURI;
+#                ] ;
         ] .
-tedm:ProcurementProcedureInformationProvider a rr:TripleMap ;
+tedm:ProcurementProcedureInformationProvider a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:playedBy ;
@@ -731,26 +738,31 @@ tedm:ProcurementProcedureInformationProvider a rr:TripleMap ;
                 [
                     rr:parentTriplesMap tedm:InformationProviderContactPoint
                 ] ;
-        ] ;
+#        ] ;
+# Although the URL_BUYER XML is present in the ADDRESS_FURTHER_INFO, which is used to specify the
+# address of the ProcurementProcedureInformationProvider, EPO does not foresee any property to link the value
+# stored in that XML element (only the epo:Buyer has a property to express buyer profile, not on any other roles)
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasBuyerProfile ;
+#            rr:objectMap
+#                [
+#                    rml:reference "URL_BUYER";
+#                    rr:datatype xsd:anyURI;
+#                ] ;
+        ] .
+tedm:InformationProviderOrganisation a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasBuyerProfile ;
+            rr:predicate epo:hasLegalName ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:InformationProviderBuyerProfile
+                    rml:reference "OFFICIALNAME";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
                 ] ;
-        ] .
-tedm:InformationProviderBuyerProfile a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasURL;
-            rr:objectMap
-                [
-                    rml:reference ".";
-                    rr:datatype xsd:anyURI;
-                ]
-        ] .
-tedm:InformationProviderOrganisation a rr:TripleMap ;
+        ] ;
 #    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasDeliveryGateway ;
@@ -779,7 +791,7 @@ tedm:InformationProviderOrganisation a rr:TripleMap ;
                     rr:parentTriplesMap tedm:InformationProviderOrganisationIdentifier
                 ]
         ] .
-tedm:InformationProviderOrganisationIdentifier a rr:TripleMap ;
+tedm:InformationProviderOrganisationIdentifier a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasIdentifierValue;
@@ -822,7 +834,18 @@ tedm:InformationProviderContactPoint a rr:TriplesMap ;
                     rml:reference "URL_GENERAL";
                     rr:datatype xsd:anyURI
                 ] ;
-        ] .
+         ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContactName ;
+            rr:objectMap
+                [
+                    rml:reference "CONTACT_POINT";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ]
+       ] .
 tedm:InformationProviderOrganisationAddress  a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -893,7 +916,7 @@ tedm:InformationProviderOrganisationAddress  a rr:TriplesMap ;
                     ];
                 ] ;
         ] .
-tedm:TenderReceiverIdem a rr:TripleMap ;
+tedm:TenderReceiverIdem a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:playedBy ;
@@ -909,16 +932,20 @@ tedm:TenderReceiverIdem a rr:TripleMap ;
                 [
                     rr:parentTriplesMap tedm:ContactPoint
                 ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasBuyerProfile ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:BuyerProfile
-                ] ;
+#        ] ;
+# Although the URL_BUYER XML is present in the ADDRESS_CONTRACTING_BODY, which is used to specify the
+# address of the TenderReceiverIdem, EPO does not foresee any property to link the value
+# stored in that XML element (only the epo:Buyer has a property to express buyer profile, not on any other roles)
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasBuyerProfile ;
+#            rr:objectMap
+#                [
+#                    rml:reference "../ADDRESS_CONTRACTING_BODY/URL_BUYER";
+#                    rr:datatype xsd:anyURI;
+#                ] ;
         ] .
-tedm:TenderReceiver a rr:TripleMap ;
+tedm:TenderReceiver a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:playedBy ;
@@ -934,26 +961,31 @@ tedm:TenderReceiver a rr:TripleMap ;
                 [
                     rr:parentTriplesMap tedm:TenderReceiverOrganisationContactPoint
                 ] ;
-        ] ;
+#        ] ;
+# Although the URL_BUYER XML is present in the ADDRESS_PARTICIPATION, which is used to specify the
+# address of the TenderReceiver, EPO does not foresee any property to link the value
+# stored in that XML element (only the epo:Buyer has a property to express buyer profile, not on any other roles)
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasBuyerProfile ;
+#            rr:objectMap
+#                [
+#                    rml:reference "URL_BUYER";
+#                    rr:datatype xsd:anyURI;
+#                ] ;
+        ] .
+tedm:TenderReceiverOrganisation a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasBuyerProfile ;
+            rr:predicate epo:hasLegalName ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:TenderReceiverBuyerProfile
+                    rml:reference "OFFICIALNAME";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
                 ] ;
-        ] .
-tedm:TenderReceiverBuyerProfile a rr:TripleMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasURL;
-            rr:objectMap
-                [
-                    rml:reference ".";
-                    rr:datatype xsd:anyURI;
-                ]
-        ] .
-tedm:TenderReceiverOrganisation a rr:TripleMap ;
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasPrimaryContactPoint ;
@@ -978,7 +1010,7 @@ tedm:TenderReceiverOrganisation a rr:TripleMap ;
                     rr:parentTriplesMap tedm:TenderReceiverOrganisationIdentifier
                 ]
         ] .
-tedm:TenderReceiverOrganisationIdentifier a rr:TripleMap ;
+tedm:TenderReceiverOrganisationIdentifier a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasIdentifierValue;
@@ -1021,6 +1053,17 @@ tedm:TenderReceiverOrganisationContactPoint a rr:TriplesMap ;
                     rml:reference "URL_GENERAL";
                     rr:datatype xsd:anyURI
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContactName ;
+            rr:objectMap
+                [
+                    rml:reference "CONTACT_POINT";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ]
         ] .
 tedm:TenderReceiverOrganisationAddress  a rr:TriplesMap ;
     rr:predicateObjectMap
