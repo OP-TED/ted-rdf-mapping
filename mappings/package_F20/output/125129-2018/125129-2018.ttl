@@ -15,102 +15,96 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://data.europa.eu/a4g/resource/Buyer/2018-S-056-125129/0156d029-ea5d-32c8-9775-6e736949dafe>
-  a epo:Buyer;
+epd:2018-S-056-125129_Buyer_0156d029-ea5d-32c8-9775-6e736949dafe a epo:Buyer;
   epo:hasBuyerProfile "https://kgv.doffin.no/ctm/Company/CompanyInformation/Index/81939"^^xsd:anyURI;
-  epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-056-125129/12090057-4d35-309d-8a57-04cbe4e97554>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-056-125129/12090057-4d35-309d-8a57-04cbe4e97554> .
+  epo:hasContactPointInRole epd:2018-S-056-125129_ContactPoint_12090057-4d35-309d-8a57-04cbe4e97554;
+  epo:playedBy epd:2018-S-056-125129_Organisation_12090057-4d35-309d-8a57-04cbe4e97554 .
 
-<http://data.europa.eu/a4g/resource/ContactPoint/2018-S-056-125129/12090057-4d35-309d-8a57-04cbe4e97554>
-  a cccev:ContactPoint;
+epd:2018-S-056-125129_ContactPoint_12090057-4d35-309d-8a57-04cbe4e97554 a cccev:ContactPoint;
   epo:hasContactName "Helge Halse"@en;
   epo:hasInternetAddress "www.trondelagfylke.no"^^xsd:anyURI;
   cccev:email "helhal@trondelagfylke.no";
   cccev:telephone "+47 92685580" .
 
-<http://data.europa.eu/a4g/resource/Contract/2018-S-056-125129/408a9316-e1f5-35fd-8b3f-1891fc75519e>
-  a epo:Contract;
+epd:2018-S-056-125129_ContractIdentifier_408a9316-e1f5-35fd-8b3f-1891fc75519e a epo:Identifier;
+  epo:hasIdentifierValue "2014" .
+
+epd:2018-S-056-125129_ContractModification_7756f2c6-25ed-3582-8857-c559a5a18257 a
+    epo:ContractModification;
+  epo:describesNotice epd:2018-S-056-125129_Notice;
+  epo:hasElementModification epd:2018-S-056-125129_ElementModificationDescription_7756f2c6-25ed-3582-8857-c559a5a18257 .
+
+epd:2018-S-056-125129_ContractTermLocationAddressModification_7b7529f1-e490-38e9-8bf9-6378671dc463
+  a locn:Address;
+  locn:fullAddress """
+                  Sør-Trøndelag, Norway.
+               """@en .
+
+epd:2018-S-056-125129_ContractTermLocationAddress_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8
+  a locn:Address;
+  locn:fullAddress """
+                  Sør-Trøndelag, Norway.
+               """@en .
+
+epd:2018-S-056-125129_ContractTermLocationModification_7b7529f1-e490-38e9-8bf9-6378671dc463
+  a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/NO06>;
+  locn:address epd:2018-S-056-125129_ContractTermLocationAddressModification_7b7529f1-e490-38e9-8bf9-6378671dc463 .
+
+epd:2018-S-056-125129_ContractTermLocation_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8 a
+    dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/NO06>;
+  locn:address epd:2018-S-056-125129_ContractTermLocationAddress_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8 .
+
+epd:2018-S-056-125129_ContractTermModification_7b7529f1-e490-38e9-8bf9-6378671dc463
+  a epo:ContractTerm;
+  epo:definesContractDuration epd:2018-S-056-125129_DurationModification_e3c2db23-06ee-3138-889e-fd6d701080e5;
+  epo:definesSpecificPlaceOfPerformance epd:2018-S-056-125129_ContractTermLocationModification_7b7529f1-e490-38e9-8bf9-6378671dc463 .
+
+epd:2018-S-056-125129_ContractTerm_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8 a epo:ContractTerm;
+  epo:definesContractDuration epd:2018-S-056-125129_Duration_c7ffb705-560b-3eb0-af7a-0f291a1f54f8;
+  epo:definesSpecificPlaceOfPerformance epd:2018-S-056-125129_ContractTermLocation_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8 .
+
+epd:2018-S-056-125129_Contract_408a9316-e1f5-35fd-8b3f-1891fc75519e a epo:Contract;
   epo:hasContractConclusionDate "2014-03-25"^^xsd:date;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractIdentifier/2018-S-056-125129/408a9316-e1f5-35fd-8b3f-1891fc75519e>;
+  epo:hasID epd:2018-S-056-125129_ContractIdentifier_408a9316-e1f5-35fd-8b3f-1891fc75519e;
   epo:hasTitle """
                Framework agreements with consultants
             """@en;
-  epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2018-S-056-125129/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8> .
+  epo:includesLot epd:2018-S-056-125129_Lot_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8 .
 
-<http://data.europa.eu/a4g/resource/ContractIdentifier/2018-S-056-125129/408a9316-e1f5-35fd-8b3f-1891fc75519e>
-  a epo:Identifier;
-  epo:hasIdentifierValue "2014" .
-
-<http://data.europa.eu/a4g/resource/ContractModification/2018-S-056-125129/7756f2c6-25ed-3582-8857-c559a5a18257>
-  a epo:ContractModification;
-  epo:describesNotice <http://data.europa.eu/a4g/resource/Notice/2018-S-056-125129/7613a54d-6c6b-30e8-b4db-72fd1d42abcb>;
-  epo:hasElementModification <http://data.europa.eu/a4g/resource/ElementModificationDescription/2018-S-056-125129/7756f2c6-25ed-3582-8857-c559a5a18257> .
-
-<http://data.europa.eu/a4g/resource/ContractTerm/2018-S-056-125129/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8>
-  a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/Duration/2018-S-056-125129/c7ffb705-560b-3eb0-af7a-0f291a1f54f8>;
-  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/ContractTermLocation/2018-S-056-125129/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8> .
-
-<http://data.europa.eu/a4g/resource/ContractTermLocation/2018-S-056-125129/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8>
-  a dct:Location;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/NO06>;
-  locn:address <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2018-S-056-125129/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8> .
-
-<http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2018-S-056-125129/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8>
+epd:2018-S-056-125129_ContractorOrganisationAddressModification_77eac6bc-38b0-390a-bf94-2ff5bb6739c5
   a locn:Address;
-  locn:fullAddress """
-                  Sør-Trøndelag, Norway.
-               """@en .
-
-<http://data.europa.eu/a4g/resource/ContractTermLocationAddressModification/2018-S-056-125129/7b7529f1-e490-38e9-8bf9-6378671dc463>
-  a locn:Address;
-  locn:fullAddress """
-                  Sør-Trøndelag, Norway.
-               """@en .
-
-<http://data.europa.eu/a4g/resource/ContractTermLocationModification/2018-S-056-125129/7b7529f1-e490-38e9-8bf9-6378671dc463>
-  a dct:Location;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NOR>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/NO06>;
-  locn:address <http://data.europa.eu/a4g/resource/ContractTermLocationAddressModification/2018-S-056-125129/7b7529f1-e490-38e9-8bf9-6378671dc463> .
+  locn:postName "Trondheim" .
 
-<http://data.europa.eu/a4g/resource/ContractTermModification/2018-S-056-125129/7b7529f1-e490-38e9-8bf9-6378671dc463>
-  a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/DurationModification/2018-S-056-125129/e3c2db23-06ee-3138-889e-fd6d701080e5>;
-  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/ContractTermLocationModification/2018-S-056-125129/7b7529f1-e490-38e9-8bf9-6378671dc463> .
-
-<http://data.europa.eu/a4g/resource/ContractorOrganisation/2018-S-056-125129/752afe7a-c855-3849-be99-ed1250d773b7>
-  a org:Organization;
-  epo:hasLegalName "18 firma, se pkt. VI.3"@en;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2018-S-056-125129/752afe7a-c855-3849-be99-ed1250d773b7> .
-
-<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2018-S-056-125129/752afe7a-c855-3849-be99-ed1250d773b7>
+epd:2018-S-056-125129_ContractorOrganisationAddress_752afe7a-c855-3849-be99-ed1250d773b7
   a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NOR>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/NO>;
   locn:postName "Trondheim" .
 
-<http://data.europa.eu/a4g/resource/ContractorOrganisationAddressModification/2018-S-056-125129/77eac6bc-38b0-390a-bf94-2ff5bb6739c5>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NOR>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/NO06>;
-  locn:postName "Trondheim" .
-
-<http://data.europa.eu/a4g/resource/ContractorOrganisationModification/2018-S-056-125129/77eac6bc-38b0-390a-bf94-2ff5bb6739c5>
+epd:2018-S-056-125129_ContractorOrganisationModification_77eac6bc-38b0-390a-bf94-2ff5bb6739c5
   a org:Organization;
   epo:hasLegalName "18 Firma, se punkt VI.3"@en;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddressModification/2018-S-056-125129/77eac6bc-38b0-390a-bf94-2ff5bb6739c5> .
+  cccev:registeredAddress epd:2018-S-056-125129_ContractorOrganisationAddressModification_77eac6bc-38b0-390a-bf94-2ff5bb6739c5 .
 
-<http://data.europa.eu/a4g/resource/Duration/2018-S-056-125129/c7ffb705-560b-3eb0-af7a-0f291a1f54f8>
-  a epo:Duration;
+epd:2018-S-056-125129_ContractorOrganisation_752afe7a-c855-3849-be99-ed1250d773b7
+  a org:Organization;
+  epo:hasLegalName "18 firma, se pkt. VI.3"@en;
+  cccev:registeredAddress epd:2018-S-056-125129_ContractorOrganisationAddress_752afe7a-c855-3849-be99-ed1250d773b7 .
+
+epd:2018-S-056-125129_DurationModification_e3c2db23-06ee-3138-889e-fd6d701080e5 a
+    epo:Duration;
   time:numericDuration 5.0;
   time:unitType time:unitMonth .
 
-<http://data.europa.eu/a4g/resource/DurationModification/2018-S-056-125129/e3c2db23-06ee-3138-889e-fd6d701080e5>
-  a epo:Duration;
+epd:2018-S-056-125129_Duration_c7ffb705-560b-3eb0-af7a-0f291a1f54f8 a epo:Duration;
   time:numericDuration 5.0;
   time:unitType time:unitMonth .
 
-<http://data.europa.eu/a4g/resource/ElementModificationDescription/2018-S-056-125129/7756f2c6-25ed-3582-8857-c559a5a18257>
+epd:2018-S-056-125129_ElementModificationDescription_7756f2c6-25ed-3582-8857-c559a5a18257
   a epo:ElementModificationDescription;
   epo:hasModificationDescription """
                   See point VI.3.
@@ -121,13 +115,50 @@
                   It was not known that the two counties would merge when the original procurement was made.
                """@en .
 
-<http://data.europa.eu/a4g/resource/FrameworkAgreementTerm/2018-S-056-125129/7b7529f1-e490-38e9-8bf9-6378671dc463>
+epd:2018-S-056-125129_FrameworkAgreementTerm_7b7529f1-e490-38e9-8bf9-6378671dc463
   a epo:FrameworkAgreementTerm;
   epo:hasDurationExtensionJustification "See point VI.3"@en .
 
-<http://data.europa.eu/a4g/resource/Lot/2018-S-056-125129/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8>
-  a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2018-S-056-125129/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8>;
+epd:2018-S-056-125129_LotAwardOutcomeAwardedMonetaryValueModification_9892c97f-3231-3e3e-97ad-459127562373
+  a epo:MonetaryValue;
+  epo:hasAmountValue 900000.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/NOK> .
+
+epd:2018-S-056-125129_LotAwardOutcomeAwardedMonetaryValue_408a9316-e1f5-35fd-8b3f-1891fc75519e
+  a epo:MonetaryValue;
+  epo:hasAmountValue 1620000.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/NOK> .
+
+epd:2018-S-056-125129_LotAwardOutcomeModification_7b7529f1-e490-38e9-8bf9-6378671dc463
+  a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:2018-S-056-125129_TenderAwardOutcomeModification_7b7529f1-e490-38e9-8bf9-6378671dc463;
+  epo:describesLot epd:2018-S-056-125129_LotModification_7b7529f1-e490-38e9-8bf9-6378671dc463;
+  epo:hasAwardedValue epd:2018-S-056-125129_LotAwardOutcomeAwardedMonetaryValueModification_9892c97f-3231-3e3e-97ad-459127562373 .
+
+epd:2018-S-056-125129_LotAwardOutcome_408a9316-e1f5-35fd-8b3f-1891fc75519e a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:2018-S-056-125129_TenderAwardOutcome_3d8e7073-470b-358b-8eb4-deee3051bd2e;
+  epo:describesLot epd:2018-S-056-125129_Lot_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue epd:2018-S-056-125129_LotAwardOutcomeAwardedMonetaryValue_408a9316-e1f5-35fd-8b3f-1891fc75519e .
+
+epd:2018-S-056-125129_LotModification_7b7529f1-e490-38e9-8bf9-6378671dc463 a epo:Lot;
+  epo:containsModificationsOn epd:2018-S-056-125129_Lot_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8;
+  epo:foreseesContractSpecificTerm epd:2018-S-056-125129_ContractTermModification_7b7529f1-e490-38e9-8bf9-6378671dc463;
+  epo:hasDescription """
+                  Architect activities, consultant engineering activities and integrated engineering activities, urban planning and landscape architecture, including related technical-scientific consulting activities, technical samples and analyses.
+               """@en;
+  epo:hasPurpose epd:2018-S-056-125129_LotPurposeModification_7b7529f1-e490-38e9-8bf9-6378671dc463;
+  epo:isSubjectToLotSpecificTerm epd:2018-S-056-125129_FrameworkAgreementTerm_7b7529f1-e490-38e9-8bf9-6378671dc463 .
+
+epd:2018-S-056-125129_LotPurposeModification_7b7529f1-e490-38e9-8bf9-6378671dc463
+  a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/71541000> .
+
+epd:2018-S-056-125129_LotPurpose_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8 a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/71541000> .
+
+epd:2018-S-056-125129_Lot_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8 a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:2018-S-056-125129_ContractTerm_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8;
   epo:hasDescription """
                   See the notice:
                   Doffin reference: 2013-311651.
@@ -136,98 +167,68 @@
                   Doffin reference: 2014-913632.
                   TED reference: 2014/S 147-265351.
                """@en;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/LotPurpose/2018-S-056-125129/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8>;
+  epo:hasPurpose epd:2018-S-056-125129_LotPurpose_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8;
   epo:hasTitle """
                   I of 32 contracts
                """@en;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/ReviewTerm/2018-S-056-125129/d85a748e-f5a2-3efc-9502-6fd9fa3d6d6b>;
+  epo:isSubjectToLotSpecificTerm epd:2018-S-056-125129_ReviewTerm_d85a748e-f5a2-3efc-9502-6fd9fa3d6d6b;
   epo:isUsingEUFunds false .
 
-<http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-056-125129/408a9316-e1f5-35fd-8b3f-1891fc75519e>
-  a epo:LotAwardOutcome;
-  epo:comprisesTenderAwardOutcome <http://data.europa.eu/a4g/resource/TenderAwardOutcome/2018-S-056-125129/3d8e7073-470b-358b-8eb4-deee3051bd2e>;
-  epo:describesLot <http://data.europa.eu/a4g/resource/Lot/2018-S-056-125129/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8>;
-  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
-  epo:hasAwardedValue <http://data.europa.eu/a4g/resource/LotAwardOutcomeAwardedMonetaryValue/2018-S-056-125129/408a9316-e1f5-35fd-8b3f-1891fc75519e> .
-
-<http://data.europa.eu/a4g/resource/LotAwardOutcomeAwardedMonetaryValue/2018-S-056-125129/408a9316-e1f5-35fd-8b3f-1891fc75519e>
-  a epo:MonetaryValue;
-  epo:hasAmountValue 1620000.0;
-  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/NOK> .
-
-<http://data.europa.eu/a4g/resource/LotAwardOutcomeAwardedMonetaryValueModification/2018-S-056-125129/9892c97f-3231-3e3e-97ad-459127562373>
-  a epo:MonetaryValue;
-  epo:hasAmountValue 900000.0;
-  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/NOK> .
-
-<http://data.europa.eu/a4g/resource/LotAwardOutcomeModification/2018-S-056-125129/7b7529f1-e490-38e9-8bf9-6378671dc463>
-  a epo:LotAwardOutcome;
-  epo:comprisesTenderAwardOutcome <http://data.europa.eu/a4g/resource/TenderAwardOutcomeModification/2018-S-056-125129/7b7529f1-e490-38e9-8bf9-6378671dc463>;
-  epo:describesLot <http://data.europa.eu/a4g/resource/LotModification/2018-S-056-125129/7b7529f1-e490-38e9-8bf9-6378671dc463>;
-  epo:hasAwardedValue <http://data.europa.eu/a4g/resource/LotAwardOutcomeAwardedMonetaryValueModification/2018-S-056-125129/9892c97f-3231-3e3e-97ad-459127562373> .
-
-<http://data.europa.eu/a4g/resource/LotModification/2018-S-056-125129/7b7529f1-e490-38e9-8bf9-6378671dc463>
-  a epo:Lot;
-  epo:containsModificationsOn <http://data.europa.eu/a4g/resource/Lot/2018-S-056-125129/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8>;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTermModification/2018-S-056-125129/7b7529f1-e490-38e9-8bf9-6378671dc463>;
-  epo:hasDescription """
-                  Architect activities, consultant engineering activities and integrated engineering activities, urban planning and landscape architecture, including related technical-scientific consulting activities, technical samples and analyses.
-               """@en;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/LotPurposeModification/2018-S-056-125129/7b7529f1-e490-38e9-8bf9-6378671dc463>;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/FrameworkAgreementTerm/2018-S-056-125129/7b7529f1-e490-38e9-8bf9-6378671dc463> .
-
-<http://data.europa.eu/a4g/resource/LotPurpose/2018-S-056-125129/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8>
-  a epo:Purpose;
-  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/71541000> .
-
-<http://data.europa.eu/a4g/resource/LotPurposeModification/2018-S-056-125129/7b7529f1-e490-38e9-8bf9-6378671dc463>
-  a epo:Purpose;
-  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/71541000> .
-
-<http://data.europa.eu/a4g/resource/Notice/2018-S-056-125129/73279200-b946-3946-98bd-5dc7e2643c6a>
-  a epo:Notice;
-  epo:hasID <http://data.europa.eu/a4g/resource/NoticeIdentifier/2018-S-056-125129/73279200-b946-3946-98bd-5dc7e2643c6a> .
-
-<http://data.europa.eu/a4g/resource/Notice/2018-S-056-125129/7613a54d-6c6b-30e8-b4db-72fd1d42abcb>
-  a epo:ContractModificationNotice, epo:Notice;
-  epo:announcesContract <http://data.europa.eu/a4g/resource/Contract/2018-S-056-125129/408a9316-e1f5-35fd-8b3f-1891fc75519e>;
-  epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/NoticeAwardInformation/2018-S-056-125129/7613a54d-6c6b-30e8-b4db-72fd1d42abcb>;
-  epo:announcesRole <http://data.europa.eu/a4g/resource/Reviewer/2018-S-056-125129/15e8773e-7fea-3367-b1d2-43b565bcf8ab>,
-    <http://data.europa.eu/a4g/resource/WinnerRole/2018-S-056-125129/752afe7a-c855-3849-be99-ed1250d773b7>;
-  epo:announcesTender <http://data.europa.eu/a4g/resource/Tender/2018-S-056-125129/3d8e7073-470b-358b-8eb4-deee3051bd2e>;
+epd:2018-S-056-125129_Notice a epo:ContractModificationNotice, epo:Notice;
+  epo:announcesContract epd:2018-S-056-125129_Contract_408a9316-e1f5-35fd-8b3f-1891fc75519e;
+  epo:announcesNoticeAwardInformation epd:2018-S-056-125129_NoticeAwardInformation_7613a54d-6c6b-30e8-b4db-72fd1d42abcb;
+  epo:announcesRole epd:2018-S-056-125129_Reviewer_15e8773e-7fea-3367-b1d2-43b565bcf8ab,
+    epd:2018-S-056-125129_Winner_752afe7a-c855-3849-be99-ed1250d773b7;
+  epo:announcesTender epd:2018-S-056-125129_Tender_3d8e7073-470b-358b-8eb4-deee3051bd2e;
   epo:hasDispatchDate "2018-03-19"^^xsd:date;
-  epo:refersToLot <http://data.europa.eu/a4g/resource/Lot/2018-S-056-125129/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8>;
-  epo:refersToPrevious <http://data.europa.eu/a4g/resource/Notice/2018-S-056-125129/73279200-b946-3946-98bd-5dc7e2643c6a>;
-  epo:refersToProcedure <http://data.europa.eu/a4g/resource/Procedure/2018-S-056-125129/7613a54d-6c6b-30e8-b4db-72fd1d42abcb>;
-  epo:refersToRole <http://data.europa.eu/a4g/resource/Buyer/2018-S-056-125129/0156d029-ea5d-32c8-9775-6e736949dafe> .
+  epo:hasID epd:2018-S-056-125129_NoticeIdentifier_73279200-b946-3946-98bd-5dc7e2643c6a;
+  epo:refersToLot epd:2018-S-056-125129_Lot_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8;
+  epo:refersToPrevious epd:2018-S-056-125129_Notice;
+  epo:refersToProcedure epd:2018-S-056-125129_Procedure_7613a54d-6c6b-30e8-b4db-72fd1d42abcb;
+  epo:refersToRole epd:2018-S-056-125129_Buyer_0156d029-ea5d-32c8-9775-6e736949dafe .
 
-<http://data.europa.eu/a4g/resource/NoticeAwardInformation/2018-S-056-125129/7613a54d-6c6b-30e8-b4db-72fd1d42abcb>
+epd:2018-S-056-125129_NoticeAwardInformation_7613a54d-6c6b-30e8-b4db-72fd1d42abcb
   a epo:NoticeAwardInformation .
 
-<http://data.europa.eu/a4g/resource/NoticeIdentifier/2018-S-056-125129/73279200-b946-3946-98bd-5dc7e2643c6a>
-  a epo:Identifier;
+epd:2018-S-056-125129_NoticeIdentifier_73279200-b946-3946-98bd-5dc7e2643c6a a epo:Identifier;
   epo:hasIdentifierValue "2014/S 147-265351" .
 
-<http://data.europa.eu/a4g/resource/Organisation/2018-S-056-125129/12090057-4d35-309d-8a57-04cbe4e97554>
-  a org:Organization;
-  epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2018-S-056-125129/12090057-4d35-309d-8a57-04cbe4e97554>;
-  epo:hasLegalName "Trøndelag Fylkeskommune"@en;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-056-125129/12090057-4d35-309d-8a57-04cbe4e97554> .
-
-<http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-056-125129/12090057-4d35-309d-8a57-04cbe4e97554>
-  a locn:Address;
+epd:2018-S-056-125129_OrganisationAddress_12090057-4d35-309d-8a57-04cbe4e97554 a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NOR>;
   locn:postCode "7725";
   locn:postName "Steinkjer";
   locn:thoroughfare "Fylkets hus, postboks 2560" .
 
-<http://data.europa.eu/a4g/resource/OrganisationIdentifier/2018-S-056-125129/12090057-4d35-309d-8a57-04cbe4e97554>
+epd:2018-S-056-125129_OrganisationIdentifier_12090057-4d35-309d-8a57-04cbe4e97554
   a epo:Identifier;
   epo:hasIdentifierValue "817 920 632" .
 
-<http://data.europa.eu/a4g/resource/Procedure/2018-S-056-125129/7613a54d-6c6b-30e8-b4db-72fd1d42abcb>
-  a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2018-S-056-125129/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8>;
+epd:2018-S-056-125129_Organisation_12090057-4d35-309d-8a57-04cbe4e97554 a org:Organization;
+  epo:hasID epd:2018-S-056-125129_OrganisationIdentifier_12090057-4d35-309d-8a57-04cbe4e97554;
+  epo:hasLegalName "Trøndelag Fylkeskommune"@en;
+  cccev:registeredAddress epd:2018-S-056-125129_OrganisationAddress_12090057-4d35-309d-8a57-04cbe4e97554 .
+
+epd:2018-S-056-125129_ProcedureIdentifier_7613a54d-6c6b-30e8-b4db-72fd1d42abcb a epo:Identifier;
+  epo:hasIdentifierValue "2018_HH-01" .
+
+epd:2018-S-056-125129_ProcedureModification_7b7529f1-e490-38e9-8bf9-6378671dc463 a
+    epo:Procedure;
+  epo:containsModificationsOn epd:2018-S-056-125129_Procedure_7613a54d-6c6b-30e8-b4db-72fd1d42abcb;
+  epo:hasPurpose epd:2018-S-056-125129_ProcedurePurposeModification_7b7529f1-e490-38e9-8bf9-6378671dc463 .
+
+epd:2018-S-056-125129_ProcedurePurposeModification_7b7529f1-e490-38e9-8bf9-6378671dc463
+  a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/71320000> .
+
+epd:2018-S-056-125129_ProcedurePurpose_7613a54d-6c6b-30e8-b4db-72fd1d42abcb a epo:Purpose;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/71320000> .
+
+epd:2018-S-056-125129_ProcedureSpecificTerm_0156d029-ea5d-32c8-9775-6e736949dafe a
+    epo:ProcedureSpecificTerm .
+
+epd:2018-S-056-125129_Procedure_7613a54d-6c6b-30e8-b4db-72fd1d42abcb a epo:Procedure;
+  epo:foreseesContractSpecificTerm epd:2018-S-056-125129_ContractTerm_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8;
   epo:hasAdditionalInformation """
                Sør-Trøndelag County entered into framework agreements for 10 disciplines in March 2014:
                The contracts are valid until the end of March 2018. The contracts were taken over by the new Trøndelag County from the start of 2018, but are primarily used in the previous southern county.
@@ -257,84 +258,57 @@
                — Verkis hf. - 998 556 384.
                — Arkitektene Vis-À-Vis AS - 976 129 067.
             """@en;
-  epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2018-S-056-125129/7613a54d-6c6b-30e8-b4db-72fd1d42abcb>;
-  epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2018-S-056-125129/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-056-125129/7613a54d-6c6b-30e8-b4db-72fd1d42abcb>;
+  epo:hasID epd:2018-S-056-125129_ProcedureIdentifier_7613a54d-6c6b-30e8-b4db-72fd1d42abcb;
+  epo:hasProcurementScopeDividedIntoLot epd:2018-S-056-125129_Lot_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8;
+  epo:hasPurpose epd:2018-S-056-125129_ProcedurePurpose_7613a54d-6c6b-30e8-b4db-72fd1d42abcb;
   epo:hasTitle """
                Framework agreements with consultants, extention
             """@en;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2018-S-056-125129/0156d029-ea5d-32c8-9775-6e736949dafe> .
+  epo:isSubjectToProcedureSpecificTerm epd:2018-S-056-125129_ProcedureSpecificTerm_0156d029-ea5d-32c8-9775-6e736949dafe .
 
-<http://data.europa.eu/a4g/resource/ProcedureIdentifier/2018-S-056-125129/7613a54d-6c6b-30e8-b4db-72fd1d42abcb>
-  a epo:Identifier;
-  epo:hasIdentifierValue "2018_HH-01" .
-
-<http://data.europa.eu/a4g/resource/ProcedureModification/2018-S-056-125129/7b7529f1-e490-38e9-8bf9-6378671dc463>
-  a epo:Procedure;
-  epo:containsModificationsOn <http://data.europa.eu/a4g/resource/Procedure/2018-S-056-125129/7613a54d-6c6b-30e8-b4db-72fd1d42abcb>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurposeModification/2018-S-056-125129/7b7529f1-e490-38e9-8bf9-6378671dc463> .
-
-<http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-056-125129/7613a54d-6c6b-30e8-b4db-72fd1d42abcb>
-  a epo:Purpose;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
-  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/71320000> .
-
-<http://data.europa.eu/a4g/resource/ProcedurePurposeModification/2018-S-056-125129/7b7529f1-e490-38e9-8bf9-6378671dc463>
-  a epo:Purpose;
-  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/71320000> .
-
-<http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2018-S-056-125129/0156d029-ea5d-32c8-9775-6e736949dafe>
-  a epo:ProcedureSpecificTerm .
-
-<http://data.europa.eu/a4g/resource/ReviewTerm/2018-S-056-125129/d85a748e-f5a2-3efc-9502-6fd9fa3d6d6b>
-  a epo:ReviewTerm;
+epd:2018-S-056-125129_ReviewTerm_d85a748e-f5a2-3efc-9502-6fd9fa3d6d6b a epo:ReviewTerm;
   epo:hasReviewDeadlineInformation """
                The appeals deadline is 6.4.2018.
             """ .
 
-<http://data.europa.eu/a4g/resource/Reviewer/2018-S-056-125129/15e8773e-7fea-3367-b1d2-43b565bcf8ab>
-  a epo:Reviewer;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2018-S-056-125129/15e8773e-7fea-3367-b1d2-43b565bcf8ab> .
-
-<http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-056-125129/15e8773e-7fea-3367-b1d2-43b565bcf8ab>
-  a cccev:ContactPoint;
+epd:2018-S-056-125129_ReviewerContactPoint_15e8773e-7fea-3367-b1d2-43b565bcf8ab a
+    cccev:ContactPoint;
   epo:hasInternetAddress "www.trondelagfylke.no"^^xsd:anyURI;
   cccev:email "helhal@trondelagfylke.no";
   cccev:telephone "+47 92685580" .
 
-<http://data.europa.eu/a4g/resource/ReviewerOrganisation/2018-S-056-125129/15e8773e-7fea-3367-b1d2-43b565bcf8ab>
-  a org:Organization;
-  epo:hasLegalName "Trøndelag fylkeskommune"@en;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-056-125129/15e8773e-7fea-3367-b1d2-43b565bcf8ab>;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-056-125129/15e8773e-7fea-3367-b1d2-43b565bcf8ab> .
-
-<http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-056-125129/15e8773e-7fea-3367-b1d2-43b565bcf8ab>
+epd:2018-S-056-125129_ReviewerOrganisationAddress_15e8773e-7fea-3367-b1d2-43b565bcf8ab
   a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NOR>;
   locn:postCode "7735";
   locn:postName "Steinkjer";
   locn:thoroughfare "Fylkets hus, postboks 2560" .
 
-<http://data.europa.eu/a4g/resource/SubmissionStatisticalInformation/2018-S-056-125129/3d8e7073-470b-358b-8eb4-deee3051bd2e>
+epd:2018-S-056-125129_ReviewerOrganisation_15e8773e-7fea-3367-b1d2-43b565bcf8ab a
+    org:Organization;
+  epo:hasLegalName "Trøndelag fylkeskommune"@en;
+  epo:hasPrimaryContactPoint epd:2018-S-056-125129_ReviewerContactPoint_15e8773e-7fea-3367-b1d2-43b565bcf8ab;
+  cccev:registeredAddress epd:2018-S-056-125129_ReviewerOrganisationAddress_15e8773e-7fea-3367-b1d2-43b565bcf8ab .
+
+epd:2018-S-056-125129_Reviewer_15e8773e-7fea-3367-b1d2-43b565bcf8ab a epo:Reviewer;
+  epo:playedBy epd:2018-S-056-125129_ReviewerOrganisation_15e8773e-7fea-3367-b1d2-43b565bcf8ab .
+
+epd:2018-S-056-125129_SubmissionStatisticalInformation_3d8e7073-470b-358b-8eb4-deee3051bd2e
   a epo:SubmissionStatisticalInformation;
-  epo:summarisesInformationForLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-056-125129/408a9316-e1f5-35fd-8b3f-1891fc75519e> .
+  epo:summarisesInformationForLotAwardOutcome epd:2018-S-056-125129_LotAwardOutcome_408a9316-e1f5-35fd-8b3f-1891fc75519e .
 
-<http://data.europa.eu/a4g/resource/Tender/2018-S-056-125129/3d8e7073-470b-358b-8eb4-deee3051bd2e>
-  a epo:Tender .
-
-<http://data.europa.eu/a4g/resource/TenderAwardOutcome/2018-S-056-125129/3d8e7073-470b-358b-8eb4-deee3051bd2e>
+epd:2018-S-056-125129_TenderAwardOutcomeModification_7b7529f1-e490-38e9-8bf9-6378671dc463
   a epo:TenderAwardOutcome;
-  epo:describesTender <http://data.europa.eu/a4g/resource/Tender/2018-S-056-125129/3d8e7073-470b-358b-8eb4-deee3051bd2e>;
-  epo:indicatesAwardOfLotToWinner <http://data.europa.eu/a4g/resource/WinnerRole/2018-S-056-125129/752afe7a-c855-3849-be99-ed1250d773b7> .
+  epo:indicatesAwardOfLotToWinner epd:2018-S-056-125129_WinnerModification_77eac6bc-38b0-390a-bf94-2ff5bb6739c5 .
 
-<http://data.europa.eu/a4g/resource/TenderAwardOutcomeModification/2018-S-056-125129/7b7529f1-e490-38e9-8bf9-6378671dc463>
-  a epo:TenderAwardOutcome;
-  epo:indicatesAwardOfLotToWinner <http://data.europa.eu/a4g/resource/WinnerModification/2018-S-056-125129/77eac6bc-38b0-390a-bf94-2ff5bb6739c5> .
+epd:2018-S-056-125129_TenderAwardOutcome_3d8e7073-470b-358b-8eb4-deee3051bd2e a epo:TenderAwardOutcome;
+  epo:describesTender epd:2018-S-056-125129_Tender_3d8e7073-470b-358b-8eb4-deee3051bd2e;
+  epo:indicatesAwardOfLotToWinner epd:2018-S-056-125129_Winner_752afe7a-c855-3849-be99-ed1250d773b7 .
 
-<http://data.europa.eu/a4g/resource/WinnerModification/2018-S-056-125129/77eac6bc-38b0-390a-bf94-2ff5bb6739c5>
-  a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisationModification/2018-S-056-125129/77eac6bc-38b0-390a-bf94-2ff5bb6739c5> .
+epd:2018-S-056-125129_Tender_3d8e7073-470b-358b-8eb4-deee3051bd2e a epo:Tender .
 
-<http://data.europa.eu/a4g/resource/WinnerRole/2018-S-056-125129/752afe7a-c855-3849-be99-ed1250d773b7>
-  a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2018-S-056-125129/752afe7a-c855-3849-be99-ed1250d773b7> .
+epd:2018-S-056-125129_WinnerModification_77eac6bc-38b0-390a-bf94-2ff5bb6739c5 a epo:Winner;
+  epo:playedBy epd:2018-S-056-125129_ContractorOrganisationModification_77eac6bc-38b0-390a-bf94-2ff5bb6739c5 .
+
+epd:2018-S-056-125129_Winner_752afe7a-c855-3849-be99-ed1250d773b7 a epo:Winner;
+  epo:playedBy epd:2018-S-056-125129_ContractorOrganisation_752afe7a-c855-3849-be99-ed1250d773b7 .

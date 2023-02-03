@@ -1,164 +1,145 @@
 @prefix cccev: <http://data.europa.eu/m8g/> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://data.europa.eu/a4g/resource/Buyer/2022-S-081-219618/15183658-b3d6-3d9d-88d4-6e02c7e3b7b9>
-  a epo:Buyer;
-  epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2022-S-081-219618/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2022-S-081-219618/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
+epd:2022-S-081-219618_Buyer_15183658-b3d6-3d9d-88d4-6e02c7e3b7b9 a epo:Buyer;
+  epo:hasContactPointInRole epd:2022-S-081-219618_ContactPoint_1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4;
+  epo:playedBy epd:2022-S-081-219618_Organisation_1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4 .
 
-<http://data.europa.eu/a4g/resource/ContactPoint/2022-S-081-219618/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
-  a cccev:ContactPoint;
+epd:2022-S-081-219618_ContactPoint_1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4 a cccev:ContactPoint;
   epo:hasInternetAddress "www.naturgy.com"^^xsd:anyURI;
   cccev:email "soportecompras@naturgy.com" .
 
-<http://data.europa.eu/a4g/resource/Contract/2022-S-081-219618/527e871b-562d-3858-b2cb-c75e9b69e338>
-  a epo:Contract;
-  epo:hasContractConclusionDate "2022-04-06"^^xsd:date;
-  epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2022-S-081-219618/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2022-S-081-219618/527e871b-562d-3858-b2cb-c75e9b69e338> .
-
-<http://data.europa.eu/a4g/resource/ContractTerm/2022-S-081-219618/636e3166-5ecc-350b-867b-7bf2072a2c03>
-  a epo:ContractTerm;
-  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/ContractTermLocation/2022-S-081-219618/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:hasOptions false .
-
-<http://data.europa.eu/a4g/resource/ContractTermLocation/2022-S-081-219618/636e3166-5ecc-350b-867b-7bf2072a2c03>
-  a dct:Location;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES111>;
-  locn:address <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2022-S-081-219618/636e3166-5ecc-350b-867b-7bf2072a2c03> .
-
-<http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2022-S-081-219618/636e3166-5ecc-350b-867b-7bf2072a2c03>
+epd:2022-S-081-219618_ContractTermLocationAddress_636e3166-5ecc-350b-867b-7bf2072a2c03
   a locn:Address;
   locn:fullAddress """FERROL	"""@es .
 
-<http://data.europa.eu/a4g/resource/DirectAwardTerm/2022-S-081-219618/b68f1feb-885d-37f5-ac99-4287870dfd15>
-  a epo:DirectAwardTerm;
+epd:2022-S-081-219618_ContractTermLocation_636e3166-5ecc-350b-867b-7bf2072a2c03 a
+    dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES111>;
+  locn:address epd:2022-S-081-219618_ContractTermLocationAddress_636e3166-5ecc-350b-867b-7bf2072a2c03 .
+
+epd:2022-S-081-219618_ContractTerm_636e3166-5ecc-350b-867b-7bf2072a2c03 a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:2022-S-081-219618_ContractTermLocation_636e3166-5ecc-350b-867b-7bf2072a2c03;
+  epo:hasOptions false .
+
+epd:2022-S-081-219618_Contract_527e871b-562d-3858-b2cb-c75e9b69e338 a epo:Contract;
+  epo:hasContractConclusionDate "2022-04-06"^^xsd:date;
+  epo:includesLot epd:2022-S-081-219618_Lot_636e3166-5ecc-350b-867b-7bf2072a2c03;
+  epo:resultsFromLotAwardOutcome epd:2022-S-081-219618_LotAwardOutcome_527e871b-562d-3858-b2cb-c75e9b69e338 .
+
+epd:2022-S-081-219618_DirectAwardTerm_b68f1feb-885d-37f5-ac99-4287870dfd15 a epo:DirectAwardTerm;
   epo:hasDirectAwardJustification <http://publications.europa.eu/resource/authority/direct-award-justification/resd>;
   epo:hasJustification """El suministro corresponde a un desarrollo realizado entre el proveedor y UFD			"""@es .
 
-<http://data.europa.eu/a4g/resource/FrameworkAgreementTechniqueUsage/2022-S-081-219618/b68f1feb-885d-37f5-ac99-4287870dfd15>
+epd:2022-S-081-219618_FrameworkAgreementTechniqueUsage_b68f1feb-885d-37f5-ac99-4287870dfd15
   a epo:FrameworkAgreementTechniqueUsage .
 
-<http://data.europa.eu/a4g/resource/FrameworkAgreementTerm/2022-S-081-219618/b68f1feb-885d-37f5-ac99-4287870dfd15>
+epd:2022-S-081-219618_FrameworkAgreementTerm_b68f1feb-885d-37f5-ac99-4287870dfd15
   a epo:FrameworkAgreementTerm .
 
-<http://data.europa.eu/a4g/resource/Lot/2022-S-081-219618/636e3166-5ecc-350b-867b-7bf2072a2c03>
-  a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2022-S-081-219618/636e3166-5ecc-350b-867b-7bf2072a2c03>;
+epd:2022-S-081-219618_LotAwardOutcome_527e871b-562d-3858-b2cb-c75e9b69e338 a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:2022-S-081-219618_TenderAwardOutcome_14955bf6-88af-3773-b2c5-6a1cddff388a;
+  epo:describesLot epd:2022-S-081-219618_Lot_636e3166-5ecc-350b-867b-7bf2072a2c03;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> .
+
+epd:2022-S-081-219618_Lot_636e3166-5ecc-350b-867b-7bf2072a2c03 a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:2022-S-081-219618_ContractTerm_636e3166-5ecc-350b-867b-7bf2072a2c03;
   epo:hasDescription """APOYOS METÁLICOS PARA LÍNEAS DE AT 132kV FERROL		"""@es;
   epo:isUsingEUFunds false .
 
-<http://data.europa.eu/a4g/resource/LotAwardOutcome/2022-S-081-219618/527e871b-562d-3858-b2cb-c75e9b69e338>
-  a epo:LotAwardOutcome;
-  epo:comprisesTenderAwardOutcome <http://data.europa.eu/a4g/resource/TenderAwardOutcome/2022-S-081-219618/14955bf6-88af-3773-b2c5-6a1cddff388a>;
-  epo:describesLot <http://data.europa.eu/a4g/resource/Lot/2022-S-081-219618/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> .
-
-<http://data.europa.eu/a4g/resource/Notice/2022-S-081-219618/b68f1feb-885d-37f5-ac99-4287870dfd15>
-  a epo:Notice;
-  epo:hasID <http://data.europa.eu/a4g/resource/NoticeIdentifier/2022-S-081-219618/b68f1feb-885d-37f5-ac99-4287870dfd15> .
-
-<http://data.europa.eu/a4g/resource/Notice/2022-S-081-219618/dd35f603-e537-3c3e-a6ae-13e46c36bc07>
-  a epo:Notice, epo:ResultNotice;
-  epo:announcesContract <http://data.europa.eu/a4g/resource/Contract/2022-S-081-219618/527e871b-562d-3858-b2cb-c75e9b69e338>;
-  epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/NoticeAwardInformation/2022-S-081-219618/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
-  epo:announcesRole <http://data.europa.eu/a4g/resource/Reviewer/2022-S-081-219618/13730a07-65b0-306c-a9b5-a8929927a6a1>;
-  epo:announcesTender <http://data.europa.eu/a4g/resource/Tender/2022-S-081-219618/14955bf6-88af-3773-b2c5-6a1cddff388a>;
+epd:2022-S-081-219618_Notice a epo:Notice, epo:ResultNotice;
+  epo:announcesContract epd:2022-S-081-219618_Contract_527e871b-562d-3858-b2cb-c75e9b69e338;
+  epo:announcesNoticeAwardInformation epd:2022-S-081-219618_NoticeAwardInformation_dd35f603-e537-3c3e-a6ae-13e46c36bc07;
+  epo:announcesRole epd:2022-S-081-219618_Reviewer_13730a07-65b0-306c-a9b5-a8929927a6a1;
+  epo:announcesTender epd:2022-S-081-219618_Tender_14955bf6-88af-3773-b2c5-6a1cddff388a;
   epo:hasDispatchDate "2022-04-21"^^xsd:date;
-  epo:refersToLot <http://data.europa.eu/a4g/resource/Lot/2022-S-081-219618/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:refersToPrevious <http://data.europa.eu/a4g/resource/Notice/2022-S-081-219618/b68f1feb-885d-37f5-ac99-4287870dfd15>;
-  epo:refersToProcedure <http://data.europa.eu/a4g/resource/Procedure/2022-S-081-219618/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
-  epo:refersToRole <http://data.europa.eu/a4g/resource/Buyer/2022-S-081-219618/15183658-b3d6-3d9d-88d4-6e02c7e3b7b9> .
+  epo:hasID epd:2022-S-081-219618_NoticeIdentifier_b68f1feb-885d-37f5-ac99-4287870dfd15;
+  epo:refersToLot epd:2022-S-081-219618_Lot_636e3166-5ecc-350b-867b-7bf2072a2c03;
+  epo:refersToPrevious epd:2022-S-081-219618_Notice;
+  epo:refersToProcedure epd:2022-S-081-219618_Procedure_dd35f603-e537-3c3e-a6ae-13e46c36bc07;
+  epo:refersToRole epd:2022-S-081-219618_Buyer_15183658-b3d6-3d9d-88d4-6e02c7e3b7b9 .
 
-<http://data.europa.eu/a4g/resource/NoticeAwardInformation/2022-S-081-219618/dd35f603-e537-3c3e-a6ae-13e46c36bc07>
+epd:2022-S-081-219618_NoticeAwardInformation_dd35f603-e537-3c3e-a6ae-13e46c36bc07
   a epo:NoticeAwardInformation .
 
-<http://data.europa.eu/a4g/resource/NoticeIdentifier/2022-S-081-219618/b68f1feb-885d-37f5-ac99-4287870dfd15>
-  a epo:Identifier;
+epd:2022-S-081-219618_NoticeIdentifier_b68f1feb-885d-37f5-ac99-4287870dfd15 a epo:Identifier;
   epo:hasIdentifierValue "2021/S 139-371255" .
 
-<http://data.europa.eu/a4g/resource/Organisation/2022-S-081-219618/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
-  a org:Organization;
-  epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2022-S-081-219618/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>;
-  epo:hasLegalName "UFD DISTRIBUCIÓN ELÉCTRICA, S.A."@es;
-  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/electricity>;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-081-219618/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
-
-<http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-081-219618/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
-  a locn:Address;
+epd:2022-S-081-219618_OrganisationAddress_1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4 a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/ES300>;
   locn:postCode "28033";
   locn:postName "MADRID";
   locn:thoroughfare "AVENIDA SAN LUIS 77" .
 
-<http://data.europa.eu/a4g/resource/OrganisationIdentifier/2022-S-081-219618/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
+epd:2022-S-081-219618_OrganisationIdentifier_1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4
   a epo:Identifier;
   epo:hasIdentifierValue "A47068127" .
 
-<http://data.europa.eu/a4g/resource/Procedure/2022-S-081-219618/dd35f603-e537-3c3e-a6ae-13e46c36bc07>
-  a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2022-S-081-219618/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:hasDescription """APOYOS METÁLICOS PARA LÍNEAS DE AT 132kV FERROL		"""@es;
-  epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2022-S-081-219618/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
-  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
-  epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
-  epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2022-S-081-219618/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2022-S-081-219618/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
-  epo:hasTitle """APOYOS METÁLICOS PARA LÍNEAS DE AT 132kV FERROL		"""@es;
-  epo:isCoveredByGPA false;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/DirectAwardTerm/2022-S-081-219618/b68f1feb-885d-37f5-ac99-4287870dfd15>,
-    <http://data.europa.eu/a4g/resource/FrameworkAgreementTerm/2022-S-081-219618/b68f1feb-885d-37f5-ac99-4287870dfd15>,
-    <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2022-S-081-219618/15183658-b3d6-3d9d-88d4-6e02c7e3b7b9>;
-  epo:usesTechnique <http://data.europa.eu/a4g/resource/FrameworkAgreementTechniqueUsage/2022-S-081-219618/b68f1feb-885d-37f5-ac99-4287870dfd15> .
+epd:2022-S-081-219618_Organisation_1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4 a org:Organization;
+  epo:hasID epd:2022-S-081-219618_OrganisationIdentifier_1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4;
+  epo:hasLegalName "UFD DISTRIBUCIÓN ELÉCTRICA, S.A."@es;
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/electricity>;
+  cccev:registeredAddress epd:2022-S-081-219618_OrganisationAddress_1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4 .
 
-<http://data.europa.eu/a4g/resource/ProcedureIdentifier/2022-S-081-219618/dd35f603-e537-3c3e-a6ae-13e46c36bc07>
-  a epo:Identifier;
+epd:2022-S-081-219618_ProcedureIdentifier_dd35f603-e537-3c3e-a6ae-13e46c36bc07 a epo:Identifier;
   epo:hasIdentifierValue "14B01122M1" .
 
-<http://data.europa.eu/a4g/resource/ProcedurePurpose/2022-S-081-219618/dd35f603-e537-3c3e-a6ae-13e46c36bc07>
-  a epo:Purpose;
+epd:2022-S-081-219618_ProcedurePurpose_dd35f603-e537-3c3e-a6ae-13e46c36bc07 a epo:Purpose;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/32000000> .
 
-<http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2022-S-081-219618/15183658-b3d6-3d9d-88d4-6e02c7e3b7b9>
-  a epo:ProcedureSpecificTerm .
+epd:2022-S-081-219618_ProcedureSpecificTerm_15183658-b3d6-3d9d-88d4-6e02c7e3b7b9 a
+    epo:ProcedureSpecificTerm .
 
-<http://data.europa.eu/a4g/resource/Reviewer/2022-S-081-219618/13730a07-65b0-306c-a9b5-a8929927a6a1>
-  a epo:Reviewer;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2022-S-081-219618/13730a07-65b0-306c-a9b5-a8929927a6a1> .
+epd:2022-S-081-219618_Procedure_dd35f603-e537-3c3e-a6ae-13e46c36bc07 a epo:Procedure;
+  epo:foreseesContractSpecificTerm epd:2022-S-081-219618_ContractTerm_636e3166-5ecc-350b-867b-7bf2072a2c03;
+  epo:hasDescription """APOYOS METÁLICOS PARA LÍNEAS DE AT 132kV FERROL		"""@es;
+  epo:hasID epd:2022-S-081-219618_ProcedureIdentifier_dd35f603-e537-3c3e-a6ae-13e46c36bc07;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
+  epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
+  epo:hasProcurementScopeDividedIntoLot epd:2022-S-081-219618_Lot_636e3166-5ecc-350b-867b-7bf2072a2c03;
+  epo:hasPurpose epd:2022-S-081-219618_ProcedurePurpose_dd35f603-e537-3c3e-a6ae-13e46c36bc07;
+  epo:hasTitle """APOYOS METÁLICOS PARA LÍNEAS DE AT 132kV FERROL		"""@es;
+  epo:isCoveredByGPA false;
+  epo:isSubjectToProcedureSpecificTerm epd:2022-S-081-219618_DirectAwardTerm_b68f1feb-885d-37f5-ac99-4287870dfd15,
+    epd:2022-S-081-219618_FrameworkAgreementTerm_b68f1feb-885d-37f5-ac99-4287870dfd15,
+    epd:2022-S-081-219618_ProcedureSpecificTerm_15183658-b3d6-3d9d-88d4-6e02c7e3b7b9;
+  epo:usesTechnique epd:2022-S-081-219618_FrameworkAgreementTechniqueUsage_b68f1feb-885d-37f5-ac99-4287870dfd15 .
 
-<http://data.europa.eu/a4g/resource/ReviewerContactPoint/2022-S-081-219618/13730a07-65b0-306c-a9b5-a8929927a6a1>
-  a cccev:ContactPoint;
+epd:2022-S-081-219618_ReviewerContactPoint_13730a07-65b0-306c-a9b5-a8929927a6a1 a
+    cccev:ContactPoint;
   epo:hasInternetAddress "www.naturgy.com"^^xsd:anyURI;
   cccev:email "soportecompras@naturgy.com" .
 
-<http://data.europa.eu/a4g/resource/ReviewerOrganisation/2022-S-081-219618/13730a07-65b0-306c-a9b5-a8929927a6a1>
-  a org:Organization;
-  epo:hasLegalName "NATURGY ENERGY GROUP"@es;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2022-S-081-219618/13730a07-65b0-306c-a9b5-a8929927a6a1>;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-081-219618/13730a07-65b0-306c-a9b5-a8929927a6a1> .
-
-<http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-081-219618/13730a07-65b0-306c-a9b5-a8929927a6a1>
+epd:2022-S-081-219618_ReviewerOrganisationAddress_13730a07-65b0-306c-a9b5-a8929927a6a1
   a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
   locn:postCode "28033";
   locn:postName "MADRID";
   locn:thoroughfare "AVENIDA SAN LUIS 77" .
 
-<http://data.europa.eu/a4g/resource/SubmissionStatisticalInformation/2022-S-081-219618/14955bf6-88af-3773-b2c5-6a1cddff388a>
+epd:2022-S-081-219618_ReviewerOrganisation_13730a07-65b0-306c-a9b5-a8929927a6a1 a
+    org:Organization;
+  epo:hasLegalName "NATURGY ENERGY GROUP"@es;
+  epo:hasPrimaryContactPoint epd:2022-S-081-219618_ReviewerContactPoint_13730a07-65b0-306c-a9b5-a8929927a6a1;
+  cccev:registeredAddress epd:2022-S-081-219618_ReviewerOrganisationAddress_13730a07-65b0-306c-a9b5-a8929927a6a1 .
+
+epd:2022-S-081-219618_Reviewer_13730a07-65b0-306c-a9b5-a8929927a6a1 a epo:Reviewer;
+  epo:playedBy epd:2022-S-081-219618_ReviewerOrganisation_13730a07-65b0-306c-a9b5-a8929927a6a1 .
+
+epd:2022-S-081-219618_SubmissionStatisticalInformation_14955bf6-88af-3773-b2c5-6a1cddff388a
   a epo:SubmissionStatisticalInformation;
-  epo:summarisesInformationForLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2022-S-081-219618/527e871b-562d-3858-b2cb-c75e9b69e338> .
+  epo:summarisesInformationForLotAwardOutcome epd:2022-S-081-219618_LotAwardOutcome_527e871b-562d-3858-b2cb-c75e9b69e338 .
 
-<http://data.europa.eu/a4g/resource/Tender/2022-S-081-219618/14955bf6-88af-3773-b2c5-6a1cddff388a>
-  a epo:Tender;
-  epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/Lot/2022-S-081-219618/636e3166-5ecc-350b-867b-7bf2072a2c03> .
+epd:2022-S-081-219618_TenderAwardOutcome_14955bf6-88af-3773-b2c5-6a1cddff388a a epo:TenderAwardOutcome;
+  epo:describesTender epd:2022-S-081-219618_Tender_14955bf6-88af-3773-b2c5-6a1cddff388a .
 
-<http://data.europa.eu/a4g/resource/TenderAwardOutcome/2022-S-081-219618/14955bf6-88af-3773-b2c5-6a1cddff388a>
-  a epo:TenderAwardOutcome;
-  epo:describesTender <http://data.europa.eu/a4g/resource/Tender/2022-S-081-219618/14955bf6-88af-3773-b2c5-6a1cddff388a> .
+epd:2022-S-081-219618_Tender_14955bf6-88af-3773-b2c5-6a1cddff388a a epo:Tender;
+  epo:isSubmittedForLot epd:2022-S-081-219618_Lot_636e3166-5ecc-350b-867b-7bf2072a2c03 .

@@ -40,7 +40,7 @@ tedm:ReviewTerm a rr:TriplesMap ;
                 ] ;
         ] .
 
-tedm:Reviewer a rr:TriplesMap ;
+tedm:Reviewer a rr:TripleMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:playedBy ;
@@ -51,17 +51,6 @@ tedm:Reviewer a rr:TriplesMap ;
         ] .
 
 tedm:ReviewerOrganisation a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasLegalName ;
-            rr:objectMap
-                [
-                    rml:reference "OFFICIALNAME";
-                    rml:languageMap [
-                        rml:reference "lower-case(ancestor::*/@LG)"
-                    ]
-                ]
-        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasPrimaryContactPoint ;
@@ -86,7 +75,7 @@ tedm:ReviewerOrganisation a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:ReviewerOrganisationIdentifier
                 ]
         ] .
-tedm:ReviewerOrganisationIdentifier a rr:TriplesMap ;
+tedm:ReviewerOrganisationIdentifier a rr:TripleMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasIdentifierValue;
@@ -121,23 +110,14 @@ tedm:ReviewerContactPoint a rr:TriplesMap ;
                     rml:reference "FAX"
                 ]
         ] ;
+
+
     rr:predicateObjectMap
         [
             rr:predicate cpov:telephone ;
             rr:objectMap
                 [
                     rml:reference "PHONE"
-                ]
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasContactName ;
-            rr:objectMap
-                [
-                    rml:reference "CONTACT_POINT";
-                    rml:languageMap [
-                        rml:reference "lower-case(ancestor::*/@LG)"
-                    ]
                 ]
         ] .
 tedm:ReviewerOrganisationAddress a rr:TriplesMap ;
@@ -210,7 +190,7 @@ tedm:ReviewerOrganisationAddress a rr:TriplesMap ;
                 ] ;
         ] .
 
-tedm:Mediator a rr:TriplesMap ;
+tedm:Mediator a rr:TripleMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:playedBy ;
@@ -220,17 +200,6 @@ tedm:Mediator a rr:TriplesMap ;
                 ] ;
         ] .
 tedm:MediatorOrganisation a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasLegalName ;
-            rr:objectMap
-                [
-                    rml:reference "OFFICIALNAME";
-                    rml:languageMap [
-                        rml:reference "lower-case(ancestor::*/@LG)"
-                    ]
-                ]
-        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasPrimaryContactPoint ;
@@ -255,7 +224,7 @@ tedm:MediatorOrganisation a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:MediatorOrganisationIdentifier
                 ]
         ] .
-tedm:MediatorOrganisationIdentifier a rr:TriplesMap ;
+tedm:MediatorOrganisationIdentifier a rr:TripleMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasIdentifierValue;
@@ -290,23 +259,13 @@ tedm:MediatorContactPoint a rr:TriplesMap ;
                     rml:reference "FAX"
                 ]
         ] ;
+
     rr:predicateObjectMap
         [
             rr:predicate cpov:telephone ;
             rr:objectMap
                 [
                     rml:reference "PHONE"
-                ]
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasContactName ;
-            rr:objectMap
-                [
-                    rml:reference "CONTACT_POINT";
-                    rml:languageMap [
-                        rml:reference "lower-case(ancestor::*/@LG)"
-                    ]
                 ]
         ] .
 tedm:MediatorOrganisationAddress a rr:TriplesMap ;
@@ -379,7 +338,7 @@ tedm:MediatorOrganisationAddress a rr:TriplesMap ;
                 ] ;
         ] .
 
-tedm:ReviewProcedureInformationProvider a rr:TriplesMap ;
+tedm:ReviewProcedureInformationProvider a rr:TripleMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:playedBy ;
@@ -389,17 +348,6 @@ tedm:ReviewProcedureInformationProvider a rr:TriplesMap ;
                 ] ;
         ] .
 tedm:ReviewProcedureInformationProviderOrganisation a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasLegalName ;
-            rr:objectMap
-                [
-                    rml:reference "OFFICIALNAME";
-                    rml:languageMap [
-                        rml:reference "lower-case(ancestor::*/@LG)"
-                    ]
-                ]
-        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasPrimaryContactPoint ;
@@ -424,7 +372,7 @@ tedm:ReviewProcedureInformationProviderOrganisation a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:ReviewProcedureInformationProviderOrganisationIdentifier
                 ]
         ] .
-tedm:ReviewProcedureInformationProviderOrganisationIdentifier a rr:TriplesMap ;
+tedm:ReviewProcedureInformationProviderOrganisationIdentifier a rr:TripleMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasIdentifierValue;
@@ -469,12 +417,12 @@ tedm:ReviewProcedureInformationProviderContactPoint a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasContactName ;
+            rr:predicate epo:hasDescription ;
             rr:objectMap
                 [
                     rml:reference "CONTACT_POINT";
                     rml:languageMap [
-                        rml:reference "lower-case(ancestor::*/@LG)"
+                         rml:reference "lower-case(ancestor::*/@LG)"
                     ]
                 ]
         ] .
@@ -548,17 +496,6 @@ tedm:ReviewProcedureInformationProviderOrganisationAddress a rr:TriplesMap ;
                 ] ;
         ] .
 tedm:Procedure a rr:TriplesMap;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasAdditionalInformation ;
-            rr:objectMap
-                [
-                    rml:reference "../COMPLEMENTARY_INFO/INFO_ADD";
-                    rml:languageMap [
-                        rml:reference "lower-case(ancestor::*/@LG)"
-                    ]
-                ] ;
-        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:foreseesContractSpecificTerm ;

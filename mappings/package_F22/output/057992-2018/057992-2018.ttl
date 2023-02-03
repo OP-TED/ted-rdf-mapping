@@ -1,5 +1,6 @@
 @prefix cccev: <http://data.europa.eu/m8g/> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
@@ -7,158 +8,140 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://data.europa.eu/a4g/resource/AccessTerm/2018-S-026-057992/841f832b-8a2b-3a73-a4a6-85439d64c6be>
-  a epo:AccessTerm;
+epd:2018-S-026-057992_AccessTerm_841f832b-8a2b-3a73-a4a6-85439d64c6be a epo:AccessTerm;
   epo:hasPublicAccessURL "http://eu.eu-supply.com/app/rfq/rwlentrance_s.asp?PID=203873&B="^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
 
-<http://data.europa.eu/a4g/resource/Buyer/2018-S-026-057992/841f832b-8a2b-3a73-a4a6-85439d64c6be>
-  a epo:Buyer;
+epd:2018-S-026-057992_Buyer_841f832b-8a2b-3a73-a4a6-85439d64c6be a epo:Buyer;
   epo:hasBuyerProfile "https://eu.eu-supply.com/ctm/Company/CompanyInformation/Index/256309"^^xsd:anyURI;
-  epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-026-057992/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-026-057992/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
+  epo:hasContactPointInRole epd:2018-S-026-057992_ContactPoint_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95;
+  epo:playedBy epd:2018-S-026-057992_Organisation_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95 .
 
-<http://data.europa.eu/a4g/resource/ContactPoint/2018-S-026-057992/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
-  a cccev:ContactPoint;
+epd:2018-S-026-057992_ContactPoint_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95 a cccev:ContactPoint;
   epo:hasContactName "Eirik Hildal"@en;
   epo:hasInternetAddress "https://www.regjeringen.no/no/dep/sd/id791/"^^xsd:anyURI;
   cccev:email "eirik.hildal@sd.dep.no";
   cccev:telephone "+47 22249090" .
 
-<http://data.europa.eu/a4g/resource/ContractTerm/2018-S-026-057992/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
-  a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/Duration/2018-S-026-057992/9b5f500b-480f-339a-b633-57d0799d4507>;
-  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/ContractTermLocation/2018-S-026-057992/507edaeb-912d-3eb4-a32d-da9c8c650bd8> .
-
-<http://data.europa.eu/a4g/resource/ContractTermLocation/2018-S-026-057992/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
-  a dct:Location;
+epd:2018-S-026-057992_ContractTermLocation_507edaeb-912d-3eb4-a32d-da9c8c650bd8 a
+    dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/NO> .
 
-<http://data.europa.eu/a4g/resource/Duration/2018-S-026-057992/9b5f500b-480f-339a-b633-57d0799d4507>
-  a epo:Duration;
+epd:2018-S-026-057992_ContractTerm_507edaeb-912d-3eb4-a32d-da9c8c650bd8 a epo:ContractTerm;
+  epo:definesContractDuration epd:2018-S-026-057992_Duration_9b5f500b-480f-339a-b633-57d0799d4507;
+  epo:definesSpecificPlaceOfPerformance epd:2018-S-026-057992_ContractTermLocation_507edaeb-912d-3eb4-a32d-da9c8c650bd8 .
+
+epd:2018-S-026-057992_Duration_9b5f500b-480f-339a-b633-57d0799d4507 a epo:Duration;
   time:numericDuration 14.0;
   time:unitType time:unitMonth .
 
-<http://data.europa.eu/a4g/resource/Lot/2018-S-026-057992/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
-  a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2018-S-026-057992/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
+epd:2018-S-026-057992_LotPurpose_507edaeb-912d-3eb4-a32d-da9c8c650bd8 a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/64111000> .
+
+epd:2018-S-026-057992_Lot_507edaeb-912d-3eb4-a32d-da9c8c650bd8 a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:2018-S-026-057992_ContractTerm_507edaeb-912d-3eb4-a32d-da9c8c650bd8;
   epo:hasDescription """
                   A description of the service included in the contract is in the requirement specifications and the accompanying Annexes A to C.
                """@en;
-  epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/MainMonetaryValueLot/2018-S-026-057992/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
+  epo:hasEstimatedValue epd:2018-S-026-057992_MainMonetaryValueLot_507edaeb-912d-3eb4-a32d-da9c8c650bd8;
   epo:hasPerformingStaffQualificationInformation <http://publications.europa.eu/resource/authority/requirement-stage/not-requ>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/LotPurpose/2018-S-026-057992/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
+  epo:hasPurpose epd:2018-S-026-057992_LotPurpose_507edaeb-912d-3eb4-a32d-da9c8c650bd8;
   epo:isUsingEUFunds false;
-  epo:specifiesSelectionCriterion <http://data.europa.eu/a4g/resource/SelectionCriterion/2018-S-026-057992/cdddc74c-d95f-308d-979a-936feb7259ef> .
+  epo:specifiesSelectionCriterion epd:2018-S-026-057992_SelectionCriterion_cdddc74c-d95f-308d-979a-936feb7259ef .
 
-<http://data.europa.eu/a4g/resource/LotPurpose/2018-S-026-057992/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
-  a epo:Purpose;
-  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/64111000> .
+epd:2018-S-026-057992_MainMonetaryValueLot_507edaeb-912d-3eb4-a32d-da9c8c650bd8 a
+    epo:MonetaryValue;
+  epo:hasAmountValue 90000000.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/NOK> .
 
-<http://data.europa.eu/a4g/resource/MainMonetaryValueLot/2018-S-026-057992/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
+epd:2018-S-026-057992_MonetaryValueProcedure_1d9ef4ec-53be-3d2d-b473-d791c9090e39
   a epo:MonetaryValue;
   epo:hasAmountValue 90000000.0;
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/NOK> .
 
-<http://data.europa.eu/a4g/resource/MonetaryValueProcedure/2018-S-026-057992/1d9ef4ec-53be-3d2d-b473-d791c9090e39>
-  a epo:MonetaryValue;
-  epo:hasAmountValue 90000000.0;
-  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/NOK> .
-
-<http://data.europa.eu/a4g/resource/Notice/2018-S-026-057992/1d9ef4ec-53be-3d2d-b473-d791c9090e39>
-  a epo:CompetitionNotice, epo:Notice;
-  epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/NoticeAwardInformation/2018-S-026-057992/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
-  epo:announcesRole <http://data.europa.eu/a4g/resource/ProcurementProcedureInformationProvider/2018-S-026-057992/cd1f8e5f-b72a-3163-a598-b8e32f275d54>,
-    <http://data.europa.eu/a4g/resource/Reviewer/2018-S-026-057992/f408af29-86f8-3547-8427-ccade0632c83>,
-    <http://data.europa.eu/a4g/resource/TenderReceiver/2018-S-026-057992/ac0de271-9725-30be-817c-5414d868ef49>;
+epd:2018-S-026-057992_Notice a epo:CompetitionNotice, epo:Notice;
+  epo:announcesNoticeAwardInformation epd:2018-S-026-057992_NoticeAwardInformation_1d9ef4ec-53be-3d2d-b473-d791c9090e39;
+  epo:announcesRole epd:2018-S-026-057992_ProcurementProcedureInformationProvider_cd1f8e5f-b72a-3163-a598-b8e32f275d54,
+    epd:2018-S-026-057992_Reviewer_f408af29-86f8-3547-8427-ccade0632c83, epd:2018-S-026-057992_TenderReceiver_ac0de271-9725-30be-817c-5414d868ef49;
   epo:hasDispatchDate "2018-02-06"^^xsd:date;
-  epo:refersToLot <http://data.europa.eu/a4g/resource/Lot/2018-S-026-057992/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
-  epo:refersToProcedure <http://data.europa.eu/a4g/resource/Procedure/2018-S-026-057992/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
-  epo:refersToRole <http://data.europa.eu/a4g/resource/Buyer/2018-S-026-057992/841f832b-8a2b-3a73-a4a6-85439d64c6be> .
+  epo:refersToLot epd:2018-S-026-057992_Lot_507edaeb-912d-3eb4-a32d-da9c8c650bd8;
+  epo:refersToProcedure epd:2018-S-026-057992_Procedure_1d9ef4ec-53be-3d2d-b473-d791c9090e39;
+  epo:refersToRole epd:2018-S-026-057992_Buyer_841f832b-8a2b-3a73-a4a6-85439d64c6be .
 
-<http://data.europa.eu/a4g/resource/NoticeAwardInformation/2018-S-026-057992/1d9ef4ec-53be-3d2d-b473-d791c9090e39>
+epd:2018-S-026-057992_NoticeAwardInformation_1d9ef4ec-53be-3d2d-b473-d791c9090e39
   a epo:NoticeAwardInformation .
 
-<http://data.europa.eu/a4g/resource/Organisation/2018-S-026-057992/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
-  a org:Organization;
-  epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2018-S-026-057992/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>;
-  epo:hasLegalName "Samferdselsdepartementet"@en;
-  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/post>;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-026-057992/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
-
-<http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-026-057992/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
-  a locn:Address;
+epd:2018-S-026-057992_OrganisationAddress_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95 a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NOR>;
   locn:postCode "0030";
   locn:postName "Oslo";
   locn:thoroughfare "Postboks 8010 Dep" .
 
-<http://data.europa.eu/a4g/resource/OrganisationIdentifier/2018-S-026-057992/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
+epd:2018-S-026-057992_OrganisationIdentifier_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95
   a epo:Identifier;
   epo:hasIdentifierValue "972 417 904" .
 
-<http://data.europa.eu/a4g/resource/Procedure/2018-S-026-057992/1d9ef4ec-53be-3d2d-b473-d791c9090e39>
-  a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2018-S-026-057992/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
+epd:2018-S-026-057992_Organisation_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95 a org:Organization;
+  epo:hasID epd:2018-S-026-057992_OrganisationIdentifier_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95;
+  epo:hasLegalName "Samferdselsdepartementet"@en;
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/post>;
+  cccev:registeredAddress epd:2018-S-026-057992_OrganisationAddress_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95 .
+
+epd:2018-S-026-057992_ProcedureIdentifier_1d9ef4ec-53be-3d2d-b473-d791c9090e39 a epo:Identifier;
+  epo:hasIdentifierValue "SD 010218" .
+
+epd:2018-S-026-057992_ProcedurePurpose_1d9ef4ec-53be-3d2d-b473-d791c9090e39 a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/64111000> .
+
+epd:2018-S-026-057992_ProcedureSpecificTerm_841f832b-8a2b-3a73-a4a6-85439d64c6be a
+    epo:ProcedureSpecificTerm .
+
+epd:2018-S-026-057992_Procedure_1d9ef4ec-53be-3d2d-b473-d791c9090e39 a epo:Procedure;
+  epo:foreseesContractSpecificTerm epd:2018-S-026-057992_ContractTerm_507edaeb-912d-3eb4-a32d-da9c8c650bd8;
   epo:hasDescription """
                This competition is for a contract for obligatory deliveries of subscription newspapers on Saturdays to subscribers who do not have other newspaper distributions on Saturdays, in accordance with the Postal Services Act dated 4.9.2015 nº 91 (“the Post Act”) § 7 2nd section, cf. the regulations on post dated 18.9.2015 nº 1063 (“the Post Regulations”) § 19.
             """@en;
-  epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/MonetaryValueProcedure/2018-S-026-057992/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
-  epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2018-S-026-057992/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
+  epo:hasEstimatedValue epd:2018-S-026-057992_MonetaryValueProcedure_1d9ef4ec-53be-3d2d-b473-d791c9090e39;
+  epo:hasID epd:2018-S-026-057992_ProcedureIdentifier_1d9ef4ec-53be-3d2d-b473-d791c9090e39;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
-  epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2018-S-026-057992/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-026-057992/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
+  epo:hasProcurementScopeDividedIntoLot epd:2018-S-026-057992_Lot_507edaeb-912d-3eb4-a32d-da9c8c650bd8;
+  epo:hasPurpose epd:2018-S-026-057992_ProcedurePurpose_1d9ef4ec-53be-3d2d-b473-d791c9090e39;
   epo:hasTitle """
                Procurement of obligatory postal services — Delivery of subscription newspapers on Saturdays
             """@en;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/AccessTerm/2018-S-026-057992/841f832b-8a2b-3a73-a4a6-85439d64c6be>,
-    <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2018-S-026-057992/841f832b-8a2b-3a73-a4a6-85439d64c6be>,
-    <http://data.europa.eu/a4g/resource/SubmissionTerm/2018-S-026-057992/d5eb64bb-60fc-33e6-91a2-96bf252d3a17> .
+  epo:isSubjectToProcedureSpecificTerm epd:2018-S-026-057992_AccessTerm_841f832b-8a2b-3a73-a4a6-85439d64c6be,
+    epd:2018-S-026-057992_ProcedureSpecificTerm_841f832b-8a2b-3a73-a4a6-85439d64c6be,
+    epd:2018-S-026-057992_SubmissionTerm_d5eb64bb-60fc-33e6-91a2-96bf252d3a17 .
 
-<http://data.europa.eu/a4g/resource/ProcedureIdentifier/2018-S-026-057992/1d9ef4ec-53be-3d2d-b473-d791c9090e39>
-  a epo:Identifier;
-  epo:hasIdentifierValue "SD 010218" .
-
-<http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-026-057992/1d9ef4ec-53be-3d2d-b473-d791c9090e39>
-  a epo:Purpose;
-  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/64111000> .
-
-<http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2018-S-026-057992/841f832b-8a2b-3a73-a4a6-85439d64c6be>
-  a epo:ProcedureSpecificTerm .
-
-<http://data.europa.eu/a4g/resource/ProcurementProcedureInformationProvider/2018-S-026-057992/cd1f8e5f-b72a-3163-a598-b8e32f275d54>
+epd:2018-S-026-057992_ProcurementProcedureInformationProvider_cd1f8e5f-b72a-3163-a598-b8e32f275d54
   a epo:ProcurementProcedureInformationProvider;
-  epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-026-057992/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-026-057992/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
+  epo:hasContactPointInRole epd:2018-S-026-057992_ContactPoint_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95;
+  epo:playedBy epd:2018-S-026-057992_Organisation_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95 .
 
-<http://data.europa.eu/a4g/resource/Reviewer/2018-S-026-057992/f408af29-86f8-3547-8427-ccade0632c83>
-  a epo:Reviewer;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2018-S-026-057992/f408af29-86f8-3547-8427-ccade0632c83> .
-
-<http://data.europa.eu/a4g/resource/ReviewerOrganisation/2018-S-026-057992/f408af29-86f8-3547-8427-ccade0632c83>
-  a org:Organization;
-  epo:hasLegalName "Samferdselsdepartementet"@en;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-026-057992/f408af29-86f8-3547-8427-ccade0632c83> .
-
-<http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-026-057992/f408af29-86f8-3547-8427-ccade0632c83>
+epd:2018-S-026-057992_ReviewerOrganisationAddress_f408af29-86f8-3547-8427-ccade0632c83
   a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NOR>;
   locn:postCode "0030";
   locn:postName "Oslo" .
 
-<http://data.europa.eu/a4g/resource/SelectionCriterion/2018-S-026-057992/cdddc74c-d95f-308d-979a-936feb7259ef>
-  a epo:SelectionCriterion;
+epd:2018-S-026-057992_ReviewerOrganisation_f408af29-86f8-3547-8427-ccade0632c83 a
+    org:Organization;
+  epo:hasLegalName "Samferdselsdepartementet"@en;
+  cccev:registeredAddress epd:2018-S-026-057992_ReviewerOrganisationAddress_f408af29-86f8-3547-8427-ccade0632c83 .
+
+epd:2018-S-026-057992_Reviewer_f408af29-86f8-3547-8427-ccade0632c83 a epo:Reviewer;
+  epo:playedBy epd:2018-S-026-057992_ReviewerOrganisation_f408af29-86f8-3547-8427-ccade0632c83 .
+
+epd:2018-S-026-057992_SelectionCriterion_cdddc74c-d95f-308d-979a-936feb7259ef a epo:SelectionCriterion;
   cccev:description """
                See the attached tender invitation.
             """ .
 
-<http://data.europa.eu/a4g/resource/SubmissionTerm/2018-S-026-057992/d5eb64bb-60fc-33e6-91a2-96bf252d3a17>
-  a epo:SubmissionTerm;
+epd:2018-S-026-057992_SubmissionTerm_d5eb64bb-60fc-33e6-91a2-96bf252d3a17 a epo:SubmissionTerm;
   epo:hasLanguage "NO";
   epo:hasReceiptDeadline "2018-05-04T12:00:00"^^xsd:dateTime;
   epo:hasSubmissionURL "http://eu.eu-supply.com/app/rfq/rwlentrance_s.asp?PID=203873&B="^^xsd:anyURI .
 
-<http://data.europa.eu/a4g/resource/TenderReceiver/2018-S-026-057992/ac0de271-9725-30be-817c-5414d868ef49>
-  a epo:TenderReceiver;
-  epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-026-057992/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-026-057992/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
+epd:2018-S-026-057992_TenderReceiver_ac0de271-9725-30be-817c-5414d868ef49 a epo:TenderReceiver;
+  epo:hasContactPointInRole epd:2018-S-026-057992_ContactPoint_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95;
+  epo:playedBy epd:2018-S-026-057992_Organisation_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95 .

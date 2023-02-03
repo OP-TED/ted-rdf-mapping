@@ -15,88 +15,77 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://data.europa.eu/a4g/resource/Buyer/2018-S-028-061911/0156d029-ea5d-32c8-9775-6e736949dafe>
-  a epo:Buyer;
+epd:2018-S-028-061911_Buyer_0156d029-ea5d-32c8-9775-6e736949dafe a epo:Buyer;
   epo:hasBuyerProfile "https://marchespublics.ampmetropole.fr/"^^xsd:anyURI;
-  epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-028-061911/12090057-4d35-309d-8a57-04cbe4e97554>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-028-061911/12090057-4d35-309d-8a57-04cbe4e97554> .
+  epo:hasContactPointInRole epd:2018-S-028-061911_ContactPoint_12090057-4d35-309d-8a57-04cbe4e97554;
+  epo:playedBy epd:2018-S-028-061911_Organisation_12090057-4d35-309d-8a57-04cbe4e97554 .
 
-<http://data.europa.eu/a4g/resource/ContactPoint/2018-S-028-061911/12090057-4d35-309d-8a57-04cbe4e97554>
-  a cccev:ContactPoint;
+epd:2018-S-028-061911_ContactPoint_12090057-4d35-309d-8a57-04cbe4e97554 a cccev:ContactPoint;
   epo:hasContactName "Direction juridique, schémas, grands projets et contentieux"@fr;
   epo:hasFax "+33 491997525";
   epo:hasInternetAddress "http://www.marseille-provence.fr/"^^xsd:anyURI;
   cccev:email "daja.dsp@ampmetropole.fr";
   cccev:telephone "+33 491997038" .
 
-<http://data.europa.eu/a4g/resource/Contract/2018-S-028-061911/408a9316-e1f5-35fd-8b3f-1891fc75519e>
-  a epo:Contract;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractIdentifier/2018-S-028-061911/408a9316-e1f5-35fd-8b3f-1891fc75519e>;
+epd:2018-S-028-061911_ContractIdentifier_408a9316-e1f5-35fd-8b3f-1891fc75519e a epo:Identifier;
+  epo:hasIdentifierValue "90/493" .
+
+epd:2018-S-028-061911_ContractModification_7756f2c6-25ed-3582-8857-c559a5a18257 a
+    epo:ContractModification;
+  epo:describesNotice epd:2018-S-028-061911_Notice;
+  epo:hasElementModification epd:2018-S-028-061911_ElementModificationDescription_7756f2c6-25ed-3582-8857-c559a5a18257 .
+
+epd:2018-S-028-061911_ContractTermLocationAddressModification_7b7529f1-e490-38e9-8bf9-6378671dc463
+  a locn:Address;
+  locn:fullAddress """
+                  Marseille.
+               """@fr .
+
+epd:2018-S-028-061911_ContractTermLocationAddress_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8
+  a locn:Address;
+  locn:fullAddress """
+                  Marseille.
+               """@fr .
+
+epd:2018-S-028-061911_ContractTermLocationModification_7b7529f1-e490-38e9-8bf9-6378671dc463
+  a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRL04>;
+  locn:address epd:2018-S-028-061911_ContractTermLocationAddressModification_7b7529f1-e490-38e9-8bf9-6378671dc463 .
+
+epd:2018-S-028-061911_ContractTermLocation_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8 a
+    dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRL04>;
+  locn:address epd:2018-S-028-061911_ContractTermLocationAddress_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8 .
+
+epd:2018-S-028-061911_ContractTermModification_7b7529f1-e490-38e9-8bf9-6378671dc463
+  a epo:ContractTerm;
+  epo:definesContractDuration epd:2018-S-028-061911_DurationModification_e3c2db23-06ee-3138-889e-fd6d701080e5;
+  epo:definesSpecificPlaceOfPerformance epd:2018-S-028-061911_ContractTermLocationModification_7b7529f1-e490-38e9-8bf9-6378671dc463 .
+
+epd:2018-S-028-061911_ContractTerm_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8 a epo:ContractTerm;
+  epo:definesContractDuration epd:2018-S-028-061911_Duration_c7ffb705-560b-3eb0-af7a-0f291a1f54f8;
+  epo:definesSpecificPlaceOfPerformance epd:2018-S-028-061911_ContractTermLocation_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8 .
+
+epd:2018-S-028-061911_Contract_408a9316-e1f5-35fd-8b3f-1891fc75519e a epo:Contract;
+  epo:hasID epd:2018-S-028-061911_ContractIdentifier_408a9316-e1f5-35fd-8b3f-1891fc75519e;
   epo:hasTitle """
                Concession portant sur le financement, la conception, la construction, l'entretien et l'exploitation du tunnel routier à péage Prado-Carénage
             """@fr;
-  epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2018-S-028-061911/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8> .
+  epo:includesLot epd:2018-S-028-061911_Lot_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8 .
 
-<http://data.europa.eu/a4g/resource/ContractIdentifier/2018-S-028-061911/408a9316-e1f5-35fd-8b3f-1891fc75519e>
-  a epo:Identifier;
-  epo:hasIdentifierValue "90/493" .
-
-<http://data.europa.eu/a4g/resource/ContractModification/2018-S-028-061911/7756f2c6-25ed-3582-8857-c559a5a18257>
-  a epo:ContractModification;
-  epo:describesNotice <http://data.europa.eu/a4g/resource/Notice/2018-S-028-061911/7613a54d-6c6b-30e8-b4db-72fd1d42abcb>;
-  epo:hasElementModification <http://data.europa.eu/a4g/resource/ElementModificationDescription/2018-S-028-061911/7756f2c6-25ed-3582-8857-c559a5a18257> .
-
-<http://data.europa.eu/a4g/resource/ContractTerm/2018-S-028-061911/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8>
-  a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/Duration/2018-S-028-061911/c7ffb705-560b-3eb0-af7a-0f291a1f54f8>;
-  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/ContractTermLocation/2018-S-028-061911/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8> .
-
-<http://data.europa.eu/a4g/resource/ContractTermLocation/2018-S-028-061911/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8>
-  a dct:Location;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRL04>;
-  locn:address <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2018-S-028-061911/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8> .
-
-<http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2018-S-028-061911/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8>
-  a locn:Address;
-  locn:fullAddress """
-                  Marseille.
-               """@fr .
-
-<http://data.europa.eu/a4g/resource/ContractTermLocationAddressModification/2018-S-028-061911/7b7529f1-e490-38e9-8bf9-6378671dc463>
-  a locn:Address;
-  locn:fullAddress """
-                  Marseille.
-               """@fr .
-
-<http://data.europa.eu/a4g/resource/ContractTermLocationModification/2018-S-028-061911/7b7529f1-e490-38e9-8bf9-6378671dc463>
-  a dct:Location;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRL04>;
-  locn:address <http://data.europa.eu/a4g/resource/ContractTermLocationAddressModification/2018-S-028-061911/7b7529f1-e490-38e9-8bf9-6378671dc463> .
-
-<http://data.europa.eu/a4g/resource/ContractTermModification/2018-S-028-061911/7b7529f1-e490-38e9-8bf9-6378671dc463>
-  a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/DurationModification/2018-S-028-061911/e3c2db23-06ee-3138-889e-fd6d701080e5>;
-  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/ContractTermLocationModification/2018-S-028-061911/7b7529f1-e490-38e9-8bf9-6378671dc463> .
-
-<http://data.europa.eu/a4g/resource/ContractorContactPoint/2018-S-028-061911/752afe7a-c855-3849-be99-ed1250d773b7>
+epd:2018-S-028-061911_ContractorContactPoint_752afe7a-c855-3849-be99-ed1250d773b7
   a cccev:ContactPoint;
   epo:hasInternetAddress "http://www.tunnelprado.com/"^^xsd:anyURI;
   cccev:email "c.cambier@tunnelprado.com";
   cccev:telephone "+33 491808880" .
 
-<http://data.europa.eu/a4g/resource/ContractorContactPoint/2018-S-028-061911/77eac6bc-38b0-390a-bf94-2ff5bb6739c5>
+epd:2018-S-028-061911_ContractorContactPoint_77eac6bc-38b0-390a-bf94-2ff5bb6739c5
   a cccev:ContactPoint;
   epo:hasInternetAddress "http://www.tunnelprado.com/"^^xsd:anyURI;
   cccev:email "c.cambier@tunnelprado.com";
   cccev:telephone "+33 491808880" .
 
-<http://data.europa.eu/a4g/resource/ContractorOrganisation/2018-S-028-061911/752afe7a-c855-3849-be99-ed1250d773b7>
-  a org:Organization;
-  epo:hasLegalName "Société Marseillaise du tunnel Prado-Carénage"@fr;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorContactPoint/2018-S-028-061911/752afe7a-c855-3849-be99-ed1250d773b7>;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2018-S-028-061911/752afe7a-c855-3849-be99-ed1250d773b7> .
-
-<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2018-S-028-061911/752afe7a-c855-3849-be99-ed1250d773b7>
+epd:2018-S-028-061911_ContractorOrganisationAddressModification_77eac6bc-38b0-390a-bf94-2ff5bb6739c5
   a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/FRL04>;
@@ -104,7 +93,7 @@
   locn:postName "Marseille";
   locn:thoroughfare "3 avenue Arthur Scott" .
 
-<http://data.europa.eu/a4g/resource/ContractorOrganisationAddressModification/2018-S-028-061911/77eac6bc-38b0-390a-bf94-2ff5bb6739c5>
+epd:2018-S-028-061911_ContractorOrganisationAddress_752afe7a-c855-3849-be99-ed1250d773b7
   a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/FRL04>;
@@ -112,23 +101,28 @@
   locn:postName "Marseille";
   locn:thoroughfare "3 avenue Arthur Scott" .
 
-<http://data.europa.eu/a4g/resource/ContractorOrganisationModification/2018-S-028-061911/77eac6bc-38b0-390a-bf94-2ff5bb6739c5>
+epd:2018-S-028-061911_ContractorOrganisationModification_77eac6bc-38b0-390a-bf94-2ff5bb6739c5
   a org:Organization;
   epo:hasLegalName "Société Marseillaise du Tunnel Prado Carénage"@fr;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ContractorContactPoint/2018-S-028-061911/77eac6bc-38b0-390a-bf94-2ff5bb6739c5>;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddressModification/2018-S-028-061911/77eac6bc-38b0-390a-bf94-2ff5bb6739c5> .
+  epo:hasPrimaryContactPoint epd:2018-S-028-061911_ContractorContactPoint_77eac6bc-38b0-390a-bf94-2ff5bb6739c5;
+  cccev:registeredAddress epd:2018-S-028-061911_ContractorOrganisationAddressModification_77eac6bc-38b0-390a-bf94-2ff5bb6739c5 .
 
-<http://data.europa.eu/a4g/resource/Duration/2018-S-028-061911/c7ffb705-560b-3eb0-af7a-0f291a1f54f8>
-  a epo:Duration;
-  time:numericDuration 396.0;
-  time:unitType time:unitMonth .
+epd:2018-S-028-061911_ContractorOrganisation_752afe7a-c855-3849-be99-ed1250d773b7
+  a org:Organization;
+  epo:hasLegalName "Société Marseillaise du tunnel Prado-Carénage"@fr;
+  epo:hasPrimaryContactPoint epd:2018-S-028-061911_ContractorContactPoint_752afe7a-c855-3849-be99-ed1250d773b7;
+  cccev:registeredAddress epd:2018-S-028-061911_ContractorOrganisationAddress_752afe7a-c855-3849-be99-ed1250d773b7 .
 
-<http://data.europa.eu/a4g/resource/DurationModification/2018-S-028-061911/e3c2db23-06ee-3138-889e-fd6d701080e5>
-  a epo:Duration;
+epd:2018-S-028-061911_DurationModification_e3c2db23-06ee-3138-889e-fd6d701080e5 a
+    epo:Duration;
   time:numericDuration 515.0;
   time:unitType time:unitMonth .
 
-<http://data.europa.eu/a4g/resource/ElementModificationDescription/2018-S-028-061911/7756f2c6-25ed-3582-8857-c559a5a18257>
+epd:2018-S-028-061911_Duration_c7ffb705-560b-3eb0-af7a-0f291a1f54f8 a epo:Duration;
+  time:numericDuration 396.0;
+  time:unitType time:unitMonth .
+
+epd:2018-S-028-061911_ElementModificationDescription_7756f2c6-25ed-3582-8857-c559a5a18257
   a epo:ElementModificationDescription;
   epo:hasModificationDescription """
                   Après un avenant no 1 approuvé par délibération du conseil municipal du 28.6.1993, un avenant no 2 approuvé par délibération du conseil municipal du 29.4.1994, un avenant no 3 approuvé par délibération du conseil municipal du 19.12.1994, un avenant no 4 approuvé par délibération du conseil municipal du 24.6.1996, un avenant no 5 approuvé par délibération du conseil municipal du 29.9.1997, un avenant no 6 approuvé par délibération du conseil municipal du 29.5.2000, un avenant no 7 approuvé par délibération du conseil de communauté du 27.6.2003 et un avenant no 8 approuvé par délibération du conseil de communauté du 27.6.2005, l'avenant no 9 à la concession du Prado-Carénage approuvé par délibération du conseil de la métropole du 19.10.2017 et signé le 23.11.2017 a pour objet de confier à la société Marseillaise du tunnel Prado Carénage, par extension de la concession du tunnel Prado Carénage, le financement, la conception, la construction et l'entretien de la Bretelle Schloesing, voie souterraine d'une longueur de 845 m, bidirectionnelle, à une voie de circulation par sens, reliant le tunnel Prado Carénage au boulevard Schloesing, dont l'usage sera gratuit. La durée de réalisation des travaux de la Bretelle Schloesing est de 38 mois pour un coût de réalisation global, hors frais financier, de 96 985 000 EUR entièrement financé par la Société Marseillaise du tunnel Prado Carénage. En l'absence de péage pour l'usage de la Bretelle Schloesing, la durée de la concession du tunnel Prado Carénage est allongée de 7 ans et 11 mois pour permettre à la société Marseillaise du tunnel Prado Carénage d'amortir les coûts correspondants mis à sa charge.
@@ -140,94 +134,104 @@
                   La Bretelle Schloesing est devenue nécessaire pour améliorer la sécurité d'exploitation du tunnel Prado Carénage qui connaît des situations de congestion, encore dégradées par le futur tramway sur la place Ferrié. La mise en concurrence en tant que concession autonome est impossible en raison de la gratuité de la Bretelle Schloesing et de sa petit taille, qui la rendent économiquement non viable pour la métropole d'Aix-Marseille-Provence. C'est une voie d'accès exclusive au tunnel Prado Carénage jusqu'au raccordement avec la voirie locale et l'A50 qui n'aura aucune fonction économique ou technique autonome par rapport à l'exploitation de la concession Prado Carénage. La présence d'un exploitant différent sur la Bretelle Schloesing, située entre les tunnels Prado Sud et Prado Carénage, exploités par un même exploitant, créerait une discontinuité dans l'exploitation susceptible de méconnaître les prescriptions de sécurité dans les tunnels.
                """@fr .
 
-<http://data.europa.eu/a4g/resource/Lot/2018-S-028-061911/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8>
-  a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2018-S-028-061911/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8>;
+epd:2018-S-028-061911_LotAwardOutcomeAwardedMonetaryValueModification_9892c97f-3231-3e3e-97ad-459127562373
+  a epo:MonetaryValue;
+  epo:hasAmountValue 1329800000.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:2018-S-028-061911_LotAwardOutcomeAwardedMonetaryValue_408a9316-e1f5-35fd-8b3f-1891fc75519e
+  a epo:MonetaryValue;
+  epo:hasAmountValue 1031700000.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:2018-S-028-061911_LotAwardOutcomeModification_7b7529f1-e490-38e9-8bf9-6378671dc463
+  a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:2018-S-028-061911_TenderAwardOutcomeModification_7b7529f1-e490-38e9-8bf9-6378671dc463;
+  epo:describesLot epd:2018-S-028-061911_LotModification_7b7529f1-e490-38e9-8bf9-6378671dc463;
+  epo:hasAwardedValue epd:2018-S-028-061911_LotAwardOutcomeAwardedMonetaryValueModification_9892c97f-3231-3e3e-97ad-459127562373 .
+
+epd:2018-S-028-061911_LotAwardOutcome_408a9316-e1f5-35fd-8b3f-1891fc75519e a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:2018-S-028-061911_TenderAwardOutcome_3d8e7073-470b-358b-8eb4-deee3051bd2e;
+  epo:describesLot epd:2018-S-028-061911_Lot_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8;
+  epo:hasAwardDecisionDate "1990-09-27"^^xsd:date;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue epd:2018-S-028-061911_LotAwardOutcomeAwardedMonetaryValue_408a9316-e1f5-35fd-8b3f-1891fc75519e .
+
+epd:2018-S-028-061911_LotModification_7b7529f1-e490-38e9-8bf9-6378671dc463 a epo:Lot;
+  epo:containsModificationsOn epd:2018-S-028-061911_Lot_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8;
+  epo:foreseesContractSpecificTerm epd:2018-S-028-061911_ContractTermModification_7b7529f1-e490-38e9-8bf9-6378671dc463;
+  epo:hasDescription """
+                  À l'issue des modifications objet du présent avis, le périmètre de la concession du tunnel Prado-Carénage est étendu à la Bretelle Schloesing et le périmètre de la concession du tunnel Prado Sud est diminué de sa section, transférée dans le périmètre étendu de la concession du tunnel Prado Carénage en vertu de la convention tripartite.
+               """@fr;
+  epo:hasPurpose epd:2018-S-028-061911_LotPurposeModification_7b7529f1-e490-38e9-8bf9-6378671dc463 .
+
+epd:2018-S-028-061911_LotPurposeModification_7b7529f1-e490-38e9-8bf9-6378671dc463
+  a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/63712320> .
+
+epd:2018-S-028-061911_LotPurpose_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8 a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/63712300> .
+
+epd:2018-S-028-061911_Lot_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8 a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:2018-S-028-061911_ContractTerm_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8;
   epo:hasDescription """
                   La concession confie au titulaire le financement, la conception, la construction, l'entretien et l'exploitation du tunnel routier à péage Prado-Carénage, tunnel de 2 450 m de long permettant de relier, moyennant acquittement d'un droit de péage:
                   — depuis le nord de Marseille, l'autoroute A55, le centre-ville et les quartiers sud de la ville; et,
                   — depuis l'est de Marseille, l'autoroute A50 et le centre-ville.
                """@fr;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/LotPurpose/2018-S-028-061911/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8>;
+  epo:hasPurpose epd:2018-S-028-061911_LotPurpose_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8;
   epo:hasTitle """
                   Concession portant sur le financement, la conception, la construction, l'entretien et l'exploitation du tunnel routier à péage Prado-Carénage
                """@fr;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/ReviewTerm/2018-S-028-061911/d85a748e-f5a2-3efc-9502-6fd9fa3d6d6b>;
+  epo:isSubjectToLotSpecificTerm epd:2018-S-028-061911_ReviewTerm_d85a748e-f5a2-3efc-9502-6fd9fa3d6d6b;
   epo:isUsingEUFunds false .
 
-<http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-028-061911/408a9316-e1f5-35fd-8b3f-1891fc75519e>
-  a epo:LotAwardOutcome;
-  epo:comprisesTenderAwardOutcome <http://data.europa.eu/a4g/resource/TenderAwardOutcome/2018-S-028-061911/3d8e7073-470b-358b-8eb4-deee3051bd2e>;
-  epo:describesLot <http://data.europa.eu/a4g/resource/Lot/2018-S-028-061911/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8>;
-  epo:hasAwardDecisionDate "1990-09-27"^^xsd:date;
-  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
-  epo:hasAwardedValue <http://data.europa.eu/a4g/resource/LotAwardOutcomeAwardedMonetaryValue/2018-S-028-061911/408a9316-e1f5-35fd-8b3f-1891fc75519e> .
-
-<http://data.europa.eu/a4g/resource/LotAwardOutcomeAwardedMonetaryValue/2018-S-028-061911/408a9316-e1f5-35fd-8b3f-1891fc75519e>
-  a epo:MonetaryValue;
-  epo:hasAmountValue 1031700000.0;
-  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
-
-<http://data.europa.eu/a4g/resource/LotAwardOutcomeAwardedMonetaryValueModification/2018-S-028-061911/9892c97f-3231-3e3e-97ad-459127562373>
-  a epo:MonetaryValue;
-  epo:hasAmountValue 1329800000.0;
-  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
-
-<http://data.europa.eu/a4g/resource/LotAwardOutcomeModification/2018-S-028-061911/7b7529f1-e490-38e9-8bf9-6378671dc463>
-  a epo:LotAwardOutcome;
-  epo:comprisesTenderAwardOutcome <http://data.europa.eu/a4g/resource/TenderAwardOutcomeModification/2018-S-028-061911/7b7529f1-e490-38e9-8bf9-6378671dc463>;
-  epo:describesLot <http://data.europa.eu/a4g/resource/LotModification/2018-S-028-061911/7b7529f1-e490-38e9-8bf9-6378671dc463>;
-  epo:hasAwardedValue <http://data.europa.eu/a4g/resource/LotAwardOutcomeAwardedMonetaryValueModification/2018-S-028-061911/9892c97f-3231-3e3e-97ad-459127562373> .
-
-<http://data.europa.eu/a4g/resource/LotModification/2018-S-028-061911/7b7529f1-e490-38e9-8bf9-6378671dc463>
-  a epo:Lot;
-  epo:containsModificationsOn <http://data.europa.eu/a4g/resource/Lot/2018-S-028-061911/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8>;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTermModification/2018-S-028-061911/7b7529f1-e490-38e9-8bf9-6378671dc463>;
-  epo:hasDescription """
-                  À l'issue des modifications objet du présent avis, le périmètre de la concession du tunnel Prado-Carénage est étendu à la Bretelle Schloesing et le périmètre de la concession du tunnel Prado Sud est diminué de sa section, transférée dans le périmètre étendu de la concession du tunnel Prado Carénage en vertu de la convention tripartite.
-               """@fr;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/LotPurposeModification/2018-S-028-061911/7b7529f1-e490-38e9-8bf9-6378671dc463> .
-
-<http://data.europa.eu/a4g/resource/LotPurpose/2018-S-028-061911/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8>
-  a epo:Purpose;
-  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/63712300> .
-
-<http://data.europa.eu/a4g/resource/LotPurposeModification/2018-S-028-061911/7b7529f1-e490-38e9-8bf9-6378671dc463>
-  a epo:Purpose;
-  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/63712320> .
-
-<http://data.europa.eu/a4g/resource/Notice/2018-S-028-061911/7613a54d-6c6b-30e8-b4db-72fd1d42abcb>
-  a epo:ContractModificationNotice, epo:Notice;
-  epo:announcesContract <http://data.europa.eu/a4g/resource/Contract/2018-S-028-061911/408a9316-e1f5-35fd-8b3f-1891fc75519e>;
-  epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/NoticeAwardInformation/2018-S-028-061911/7613a54d-6c6b-30e8-b4db-72fd1d42abcb>;
-  epo:announcesRole <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProvider/2018-S-028-061911/d59a215f-7c49-384e-a28b-0955b001a5dd>,
-    <http://data.europa.eu/a4g/resource/Reviewer/2018-S-028-061911/15e8773e-7fea-3367-b1d2-43b565bcf8ab>,
-    <http://data.europa.eu/a4g/resource/WinnerRole/2018-S-028-061911/752afe7a-c855-3849-be99-ed1250d773b7>;
-  epo:announcesTender <http://data.europa.eu/a4g/resource/Tender/2018-S-028-061911/3d8e7073-470b-358b-8eb4-deee3051bd2e>;
+epd:2018-S-028-061911_Notice a epo:ContractModificationNotice, epo:Notice;
+  epo:announcesContract epd:2018-S-028-061911_Contract_408a9316-e1f5-35fd-8b3f-1891fc75519e;
+  epo:announcesNoticeAwardInformation epd:2018-S-028-061911_NoticeAwardInformation_7613a54d-6c6b-30e8-b4db-72fd1d42abcb;
+  epo:announcesRole epd:2018-S-028-061911_ReviewProcedureInformationProvider_d59a215f-7c49-384e-a28b-0955b001a5dd,
+    epd:2018-S-028-061911_Reviewer_15e8773e-7fea-3367-b1d2-43b565bcf8ab, epd:2018-S-028-061911_Winner_752afe7a-c855-3849-be99-ed1250d773b7;
+  epo:announcesTender epd:2018-S-028-061911_Tender_3d8e7073-470b-358b-8eb4-deee3051bd2e;
   epo:hasDispatchDate "2018-02-07"^^xsd:date;
-  epo:refersToLot <http://data.europa.eu/a4g/resource/Lot/2018-S-028-061911/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8>;
-  epo:refersToProcedure <http://data.europa.eu/a4g/resource/Procedure/2018-S-028-061911/7613a54d-6c6b-30e8-b4db-72fd1d42abcb>;
-  epo:refersToRole <http://data.europa.eu/a4g/resource/Buyer/2018-S-028-061911/0156d029-ea5d-32c8-9775-6e736949dafe> .
+  epo:refersToLot epd:2018-S-028-061911_Lot_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8;
+  epo:refersToProcedure epd:2018-S-028-061911_Procedure_7613a54d-6c6b-30e8-b4db-72fd1d42abcb;
+  epo:refersToRole epd:2018-S-028-061911_Buyer_0156d029-ea5d-32c8-9775-6e736949dafe .
 
-<http://data.europa.eu/a4g/resource/NoticeAwardInformation/2018-S-028-061911/7613a54d-6c6b-30e8-b4db-72fd1d42abcb>
+epd:2018-S-028-061911_NoticeAwardInformation_7613a54d-6c6b-30e8-b4db-72fd1d42abcb
   a epo:NoticeAwardInformation .
 
-<http://data.europa.eu/a4g/resource/Organisation/2018-S-028-061911/12090057-4d35-309d-8a57-04cbe4e97554>
-  a org:Organization;
-  epo:hasLegalName "Metropole d'Aix-Marseille-Provence"@fr;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-028-061911/12090057-4d35-309d-8a57-04cbe4e97554> .
-
-<http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-028-061911/12090057-4d35-309d-8a57-04cbe4e97554>
-  a locn:Address;
+epd:2018-S-028-061911_OrganisationAddress_12090057-4d35-309d-8a57-04cbe4e97554 a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/FRL04>;
   locn:postCode "13007";
   locn:postName "Marseille";
   locn:thoroughfare "58 boulevard Charles Livon" .
 
-<http://data.europa.eu/a4g/resource/Procedure/2018-S-028-061911/7613a54d-6c6b-30e8-b4db-72fd1d42abcb>
-  a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2018-S-028-061911/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8>;
+epd:2018-S-028-061911_Organisation_12090057-4d35-309d-8a57-04cbe4e97554 a org:Organization;
+  epo:hasLegalName "Metropole d'Aix-Marseille-Provence"@fr;
+  cccev:registeredAddress epd:2018-S-028-061911_OrganisationAddress_12090057-4d35-309d-8a57-04cbe4e97554 .
+
+epd:2018-S-028-061911_ProcedureIdentifier_7613a54d-6c6b-30e8-b4db-72fd1d42abcb a epo:Identifier;
+  epo:hasIdentifierValue "90/493" .
+
+epd:2018-S-028-061911_ProcedureModification_7b7529f1-e490-38e9-8bf9-6378671dc463 a
+    epo:Procedure;
+  epo:containsModificationsOn epd:2018-S-028-061911_Procedure_7613a54d-6c6b-30e8-b4db-72fd1d42abcb;
+  epo:hasPurpose epd:2018-S-028-061911_ProcedurePurposeModification_7b7529f1-e490-38e9-8bf9-6378671dc463 .
+
+epd:2018-S-028-061911_ProcedurePurposeModification_7b7529f1-e490-38e9-8bf9-6378671dc463
+  a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/45221241> .
+
+epd:2018-S-028-061911_ProcedurePurpose_7613a54d-6c6b-30e8-b4db-72fd1d42abcb a epo:Purpose;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works>;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/45221241> .
+
+epd:2018-S-028-061911_ProcedureSpecificTerm_0156d029-ea5d-32c8-9775-6e736949dafe a
+    epo:ProcedureSpecificTerm .
+
+epd:2018-S-028-061911_Procedure_7613a54d-6c6b-30e8-b4db-72fd1d42abcb a epo:Procedure;
+  epo:foreseesContractSpecificTerm epd:2018-S-028-061911_ContractTerm_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8;
   epo:hasAdditionalInformation """
                La concession du tunnel Prado-Carénage est modifiée afin d'étendre son périmètre à une bretelle d'accès reliant le tunnel Prado-Carénage et le boulevard Schloesing d'une longueur de 845 m dont l'usage sera gratuit, dénommée bretelle Schloesing. Pour des raisons techniques, la Bretelle Schloesing empruntera une section de 360 m du tunnel Prado Sud, dont le financement, la conception, la construction et l'exploitation ont été concédés à la société Prado Sud en vertu d'une concession approuvée par délibération du conseil de communauté du 8.2.2008 et conclue le 6.3.2008 pour 47 ans avec la communauté urbaine Marseille-Provence Métropole devenue la métropole d'Aix-Marseille-Provence. Cette section est donc transférée au sein du périmètre de la concession Prado-Carénage en vertu:
                (i) d'un avenant no 9 à la concession Prado-Carénage;
@@ -236,60 +240,38 @@
                L'avenant no 9 à la concession du tunnel Prado-Carénage, l'avenant no 2 à la concession Prado Sud et la convention tripartite ont été approuvés par délibération du conseil de la métropole d'Aix-Marseille-Provence du 19.10.2017, signés le 23.11.2017 et notifiés le 30.11.2017. Ces documents peuvent être consultés sur rendez-vous au siège de la métropole d'Aix-Marseille-Provence dont les coordonnées figurent à la rubrique I.1) du présent avis. La consultation s'exerce dans le respect des secrets protégés par la loi et notamment le secret des affaires.
                Enfin, le montant initial de la concession du tunnel Prado-Carénage indiqué à la rubrique V.2.4) du présent avis correspond au chiffre d'affaires prévisionnel hors taxes de la société Marseillaise du Tunnel Prado Carénage sur la durée de la concession, calculé sur la base du chiffre d'affaires réalisé jusqu'au 31.12.2016, en valeur 2017, obtenu après actualisation sur la base de l'indice des prix à la consommation — base 2015 — ensemble des ménages, France, ensemble hors tabac (identifiant INSEE no 001763852).
             """@fr;
-  epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2018-S-028-061911/7613a54d-6c6b-30e8-b4db-72fd1d42abcb>;
-  epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2018-S-028-061911/e1d6a6b1-2162-3f65-82bc-f2d2f63157b8>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-028-061911/7613a54d-6c6b-30e8-b4db-72fd1d42abcb>;
+  epo:hasID epd:2018-S-028-061911_ProcedureIdentifier_7613a54d-6c6b-30e8-b4db-72fd1d42abcb;
+  epo:hasProcurementScopeDividedIntoLot epd:2018-S-028-061911_Lot_e1d6a6b1-2162-3f65-82bc-f2d2f63157b8;
+  epo:hasPurpose epd:2018-S-028-061911_ProcedurePurpose_7613a54d-6c6b-30e8-b4db-72fd1d42abcb;
   epo:hasTitle """
                Concession portant sur le financement, la conception, la construction, l'entretien et l'exploitation du tunnel routier à péage Prado-Carénage
             """@fr;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2018-S-028-061911/0156d029-ea5d-32c8-9775-6e736949dafe> .
+  epo:isSubjectToProcedureSpecificTerm epd:2018-S-028-061911_ProcedureSpecificTerm_0156d029-ea5d-32c8-9775-6e736949dafe .
 
-<http://data.europa.eu/a4g/resource/ProcedureIdentifier/2018-S-028-061911/7613a54d-6c6b-30e8-b4db-72fd1d42abcb>
-  a epo:Identifier;
-  epo:hasIdentifierValue "90/493" .
-
-<http://data.europa.eu/a4g/resource/ProcedureModification/2018-S-028-061911/7b7529f1-e490-38e9-8bf9-6378671dc463>
-  a epo:Procedure;
-  epo:containsModificationsOn <http://data.europa.eu/a4g/resource/Procedure/2018-S-028-061911/7613a54d-6c6b-30e8-b4db-72fd1d42abcb>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurposeModification/2018-S-028-061911/7b7529f1-e490-38e9-8bf9-6378671dc463> .
-
-<http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-028-061911/7613a54d-6c6b-30e8-b4db-72fd1d42abcb>
-  a epo:Purpose;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works>;
-  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/45221241> .
-
-<http://data.europa.eu/a4g/resource/ProcedurePurposeModification/2018-S-028-061911/7b7529f1-e490-38e9-8bf9-6378671dc463>
-  a epo:Purpose;
-  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/45221241> .
-
-<http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2018-S-028-061911/0156d029-ea5d-32c8-9775-6e736949dafe>
-  a epo:ProcedureSpecificTerm .
-
-<http://data.europa.eu/a4g/resource/ReviewProcedureInformationProvider/2018-S-028-061911/d59a215f-7c49-384e-a28b-0955b001a5dd>
-  a epo:ReviewProcedureInformationProvider;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2018-S-028-061911/d59a215f-7c49-384e-a28b-0955b001a5dd> .
-
-<http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2018-S-028-061911/d59a215f-7c49-384e-a28b-0955b001a5dd>
+epd:2018-S-028-061911_ReviewProcedureInformationProviderAddress_d59a215f-7c49-384e-a28b-0955b001a5dd
   a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
   locn:postCode "13006";
   locn:postName "Marseille";
   locn:thoroughfare "22-24 rue de Breteuil" .
 
-<http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2018-S-028-061911/d59a215f-7c49-384e-a28b-0955b001a5dd>
+epd:2018-S-028-061911_ReviewProcedureInformationProviderContactPoint_d59a215f-7c49-384e-a28b-0955b001a5dd
   a cccev:ContactPoint;
   epo:hasInternetAddress "http://marseille.tribunal-administratif.fr/"^^xsd:anyURI;
   cccev:email "greffe.ta-marseille@juradm.fr";
   cccev:telephone "+33 491134813" .
 
-<http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2018-S-028-061911/d59a215f-7c49-384e-a28b-0955b001a5dd>
+epd:2018-S-028-061911_ReviewProcedureInformationProviderOrganisation_d59a215f-7c49-384e-a28b-0955b001a5dd
   a org:Organization;
   epo:hasLegalName "Greffe du tribunal administratif de Marseille"@fr;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2018-S-028-061911/d59a215f-7c49-384e-a28b-0955b001a5dd>;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2018-S-028-061911/d59a215f-7c49-384e-a28b-0955b001a5dd> .
+  epo:hasPrimaryContactPoint epd:2018-S-028-061911_ReviewProcedureInformationProviderContactPoint_d59a215f-7c49-384e-a28b-0955b001a5dd;
+  cccev:registeredAddress epd:2018-S-028-061911_ReviewProcedureInformationProviderAddress_d59a215f-7c49-384e-a28b-0955b001a5dd .
 
-<http://data.europa.eu/a4g/resource/ReviewTerm/2018-S-028-061911/d85a748e-f5a2-3efc-9502-6fd9fa3d6d6b>
-  a epo:ReviewTerm;
+epd:2018-S-028-061911_ReviewProcedureInformationProvider_d59a215f-7c49-384e-a28b-0955b001a5dd
+  a epo:ReviewProcedureInformationProvider;
+  epo:playedBy epd:2018-S-028-061911_ReviewProcedureInformationProviderOrganisation_d59a215f-7c49-384e-a28b-0955b001a5dd .
+
+epd:2018-S-028-061911_ReviewTerm_d85a748e-f5a2-3efc-9502-6fd9fa3d6d6b a epo:ReviewTerm;
   epo:hasReviewDeadlineInformation """
                Les tiers ayant un intérêt à agir peuvent introduire:
                — un recours pour excès de pouvoir contre les actes détachables des avenants et de la convention tripartite susvisés dans un délai de 2 mois suivant notification ou publication de la décision attaquée conformément aux dispositions de l'article R. 421-1 du code de la justice administrative,
@@ -297,49 +279,44 @@
                Le code de la justice administrative est consultable sur le site: www.legifrance.fr
             """ .
 
-<http://data.europa.eu/a4g/resource/Reviewer/2018-S-028-061911/15e8773e-7fea-3367-b1d2-43b565bcf8ab>
-  a epo:Reviewer;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2018-S-028-061911/15e8773e-7fea-3367-b1d2-43b565bcf8ab> .
-
-<http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-028-061911/15e8773e-7fea-3367-b1d2-43b565bcf8ab>
-  a cccev:ContactPoint;
+epd:2018-S-028-061911_ReviewerContactPoint_15e8773e-7fea-3367-b1d2-43b565bcf8ab a
+    cccev:ContactPoint;
   epo:hasInternetAddress "http://marseille.tribunal-administratif.fr/"^^xsd:anyURI;
   cccev:email "greffe.ta-marseille@juradm.fr";
   cccev:telephone "+33 491134813" .
 
-<http://data.europa.eu/a4g/resource/ReviewerOrganisation/2018-S-028-061911/15e8773e-7fea-3367-b1d2-43b565bcf8ab>
-  a org:Organization;
-  epo:hasLegalName "Tribunal administratif de Marseille"@fr;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2018-S-028-061911/15e8773e-7fea-3367-b1d2-43b565bcf8ab>;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-028-061911/15e8773e-7fea-3367-b1d2-43b565bcf8ab> .
-
-<http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-028-061911/15e8773e-7fea-3367-b1d2-43b565bcf8ab>
+epd:2018-S-028-061911_ReviewerOrganisationAddress_15e8773e-7fea-3367-b1d2-43b565bcf8ab
   a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
   locn:postCode "13006";
   locn:postName "Marseille";
   locn:thoroughfare "22-24 rue de Breteuil" .
 
-<http://data.europa.eu/a4g/resource/SubmissionStatisticalInformation/2018-S-028-061911/3d8e7073-470b-358b-8eb4-deee3051bd2e>
+epd:2018-S-028-061911_ReviewerOrganisation_15e8773e-7fea-3367-b1d2-43b565bcf8ab a
+    org:Organization;
+  epo:hasLegalName "Tribunal administratif de Marseille"@fr;
+  epo:hasPrimaryContactPoint epd:2018-S-028-061911_ReviewerContactPoint_15e8773e-7fea-3367-b1d2-43b565bcf8ab;
+  cccev:registeredAddress epd:2018-S-028-061911_ReviewerOrganisationAddress_15e8773e-7fea-3367-b1d2-43b565bcf8ab .
+
+epd:2018-S-028-061911_Reviewer_15e8773e-7fea-3367-b1d2-43b565bcf8ab a epo:Reviewer;
+  epo:playedBy epd:2018-S-028-061911_ReviewerOrganisation_15e8773e-7fea-3367-b1d2-43b565bcf8ab .
+
+epd:2018-S-028-061911_SubmissionStatisticalInformation_3d8e7073-470b-358b-8eb4-deee3051bd2e
   a epo:SubmissionStatisticalInformation;
-  epo:summarisesInformationForLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-028-061911/408a9316-e1f5-35fd-8b3f-1891fc75519e> .
+  epo:summarisesInformationForLotAwardOutcome epd:2018-S-028-061911_LotAwardOutcome_408a9316-e1f5-35fd-8b3f-1891fc75519e .
 
-<http://data.europa.eu/a4g/resource/Tender/2018-S-028-061911/3d8e7073-470b-358b-8eb4-deee3051bd2e>
-  a epo:Tender .
-
-<http://data.europa.eu/a4g/resource/TenderAwardOutcome/2018-S-028-061911/3d8e7073-470b-358b-8eb4-deee3051bd2e>
+epd:2018-S-028-061911_TenderAwardOutcomeModification_7b7529f1-e490-38e9-8bf9-6378671dc463
   a epo:TenderAwardOutcome;
-  epo:describesTender <http://data.europa.eu/a4g/resource/Tender/2018-S-028-061911/3d8e7073-470b-358b-8eb4-deee3051bd2e>;
-  epo:indicatesAwardOfLotToWinner <http://data.europa.eu/a4g/resource/WinnerRole/2018-S-028-061911/752afe7a-c855-3849-be99-ed1250d773b7> .
+  epo:indicatesAwardOfLotToWinner epd:2018-S-028-061911_WinnerModification_77eac6bc-38b0-390a-bf94-2ff5bb6739c5 .
 
-<http://data.europa.eu/a4g/resource/TenderAwardOutcomeModification/2018-S-028-061911/7b7529f1-e490-38e9-8bf9-6378671dc463>
-  a epo:TenderAwardOutcome;
-  epo:indicatesAwardOfLotToWinner <http://data.europa.eu/a4g/resource/WinnerModification/2018-S-028-061911/77eac6bc-38b0-390a-bf94-2ff5bb6739c5> .
+epd:2018-S-028-061911_TenderAwardOutcome_3d8e7073-470b-358b-8eb4-deee3051bd2e a epo:TenderAwardOutcome;
+  epo:describesTender epd:2018-S-028-061911_Tender_3d8e7073-470b-358b-8eb4-deee3051bd2e;
+  epo:indicatesAwardOfLotToWinner epd:2018-S-028-061911_Winner_752afe7a-c855-3849-be99-ed1250d773b7 .
 
-<http://data.europa.eu/a4g/resource/WinnerModification/2018-S-028-061911/77eac6bc-38b0-390a-bf94-2ff5bb6739c5>
-  a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisationModification/2018-S-028-061911/77eac6bc-38b0-390a-bf94-2ff5bb6739c5> .
+epd:2018-S-028-061911_Tender_3d8e7073-470b-358b-8eb4-deee3051bd2e a epo:Tender .
 
-<http://data.europa.eu/a4g/resource/WinnerRole/2018-S-028-061911/752afe7a-c855-3849-be99-ed1250d773b7>
-  a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2018-S-028-061911/752afe7a-c855-3849-be99-ed1250d773b7> .
+epd:2018-S-028-061911_WinnerModification_77eac6bc-38b0-390a-bf94-2ff5bb6739c5 a epo:Winner;
+  epo:playedBy epd:2018-S-028-061911_ContractorOrganisationModification_77eac6bc-38b0-390a-bf94-2ff5bb6739c5 .
+
+epd:2018-S-028-061911_Winner_752afe7a-c855-3849-be99-ed1250d773b7 a epo:Winner;
+  epo:playedBy epd:2018-S-028-061911_ContractorOrganisation_752afe7a-c855-3849-be99-ed1250d773b7 .

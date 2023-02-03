@@ -1,118 +1,103 @@
 @prefix cccev: <http://data.europa.eu/m8g/> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://data.europa.eu/a4g/resource/Buyer/2018-S-223-511460/8a551eea-f8a4-3a92-a92e-0f220d0ba9d0>
-  a epo:Buyer;
-  epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-223-511460/93f156bb-9604-37f9-a902-d2bc2c71ac19>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-223-511460/93f156bb-9604-37f9-a902-d2bc2c71ac19> .
+epd:2018-S-223-511460_Buyer_8a551eea-f8a4-3a92-a92e-0f220d0ba9d0 a epo:Buyer;
+  epo:hasContactPointInRole epd:2018-S-223-511460_ContactPoint_93f156bb-9604-37f9-a902-d2bc2c71ac19;
+  epo:playedBy epd:2018-S-223-511460_Organisation_93f156bb-9604-37f9-a902-d2bc2c71ac19 .
 
-<http://data.europa.eu/a4g/resource/ContactPoint/2018-S-223-511460/93f156bb-9604-37f9-a902-d2bc2c71ac19>
-  a cccev:ContactPoint;
+epd:2018-S-223-511460_ContactPoint_93f156bb-9604-37f9-a902-d2bc2c71ac19 a cccev:ContactPoint;
   epo:hasFax "+351 212724244";
   epo:hasInternetAddress "http://www.cma.m-almada.pt"^^xsd:anyURI;
   cccev:email "aprovisionamento@cma.m-almada.pt";
   cccev:telephone "+351 212724000" .
 
-<http://data.europa.eu/a4g/resource/ContractTerm/2018-S-223-511460/d9717c09-a32e-34b8-99e6-1d890b633b16>
-  a epo:ContractTerm;
-  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/ContractTermLocation/2018-S-223-511460/d9717c09-a32e-34b8-99e6-1d890b633b16> .
+epd:2018-S-223-511460_ContractTermLocation_d9717c09-a32e-34b8-99e6-1d890b633b16 a
+    dct:Location .
 
-<http://data.europa.eu/a4g/resource/ContractTermLocation/2018-S-223-511460/d9717c09-a32e-34b8-99e6-1d890b633b16>
-  a dct:Location .
+epd:2018-S-223-511460_ContractTerm_d9717c09-a32e-34b8-99e6-1d890b633b16 a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:2018-S-223-511460_ContractTermLocation_d9717c09-a32e-34b8-99e6-1d890b633b16 .
 
-<http://data.europa.eu/a4g/resource/Lot/2018-S-223-511460/d9717c09-a32e-34b8-99e6-1d890b633b16>
-  a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2018-S-223-511460/d9717c09-a32e-34b8-99e6-1d890b633b16>;
-  epo:hasDescription "Aquisição de serviços de iluminações festivas e decorativas, alusivas ao Natal de 2018, na Cidade de Almada."@pt;
-  epo:isUsingEUFunds false .
-
-<http://data.europa.eu/a4g/resource/LotAwardOutcome/2018-S-223-511460/78252e73-e5a1-3838-b538-41097788b42a>
-  a epo:LotAwardOutcome;
-  epo:describesLot <http://data.europa.eu/a4g/resource/Lot/2018-S-223-511460/d9717c09-a32e-34b8-99e6-1d890b633b16>;
+epd:2018-S-223-511460_LotAwardOutcome_78252e73-e5a1-3838-b538-41097788b42a a epo:LotAwardOutcome;
+  epo:describesLot epd:2018-S-223-511460_Lot_d9717c09-a32e-34b8-99e6-1d890b633b16;
   epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw>;
   epo:hasNonAwardJustification <http://publications.europa.eu/resource/authority/non-award-justification/none-rej> .
 
-<http://data.europa.eu/a4g/resource/Notice/2018-S-223-511460/4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b>
-  a epo:Notice, epo:ResultNotice;
-  epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/NoticeAwardInformation/2018-S-223-511460/4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b>;
-  epo:announcesRole <http://data.europa.eu/a4g/resource/Reviewer/2018-S-223-511460/5641ce6f-6854-3e39-9e76-44d671aacd65>;
+epd:2018-S-223-511460_Lot_d9717c09-a32e-34b8-99e6-1d890b633b16 a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:2018-S-223-511460_ContractTerm_d9717c09-a32e-34b8-99e6-1d890b633b16;
+  epo:hasDescription "Aquisição de serviços de iluminações festivas e decorativas, alusivas ao Natal de 2018, na Cidade de Almada."@pt;
+  epo:isUsingEUFunds false .
+
+epd:2018-S-223-511460_Notice a epo:Notice, epo:ResultNotice;
+  epo:announcesNoticeAwardInformation epd:2018-S-223-511460_NoticeAwardInformation_4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b;
+  epo:announcesRole epd:2018-S-223-511460_Reviewer_5641ce6f-6854-3e39-9e76-44d671aacd65;
   epo:hasDispatchDate "2018-11-15"^^xsd:date;
-  epo:refersToLot <http://data.europa.eu/a4g/resource/Lot/2018-S-223-511460/d9717c09-a32e-34b8-99e6-1d890b633b16>;
-  epo:refersToPrevious <http://data.europa.eu/a4g/resource/Notice/2018-S-223-511460/f9b0c442-1082-31ff-86f5-72604658b69d>;
-  epo:refersToProcedure <http://data.europa.eu/a4g/resource/Procedure/2018-S-223-511460/4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b>;
-  epo:refersToRole <http://data.europa.eu/a4g/resource/Buyer/2018-S-223-511460/8a551eea-f8a4-3a92-a92e-0f220d0ba9d0> .
+  epo:hasID epd:2018-S-223-511460_NoticeIdentifier_f9b0c442-1082-31ff-86f5-72604658b69d;
+  epo:refersToLot epd:2018-S-223-511460_Lot_d9717c09-a32e-34b8-99e6-1d890b633b16;
+  epo:refersToPrevious epd:2018-S-223-511460_Notice;
+  epo:refersToProcedure epd:2018-S-223-511460_Procedure_4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b;
+  epo:refersToRole epd:2018-S-223-511460_Buyer_8a551eea-f8a4-3a92-a92e-0f220d0ba9d0 .
 
-<http://data.europa.eu/a4g/resource/Notice/2018-S-223-511460/f9b0c442-1082-31ff-86f5-72604658b69d>
-  a epo:Notice;
-  epo:hasID <http://data.europa.eu/a4g/resource/NoticeIdentifier/2018-S-223-511460/f9b0c442-1082-31ff-86f5-72604658b69d> .
-
-<http://data.europa.eu/a4g/resource/NoticeAwardInformation/2018-S-223-511460/4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b>
+epd:2018-S-223-511460_NoticeAwardInformation_4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b
   a epo:NoticeAwardInformation .
 
-<http://data.europa.eu/a4g/resource/NoticeIdentifier/2018-S-223-511460/f9b0c442-1082-31ff-86f5-72604658b69d>
-  a epo:Identifier;
+epd:2018-S-223-511460_NoticeIdentifier_f9b0c442-1082-31ff-86f5-72604658b69d a epo:Identifier;
   epo:hasIdentifierValue "2018/S 130-297380" .
 
-<http://data.europa.eu/a4g/resource/Organisation/2018-S-223-511460/93f156bb-9604-37f9-a902-d2bc2c71ac19>
-  a org:Organization;
-  epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2018-S-223-511460/93f156bb-9604-37f9-a902-d2bc2c71ac19>;
-  epo:hasLegalName "Município de Almada"@pt;
-  epo:hasMainActivityDescription "Município de Almada";
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-223-511460/93f156bb-9604-37f9-a902-d2bc2c71ac19> .
-
-<http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-223-511460/93f156bb-9604-37f9-a902-d2bc2c71ac19>
-  a locn:Address;
+epd:2018-S-223-511460_OrganisationAddress_93f156bb-9604-37f9-a902-d2bc2c71ac19 a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/PRT>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/PT170>;
   locn:postCode "2800-213";
   locn:postName "Almada";
   locn:thoroughfare "Rua Trigueiros Martel, 1" .
 
-<http://data.europa.eu/a4g/resource/OrganisationIdentifier/2018-S-223-511460/93f156bb-9604-37f9-a902-d2bc2c71ac19>
+epd:2018-S-223-511460_OrganisationIdentifier_93f156bb-9604-37f9-a902-d2bc2c71ac19
   a epo:Identifier;
   epo:hasIdentifierValue "500051054" .
 
-<http://data.europa.eu/a4g/resource/Procedure/2018-S-223-511460/4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b>
-  a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2018-S-223-511460/d9717c09-a32e-34b8-99e6-1d890b633b16>;
-  epo:hasAdditionalInformation "Os trabalhos foram retirados pelos concorrentes."@pt;
-  epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2018-S-223-511460/4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b>;
-  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
-  epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
-  epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2018-S-223-511460/d9717c09-a32e-34b8-99e6-1d890b633b16>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-223-511460/4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b>;
-  epo:hasTitle "Aquisição de serviços de iluminações festivas e decorativas, alusivas ao Natal de 2018, na Cidade de Almada"@pt;
-  epo:isDesignContest true;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2018-S-223-511460/8a551eea-f8a4-3a92-a92e-0f220d0ba9d0> .
+epd:2018-S-223-511460_Organisation_93f156bb-9604-37f9-a902-d2bc2c71ac19 a org:Organization;
+  epo:hasID epd:2018-S-223-511460_OrganisationIdentifier_93f156bb-9604-37f9-a902-d2bc2c71ac19;
+  epo:hasLegalName "Município de Almada"@pt;
+  epo:hasMainActivityDescription "Município de Almada";
+  cccev:registeredAddress epd:2018-S-223-511460_OrganisationAddress_93f156bb-9604-37f9-a902-d2bc2c71ac19 .
 
-<http://data.europa.eu/a4g/resource/ProcedureIdentifier/2018-S-223-511460/4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b>
-  a epo:Identifier;
+epd:2018-S-223-511460_ProcedureIdentifier_4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b a epo:Identifier;
   epo:hasIdentifierValue "CPN01610S2018" .
 
-<http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-223-511460/4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b>
-  a epo:Purpose;
+epd:2018-S-223-511460_ProcedurePurpose_4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b a epo:Purpose;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/79421200> .
 
-<http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2018-S-223-511460/8a551eea-f8a4-3a92-a92e-0f220d0ba9d0>
-  a epo:ProcedureSpecificTerm .
+epd:2018-S-223-511460_ProcedureSpecificTerm_8a551eea-f8a4-3a92-a92e-0f220d0ba9d0 a
+    epo:ProcedureSpecificTerm .
 
-<http://data.europa.eu/a4g/resource/Reviewer/2018-S-223-511460/5641ce6f-6854-3e39-9e76-44d671aacd65>
-  a epo:Reviewer;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2018-S-223-511460/5641ce6f-6854-3e39-9e76-44d671aacd65> .
+epd:2018-S-223-511460_Procedure_4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b a epo:Procedure;
+  epo:foreseesContractSpecificTerm epd:2018-S-223-511460_ContractTerm_d9717c09-a32e-34b8-99e6-1d890b633b16;
+  epo:hasAdditionalInformation "Os trabalhos foram retirados pelos concorrentes."@pt;
+  epo:hasID epd:2018-S-223-511460_ProcedureIdentifier_4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
+  epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
+  epo:hasProcurementScopeDividedIntoLot epd:2018-S-223-511460_Lot_d9717c09-a32e-34b8-99e6-1d890b633b16;
+  epo:hasPurpose epd:2018-S-223-511460_ProcedurePurpose_4cfaa6b8-eea3-3719-8fe9-576c9cf7da4b;
+  epo:hasTitle "Aquisição de serviços de iluminações festivas e decorativas, alusivas ao Natal de 2018, na Cidade de Almada"@pt;
+  epo:isDesignContest true;
+  epo:isSubjectToProcedureSpecificTerm epd:2018-S-223-511460_ProcedureSpecificTerm_8a551eea-f8a4-3a92-a92e-0f220d0ba9d0 .
 
-<http://data.europa.eu/a4g/resource/ReviewerOrganisation/2018-S-223-511460/5641ce6f-6854-3e39-9e76-44d671aacd65>
-  a org:Organization;
-  epo:hasLegalName "Município de Almada"@pt;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-223-511460/5641ce6f-6854-3e39-9e76-44d671aacd65> .
-
-<http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-223-511460/5641ce6f-6854-3e39-9e76-44d671aacd65>
+epd:2018-S-223-511460_ReviewerOrganisationAddress_5641ce6f-6854-3e39-9e76-44d671aacd65
   a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/PRT>;
   locn:postCode "2800-213";
   locn:postName "Almada";
   locn:thoroughfare "Rua Trigueiros Martel, 1" .
+
+epd:2018-S-223-511460_ReviewerOrganisation_5641ce6f-6854-3e39-9e76-44d671aacd65 a
+    org:Organization;
+  epo:hasLegalName "Município de Almada"@pt;
+  cccev:registeredAddress epd:2018-S-223-511460_ReviewerOrganisationAddress_5641ce6f-6854-3e39-9e76-44d671aacd65 .
+
+epd:2018-S-223-511460_Reviewer_5641ce6f-6854-3e39-9e76-44d671aacd65 a epo:Reviewer;
+  epo:playedBy epd:2018-S-223-511460_ReviewerOrganisation_5641ce6f-6854-3e39-9e76-44d671aacd65 .

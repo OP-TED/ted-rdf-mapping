@@ -1,5 +1,6 @@
 @prefix cccev: <http://data.europa.eu/m8g/> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
@@ -7,139 +8,122 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://data.europa.eu/a4g/resource/Buyer/2022-S-148-425230/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209>
-  a epo:Buyer;
+epd:2022-S-148-425230_Buyer_ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209 a epo:Buyer;
   epo:hasBuyerProfile "https://contrataciondelestado.es/wps/poc?uri=deeplink:perfilContratante&idBp=f5zcWUsBbeQQK2TEfXGy%2BA%3D%3D"^^xsd:anyURI;
-  epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2022-S-148-425230/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2022-S-148-425230/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
+  epo:hasContactPointInRole epd:2022-S-148-425230_ContactPoint_dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22;
+  epo:playedBy epd:2022-S-148-425230_Organisation_dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22 .
 
-<http://data.europa.eu/a4g/resource/ContactPoint/2022-S-148-425230/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
-  a cccev:ContactPoint;
+epd:2022-S-148-425230_ContactPoint_dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22 a cccev:ContactPoint;
   epo:hasContactName "Distrito de Chamberí"@es;
   epo:hasInternetAddress "http://www.madrid.es"^^xsd:anyURI;
   cccev:email "gdchamberi@madrid.es";
   cccev:telephone "+34 915886004" .
 
-<http://data.europa.eu/a4g/resource/ContractTerm/2022-S-148-425230/64592fe7-40a4-3c6b-85ce-08fd4c446531>
-  a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/Duration/2022-S-148-425230/1d20f563-6060-39ce-a62d-de87c1a9defd>;
-  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/ContractTermLocation/2022-S-148-425230/64592fe7-40a4-3c6b-85ce-08fd4c446531> .
-
-<http://data.europa.eu/a4g/resource/ContractTermLocation/2022-S-148-425230/64592fe7-40a4-3c6b-85ce-08fd4c446531>
-  a dct:Location;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES300>;
-  locn:address <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2022-S-148-425230/64592fe7-40a4-3c6b-85ce-08fd4c446531> .
-
-<http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2022-S-148-425230/64592fe7-40a4-3c6b-85ce-08fd4c446531>
+epd:2022-S-148-425230_ContractTermLocationAddress_64592fe7-40a4-3c6b-85ce-08fd4c446531
   a locn:Address;
   locn:fullAddress "Centro Deportivo Municipal “Cea Bermúdez”, sito en la calle Cea Bermúdez, 3 (Distrito de Chamberí),Cea Bermudez 3. Madrid. "@es .
 
-<http://data.europa.eu/a4g/resource/Duration/2022-S-148-425230/1d20f563-6060-39ce-a62d-de87c1a9defd>
-  a epo:Duration;
+epd:2022-S-148-425230_ContractTermLocation_64592fe7-40a4-3c6b-85ce-08fd4c446531 a
+    dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES300>;
+  locn:address epd:2022-S-148-425230_ContractTermLocationAddress_64592fe7-40a4-3c6b-85ce-08fd4c446531 .
+
+epd:2022-S-148-425230_ContractTerm_64592fe7-40a4-3c6b-85ce-08fd4c446531 a epo:ContractTerm;
+  epo:definesContractDuration epd:2022-S-148-425230_Duration_1d20f563-6060-39ce-a62d-de87c1a9defd;
+  epo:definesSpecificPlaceOfPerformance epd:2022-S-148-425230_ContractTermLocation_64592fe7-40a4-3c6b-85ce-08fd4c446531 .
+
+epd:2022-S-148-425230_Duration_1d20f563-6060-39ce-a62d-de87c1a9defd a epo:Duration;
   time:numericDuration 60.0;
   time:unitType time:unitMonth .
 
-<http://data.europa.eu/a4g/resource/Lot/2022-S-148-425230/64592fe7-40a4-3c6b-85ce-08fd4c446531>
-  a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2022-S-148-425230/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
-  epo:hasDescription "Concesión de servicio para la gestión y explotación del Centro Deportivo Municipal Piscina Cea Bermúdez del Distrito de Chamberí"@es;
-  epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/MainMonetaryValueLot/2022-S-148-425230/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
-  epo:hasPerformingStaffQualificationInformation <http://publications.europa.eu/resource/authority/requirement-stage/not-requ>;
-  epo:isUsingEUFunds false .
-
-<http://data.europa.eu/a4g/resource/LotAwardOutcome/2022-S-148-425230/70e1fca2-f8e6-3a32-8dca-713ccb185cf6>
-  a epo:LotAwardOutcome;
-  epo:describesLot <http://data.europa.eu/a4g/resource/Lot/2022-S-148-425230/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
+epd:2022-S-148-425230_LotAwardOutcome_70e1fca2-f8e6-3a32-8dca-713ccb185cf6 a epo:LotAwardOutcome;
+  epo:describesLot epd:2022-S-148-425230_Lot_64592fe7-40a4-3c6b-85ce-08fd4c446531;
   epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw>;
   epo:hasNonAwardJustification <http://publications.europa.eu/resource/authority/non-award-justification/other> .
 
-<http://data.europa.eu/a4g/resource/MainMonetaryValueLot/2022-S-148-425230/64592fe7-40a4-3c6b-85ce-08fd4c446531>
+epd:2022-S-148-425230_Lot_64592fe7-40a4-3c6b-85ce-08fd4c446531 a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:2022-S-148-425230_ContractTerm_64592fe7-40a4-3c6b-85ce-08fd4c446531;
+  epo:hasDescription "Concesión de servicio para la gestión y explotación del Centro Deportivo Municipal Piscina Cea Bermúdez del Distrito de Chamberí"@es;
+  epo:hasEstimatedValue epd:2022-S-148-425230_MainMonetaryValueLot_64592fe7-40a4-3c6b-85ce-08fd4c446531;
+  epo:hasPerformingStaffQualificationInformation <http://publications.europa.eu/resource/authority/requirement-stage/not-requ>;
+  epo:isUsingEUFunds false .
+
+epd:2022-S-148-425230_MainMonetaryValueLot_64592fe7-40a4-3c6b-85ce-08fd4c446531 a
+    epo:MonetaryValue;
+  epo:hasAmountValue 20024031.09;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:2022-S-148-425230_MonetaryValueProcedure_3b2748c6-16de-3218-af2c-e7456a886558
   a epo:MonetaryValue;
   epo:hasAmountValue 20024031.09;
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
 
-<http://data.europa.eu/a4g/resource/MonetaryValueProcedure/2022-S-148-425230/3b2748c6-16de-3218-af2c-e7456a886558>
-  a epo:MonetaryValue;
-  epo:hasAmountValue 20024031.09;
-  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
-
-<http://data.europa.eu/a4g/resource/Notice/2022-S-148-425230/3b2748c6-16de-3218-af2c-e7456a886558>
-  a epo:Notice, epo:ResultNotice;
-  epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/NoticeAwardInformation/2022-S-148-425230/3b2748c6-16de-3218-af2c-e7456a886558>;
-  epo:announcesRole <http://data.europa.eu/a4g/resource/Reviewer/2022-S-148-425230/2a666ce1-cebc-31d9-b200-113ebf473883>;
+epd:2022-S-148-425230_Notice a epo:CompetitionNotice, epo:Notice, epo:ResultNotice;
+  epo:announcesNoticeAwardInformation epd:2022-S-148-425230_NoticeAwardInformation_3b2748c6-16de-3218-af2c-e7456a886558;
+  epo:announcesRole epd:2022-S-148-425230_Reviewer_2a666ce1-cebc-31d9-b200-113ebf473883;
   epo:hasDispatchDate "2022-07-29"^^xsd:date;
-  epo:refersToLot <http://data.europa.eu/a4g/resource/Lot/2022-S-148-425230/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
-  epo:refersToPrevious <http://data.europa.eu/a4g/resource/Notice/2022-S-148-425230/64850f6d-a341-38ae-bc98-ed98207d0890>;
-  epo:refersToProcedure <http://data.europa.eu/a4g/resource/Procedure/2022-S-148-425230/3b2748c6-16de-3218-af2c-e7456a886558>;
-  epo:refersToRole <http://data.europa.eu/a4g/resource/Buyer/2022-S-148-425230/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209> .
+  epo:hasID epd:2022-S-148-425230_NoticeIdentifier_64850f6d-a341-38ae-bc98-ed98207d0890;
+  epo:refersToLot epd:2022-S-148-425230_Lot_64592fe7-40a4-3c6b-85ce-08fd4c446531;
+  epo:refersToPrevious epd:2022-S-148-425230_Notice;
+  epo:refersToProcedure epd:2022-S-148-425230_Procedure_3b2748c6-16de-3218-af2c-e7456a886558;
+  epo:refersToRole epd:2022-S-148-425230_Buyer_ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209 .
 
-<http://data.europa.eu/a4g/resource/Notice/2022-S-148-425230/64850f6d-a341-38ae-bc98-ed98207d0890>
-  a epo:CompetitionNotice, epo:Notice;
-  epo:hasID <http://data.europa.eu/a4g/resource/NoticeIdentifier/2022-S-148-425230/64850f6d-a341-38ae-bc98-ed98207d0890> .
-
-<http://data.europa.eu/a4g/resource/NoticeAwardInformation/2022-S-148-425230/3b2748c6-16de-3218-af2c-e7456a886558>
+epd:2022-S-148-425230_NoticeAwardInformation_3b2748c6-16de-3218-af2c-e7456a886558
   a epo:NoticeAwardInformation .
 
-<http://data.europa.eu/a4g/resource/NoticeIdentifier/2022-S-148-425230/64850f6d-a341-38ae-bc98-ed98207d0890>
-  a epo:Identifier;
+epd:2022-S-148-425230_NoticeIdentifier_64850f6d-a341-38ae-bc98-ed98207d0890 a epo:Identifier;
   epo:hasIdentifierValue "2022/S 047-123301" .
 
-<http://data.europa.eu/a4g/resource/Organisation/2022-S-148-425230/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
-  a org:Organization;
-  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
-  epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2022-S-148-425230/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
-  epo:hasLegalName "Distrito de Chamberí"@es;
-  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-148-425230/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
-
-<http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-148-425230/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
-  a locn:Address;
+epd:2022-S-148-425230_OrganisationAddress_dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22 a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/ES300>;
   locn:postCode "28010";
   locn:postName "Madrid";
   locn:thoroughfare "Plaza Chamberí, 4" .
 
-<http://data.europa.eu/a4g/resource/OrganisationIdentifier/2022-S-148-425230/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
+epd:2022-S-148-425230_OrganisationIdentifier_dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22
   a epo:Identifier;
   epo:hasIdentifierValue "P2807900B" .
 
-<http://data.europa.eu/a4g/resource/Procedure/2022-S-148-425230/3b2748c6-16de-3218-af2c-e7456a886558>
-  a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2022-S-148-425230/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
-  epo:hasDescription "Concesión de servicio para la gestión y explotación del Centro Deportivo Municipal Piscina Cea Bermúdez del Distrito de Chamberí"@es;
-  epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/MonetaryValueProcedure/2022-S-148-425230/3b2748c6-16de-3218-af2c-e7456a886558>;
-  epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2022-S-148-425230/3b2748c6-16de-3218-af2c-e7456a886558>;
-  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0023>;
-  epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2022-S-148-425230/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2022-S-148-425230/3b2748c6-16de-3218-af2c-e7456a886558>;
-  epo:hasTitle "Concesión de servicio para la gestión y explotación del Centro Deportivo Municipal Piscina Cea Bermúdez del Distrito de Chamberí"@es;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2022-S-148-425230/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209> .
+epd:2022-S-148-425230_Organisation_dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22 a org:Organization;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasID epd:2022-S-148-425230_OrganisationIdentifier_dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22;
+  epo:hasLegalName "Distrito de Chamberí"@es;
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress epd:2022-S-148-425230_OrganisationAddress_dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22 .
 
-<http://data.europa.eu/a4g/resource/ProcedureIdentifier/2022-S-148-425230/3b2748c6-16de-3218-af2c-e7456a886558>
-  a epo:Identifier;
+epd:2022-S-148-425230_ProcedureIdentifier_3b2748c6-16de-3218-af2c-e7456a886558 a epo:Identifier;
   epo:hasIdentifierValue "107/2021/03720" .
 
-<http://data.europa.eu/a4g/resource/ProcedurePurpose/2022-S-148-425230/3b2748c6-16de-3218-af2c-e7456a886558>
-  a epo:Purpose;
+epd:2022-S-148-425230_ProcedurePurpose_3b2748c6-16de-3218-af2c-e7456a886558 a epo:Purpose;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/92000000> .
 
-<http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2022-S-148-425230/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209>
-  a epo:ProcedureSpecificTerm .
+epd:2022-S-148-425230_ProcedureSpecificTerm_ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209 a
+    epo:ProcedureSpecificTerm .
 
-<http://data.europa.eu/a4g/resource/Reviewer/2022-S-148-425230/2a666ce1-cebc-31d9-b200-113ebf473883>
-  a epo:Reviewer;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2022-S-148-425230/2a666ce1-cebc-31d9-b200-113ebf473883> .
+epd:2022-S-148-425230_Procedure_3b2748c6-16de-3218-af2c-e7456a886558 a epo:Procedure;
+  epo:foreseesContractSpecificTerm epd:2022-S-148-425230_ContractTerm_64592fe7-40a4-3c6b-85ce-08fd4c446531;
+  epo:hasDescription "Concesión de servicio para la gestión y explotación del Centro Deportivo Municipal Piscina Cea Bermúdez del Distrito de Chamberí"@es;
+  epo:hasEstimatedValue epd:2022-S-148-425230_MonetaryValueProcedure_3b2748c6-16de-3218-af2c-e7456a886558;
+  epo:hasID epd:2022-S-148-425230_ProcedureIdentifier_3b2748c6-16de-3218-af2c-e7456a886558;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0023>;
+  epo:hasProcurementScopeDividedIntoLot epd:2022-S-148-425230_Lot_64592fe7-40a4-3c6b-85ce-08fd4c446531;
+  epo:hasPurpose epd:2022-S-148-425230_ProcedurePurpose_3b2748c6-16de-3218-af2c-e7456a886558;
+  epo:hasTitle "Concesión de servicio para la gestión y explotación del Centro Deportivo Municipal Piscina Cea Bermúdez del Distrito de Chamberí"@es;
+  epo:isSubjectToProcedureSpecificTerm epd:2022-S-148-425230_ProcedureSpecificTerm_ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209 .
 
-<http://data.europa.eu/a4g/resource/ReviewerOrganisation/2022-S-148-425230/2a666ce1-cebc-31d9-b200-113ebf473883>
-  a org:Organization;
-  epo:hasLegalName "TRIBUNAL ADMINISTRATIVO DE CONTRATACIÓN PÚBLICA"@es;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-148-425230/2a666ce1-cebc-31d9-b200-113ebf473883> .
-
-<http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2022-S-148-425230/2a666ce1-cebc-31d9-b200-113ebf473883>
+epd:2022-S-148-425230_ReviewerOrganisationAddress_2a666ce1-cebc-31d9-b200-113ebf473883
   a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
   locn:postCode "28010";
   locn:postName "Madrid";
   locn:thoroughfare "Plaza e Chamberí 8" .
+
+epd:2022-S-148-425230_ReviewerOrganisation_2a666ce1-cebc-31d9-b200-113ebf473883 a
+    org:Organization;
+  epo:hasLegalName "TRIBUNAL ADMINISTRATIVO DE CONTRATACIÓN PÚBLICA"@es;
+  cccev:registeredAddress epd:2022-S-148-425230_ReviewerOrganisationAddress_2a666ce1-cebc-31d9-b200-113ebf473883 .
+
+epd:2022-S-148-425230_Reviewer_2a666ce1-cebc-31d9-b200-113ebf473883 a epo:Reviewer;
+  epo:playedBy epd:2022-S-148-425230_ReviewerOrganisation_2a666ce1-cebc-31d9-b200-113ebf473883 .

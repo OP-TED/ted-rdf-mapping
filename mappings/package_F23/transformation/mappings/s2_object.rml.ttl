@@ -663,6 +663,10 @@ tedm:ContractTerm a rr:TriplesMap ;
             rr:objectMap
             [
                 rr:parentTriplesMap tedm:Period;
+                rr:joinCondition [
+                    rr:child "if(exists(./@ITEM)) then ./@ITEM else 1";
+                    rr:parent "if(exists(./@ITEM)) then ./@ITEM else 1";
+                ];
             ]
         ] ;
     rr:predicateObjectMap
@@ -671,6 +675,10 @@ tedm:ContractTerm a rr:TriplesMap ;
             rr:objectMap
             [
                 rr:parentTriplesMap tedm:Duration;
+                rr:joinCondition [
+                    rr:child "if(exists(./@ITEM)) then ./@ITEM else 1";
+                    rr:parent "if(exists(../@ITEM)) then ../@ITEM else 1";
+                ];
             ]
         ] ;
     rr:predicateObjectMap
@@ -712,8 +720,8 @@ tedm:ContractTermLocation a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:ContractTermLocationAddress;
                     rr:joinCondition [
-                        rr:child "./MAIN_SITE";
-                        rr:parent "./MAIN_SITE";
+                        rr:child "if(exists(./@ITEM)) then ./@ITEM else 1";
+                        rr:parent "if(exists(./@ITEM)) then ./@ITEM else 1";
                     ];
                 ] ;
         ] .

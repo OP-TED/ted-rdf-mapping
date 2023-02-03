@@ -1,5 +1,6 @@
 @prefix cccev: <http://data.europa.eu/m8g/> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
@@ -7,161 +8,141 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://data.europa.eu/a4g/resource/AccessTerm/2018-S-006-010271/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209>
-  a epo:AccessTerm;
+epd:2018-S-006-010271_AccessTerm_ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209 a epo:AccessTerm;
   epo:hasPublicAccessURL "https://www.cde18.fr"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
 
-<http://data.europa.eu/a4g/resource/Buyer/2018-S-006-010271/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209>
-  a epo:Buyer;
-  epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-006-010271/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-006-010271/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
+epd:2018-S-006-010271_Buyer_ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209 a epo:Buyer;
+  epo:hasContactPointInRole epd:2018-S-006-010271_ContactPoint_dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22;
+  epo:playedBy epd:2018-S-006-010271_Organisation_dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22 .
 
-<http://data.europa.eu/a4g/resource/ContactPoint/2018-S-006-010271/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
-  a cccev:ContactPoint;
+epd:2018-S-006-010271_ContactPoint_dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22 a cccev:ContactPoint;
   epo:hasContactName "laure.letondel@cde18.org"@fr;
   epo:hasInternetAddress "https://www.cde18.fr"^^xsd:anyURI;
   cccev:email "laure.letondel@cde18.org" .
 
-<http://data.europa.eu/a4g/resource/ContractTerm/2018-S-006-010271/64592fe7-40a4-3c6b-85ce-08fd4c446531>
-  a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/Duration/2018-S-006-010271/1d20f563-6060-39ce-a62d-de87c1a9defd>;
-  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/ContractTermLocation/2018-S-006-010271/64592fe7-40a4-3c6b-85ce-08fd4c446531> .
-
-<http://data.europa.eu/a4g/resource/ContractTermLocation/2018-S-006-010271/64592fe7-40a4-3c6b-85ce-08fd4c446531>
-  a dct:Location;
+epd:2018-S-006-010271_ContractTermLocation_64592fe7-40a4-3c6b-85ce-08fd4c446531 a
+    dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/FR> .
 
-<http://data.europa.eu/a4g/resource/Duration/2018-S-006-010271/1d20f563-6060-39ce-a62d-de87c1a9defd>
-  a epo:Duration;
+epd:2018-S-006-010271_ContractTerm_64592fe7-40a4-3c6b-85ce-08fd4c446531 a epo:ContractTerm;
+  epo:definesContractDuration epd:2018-S-006-010271_Duration_1d20f563-6060-39ce-a62d-de87c1a9defd;
+  epo:definesSpecificPlaceOfPerformance epd:2018-S-006-010271_ContractTermLocation_64592fe7-40a4-3c6b-85ce-08fd4c446531 .
+
+epd:2018-S-006-010271_Duration_1d20f563-6060-39ce-a62d-de87c1a9defd a epo:Duration;
   time:numericDuration 60.0;
   time:unitType time:unitMonth .
 
-<http://data.europa.eu/a4g/resource/Lot/2018-S-006-010271/64592fe7-40a4-3c6b-85ce-08fd4c446531>
-  a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2018-S-006-010271/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
+epd:2018-S-006-010271_LotIdentifier_64592fe7-40a4-3c6b-85ce-08fd4c446531 a epo:Identifier;
+  epo:hasIdentifierValue "1 UNIQUE" .
+
+epd:2018-S-006-010271_LotPurpose_64592fe7-40a4-3c6b-85ce-08fd4c446531 a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/55523100> .
+
+epd:2018-S-006-010271_Lot_64592fe7-40a4-3c6b-85ce-08fd4c446531 a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:2018-S-006-010271_ContractTerm_64592fe7-40a4-3c6b-85ce-08fd4c446531;
   epo:hasDescription """
                   Dsp sur 5 ans de la restauration scolaire et périscolaire du 18e arrondissement de Paris — fabrication, livraison et service d'environ 14 000 repas par jour scolaire et de 2 500 repas en période de vacances scolaires + goûters.
                """@fr;
-  epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/MainMonetaryValueLot/2018-S-006-010271/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
-  epo:hasID <http://data.europa.eu/a4g/resource/LotIdentifier/2018-S-006-010271/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
+  epo:hasEstimatedValue epd:2018-S-006-010271_MainMonetaryValueLot_64592fe7-40a4-3c6b-85ce-08fd4c446531;
+  epo:hasID epd:2018-S-006-010271_LotIdentifier_64592fe7-40a4-3c6b-85ce-08fd4c446531;
   epo:hasPerformingStaffQualificationInformation <http://publications.europa.eu/resource/authority/requirement-stage/not-requ>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/LotPurpose/2018-S-006-010271/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
+  epo:hasPurpose epd:2018-S-006-010271_LotPurpose_64592fe7-40a4-3c6b-85ce-08fd4c446531;
   epo:hasTitle """
                   Restauration scolaire
                """@fr;
   epo:isUsingEUFunds false;
-  epo:specifiesSelectionCriterion <http://data.europa.eu/a4g/resource/SelectionCriterion/2018-S-006-010271/c95a6a38-2d25-371b-901b-b4efd5cb00b1> .
+  epo:specifiesSelectionCriterion epd:2018-S-006-010271_SelectionCriterion_c95a6a38-2d25-371b-901b-b4efd5cb00b1 .
 
-<http://data.europa.eu/a4g/resource/LotIdentifier/2018-S-006-010271/64592fe7-40a4-3c6b-85ce-08fd4c446531>
-  a epo:Identifier;
-  epo:hasIdentifierValue "1 UNIQUE" .
+epd:2018-S-006-010271_MainMonetaryValueLot_64592fe7-40a4-3c6b-85ce-08fd4c446531 a
+    epo:MonetaryValue;
+  epo:hasAmountValue 64000000.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
 
-<http://data.europa.eu/a4g/resource/LotPurpose/2018-S-006-010271/64592fe7-40a4-3c6b-85ce-08fd4c446531>
-  a epo:Purpose;
-  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/55523100> .
-
-<http://data.europa.eu/a4g/resource/MainMonetaryValueLot/2018-S-006-010271/64592fe7-40a4-3c6b-85ce-08fd4c446531>
+epd:2018-S-006-010271_MonetaryValueProcedure_3b2748c6-16de-3218-af2c-e7456a886558
   a epo:MonetaryValue;
   epo:hasAmountValue 64000000.0;
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
 
-<http://data.europa.eu/a4g/resource/MonetaryValueProcedure/2018-S-006-010271/3b2748c6-16de-3218-af2c-e7456a886558>
-  a epo:MonetaryValue;
-  epo:hasAmountValue 64000000.0;
-  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
-
-<http://data.europa.eu/a4g/resource/Notice/2018-S-006-010271/3b2748c6-16de-3218-af2c-e7456a886558>
-  a epo:CompetitionNotice, epo:Notice;
-  epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/NoticeAwardInformation/2018-S-006-010271/3b2748c6-16de-3218-af2c-e7456a886558>;
-  epo:announcesRole <http://data.europa.eu/a4g/resource/ProcurementProcedureInformationProvider/2018-S-006-010271/c5ef9a83-cf56-3b09-b28d-e41cf4342af1>,
-    <http://data.europa.eu/a4g/resource/Reviewer/2018-S-006-010271/2a666ce1-cebc-31d9-b200-113ebf473883>,
-    <http://data.europa.eu/a4g/resource/TenderReceiver/2018-S-006-010271/af83754e-446b-3253-855d-ef754d0f9e5e>;
+epd:2018-S-006-010271_Notice a epo:CompetitionNotice, epo:Notice;
+  epo:announcesNoticeAwardInformation epd:2018-S-006-010271_NoticeAwardInformation_3b2748c6-16de-3218-af2c-e7456a886558;
+  epo:announcesRole epd:2018-S-006-010271_ProcurementProcedureInformationProvider_c5ef9a83-cf56-3b09-b28d-e41cf4342af1,
+    epd:2018-S-006-010271_Reviewer_2a666ce1-cebc-31d9-b200-113ebf473883, epd:2018-S-006-010271_TenderReceiver_af83754e-446b-3253-855d-ef754d0f9e5e;
   epo:hasDispatchDate "2018-01-08"^^xsd:date;
-  epo:refersToLot <http://data.europa.eu/a4g/resource/Lot/2018-S-006-010271/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
-  epo:refersToProcedure <http://data.europa.eu/a4g/resource/Procedure/2018-S-006-010271/3b2748c6-16de-3218-af2c-e7456a886558>;
-  epo:refersToRole <http://data.europa.eu/a4g/resource/Buyer/2018-S-006-010271/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209> .
+  epo:refersToLot epd:2018-S-006-010271_Lot_64592fe7-40a4-3c6b-85ce-08fd4c446531;
+  epo:refersToProcedure epd:2018-S-006-010271_Procedure_3b2748c6-16de-3218-af2c-e7456a886558;
+  epo:refersToRole epd:2018-S-006-010271_Buyer_ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209 .
 
-<http://data.europa.eu/a4g/resource/NoticeAwardInformation/2018-S-006-010271/3b2748c6-16de-3218-af2c-e7456a886558>
+epd:2018-S-006-010271_NoticeAwardInformation_3b2748c6-16de-3218-af2c-e7456a886558
   a epo:NoticeAwardInformation .
 
-<http://data.europa.eu/a4g/resource/Organisation/2018-S-006-010271/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
-  a org:Organization;
-  epo:hasBuyerLegalTypeDescription "Caisse des écoles";
-  epo:hasLegalName "Caisse des écoles du 18e ARR"@fr;
-  epo:hasMainActivityDescription "Services sociaux";
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-006-010271/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
-
-<http://data.europa.eu/a4g/resource/OrganisationAddress/2018-S-006-010271/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>
-  a locn:Address;
+epd:2018-S-006-010271_OrganisationAddress_dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22 a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/FR>;
   locn:postCode "75018";
   locn:postName "Paris";
   locn:thoroughfare "1 place Jules Joffrin" .
 
-<http://data.europa.eu/a4g/resource/Procedure/2018-S-006-010271/3b2748c6-16de-3218-af2c-e7456a886558>
-  a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2018-S-006-010271/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
-  epo:hasDescription """
-               Délégation du service public sur 5 ans de la restauration scolaire et périscolaire du 18e arrondissement de Paris — fabrication, livraison et service d'environ 14 000 repas par jour scolaire et 2 500 repas en période de vacances + goûters.
-            """@fr;
-  epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/MonetaryValueProcedure/2018-S-006-010271/3b2748c6-16de-3218-af2c-e7456a886558>;
-  epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2018-S-006-010271/64592fe7-40a4-3c6b-85ce-08fd4c446531>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-006-010271/3b2748c6-16de-3218-af2c-e7456a886558>;
-  epo:hasTitle """
-               Délégation de service public — restauration scolaire
-            """@fr;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/AccessTerm/2018-S-006-010271/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209>,
-    <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2018-S-006-010271/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209>,
-    <http://data.europa.eu/a4g/resource/ProcedureTerm/2018-S-006-010271/3b2748c6-16de-3218-af2c-e7456a886558>,
-    <http://data.europa.eu/a4g/resource/SubmissionTerm/2018-S-006-010271/64850f6d-a341-38ae-bc98-ed98207d0890> .
+epd:2018-S-006-010271_Organisation_dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22 a org:Organization;
+  epo:hasBuyerLegalTypeDescription "Caisse des écoles";
+  epo:hasLegalName "Caisse des écoles du 18e ARR"@fr;
+  epo:hasMainActivityDescription "Services sociaux";
+  cccev:registeredAddress epd:2018-S-006-010271_OrganisationAddress_dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22 .
 
-<http://data.europa.eu/a4g/resource/ProcedurePurpose/2018-S-006-010271/3b2748c6-16de-3218-af2c-e7456a886558>
-  a epo:Purpose;
+epd:2018-S-006-010271_ProcedurePurpose_3b2748c6-16de-3218-af2c-e7456a886558 a epo:Purpose;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/55523100> .
 
-<http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2018-S-006-010271/ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209>
-  a epo:ProcedureSpecificTerm .
+epd:2018-S-006-010271_ProcedureSpecificTerm_ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209 a
+    epo:ProcedureSpecificTerm .
 
-<http://data.europa.eu/a4g/resource/ProcedureTerm/2018-S-006-010271/3b2748c6-16de-3218-af2c-e7456a886558>
-  a epo:ProcedureTerm;
+epd:2018-S-006-010271_ProcedureTerm_3b2748c6-16de-3218-af2c-e7456a886558 a epo:ProcedureTerm;
   epo:hasMaximumNumberOfLotsToBeAwarded 1;
   epo:isOneLotOnlyAllowed true .
 
-<http://data.europa.eu/a4g/resource/ProcurementProcedureInformationProvider/2018-S-006-010271/c5ef9a83-cf56-3b09-b28d-e41cf4342af1>
+epd:2018-S-006-010271_Procedure_3b2748c6-16de-3218-af2c-e7456a886558 a epo:Procedure;
+  epo:foreseesContractSpecificTerm epd:2018-S-006-010271_ContractTerm_64592fe7-40a4-3c6b-85ce-08fd4c446531;
+  epo:hasDescription """
+               Délégation du service public sur 5 ans de la restauration scolaire et périscolaire du 18e arrondissement de Paris — fabrication, livraison et service d'environ 14 000 repas par jour scolaire et 2 500 repas en période de vacances + goûters.
+            """@fr;
+  epo:hasEstimatedValue epd:2018-S-006-010271_MonetaryValueProcedure_3b2748c6-16de-3218-af2c-e7456a886558;
+  epo:hasProcurementScopeDividedIntoLot epd:2018-S-006-010271_Lot_64592fe7-40a4-3c6b-85ce-08fd4c446531;
+  epo:hasPurpose epd:2018-S-006-010271_ProcedurePurpose_3b2748c6-16de-3218-af2c-e7456a886558;
+  epo:hasTitle """
+               Délégation de service public — restauration scolaire
+            """@fr;
+  epo:isSubjectToProcedureSpecificTerm epd:2018-S-006-010271_AccessTerm_ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209,
+    epd:2018-S-006-010271_ProcedureSpecificTerm_ded4ca7d-7aa2-35eb-bbb7-0f3ee2dd0209,
+    epd:2018-S-006-010271_ProcedureTerm_3b2748c6-16de-3218-af2c-e7456a886558, epd:2018-S-006-010271_SubmissionTerm_64850f6d-a341-38ae-bc98-ed98207d0890 .
+
+epd:2018-S-006-010271_ProcurementProcedureInformationProvider_c5ef9a83-cf56-3b09-b28d-e41cf4342af1
   a epo:ProcurementProcedureInformationProvider;
-  epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-006-010271/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-006-010271/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
+  epo:hasContactPointInRole epd:2018-S-006-010271_ContactPoint_dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22;
+  epo:playedBy epd:2018-S-006-010271_Organisation_dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22 .
 
-<http://data.europa.eu/a4g/resource/Reviewer/2018-S-006-010271/2a666ce1-cebc-31d9-b200-113ebf473883>
-  a epo:Reviewer;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2018-S-006-010271/2a666ce1-cebc-31d9-b200-113ebf473883> .
-
-<http://data.europa.eu/a4g/resource/ReviewerOrganisation/2018-S-006-010271/2a666ce1-cebc-31d9-b200-113ebf473883>
-  a org:Organization;
-  epo:hasLegalName "Tribunal administratif de Paris"@fr;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-006-010271/2a666ce1-cebc-31d9-b200-113ebf473883> .
-
-<http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2018-S-006-010271/2a666ce1-cebc-31d9-b200-113ebf473883>
+epd:2018-S-006-010271_ReviewerOrganisationAddress_2a666ce1-cebc-31d9-b200-113ebf473883
   a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
   locn:postCode "75181";
   locn:postName "Paris Cedex 04";
   locn:thoroughfare "7 rue de Jouy" .
 
-<http://data.europa.eu/a4g/resource/SelectionCriterion/2018-S-006-010271/c95a6a38-2d25-371b-901b-b4efd5cb00b1>
-  a epo:SelectionCriterion;
+epd:2018-S-006-010271_ReviewerOrganisation_2a666ce1-cebc-31d9-b200-113ebf473883 a
+    org:Organization;
+  epo:hasLegalName "Tribunal administratif de Paris"@fr;
+  cccev:registeredAddress epd:2018-S-006-010271_ReviewerOrganisationAddress_2a666ce1-cebc-31d9-b200-113ebf473883 .
+
+epd:2018-S-006-010271_Reviewer_2a666ce1-cebc-31d9-b200-113ebf473883 a epo:Reviewer;
+  epo:playedBy epd:2018-S-006-010271_ReviewerOrganisation_2a666ce1-cebc-31d9-b200-113ebf473883 .
+
+epd:2018-S-006-010271_SelectionCriterion_c95a6a38-2d25-371b-901b-b4efd5cb00b1 a epo:SelectionCriterion;
   cccev:description """
                Voir règlement de la consultation
             """ .
 
-<http://data.europa.eu/a4g/resource/SubmissionTerm/2018-S-006-010271/64850f6d-a341-38ae-bc98-ed98207d0890>
-  a epo:SubmissionTerm;
+epd:2018-S-006-010271_SubmissionTerm_64850f6d-a341-38ae-bc98-ed98207d0890 a epo:SubmissionTerm;
   epo:hasLanguage "FR";
   epo:hasReceiptDeadline "2018-03-08T12:00:00"^^xsd:dateTime .
 
-<http://data.europa.eu/a4g/resource/TenderReceiver/2018-S-006-010271/af83754e-446b-3253-855d-ef754d0f9e5e>
-  a epo:TenderReceiver;
-  epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2018-S-006-010271/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2018-S-006-010271/dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22> .
+epd:2018-S-006-010271_TenderReceiver_af83754e-446b-3253-855d-ef754d0f9e5e a epo:TenderReceiver;
+  epo:hasContactPointInRole epd:2018-S-006-010271_ContactPoint_dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22;
+  epo:playedBy epd:2018-S-006-010271_Organisation_dc66a88e-4fa5-3cbb-a9f8-dc5597b65e22 .

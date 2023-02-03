@@ -15,29 +15,36 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://data.europa.eu/a4g/resource/AccessTerm/2017-S-088-173028/841f832b-8a2b-3a73-a4a6-85439d64c6be>
-  a epo:AccessTerm;
+epd:2017-S-088-173028_AccessTerm_841f832b-8a2b-3a73-a4a6-85439d64c6be a epo:AccessTerm;
   epo:hasPublicAccessURL "http://www.procura.co.hu"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
 
-<http://data.europa.eu/a4g/resource/Buyer/2017-S-088-173028/841f832b-8a2b-3a73-a4a6-85439d64c6be>
-  a epo:Buyer;
+epd:2017-S-088-173028_Buyer_841f832b-8a2b-3a73-a4a6-85439d64c6be a epo:Buyer;
   epo:hasBuyerProfile "http://www.bud.hu/"^^xsd:anyURI;
-  epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-088-173028/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2017-S-088-173028/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
+  epo:hasContactPointInRole epd:2017-S-088-173028_ContactPoint_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95;
+  epo:playedBy epd:2017-S-088-173028_Organisation_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95 .
 
-<http://data.europa.eu/a4g/resource/ContactPoint/2017-S-088-173028/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
-  a cccev:ContactPoint;
+epd:2017-S-088-173028_ContactPoint_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95 a cccev:ContactPoint;
   epo:hasContactName "Valkó Zsuzsanna"@hu;
   epo:hasFax "+36 12967696";
   epo:hasInternetAddress "http://www.bud.hu/"^^xsd:anyURI;
   cccev:email "kozbeszerzes@bud.hu";
   cccev:telephone "+36 12966429" .
 
-<http://data.europa.eu/a4g/resource/ContractTerm/2017-S-088-173028/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
-  a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/Duration/2017-S-088-173028/9b5f500b-480f-339a-b633-57d0799d4507>;
-  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/ContractTermLocation/2017-S-088-173028/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
+epd:2017-S-088-173028_ContractTermLocationAddress_507edaeb-912d-3eb4-a32d-da9c8c650bd8
+  a locn:Address;
+  locn:fullAddress """
+Budapest Liszt Ferenc Repülőtér.
+"""@hu .
+
+epd:2017-S-088-173028_ContractTermLocation_507edaeb-912d-3eb4-a32d-da9c8c650bd8 a
+    dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/HU101>;
+  locn:address epd:2017-S-088-173028_ContractTermLocationAddress_507edaeb-912d-3eb4-a32d-da9c8c650bd8 .
+
+epd:2017-S-088-173028_ContractTerm_507edaeb-912d-3eb4-a32d-da9c8c650bd8 a epo:ContractTerm;
+  epo:definesContractDuration epd:2017-S-088-173028_Duration_9b5f500b-480f-339a-b633-57d0799d4507;
+  epo:definesSpecificPlaceOfPerformance epd:2017-S-088-173028_ContractTermLocation_507edaeb-912d-3eb4-a32d-da9c8c650bd8;
   epo:hasEInvoicing true;
   epo:hasEPayment true;
   epo:hasPerformanceConditions """
@@ -48,23 +55,11 @@ A Kbt. 135. § (1) bek alapján az ajánlatkérő a szerződés teljesítéséne
 Az ellenszolg. teljesítése a Kbt. 135. § (1), (5) – (6) bek., a Ptk. 6:130. § (1)-(2) bek. szerint, 30 napos fizetési határidő alkalmazásával, banki átutalással történik. A kifizetéssel kapcsolatos részletes előírásokat a szerződéstervezet tartalmazza.
 """ .
 
-<http://data.europa.eu/a4g/resource/ContractTermLocation/2017-S-088-173028/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
-  a dct:Location;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/HU101>;
-  locn:address <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2017-S-088-173028/507edaeb-912d-3eb4-a32d-da9c8c650bd8> .
-
-<http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2017-S-088-173028/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
-  a locn:Address;
-  locn:fullAddress """
-Budapest Liszt Ferenc Repülőtér.
-"""@hu .
-
-<http://data.europa.eu/a4g/resource/Duration/2017-S-088-173028/9b5f500b-480f-339a-b633-57d0799d4507>
-  a epo:Duration;
+epd:2017-S-088-173028_Duration_9b5f500b-480f-339a-b633-57d0799d4507 a epo:Duration;
   time:numericDuration 60.0;
   time:unitType time:unitMonth .
 
-<http://data.europa.eu/a4g/resource/InformationProviderContactPoint/2017-S-088-173028/f3743a7a-ceac-3b65-9bb1-f451a6d4f3b6>
+epd:2017-S-088-173028_InformationProviderContactPoint_f3743a7a-ceac-3b65-9bb1-f451a6d4f3b6
   a cccev:ContactPoint;
   epo:hasContactName "Gál Erzsébet"@hu;
   epo:hasFax "+36 13920023";
@@ -72,12 +67,7 @@ Budapest Liszt Ferenc Repülőtér.
   cccev:email "procura@procura.co.hu";
   cccev:telephone "+36 13920024" .
 
-<http://data.europa.eu/a4g/resource/InformationProviderOrganisation/2017-S-088-173028/f3743a7a-ceac-3b65-9bb1-f451a6d4f3b6>
-  a org:Organization;
-  epo:hasLegalName "Procura Consulting Kft."@hu;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/InformationProviderOrganisationAddress/2017-S-088-173028/f3743a7a-ceac-3b65-9bb1-f451a6d4f3b6> .
-
-<http://data.europa.eu/a4g/resource/InformationProviderOrganisationAddress/2017-S-088-173028/f3743a7a-ceac-3b65-9bb1-f451a6d4f3b6>
+epd:2017-S-088-173028_InformationProviderOrganisationAddress_f3743a7a-ceac-3b65-9bb1-f451a6d4f3b6
   a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/HUN>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/HU101>;
@@ -85,9 +75,17 @@ Budapest Liszt Ferenc Repülőtér.
   locn:postName "Budapest";
   locn:thoroughfare "Hattyú u. 17/A. fszt. 1." .
 
-<http://data.europa.eu/a4g/resource/Lot/2017-S-088-173028/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
-  a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2017-S-088-173028/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
+epd:2017-S-088-173028_InformationProviderOrganisation_f3743a7a-ceac-3b65-9bb1-f451a6d4f3b6
+  a org:Organization;
+  epo:hasLegalName "Procura Consulting Kft."@hu;
+  cccev:registeredAddress epd:2017-S-088-173028_InformationProviderOrganisationAddress_f3743a7a-ceac-3b65-9bb1-f451a6d4f3b6 .
+
+epd:2017-S-088-173028_LotPurpose_507edaeb-912d-3eb4-a32d-da9c8c650bd8 a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/85000000>, <http://data.europa.eu/cpv/cpv/85100000>,
+    <http://data.europa.eu/cpv/cpv/85120000> .
+
+epd:2017-S-088-173028_Lot_507edaeb-912d-3eb4-a32d-da9c8c650bd8 a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:2017-S-088-173028_ContractTerm_507edaeb-912d-3eb4-a32d-da9c8c650bd8;
   epo:hasAdditionalInformation """
 A dokumentáció részét képezi a nyertes ajánlattevővel kötendő bérleti szerződés (tájékoztatásul), amely szerződésre a Kbt. szabályai nem alkalmazandóak.
 A II.1.5 és II.2.6 pontokban megadott 1 HUF technikai adat, ajánlatkérő nem adja meg a a becsült értéket.
@@ -123,65 +121,61 @@ Változatok, alternatív ajánlat nem fogadható el.
 A szerződés biztosítékai: Kötbér, teljesítési biztosíték.
 A teljesítési biztosíték határidőre történő nyújtására vonatkozóan az ajánlattevőnek az ajánlatban nyilatkoznia kell.
 """@hu;
-  epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/MainMonetaryValueLot/2017-S-088-173028/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
+  epo:hasEstimatedValue epd:2017-S-088-173028_MainMonetaryValueLot_507edaeb-912d-3eb4-a32d-da9c8c650bd8;
   epo:hasPerformingStaffQualificationInformation <http://publications.europa.eu/resource/authority/requirement-stage/t-requ>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/LotPurpose/2017-S-088-173028/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/ReviewTerm/2017-S-088-173028/3371e348-14a7-3e56-9dde-a3904d7fe886>;
+  epo:hasPurpose epd:2017-S-088-173028_LotPurpose_507edaeb-912d-3eb4-a32d-da9c8c650bd8;
+  epo:isSubjectToLotSpecificTerm epd:2017-S-088-173028_ReviewTerm_3371e348-14a7-3e56-9dde-a3904d7fe886;
   epo:isUsingEUFunds false;
-  epo:specifiesSelectionCriterion <http://data.europa.eu/a4g/resource/SelectionCriterion/2017-S-088-173028/cdddc74c-d95f-308d-979a-936feb7259ef> .
+  epo:specifiesSelectionCriterion epd:2017-S-088-173028_SelectionCriterion_cdddc74c-d95f-308d-979a-936feb7259ef .
 
-<http://data.europa.eu/a4g/resource/LotPurpose/2017-S-088-173028/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
-  a epo:Purpose;
-  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/85000000>, <http://data.europa.eu/cpv/cpv/85100000>,
-    <http://data.europa.eu/cpv/cpv/85120000> .
+epd:2017-S-088-173028_MainMonetaryValueLot_507edaeb-912d-3eb4-a32d-da9c8c650bd8 a
+    epo:MonetaryValue;
+  epo:hasAmountValue 1.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/HUF> .
 
-<http://data.europa.eu/a4g/resource/MainMonetaryValueLot/2017-S-088-173028/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
+epd:2017-S-088-173028_MonetaryValueProcedure_1d9ef4ec-53be-3d2d-b473-d791c9090e39
   a epo:MonetaryValue;
   epo:hasAmountValue 1.0;
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/HUF> .
 
-<http://data.europa.eu/a4g/resource/MonetaryValueProcedure/2017-S-088-173028/1d9ef4ec-53be-3d2d-b473-d791c9090e39>
-  a epo:MonetaryValue;
-  epo:hasAmountValue 1.0;
-  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/HUF> .
-
-<http://data.europa.eu/a4g/resource/Notice/2017-S-088-173028/1d9ef4ec-53be-3d2d-b473-d791c9090e39>
-  a epo:CompetitionNotice, epo:Notice;
-  epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/NoticeAwardInformation/2017-S-088-173028/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
-  epo:announcesRole <http://data.europa.eu/a4g/resource/ProcurementProcedureInformationProvider/2017-S-088-173028/f3743a7a-ceac-3b65-9bb1-f451a6d4f3b6>,
-    <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProvider/2017-S-088-173028/72314151-edeb-3d6c-ad80-79e218cb58cf>,
-    <http://data.europa.eu/a4g/resource/Reviewer/2017-S-088-173028/f408af29-86f8-3547-8427-ccade0632c83>,
-    <http://data.europa.eu/a4g/resource/TenderReceiver/2017-S-088-173028/185c301f-1304-3f86-a653-df7a2daf09dc>;
+epd:2017-S-088-173028_Notice a epo:CompetitionNotice, epo:Notice;
+  epo:announcesNoticeAwardInformation epd:2017-S-088-173028_NoticeAwardInformation_1d9ef4ec-53be-3d2d-b473-d791c9090e39;
+  epo:announcesRole epd:2017-S-088-173028_ProcurementProcedureInformationProvider_f3743a7a-ceac-3b65-9bb1-f451a6d4f3b6,
+    epd:2017-S-088-173028_ReviewProcedureInformationProvider_72314151-edeb-3d6c-ad80-79e218cb58cf,
+    epd:2017-S-088-173028_Reviewer_f408af29-86f8-3547-8427-ccade0632c83, epd:2017-S-088-173028_TenderReceiver_185c301f-1304-3f86-a653-df7a2daf09dc;
   epo:hasDispatchDate "2017-05-04"^^xsd:date;
-  epo:refersToLot <http://data.europa.eu/a4g/resource/Lot/2017-S-088-173028/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
-  epo:refersToProcedure <http://data.europa.eu/a4g/resource/Procedure/2017-S-088-173028/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
-  epo:refersToRole <http://data.europa.eu/a4g/resource/Buyer/2017-S-088-173028/841f832b-8a2b-3a73-a4a6-85439d64c6be> .
+  epo:refersToLot epd:2017-S-088-173028_Lot_507edaeb-912d-3eb4-a32d-da9c8c650bd8;
+  epo:refersToProcedure epd:2017-S-088-173028_Procedure_1d9ef4ec-53be-3d2d-b473-d791c9090e39;
+  epo:refersToRole epd:2017-S-088-173028_Buyer_841f832b-8a2b-3a73-a4a6-85439d64c6be .
 
-<http://data.europa.eu/a4g/resource/NoticeAwardInformation/2017-S-088-173028/1d9ef4ec-53be-3d2d-b473-d791c9090e39>
+epd:2017-S-088-173028_NoticeAwardInformation_1d9ef4ec-53be-3d2d-b473-d791c9090e39
   a epo:NoticeAwardInformation .
 
-<http://data.europa.eu/a4g/resource/Organisation/2017-S-088-173028/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
-  a org:Organization;
-  epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2017-S-088-173028/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>;
-  epo:hasLegalName "Budapest Airport Budapest Liszt Ferenc Nemzetközi Repülőtér Üzemeltető Zártkörűen Működő Részvénytársaság"@hu;
-  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/airport>;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-088-173028/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
-
-<http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-088-173028/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
-  a locn:Address;
+epd:2017-S-088-173028_OrganisationAddress_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95 a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/HUN>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/HU101>;
   locn:postCode "1185";
   locn:postName "Budapest";
   locn:thoroughfare "BUD Nemzetközi Repülőtér 1." .
 
-<http://data.europa.eu/a4g/resource/OrganisationIdentifier/2017-S-088-173028/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
+epd:2017-S-088-173028_OrganisationIdentifier_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95
   a epo:Identifier;
   epo:hasIdentifierValue "AK01210" .
 
-<http://data.europa.eu/a4g/resource/Procedure/2017-S-088-173028/1d9ef4ec-53be-3d2d-b473-d791c9090e39>
-  a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2017-S-088-173028/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
+epd:2017-S-088-173028_Organisation_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95 a org:Organization;
+  epo:hasID epd:2017-S-088-173028_OrganisationIdentifier_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95;
+  epo:hasLegalName "Budapest Airport Budapest Liszt Ferenc Nemzetközi Repülőtér Üzemeltető Zártkörűen Működő Részvénytársaság"@hu;
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/airport>;
+  cccev:registeredAddress epd:2017-S-088-173028_OrganisationAddress_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95 .
+
+epd:2017-S-088-173028_ProcedurePurpose_1d9ef4ec-53be-3d2d-b473-d791c9090e39 a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/85000000> .
+
+epd:2017-S-088-173028_ProcedureSpecificTerm_841f832b-8a2b-3a73-a4a6-85439d64c6be a
+    epo:ProcedureSpecificTerm .
+
+epd:2017-S-088-173028_Procedure_1d9ef4ec-53be-3d2d-b473-d791c9090e39 a epo:Procedure;
+  epo:foreseesContractSpecificTerm epd:2017-S-088-173028_ContractTerm_507edaeb-912d-3eb4-a32d-da9c8c650bd8;
   epo:hasAdditionalInformation """
 P/1. Alkalmatlan az ajánlattevő, amennyiben az AF feladásának napját (VI.4. ) közvetlenül megelőző három mérlegfordulóval lezárt üzleti évben a közbeszerzés tárgyából (sürgősségi betegellátás) származó – ÁFA nélkül számított – árbevétele nem éri el a 3 év alatt összesen a 150 000 000 HUF összeget.
 P/2 Alkalmatlan az ajánlattevő, amennyiben az ajánlattevőnek vagy az ajánlattevő jogelődjének adózott eredménye az ajánlati felhívás megküldésének napját megelőző három, beszámolóval lezárt üzleti évben egynél több alkalommal negatív.
@@ -223,7 +217,7 @@ Az alábbi fő feladatok ellátása:
 — Kényszerhelyzetek és tömeges balesetek felszámolásának megkezdése és az abban való részvétel OMSZ-el együtt
 Az elvégzett feladatok dokumentálása.
 """@hu;
-  epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/MonetaryValueProcedure/2017-S-088-173028/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
+  epo:hasEstimatedValue epd:2017-S-088-173028_MonetaryValueProcedure_1d9ef4ec-53be-3d2d-b473-d791c9090e39;
   epo:hasMainFeature """
 Értékelési szempontok: Az M/1 a) és b) műszaki – szakmai alkalmassági körben megjelölt orvosok a minimális 24 hónap felett hány hónap sürgősségi betegellátási tapasztalattal rendelkeznek? Súlysz: 20, Nettó ajánlati ár (HUF) – súlysz: 80
 Pontskála: 1-100 doku szerint módszer.
@@ -231,52 +225,44 @@ Ajánlatkérő nem alkalmazza a Kbt. 75.§ (2) bek e) pontját. 20.
 A szolgáltatást szervezési, és felelősségi okokból ajánlatkérő nem bontja részekre.
 """;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
-  epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2017-S-088-173028/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-088-173028/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
+  epo:hasProcurementScopeDividedIntoLot epd:2017-S-088-173028_Lot_507edaeb-912d-3eb4-a32d-da9c8c650bd8;
+  epo:hasPurpose epd:2017-S-088-173028_ProcedurePurpose_1d9ef4ec-53be-3d2d-b473-d791c9090e39;
   epo:hasTitle """
 Repülőtéri sürgősségi egészségügyi szolgálat.
 """@hu;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/AccessTerm/2017-S-088-173028/841f832b-8a2b-3a73-a4a6-85439d64c6be>,
-    <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2017-S-088-173028/841f832b-8a2b-3a73-a4a6-85439d64c6be>,
-    <http://data.europa.eu/a4g/resource/SubmissionTerm/2017-S-088-173028/d5eb64bb-60fc-33e6-91a2-96bf252d3a17> .
+  epo:isSubjectToProcedureSpecificTerm epd:2017-S-088-173028_AccessTerm_841f832b-8a2b-3a73-a4a6-85439d64c6be,
+    epd:2017-S-088-173028_ProcedureSpecificTerm_841f832b-8a2b-3a73-a4a6-85439d64c6be,
+    epd:2017-S-088-173028_SubmissionTerm_d5eb64bb-60fc-33e6-91a2-96bf252d3a17 .
 
-<http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-088-173028/1d9ef4ec-53be-3d2d-b473-d791c9090e39>
-  a epo:Purpose;
-  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/85000000> .
-
-<http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2017-S-088-173028/841f832b-8a2b-3a73-a4a6-85439d64c6be>
-  a epo:ProcedureSpecificTerm .
-
-<http://data.europa.eu/a4g/resource/ProcurementProcedureInformationProvider/2017-S-088-173028/f3743a7a-ceac-3b65-9bb1-f451a6d4f3b6>
+epd:2017-S-088-173028_ProcurementProcedureInformationProvider_f3743a7a-ceac-3b65-9bb1-f451a6d4f3b6
   a epo:ProcurementProcedureInformationProvider;
-  epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/InformationProviderContactPoint/2017-S-088-173028/f3743a7a-ceac-3b65-9bb1-f451a6d4f3b6>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/InformationProviderOrganisation/2017-S-088-173028/f3743a7a-ceac-3b65-9bb1-f451a6d4f3b6> .
+  epo:hasContactPointInRole epd:2017-S-088-173028_InformationProviderContactPoint_f3743a7a-ceac-3b65-9bb1-f451a6d4f3b6;
+  epo:playedBy epd:2017-S-088-173028_InformationProviderOrganisation_f3743a7a-ceac-3b65-9bb1-f451a6d4f3b6 .
 
-<http://data.europa.eu/a4g/resource/ReviewProcedureInformationProvider/2017-S-088-173028/72314151-edeb-3d6c-ad80-79e218cb58cf>
-  a epo:ReviewProcedureInformationProvider;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2017-S-088-173028/72314151-edeb-3d6c-ad80-79e218cb58cf> .
-
-<http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-088-173028/72314151-edeb-3d6c-ad80-79e218cb58cf>
+epd:2017-S-088-173028_ReviewProcedureInformationProviderAddress_72314151-edeb-3d6c-ad80-79e218cb58cf
   a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/HUN>;
   locn:postCode "1026";
   locn:postName "Budapest";
   locn:thoroughfare "Riadó utca 5." .
 
-<http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2017-S-088-173028/72314151-edeb-3d6c-ad80-79e218cb58cf>
+epd:2017-S-088-173028_ReviewProcedureInformationProviderContactPoint_72314151-edeb-3d6c-ad80-79e218cb58cf
   a cccev:ContactPoint;
   epo:hasFax "+36 18828593";
   cccev:email "dontobizottsag@kt.hu";
   cccev:telephone "+36 18828594" .
 
-<http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2017-S-088-173028/72314151-edeb-3d6c-ad80-79e218cb58cf>
+epd:2017-S-088-173028_ReviewProcedureInformationProviderOrganisation_72314151-edeb-3d6c-ad80-79e218cb58cf
   a org:Organization;
   epo:hasLegalName "Közbeszerzési Hatóság"@hu;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2017-S-088-173028/72314151-edeb-3d6c-ad80-79e218cb58cf>;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-088-173028/72314151-edeb-3d6c-ad80-79e218cb58cf> .
+  epo:hasPrimaryContactPoint epd:2017-S-088-173028_ReviewProcedureInformationProviderContactPoint_72314151-edeb-3d6c-ad80-79e218cb58cf;
+  cccev:registeredAddress epd:2017-S-088-173028_ReviewProcedureInformationProviderAddress_72314151-edeb-3d6c-ad80-79e218cb58cf .
 
-<http://data.europa.eu/a4g/resource/ReviewTerm/2017-S-088-173028/3371e348-14a7-3e56-9dde-a3904d7fe886>
-  a epo:ReviewTerm;
+epd:2017-S-088-173028_ReviewProcedureInformationProvider_72314151-edeb-3d6c-ad80-79e218cb58cf
+  a epo:ReviewProcedureInformationProvider;
+  epo:playedBy epd:2017-S-088-173028_ReviewProcedureInformationProviderOrganisation_72314151-edeb-3d6c-ad80-79e218cb58cf .
+
+epd:2017-S-088-173028_ReviewTerm_3371e348-14a7-3e56-9dde-a3904d7fe886 a epo:ReviewTerm;
   epo:hasReviewDeadlineInformation """
 Kbt. XXI. fejezet.
 Az ajánlatkérő a közbeszerzési dokumentumokat a gazdasági szereplők részére elektronikus úton korlátlanul és teljeskörűen, térítésmentesen hozzáférhetővé teszi a www.procura.co.hu honlapon. A közbeszerzési dokumentumokat ajánlatonként legalább egy ajánlattevőnek vagy az ajánlatban megnevezett alvállalkozónak elektronikus úton el kell érnie és a közbeszerzési dokumentumok átvételét az átvételi nyilatkozat megküldésével vissza kell igazolnia a procura@procura.co.hu e-mail címre az ajánlattételi határidő lejártáig. A dokumentáció részét képezi a részletes ajánlati felhívás.
@@ -297,31 +283,29 @@ Ajánlatkérő tájékoztatja az Ajánlattevőket, hogy a minősített ajánlatt
 FAKSZ: Gál Erzsébet, 00045.
 """ .
 
-<http://data.europa.eu/a4g/resource/Reviewer/2017-S-088-173028/f408af29-86f8-3547-8427-ccade0632c83>
-  a epo:Reviewer;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2017-S-088-173028/f408af29-86f8-3547-8427-ccade0632c83> .
-
-<http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-088-173028/f408af29-86f8-3547-8427-ccade0632c83>
-  a cccev:ContactPoint;
+epd:2017-S-088-173028_ReviewerContactPoint_f408af29-86f8-3547-8427-ccade0632c83 a
+    cccev:ContactPoint;
   epo:hasFax "+36 18828593";
   cccev:email "dontobizottsag@kt.hu";
   cccev:telephone "+36 18828594" .
 
-<http://data.europa.eu/a4g/resource/ReviewerOrganisation/2017-S-088-173028/f408af29-86f8-3547-8427-ccade0632c83>
-  a org:Organization;
-  epo:hasLegalName "Közbeszerzési Döntőbizottság"@hu;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-088-173028/f408af29-86f8-3547-8427-ccade0632c83>;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-088-173028/f408af29-86f8-3547-8427-ccade0632c83> .
-
-<http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-088-173028/f408af29-86f8-3547-8427-ccade0632c83>
+epd:2017-S-088-173028_ReviewerOrganisationAddress_f408af29-86f8-3547-8427-ccade0632c83
   a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/HUN>;
   locn:postCode "1026";
   locn:postName "Budapest";
   locn:thoroughfare "Riadó utca 5." .
 
-<http://data.europa.eu/a4g/resource/SelectionCriterion/2017-S-088-173028/cdddc74c-d95f-308d-979a-936feb7259ef>
-  a epo:SelectionCriterion;
+epd:2017-S-088-173028_ReviewerOrganisation_f408af29-86f8-3547-8427-ccade0632c83 a
+    org:Organization;
+  epo:hasLegalName "Közbeszerzési Döntőbizottság"@hu;
+  epo:hasPrimaryContactPoint epd:2017-S-088-173028_ReviewerContactPoint_f408af29-86f8-3547-8427-ccade0632c83;
+  cccev:registeredAddress epd:2017-S-088-173028_ReviewerOrganisationAddress_f408af29-86f8-3547-8427-ccade0632c83 .
+
+epd:2017-S-088-173028_Reviewer_f408af29-86f8-3547-8427-ccade0632c83 a epo:Reviewer;
+  epo:playedBy epd:2017-S-088-173028_ReviewerOrganisation_f408af29-86f8-3547-8427-ccade0632c83 .
+
+epd:2017-S-088-173028_SelectionCriterion_cdddc74c-d95f-308d-979a-936feb7259ef a epo:SelectionCriterion;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   cccev:description """
 5/2006. (II.7.) EÜM rendelet.
@@ -332,23 +316,11 @@ A Kbt. 74. § (1) alapján az ajánlatkérőnek ki kell zárnia az eljárásból
 A kizáró okok fenn nem állására vonatkozó nyilatkozatnak az AF feladásának időpontjánál nem régebbinek kell lennie. A Kbt. 64. §-a -re felhívjuk a figyelmet.
 """ .
 
-<http://data.europa.eu/a4g/resource/SubmissionTerm/2017-S-088-173028/d5eb64bb-60fc-33e6-91a2-96bf252d3a17>
-  a epo:SubmissionTerm;
+epd:2017-S-088-173028_SubmissionTerm_d5eb64bb-60fc-33e6-91a2-96bf252d3a17 a epo:SubmissionTerm;
   epo:hasLanguage "HU";
   epo:hasReceiptDeadline "2017-05-24T10:00:00"^^xsd:dateTime .
 
-<http://data.europa.eu/a4g/resource/TenderReceiver/2017-S-088-173028/185c301f-1304-3f86-a653-df7a2daf09dc>
-  a epo:TenderReceiver;
-  epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/TenderReceiverOrganisationContactPoint/2017-S-088-173028/185c301f-1304-3f86-a653-df7a2daf09dc>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/TenderReceiverOrganisation/2017-S-088-173028/185c301f-1304-3f86-a653-df7a2daf09dc> .
-
-<http://data.europa.eu/a4g/resource/TenderReceiverOrganisation/2017-S-088-173028/185c301f-1304-3f86-a653-df7a2daf09dc>
-  a org:Organization;
-  epo:hasLegalName "Procura Consulting Kft."@hu;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/TenderReceiverOrganisationContactPoint/2017-S-088-173028/185c301f-1304-3f86-a653-df7a2daf09dc>;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/TenderReceiverOrganisationAddress/2017-S-088-173028/185c301f-1304-3f86-a653-df7a2daf09dc> .
-
-<http://data.europa.eu/a4g/resource/TenderReceiverOrganisationAddress/2017-S-088-173028/185c301f-1304-3f86-a653-df7a2daf09dc>
+epd:2017-S-088-173028_TenderReceiverOrganisationAddress_185c301f-1304-3f86-a653-df7a2daf09dc
   a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/HUN>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/HU101>;
@@ -356,10 +328,20 @@ A kizáró okok fenn nem állására vonatkozó nyilatkozatnak az AF feladásán
   locn:postName "Budapest";
   locn:thoroughfare "Hattyú u. 17/A. fszt. 1. Kapucsengő: 22." .
 
-<http://data.europa.eu/a4g/resource/TenderReceiverOrganisationContactPoint/2017-S-088-173028/185c301f-1304-3f86-a653-df7a2daf09dc>
+epd:2017-S-088-173028_TenderReceiverOrganisationContactPoint_185c301f-1304-3f86-a653-df7a2daf09dc
   a cccev:ContactPoint;
   epo:hasContactName "Gál Erzsébet"@hu;
   epo:hasFax "+36 13920023";
   epo:hasInternetAddress "http://www.bud.hu"^^xsd:anyURI;
   cccev:email "procura@procura.co.hu";
   cccev:telephone "+36 13920024" .
+
+epd:2017-S-088-173028_TenderReceiverOrganisation_185c301f-1304-3f86-a653-df7a2daf09dc
+  a org:Organization;
+  epo:hasLegalName "Procura Consulting Kft."@hu;
+  epo:hasPrimaryContactPoint epd:2017-S-088-173028_TenderReceiverOrganisationContactPoint_185c301f-1304-3f86-a653-df7a2daf09dc;
+  cccev:registeredAddress epd:2017-S-088-173028_TenderReceiverOrganisationAddress_185c301f-1304-3f86-a653-df7a2daf09dc .
+
+epd:2017-S-088-173028_TenderReceiver_185c301f-1304-3f86-a653-df7a2daf09dc a epo:TenderReceiver;
+  epo:hasContactPointInRole epd:2017-S-088-173028_TenderReceiverOrganisationContactPoint_185c301f-1304-3f86-a653-df7a2daf09dc;
+  epo:playedBy epd:2017-S-088-173028_TenderReceiverOrganisation_185c301f-1304-3f86-a653-df7a2daf09dc .

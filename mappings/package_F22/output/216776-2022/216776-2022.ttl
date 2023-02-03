@@ -1,115 +1,105 @@
 @prefix cccev: <http://data.europa.eu/m8g/> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://data.europa.eu/a4g/resource/Buyer/2022-S-080-216776/841f832b-8a2b-3a73-a4a6-85439d64c6be>
-  a epo:Buyer;
+epd:2022-S-080-216776_Buyer_841f832b-8a2b-3a73-a4a6-85439d64c6be a epo:Buyer;
   epo:hasBuyerProfile "https://www.tenderarena.cz/profil/detail.jsf?identifikator=Cp"^^xsd:anyURI;
-  epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2022-S-080-216776/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2022-S-080-216776/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
+  epo:hasContactPointInRole epd:2022-S-080-216776_ContactPoint_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95;
+  epo:playedBy epd:2022-S-080-216776_Organisation_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95 .
 
-<http://data.europa.eu/a4g/resource/ContactPoint/2022-S-080-216776/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
-  a cccev:ContactPoint;
+epd:2022-S-080-216776_ContactPoint_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95 a cccev:ContactPoint;
   epo:hasContactName "Ing. Jarmila Havlíková"@cs;
   epo:hasInternetAddress "http://www.ceskaposta.cz"^^xsd:anyURI;
   cccev:email "havlikova.jarmila@cpost.cz" .
 
-<http://data.europa.eu/a4g/resource/ContractTerm/2022-S-080-216776/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
-  a epo:ContractTerm;
-  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/ContractTermLocation/2022-S-080-216776/507edaeb-912d-3eb4-a32d-da9c8c650bd8> .
-
-<http://data.europa.eu/a4g/resource/ContractTermLocation/2022-S-080-216776/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
-  a dct:Location;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/CZ0>;
-  locn:address <http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2022-S-080-216776/507edaeb-912d-3eb4-a32d-da9c8c650bd8> .
-
-<http://data.europa.eu/a4g/resource/ContractTermLocationAddress/2022-S-080-216776/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
+epd:2022-S-080-216776_ContractTermLocationAddress_507edaeb-912d-3eb4-a32d-da9c8c650bd8
   a locn:Address;
   locn:fullAddress "územní celek zadavatele Severní Morava"@cs .
 
-<http://data.europa.eu/a4g/resource/Lot/2022-S-080-216776/507edaeb-912d-3eb4-a32d-da9c8c650bd8>
-  a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2022-S-080-216776/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
+epd:2022-S-080-216776_ContractTermLocation_507edaeb-912d-3eb4-a32d-da9c8c650bd8 a
+    dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/CZ0>;
+  locn:address epd:2022-S-080-216776_ContractTermLocationAddress_507edaeb-912d-3eb4-a32d-da9c8c650bd8 .
+
+epd:2022-S-080-216776_ContractTerm_507edaeb-912d-3eb4-a32d-da9c8c650bd8 a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:2022-S-080-216776_ContractTermLocation_507edaeb-912d-3eb4-a32d-da9c8c650bd8 .
+
+epd:2022-S-080-216776_Lot_507edaeb-912d-3eb4-a32d-da9c8c650bd8 a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:2022-S-080-216776_ContractTerm_507edaeb-912d-3eb4-a32d-da9c8c650bd8;
   epo:hasAdditionalInformation "Informace o  \"Přepokládaném datu zveřejnění oznámení o zahájení zadávacího řízení\" dle odst II.3)  je pouze informací o  lhůtě pro vyjádření předběžného zájmu, kterou zadavatel stanovil do 9.05.2022 do 10:00 hodin. Zadavatel preferuje zaslání vyjádření předběžného zájmu způsobem uvedeným ve Výzvě k vyjádření předběžného zájmu, která je zveřejněna na profilu zadavatele pod ID VZ0137936."@cs;
   epo:hasDescription "Předmětem veř. zakázky je zajištění pracovnělékařských služeb pro zaměstn. zadavatele (dále \"PLS\") pro územ. celek Sever. Morava. Zajišt. PLS bude zahrnovat provádění lékařs. prohlídek a dalších úkonů v rámci zajišť. PLS (tj. zejména porad. činnost, dohled na pracovištích, spolupráce s orgánem ochrany veřej. zdraví). S dodavatelem, který podá nejvhod. nabídku, zadavatel uzavře smlouvu s platností 4 roky. Zakázka bude zadána ve zjednodušeném režimu (§ 129 ZZVZ). Zadavatel hodlá využít předběž. oznámení jako výzvu k vyjádření předběž. zájmu dodavatelů o účast v zad. řízení a rovněž k seznámení dodavatelů s místy, v nichž potřebuje zadavatel zajistit ordinace lékařů poskyt. PLS vč. získání zpět. vazby od potenc. dodavatelů, zda jsou schopni na potřeby zadavatele reagovat. Dodavatelé, kteří vyjádří předběžný zájem, budou k podání nabídky vyzváni, výzva k pod. nabídky bude rovněž zveřejněna na profilu zadavatele a oznámení o zah. zadávacího řízení zveřejněno ve Věstníku veř. zakázek."@cs;
   epo:hasPerformingStaffQualificationInformation <http://publications.europa.eu/resource/authority/requirement-stage/not-requ>;
   epo:isUsingEUFunds false .
 
-<http://data.europa.eu/a4g/resource/MonetaryValueProcedure/2022-S-080-216776/1d9ef4ec-53be-3d2d-b473-d791c9090e39>
+epd:2022-S-080-216776_MonetaryValueProcedure_1d9ef4ec-53be-3d2d-b473-d791c9090e39
   a epo:MonetaryValue;
   epo:hasAmountValue 14700000.0;
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/CZK> .
 
-<http://data.europa.eu/a4g/resource/Notice/2022-S-080-216776/1d9ef4ec-53be-3d2d-b473-d791c9090e39>
-  a epo:Notice, epo:PlanningNotice;
-  epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/NoticeAwardInformation/2022-S-080-216776/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
-  epo:announcesPlannedProcurementPart <http://data.europa.eu/a4g/resource/PlannedProcurementPart/2022-S-080-216776/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
-  epo:announcesRole <http://data.europa.eu/a4g/resource/ProcurementProcedureInformationProvider/2022-S-080-216776/cd1f8e5f-b72a-3163-a598-b8e32f275d54>;
+epd:2022-S-080-216776_Notice a epo:Notice, epo:PlanningNotice;
+  epo:announcesNoticeAwardInformation epd:2022-S-080-216776_NoticeAwardInformation_1d9ef4ec-53be-3d2d-b473-d791c9090e39;
+  epo:announcesPlannedProcurementPart epd:2022-S-080-216776_PlannedProcurementPart_1d9ef4ec-53be-3d2d-b473-d791c9090e39;
+  epo:announcesRole epd:2022-S-080-216776_ProcurementProcedureInformationProvider_cd1f8e5f-b72a-3163-a598-b8e32f275d54;
   epo:hasDispatchDate "2022-04-20"^^xsd:date;
-  epo:refersToLot <http://data.europa.eu/a4g/resource/Lot/2022-S-080-216776/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
-  epo:refersToProcedure <http://data.europa.eu/a4g/resource/Procedure/2022-S-080-216776/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
-  epo:refersToRole <http://data.europa.eu/a4g/resource/Buyer/2022-S-080-216776/841f832b-8a2b-3a73-a4a6-85439d64c6be> .
+  epo:refersToLot epd:2022-S-080-216776_Lot_507edaeb-912d-3eb4-a32d-da9c8c650bd8;
+  epo:refersToProcedure epd:2022-S-080-216776_Procedure_1d9ef4ec-53be-3d2d-b473-d791c9090e39;
+  epo:refersToRole epd:2022-S-080-216776_Buyer_841f832b-8a2b-3a73-a4a6-85439d64c6be .
 
-<http://data.europa.eu/a4g/resource/NoticeAwardInformation/2022-S-080-216776/1d9ef4ec-53be-3d2d-b473-d791c9090e39>
+epd:2022-S-080-216776_NoticeAwardInformation_1d9ef4ec-53be-3d2d-b473-d791c9090e39
   a epo:NoticeAwardInformation .
 
-<http://data.europa.eu/a4g/resource/Organisation/2022-S-080-216776/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
-  a org:Organization;
-  epo:hasID <http://data.europa.eu/a4g/resource/OrganisationIdentifier/2022-S-080-216776/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>;
-  epo:hasLegalName "Česká pošta, s.p."@cs;
-  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/post>;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-080-216776/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
-
-<http://data.europa.eu/a4g/resource/OrganisationAddress/2022-S-080-216776/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
-  a locn:Address;
+epd:2022-S-080-216776_OrganisationAddress_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95 a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/CZ0>;
   locn:postCode "11000";
   locn:postName "Praha";
   locn:thoroughfare "Politických vězňů 909/4" .
 
-<http://data.europa.eu/a4g/resource/OrganisationIdentifier/2022-S-080-216776/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>
+epd:2022-S-080-216776_OrganisationIdentifier_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95
   a epo:Identifier;
   epo:hasIdentifierValue "47114983" .
 
-<http://data.europa.eu/a4g/resource/PlannedProcurementPart/2022-S-080-216776/1d9ef4ec-53be-3d2d-b473-d791c9090e39>
+epd:2022-S-080-216776_Organisation_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95 a org:Organization;
+  epo:hasID epd:2022-S-080-216776_OrganisationIdentifier_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95;
+  epo:hasLegalName "Česká pošta, s.p."@cs;
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/post>;
+  cccev:registeredAddress epd:2022-S-080-216776_OrganisationAddress_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95 .
+
+epd:2022-S-080-216776_PlannedProcurementPart_1d9ef4ec-53be-3d2d-b473-d791c9090e39
   a epo:PlannedProcurementPart;
-  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/ProcessPlanningTerm/2022-S-080-216776/1d9ef4ec-53be-3d2d-b473-d791c9090e39> .
+  epo:isSubjectToTerm epd:2022-S-080-216776_ProcessPlanningTerm_1d9ef4ec-53be-3d2d-b473-d791c9090e39 .
 
-<http://data.europa.eu/a4g/resource/Procedure/2022-S-080-216776/1d9ef4ec-53be-3d2d-b473-d791c9090e39>
-  a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2022-S-080-216776/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
-  epo:hasAdditionalInformation "Druh řízení: zjednodušený režim ve smyslu § 3 písm. i) ZZVZ. Zadavatel si v souladu s § 170  ZZVZ vyhrazuje právo zrušit zadávací řízení."@cs;
-  epo:hasDescription "Předmětem veř. zakázky je zajištění pracovnělékařských služeb pro zaměstn. zadavatele (dále \"PLS\") pro územ. celek Sever. Morava. Zajišt. PLS bude zahrnovat provádění lékařs. prohlídek a dalších úkonů v rámci zajišť. PLS (tj. zejména porad. činnost, dohled na pracovištích, spolupráce s orgánem ochrany veřej. zdraví). S dodavatelem, který podá nejvhod. nabídku, zadavatel uzavře smlouvu s platností 4 roky. Zakázka bude zadána ve zjednodušeném režimu (§ 129 ZZVZ). Zadavatel hodlá využít předběž. oznámení jako výzvu k vyjádření předběž. zájmu dodavatelů o účast v zad. řízení a rovněž k seznámení dodavatelů s místy, v nichž potřebuje zadavatel zajistit ordinace lékařů poskyt. PLS vč. získání zpět. vazby od potenc. dodavatelů, zda jsou schopni na potřeby zadavatele reagovat. Dodavatelé, kteří vyjádří předběžný zájem, budou k podání nabídky vyzváni, výzva k pod. nabídky bude rovněž zveřejněna na profilu zadavatele a oznámení o zah. zadávacího řízení zveřejněno ve Věstníku veř. zakázek."@cs;
-  epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/MonetaryValueProcedure/2022-S-080-216776/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
-  epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2022-S-080-216776/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
-  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
-  epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2022-S-080-216776/507edaeb-912d-3eb4-a32d-da9c8c650bd8>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2022-S-080-216776/1d9ef4ec-53be-3d2d-b473-d791c9090e39>;
-  epo:hasTitle "Pracovnělékařské služby pro zaměstnance České pošty, s.p. v územním celku Severní Morava"@cs;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2022-S-080-216776/841f832b-8a2b-3a73-a4a6-85439d64c6be> .
-
-<http://data.europa.eu/a4g/resource/ProcedureIdentifier/2022-S-080-216776/1d9ef4ec-53be-3d2d-b473-d791c9090e39>
-  a epo:Identifier;
+epd:2022-S-080-216776_ProcedureIdentifier_1d9ef4ec-53be-3d2d-b473-d791c9090e39 a epo:Identifier;
   epo:hasIdentifierValue "ČP/26169/2022/NAK" .
 
-<http://data.europa.eu/a4g/resource/ProcedurePurpose/2022-S-080-216776/1d9ef4ec-53be-3d2d-b473-d791c9090e39>
-  a epo:Purpose;
+epd:2022-S-080-216776_ProcedurePurpose_1d9ef4ec-53be-3d2d-b473-d791c9090e39 a epo:Purpose;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/85147000> .
 
-<http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2022-S-080-216776/841f832b-8a2b-3a73-a4a6-85439d64c6be>
-  a epo:ProcedureSpecificTerm .
+epd:2022-S-080-216776_ProcedureSpecificTerm_841f832b-8a2b-3a73-a4a6-85439d64c6be a
+    epo:ProcedureSpecificTerm .
 
-<http://data.europa.eu/a4g/resource/ProcessPlanningTerm/2022-S-080-216776/1d9ef4ec-53be-3d2d-b473-d791c9090e39>
-  a epo:ProcessPlanningTerm;
+epd:2022-S-080-216776_Procedure_1d9ef4ec-53be-3d2d-b473-d791c9090e39 a epo:Procedure;
+  epo:foreseesContractSpecificTerm epd:2022-S-080-216776_ContractTerm_507edaeb-912d-3eb4-a32d-da9c8c650bd8;
+  epo:hasAdditionalInformation "Druh řízení: zjednodušený režim ve smyslu § 3 písm. i) ZZVZ. Zadavatel si v souladu s § 170  ZZVZ vyhrazuje právo zrušit zadávací řízení."@cs;
+  epo:hasDescription "Předmětem veř. zakázky je zajištění pracovnělékařských služeb pro zaměstn. zadavatele (dále \"PLS\") pro územ. celek Sever. Morava. Zajišt. PLS bude zahrnovat provádění lékařs. prohlídek a dalších úkonů v rámci zajišť. PLS (tj. zejména porad. činnost, dohled na pracovištích, spolupráce s orgánem ochrany veřej. zdraví). S dodavatelem, který podá nejvhod. nabídku, zadavatel uzavře smlouvu s platností 4 roky. Zakázka bude zadána ve zjednodušeném režimu (§ 129 ZZVZ). Zadavatel hodlá využít předběž. oznámení jako výzvu k vyjádření předběž. zájmu dodavatelů o účast v zad. řízení a rovněž k seznámení dodavatelů s místy, v nichž potřebuje zadavatel zajistit ordinace lékařů poskyt. PLS vč. získání zpět. vazby od potenc. dodavatelů, zda jsou schopni na potřeby zadavatele reagovat. Dodavatelé, kteří vyjádří předběžný zájem, budou k podání nabídky vyzváni, výzva k pod. nabídky bude rovněž zveřejněna na profilu zadavatele a oznámení o zah. zadávacího řízení zveřejněno ve Věstníku veř. zakázek."@cs;
+  epo:hasEstimatedValue epd:2022-S-080-216776_MonetaryValueProcedure_1d9ef4ec-53be-3d2d-b473-d791c9090e39;
+  epo:hasID epd:2022-S-080-216776_ProcedureIdentifier_1d9ef4ec-53be-3d2d-b473-d791c9090e39;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
+  epo:hasProcurementScopeDividedIntoLot epd:2022-S-080-216776_Lot_507edaeb-912d-3eb4-a32d-da9c8c650bd8;
+  epo:hasPurpose epd:2022-S-080-216776_ProcedurePurpose_1d9ef4ec-53be-3d2d-b473-d791c9090e39;
+  epo:hasTitle "Pracovnělékařské služby pro zaměstnance České pošty, s.p. v územním celku Severní Morava"@cs;
+  epo:isSubjectToProcedureSpecificTerm epd:2022-S-080-216776_ProcedureSpecificTerm_841f832b-8a2b-3a73-a4a6-85439d64c6be .
+
+epd:2022-S-080-216776_ProcessPlanningTerm_1d9ef4ec-53be-3d2d-b473-d791c9090e39 a epo:ProcessPlanningTerm;
   epo:hasEstimatedContractNoticePublicationDate "2022-05-09"^^xsd:date .
 
-<http://data.europa.eu/a4g/resource/ProcurementProcedureInformationProvider/2022-S-080-216776/cd1f8e5f-b72a-3163-a598-b8e32f275d54>
+epd:2022-S-080-216776_ProcurementProcedureInformationProvider_cd1f8e5f-b72a-3163-a598-b8e32f275d54
   a epo:ProcurementProcedureInformationProvider;
-  epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2022-S-080-216776/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2022-S-080-216776/f0fb1bc9-efa7-3fc4-99fc-71db7e803c95> .
+  epo:hasContactPointInRole epd:2022-S-080-216776_ContactPoint_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95;
+  epo:playedBy epd:2022-S-080-216776_Organisation_f0fb1bc9-efa7-3fc4-99fc-71db7e803c95 .

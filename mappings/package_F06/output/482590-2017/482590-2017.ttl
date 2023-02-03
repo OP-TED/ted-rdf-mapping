@@ -15,48 +15,37 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://data.europa.eu/a4g/resource/Buyer/2017-S-231-482590/15183658-b3d6-3d9d-88d4-6e02c7e3b7b9>
-  a epo:Buyer;
-  epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ContactPoint/2017-S-231-482590/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/Organisation/2017-S-231-482590/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
+epd:2017-S-231-482590_Buyer_15183658-b3d6-3d9d-88d4-6e02c7e3b7b9 a epo:Buyer;
+  epo:hasContactPointInRole epd:2017-S-231-482590_ContactPoint_1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4;
+  epo:playedBy epd:2017-S-231-482590_Organisation_1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4 .
 
-<http://data.europa.eu/a4g/resource/ContactPoint/2017-S-231-482590/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
-  a cccev:ContactPoint;
+epd:2017-S-231-482590_ContactPoint_1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4 a cccev:ContactPoint;
   epo:hasContactName "Biuro Zakupów, ul. Gazowa 3, 50-513 Wrocław"@pl;
   epo:hasInternetAddress "http://pgnig.pl/"^^xsd:anyURI;
   cccev:email "magdalena.zdziennicka@pgnig.pl";
   cccev:telephone "+48 713649482" .
 
-<http://data.europa.eu/a4g/resource/Contract/2017-S-231-482590/527e871b-562d-3858-b2cb-c75e9b69e338>
-  a epo:Contract;
+epd:2017-S-231-482590_ContractIdentifier_527e871b-562d-3858-b2cb-c75e9b69e338 a epo:Identifier;
+  epo:hasIdentifierValue "ZP/OD/17/0078/OD/HZD1" .
+
+epd:2017-S-231-482590_ContractTermLocation_636e3166-5ecc-350b-867b-7bf2072a2c03 a
+    dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/PL51> .
+
+epd:2017-S-231-482590_ContractTerm_636e3166-5ecc-350b-867b-7bf2072a2c03 a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:2017-S-231-482590_ContractTermLocation_636e3166-5ecc-350b-867b-7bf2072a2c03;
+  epo:hasOptions false .
+
+epd:2017-S-231-482590_Contract_527e871b-562d-3858-b2cb-c75e9b69e338 a epo:Contract;
   epo:hasContractConclusionDate "2017-11-10"^^xsd:date;
-  epo:hasID <http://data.europa.eu/a4g/resource/ContractIdentifier/2017-S-231-482590/527e871b-562d-3858-b2cb-c75e9b69e338>;
+  epo:hasID epd:2017-S-231-482590_ContractIdentifier_527e871b-562d-3858-b2cb-c75e9b69e338;
   epo:hasTitle """
                Świadczenie usług dystrybucji paliwa gazowego przez G.EN. Gaz Energia Sp. z o.o.
             """@pl;
-  epo:includesLot <http://data.europa.eu/a4g/resource/Lot/2017-S-231-482590/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:resultsFromLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-231-482590/527e871b-562d-3858-b2cb-c75e9b69e338> .
+  epo:includesLot epd:2017-S-231-482590_Lot_636e3166-5ecc-350b-867b-7bf2072a2c03;
+  epo:resultsFromLotAwardOutcome epd:2017-S-231-482590_LotAwardOutcome_527e871b-562d-3858-b2cb-c75e9b69e338 .
 
-<http://data.europa.eu/a4g/resource/ContractIdentifier/2017-S-231-482590/527e871b-562d-3858-b2cb-c75e9b69e338>
-  a epo:Identifier;
-  epo:hasIdentifierValue "ZP/OD/17/0078/OD/HZD1" .
-
-<http://data.europa.eu/a4g/resource/ContractTerm/2017-S-231-482590/636e3166-5ecc-350b-867b-7bf2072a2c03>
-  a epo:ContractTerm;
-  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/ContractTermLocation/2017-S-231-482590/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:hasOptions false .
-
-<http://data.europa.eu/a4g/resource/ContractTermLocation/2017-S-231-482590/636e3166-5ecc-350b-867b-7bf2072a2c03>
-  a dct:Location;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/PL51> .
-
-<http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-231-482590/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a epo:Business, org:Organization;
-  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
-  epo:hasLegalName "G.EN. Gaz Energia Sp. z o.o."@pl;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-231-482590/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
-
-<http://data.europa.eu/a4g/resource/ContractorOrganisationAddress/2017-S-231-482590/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
+epd:2017-S-231-482590_ContractorOrganisationAddress_11c6525a-cbf9-36a2-9b0b-e686c6668d03
   a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/PL9>;
@@ -64,8 +53,13 @@
   locn:postName "Tarnowo Podgórne";
   locn:thoroughfare "ul. Dorczyka 1" .
 
-<http://data.europa.eu/a4g/resource/DirectAwardTerm/2017-S-231-482590/b68f1feb-885d-37f5-ac99-4287870dfd15>
-  a epo:DirectAwardTerm;
+epd:2017-S-231-482590_ContractorOrganisation_11c6525a-cbf9-36a2-9b0b-e686c6668d03
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "G.EN. Gaz Energia Sp. z o.o."@pl;
+  cccev:registeredAddress epd:2017-S-231-482590_ContractorOrganisationAddress_11c6525a-cbf9-36a2-9b0b-e686c6668d03 .
+
+epd:2017-S-231-482590_DirectAwardTerm_b68f1feb-885d-37f5-ac99-4287870dfd15 a epo:DirectAwardTerm;
   epo:hasDirectAwardJustification <http://publications.europa.eu/resource/authority/direct-award-justification/artistic>;
   epo:hasJustification """
                   Zgodnie z art. 67 ust. 1 pkt 1 lit. a) ustawy Pzp, zamawiający może udzielić zamówienia z wolnej ręki, jeżeli usługi mogą być świadczone tylko przez jednego wykonawcę z przyczyn technicznych o obiektywnym charakterze, jeżeli nie istnieje rozsądne rozwiązanie alternatywne lub rozwiązanie zastępcze, a brak konkurencji nie jest wynikiem celowego zawężenia parametrów zamówienia. Wykonawca usługi – G.EN. Gaz Energia Sp. z o.o., ul. Dorczyka 1, 62-080 Tarnowo Podgórne w dniu 12.3.2014 r. została wyznaczona Operatorem Systemu Dystrybucyjnego na okres od dnia 1.4.2014 r. do dnia 31.12.2025 r.
@@ -75,136 +69,123 @@
                   Tym samym, w odniesieniu do przedmiotowego zamówienia zaistniały przesłanki określone w art. 67 ust. 1 pkt 1 lit. a) ustawy Pzp, a w konsekwencji udzielenie ww. zamówienia w trybie zamówienia z wolnej ręki jest zgodne z ustawą Pzp.
                """@pl .
 
-<http://data.europa.eu/a4g/resource/Lot/2017-S-231-482590/636e3166-5ecc-350b-867b-7bf2072a2c03>
-  a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2017-S-231-482590/636e3166-5ecc-350b-867b-7bf2072a2c03>;
+epd:2017-S-231-482590_LotAwardOutcome_527e871b-562d-3858-b2cb-c75e9b69e338 a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:2017-S-231-482590_TenderAwardOutcome_14955bf6-88af-3773-b2c5-6a1cddff388a;
+  epo:describesLot epd:2017-S-231-482590_Lot_636e3166-5ecc-350b-867b-7bf2072a2c03;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> .
+
+epd:2017-S-231-482590_Lot_636e3166-5ecc-350b-867b-7bf2072a2c03 a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:2017-S-231-482590_ContractTerm_636e3166-5ecc-350b-867b-7bf2072a2c03;
   epo:hasDescription """
                   Świadczenie usług dystrybucji paliwa gazowego przez G.EN. Gaz Energia Sp. z o.o. na terenie następujących województw: dolnośląskiego, pomorskiego, wielkopolskiego i zachodniopomorskiego.
                """@pl;
   epo:isUsingEUFunds false .
 
-<http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-231-482590/527e871b-562d-3858-b2cb-c75e9b69e338>
-  a epo:LotAwardOutcome;
-  epo:comprisesTenderAwardOutcome <http://data.europa.eu/a4g/resource/TenderAwardOutcome/2017-S-231-482590/14955bf6-88af-3773-b2c5-6a1cddff388a>;
-  epo:describesLot <http://data.europa.eu/a4g/resource/Lot/2017-S-231-482590/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> .
-
-<http://data.europa.eu/a4g/resource/Notice/2017-S-231-482590/dd35f603-e537-3c3e-a6ae-13e46c36bc07>
-  a epo:Notice, epo:ResultNotice;
-  epo:announcesContract <http://data.europa.eu/a4g/resource/Contract/2017-S-231-482590/527e871b-562d-3858-b2cb-c75e9b69e338>;
-  epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/NoticeAwardInformation/2017-S-231-482590/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
-  epo:announcesRole <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProvider/2017-S-231-482590/cda2e79a-2b54-3d8d-8cbd-025f430ee110>,
-    <http://data.europa.eu/a4g/resource/Reviewer/2017-S-231-482590/13730a07-65b0-306c-a9b5-a8929927a6a1>,
-    <http://data.europa.eu/a4g/resource/WinnerRole/2017-S-231-482590/11c6525a-cbf9-36a2-9b0b-e686c6668d03>;
-  epo:announcesTender <http://data.europa.eu/a4g/resource/Tender/2017-S-231-482590/14955bf6-88af-3773-b2c5-6a1cddff388a>;
+epd:2017-S-231-482590_Notice a epo:Notice, epo:ResultNotice;
+  epo:announcesContract epd:2017-S-231-482590_Contract_527e871b-562d-3858-b2cb-c75e9b69e338;
+  epo:announcesNoticeAwardInformation epd:2017-S-231-482590_NoticeAwardInformation_dd35f603-e537-3c3e-a6ae-13e46c36bc07;
+  epo:announcesRole epd:2017-S-231-482590_ReviewProcedureInformationProvider_cda2e79a-2b54-3d8d-8cbd-025f430ee110,
+    epd:2017-S-231-482590_Reviewer_13730a07-65b0-306c-a9b5-a8929927a6a1, epd:2017-S-231-482590_Winner_11c6525a-cbf9-36a2-9b0b-e686c6668d03;
+  epo:announcesTender epd:2017-S-231-482590_Tender_14955bf6-88af-3773-b2c5-6a1cddff388a;
   epo:hasDispatchDate "2017-11-29"^^xsd:date;
-  epo:refersToLot <http://data.europa.eu/a4g/resource/Lot/2017-S-231-482590/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:refersToProcedure <http://data.europa.eu/a4g/resource/Procedure/2017-S-231-482590/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
-  epo:refersToRole <http://data.europa.eu/a4g/resource/Buyer/2017-S-231-482590/15183658-b3d6-3d9d-88d4-6e02c7e3b7b9> .
+  epo:refersToLot epd:2017-S-231-482590_Lot_636e3166-5ecc-350b-867b-7bf2072a2c03;
+  epo:refersToProcedure epd:2017-S-231-482590_Procedure_dd35f603-e537-3c3e-a6ae-13e46c36bc07;
+  epo:refersToRole epd:2017-S-231-482590_Buyer_15183658-b3d6-3d9d-88d4-6e02c7e3b7b9 .
 
-<http://data.europa.eu/a4g/resource/NoticeAwardInformation/2017-S-231-482590/dd35f603-e537-3c3e-a6ae-13e46c36bc07>
+epd:2017-S-231-482590_NoticeAwardInformation_dd35f603-e537-3c3e-a6ae-13e46c36bc07
   a epo:NoticeAwardInformation .
 
-<http://data.europa.eu/a4g/resource/Organisation/2017-S-231-482590/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
-  a org:Organization;
-  epo:hasLegalName "PGNiG Obrót Detaliczny Sp. z o.o."@pl;
-  epo:hasMainActivityDescription "sprzedaż paliwa gazowego i energii elektrycznej";
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-231-482590/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4> .
-
-<http://data.europa.eu/a4g/resource/OrganisationAddress/2017-S-231-482590/1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4>
-  a locn:Address;
+epd:2017-S-231-482590_OrganisationAddress_1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4 a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/PL911>;
   locn:postCode "01-248";
   locn:postName "Warszawa";
   locn:thoroughfare "ul. Jana Kazimierza 3" .
 
-<http://data.europa.eu/a4g/resource/Procedure/2017-S-231-482590/dd35f603-e537-3c3e-a6ae-13e46c36bc07>
-  a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ContractTerm/2017-S-231-482590/636e3166-5ecc-350b-867b-7bf2072a2c03>;
+epd:2017-S-231-482590_Organisation_1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4 a org:Organization;
+  epo:hasLegalName "PGNiG Obrót Detaliczny Sp. z o.o."@pl;
+  epo:hasMainActivityDescription "sprzedaż paliwa gazowego i energii elektrycznej";
+  cccev:registeredAddress epd:2017-S-231-482590_OrganisationAddress_1e5a51f9-4d3b-3b7c-a127-3350ea1c59b4 .
+
+epd:2017-S-231-482590_ProcedureIdentifier_dd35f603-e537-3c3e-a6ae-13e46c36bc07 a epo:Identifier;
+  epo:hasIdentifierValue "ZP/OD/17/0078/OD/HZD1" .
+
+epd:2017-S-231-482590_ProcedurePurpose_dd35f603-e537-3c3e-a6ae-13e46c36bc07 a epo:Purpose;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/65210000> .
+
+epd:2017-S-231-482590_ProcedureSpecificTerm_15183658-b3d6-3d9d-88d4-6e02c7e3b7b9 a
+    epo:ProcedureSpecificTerm .
+
+epd:2017-S-231-482590_Procedure_dd35f603-e537-3c3e-a6ae-13e46c36bc07 a epo:Procedure;
+  epo:foreseesContractSpecificTerm epd:2017-S-231-482590_ContractTerm_636e3166-5ecc-350b-867b-7bf2072a2c03;
   epo:hasDescription """
                Świadczenie usług dystrybucji paliwa gazowego przez G.EN. Gaz Energia Sp. z o.o. na terenie następujących województw: dolnośląskiego, pomorskiego, wielkopolskiego i zachodniopomorskiego.
             """@pl;
-  epo:hasID <http://data.europa.eu/a4g/resource/ProcedureIdentifier/2017-S-231-482590/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
+  epo:hasID epd:2017-S-231-482590_ProcedureIdentifier_dd35f603-e537-3c3e-a6ae-13e46c36bc07;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
-  epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/Lot/2017-S-231-482590/636e3166-5ecc-350b-867b-7bf2072a2c03>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-231-482590/dd35f603-e537-3c3e-a6ae-13e46c36bc07>;
+  epo:hasProcurementScopeDividedIntoLot epd:2017-S-231-482590_Lot_636e3166-5ecc-350b-867b-7bf2072a2c03;
+  epo:hasPurpose epd:2017-S-231-482590_ProcedurePurpose_dd35f603-e537-3c3e-a6ae-13e46c36bc07;
   epo:hasTitle """
                Świadczenie usług dystrybucji paliwa gazowego przez G.EN. Gaz Energia Sp. z o.o.
             """@pl;
   epo:isCoveredByGPA true;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/DirectAwardTerm/2017-S-231-482590/b68f1feb-885d-37f5-ac99-4287870dfd15>,
-    <http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2017-S-231-482590/15183658-b3d6-3d9d-88d4-6e02c7e3b7b9> .
+  epo:isSubjectToProcedureSpecificTerm epd:2017-S-231-482590_DirectAwardTerm_b68f1feb-885d-37f5-ac99-4287870dfd15,
+    epd:2017-S-231-482590_ProcedureSpecificTerm_15183658-b3d6-3d9d-88d4-6e02c7e3b7b9 .
 
-<http://data.europa.eu/a4g/resource/ProcedureIdentifier/2017-S-231-482590/dd35f603-e537-3c3e-a6ae-13e46c36bc07>
-  a epo:Identifier;
-  epo:hasIdentifierValue "ZP/OD/17/0078/OD/HZD1" .
+epd:2017-S-231-482590_ReviewProcedureInformationProviderAddress_cda2e79a-2b54-3d8d-8cbd-025f430ee110
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
+  locn:postCode "02-676";
+  locn:postName "Warszawa";
+  locn:thoroughfare "ul. Postępu 17A" .
 
-<http://data.europa.eu/a4g/resource/ProcedurePurpose/2017-S-231-482590/dd35f603-e537-3c3e-a6ae-13e46c36bc07>
-  a epo:Purpose;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
-  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/65210000> .
+epd:2017-S-231-482590_ReviewProcedureInformationProviderContactPoint_cda2e79a-2b54-3d8d-8cbd-025f430ee110
+  a cccev:ContactPoint;
+  epo:hasFax "+48 224587800";
+  cccev:telephone "+48 224587801" .
 
-<http://data.europa.eu/a4g/resource/ProcedureSpecificTerm/2017-S-231-482590/15183658-b3d6-3d9d-88d4-6e02c7e3b7b9>
-  a epo:ProcedureSpecificTerm .
+epd:2017-S-231-482590_ReviewProcedureInformationProviderOrganisation_cda2e79a-2b54-3d8d-8cbd-025f430ee110
+  a org:Organization;
+  epo:hasLegalName "Krajowa Izba Odwoławcza"@pl;
+  epo:hasPrimaryContactPoint epd:2017-S-231-482590_ReviewProcedureInformationProviderContactPoint_cda2e79a-2b54-3d8d-8cbd-025f430ee110;
+  cccev:registeredAddress epd:2017-S-231-482590_ReviewProcedureInformationProviderAddress_cda2e79a-2b54-3d8d-8cbd-025f430ee110 .
 
-<http://data.europa.eu/a4g/resource/ReviewProcedureInformationProvider/2017-S-231-482590/cda2e79a-2b54-3d8d-8cbd-025f430ee110>
+epd:2017-S-231-482590_ReviewProcedureInformationProvider_cda2e79a-2b54-3d8d-8cbd-025f430ee110
   a epo:ReviewProcedureInformationProvider;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2017-S-231-482590/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
+  epo:playedBy epd:2017-S-231-482590_ReviewProcedureInformationProviderOrganisation_cda2e79a-2b54-3d8d-8cbd-025f430ee110 .
 
-<http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-231-482590/cda2e79a-2b54-3d8d-8cbd-025f430ee110>
+epd:2017-S-231-482590_ReviewerContactPoint_13730a07-65b0-306c-a9b5-a8929927a6a1 a
+    cccev:ContactPoint;
+  epo:hasFax "+48 224587800";
+  cccev:telephone "+48 224587801" .
+
+epd:2017-S-231-482590_ReviewerOrganisationAddress_13730a07-65b0-306c-a9b5-a8929927a6a1
   a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
   locn:postCode "02-676";
   locn:postName "Warszawa";
   locn:thoroughfare "ul. Postępu 17A" .
 
-<http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2017-S-231-482590/cda2e79a-2b54-3d8d-8cbd-025f430ee110>
-  a cccev:ContactPoint;
-  epo:hasFax "+48 224587800";
-  cccev:telephone "+48 224587801" .
-
-<http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2017-S-231-482590/cda2e79a-2b54-3d8d-8cbd-025f430ee110>
-  a org:Organization;
+epd:2017-S-231-482590_ReviewerOrganisation_13730a07-65b0-306c-a9b5-a8929927a6a1 a
+    org:Organization;
   epo:hasLegalName "Krajowa Izba Odwoławcza"@pl;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderContactPoint/2017-S-231-482590/cda2e79a-2b54-3d8d-8cbd-025f430ee110>;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderAddress/2017-S-231-482590/cda2e79a-2b54-3d8d-8cbd-025f430ee110> .
+  epo:hasPrimaryContactPoint epd:2017-S-231-482590_ReviewerContactPoint_13730a07-65b0-306c-a9b5-a8929927a6a1;
+  cccev:registeredAddress epd:2017-S-231-482590_ReviewerOrganisationAddress_13730a07-65b0-306c-a9b5-a8929927a6a1 .
 
-<http://data.europa.eu/a4g/resource/Reviewer/2017-S-231-482590/13730a07-65b0-306c-a9b5-a8929927a6a1>
-  a epo:Reviewer;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2017-S-231-482590/13730a07-65b0-306c-a9b5-a8929927a6a1> .
+epd:2017-S-231-482590_Reviewer_13730a07-65b0-306c-a9b5-a8929927a6a1 a epo:Reviewer;
+  epo:playedBy epd:2017-S-231-482590_ReviewerOrganisation_13730a07-65b0-306c-a9b5-a8929927a6a1 .
 
-<http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-231-482590/13730a07-65b0-306c-a9b5-a8929927a6a1>
-  a cccev:ContactPoint;
-  epo:hasFax "+48 224587800";
-  cccev:telephone "+48 224587801" .
-
-<http://data.europa.eu/a4g/resource/ReviewerOrganisation/2017-S-231-482590/13730a07-65b0-306c-a9b5-a8929927a6a1>
-  a org:Organization;
-  epo:hasLegalName "Krajowa Izba Odwoławcza"@pl;
-  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ReviewerContactPoint/2017-S-231-482590/13730a07-65b0-306c-a9b5-a8929927a6a1>;
-  cccev:registeredAddress <http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-231-482590/13730a07-65b0-306c-a9b5-a8929927a6a1> .
-
-<http://data.europa.eu/a4g/resource/ReviewerOrganisationAddress/2017-S-231-482590/13730a07-65b0-306c-a9b5-a8929927a6a1>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
-  locn:postCode "02-676";
-  locn:postName "Warszawa";
-  locn:thoroughfare "ul. Postępu 17A" .
-
-<http://data.europa.eu/a4g/resource/SubmissionStatisticalInformation/2017-S-231-482590/14955bf6-88af-3773-b2c5-6a1cddff388a>
+epd:2017-S-231-482590_SubmissionStatisticalInformation_14955bf6-88af-3773-b2c5-6a1cddff388a
   a epo:SubmissionStatisticalInformation;
-  epo:summarisesInformationForLotAwardOutcome <http://data.europa.eu/a4g/resource/LotAwardOutcome/2017-S-231-482590/527e871b-562d-3858-b2cb-c75e9b69e338> .
+  epo:summarisesInformationForLotAwardOutcome epd:2017-S-231-482590_LotAwardOutcome_527e871b-562d-3858-b2cb-c75e9b69e338 .
 
-<http://data.europa.eu/a4g/resource/Tender/2017-S-231-482590/14955bf6-88af-3773-b2c5-6a1cddff388a>
-  a epo:Tender;
-  epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/Lot/2017-S-231-482590/636e3166-5ecc-350b-867b-7bf2072a2c03> .
+epd:2017-S-231-482590_TenderAwardOutcome_14955bf6-88af-3773-b2c5-6a1cddff388a a epo:TenderAwardOutcome;
+  epo:describesTender epd:2017-S-231-482590_Tender_14955bf6-88af-3773-b2c5-6a1cddff388a;
+  epo:indicatesAwardOfLotToWinner epd:2017-S-231-482590_Winner_11c6525a-cbf9-36a2-9b0b-e686c6668d03 .
 
-<http://data.europa.eu/a4g/resource/TenderAwardOutcome/2017-S-231-482590/14955bf6-88af-3773-b2c5-6a1cddff388a>
-  a epo:TenderAwardOutcome;
-  epo:describesTender <http://data.europa.eu/a4g/resource/Tender/2017-S-231-482590/14955bf6-88af-3773-b2c5-6a1cddff388a>;
-  epo:indicatesAwardOfLotToWinner <http://data.europa.eu/a4g/resource/WinnerRole/2017-S-231-482590/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+epd:2017-S-231-482590_Tender_14955bf6-88af-3773-b2c5-6a1cddff388a a epo:Tender;
+  epo:isSubmittedForLot epd:2017-S-231-482590_Lot_636e3166-5ecc-350b-867b-7bf2072a2c03 .
 
-<http://data.europa.eu/a4g/resource/WinnerRole/2017-S-231-482590/11c6525a-cbf9-36a2-9b0b-e686c6668d03>
-  a epo:Winner;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ContractorOrganisation/2017-S-231-482590/11c6525a-cbf9-36a2-9b0b-e686c6668d03> .
+epd:2017-S-231-482590_Winner_11c6525a-cbf9-36a2-9b0b-e686c6668d03 a epo:Winner;
+  epo:playedBy epd:2017-S-231-482590_ContractorOrganisation_11c6525a-cbf9-36a2-9b0b-e686c6668d03 .
