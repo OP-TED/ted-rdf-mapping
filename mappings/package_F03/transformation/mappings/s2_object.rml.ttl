@@ -663,6 +663,10 @@ tedm:ContractTerm a rr:TriplesMap ;
             rr:objectMap
             [
                 rr:parentTriplesMap tedm:Period;
+                rr:joinCondition [
+                    rr:child "if(exists(./@ITEM)) then ./@ITEM else 1";
+                    rr:parent "if(exists(./@ITEM)) then ./@ITEM else 1";
+                ];
             ]
         ] ;
     rr:predicateObjectMap
@@ -671,6 +675,10 @@ tedm:ContractTerm a rr:TriplesMap ;
             rr:objectMap
             [
                 rr:parentTriplesMap tedm:Duration;
+                rr:joinCondition [
+                    rr:child "if(exists(./@ITEM)) then ./@ITEM else 1";
+                    rr:parent "if(exists(../@ITEM)) then ../@ITEM else 1";
+                ];
             ]
         ] ;
     rr:predicateObjectMap
@@ -712,8 +720,8 @@ tedm:ContractTermLocation a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:ContractTermLocationAddress;
                     rr:joinCondition [
-                        rr:child "./MAIN_SITE";
-                        rr:parent "./MAIN_SITE";
+                        rr:child "if(exists(./@ITEM)) then ./@ITEM else 1";
+                        rr:parent "if(exists(./@ITEM)) then ./@ITEM else 1";
                     ];
                 ] ;
         ] .
@@ -754,7 +762,7 @@ tedm:Period a rr:TriplesMap ;
             rr:predicate epo:hasBeginning ;
             rr:objectMap
                 [
-                    rml:reference "DATE_START";
+                    rml:reference "if(exists(DATE_START)) then DATE_START || 'T00:00:00' else null";
                     rr:datatype xsd:dateTime
                 ] ;
         ] ;
@@ -763,7 +771,7 @@ tedm:Period a rr:TriplesMap ;
             rr:predicate epo:hasEnd ;
             rr:objectMap
                 [
-                    rml:reference "DATE_END";
+                    rml:reference "if(exists(DATE_END)) then DATE_END || 'T00:00:00' else null";
                     rr:datatype xsd:dateTime
                 ] ;
         ] .
@@ -878,7 +886,11 @@ tedm:MultipleStageProcedureTerm a rr:TriplesMap ;
             rr:predicate epo:hasQualificationSystemDuration;
             rr:objectMap
                 [
-                    rml:reference "QS/INDEFINITE_DURATION"
+                    rr:parentTriplesMap tedm:MultipleStageProcedureIndefiniteDuration;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
                 ]
         ] ;
     rr:predicateObjectMap
@@ -907,7 +919,7 @@ tedm:MultipleStageProcedurePeriod a rr:TriplesMap ;
             rr:predicate epo:hasBeginning ;
             rr:objectMap
                 [
-                    rml:reference "QS/DATE_START";
+                    rml:reference "if(exists(QS/DATE_START)) then QS/DATE_START || 'T00:00:00' else null";
                     rr:datatype xsd:dateTime
                 ] ;
         ] ;
@@ -916,7 +928,7 @@ tedm:MultipleStageProcedurePeriod a rr:TriplesMap ;
             rr:predicate epo:hasEnd ;
             rr:objectMap
                 [
-                    rml:reference "QS/DATE_END";
+                    rml:reference "if(exists(QS/DATE_END)) then QS/DATE_END || 'T00:00:00' else null";
                     rr:datatype xsd:dateTime
                 ] ;
         ] .
