@@ -1,10 +1,10 @@
-#title: I.1.1 - Official name
-#description: “I.1.1 - Official name” in SF corresponds to “BT-500 Organisation Name” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL/OFFICIALNAME. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F13_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL/OFFICIALNAME
+#title: I.1 - Name and addresses
+#description: “I.1 - Name and addresses” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL. The expected ontology instances are epo: epo:Notice / epo:AgentInRole (from CL1) .
+#xpath: /TED_EXPORT/FORM_SECTION/F13_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY_ADDITIONAL
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Buyer .
-		?this epo:playedBy / epo:hasLegalName ?value . }
+		?this rdf:type epo:Notice .
+		?this epo:refersToRole ?value }

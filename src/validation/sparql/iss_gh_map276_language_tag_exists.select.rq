@@ -1,0 +1,12 @@
+#title: TED-929/TED-1133 GH issue #276
+#description: Selects all the triples where the value of the epo:hasCrossBorderLaw property does not have a language tag
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+
+SELECT * WHERE {
+    VALUES ?property {epo:hasCrossBorderLaw}
+    ?s ?property ?value
+  FILTER (lang(?value) = "")
+}
+ORDER BY ?s
+

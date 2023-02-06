@@ -1,0 +1,22 @@
+#title: Dangling Individuals SELECT TED-929/TED-932
+#description: Finds "dangling" individuals, i.e. individuals that do not have any relationships to another generated instance (we ignore relationships to/from literals, types and terms from controlled vocabularies)
+
+PREFIX epd: <http://data.europa.eu/a4g/resource/>
+
+SELECT ?this WHERE {
+    {
+      SELECT ?this (COUNT(?someValue) AS ?vCount)  WHERE {
+      { ?this ?outProp ?someValue.
+        FILTER isIRI(?someValue)
+      }
+      UNION
+      { ?someValue ?inProp ?this.
+      }
+
+      FILTER strstarts(str(?this),str(epd:)).
+      FILTER strstarts(str(?someValue),str(epd:)).
+      } GROUP BY ?this
+    }
+    FILTER (?vCount = 0)
+}
+ORDER BY ?this

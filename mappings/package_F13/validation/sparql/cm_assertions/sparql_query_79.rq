@@ -1,10 +1,10 @@
-#title: V.3.4.1.1 - Currency
-#description: “V.3.4.1.1 - Currency” in SF corresponds to “no direct match nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/VAL_PRIZE/@CURRENCY. The expected ontology instances are epo: epo:Lot / epo:DesignContestRegimeTerm / epo:Prize / epo:MonetaryValue / at-voc:currency (from currency.json) .
-#xpath: /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/VAL_PRIZE/@CURRENCY
+#title: V.3.4.1 - Value of the prize(s) awarded excluding VAT
+#description: “V.3.4.1 - Value of the prize(s) awarded excluding VAT” in SF corresponds to “BT-644 Prize Value” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/VAL_PRIZE. The expected ontology instances are epo: epo:Lot / epo:DesignContestRegimeTerm / epo:Prize  / epo:MonetaryValue / xsd:decimal .
+#xpath: /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/VAL_PRIZE
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:isSubjectToLotSpecificTerm / epo:definesPrize / epo:hasPrizeValue / epo:hasCurrency ?value . }
+		?this epo:isSubjectToLotSpecificTerm / epo:definesPrize / epo:hasPrizeValue / epo:hasAmountValue ?value . }

@@ -1,0 +1,15 @@
+#title: Unique ID SELECT GH issue 273 TED-929/TED-1151
+#description: Finds instances with multiple IDs on any of the generated individuals (e.g. epo:Contract)
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+
+SELECT ?sub ?pCount WHERE {
+      {
+       SELECT ?sub (COUNT(?obj) AS ?pCount) WHERE {
+         ?sub epo:hasID ?obj .
+         ?obj a epo:Identifier .
+       }
+       GROUP BY ?sub
+      }
+      FILTER (?pCount > 1)
+}

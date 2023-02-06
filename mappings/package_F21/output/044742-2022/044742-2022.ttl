@@ -1,0 +1,241 @@
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epd:id_2022-S-018-044742_AccessTerm_LTC4ztdQQn6ue8NBpQv4rF a epo:AccessTerm;
+  epo:hasRestrictedAccessURL "http://eu.eu-supply.com/app/rfq/rwlentrance_s.asp?PID=321919&B=SOLROED"^^xsd:anyURI;
+  epo:isProcurementDocumentRestricted true .
+
+epd:id_2022-S-018-044742_Buyer_LTC4ztdQQn6ue8NBpQv4rF a epo:Buyer;
+  epo:hasBuyerProfile "https://eu.eu-supply.com/ctm/Company/CompanyInformation/Index/65970"^^xsd:anyURI;
+  epo:hasContactPointInRole epd:id_2022-S-018-044742_ContactPoint_7D5VmvEvVafBz7JQr2uuS8;
+  epo:playedBy epd:id_2022-S-018-044742_Organisation_7D5VmvEvVafBz7JQr2uuS8 .
+
+epd:id_2022-S-018-044742_ContactPoint_7D5VmvEvVafBz7JQr2uuS8 a cccev:ContactPoint;
+  epo:hasContactName "Ulla Skovgaard"@da;
+  epo:hasInternetAddress "http://www.solrod.dk"^^xsd:anyURI;
+  cccev:email "usk@solrod.dk";
+  cccev:telephone "+45 56182258" .
+
+epd:id_2022-S-018-044742_ContractTermLocationAddress_9kJZhTgye29otV72ZHovp4 a locn:Address;
+  locn:fullAddress "Solrød Kommune"@da .
+
+epd:id_2022-S-018-044742_ContractTermLocation_9kJZhTgye29otV72ZHovp4 a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DK021>;
+  locn:address epd:id_2022-S-018-044742_ContractTermLocationAddress_9kJZhTgye29otV72ZHovp4 .
+
+epd:id_2022-S-018-044742_ContractTerm_9kJZhTgye29otV72ZHovp4 a epo:ContractTerm;
+  epo:definesContractPeriod epd:id_2022-S-018-044742_Period_9kJZhTgye29otV72ZHovp4;
+  epo:definesSpecificPlaceOfPerformance epd:id_2022-S-018-044742_ContractTermLocation_9kJZhTgye29otV72ZHovp4;
+  epo:hasEInvoicing true;
+  epo:hasEPayment true .
+
+epd:id_2022-S-018-044742_InformationProviderContactPoint_k8jGbdRHwAoZMEaWMQhLGZ a
+    cccev:ContactPoint;
+  epo:hasContactName "Ulla Skovgaard"@da;
+  epo:hasInternetAddress "www.solrod.dk"^^xsd:anyURI;
+  cccev:email "usk@solrod.dk";
+  cccev:telephone "+45 56182258" .
+
+epd:id_2022-S-018-044742_InformationProviderOrganisationAddress_k8jGbdRHwAoZMEaWMQhLGZ
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DNK>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DK021>;
+  locn:postCode "2680";
+  locn:postName "Solrød Strand";
+  locn:thoroughfare "Solrød Center 1" .
+
+epd:id_2022-S-018-044742_InformationProviderOrganisationIdentifier_k8jGbdRHwAoZMEaWMQhLGZ
+  a epo:Identifier;
+  epo:hasIdentifierValue "68534917" .
+
+epd:id_2022-S-018-044742_InformationProviderOrganisation_k8jGbdRHwAoZMEaWMQhLGZ a
+    org:Organization;
+  epo:hasID epd:id_2022-S-018-044742_InformationProviderOrganisationIdentifier_k8jGbdRHwAoZMEaWMQhLGZ;
+  epo:hasLegalName "Solrød Kommune"@da;
+  cccev:registeredAddress epd:id_2022-S-018-044742_InformationProviderOrganisationAddress_k8jGbdRHwAoZMEaWMQhLGZ .
+
+epd:id_2022-S-018-044742_LotPurpose_9kJZhTgye29otV72ZHovp4 a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/98514000> .
+
+epd:id_2022-S-018-044742_Lot_9kJZhTgye29otV72ZHovp4 a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2022-S-018-044742_ContractTerm_9kJZhTgye29otV72ZHovp4;
+  epo:hasAdditionalInformation "Udbuddet gennemføres efter det forenklede regelsæt for light ydelser.Alt kommunikation forgår derfor via mail usk@solrod.dkDer anvendes ikke ESPD men i stedet tro- og loveerklæringer."@da;
+  epo:hasDescription "Udbuddet omfatter madservice til visiterede borgere samt døgnkost til Rehabiliteringsafdelingen på Plejecenter Christians Have."@da;
+  epo:hasEstimatedValue epd:id_2022-S-018-044742_MainMonetaryValueLot_9kJZhTgye29otV72ZHovp4;
+  epo:hasPerformingStaffQualificationInformation <http://publications.europa.eu/resource/authority/requirement-stage/not-requ>;
+  epo:hasPurpose epd:id_2022-S-018-044742_LotPurpose_9kJZhTgye29otV72ZHovp4;
+  epo:isSubjectToLotSpecificTerm epd:id_2022-S-018-044742_ReviewTerm_NSFfxkJJtMT6t22w9hPSVZ;
+  epo:isUsingEUFunds false;
+  epo:specifiesSelectionCriterion epd:id_2022-S-018-044742_SelectionCriterion_MpwhAkGR2J9PvrtoXKviLx .
+
+epd:id_2022-S-018-044742_MainMonetaryValueLot_9kJZhTgye29otV72ZHovp4 a epo:MonetaryValue;
+  epo:hasAmountValue 7200000.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/DKK> .
+
+epd:id_2022-S-018-044742_MediatorOrganisationAddress_5knZNcmdbG3jjG9jraZnbi a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DNK>;
+  locn:postName "o" .
+
+epd:id_2022-S-018-044742_MediatorOrganisation_5knZNcmdbG3jjG9jraZnbi a org:Organization;
+  epo:hasLegalName "Der eksistere intet officielt mæglingsorgan i Danmark"@da;
+  cccev:registeredAddress epd:id_2022-S-018-044742_MediatorOrganisationAddress_5knZNcmdbG3jjG9jraZnbi .
+
+epd:id_2022-S-018-044742_Mediator_5knZNcmdbG3jjG9jraZnbi a epo:Mediator;
+  epo:playedBy epd:id_2022-S-018-044742_MediatorOrganisation_5knZNcmdbG3jjG9jraZnbi .
+
+epd:id_2022-S-018-044742_Notice a epo:CompetitionNotice, epo:Notice;
+  epo:announcesNoticeAwardInformation epd:id_2022-S-018-044742_NoticeAwardInformation_aCmfT72mHtfxPh7XQjZApJ;
+  epo:announcesRole epd:id_2022-S-018-044742_Mediator_5knZNcmdbG3jjG9jraZnbi, epd:id_2022-S-018-044742_ProcurementProcedureInformationProvider_k8jGbdRHwAoZMEaWMQhLGZ,
+    epd:id_2022-S-018-044742_ReviewProcedureInformationProvider_gcqQe4EFPKV7NLhWGZdGzM,
+    epd:id_2022-S-018-044742_Reviewer_cbWuhNnCxDFGewidLQWHhz, epd:id_2022-S-018-044742_TenderReceiver_Rz9TtvNrpYJaNsutFLrAji;
+  epo:hasDispatchDate "2022-01-21"^^xsd:date;
+  epo:refersToLot epd:id_2022-S-018-044742_Lot_9kJZhTgye29otV72ZHovp4;
+  epo:refersToProcedure epd:id_2022-S-018-044742_Procedure_aCmfT72mHtfxPh7XQjZApJ;
+  epo:refersToRole epd:id_2022-S-018-044742_Buyer_LTC4ztdQQn6ue8NBpQv4rF .
+
+epd:id_2022-S-018-044742_NoticeAwardInformation_aCmfT72mHtfxPh7XQjZApJ a epo:NoticeAwardInformation .
+
+epd:id_2022-S-018-044742_OrganisationAddress_7D5VmvEvVafBz7JQr2uuS8 a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DNK>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DK021>;
+  locn:postCode "2680";
+  locn:postName "Solrød";
+  locn:thoroughfare "Solrød Center 1" .
+
+epd:id_2022-S-018-044742_OrganisationIdentifier_7D5VmvEvVafBz7JQr2uuS8 a epo:Identifier;
+  epo:hasIdentifierValue "68534917" .
+
+epd:id_2022-S-018-044742_Organisation_7D5VmvEvVafBz7JQr2uuS8 a org:Organization;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasID epd:id_2022-S-018-044742_OrganisationIdentifier_7D5VmvEvVafBz7JQr2uuS8;
+  epo:hasLegalName "Solrød Kommune"@da;
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress epd:id_2022-S-018-044742_OrganisationAddress_7D5VmvEvVafBz7JQr2uuS8 .
+
+epd:id_2022-S-018-044742_Period_9kJZhTgye29otV72ZHovp4 a epo:Period;
+  epo:hasBeginning "2022-05-01T00:00:00"^^xsd:dateTime;
+  epo:hasEnd "2026-04-30T00:00:00"^^xsd:dateTime .
+
+epd:id_2022-S-018-044742_ProcedureIdentifier_aCmfT72mHtfxPh7XQjZApJ a epo:Identifier;
+  epo:hasIdentifierValue "88.20.04-Ø54-1-22" .
+
+epd:id_2022-S-018-044742_ProcedurePurpose_aCmfT72mHtfxPh7XQjZApJ a epo:Purpose;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/98514000> .
+
+epd:id_2022-S-018-044742_ProcedureSpecificTerm_LTC4ztdQQn6ue8NBpQv4rF a epo:ProcedureSpecificTerm .
+
+epd:id_2022-S-018-044742_Procedure_aCmfT72mHtfxPh7XQjZApJ a epo:Procedure;
+  epo:foreseesContractSpecificTerm epd:id_2022-S-018-044742_ContractTerm_9kJZhTgye29otV72ZHovp4;
+  epo:hasAdditionalInformation "Det samlede materiale bestilles på usk@solrod.dkSpørgsmål samt tilbud fremsendes ligeledes til usk@solrod.dk"@da;
+  epo:hasDescription "Udbuddet omfatter madservice til visiterede borgere samt døgnkost til Rehabiliteringsafdelingen på Plejecenter Christians Have."@da;
+  epo:hasID epd:id_2022-S-018-044742_ProcedureIdentifier_aCmfT72mHtfxPh7XQjZApJ;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
+  epo:hasMainFeature "Kontrakten vil blive tildelt den tilbudsgiver, der tilbyder det økonomisk mest fordelagtige tilbud, på grundlag af tildelingskriteriet bedste forhold mellem pris og kvalitet.50 % Pris30 % Kvalitet20 % Miljø";
+  epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
+  epo:hasProcurementScopeDividedIntoLot epd:id_2022-S-018-044742_Lot_9kJZhTgye29otV72ZHovp4;
+  epo:hasPurpose epd:id_2022-S-018-044742_ProcedurePurpose_aCmfT72mHtfxPh7XQjZApJ;
+  epo:hasTitle "Madservice"@da;
+  epo:isSubjectToProcedureSpecificTerm epd:id_2022-S-018-044742_AccessTerm_LTC4ztdQQn6ue8NBpQv4rF,
+    epd:id_2022-S-018-044742_ProcedureSpecificTerm_LTC4ztdQQn6ue8NBpQv4rF, epd:id_2022-S-018-044742_SubmissionTerm_K8q5v8TTWyR48h9DKNno8n .
+
+epd:id_2022-S-018-044742_ProcurementProcedureInformationProvider_k8jGbdRHwAoZMEaWMQhLGZ
+  a epo:ProcurementProcedureInformationProvider;
+  epo:hasContactPointInRole epd:id_2022-S-018-044742_InformationProviderContactPoint_k8jGbdRHwAoZMEaWMQhLGZ;
+  epo:playedBy epd:id_2022-S-018-044742_InformationProviderOrganisation_k8jGbdRHwAoZMEaWMQhLGZ .
+
+epd:id_2022-S-018-044742_ReviewProcedureInformationProviderAddress_gcqQe4EFPKV7NLhWGZdGzM
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DNK>;
+  locn:postCode "2500";
+  locn:postName "Valby";
+  locn:thoroughfare "Carl Jacobsens Vej 35" .
+
+epd:id_2022-S-018-044742_ReviewProcedureInformationProviderContactPoint_gcqQe4EFPKV7NLhWGZdGzM
+  a cccev:ContactPoint;
+  epo:hasInternetAddress "http://www.kfst.dk"^^xsd:anyURI;
+  cccev:email "kfst@kfst.dk";
+  cccev:telephone "+45 41715000" .
+
+epd:id_2022-S-018-044742_ReviewProcedureInformationProviderOrganisation_gcqQe4EFPKV7NLhWGZdGzM
+  a org:Organization;
+  epo:hasLegalName "Konkurrence- og Forbrugerstyrelsen"@da;
+  epo:hasPrimaryContactPoint epd:id_2022-S-018-044742_ReviewProcedureInformationProviderContactPoint_gcqQe4EFPKV7NLhWGZdGzM;
+  cccev:registeredAddress epd:id_2022-S-018-044742_ReviewProcedureInformationProviderAddress_gcqQe4EFPKV7NLhWGZdGzM .
+
+epd:id_2022-S-018-044742_ReviewProcedureInformationProvider_gcqQe4EFPKV7NLhWGZdGzM
+  a epo:ReviewProcedureInformationProvider;
+  epo:playedBy epd:id_2022-S-018-044742_ReviewProcedureInformationProviderOrganisation_gcqQe4EFPKV7NLhWGZdGzM .
+
+epd:id_2022-S-018-044742_ReviewTerm_NSFfxkJJtMT6t22w9hPSVZ a epo:ReviewTerm;
+  epo:hasReviewDeadlineInformation "I henhold til lov om Klagenævnet for Udbud m.v., gælder følgende frister for indgivelse af klage:Klage over ikke at være blevet udvalgt, skal være indgivet til Klagenævnet for Udbud inden 20 kalenderdage, jf. lovens § 7, stk. 1, fra dagen efter afsendelse af en underretning til de berørte ansøgere om, hvem der er blevet udvalgt, når underretningen er ledsaget af en begrundelse for beslutningen i overensstemmelse med lovens § 2, stk. 1, nr. 1, og udbudslovens § 171, stk. 2.I andre situationer skal klage over udbud, jf. lovens § 7, stk. 2, være indgivet til Klagenævnet for Udbud inden:1) 45 kalenderdage efter at ordregiveren har offentliggjort en bekendtgørelse i Den Europæiske Unions Tidende om, at ordregiveren har indgået en kontrakt. Fristen regnes fra dagen efter den dag, hvor bekendtgørelsen er blevet offentliggjort.2) 30 kalenderdage regnet fra dagen efter den dag, hvor ordregiveren har underrettet de berørte tilbudsgivere om, at en kontrakt baseret på en rammeaftale med genåbning af konkurrencen eller et dynamisk indkøbssystem er indgået, hvis underretningen har angivet en begrundelse for beslutningen.3) 6 måneder efter at ordregiveren har indgået en rammeaftale regnet fra dagen efter den dag, hvor ordregiveren har underrettet de berørte ansøgere og tilbudsgivere, jf. lovens § 2, stk. 2, og udbudslovens § 171, stk. 4.4) 20 kalenderdage regnet fra dagen efter at ordregiveren har meddelt sin beslutning, jf. udbudslovens § 185, stk. 2.Senest samtidig med at en klage indgives til Klagenævnet for Udbud, skal klageren skriftligt underrette ordregiveren om, at klage indgives til Klagenævnet for Udbud, og om hvorvidt klagen er indgivet i standstill-perioden, jf. lovens § 6, stk. 4. I tilfælde hvor klagen ikke er indgivet i standstill-perioden, skal klageren tillige angive, hvorvidt der begæres opsættende virkning af klagen, jf. lovens § 12, stk. 1." .
+
+epd:id_2022-S-018-044742_ReviewerContactPoint_cbWuhNnCxDFGewidLQWHhz a cccev:ContactPoint;
+  epo:hasInternetAddress "https://erhvervsstyrelsen.dk/klagevejledning-0"^^xsd:anyURI;
+  cccev:email "klfu@naevneneshus.dk";
+  cccev:telephone "+45 35291000" .
+
+epd:id_2022-S-018-044742_ReviewerOrganisationAddress_cbWuhNnCxDFGewidLQWHhz a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DNK>;
+  locn:postCode "8800";
+  locn:postName "Viborg";
+  locn:thoroughfare "Nævnenes Hus, Toldboden 2" .
+
+epd:id_2022-S-018-044742_ReviewerOrganisation_cbWuhNnCxDFGewidLQWHhz a org:Organization;
+  epo:hasLegalName "Klagenævnet for Udbud"@da;
+  epo:hasPrimaryContactPoint epd:id_2022-S-018-044742_ReviewerContactPoint_cbWuhNnCxDFGewidLQWHhz;
+  cccev:registeredAddress epd:id_2022-S-018-044742_ReviewerOrganisationAddress_cbWuhNnCxDFGewidLQWHhz .
+
+epd:id_2022-S-018-044742_Reviewer_cbWuhNnCxDFGewidLQWHhz a epo:Reviewer;
+  epo:playedBy epd:id_2022-S-018-044742_ReviewerOrganisation_cbWuhNnCxDFGewidLQWHhz .
+
+epd:id_2022-S-018-044742_SelectionCriterion_MpwhAkGR2J9PvrtoXKviLx a epo:SelectionCriterion;
+  cccev:description """•	Tilbudsgiver må ikke være omfattet af de obligatoriske udelukkelsesgrunde•	Tilbudsgiver må ikke have en forfalden ubetalt gæld til det offentlige på over kr. 100.000,-•	Tilbudsgiver skal, indenfor de seneste 24 måneder, kunne dokumentere en årlig omsætning på minimum kr. 500.000,- i forhold til madservice til visiterede borgere•	Tilbudsgiver skal ifølge årsregnskaberne have et positivt resultat efter skat, når resultatet for de seneste tre år lægges sammen. Et evt. negativt resultat for det seneste regnskabsår, må ikke udgøre mere end 20% af seneste opgjorte egenkapital.•	Minimum tre positive referencer af minimum samme omfang, udført inden for de seneste tre år.""" .
+
+epd:id_2022-S-018-044742_SubmissionTerm_K8q5v8TTWyR48h9DKNno8n a epo:SubmissionTerm;
+  epo:hasLanguage "DA";
+  epo:hasReceiptDeadline "2022-03-21T23:59:00"^^xsd:dateTime;
+  epo:hasSubmissionURL "http://eu.eu-supply.com/app/rfq/rwlentrance_s.asp?PID=321919&B=SOLROED"^^xsd:anyURI .
+
+epd:id_2022-S-018-044742_TenderReceiverOrganisationAddress_Rz9TtvNrpYJaNsutFLrAji
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DNK>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DK021>;
+  locn:postCode "2680";
+  locn:postName "Solrød Strand";
+  locn:thoroughfare "Solrød Center 1" .
+
+epd:id_2022-S-018-044742_TenderReceiverOrganisationContactPoint_Rz9TtvNrpYJaNsutFLrAji
+  a cccev:ContactPoint;
+  epo:hasContactName "Ulla Skovgaard"@da;
+  epo:hasInternetAddress "www.solrod.dk"^^xsd:anyURI;
+  cccev:email "usk@solrod.dk";
+  cccev:telephone "+45 56182258" .
+
+epd:id_2022-S-018-044742_TenderReceiverOrganisationIdentifier_Rz9TtvNrpYJaNsutFLrAji
+  a epo:Identifier;
+  epo:hasIdentifierValue "68534917" .
+
+epd:id_2022-S-018-044742_TenderReceiverOrganisation_Rz9TtvNrpYJaNsutFLrAji a org:Organization;
+  epo:hasID epd:id_2022-S-018-044742_TenderReceiverOrganisationIdentifier_Rz9TtvNrpYJaNsutFLrAji;
+  epo:hasLegalName "Solrød Kommune"@da;
+  epo:hasPrimaryContactPoint epd:id_2022-S-018-044742_TenderReceiverOrganisationContactPoint_Rz9TtvNrpYJaNsutFLrAji;
+  cccev:registeredAddress epd:id_2022-S-018-044742_TenderReceiverOrganisationAddress_Rz9TtvNrpYJaNsutFLrAji .
+
+epd:id_2022-S-018-044742_TenderReceiver_Rz9TtvNrpYJaNsutFLrAji a epo:TenderReceiver;
+  epo:hasContactPointInRole epd:id_2022-S-018-044742_TenderReceiverOrganisationContactPoint_Rz9TtvNrpYJaNsutFLrAji;
+  epo:playedBy epd:id_2022-S-018-044742_TenderReceiverOrganisation_Rz9TtvNrpYJaNsutFLrAji .

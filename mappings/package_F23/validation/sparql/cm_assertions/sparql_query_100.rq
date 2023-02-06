@@ -1,10 +1,11 @@
-#title: III.1.5.2 - The execution of the contract is restricted to the framework of sheltered employment programmes
-#description: “III.1.5.2 - The execution of the contract is restricted to the framework of sheltered employment programmes” in SF corresponds to “BT-736 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F23_2014/LEFTI/RESTRICTED_SHELTERED_PROGRAM. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / at-voc:applicability .
-#xpath: /TED_EXPORT/FORM_SECTION/F23_2014/LEFTI/RESTRICTED_SHELTERED_PROGRAM
+#title: III.2.1.2 - Reference to the relevant law, regulation or administrative provision
+#description: “III.2.1.2 - Reference to the relevant law, regulation or administrative provision” in SF corresponds to “no match nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F23_2014/LEFTI/REFERENCE_TO_LAW. The expected ontology instances are epo: epo:Lot / epo:SelectionCriterion / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F23_2014/LEFTI/REFERENCE_TO_LAW
 
+PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:foreseesContractSpecificTerm / epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/yes> }
+		?this epo:specifiesSelectionCriterion / cccev:description ?value }

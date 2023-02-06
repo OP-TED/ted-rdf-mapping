@@ -1,10 +1,12 @@
-#title: VI.4.4 - Service from which information about the review procedure may be obtained
-#description: “VI.4.4 - Service from which information about the review procedure may be obtained” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO. The expected ontology instances are epo: epo:Notice / epo:AgentInRole (from CL1) .
-#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO
+#title: VI.4.4.2 - Postal address
+#description: “VI.4.4.2 - Postal address” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO/ADDRESS. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_INFO/ADDRESS
 
+PREFIX cv: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Notice .
-		?this epo:announcesRole ?value }
+		?this rdf:type epo:ReviewProcedureInformationProvider .
+		?this epo:playedBy / cv:registeredAddress / locn:thoroughfare ?value . }
