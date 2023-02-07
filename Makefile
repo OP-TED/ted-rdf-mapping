@@ -82,7 +82,10 @@ test:
 	@ mapping_suite_validator package_F03
 	@ mapping_suite_validator package_F03_test
 	@ mapping_suite_validator package_F06
+	@ mapping_suite_validator package_F13
+	@ mapping_suite_validator package_F20
 	@ mapping_suite_validator package_F21
 	@ mapping_suite_validator package_F22
+	@ mapping_suite_validator package_F23
 	@ mapping_suite_validator package_F25
 
