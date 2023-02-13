@@ -452,7 +452,7 @@ tedm:PreviousNotice a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
-            rml:reference "if (exists(NOTICE_NUMBER_OJ)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_Notice' else null" ;
+            rml:reference "if (exists(NOTICE_NUMBER_OJ)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(NOTICE_NUMBER_OJ, ' ', '-' ), '/' , '-') || '_Notice' else null" ;
             rr:class epo:Notice
         ] .
 tedm:PreviousNoticeIdentifier a rr:TriplesMap ;
@@ -464,7 +464,7 @@ tedm:PreviousNoticeIdentifier a rr:TriplesMap ;
         ];
     rr:subjectMap
         [
-            rml:reference "if (exists(NOTICE_NUMBER_OJ)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_NoticeIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(NOTICE_NUMBER_OJ)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(NOTICE_NUMBER_OJ, ' ', '-' ), '/' , '-') || '_NoticeIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:Identifier
         ] .
 tedm:Fund a rr:TriplesMap ;
