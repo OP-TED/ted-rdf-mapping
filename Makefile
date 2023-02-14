@@ -89,3 +89,8 @@ test:
 	@ mapping_suite_validator package_F23
 	@ mapping_suite_validator package_F25
 
+
+clear-xml-resolver-cache:
+	@ echo -e "$(BUILD_PRINT)Clear XML resolver cache!$(END_BUILD_PRINT)"
+	@ rm -r ~/.xmlresolver.org
+
