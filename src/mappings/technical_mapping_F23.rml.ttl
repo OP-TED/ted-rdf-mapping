@@ -333,19 +333,6 @@ tedm:DirectAwardTerm a rr:TriplesMap ;
             rml:iterator "/TED_EXPORT/FORM_SECTION/F23_2014/PROCEDURE" ;
             rml:referenceFormulation ql:XPath
         ] .
-tedm:ProcedureSpecificTerm a rr:TriplesMap ;
-    rr:subjectMap
-        [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ProcedureSpecificTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class epo:ProcedureSpecificTerm
-
-        ] ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F23_2014/CONTRACTING_BODY" ;
-            rml:referenceFormulation ql:XPath
-        ] .
 tedm:PreviousProcedure a rr:TriplesMap ;
     rr:subjectMap
         [
@@ -1544,7 +1531,7 @@ tedm:ProcedureTerm a rr:TriplesMap ;
     rr:subjectMap
         [
             rml:reference
-                "if(exists(../PROCEDURE/URL_NATIONAL_PROCEDURE) or exists(../OBJECT_CONTRACT/LOT_DIVISION)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ProcedureTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+                "if(exists(../PROCEDURE/URL_NATIONAL_PROCEDURE) or exists(../OBJECT_CONTRACT/LOT_DIVISION/*) or exists(../CONTRACTING_BODY/PROCUREMENT_LAW) or exists(../CONTRACTING_BODY/CENTRAL_PURCHASING)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ProcedureTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:ProcedureTerm
         ] ;
     rml:logicalSource

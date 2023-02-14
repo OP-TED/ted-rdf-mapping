@@ -115,27 +115,6 @@ tedm:ProcurementHighestReceivedTenderValue  a rr:TriplesMap ;
                     ];
                 ] ;
         ] .
-tedm:ProcedureSpecificTerm a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasCrossBorderLaw;
-            rr:objectMap
-                [
-                    rml:reference "PROCUREMENT_LAW";
-                    rml:languageMap [
-                        rml:reference "lower-case(ancestor::*/@LG)"
-                    ]
-                ]
-        ] ;
-     rr:predicateObjectMap
-        [
-            rr:predicate epo:isAwardedByCPB ;
-            rr:objectMap
-                [
-                   rml:reference "if(exists(CENTRAL_PURCHASING)) then 'true' else null";
-                   rr:datatype xsd:boolean
-                ] ;
-        ] .
 tedm:MonetaryValueProcedure a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -203,14 +182,6 @@ tedm:Procedure a rr:TriplesMap ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MonetaryValueProcedure
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ProcedureSpecificTerm
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -835,6 +806,26 @@ tedm:LotIdentifier a rr:TriplesMap ;
 #JLR#
 
 tedm:ProcedureTerm a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCrossBorderLaw;
+            rr:objectMap
+                [
+                    rml:reference "../CONTRACTING_BODY/PROCUREMENT_LAW";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ]
+        ] ;
+     rr:predicateObjectMap
+        [
+            rr:predicate epo:isAwardedByCPB ;
+            rr:objectMap
+                [
+                   rml:reference "if(exists(../CONTRACTING_BODY/CENTRAL_PURCHASING)) then 'true' else null";
+                   rr:datatype xsd:boolean
+                ] ;
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:isSubmissionForAllLotsAllowed;
