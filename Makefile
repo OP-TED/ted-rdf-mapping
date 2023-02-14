@@ -26,11 +26,6 @@ install:
 	@ pip install --upgrade pip
 	@ pip install --upgrade --force-reinstall -r requirements.txt
 
-install-custom:
-	@ echo -e "$(BUILD_PRINT)Installing the requirements$(END_BUILD_PRINT)"
-	@ pip install --upgrade pip
-	@ pip install --upgrade --force-reinstall git+https://github.com/OP-TED/ted-rdf-conversion-pipeline@$(or $(TED_SWS_BRANCH),main)#egg=ted-sws
-
 dev-dotenv-file: rml-mapper-path-add-dotenv-file saxon-path-add-dotenv-file dev-secrets-dotenv-file
 
 local-dotenv-file: rml-mapper-path-add-dotenv-file saxon-path-add-dotenv-file local-secrets-dotenv-file
