@@ -115,27 +115,6 @@ tedm:ProcurementHighestReceivedTenderValue  a rr:TriplesMap ;
                     ];
                 ] ;
         ] .
-tedm:ProcedureSpecificTerm a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasCrossBorderLaw;
-            rr:objectMap
-                [
-                    rml:reference "PROCUREMENT_LAW";
-                    rml:languageMap [
-                        rml:reference "lower-case(ancestor::*/@LG)"
-                    ]
-                ]
-        ] ;
-     rr:predicateObjectMap
-        [
-            rr:predicate epo:isAwardedByCPB ;
-            rr:objectMap
-                [
-                   rml:reference "if(exists(CENTRAL_PURCHASING)) then 'true' else null";
-                   rr:datatype xsd:boolean
-                ] ;
-        ] .
 tedm:MonetaryValueProcedure a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -203,14 +182,6 @@ tedm:Procedure a rr:TriplesMap ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MonetaryValueProcedure
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ProcedureSpecificTerm
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -663,6 +634,10 @@ tedm:ContractTerm a rr:TriplesMap ;
             rr:objectMap
             [
                 rr:parentTriplesMap tedm:Period;
+                rr:joinCondition [
+                    rr:child "if(exists(./@ITEM)) then ./@ITEM else 1";
+                    rr:parent "if(exists(./@ITEM)) then ./@ITEM else 1";
+                ];
             ]
         ] ;
     rr:predicateObjectMap
@@ -671,6 +646,10 @@ tedm:ContractTerm a rr:TriplesMap ;
             rr:objectMap
             [
                 rr:parentTriplesMap tedm:Duration;
+                rr:joinCondition [
+                    rr:child "if(exists(./@ITEM)) then ./@ITEM else 1";
+                    rr:parent "if(exists(../@ITEM)) then ../@ITEM else 1";
+                ];
             ]
         ] ;
     rr:predicateObjectMap
@@ -712,8 +691,8 @@ tedm:ContractTermLocation a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:ContractTermLocationAddress;
                     rr:joinCondition [
-                        rr:child "./MAIN_SITE";
-                        rr:parent "./MAIN_SITE";
+                        rr:child "if(exists(./@ITEM)) then ./@ITEM else 1";
+                        rr:parent "if(exists(./@ITEM)) then ./@ITEM else 1";
                     ];
                 ] ;
         ] .
@@ -829,6 +808,26 @@ tedm:LotIdentifier a rr:TriplesMap ;
 tedm:ProcedureTerm a rr:TriplesMap ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:hasCrossBorderLaw;
+            rr:objectMap
+                [
+                    rml:reference "../CONTRACTING_BODY/PROCUREMENT_LAW";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ]
+        ] ;
+     rr:predicateObjectMap
+        [
+            rr:predicate epo:isAwardedByCPB ;
+            rr:objectMap
+                [
+                   rml:reference "if(exists(../CONTRACTING_BODY/CENTRAL_PURCHASING)) then 'true' else null";
+                   rr:datatype xsd:boolean
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate epo:isSubmissionForAllLotsAllowed;
             rr:objectMap
                 [
@@ -878,7 +877,11 @@ tedm:MultipleStageProcedureTerm a rr:TriplesMap ;
             rr:predicate epo:hasQualificationSystemDuration;
             rr:objectMap
                 [
-                    rml:reference "QS/INDEFINITE_DURATION"
+                    rr:parentTriplesMap tedm:MultipleStageProcedureIndefiniteDuration;
+                    rr:joinCondition [
+                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    ];
                 ]
         ] ;
     rr:predicateObjectMap

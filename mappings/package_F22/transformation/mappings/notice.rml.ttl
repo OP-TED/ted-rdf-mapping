@@ -32,10 +32,31 @@ tedm:Notice a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:hasID;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:NoticeIdentifier;
+                rr:joinCondition [
+                    rr:child "path()";
+                    rr:parent "path()";
+                ];
+            ]
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate epo-not:announcesPlannedProcurementPart ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:PlannedProcurementPart
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasPublicationDate ;
+            rr:objectMap
+                [
+                    rml:reference "../COMPLEMENTARY_INFO/DATE_DISPATCH_NOTICE";
+                    rr:datatype xsd:date;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -174,6 +195,15 @@ tedm:Notice a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:Tender
                 ] ;
+        ] .
+tedm:NoticeIdentifier a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasIdentifierValue;
+            rr:objectMap
+                [
+                    rml:reference "/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS"
+                ]
         ] .
 tedm:PlannedProcurementPart a rr:TriplesMap ;
     rr:predicateObjectMap
