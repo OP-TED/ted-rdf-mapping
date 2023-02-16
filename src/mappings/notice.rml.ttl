@@ -56,7 +56,8 @@ tedm:Notice a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "/TED_EXPORT/CODED_DATA_SECTION/REF_OJS/DATE_PUB";
-                    rr:datatype xsd:date;
+#                    # according to EPO this value should be of type xsd:date, but the format of values that appear in the XML files is "YYYYMMDD", which is invalid for the xsd:date datatype (expecting "YYYY-MM-DD"). The wrong values will be fixed in a separate "transformation" step.
+                    rr:datatype xsd:string;
                 ] ;
         ] ;
     rr:predicateObjectMap
