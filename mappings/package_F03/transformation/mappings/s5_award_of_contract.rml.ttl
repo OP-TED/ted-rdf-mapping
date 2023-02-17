@@ -306,6 +306,25 @@ tedm:LotAwardOutcome a rr:TriplesMap ;
                     ];
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasNonAwardedContractTitle;
+            rr:objectMap
+                [
+                    rml:reference "if (exists(NO_AWARDED_CONTRACT)) then TITLE else null";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasNonAwardedContractNumber;
+            rr:objectMap
+                [
+                    rml:reference "if (exists(NO_AWARDED_CONTRACT)) then CONTRACT_NO else null";
+                ]
+        ] ;
 
 #TODO: this mapping needs to be reviewed and fixed
     rr:predicateObjectMap
