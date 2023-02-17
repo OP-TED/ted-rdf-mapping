@@ -221,19 +221,19 @@ tedm:Procedure a rr:TriplesMap ;
         ] .
 
 tedm:ProcedurePurpose a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasMainClassification ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:cpvsuppl;
-                    rr:joinCondition [
-                        rr:child "CPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE";
-                        rr:parent "code.value";
-                    ];
-                ] ;
-
-        ] ;
+# Not mapping supplementary CPV codes, as EPO does not provide a way to group them with "regular" CPV codes. See issues #119 and #205.
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasMainClassification ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:cpvsuppl;
+#                    rr:joinCondition [
+#                        rr:child "CPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE";
+#                        rr:parent "code.value";
+#                    ];
+#                ] ;
+#        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasMainClassification ;
@@ -748,28 +748,18 @@ tedm:Period a rr:TriplesMap ;
         ] .
 
 tedm:LotPurpose a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasAdditionalClassification ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:cpvsuppl;
-                    rr:joinCondition [
-                        rr:child "CPV_SUPPLEMENTARY_CODE/@CODE";
-                        rr:parent "code.value";
-                    ];
-                ] ;
-
-        ] ;
-#        rr:predicateObjectMap
+# Not mapping supplementary CPV codes, as EPO does not provide a way to group them with "regular" CPV codes. See issues #119 and #205.
+#    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasAdditionalClassification ;
 #            rr:objectMap
 #                [
-#                    rml:reference "if (not(exists(CPV_ADDITIONAL/CPV_SUPPLEMENTARY_CODE/@CODE))) then 'http://data.europa.eu/cpv/cpv/OP_DATPRO' else null";
-#                    rr:termType rr:IRI;
-#                ]
-#
+#                    rr:parentTriplesMap tedm:cpvsuppl;
+#                    rr:joinCondition [
+#                        rr:child "CPV_SUPPLEMENTARY_CODE/@CODE";
+#                        rr:parent "code.value";
+#                    ];
+#                ] ;
 #        ] ;
     rr:predicateObjectMap
         [
@@ -783,16 +773,6 @@ tedm:LotPurpose a rr:TriplesMap ;
                     ];
                 ] ;
         ] .
-#    rr:predicateObjectMap
-#        [
-#            rr:predicate epo:hasAdditionalClassification ;
-#            rr:objectMap
-#                [
-#                    rml:reference "if (not(exists(CPV_ADDITIONAL/CPV_CODE/@CODE))) then 'http://data.europa.eu/cpv/cpv/OP_DATPRO' else null";
-#                    rr:termType rr:IRI;
-#                ]
-#
-#        ] ;
 
 tedm:LotIdentifier a rr:TriplesMap ;
     rr:predicateObjectMap
