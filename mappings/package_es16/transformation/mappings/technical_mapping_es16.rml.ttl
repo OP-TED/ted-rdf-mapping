@@ -16,7 +16,7 @@
 @prefix cccev: <http://data.europa.eu/m8g/> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix cpov: <http://data.europa.eu/m8g/> .
-
+@prefix	foaf: <http://xmlns.com/foaf/0.1/> .
 
 @prefix ext: <urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2#> .
 @prefix cbc: <urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2#> .
@@ -46,7 +46,6 @@ tedm:Organisation a rr:TriplesMap ;
         [
             rml:source "data/source.xml" ;
             rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization";
-            #rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:predicateObjectMap
@@ -61,78 +60,95 @@ tedm:Organisation a rr:TriplesMap ;
                     ];
                 ]
         ] ;
-
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasPrimaryContactPoint ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ContactPoint ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../..)";
+                    ];
+                ]
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasID;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:OrganisationIdentifier
+                    rr:parentTriplesMap tedm:OrganisationIdentifier;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../..)";
+                    ];
                 ]
         ] ;
-#    rr:predicateObjectMap
-#        [
-#            rr:predicate epo:hasMainActivityType ;
-#            rr:objectMap
-#                [
-#                    rr:parentTriplesMap tedm:mainActivity;
-#                    rr:joinCondition [
-#                        rr:child "if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then ../CA_ACTIVITY/@VALUE else null";
-#                        rr:parent "xmlElement";
-#                    ];
-#                ] ;
-#        ] ;
-#    rr:predicateObjectMap
-#        [
-#            rr:predicate epo:hasMainActivityType ;
-#            rr:objectMap
-#                [
-#                    rr:parentTriplesMap tedm:mainActivity;
-#                    rr:joinCondition [
-#                        rr:child "if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then ../CE_ACTIVITY/@VALUE else null";
-#                        rr:parent "xmlElement";
-#                    ];
-#                ] ;
-#        ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasMainActivityDescription ;
+            rdfs:label "BT-633-Organization";
+            rr:predicate foaf:name ;
             rr:objectMap
                 [
-                    rml:reference "../CA_ACTIVITY_OTHER"
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasMainActivityDescription ;
-            rr:objectMap
-                [
-                    rml:reference "../CE_ACTIVITY_OTHER"
-                ] ;
-        ] ;
-#    rr:predicateObjectMap
-#        [
-#            rr:predicate epo:hasBuyerType ;
-#            rr:objectMap
-#                [
-#                    rr:parentTriplesMap tedm:buyerType;
-#                    rr:joinCondition [
-#                        rr:child "if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then ../CA_TYPE/@VALUE else null";
-#                        rr:parent "xmlElement";
-#                    ];
-#                ] ;
-#        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasBuyerLegalTypeDescription ;
-            rr:objectMap
-                [
-                    rml:reference "../CA_TYPE_OTHER"
+                    rml:reference "efbc:NaturalPersonIndicator"
                 ] ;
         ] .
 
 
 
+
+
+tedm:ContactPoint   a rr:TriplesMap ;
+    rdfs:label "ND-CompanyContact";
+    rdfs:comment "Applies to: GR-Company-Contact";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:Contact" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference "if(exists(cbc:Name) or exists(cbc:ElectronicMail) or exists(cbc:Telephone) or exists(cbc:Telefax)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ContactPoint_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class cpov:ContactPoint
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-502-Organization-Company";
+            rr:predicate epo:hasContactName  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Name";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-506-Organization-Company";
+            rr:predicate cpov:email  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ElectronicMail";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-503-Organization-Company";
+            rr:predicate cpov:telephone  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Telephone";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-739-Organization-Company";
+            rr:predicate epo:hasFax  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Telefax";
+                ] ;
+        ] .
 
 
 
@@ -154,7 +170,7 @@ tedm:OrganisationAddress  a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-510(a)-Organization-Company; ";
+            rdfs:label "BT-510(a)-Organization-Company";
             rr:predicate locn:thoroughfare ;
             rr:objectMap
                 [
@@ -163,6 +179,34 @@ tedm:OrganisationAddress  a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rdfs:label "BT-510(b)-Organization-Company";
+            rr:predicate locn:thoroughfare ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:AdditionalStreetName";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-16-Organization-Company";
+            rr:predicate epo:hasOrganisationUnit ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Department";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-510(c)-Organization-Company";
+            rr:predicate locn:thoroughfare ;
+            rr:objectMap
+                [
+                    rml:reference "cac:AddressLine/cbc:Line";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-513-Organization-Company";
             rr:predicate locn:postName ;
             rr:objectMap
                 [
@@ -171,6 +215,7 @@ tedm:OrganisationAddress  a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rdfs:label "BT-512-Organization-Company";
             rr:predicate locn:postCode  ;
             rr:objectMap
                 [
@@ -179,6 +224,7 @@ tedm:OrganisationAddress  a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rdfs:label "BT-507-Organization-Company";
             rr:predicate epo:hasNutsCode  ;
             rr:objectMap
                 [
@@ -191,16 +237,12 @@ tedm:OrganisationAddress  a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rdfs:label "BT-514-Organization-Company";
             rr:predicate epo:hasCountryCode  ;
             rr:objectMap
                 [
                     rml:reference "'http://publications.europa.eu/resource/authority/country/' || cac:Country/cbc:IdentificationCode";
                     rr:termType rr:IRI;
-#                    rr:parentTriplesMap tedm:country;
-#                    rr:joinCondition [
-#                        rr:child "cac:Country/cbc:IdentificationCode";
-#                        rr:parent "code.value";
-#                    ];
                 ] ;
         ] .
 
@@ -211,26 +253,22 @@ tedm:OrganisationIdentifier a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014[1]/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY";
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:PartyLegalEntity";
             rml:referenceFormulation ql:XPath
         ];
     rr:subjectMap
         [
-            rml:reference "if (exists(NATIONALID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_OrganisationIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(cbc:CompanyID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_OrganisationIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:Identifier
-        ] .
-tedm:ContactPoint a rr:TriplesMap ;
-    rr:subjectMap
-        [
-            rml:reference "if(exists(E_MAIL) or exists(FAX) or exists(PHONE) or exists(URL_GENERAL) or exists(CONTACT_POINT)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ContactPoint_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
-            rr:class cpov:ContactPoint
-
         ] ;
-    rml:logicalSource
+    rr:predicateObjectMap
         [
-            rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F03_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY" ;
-            rml:referenceFormulation ql:XPath
+            rdfs:label "BT-501-Organization-Company";
+            rr:predicate epo:hasIdentifierValue ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:CompanyID";
+                ] ;
         ] .
 
 
