@@ -423,16 +423,6 @@ tedm:ProcedurePurpose a rr:TriplesMap ;
         ] .
 #    rr:predicateObjectMap
 #        [
-#            rr:predicate epo:hasMainClassification ;
-#            rr:objectMap
-#                [
-#                    rml:reference "if (not(exists(/TED_EXPORT/FORM_SECTION/F25_2014[1]/OBJECT_CONTRACT/CPV_MAIN/CPV_CODE/@CODE))) then 'http://data.europa.eu/cpv/cpv/OP_DATPRO' else null";
-#                    rr:termType rr:IRI;
-#                ]
-#
-#        ] ;
-#    rr:predicateObjectMap
-#        [
 #            rr:predicate epo:hasContractNatureType ;
 #            rr:objectMap
 #                [
@@ -1554,18 +1544,19 @@ tedm:contractNature  a rr:TriplesMap ;
             rml:reference
                 "conceptURI.value" ;
         ] .
-tedm:cpvsuppl a rr:TriplesMap ;
-    rml:logicalSource
-        [
-            rml:source "transformation/resources/cpvsuppl.json" ;
-            rml:iterator "$.results.bindings[*]" ;
-            rml:referenceFormulation ql:JSONPath
-        ] ;
-    rr:subjectMap
-        [
-            rml:reference
-                "conceptURI.value" ;
-        ] .
+# Not mapping supplementary CPV codes, as EPO does not provide a way to group them with "regular" CPV codes. See issues #119 and #205.
+#tedm:cpvsuppl a rr:TriplesMap ;
+#    rml:logicalSource
+#        [
+#            rml:source "transformation/resources/cpvsuppl.json" ;
+#            rml:iterator "$.results.bindings[*]" ;
+#            rml:referenceFormulation ql:JSONPath
+#        ] ;
+#    rr:subjectMap
+#        [
+#            rml:reference
+#                "conceptURI.value" ;
+#        ] .
 tedm:cpv a rr:TriplesMap ;
     rml:logicalSource
         [
