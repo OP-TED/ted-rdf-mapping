@@ -778,7 +778,8 @@ tedm:ContractIdentifier a rr:TriplesMap ;
         ];
     rr:subjectMap
         [
-            rml:reference "if (exists(CONTRACT_NO) and exists(AWARDED_CONTRACT)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ContractIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+#           # Note that here we use a different URI generation pattern as in all the other places
+            rml:reference "if (exists(CONTRACT_NO) and exists(AWARDED_CONTRACT)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ContractIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(CONTRACT_NO) || '?response_type=raw') else null" ;
             rr:class epo:Identifier
         ] .
 #tedm:ContractSignatoryonContractorSide a rr:TriplesMap ;
