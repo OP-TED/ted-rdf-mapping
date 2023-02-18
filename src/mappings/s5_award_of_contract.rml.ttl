@@ -325,25 +325,25 @@ tedm:LotAwardOutcome a rr:TriplesMap ;
                     rml:reference "if (exists(NO_AWARDED_CONTRACT)) then CONTRACT_NO else null";
                 ]
         ] ;
-
-#TODO: this mapping needs to be reviewed and fixed
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasAdditionalNonAwardJustification;
-            rr:objectMap
-                [
-                    rml:reference "NO_AWARDED_CONTRACT/PROCUREMENT_DISCONTINUED/NO_DOC_EXT/@PUBLICATION"
-                ]
-        ] ;
-#TODO: this mapping needs to be reviewed and fixed
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasAdditionalNonAwardJustification;
-            rr:objectMap
-                [
-                    rml:reference "NO_AWARDED_PRIZE/PROCUREMENT_DISCONTINUED/NO_DOC_EXT/@PUBLICATION"
-                ]
-        ] ;
+# Commenting this out, as it is not the appropriate mapping for this XPath.
+# This field does not appear in the publication XML, only in the reception XML.
+# We might map it at a later point when EPO will provide a proper model for this.
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasAdditionalNonAwardJustification;
+#            rr:objectMap
+#                [
+#                    rml:reference "NO_AWARDED_CONTRACT/PROCUREMENT_DISCONTINUED/NO_DOC_EXT"
+#                ]
+#        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasAdditionalNonAwardJustification;
+#            rr:objectMap
+#                [
+#                    rml:reference "NO_AWARDED_PRIZE/PROCUREMENT_DISCONTINUED/NO_DOC_EXT"
+#                ]
+#        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasAwardStatus;
