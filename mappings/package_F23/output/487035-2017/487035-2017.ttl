@@ -4,14 +4,7 @@
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
-@prefix rr: <http://www.w3.org/ns/r2rml#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -21,7 +14,8 @@ epd:id_2017-S-234-487035_Buyer_6JrBDFv62gtsRkUnBW2ZDp a epo:Buyer;
   epo:playedBy epd:id_2017-S-234-487035_Organisation_fBtVVRA5pNzsy3r5Mz8jpY .
 
 epd:id_2017-S-234-487035_Channel_gPiGqANED65KHz5oeQb8mM a cccev:Channel;
-  epo:hasURL "https://www.publictendersscotland.publiccontractsscotland.gov.uk"^^xsd:anyURI .
+  epo:hasURL "https://www.publictendersscotland.publiccontractsscotland.gov.uk"^^xsd:anyURI;
+  epo:isAdhocChannel true .
 
 epd:id_2017-S-234-487035_ContactPoint_fBtVVRA5pNzsy3r5Mz8jpY a cccev:ContactPoint;
   epo:hasFax "+44 1224262660";
@@ -29,29 +23,25 @@ epd:id_2017-S-234-487035_ContactPoint_fBtVVRA5pNzsy3r5Mz8jpY a cccev:ContactPoin
   cccev:email "r.strachan@rgu.ac.uk";
   cccev:telephone "+44 1224262000" .
 
-epd:id_2017-S-234-487035_ContractTermLocationAddress_7hWrvsURf4UvLuCMkWTL4r a locn:Address;
+epd:id_2017-S-234-487035_ContractTermLotLocationAddress_7hWrvsURf4UvLuCMkWTL4r a locn:Address;
   locn:fullAddress """
                   Robert Gordon University Garthdee Campus, Garthdee Road, Aberdeen.
                """@en .
 
-epd:id_2017-S-234-487035_ContractTermLocation_7hWrvsURf4UvLuCMkWTL4r a dct:Location;
+epd:id_2017-S-234-487035_ContractTermLotLocation_7hWrvsURf4UvLuCMkWTL4r a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/UKM50>;
-  locn:address epd:id_2017-S-234-487035_ContractTermLocationAddress_7hWrvsURf4UvLuCMkWTL4r .
+  locn:address epd:id_2017-S-234-487035_ContractTermLotLocationAddress_7hWrvsURf4UvLuCMkWTL4r .
 
-epd:id_2017-S-234-487035_ContractTerm_7hWrvsURf4UvLuCMkWTL4r a epo:ContractTerm;
+epd:id_2017-S-234-487035_ContractTermLot_7hWrvsURf4UvLuCMkWTL4r a epo:ContractTerm;
   epo:definesContractDuration epd:id_2017-S-234-487035_Duration_MEvioCeBiwwa4YcRJ7ND4f;
-  epo:definesSpecificPlaceOfPerformance epd:id_2017-S-234-487035_ContractTermLocation_7hWrvsURf4UvLuCMkWTL4r;
-  epo:hasPerformanceConditions """
-               The successful provider will be required to enter into a lease agreement with the University, for the nursery buildings used. The initial annual rental valuation will be GBP 95 000  per annum. This will be subject to an uplift by a percentage value based on the retail price Index every 2 years.
-               There may be a requirement to “Tupe across” existing staff from the current services provider within the Nursery.
-            """ .
+  epo:definesSpecificPlaceOfPerformance epd:id_2017-S-234-487035_ContractTermLotLocation_7hWrvsURf4UvLuCMkWTL4r .
 
 epd:id_2017-S-234-487035_Duration_MEvioCeBiwwa4YcRJ7ND4f a epo:SpecificDuration;
   time:numericDuration 60.0;
   time:unitType time:unitMonth .
 
 epd:id_2017-S-234-487035_Lot_7hWrvsURf4UvLuCMkWTL4r a epo:Lot;
-  epo:foreseesContractSpecificTerm epd:id_2017-S-234-487035_ContractTerm_7hWrvsURf4UvLuCMkWTL4r;
+  epo:foreseesContractSpecificTerm epd:id_2017-S-234-487035_ContractTermLot_7hWrvsURf4UvLuCMkWTL4r;
   epo:hasAdditionalInformation """
                   Economic operators may be excluded from this competition if they are in any of the situations referred to in regulation 58 of the Public Contracts (Scotland) Regulations 2015.
                """@en;
@@ -59,9 +49,7 @@ epd:id_2017-S-234-487035_Lot_7hWrvsURf4UvLuCMkWTL4r a epo:Lot;
                   Lease of nursery building, and provision of pre-school nursery services.
                """@en;
   epo:hasEstimatedValue epd:id_2017-S-234-487035_MainMonetaryValueLot_7hWrvsURf4UvLuCMkWTL4r;
-  epo:hasPerformingStaffQualificationInformation <http://publications.europa.eu/resource/authority/requirement-stage/t-requ>;
-  epo:isUsingEUFunds false;
-  epo:specifiesSelectionCriterion epd:id_2017-S-234-487035_SelectionCriterion_35torD5ZyKyYmTbwXMyG4g .
+  epo:isUsingEUFunds false .
 
 epd:id_2017-S-234-487035_MainMonetaryValueLot_7hWrvsURf4UvLuCMkWTL4r a epo:MonetaryValue;
   epo:hasAmountValue 5000000.0;
@@ -72,15 +60,16 @@ epd:id_2017-S-234-487035_MonetaryValueProcedure_i9aERGK7bpCBkxJEnYmbQm a epo:Mon
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/GBP> .
 
 epd:id_2017-S-234-487035_Notice a epo:CompetitionNotice, epo:Notice;
-  epo:announcesNoticeAwardInformation epd:id_2017-S-234-487035_NoticeAwardInformation_i9aERGK7bpCBkxJEnYmbQm;
-  epo:announcesRole epd:id_2017-S-234-487035_ProcurementProcedureInformationProvider_CyEjpBTUqV24pNdw9k5ChD,
+  epo:announcesRole epd:id_2017-S-234-487035_Buyer_6JrBDFv62gtsRkUnBW2ZDp, epd:id_2017-S-234-487035_ProcurementProcedureInformationProvider_CyEjpBTUqV24pNdw9k5ChD,
     epd:id_2017-S-234-487035_Reviewer_BiuCBTbKwUHr8uD9ayJvDV;
   epo:hasDispatchDate "2017-12-01"^^xsd:date;
+  epo:hasID epd:id_2017-S-234-487035_NoticeIdentifier_i9aERGK7bpCBkxJEnYmbQm;
+  epo:hasPublicationDate "20171206";
   epo:refersToLot epd:id_2017-S-234-487035_Lot_7hWrvsURf4UvLuCMkWTL4r;
-  epo:refersToProcedure epd:id_2017-S-234-487035_Procedure_i9aERGK7bpCBkxJEnYmbQm;
-  epo:refersToRole epd:id_2017-S-234-487035_Buyer_6JrBDFv62gtsRkUnBW2ZDp .
+  epo:refersToProcedure epd:id_2017-S-234-487035_Procedure_i9aERGK7bpCBkxJEnYmbQm .
 
-epd:id_2017-S-234-487035_NoticeAwardInformation_i9aERGK7bpCBkxJEnYmbQm a epo:NoticeAwardInformation .
+epd:id_2017-S-234-487035_NoticeIdentifier_i9aERGK7bpCBkxJEnYmbQm a epo:Identifier;
+  epo:hasIdentifierValue "2017/S 234-487035" .
 
 epd:id_2017-S-234-487035_OrganisationAddress_fBtVVRA5pNzsy3r5Mz8jpY a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
@@ -101,10 +90,7 @@ epd:id_2017-S-234-487035_ProcedureIdentifier_i9aERGK7bpCBkxJEnYmbQm a epo:Identi
 epd:id_2017-S-234-487035_ProcedurePurpose_i9aERGK7bpCBkxJEnYmbQm a epo:Purpose;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/85312110> .
 
-epd:id_2017-S-234-487035_ProcedureSpecificTerm_6JrBDFv62gtsRkUnBW2ZDp a epo:ProcedureSpecificTerm .
-
 epd:id_2017-S-234-487035_Procedure_i9aERGK7bpCBkxJEnYmbQm a epo:Procedure;
-  epo:foreseesContractSpecificTerm epd:id_2017-S-234-487035_ContractTerm_7hWrvsURf4UvLuCMkWTL4r;
   epo:hasAdditionalInformation """
                Statements for ESPD questions...
                4A.1 — If required by the member state, bidders are required to be enrolled in the relevant professional or trade registers within the country in which they are established;
@@ -154,8 +140,7 @@ epd:id_2017-S-234-487035_Procedure_i9aERGK7bpCBkxJEnYmbQm a epo:Procedure;
   epo:hasTitle """
                Provision of Nursery Services — Robert Gordon University.
             """@en;
-  epo:isSubjectToProcedureSpecificTerm epd:id_2017-S-234-487035_ProcedureSpecificTerm_6JrBDFv62gtsRkUnBW2ZDp,
-    epd:id_2017-S-234-487035_SubmissionTerm_RTMz92y7cKprzSE4d4ADfV;
+  epo:isSubjectToProcedureSpecificTerm epd:id_2017-S-234-487035_SubmissionTerm_RTMz92y7cKprzSE4d4ADfV;
   epo:usesChannel epd:id_2017-S-234-487035_Channel_gPiGqANED65KHz5oeQb8mM .
 
 epd:id_2017-S-234-487035_ProcurementProcedureInformationProvider_CyEjpBTUqV24pNdw9k5ChD
@@ -182,20 +167,7 @@ epd:id_2017-S-234-487035_ReviewerOrganisation_BiuCBTbKwUHr8uD9ayJvDV a org:Organ
 epd:id_2017-S-234-487035_Reviewer_BiuCBTbKwUHr8uD9ayJvDV a epo:Reviewer;
   epo:playedBy epd:id_2017-S-234-487035_ReviewerOrganisation_BiuCBTbKwUHr8uD9ayJvDV .
 
-epd:id_2017-S-234-487035_SelectionCriterion_35torD5ZyKyYmTbwXMyG4g a epo:SelectionCriterion;
-  epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
-  cccev:description """
-               Bidders should note that, at this stage, this notice only serves to obtain notes of interest in this opportunity. No evaluation or assessment will be undertaken at this time. An ESPD will be released to all those bidders who have confirmed interest by the closing date, and the statements in section VI.3 of this notice — Additional Information — will apply at that time.
-            """,
-    """
-               Service providers will be required to be registered with the care inspectorate and comply with all the relevant guidelines. Tenderers will be responsible for ensuring that they meet the latest requirements of the care inspectorate or as superseded.
-               All staff should be registered or in the process of registering with the Scottish Social Services Council (SSSC) at a level relating to their designated post as should they be qualified or undertaking training for such.
-               All staff must be members of the protection of vulnerable groups scheme.
-               Under Section 15 of the Immigration, Asylum and Nationality Act 2006 employers are liable to civil penalty if they employ someone who does not have permission to work in the UK.
-               Your company must confirm in writing that all workers supplied in the execution of this contract are legally entitled to work or provide services in the UK and that in the event that a person supplied by your agency is found not to be legally entitled that you will indemnify Robert Gordon University in full against an action taken by any authority and for all fines and expenses incurred accordingly.
-            """ .
-
 epd:id_2017-S-234-487035_SubmissionTerm_RTMz92y7cKprzSE4d4ADfV a epo:SubmissionTerm;
   epo:hasLanguage "EN";
-  epo:hasReceiptDeadline "2018-01-12T12:00:00"^^xsd:dateTime;
+  epo:hasReceiptDeadline "2018-01-12T12:00";
   epo:hasSubmissionURL "https://www.publictendersscotland.publiccontractsscotland.gov.uk"^^xsd:anyURI .
