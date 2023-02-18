@@ -30,18 +30,20 @@ epd:id_2016-S-112-199225_ContactPoint_7D5VmvEvVafBz7JQr2uuS8 a cccev:ContactPoin
   cccev:email "susan.lowe@barnet.gov.uk";
   cccev:telephone "+44 2083597212" .
 
-epd:id_2016-S-112-199225_ContractTermLocationAddress_9kJZhTgye29otV72ZHovp4 a locn:Address;
+epd:id_2016-S-112-199225_ContractTermLotLocationAddress_9kJZhTgye29otV72ZHovp4 a locn:Address;
   locn:fullAddress """
 London Borough of Barnet.
 """@en .
 
-epd:id_2016-S-112-199225_ContractTermLocation_9kJZhTgye29otV72ZHovp4 a dct:Location;
+epd:id_2016-S-112-199225_ContractTermLotLocation_9kJZhTgye29otV72ZHovp4 a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/UKI23>;
-  locn:address epd:id_2016-S-112-199225_ContractTermLocationAddress_9kJZhTgye29otV72ZHovp4 .
+  locn:address epd:id_2016-S-112-199225_ContractTermLotLocationAddress_9kJZhTgye29otV72ZHovp4 .
 
-epd:id_2016-S-112-199225_ContractTerm_9kJZhTgye29otV72ZHovp4 a epo:ContractTerm;
+epd:id_2016-S-112-199225_ContractTermLot_9kJZhTgye29otV72ZHovp4 a epo:ContractTerm;
   epo:definesContractPeriod epd:id_2016-S-112-199225_Period_9kJZhTgye29otV72ZHovp4;
-  epo:definesSpecificPlaceOfPerformance epd:id_2016-S-112-199225_ContractTermLocation_9kJZhTgye29otV72ZHovp4;
+  epo:definesSpecificPlaceOfPerformance epd:id_2016-S-112-199225_ContractTermLotLocation_9kJZhTgye29otV72ZHovp4 .
+
+epd:id_2016-S-112-199225_ContractTermProcedure_K8q5v8TTWyR48h9DKNno8n a epo:ContractTerm;
   epo:hasEInvoicing true;
   epo:hasEOrdering true;
   epo:hasEPayment true .
@@ -51,7 +53,7 @@ epd:id_2016-S-112-199225_LotPurpose_9kJZhTgye29otV72ZHovp4 a epo:Purpose;
     <http://data.europa.eu/cpv/cpv/92511000> .
 
 epd:id_2016-S-112-199225_Lot_9kJZhTgye29otV72ZHovp4 a epo:Lot;
-  epo:foreseesContractSpecificTerm epd:id_2016-S-112-199225_ContractTerm_9kJZhTgye29otV72ZHovp4;
+  epo:foreseesContractSpecificTerm epd:id_2016-S-112-199225_ContractTermLot_9kJZhTgye29otV72ZHovp4;
   epo:hasAdditionalInformation """
 This requirement relates to Public Contract Regulation 76 (8) because of Council adoption of Library Strategy which includes community based delivery.
 """@en;
@@ -63,10 +65,8 @@ South Friern Library, London, N10 1HD, 30.6.2016, 10:00-12:00.
 Expressions of interest are to be registered through current opportunity advert on www.barnetsourcing.co.uk this will facilitate access to documents on the portal.
 """@en;
   epo:hasEstimatedValue epd:id_2016-S-112-199225_MainMonetaryValueLot_9kJZhTgye29otV72ZHovp4;
-  epo:hasPerformingStaffQualificationInformation <http://publications.europa.eu/resource/authority/requirement-stage/not-requ>;
   epo:hasPurpose epd:id_2016-S-112-199225_LotPurpose_9kJZhTgye29otV72ZHovp4;
-  epo:isUsingEUFunds false;
-  epo:specifiesSelectionCriterion epd:id_2016-S-112-199225_SelectionCriterion_MpwhAkGR2J9PvrtoXKviLx .
+  epo:isUsingEUFunds false .
 
 epd:id_2016-S-112-199225_MainMonetaryValueLot_9kJZhTgye29otV72ZHovp4 a epo:MonetaryValue;
   epo:hasAmountValue 952000.0;
@@ -77,15 +77,16 @@ epd:id_2016-S-112-199225_MonetaryValueProcedure_aCmfT72mHtfxPh7XQjZApJ a epo:Mon
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/GBP> .
 
 epd:id_2016-S-112-199225_Notice a epo:CompetitionNotice, epo:Notice;
-  epo:announcesNoticeAwardInformation epd:id_2016-S-112-199225_NoticeAwardInformation_aCmfT72mHtfxPh7XQjZApJ;
-  epo:announcesRole epd:id_2016-S-112-199225_ProcurementProcedureInformationProvider_m3phG9hfUrufLBZkispGTL,
+  epo:announcesRole epd:id_2016-S-112-199225_Buyer_LTC4ztdQQn6ue8NBpQv4rF, epd:id_2016-S-112-199225_ProcurementProcedureInformationProvider_m3phG9hfUrufLBZkispGTL,
     epd:id_2016-S-112-199225_Reviewer_cbWuhNnCxDFGewidLQWHhz;
   epo:hasDispatchDate "2016-06-09"^^xsd:date;
+  epo:hasID epd:id_2016-S-112-199225_NoticeIdentifier_aCmfT72mHtfxPh7XQjZApJ;
+  epo:hasPublicationDate "20160611";
   epo:refersToLot epd:id_2016-S-112-199225_Lot_9kJZhTgye29otV72ZHovp4;
-  epo:refersToProcedure epd:id_2016-S-112-199225_Procedure_aCmfT72mHtfxPh7XQjZApJ;
-  epo:refersToRole epd:id_2016-S-112-199225_Buyer_LTC4ztdQQn6ue8NBpQv4rF .
+  epo:refersToProcedure epd:id_2016-S-112-199225_Procedure_aCmfT72mHtfxPh7XQjZApJ .
 
-epd:id_2016-S-112-199225_NoticeAwardInformation_aCmfT72mHtfxPh7XQjZApJ a epo:NoticeAwardInformation .
+epd:id_2016-S-112-199225_NoticeIdentifier_aCmfT72mHtfxPh7XQjZApJ a epo:Identifier;
+  epo:hasIdentifierValue "2016/S 112-199225" .
 
 epd:id_2016-S-112-199225_OrganisationAddress_7D5VmvEvVafBz7JQr2uuS8 a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
@@ -110,14 +111,12 @@ epd:id_2016-S-112-199225_ProcedureIdentifier_aCmfT72mHtfxPh7XQjZApJ a epo:Identi
 epd:id_2016-S-112-199225_ProcedurePurpose_aCmfT72mHtfxPh7XQjZApJ a epo:Purpose;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/92500000> .
 
-epd:id_2016-S-112-199225_ProcedureSpecificTerm_LTC4ztdQQn6ue8NBpQv4rF a epo:ProcedureSpecificTerm;
+epd:id_2016-S-112-199225_ProcedureTerm_aCmfT72mHtfxPh7XQjZApJ a epo:ProcedureTerm;
+  epo:hasNationalProcedureRules "http://www.legislation.gov.uk/uksi/2015/102/contents/made"^^xsd:anyURI;
   epo:isAwardedByCPB true .
 
-epd:id_2016-S-112-199225_ProcedureTerm_aCmfT72mHtfxPh7XQjZApJ a epo:ProcedureTerm;
-  epo:hasNationalProcedureRules "http://www.legislation.gov.uk/uksi/2015/102/contents/made"^^xsd:anyURI .
-
 epd:id_2016-S-112-199225_Procedure_aCmfT72mHtfxPh7XQjZApJ a epo:Procedure;
-  epo:foreseesContractSpecificTerm epd:id_2016-S-112-199225_ContractTerm_9kJZhTgye29otV72ZHovp4;
+  epo:foreseesContractSpecificTerm epd:id_2016-S-112-199225_ContractTermProcedure_K8q5v8TTWyR48h9DKNno8n;
   epo:hasAdditionalInformation """
 This requirement is procured with regard to Public Contract Regulation 76 (8) because of Council adoption of Library Strategy which includes community based delivery which has:
 a) The need to ensure quality, continuity, accessibility, affordability, availability and comprehensiveness of the services;
@@ -144,8 +143,7 @@ This requirement is in accordance with Public Contract Regulation 76 (8) because
 Provision of Partnership Libraries.
 """@en;
   epo:isSubjectToProcedureSpecificTerm epd:id_2016-S-112-199225_AccessTerm_LTC4ztdQQn6ue8NBpQv4rF,
-    epd:id_2016-S-112-199225_ProcedureSpecificTerm_LTC4ztdQQn6ue8NBpQv4rF, epd:id_2016-S-112-199225_ProcedureTerm_aCmfT72mHtfxPh7XQjZApJ,
-    epd:id_2016-S-112-199225_SubmissionTerm_K8q5v8TTWyR48h9DKNno8n .
+    epd:id_2016-S-112-199225_ProcedureTerm_aCmfT72mHtfxPh7XQjZApJ, epd:id_2016-S-112-199225_SubmissionTerm_K8q5v8TTWyR48h9DKNno8n .
 
 epd:id_2016-S-112-199225_ProcurementProcedureInformationProvider_m3phG9hfUrufLBZkispGTL
   a epo:ProcurementProcedureInformationProvider;
@@ -165,12 +163,7 @@ epd:id_2016-S-112-199225_ReviewerOrganisation_cbWuhNnCxDFGewidLQWHhz a org:Organ
 epd:id_2016-S-112-199225_Reviewer_cbWuhNnCxDFGewidLQWHhz a epo:Reviewer;
   epo:playedBy epd:id_2016-S-112-199225_ReviewerOrganisation_cbWuhNnCxDFGewidLQWHhz .
 
-epd:id_2016-S-112-199225_SelectionCriterion_MpwhAkGR2J9PvrtoXKviLx a epo:SelectionCriterion;
-  cccev:description """
-The economic operator must meet the requirements set out in Regulation 57 (Exclusion Grounds) of the Public Contracts Regulations 2015.
-""" .
-
 epd:id_2016-S-112-199225_SubmissionTerm_K8q5v8TTWyR48h9DKNno8n a epo:SubmissionTerm;
   epo:hasLanguage "EN";
-  epo:hasReceiptDeadline "2016-08-01T12:00:00"^^xsd:dateTime;
+  epo:hasReceiptDeadline "2016-08-01T12:00";
   epo:hasSubmissionURL "www.barnetsourcing.co.uk"^^xsd:anyURI .

@@ -1,10 +1,10 @@
-#title: II.1.6.1.1 - Tenders may be submitted for all lots
-#description: “II.1.6.1.1 - Tenders may be submitted for all lots” in SF corresponds to “nan Boolean” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/LOT_DIVISION/LOT_ALL. The expected ontology instances are epo: epo:Procedure / epo:ProcedureTerm / xsd:boolean .
-#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/LOT_DIVISION/LOT_ALL
+#title: II.1.5.2 - Currency
+#description: “II.1.5.2 - Currency” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/VAL_ESTIMATED_TOTAL/@CURRENCY. The expected ontology instances are epo: epo:Procedure / epo:MonetaryValue /at-voc:currency (from currency.json) .
+#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/VAL_ESTIMATED_TOTAL/@CURRENCY
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Procedure .
-		?this epo:isSubjectToProcedureSpecificTerm / epo:isSubmissionForAllLotsAllowed ?value }
+		?this epo:hasEstimatedValue / epo:hasCurrency ?value . }
