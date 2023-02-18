@@ -33,32 +33,35 @@ tedm:award_of_contract
 #
 #                ]
 #        ] .
-tedm:ContractorOrganisationGroup a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasMember;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ContractorOrganisation;
-                    rr:joinCondition [
-                        rr:child "ancestor::AWARD_CONTRACT/@ITEM";
-                        rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
-                    ];
-                ]
-        ] ;
 
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasMember;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ContractorOrganisation;
-                    rr:joinCondition [
-                        rr:child "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR | ancestor::AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR";
-                        rr:parent "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR | ancestor::AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR";
-                    ];
-                ]
-        ] .
+# This mapping was removed as EPO 3.1.0 and the Standard form XSD does not provide appropriate model
+# for representing grouping of Winners per TenderAwardOutcome. See GH issue #245
+#tedm:ContractorOrganisationGroup a rr:TriplesMap ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasMember;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:ContractorOrganisation;
+#                    rr:joinCondition [
+#                        rr:child "ancestor::AWARD_CONTRACT/@ITEM";
+#                        rr:parent "ancestor::AWARD_CONTRACT/@ITEM";
+#                    ];
+#                ]
+#        ] ;
+#
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasMember;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:ContractorOrganisation;
+#                    rr:joinCondition [
+#                        rr:child "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR | ancestor::AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR";
+#                        rr:parent "ancestor::AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR | ancestor::AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR";
+#                    ];
+#                ]
+#        ] .
 tedm:Contract a rr:TriplesMap ;
 #    rr:predicateObjectMap
 #    [
@@ -303,25 +306,44 @@ tedm:LotAwardOutcome a rr:TriplesMap ;
                     ];
                 ] ;
         ] ;
-
-#TODO: this mapping needs to be reviewed and fixed
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasAdditionalNonAwardJustification;
+            rr:predicate epo:hasNonAwardedContractTitle;
             rr:objectMap
                 [
-                    rml:reference "NO_AWARDED_CONTRACT/PROCUREMENT_DISCONTINUED/NO_DOC_EXT/@PUBLICATION"
+                    rml:reference "if (exists(NO_AWARDED_CONTRACT)) then TITLE else null";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
                 ]
         ] ;
-#TODO: this mapping needs to be reviewed and fixed
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasAdditionalNonAwardJustification;
+            rr:predicate epo:hasNonAwardedContractNumber;
             rr:objectMap
                 [
-                    rml:reference "NO_AWARDED_PRIZE/PROCUREMENT_DISCONTINUED/NO_DOC_EXT/@PUBLICATION"
+                    rml:reference "if (exists(NO_AWARDED_CONTRACT)) then CONTRACT_NO else null";
                 ]
         ] ;
+# Commenting this out, as it is not the appropriate mapping for this XPath.
+# This field does not appear in the publication XML, only in the reception XML.
+# We might map it at a later point when EPO will provide a proper model for this.
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasAdditionalNonAwardJustification;
+#            rr:objectMap
+#                [
+#                    rml:reference "NO_AWARDED_CONTRACT/PROCUREMENT_DISCONTINUED/NO_DOC_EXT"
+#                ]
+#        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasAdditionalNonAwardJustification;
+#            rr:objectMap
+#                [
+#                    rml:reference "NO_AWARDED_PRIZE/PROCUREMENT_DISCONTINUED/NO_DOC_EXT"
+#                ]
+#        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasAwardStatus;
