@@ -202,7 +202,7 @@ tedm:BuyerCP a rr:TriplesMap;
 tedm:NoticeAwardInformation a rr:TriplesMap ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_NoticeAwardInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if (exists(VAL_TOTAL) or exists(VAL_RANGE_TOTAL/LOW) or exists(VAL_RANGE_TOTAL/HIGH)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_NoticeAwardInformation_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:NoticeAwardInformation
         ] ;
     rml:logicalSource
@@ -267,18 +267,20 @@ tedm:ProcessPlanningTermLot a rr:TriplesMap ;
             rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014[1]/OBJECT_CONTRACT" ;
             rml:referenceFormulation ql:XPath
        ] .
-tedm:ProcessPlanningTermProcedure a rr:TriplesMap ;
-    rr:subjectMap
-        [
-            rml:reference "if (exists(DATE_AWARD_SCHEDULED)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ProcessPlanningTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
-            rr:class epo:ProcessPlanningTerm
-        ] ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014[1]/PROCEDURE" ;
-            rml:referenceFormulation ql:XPath
-       ] .
+# Commenting this out as this is not an appropriate mapping for the field IV.2.5. EPO 3.1.0 does not provide an appropriate model.
+# We will map this field when future EPO versions will provide an appropriate representation for it.
+#tedm:ProcessPlanningTermProcedure a rr:TriplesMap ;
+#    rr:subjectMap
+#        [
+#            rml:reference "if (exists(DATE_AWARD_SCHEDULED)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ProcessPlanningTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+#            rr:class epo:ProcessPlanningTerm
+#        ] ;
+#    rml:logicalSource
+#        [
+#            rml:source "data/source.xml" ;
+#            rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014[1]/PROCEDURE" ;
+#            rml:referenceFormulation ql:XPath
+#       ] .
 tedm:ProcurementLowestReceivedTenderValue a rr:TriplesMap ;
     rml:logicalSource
         [
@@ -423,16 +425,6 @@ tedm:ProcedurePurpose a rr:TriplesMap ;
         ] .
 #    rr:predicateObjectMap
 #        [
-#            rr:predicate epo:hasMainClassification ;
-#            rr:objectMap
-#                [
-#                    rml:reference "if (not(exists(/TED_EXPORT/FORM_SECTION/F25_2014[1]/OBJECT_CONTRACT/CPV_MAIN/CPV_CODE/@CODE))) then 'http://data.europa.eu/cpv/cpv/OP_DATPRO' else null";
-#                    rr:termType rr:IRI;
-#                ]
-#
-#        ] ;
-#    rr:predicateObjectMap
-#        [
 #            rr:predicate epo:hasContractNatureType ;
 #            rr:objectMap
 #                [
@@ -522,7 +514,20 @@ tedm:LotPurpose a rr:TriplesMap ;
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_LotPurpose_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
             rr:class epo:Purpose
         ] .
-tedm:ContractTerm a rr:TriplesMap ;
+tedm:ContractTermProcedure a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014/PROCEDURE" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference
+                "if (exists(../COMPLEMENTARY_INFO/EORDERING) or exists(../COMPLEMENTARY_INFO/EINVOICING) or exists(../COMPLEMENTARY_INFO/EPAYMENT)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ContractTermProcedure_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:ContractTerm
+        ] .
+tedm:ContractTermLot a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -531,10 +536,10 @@ tedm:ContractTerm a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ContractTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ContractTermLot_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:ContractTerm
         ] .
-tedm:ContractTermLocation a rr:TriplesMap ;
+tedm:ContractTermLotLocation a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -543,11 +548,11 @@ tedm:ContractTermLocation a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ContractTermLocation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ContractTermLotLocation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class dct:Location
 
         ] .
-tedm:ContractTermLocationAddress a rr:TriplesMap ;
+tedm:ContractTermLotLocationAddress a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -557,7 +562,7 @@ tedm:ContractTermLocationAddress a rr:TriplesMap ;
     rr:subjectMap
         [
             rml:reference
-                "if(exists(MAIN_SITE)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ContractTermLocationAddress_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+                "if(exists(MAIN_SITE)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ContractTermLotLocationAddress_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class locn:Address
         ] .
 tedm:AwardCriterionQuality a rr:TriplesMap ;
@@ -596,20 +601,6 @@ tedm:AwardCriterionCost a rr:TriplesMap ;
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_AwardCriterionCost_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:AwardCriterion
         ] .
-
-# Section 3     #specific for F21,F22,F23,F24,F01,F02,F04,F05,F07,F12 and T02
-#tedm:SelectionCriterion a rr:TriplesMap ;
-#    rml:logicalSource
-#        [
-#            rml:source "data/source.xml" ;
-#            rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014/LEFTI" ;
-#            rml:referenceFormulation ql:XPath
-#        ] ;
-#    rr:subjectMap
-#        [
-#            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_SelectionCriterion_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-#            rr:class epo:SelectionCriterion
-#        ] .
 
 # Section 4
 tedm:FrameworkAgreementTechniqueUsage a rr:TriplesMap ;
@@ -697,19 +688,21 @@ tedm:EAuctionTechniqueUsage  a rr:TriplesMap ;
 #            rr:class epo:PurchaseContract
 #        ].
 
-tedm:ContractorOrganisationGroup a rr:TriplesMap ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rml:reference "if(exists(CONTRACTORS/AWARDED_TO_GROUP) or exists(AWARDED_TO_GROUP)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ContractorOrganisationGroup_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
-            rr:class epo:OrganisationGroup
-
-        ] .
+# This mapping was removed as EPO 3.1.0 and the Standard form XSD does not provide appropriate model
+# for representing grouping of Winners per TenderAwardOutcome. See GH issue #245
+#tedm:ContractorOrganisationGroup a rr:TriplesMap ;
+#    rml:logicalSource
+#        [
+#            rml:source "data/source.xml" ;
+#            rml:iterator "/TED_EXPORT/FORM_SECTION/F25_2014[1]/AWARD_CONTRACT/AWARDED_CONTRACT" ;
+#            rml:referenceFormulation ql:XPath
+#        ] ;
+#    rr:subjectMap
+#        [
+#            rml:reference "if(exists(CONTRACTORS/AWARDED_TO_GROUP) or exists(AWARDED_TO_GROUP)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ContractorOrganisationGroup_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+#            rr:class epo:OrganisationGroup
+#
+#        ] .
 tedm:Contract a rr:TriplesMap ;
     rml:logicalSource
         [
@@ -770,7 +763,8 @@ tedm:ContractIdentifier a rr:TriplesMap ;
         ];
     rr:subjectMap
         [
-            rml:reference "if (exists(CONTRACT_NO) and exists(AWARDED_CONTRACT)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ContractIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+#           # Note that here we use a different URI generation pattern as in all the other places
+            rml:reference "if (exists(CONTRACT_NO) and exists(AWARDED_CONTRACT)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ContractIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(CONTRACT_NO) || '?response_type=raw') else null" ;
             rr:class epo:Identifier
         ] .
 #tedm:ContractSignatoryonContractorSide a rr:TriplesMap ;
@@ -1331,7 +1325,7 @@ tedm:AccessTerm  a rr:TriplesMap ;
                 "if(exists(DOCUMENT_FULL) or exists(DOCUMENT_RESTRICTED) or exists(URL_DOCUMENT)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_AccessTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:AccessTerm
         ] .
-tedm:OrganisationChannel a rr:TriplesMap ;
+tedm:ElectronicCommunicationChannel a rr:TriplesMap ;
     rr:subjectMap
         [
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Channel_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
@@ -1566,18 +1560,19 @@ tedm:contractNature  a rr:TriplesMap ;
             rml:reference
                 "conceptURI.value" ;
         ] .
-tedm:cpvsuppl a rr:TriplesMap ;
-    rml:logicalSource
-        [
-            rml:source "transformation/resources/cpvsuppl.json" ;
-            rml:iterator "$.results.bindings[*]" ;
-            rml:referenceFormulation ql:JSONPath
-        ] ;
-    rr:subjectMap
-        [
-            rml:reference
-                "conceptURI.value" ;
-        ] .
+# Not mapping supplementary CPV codes, as EPO does not provide a way to group them with "regular" CPV codes. See issues #119 and #205.
+#tedm:cpvsuppl a rr:TriplesMap ;
+#    rml:logicalSource
+#        [
+#            rml:source "transformation/resources/cpvsuppl.json" ;
+#            rml:iterator "$.results.bindings[*]" ;
+#            rml:referenceFormulation ql:JSONPath
+#        ] ;
+#    rr:subjectMap
+#        [
+#            rml:reference
+#                "conceptURI.value" ;
+#        ] .
 tedm:cpv a rr:TriplesMap ;
     rml:logicalSource
         [

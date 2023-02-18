@@ -52,6 +52,16 @@ tedm:Notice a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:hasPublicationDate ;
+            rr:objectMap
+                [
+                    rml:reference "/TED_EXPORT/CODED_DATA_SECTION/REF_OJS/DATE_PUB";
+#                    # according to EPO this value should be of type xsd:date, but the format of values that appear in the XML files is "YYYYMMDD", which is invalid for the xsd:date datatype (expecting "YYYY-MM-DD"). The wrong values will be fixed in a separate "transformation" step.
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate epo:hasDispatchDate ;
             rr:objectMap
                 [
@@ -101,7 +111,7 @@ tedm:Notice a rr:TriplesMap ;
 #        ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:refersToRole ;
+            rr:predicate epo:announcesRole ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:Buyer
@@ -109,7 +119,7 @@ tedm:Notice a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:refersToRole ;
+            rr:predicate epo:announcesRole ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:BuyerCP
@@ -117,7 +127,7 @@ tedm:Notice a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:refersToRole ;
+            rr:predicate epo:announcesRole ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:AdditionalBuyer
@@ -125,7 +135,7 @@ tedm:Notice a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:refersToRole ;
+            rr:predicate epo:announcesRole ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:AdditionalBuyerCP

@@ -15,6 +15,12 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+epd:id_2016-S-147-265474_Notice a epo:Notice;
+  epo:hasID epd:id_2016-S-147-265474_NoticeIdentifier_C5nS5y4XErvUqzRNMARW8r .
+
+epd:id_2016-S-147-265474_NoticeIdentifier_C5nS5y4XErvUqzRNMARW8r a epo:Identifier;
+  epo:hasIdentifierValue "2016/S 147-265474" .
+
 epd:id_2017-S-076-146541_AwardCriterionPrice_DGubhTSDxCCPkKuRQcaACD a epo:AwardCriterion;
   epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/price> .
 
@@ -27,7 +33,7 @@ epd:id_2017-S-076-146541_ContactPoint_UU5jeWb9wCr2uQLNME2nwM a cccev:ContactPoin
   epo:hasInternetAddress "http://ec.europa.eu/chafea/"^^xsd:anyURI;
   cccev:email "chafea-hp-tender@ec.europa.eu" .
 
-epd:id_2017-S-076-146541_ContractTermLocationAddress_DgNm7RuiSQ47VBTvdrHsRv a locn:Address;
+epd:id_2017-S-076-146541_ContractTermLotLocationAddress_DgNm7RuiSQ47VBTvdrHsRv a locn:Address;
   locn:fullAddress """
 A se vedea caietul de sarcini al licitației.
 """@ro, """
@@ -87,11 +93,11 @@ zob. specyfikacja istotnych warunków zamówienia.
 Вж. тръжните спецификации.
 """@bg .
 
-epd:id_2017-S-076-146541_ContractTermLocation_DgNm7RuiSQ47VBTvdrHsRv a dct:Location;
-  locn:address epd:id_2017-S-076-146541_ContractTermLocationAddress_DgNm7RuiSQ47VBTvdrHsRv .
+epd:id_2017-S-076-146541_ContractTermLotLocation_DgNm7RuiSQ47VBTvdrHsRv a dct:Location;
+  locn:address epd:id_2017-S-076-146541_ContractTermLotLocationAddress_DgNm7RuiSQ47VBTvdrHsRv .
 
-epd:id_2017-S-076-146541_ContractTerm_DgNm7RuiSQ47VBTvdrHsRv a epo:ContractTerm;
-  epo:definesSpecificPlaceOfPerformance epd:id_2017-S-076-146541_ContractTermLocation_DgNm7RuiSQ47VBTvdrHsRv;
+epd:id_2017-S-076-146541_ContractTermLot_DgNm7RuiSQ47VBTvdrHsRv a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2017-S-076-146541_ContractTermLotLocation_DgNm7RuiSQ47VBTvdrHsRv;
   epo:hasOptions false .
 
 epd:id_2017-S-076-146541_Fund_DgNm7RuiSQ47VBTvdrHsRv a epo:Fund;
@@ -123,10 +129,13 @@ epd:id_2017-S-076-146541_Fund_DgNm7RuiSQ47VBTvdrHsRv a epo:Fund;
 epd:id_2017-S-076-146541_LotAwardOutcome_KaeDJ6cSC7UaS6sXtDUnvf a epo:LotAwardOutcome;
   epo:describesLot epd:id_2017-S-076-146541_Lot_DgNm7RuiSQ47VBTvdrHsRv;
   epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw>;
-  epo:hasNonAwardJustification <http://publications.europa.eu/resource/authority/non-award-justification/other> .
+  epo:hasNonAwardJustification <http://publications.europa.eu/resource/authority/non-award-justification/other>;
+  epo:hasNonAwardedContractTitle """
+Udbud CHAFEA/2015/Health/51 vedrørende 2 undersøgelser: en undersøgelse vedrørende merværdien af en strategisk tilgang, der tager hensyn til livsforløb, til vaccination og en undersøgelse vedrørende mangler i forbindelse med lav vaccinationsdækningsgrad hos sundhedspersonale
+"""@da .
 
 epd:id_2017-S-076-146541_Lot_DgNm7RuiSQ47VBTvdrHsRv a epo:Lot;
-  epo:foreseesContractSpecificTerm epd:id_2017-S-076-146541_ContractTerm_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:foreseesContractSpecificTerm epd:id_2017-S-076-146541_ContractTermLot_DgNm7RuiSQ47VBTvdrHsRv;
   epo:hasAdditionalInformation """
 http://ec.europa.eu/health/programme/policy/index_en.htm
 """@bg,
@@ -281,20 +290,18 @@ epd:id_2017-S-076-146541_Mediator_M6TkjMS23JqaPx58tAwhvD a epo:Mediator;
   epo:playedBy epd:id_2017-S-076-146541_MediatorOrganisation_M6TkjMS23JqaPx58tAwhvD .
 
 epd:id_2017-S-076-146541_Notice a epo:Notice, epo:ResultNotice;
-  epo:announcesNoticeAwardInformation epd:id_2017-S-076-146541_NoticeAwardInformation_faF7Q5dyoGpXu3Ru4RGg73;
-  epo:announcesRole epd:id_2017-S-076-146541_Mediator_M6TkjMS23JqaPx58tAwhvD, epd:id_2017-S-076-146541_ReviewProcedureInformationProvider_eP5uWDhd4iYABCZbaj8dzQ,
+  epo:announcesRole epd:id_2017-S-076-146541_Buyer_2DfWDD3NHHwpMGiWwzLc5d, epd:id_2017-S-076-146541_Mediator_M6TkjMS23JqaPx58tAwhvD,
+    epd:id_2017-S-076-146541_ReviewProcedureInformationProvider_eP5uWDhd4iYABCZbaj8dzQ,
     epd:id_2017-S-076-146541_Reviewer_bdZjimbzCaRXbeYeBmF94j;
   epo:hasDispatchDate "2017-04-07"^^xsd:date;
-  epo:hasID epd:id_2017-S-076-146541_NoticeIdentifier_C5nS5y4XErvUqzRNMARW8r;
+  epo:hasID epd:id_2017-S-076-146541_NoticeIdentifier_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:hasPublicationDate "20170419";
   epo:refersToLot epd:id_2017-S-076-146541_Lot_DgNm7RuiSQ47VBTvdrHsRv;
-  epo:refersToPrevious epd:id_2017-S-076-146541_Notice;
-  epo:refersToProcedure epd:id_2017-S-076-146541_Procedure_faF7Q5dyoGpXu3Ru4RGg73;
-  epo:refersToRole epd:id_2017-S-076-146541_Buyer_2DfWDD3NHHwpMGiWwzLc5d .
+  epo:refersToPrevious epd:id_2016-S-147-265474_Notice;
+  epo:refersToProcedure epd:id_2017-S-076-146541_Procedure_faF7Q5dyoGpXu3Ru4RGg73 .
 
-epd:id_2017-S-076-146541_NoticeAwardInformation_faF7Q5dyoGpXu3Ru4RGg73 a epo:NoticeAwardInformation .
-
-epd:id_2017-S-076-146541_NoticeIdentifier_C5nS5y4XErvUqzRNMARW8r a epo:Identifier;
-  epo:hasIdentifierValue "2016/S 147-265474" .
+epd:id_2017-S-076-146541_NoticeIdentifier_faF7Q5dyoGpXu3Ru4RGg73 a epo:Identifier;
+  epo:hasIdentifierValue "2017/S 076-146541" .
 
 epd:id_2017-S-076-146541_OrganisationAddress_UU5jeWb9wCr2uQLNME2nwM a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/LUX>;
@@ -339,10 +346,7 @@ epd:id_2017-S-076-146541_ProcedurePurpose_faF7Q5dyoGpXu3Ru4RGg73 a epo:Purpose;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/73110000> .
 
-epd:id_2017-S-076-146541_ProcedureSpecificTerm_2DfWDD3NHHwpMGiWwzLc5d a epo:ProcedureSpecificTerm .
-
 epd:id_2017-S-076-146541_Procedure_faF7Q5dyoGpXu3Ru4RGg73 a epo:Procedure;
-  epo:foreseesContractSpecificTerm epd:id_2017-S-076-146541_ContractTerm_DgNm7RuiSQ47VBTvdrHsRv;
   epo:hasAdditionalInformation """
 A entidade adjudicante decidiu anular o concurso por razões orçamentais.
 """@pt,
@@ -633,8 +637,7 @@ Zaproszenie do składania ofert nr CHAFEA/2015/Health/51 dotyczące 2 analiz: an
     """
 Покана за участие в търг № CHAFEA/2015/Health/51 относно 2 проучвания: проучване на добавената стойност на стратегически подход и на подход, който се основава на целия цикъл на живота, към ваксинирането и проучване на недостатъци, свързани с ниската степен на ваксинация при здравните работници.
 """@bg;
-  epo:isCoveredByGPA false;
-  epo:isSubjectToProcedureSpecificTerm epd:id_2017-S-076-146541_ProcedureSpecificTerm_2DfWDD3NHHwpMGiWwzLc5d .
+  epo:isCoveredByGPA false .
 
 epd:id_2017-S-076-146541_ReviewProcedureInformationProviderAddress_eP5uWDhd4iYABCZbaj8dzQ
   a locn:Address;

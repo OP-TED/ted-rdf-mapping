@@ -1,10 +1,10 @@
-#title: V.2.2.6 - The contract has been awarded to a group of economic operators
-#description: “V.2.2.6 - The contract has been awarded to a group of economic operators” in SF corresponds to “BT-768 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/AWARDED_TO_GROUP, /TED_EXPORT/FORM_SECTION/F13_2014/AWARD_CONTRACT/AWARDED_CONTRACT/AWARDED_TO_GROUP. The expected ontology instances are epo: epo:OrganisationGroup / org:Organization .
-#xpath: /TED_EXPORT/FORM_SECTION/F13_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/AWARDED_TO_GROUP,/TED_EXPORT/FORM_SECTION/F13_2014/AWARD_CONTRACT/AWARDED_CONTRACT/AWARDED_TO_GROUP
+#title: V.3.3.1 - Official name
+#description: “V.3.3.1 - Official name” in SF corresponds to “BT-500 Organisation Name” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/OFFICIALNAME, /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/OFFICIALNAME. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/OFFICIALNAME,/TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/OFFICIALNAME
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:OrganisationGroup .
-		?this epo:hasMember ?value }
+		?this rdf:type epo:Winner .
+		?this epo:playedBy / epo:hasLegalName ?value . }
