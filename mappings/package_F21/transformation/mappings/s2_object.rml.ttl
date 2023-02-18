@@ -30,7 +30,7 @@ tedm:NoticeAwardInformation a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:ProcurementMonetaryValue
                 ] ;
         ] ;
- rr:predicateObjectMap
+    rr:predicateObjectMap
         [
             rr:predicate epo:hasProcurementLowestReceivedTenderValue ;
             rr:objectMap
@@ -115,27 +115,6 @@ tedm:ProcurementHighestReceivedTenderValue  a rr:TriplesMap ;
                     ];
                 ] ;
         ] .
-tedm:ProcedureSpecificTerm a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasCrossBorderLaw;
-            rr:objectMap
-                [
-                    rml:reference "PROCUREMENT_LAW";
-                    rml:languageMap [
-                        rml:reference "lower-case(ancestor::*/@LG)"
-                    ]
-                ]
-        ] ;
-     rr:predicateObjectMap
-        [
-            rr:predicate epo:isAwardedByCPB ;
-            rr:objectMap
-                [
-                   rml:reference "if(exists(CENTRAL_PURCHASING)) then 'true' else null";
-                   rr:datatype xsd:boolean
-                ] ;
-        ] .
 tedm:MonetaryValueProcedure a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -207,14 +186,6 @@ tedm:Procedure a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ProcedureSpecificTerm
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
             rr:predicate epo:hasProcurementScopeDividedIntoLot ;
             rr:objectMap
                 [
@@ -250,19 +221,19 @@ tedm:Procedure a rr:TriplesMap ;
         ] .
 
 tedm:ProcedurePurpose a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasMainClassification ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:cpvsuppl;
-                    rr:joinCondition [
-                        rr:child "CPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE";
-                        rr:parent "code.value";
-                    ];
-                ] ;
-
-        ] ;
+# Not mapping supplementary CPV codes, as EPO does not provide a way to group them with "regular" CPV codes. See issues #119 and #205.
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasMainClassification ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:cpvsuppl;
+#                    rr:joinCondition [
+#                        rr:child "CPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE";
+#                        rr:parent "code.value";
+#                    ];
+#                ] ;
+#        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasMainClassification ;
@@ -777,28 +748,18 @@ tedm:Period a rr:TriplesMap ;
         ] .
 
 tedm:LotPurpose a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasAdditionalClassification ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:cpvsuppl;
-                    rr:joinCondition [
-                        rr:child "CPV_SUPPLEMENTARY_CODE/@CODE";
-                        rr:parent "code.value";
-                    ];
-                ] ;
-
-        ] ;
-#        rr:predicateObjectMap
+# Not mapping supplementary CPV codes, as EPO does not provide a way to group them with "regular" CPV codes. See issues #119 and #205.
+#    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasAdditionalClassification ;
 #            rr:objectMap
 #                [
-#                    rml:reference "if (not(exists(CPV_ADDITIONAL/CPV_SUPPLEMENTARY_CODE/@CODE))) then 'http://data.europa.eu/cpv/cpv/OP_DATPRO' else null";
-#                    rr:termType rr:IRI;
-#                ]
-#
+#                    rr:parentTriplesMap tedm:cpvsuppl;
+#                    rr:joinCondition [
+#                        rr:child "CPV_SUPPLEMENTARY_CODE/@CODE";
+#                        rr:parent "code.value";
+#                    ];
+#                ] ;
 #        ] ;
     rr:predicateObjectMap
         [
@@ -812,16 +773,6 @@ tedm:LotPurpose a rr:TriplesMap ;
                     ];
                 ] ;
         ] .
-#    rr:predicateObjectMap
-#        [
-#            rr:predicate epo:hasAdditionalClassification ;
-#            rr:objectMap
-#                [
-#                    rml:reference "if (not(exists(CPV_ADDITIONAL/CPV_CODE/@CODE))) then 'http://data.europa.eu/cpv/cpv/OP_DATPRO' else null";
-#                    rr:termType rr:IRI;
-#                ]
-#
-#        ] ;
 
 tedm:LotIdentifier a rr:TriplesMap ;
     rr:predicateObjectMap
@@ -835,6 +786,26 @@ tedm:LotIdentifier a rr:TriplesMap ;
 #JLR#
 
 tedm:ProcedureTerm a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCrossBorderLaw;
+            rr:objectMap
+                [
+                    rml:reference "../CONTRACTING_BODY/PROCUREMENT_LAW";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ]
+        ] ;
+     rr:predicateObjectMap
+        [
+            rr:predicate epo:isAwardedByCPB ;
+            rr:objectMap
+                [
+                   rml:reference "if(exists(../CONTRACTING_BODY/CENTRAL_PURCHASING)) then 'true' else null";
+                   rr:datatype xsd:boolean
+                ] ;
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:isSubmissionForAllLotsAllowed;
