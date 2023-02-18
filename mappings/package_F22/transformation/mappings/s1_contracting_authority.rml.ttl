@@ -21,14 +21,14 @@ tedm:contracting_authority
   rdfs:label "TED-SWS mapping of "@en ;  
   dct:date "2022-05-11"^^xsd:date .
 tedm:BuyerOrganisationGroup a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasDeliveryGateway ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:OrganisationChannel;
-                ]
-        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasDeliveryGateway ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:ElectronicCommunicationChannel;
+#                ]
+#        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasMember;
@@ -404,7 +404,7 @@ tedm:Organisation a rr:TriplesMap ;
 #            rr:predicate epo:hasDeliveryGateway ;
 #            rr:objectMap
 #                [
-#                    rr:parentTriplesMap tedm:OrganisationChannel;
+#                    rr:parentTriplesMap tedm:ElectronicCommunicationChannel;
 #                    rr:joinCondition [
 #                        rr:child "if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then 'true' else null";
 #                        rr:parent "if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then 'true' else null";
@@ -613,7 +613,7 @@ tedm:OrganisationAddress  a rr:TriplesMap ;
                 ] ;
         ] .
 # mapping specific to F22
-tedm:OrganisationChannel a rr:TriplesMap ;
+tedm:ElectronicCommunicationChannel a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasURL ;
@@ -621,6 +621,15 @@ tedm:OrganisationChannel a rr:TriplesMap ;
                 [
                     rml:reference ".";
                     rr:datatype xsd:anyURI;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:isAdhocChannel ;
+            rr:objectMap
+                [
+                    rr:constant true;
+                    rr:datatype xsd:boolean;
                 ] ;
         ] .
 tedm:AccessTerm  a rr:TriplesMap ;
