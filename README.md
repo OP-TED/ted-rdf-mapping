@@ -44,7 +44,7 @@ The following table indicates the implementation status of TED Standard Forms, s
 | can-social | **Yes** | **F21** | **F23** |      **F22**      |
 | can-desg | **Yes** | **F13** | **na** |      **F13**      |
 | can-modif |  | F20 | F20 |        F20        |
-| corr (eforms excel treats this as a change to a notice but implementation treats as new form) |  | F14 | F14 |        F14        |
+| corr  |  | F14 | F14 |        F14        |
 | pin-tran |  | na | na |        na         |
 | can-tran |  | na | na |        na         |
 
