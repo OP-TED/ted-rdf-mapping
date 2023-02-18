@@ -4,15 +4,7 @@
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
-@prefix rr: <http://www.w3.org/ns/r2rml#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
-@prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 epd:id_2017-S-150-311900_AccessTerm_giVPfbrqSim8nEmJVEMySt a epo:AccessTerm;
@@ -30,20 +22,17 @@ epd:id_2017-S-150-311900_ContactPoint_m5siyYrFLyRXutUafhfsPE a cccev:ContactPoin
   cccev:email "bermor@jbv.no";
   cccev:telephone "+47 22455000" .
 
-epd:id_2017-S-150-311900_ContractTermLocation_DQoWMPLTNPNQtRLQ7CoTad a dct:Location;
+epd:id_2017-S-150-311900_ContractTermLotLocation_DQoWMPLTNPNQtRLQ7CoTad a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/NO> .
 
-epd:id_2017-S-150-311900_ContractTerm_DQoWMPLTNPNQtRLQ7CoTad a epo:ContractTerm;
-  epo:definesSpecificPlaceOfPerformance epd:id_2017-S-150-311900_ContractTermLocation_DQoWMPLTNPNQtRLQ7CoTad;
-  epo:hasPerformanceConditions """
-               See the qualification section in the tender implementation tool. The contracting authority emphasises that potential service providers must be able to provide nationwide company health services.
-            """ .
+epd:id_2017-S-150-311900_ContractTermLot_DQoWMPLTNPNQtRLQ7CoTad a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2017-S-150-311900_ContractTermLotLocation_DQoWMPLTNPNQtRLQ7CoTad .
 
 epd:id_2017-S-150-311900_LotPurpose_DQoWMPLTNPNQtRLQ7CoTad a epo:Purpose;
   epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/85140000> .
 
 epd:id_2017-S-150-311900_Lot_DQoWMPLTNPNQtRLQ7CoTad a epo:Lot;
-  epo:foreseesContractSpecificTerm epd:id_2017-S-150-311900_ContractTerm_DQoWMPLTNPNQtRLQ7CoTad;
+  epo:foreseesContractSpecificTerm epd:id_2017-S-150-311900_ContractTermLot_DQoWMPLTNPNQtRLQ7CoTad;
   epo:hasAdditionalInformation """
                   See the KGV [electronic tender implementation tool].
                """@en;
@@ -51,10 +40,8 @@ epd:id_2017-S-150-311900_Lot_DQoWMPLTNPNQtRLQ7CoTad a epo:Lot;
                   See the KGV [electronic tender implementation tool].
                """@en;
   epo:hasEstimatedValue epd:id_2017-S-150-311900_MainMonetaryValueLot_DQoWMPLTNPNQtRLQ7CoTad;
-  epo:hasPerformingStaffQualificationInformation <http://publications.europa.eu/resource/authority/requirement-stage/not-requ>;
   epo:hasPurpose epd:id_2017-S-150-311900_LotPurpose_DQoWMPLTNPNQtRLQ7CoTad;
-  epo:isUsingEUFunds false;
-  epo:specifiesSelectionCriterion epd:id_2017-S-150-311900_SelectionCriterion_8WnycBGRttupkuAjn5qgEL .
+  epo:isUsingEUFunds false .
 
 epd:id_2017-S-150-311900_MainMonetaryValueLot_DQoWMPLTNPNQtRLQ7CoTad a epo:MonetaryValue;
   epo:hasAmountValue 24000000.0;
@@ -65,15 +52,16 @@ epd:id_2017-S-150-311900_MonetaryValueProcedure_gr6wHjNCcb3rjb99BLfoA4 a epo:Mon
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/NOK> .
 
 epd:id_2017-S-150-311900_Notice a epo:CompetitionNotice, epo:Notice;
-  epo:announcesNoticeAwardInformation epd:id_2017-S-150-311900_NoticeAwardInformation_gr6wHjNCcb3rjb99BLfoA4;
-  epo:announcesRole epd:id_2017-S-150-311900_ProcurementProcedureInformationProvider_2j68QZWtQoYKqSymRQ8BqW,
+  epo:announcesRole epd:id_2017-S-150-311900_Buyer_giVPfbrqSim8nEmJVEMySt, epd:id_2017-S-150-311900_ProcurementProcedureInformationProvider_2j68QZWtQoYKqSymRQ8BqW,
     epd:id_2017-S-150-311900_Reviewer_bNXttKcAP6sHRqnMNN5A2c, epd:id_2017-S-150-311900_TenderReceiver_eYMPaGWZ2CkAacpLEJrJmc;
   epo:hasDispatchDate "2017-08-05"^^xsd:date;
+  epo:hasID epd:id_2017-S-150-311900_NoticeIdentifier_gr6wHjNCcb3rjb99BLfoA4;
+  epo:hasPublicationDate "20170808";
   epo:refersToLot epd:id_2017-S-150-311900_Lot_DQoWMPLTNPNQtRLQ7CoTad;
-  epo:refersToProcedure epd:id_2017-S-150-311900_Procedure_gr6wHjNCcb3rjb99BLfoA4;
-  epo:refersToRole epd:id_2017-S-150-311900_Buyer_giVPfbrqSim8nEmJVEMySt .
+  epo:refersToProcedure epd:id_2017-S-150-311900_Procedure_gr6wHjNCcb3rjb99BLfoA4 .
 
-epd:id_2017-S-150-311900_NoticeAwardInformation_gr6wHjNCcb3rjb99BLfoA4 a epo:NoticeAwardInformation .
+epd:id_2017-S-150-311900_NoticeIdentifier_gr6wHjNCcb3rjb99BLfoA4 a epo:Identifier;
+  epo:hasIdentifierValue "2017/S 150-311900" .
 
 epd:id_2017-S-150-311900_OrganisationAddress_m5siyYrFLyRXutUafhfsPE a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NOR>;
@@ -97,10 +85,7 @@ epd:id_2017-S-150-311900_ProcedureIdentifier_gr6wHjNCcb3rjb99BLfoA4 a epo:Identi
 epd:id_2017-S-150-311900_ProcedurePurpose_gr6wHjNCcb3rjb99BLfoA4 a epo:Purpose;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/85147000> .
 
-epd:id_2017-S-150-311900_ProcedureSpecificTerm_giVPfbrqSim8nEmJVEMySt a epo:ProcedureSpecificTerm .
-
 epd:id_2017-S-150-311900_Procedure_gr6wHjNCcb3rjb99BLfoA4 a epo:Procedure;
-  epo:foreseesContractSpecificTerm epd:id_2017-S-150-311900_ContractTerm_DQoWMPLTNPNQtRLQ7CoTad;
   epo:hasAdditionalInformation """
                See the KGV [electronic tender implementation tool].
             """@en;
@@ -118,7 +103,7 @@ epd:id_2017-S-150-311900_Procedure_gr6wHjNCcb3rjb99BLfoA4 a epo:Procedure;
                Procurement of company health services (BHT).
             """@en;
   epo:isSubjectToProcedureSpecificTerm epd:id_2017-S-150-311900_AccessTerm_giVPfbrqSim8nEmJVEMySt,
-    epd:id_2017-S-150-311900_ProcedureSpecificTerm_giVPfbrqSim8nEmJVEMySt, epd:id_2017-S-150-311900_SubmissionTerm_TpRzH5Zhxv2cEJmxdfhJYo .
+    epd:id_2017-S-150-311900_SubmissionTerm_TpRzH5Zhxv2cEJmxdfhJYo .
 
 epd:id_2017-S-150-311900_ProcurementProcedureInformationProvider_2j68QZWtQoYKqSymRQ8BqW
   a epo:ProcurementProcedureInformationProvider;
@@ -143,14 +128,9 @@ epd:id_2017-S-150-311900_ReviewerOrganisation_bNXttKcAP6sHRqnMNN5A2c a org:Organ
 epd:id_2017-S-150-311900_Reviewer_bNXttKcAP6sHRqnMNN5A2c a epo:Reviewer;
   epo:playedBy epd:id_2017-S-150-311900_ReviewerOrganisation_bNXttKcAP6sHRqnMNN5A2c .
 
-epd:id_2017-S-150-311900_SelectionCriterion_8WnycBGRttupkuAjn5qgEL a epo:SelectionCriterion;
-  cccev:description """
-               See the KGV [electronic tender implementation tool].
-            """ .
-
 epd:id_2017-S-150-311900_SubmissionTerm_TpRzH5Zhxv2cEJmxdfhJYo a epo:SubmissionTerm;
   epo:hasLanguage "EN", "NO";
-  epo:hasReceiptDeadline "2017-08-31T12:00:00"^^xsd:dateTime;
+  epo:hasReceiptDeadline "2017-08-31T12:00";
   epo:hasSubmissionURL "http://eu.eu-supply.com/app/rfq/rwlentrance_s.asp?PID=192056&B=BANENOR"^^xsd:anyURI .
 
 epd:id_2017-S-150-311900_TenderReceiver_eYMPaGWZ2CkAacpLEJrJmc a epo:TenderReceiver;

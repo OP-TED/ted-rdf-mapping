@@ -1,11 +1,10 @@
-#title: III.1.9.1 - Conditions to be fulfilled by economic operators in view of their qualification
-#description: “III.1.9.1 - Conditions to be fulfilled by economic operators in view of their qualification” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/LEFTI/QUALIFICATION/CONDITIONS. The expected ontology instances are epo: epo:Lot / epo:SelectionCriterion / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/LEFTI/QUALIFICATION/CONDITIONS
+#title: IV.1.1.6 - Award of a contract without prior publication of a call for competition in the Official Journal of the European Union in the cases listed below
+#description: “IV.1.1.6 - Award of a contract without prior publication of a call for competition in the Official Journal of the European Union in the cases listed below” in SF corresponds to “BT-105 Procedure Type” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL. The expected ontology instances are epo: epo:Procedure / at-voc:procurement-procedure-type .
+#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL
 
-PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Lot .
-		?this epo:specifiesSelectionCriterion / cccev:name ?value }
+		?this rdf:type epo:Procedure .
+		?this epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call> . }
