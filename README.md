@@ -78,6 +78,27 @@ When contributing to this repository, please first discuss the change you wish t
 
 Please note we adhere to [Apache code of conduct](https://www.apache.org/foundation/policies/conduct), please follow it in all your interactions with the project.  
 
+## Milestones
+
+Each milestone corresponds to a foreseen release of the ontology.
+
+## Issue labels
+
+The issues are classified based on for classification dimensions: 
+* type label
+  * bug - something implemented incorrectly in a release
+  * missing feature - something expected but missing from a release   
+  * feature request - something requested to be implemented in a future release
+  * implementation question - something needs clarified, refined or decided before the implementation can continue
+  * release question - something needs clarified before a release is considered accepted
+* action label
+  * for implementation - it can be implemented and closed, all is clear
+  * for closing - it can be closed but an additional confirmation is needed
+* auxiliary label
+  * ppds - it is related to the PPDS project
+  * bdti - it is related to the BDTI project
+
+
 # Licence 
 
 The documents, such as reports and specifications are licenced under a [CC BY 4.0 licence](https://creativecommons.org/licenses/by/4.0/deed.en).
