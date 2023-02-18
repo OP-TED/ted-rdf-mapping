@@ -267,18 +267,20 @@ tedm:ProcessPlanningTermLot a rr:TriplesMap ;
             rml:iterator "/TED_EXPORT/FORM_SECTION/F23_2014[1]/OBJECT_CONTRACT" ;
             rml:referenceFormulation ql:XPath
        ] .
-tedm:ProcessPlanningTermProcedure a rr:TriplesMap ;
-    rr:subjectMap
-        [
-            rml:reference "if (exists(DATE_AWARD_SCHEDULED)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ProcessPlanningTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
-            rr:class epo:ProcessPlanningTerm
-        ] ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F23_2014[1]/PROCEDURE" ;
-            rml:referenceFormulation ql:XPath
-       ] .
+# Commenting this out as this is not an appropriate mapping for the field IV.2.5. EPO 3.1.0 does not provide an appropriate model.
+# We will map this field when future EPO versions will provide an appropriate representation for it.
+#tedm:ProcessPlanningTermProcedure a rr:TriplesMap ;
+#    rr:subjectMap
+#        [
+#            rml:reference "if (exists(DATE_AWARD_SCHEDULED)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ProcessPlanningTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+#            rr:class epo:ProcessPlanningTerm
+#        ] ;
+#    rml:logicalSource
+#        [
+#            rml:source "data/source.xml" ;
+#            rml:iterator "/TED_EXPORT/FORM_SECTION/F23_2014[1]/PROCEDURE" ;
+#            rml:referenceFormulation ql:XPath
+#       ] .
 tedm:ProcurementLowestReceivedTenderValue a rr:TriplesMap ;
     rml:logicalSource
         [
