@@ -391,7 +391,7 @@ tedm:Lot a rr:TriplesMap ;
             rr:predicate epo:foreseesContractSpecificTerm ;
             rr:objectMap
             [
-                rr:parentTriplesMap tedm:ContractTerm;
+                rr:parentTriplesMap tedm:ContractTermLot;
                 rr:joinCondition [
                     rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                     rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
@@ -600,7 +600,7 @@ tedm:AwardCriterion a rr:TriplesMap ;
                     ]
                 ] ;
         ] .
-tedm:ContractTerm a rr:TriplesMap ;
+tedm:ContractTermLot a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasOptionsDescription ;
@@ -617,7 +617,7 @@ tedm:ContractTerm a rr:TriplesMap ;
             rr:predicate epo:definesSpecificPlaceOfPerformance ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ContractTermLocation;
+                    rr:parentTriplesMap tedm:ContractTermLotLocation;
                     rr:joinCondition [
 #                        rr:child "./@ITEM";
 #                        rr:parent "./@ITEM";
@@ -661,7 +661,7 @@ tedm:ContractTerm a rr:TriplesMap ;
                     rr:datatype xsd:boolean
                 ]
         ] .
-tedm:ContractTermLocation a rr:TriplesMap ;
+tedm:ContractTermLotLocation a rr:TriplesMap ;
 #    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasNutsCode ;
@@ -689,14 +689,14 @@ tedm:ContractTermLocation a rr:TriplesMap ;
             rr:predicate locn:address ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ContractTermLocationAddress;
+                    rr:parentTriplesMap tedm:ContractTermLotLocationAddress;
                     rr:joinCondition [
                         rr:child "if(exists(./@ITEM)) then ./@ITEM else 1";
                         rr:parent "if(exists(./@ITEM)) then ./@ITEM else 1";
                     ];
                 ] ;
         ] .
-tedm:ContractTermLocationAddress a rr:TriplesMap ;
+tedm:ContractTermLotLocationAddress a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate locn:fullAddress ;
