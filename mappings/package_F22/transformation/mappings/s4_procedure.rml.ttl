@@ -230,8 +230,11 @@ tedm:SubmissionTerm a rr:TriplesMap ;
 #                   # We likely don't need to add the conditions for notice types:
 #                   # - "PRI", as in case of F23 this information will only appear in the "PRI notices (and should not appear in "CONCESSION_AWARD_CONTRACT" notices
 #                   # - "QSU_ONLY" and "PER_ONLY", as for those type of notices we should not have this type of information specified; however, in case they are (by mistake/oversight), we will map it to this property
-                    rml:reference "if(../NOTICE/@TYPE='CONTRACT' or ../NOTICE/@TYPE='PRI' or ../NOTICE/@TYPE='QSU_ONLY' or ../NOTICE/@TYPE='QSU_CALL_COMPETITION' or ../NOTICE/@TYPE='PER_ONLY') then (if(exists(DATE_RECEIPT_TENDERS) and exists(TIME_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T' || TIME_RECEIPT_TENDERS || ':00' else if(exists(DATE_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T00:00:00' else null) else null";
-                    rr:datatype xsd:dateTime
+                    rml:reference "if(../NOTICE/@TYPE='CONTRACT' or ../NOTICE/@TYPE='PRI' or ../NOTICE/@TYPE='QSU_ONLY' or ../NOTICE/@TYPE='QSU_CALL_COMPETITION' or ../NOTICE/@TYPE='PER_ONLY') then (if(exists(DATE_RECEIPT_TENDERS) and exists(TIME_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T' || TIME_RECEIPT_TENDERS else if(exists(DATE_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS else null) else null";
+                    rr:datatype xsd:string
+#                    # below is the original, smarter, mapping to ensure conversion to a proper xsd:dateTime value:
+#                    rml:reference "if(../NOTICE/@TYPE='CONTRACT' or ../NOTICE/@TYPE='PRI' or ../NOTICE/@TYPE='QSU_ONLY' or ../NOTICE/@TYPE='QSU_CALL_COMPETITION' or ../NOTICE/@TYPE='PER_ONLY') then (if(exists(DATE_RECEIPT_TENDERS) and exists(TIME_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T' || TIME_RECEIPT_TENDERS || ':00' else if(exists(DATE_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T00:00:00' else null) else null";
+#                    rr:datatype xsd:dateTime
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -239,8 +242,11 @@ tedm:SubmissionTerm a rr:TriplesMap ;
             rr:predicate epo:hasReceiptExpressionDeadline ;
             rr:objectMap
                 [
-                    rml:reference "if(../NOTICE/@TYPE='PRI_CALL_COMPETITION' or ../NOTICE/@TYPE='PER_CALL_COMPETITION') then (if(exists(DATE_RECEIPT_TENDERS) and exists(TIME_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T' || TIME_RECEIPT_TENDERS || ':00' else if(exists(DATE_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T00:00:00' else null) else null";
-                    rr:datatype xsd:dateTime
+                    rml:reference "if(../NOTICE/@TYPE='PRI_CALL_COMPETITION' or ../NOTICE/@TYPE='PER_CALL_COMPETITION') then (if(exists(DATE_RECEIPT_TENDERS) and exists(TIME_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T' || TIME_RECEIPT_TENDERS else if(exists(DATE_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS else null) else null";
+                    rr:datatype xsd:string
+#                    # below is the original, smarter, mapping to ensure conversion to a proper xsd:dateTime value:
+#                    rml:reference "if(../NOTICE/@TYPE='PRI_CALL_COMPETITION' or ../NOTICE/@TYPE='PER_CALL_COMPETITION') then (if(exists(DATE_RECEIPT_TENDERS) and exists(TIME_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T' || TIME_RECEIPT_TENDERS || ':00' else if(exists(DATE_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T00:00:00' else null) else null";
+#                    rr:datatype xsd:dateTime
                 ] ;
         ] ;
     rr:predicateObjectMap
