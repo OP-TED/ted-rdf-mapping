@@ -31,12 +31,14 @@ epd:id_2019-S-230-565008_ContactPoint_7D5VmvEvVafBz7JQr2uuS8 a cccev:ContactPoin
   cccev:email "sueca_asj@gva.es";
   cccev:telephone "+34 961700050" .
 
-epd:id_2019-S-230-565008_ContractTermLocation_9kJZhTgye29otV72ZHovp4 a dct:Location;
+epd:id_2019-S-230-565008_ContractTermLotLocation_9kJZhTgye29otV72ZHovp4 a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/ES523> .
 
-epd:id_2019-S-230-565008_ContractTerm_9kJZhTgye29otV72ZHovp4 a epo:ContractTerm;
+epd:id_2019-S-230-565008_ContractTermLot_9kJZhTgye29otV72ZHovp4 a epo:ContractTerm;
   epo:definesContractDuration epd:id_2019-S-230-565008_Duration_NrvbEmCZF6uD7i5tqyVJW5;
-  epo:definesSpecificPlaceOfPerformance epd:id_2019-S-230-565008_ContractTermLocation_9kJZhTgye29otV72ZHovp4;
+  epo:definesSpecificPlaceOfPerformance epd:id_2019-S-230-565008_ContractTermLotLocation_9kJZhTgye29otV72ZHovp4 .
+
+epd:id_2019-S-230-565008_ContractTermProcedure_K8q5v8TTWyR48h9DKNno8n a epo:ContractTerm;
   epo:hasEOrdering true .
 
 epd:id_2019-S-230-565008_Duration_NrvbEmCZF6uD7i5tqyVJW5 a epo:SpecificDuration;
@@ -44,12 +46,10 @@ epd:id_2019-S-230-565008_Duration_NrvbEmCZF6uD7i5tqyVJW5 a epo:SpecificDuration;
   time:unitType time:unitMonth .
 
 epd:id_2019-S-230-565008_Lot_9kJZhTgye29otV72ZHovp4 a epo:Lot;
-  epo:foreseesContractSpecificTerm epd:id_2019-S-230-565008_ContractTerm_9kJZhTgye29otV72ZHovp4;
+  epo:foreseesContractSpecificTerm epd:id_2019-S-230-565008_ContractTermLot_9kJZhTgye29otV72ZHovp4;
   epo:hasDescription "Servicios Postales del Ayuntamiento de Sueca."@es;
   epo:hasEstimatedValue epd:id_2019-S-230-565008_MainMonetaryValueLot_9kJZhTgye29otV72ZHovp4;
-  epo:hasPerformingStaffQualificationInformation <http://publications.europa.eu/resource/authority/requirement-stage/not-requ>;
-  epo:isUsingEUFunds false;
-  epo:specifiesSelectionCriterion epd:id_2019-S-230-565008_SelectionCriterion_MpwhAkGR2J9PvrtoXKviLx .
+  epo:isUsingEUFunds false .
 
 epd:id_2019-S-230-565008_MainMonetaryValueLot_9kJZhTgye29otV72ZHovp4 a epo:MonetaryValue;
   epo:hasAmountValue 1064944.44;
@@ -60,15 +60,16 @@ epd:id_2019-S-230-565008_MonetaryValueProcedure_aCmfT72mHtfxPh7XQjZApJ a epo:Mon
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
 
 epd:id_2019-S-230-565008_Notice a epo:CompetitionNotice, epo:Notice;
-  epo:announcesNoticeAwardInformation epd:id_2019-S-230-565008_NoticeAwardInformation_aCmfT72mHtfxPh7XQjZApJ;
-  epo:announcesRole epd:id_2019-S-230-565008_ProcurementProcedureInformationProvider_m3phG9hfUrufLBZkispGTL,
+  epo:announcesRole epd:id_2019-S-230-565008_Buyer_LTC4ztdQQn6ue8NBpQv4rF, epd:id_2019-S-230-565008_ProcurementProcedureInformationProvider_m3phG9hfUrufLBZkispGTL,
     epd:id_2019-S-230-565008_Reviewer_cbWuhNnCxDFGewidLQWHhz, epd:id_2019-S-230-565008_TenderReceiver_3dwpAcw6fYdd72eXB5Lq6b;
   epo:hasDispatchDate "2019-11-25"^^xsd:date;
+  epo:hasID epd:id_2019-S-230-565008_NoticeIdentifier_aCmfT72mHtfxPh7XQjZApJ;
+  epo:hasPublicationDate "20191128";
   epo:refersToLot epd:id_2019-S-230-565008_Lot_9kJZhTgye29otV72ZHovp4;
-  epo:refersToProcedure epd:id_2019-S-230-565008_Procedure_aCmfT72mHtfxPh7XQjZApJ;
-  epo:refersToRole epd:id_2019-S-230-565008_Buyer_LTC4ztdQQn6ue8NBpQv4rF .
+  epo:refersToProcedure epd:id_2019-S-230-565008_Procedure_aCmfT72mHtfxPh7XQjZApJ .
 
-epd:id_2019-S-230-565008_NoticeAwardInformation_aCmfT72mHtfxPh7XQjZApJ a epo:NoticeAwardInformation .
+epd:id_2019-S-230-565008_NoticeIdentifier_aCmfT72mHtfxPh7XQjZApJ a epo:Identifier;
+  epo:hasIdentifierValue "2019/S 230-565008" .
 
 epd:id_2019-S-230-565008_OrganisationAddress_7D5VmvEvVafBz7JQr2uuS8 a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
@@ -94,10 +95,8 @@ epd:id_2019-S-230-565008_ProcedurePurpose_aCmfT72mHtfxPh7XQjZApJ a epo:Purpose;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/64110000> .
 
-epd:id_2019-S-230-565008_ProcedureSpecificTerm_LTC4ztdQQn6ue8NBpQv4rF a epo:ProcedureSpecificTerm .
-
 epd:id_2019-S-230-565008_Procedure_aCmfT72mHtfxPh7XQjZApJ a epo:Procedure;
-  epo:foreseesContractSpecificTerm epd:id_2019-S-230-565008_ContractTerm_9kJZhTgye29otV72ZHovp4;
+  epo:foreseesContractSpecificTerm epd:id_2019-S-230-565008_ContractTermProcedure_K8q5v8TTWyR48h9DKNno8n;
   epo:hasDescription "Servicios postales del Ayuntamiento de Sueca."@es;
   epo:hasEstimatedValue epd:id_2019-S-230-565008_MonetaryValueProcedure_aCmfT72mHtfxPh7XQjZApJ;
   epo:hasID epd:id_2019-S-230-565008_ProcedureIdentifier_aCmfT72mHtfxPh7XQjZApJ;
@@ -107,7 +106,7 @@ epd:id_2019-S-230-565008_Procedure_aCmfT72mHtfxPh7XQjZApJ a epo:Procedure;
   epo:hasPurpose epd:id_2019-S-230-565008_ProcedurePurpose_aCmfT72mHtfxPh7XQjZApJ;
   epo:hasTitle "Servicios postales del Ayuntamiento de Sueca"@es;
   epo:isSubjectToProcedureSpecificTerm epd:id_2019-S-230-565008_AccessTerm_LTC4ztdQQn6ue8NBpQv4rF,
-    epd:id_2019-S-230-565008_ProcedureSpecificTerm_LTC4ztdQQn6ue8NBpQv4rF, epd:id_2019-S-230-565008_SubmissionTerm_K8q5v8TTWyR48h9DKNno8n .
+    epd:id_2019-S-230-565008_SubmissionTerm_K8q5v8TTWyR48h9DKNno8n .
 
 epd:id_2019-S-230-565008_ProcurementProcedureInformationProvider_m3phG9hfUrufLBZkispGTL
   a epo:ProcurementProcedureInformationProvider;
@@ -132,12 +131,9 @@ epd:id_2019-S-230-565008_ReviewerOrganisation_cbWuhNnCxDFGewidLQWHhz a org:Organ
 epd:id_2019-S-230-565008_Reviewer_cbWuhNnCxDFGewidLQWHhz a epo:Reviewer;
   epo:playedBy epd:id_2019-S-230-565008_ReviewerOrganisation_cbWuhNnCxDFGewidLQWHhz .
 
-epd:id_2019-S-230-565008_SelectionCriterion_MpwhAkGR2J9PvrtoXKviLx a epo:SelectionCriterion;
-  cccev:description "Capacidades de obrar:– Capacidad de obrar,– No prohibición para contratar,– Cumplimiento con las obligaciones con la Seguridad Social,– Cumplimiento con las obligaciones tributarias.Solvencias económicas y/o clasificación:– Otros. Descripción: previsto en la cláusula 7a del Pliego de Cláusulas Administrativas.Solvencias técnicas:— Otros. Descripción: previsto en la cláusula 7a del Pliego de Cláusulas Administrativas." .
-
 epd:id_2019-S-230-565008_SubmissionTerm_K8q5v8TTWyR48h9DKNno8n a epo:SubmissionTerm;
   epo:hasLanguage "CA", "ES";
-  epo:hasReceiptDeadline "2019-12-24T14:00:00"^^xsd:dateTime .
+  epo:hasReceiptDeadline "2019-12-24T14:00" .
 
 epd:id_2019-S-230-565008_TenderReceiver_3dwpAcw6fYdd72eXB5Lq6b a epo:TenderReceiver;
   epo:hasContactPointInRole epd:id_2019-S-230-565008_ContactPoint_7D5VmvEvVafBz7JQr2uuS8;
