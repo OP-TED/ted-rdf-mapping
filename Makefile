@@ -26,11 +26,6 @@ install:
 	@ pip install --upgrade pip
 	@ pip install --upgrade --force-reinstall -r requirements.txt
 
-install-custom:
-	@ echo -e "$(BUILD_PRINT)Installing the requirements$(END_BUILD_PRINT)"
-	@ pip install --upgrade pip
-	@ pip install --upgrade --force-reinstall git+https://github.com/OP-TED/ted-rdf-conversion-pipeline@$(or $(TED_SWS_BRANCH),main)#egg=ted-sws
-
 dev-dotenv-file: rml-mapper-path-add-dotenv-file saxon-path-add-dotenv-file dev-secrets-dotenv-file
 
 local-dotenv-file: rml-mapper-path-add-dotenv-file saxon-path-add-dotenv-file local-secrets-dotenv-file
@@ -82,7 +77,15 @@ test:
 	@ mapping_suite_validator package_F03
 	@ mapping_suite_validator package_F03_test
 	@ mapping_suite_validator package_F06
+	@ mapping_suite_validator package_F13
+	@ mapping_suite_validator package_F20
 	@ mapping_suite_validator package_F21
 	@ mapping_suite_validator package_F22
+	@ mapping_suite_validator package_F23
 	@ mapping_suite_validator package_F25
+
+
+clear-xml-resolver-cache:
+	@ echo -e "$(BUILD_PRINT)Clear XML resolver cache!$(END_BUILD_PRINT)"
+	@ rm -r ~/.xmlresolver.org
 

@@ -1,10 +1,10 @@
-#title: V.2.3.12 - The contractor is an SME
-#description: “V.2.3.12 - The contractor is an SME” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/SME, /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR/SME. The expected ontology instances are epo: org:Organization (from CL2) .
-#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/SME,/TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR/SME
+#title: V.2.5.1 - The contract is likely to be subcontracted
+#description: “V.2.5.1 - The contract is likely to be subcontracted” in SF corresponds to “BT-773 Subcontracting” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/LIKELY_SUBCONTRACTED. The expected ontology instances are epo: epo:Tender / epo:SubcontractingEstimate  .
+#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/LIKELY_SUBCONTRACTED
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Business  .
-		?this a epo:Business . }
+		?this rdf:type epo:Tender .
+		?this epo:foreseesSubcontracting ?value }

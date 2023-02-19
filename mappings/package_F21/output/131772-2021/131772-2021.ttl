@@ -4,14 +4,7 @@
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
-@prefix rr: <http://www.w3.org/ns/r2rml#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -31,29 +24,26 @@ epd:id_2021-S-052-131772_ContactPoint_7D5VmvEvVafBz7JQr2uuS8 a cccev:ContactPoin
   cccev:email "contratacion@dipsegovia.es";
   cccev:telephone "+34 921113326" .
 
-epd:id_2021-S-052-131772_ContractTermLocationAddress_9kJZhTgye29otV72ZHovp4 a locn:Address;
+epd:id_2021-S-052-131772_ContractTermLotLocationAddress_9kJZhTgye29otV72ZHovp4 a locn:Address;
   locn:fullAddress "Lo señalado en la cláusula 6.a del PCAP aprobado el efecto."@es .
 
-epd:id_2021-S-052-131772_ContractTermLocation_9kJZhTgye29otV72ZHovp4 a dct:Location;
+epd:id_2021-S-052-131772_ContractTermLotLocation_9kJZhTgye29otV72ZHovp4 a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/ES416>;
-  locn:address epd:id_2021-S-052-131772_ContractTermLocationAddress_9kJZhTgye29otV72ZHovp4 .
+  locn:address epd:id_2021-S-052-131772_ContractTermLotLocationAddress_9kJZhTgye29otV72ZHovp4 .
 
-epd:id_2021-S-052-131772_ContractTerm_9kJZhTgye29otV72ZHovp4 a epo:ContractTerm;
+epd:id_2021-S-052-131772_ContractTermLot_9kJZhTgye29otV72ZHovp4 a epo:ContractTerm;
   epo:definesContractDuration epd:id_2021-S-052-131772_Duration_NrvbEmCZF6uD7i5tqyVJW5;
-  epo:definesSpecificPlaceOfPerformance epd:id_2021-S-052-131772_ContractTermLocation_9kJZhTgye29otV72ZHovp4;
-  epo:hasPerformanceConditions "— consideraciones de tipo social. Descripción: de conformidad con lo establecido en la cláusula 42.a del PCAP aprobado al efecto,— consideraciones de tipo medioambiental. Descripción: de conformidad con lo establecido en la cláusula 42.a del PCAP aprobado al efecto." .
+  epo:definesSpecificPlaceOfPerformance epd:id_2021-S-052-131772_ContractTermLotLocation_9kJZhTgye29otV72ZHovp4 .
 
 epd:id_2021-S-052-131772_Duration_NrvbEmCZF6uD7i5tqyVJW5 a epo:SpecificDuration;
   time:numericDuration 12.0;
   time:unitType time:unitMonth .
 
 epd:id_2021-S-052-131772_Lot_9kJZhTgye29otV72ZHovp4 a epo:Lot;
-  epo:foreseesContractSpecificTerm epd:id_2021-S-052-131772_ContractTerm_9kJZhTgye29otV72ZHovp4;
+  epo:foreseesContractSpecificTerm epd:id_2021-S-052-131772_ContractTermLot_9kJZhTgye29otV72ZHovp4;
   epo:hasDescription "Servicio de comida a domicilio de la Provincia de Segovia."@es;
   epo:hasEstimatedValue epd:id_2021-S-052-131772_MainMonetaryValueLot_9kJZhTgye29otV72ZHovp4;
-  epo:hasPerformingStaffQualificationInformation <http://publications.europa.eu/resource/authority/requirement-stage/not-requ>;
-  epo:isUsingEUFunds false;
-  epo:specifiesSelectionCriterion epd:id_2021-S-052-131772_SelectionCriterion_MpwhAkGR2J9PvrtoXKviLx .
+  epo:isUsingEUFunds false .
 
 epd:id_2021-S-052-131772_MainMonetaryValueLot_9kJZhTgye29otV72ZHovp4 a epo:MonetaryValue;
   epo:hasAmountValue 1358784.0;
@@ -64,15 +54,16 @@ epd:id_2021-S-052-131772_MonetaryValueProcedure_aCmfT72mHtfxPh7XQjZApJ a epo:Mon
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
 
 epd:id_2021-S-052-131772_Notice a epo:CompetitionNotice, epo:Notice;
-  epo:announcesNoticeAwardInformation epd:id_2021-S-052-131772_NoticeAwardInformation_aCmfT72mHtfxPh7XQjZApJ;
-  epo:announcesRole epd:id_2021-S-052-131772_ProcurementProcedureInformationProvider_m3phG9hfUrufLBZkispGTL,
+  epo:announcesRole epd:id_2021-S-052-131772_Buyer_LTC4ztdQQn6ue8NBpQv4rF, epd:id_2021-S-052-131772_ProcurementProcedureInformationProvider_m3phG9hfUrufLBZkispGTL,
     epd:id_2021-S-052-131772_Reviewer_cbWuhNnCxDFGewidLQWHhz, epd:id_2021-S-052-131772_TenderReceiver_3dwpAcw6fYdd72eXB5Lq6b;
   epo:hasDispatchDate "2021-03-11"^^xsd:date;
+  epo:hasID epd:id_2021-S-052-131772_NoticeIdentifier_aCmfT72mHtfxPh7XQjZApJ;
+  epo:hasPublicationDate "20210316";
   epo:refersToLot epd:id_2021-S-052-131772_Lot_9kJZhTgye29otV72ZHovp4;
-  epo:refersToProcedure epd:id_2021-S-052-131772_Procedure_aCmfT72mHtfxPh7XQjZApJ;
-  epo:refersToRole epd:id_2021-S-052-131772_Buyer_LTC4ztdQQn6ue8NBpQv4rF .
+  epo:refersToProcedure epd:id_2021-S-052-131772_Procedure_aCmfT72mHtfxPh7XQjZApJ .
 
-epd:id_2021-S-052-131772_NoticeAwardInformation_aCmfT72mHtfxPh7XQjZApJ a epo:NoticeAwardInformation .
+epd:id_2021-S-052-131772_NoticeIdentifier_aCmfT72mHtfxPh7XQjZApJ a epo:Identifier;
+  epo:hasIdentifierValue "2021/S 052-131772" .
 
 epd:id_2021-S-052-131772_OrganisationAddress_7D5VmvEvVafBz7JQr2uuS8 a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
@@ -98,10 +89,7 @@ epd:id_2021-S-052-131772_ProcedurePurpose_aCmfT72mHtfxPh7XQjZApJ a epo:Purpose;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/85312000> .
 
-epd:id_2021-S-052-131772_ProcedureSpecificTerm_LTC4ztdQQn6ue8NBpQv4rF a epo:ProcedureSpecificTerm .
-
 epd:id_2021-S-052-131772_Procedure_aCmfT72mHtfxPh7XQjZApJ a epo:Procedure;
-  epo:foreseesContractSpecificTerm epd:id_2021-S-052-131772_ContractTerm_9kJZhTgye29otV72ZHovp4;
   epo:hasDescription "Servicio de comida a domicilio de la Provincia de Segovia."@es;
   epo:hasEstimatedValue epd:id_2021-S-052-131772_MonetaryValueProcedure_aCmfT72mHtfxPh7XQjZApJ;
   epo:hasID epd:id_2021-S-052-131772_ProcedureIdentifier_aCmfT72mHtfxPh7XQjZApJ;
@@ -111,7 +99,7 @@ epd:id_2021-S-052-131772_Procedure_aCmfT72mHtfxPh7XQjZApJ a epo:Procedure;
   epo:hasPurpose epd:id_2021-S-052-131772_ProcedurePurpose_aCmfT72mHtfxPh7XQjZApJ;
   epo:hasTitle "Servicio de comida a domicilio de la Provincia de Segovia"@es;
   epo:isSubjectToProcedureSpecificTerm epd:id_2021-S-052-131772_AccessTerm_LTC4ztdQQn6ue8NBpQv4rF,
-    epd:id_2021-S-052-131772_ProcedureSpecificTerm_LTC4ztdQQn6ue8NBpQv4rF, epd:id_2021-S-052-131772_SubmissionTerm_K8q5v8TTWyR48h9DKNno8n .
+    epd:id_2021-S-052-131772_SubmissionTerm_K8q5v8TTWyR48h9DKNno8n .
 
 epd:id_2021-S-052-131772_ProcurementProcedureInformationProvider_m3phG9hfUrufLBZkispGTL
   a epo:ProcurementProcedureInformationProvider;
@@ -135,12 +123,9 @@ epd:id_2021-S-052-131772_ReviewerOrganisation_cbWuhNnCxDFGewidLQWHhz a org:Organ
 epd:id_2021-S-052-131772_Reviewer_cbWuhNnCxDFGewidLQWHhz a epo:Reviewer;
   epo:playedBy epd:id_2021-S-052-131772_ReviewerOrganisation_cbWuhNnCxDFGewidLQWHhz .
 
-epd:id_2021-S-052-131772_SelectionCriterion_MpwhAkGR2J9PvrtoXKviLx a epo:SelectionCriterion;
-  cccev:description "Capacidades de obrar:— no prohibición para contratar,— no estar incurso en incompatibilidades,— cumplimiento con las obligaciones con la Seguridad Social,— cumplimiento con las obligaciones tributarias,— preferencia para empresas dedicadas a la promoción e inserción laboral de personas en situación de exclusión social.Solvencias económicas y/o clasificación:— cifra anual de negocio. Descripción: lo señalado en la cláusula 10.a del PCAP aprobado al efecto.Solvencias técnicas:— Trabajos realizados. Descripción: lo señalado en el apartado B de la cláusula 10.a del PCAP aprobado al efecto." .
-
 epd:id_2021-S-052-131772_SubmissionTerm_K8q5v8TTWyR48h9DKNno8n a epo:SubmissionTerm;
   epo:hasLanguage "ES";
-  epo:hasReceiptDeadline "2021-04-12T14:00:00"^^xsd:dateTime .
+  epo:hasReceiptDeadline "2021-04-12T14:00" .
 
 epd:id_2021-S-052-131772_TenderReceiver_3dwpAcw6fYdd72eXB5Lq6b a epo:TenderReceiver;
   epo:hasContactPointInRole epd:id_2021-S-052-131772_ContactPoint_7D5VmvEvVafBz7JQr2uuS8;

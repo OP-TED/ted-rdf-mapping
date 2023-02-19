@@ -1,10 +1,10 @@
-#title: IV.2.5 - Scheduled date for start of award procedures
-#description: “IV.2.5 - Scheduled date for start of award procedures” in SF corresponds to “no match nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/PROCEDURE/DATE_AWARD_SCHEDULED. The expected ontology instances are epo: epo:Procedure / epo:ProcessPlanningTerm / xsd:date .
-#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/PROCEDURE/DATE_AWARD_SCHEDULED
+#title: V.0.4 - A contract/lot is awarded
+#description: “V.0.4 - A contract/lot is awarded” in SF corresponds to “BT-142 Winner Chosen” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT. The expected ontology instances are epo: epo:Contract / epo:LotAwardOutcome / at-voc:winner-selection-status .
+#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Procedure .
-		?this  epo:isSubjectToTerm / epo:hasAwardDateScheduled ?value }
+		?this rdf:type epo:Contract .
+		?this epo:resultsFromLotAwardOutcome / epo:hasAwardStatus   <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> . }

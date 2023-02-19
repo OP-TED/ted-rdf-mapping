@@ -1,10 +1,11 @@
-#title: VI.2.3 - Electronic payment will be used
-#description: “VI.2.3 - Electronic payment will be used” in SF corresponds to “BT-93 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F23_2014/COMPLEMENTARY_INFO/EPAYMENT. The expected ontology instances are epo: epo:Procedure / epo:ContractTerm / xsd:boolean .
-#xpath: /TED_EXPORT/FORM_SECTION/F23_2014/COMPLEMENTARY_INFO/EPAYMENT
+#title: VI.4.1.5 - Country
+#description: “VI.4.1.5 - Country” in SF corresponds to “BT-514 Organisation Country Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F23_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY/COUNTRY. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / at-voc:country (from country.json) .
+#xpath: /TED_EXPORT/FORM_SECTION/F23_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY/COUNTRY
 
+PREFIX cv: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Procedure .
-		?this epo:foreseesContractSpecificTerm / epo:hasEPayment true . }
+		?this rdf:type epo:Reviewer .
+		?this epo:playedBy / cv:registeredAddress / epo:hasCountryCode ?value . }
