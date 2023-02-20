@@ -1,10 +1,26 @@
+@prefix cac: <urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2#> .
+@prefix cbc: <urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2#> .
 @prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix efac: <http://data.europa.eu/p27/eforms-ubl-extension-aggregate-components/1#> .
+@prefix efbc: <http://data.europa.eu/p27/eforms-ubl-extension-basic-components/1#> .
+@prefix efext: <http://data.europa.eu/p27/eforms-ubl-extensions/1#> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix ext: <urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xsi: <http://www.w3.org/2001/XMLSchema-instance#> .
 
 epd:id__ContactPoint_7iFD8NVFhULkdXRNPqKyHs a cccev:ContactPoint;
   epo:hasFax "+39 06809822699";
@@ -15,6 +31,16 @@ epd:id__ContactPoint_CCKfjNm3UAMuYf3dDso6C2 a cccev:ContactPoint;
   epo:hasFax "+39 0632872310";
   cccev:email "contact@example.com";
   cccev:telephone "+39 06328721" .
+
+epd:id__ContactPoint_DR3HvTAPxvrxutj69uvgGg a cccev:ContactPoint;
+  epo:hasFax "+39 06809822699";
+  cccev:email "crm42527@pec.carabinieri.it";
+  cccev:telephone "+39 0680982269" .
+
+epd:id__ContactPoint_FFherMmRPmxHRZYt6aPD6m a cccev:ContactPoint;
+  epo:hasFax "+39 06809827109";
+  cccev:email "crm42527@pec.carabinieri.it";
+  cccev:telephone "+39 0680982710" .
 
 epd:id__ContactPoint_VBaHVZvvDEkusW8YJnjRf7 a cccev:ContactPoint;
   epo:hasFax "+352 1234567899";
@@ -33,6 +59,13 @@ epd:id__OrganisationAddress_CXdDFvgV5RjePYb9cagtRa a locn:Address;
   locn:postName "Example City";
   locn:thoroughfare "Some Street" .
 
+epd:id__OrganisationAddress_DQ3D2nHojn4VijYMYRtvzY a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ITA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ITI43>;
+  locn:postCode "00197";
+  locn:postName "Roma";
+  locn:thoroughfare "viale Romania 45" .
+
 epd:id__OrganisationAddress_JAQDkMB4STjLj2Z9DkzGKS a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/LUX>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/LU000>;
@@ -40,6 +73,13 @@ epd:id__OrganisationAddress_JAQDkMB4STjLj2Z9DkzGKS a locn:Address;
   locn:postName "Luxembourg" .
 
 epd:id__OrganisationAddress_SyrXybB9qnydTsiCYvqfwn a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ITA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ITI43>;
+  locn:postCode "00197";
+  locn:postName "Roma";
+  locn:thoroughfare "viale Romania 45" .
+
+epd:id__OrganisationAddress_ZDibsmqh6XaKEG4WjjfUDb a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ITA>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/ITI43>;
   locn:postCode "00197";
@@ -59,6 +99,12 @@ epd:id__OrganisationIdentifier_7RNAdNBeN3NAMhHZ5nqf4W a epo:Identifier;
 epd:id__OrganisationIdentifier_AFLzSdXaKa9CV5ppQUihrL a epo:Identifier;
   epo:hasIdentifierValue "111 111 111" .
 
+epd:id__OrganisationIdentifier_Qks9iMKBhzuPQ8bKunKqhX a epo:Identifier;
+  epo:hasIdentifierValue "TPO-0001" .
+
+epd:id__OrganisationIdentifier_SicWwQNpXAXt8MA8Q7pohW a epo:Identifier;
+  epo:hasIdentifierValue "TPO-0002" .
+
 epd:id__OrganisationIdentifier_X2eAYHFAFEvBmmzW8bNfM5 a epo:Identifier;
   epo:hasIdentifierValue "123 456 789" .
 
@@ -66,21 +112,59 @@ epd:id__OrganisationIdentifier_fMgh2QxQrR7xmntdetfgku a epo:Identifier;
   epo:hasIdentifierValue "111 222 333" .
 
 epd:id__Organisation_5Kv7MnHiqLvQdcMwr2FkvG a org:Organization;
+  epo:hasDeliveryGateway epd:id__OrganizationChannel_LmZfWzqV6Pr4nRLBcJSQYX;
   epo:hasID epd:id__OrganisationIdentifier_7RNAdNBeN3NAMhHZ5nqf4W;
+  epo:hasLegalName "Tribunale amministrativo regionale del Lazio";
   epo:hasPrimaryContactPoint epd:id__ContactPoint_CCKfjNm3UAMuYf3dDso6C2;
   cccev:registeredAddress epd:id__OrganisationAddress_kp4YHhT2Gw9BnTPKnwxcdW .
 
 epd:id__Organisation_N4cgMQL3K4CA88AYBBwUNn a org:Organization;
+  epo:hasDeliveryGateway epd:id__OrganizationChannel_dncygpvZhCw79SnLWFkb6H;
   epo:hasID epd:id__OrganisationIdentifier_X2eAYHFAFEvBmmzW8bNfM5;
+  epo:hasLegalName "Comando generale dell'Arma dei carabinieri ";
   epo:hasPrimaryContactPoint epd:id__ContactPoint_7iFD8NVFhULkdXRNPqKyHs;
   cccev:registeredAddress epd:id__OrganisationAddress_SyrXybB9qnydTsiCYvqfwn .
 
 epd:id__Organisation_TftBQ7CiqCcyirLAwhsyEn a org:Organization;
+  epo:hasDeliveryGateway epd:id__OrganizationChannel_BBv29sxfyiNoUqgRioRVLR;
   epo:hasID epd:id__OrganisationIdentifier_fMgh2QxQrR7xmntdetfgku;
+  epo:hasLegalName "eSendCorp";
   epo:hasPrimaryContactPoint epd:id__ContactPoint_VBaHVZvvDEkusW8YJnjRf7;
   cccev:registeredAddress epd:id__OrganisationAddress_JAQDkMB4STjLj2Z9DkzGKS .
 
 epd:id__Organisation_U3RE4hoDTRa29J56Gmq3BL a org:Organization;
+  epo:hasDeliveryGateway epd:id__OrganizationChannel_EKMwTBqWjr3fuYY8QxHmKR;
   epo:hasID epd:id__OrganisationIdentifier_AFLzSdXaKa9CV5ppQUihrL;
+  epo:hasLegalName "Example Mediator";
   epo:hasPrimaryContactPoint epd:id__ContactPoint_YG3RWHcWTBZPCNqFAQ7guC;
   cccev:registeredAddress epd:id__OrganisationAddress_CXdDFvgV5RjePYb9cagtRa .
+
+epd:id__Organisation_Ud9UCKnRE7Ktx8vDgbsqmm a org:Organization;
+  epo:hasDeliveryGateway epd:id__OrganizationChannel_Ud9UCKnRE7Ktx8vDgbsqmm;
+  epo:hasID epd:id__OrganisationIdentifier_Qks9iMKBhzuPQ8bKunKqhX;
+  epo:hasLegalName "Ufficio Approvvigionamenti";
+  cccev:registeredAddress epd:id__OrganisationAddress_DQ3D2nHojn4VijYMYRtvzY .
+
+epd:id__Organisation_VrhSdfx4KsPjDwzxKDzs5A a org:Organization;
+  epo:hasDeliveryGateway epd:id__OrganizationChannel_VrhSdfx4KsPjDwzxKDzs5A;
+  epo:hasID epd:id__OrganisationIdentifier_SicWwQNpXAXt8MA8Q7pohW;
+  epo:hasLegalName "Direzione di Commissariato";
+  cccev:registeredAddress epd:id__OrganisationAddress_ZDibsmqh6XaKEG4WjjfUDb .
+
+epd:id__OrganizationChannel_BBv29sxfyiNoUqgRioRVLR a cccev:Channel;
+  epo:hasURL "https://esendercorp.eu" .
+
+epd:id__OrganizationChannel_EKMwTBqWjr3fuYY8QxHmKR a cccev:Channel;
+  epo:hasURL "https://example-mediator.eu" .
+
+epd:id__OrganizationChannel_LmZfWzqV6Pr4nRLBcJSQYX a cccev:Channel;
+  epo:hasURL "https://www.giustizia-amministrativa.it/tribunale-amministrativo-regionale-per-il-lazio-roma" .
+
+epd:id__OrganizationChannel_Ud9UCKnRE7Ktx8vDgbsqmm a cccev:Channel;
+  epo:hasURL "http://www.carabinieri.it/Internet/" .
+
+epd:id__OrganizationChannel_VrhSdfx4KsPjDwzxKDzs5A a cccev:Channel;
+  epo:hasURL "http://www.carabinieri.it/Internet/" .
+
+epd:id__OrganizationChannel_dncygpvZhCw79SnLWFkb6H a cccev:Channel;
+  epo:hasURL "http://www.carabinieri.it/Internet/" .
