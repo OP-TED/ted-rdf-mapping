@@ -36,6 +36,8 @@ tedm:technical_mapping_f03
 
 # Organization - Company
 tedm:Organisation a rr:TriplesMap ;
+    rdfs:label "ND-Company";
+    rdfs:comment "Applies to: GR-Company";
     rr:subjectMap
         [
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Organisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
@@ -50,6 +52,7 @@ tedm:Organisation a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rdfs:comment "The address of the company";
             rr:predicate cv:registeredAddress ;
             rr:objectMap
                 [
@@ -62,6 +65,7 @@ tedm:Organisation a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rdfs:comment "The contact point of the company";
             rr:predicate epo:hasPrimaryContactPoint ;
             rr:objectMap
                 [
@@ -74,6 +78,7 @@ tedm:Organisation a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rdfs:comment "The identification information of the company";
             rr:predicate epo:hasID;
             rr:objectMap
                 [
@@ -86,6 +91,7 @@ tedm:Organisation a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rdfs:comment "The endpoint ID and the website URI of the company";
             rr:predicate epo:hasDeliveryGateway ;
             rr:objectMap
                 [
@@ -98,6 +104,7 @@ tedm:Organisation a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rdfs:comment "A property that indicates the natural person that is related with the company";
             rdfs:label "BT-633-Organization";
             rr:predicate foaf:name ;
             rr:objectMap
@@ -107,6 +114,7 @@ tedm:Organisation a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rdfs:comment "A property that indicates the legal name of a company";
             rdfs:label "BT-500-Organization-Company";
             rr:predicate epo:hasLegalName ;
             rr:objectMap
@@ -298,6 +306,7 @@ tedm:OrganisationAddress  a rr:TriplesMap ;
 
 
 tedm:OrganisationIdentifier a rr:TriplesMap ;
+    rdfs:comment "The identifier of a company";
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -321,6 +330,8 @@ tedm:OrganisationIdentifier a rr:TriplesMap ;
 
 #Organization - TouchPoint
 tedm:OrganisationTouchPoint a rr:TriplesMap ;
+    rdfs:label "ND-TouchPoint";
+    rdfs:comment "Applies to: GR-TouchPoint";
     rr:subjectMap
         [
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Organisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
@@ -402,6 +413,7 @@ tedm:OrganisationTouchPoint a rr:TriplesMap ;
         ] .
 
 tedm:OrganisationTouchPointChannel a rr:TriplesMap ;
+    rdfs:comment "The channel of a touch point";
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -490,6 +502,7 @@ tedm:ContactTouchPoint   a rr:TriplesMap ;
 
 
 tedm:OrganisationTouchPointIdentifier a rr:TriplesMap ;
+    rdfs:comment "The identifier of a touch point";
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -603,6 +616,33 @@ tedm:TouchPointAddress  a rr:TriplesMap ;
                     rml:reference "'http://publications.europa.eu/resource/authority/country/' || cac:Country/cbc:IdentificationCode";
                     rr:termType rr:IRI;
                 ] ;
+        ] .
+
+#Notice Change
+tedm:NoticeChange a rr:TriplesMap ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_NoticeChange_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:NoticeChange
+
+        ] ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:TouchPoint";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasPrimaryContactPoint ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ContactPoint ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(..)";
+                    ];
+                ]
         ] .
 
 
