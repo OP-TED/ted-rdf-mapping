@@ -306,6 +306,7 @@ tedm:OrganisationAddress  a rr:TriplesMap ;
 
 
 tedm:OrganisationIdentifier a rr:TriplesMap ;
+    rdfs:comment "The identifier of a company";
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -329,6 +330,8 @@ tedm:OrganisationIdentifier a rr:TriplesMap ;
 
 #Organization - TouchPoint
 tedm:OrganisationTouchPoint a rr:TriplesMap ;
+    rdfs:label "ND-TouchPoint";
+    rdfs:comment "Applies to: GR-TouchPoint";
     rr:subjectMap
         [
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Organisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
@@ -615,31 +618,114 @@ tedm:TouchPointAddress  a rr:TriplesMap ;
                 ] ;
         ] .
 
-#Notice Change
-tedm:NoticeChange a rr:TriplesMap ;
-    rr:subjectMap
-        [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_NoticeChange_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class epo:NoticeChange
-
-        ] ;
+#Awarding Criterion
+tedm:AwardingCriterion  a rr:TriplesMap ;
+    rdfs:label "ND-LotsGroupAwardCriteria";
+    rdfs:comment "Applies to: GR-LotsGroup-AwardCriteria";
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:TouchPoint";
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='LotsGroup']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion" ;
             rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_AwardingCriterion_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:AwardCriterion
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasPrimaryContactPoint ;
+            rdfs:label "BT-539-LotsGroup";
+            rr:predicate epo:hasAwardCriterionType ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ContactPoint ;
+                    rml:reference "cbc:AwardingCriterionTypeCode[@listName='award-criterion-type']";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-539-LotsGroup";
+            rr:predicate cccev:description ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Description";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-734-LotsGroup";
+            rr:predicate cccev:name ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Name";
+
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-541-LotsGroup";
+            rr:predicate epo:hasFixedValue ;
+            rr:objectMap
+                [
+                    rml:reference "ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter/efbc:ParameterNumeric";
+
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5421-LotsGroup";
+            rr:predicate cccev:weight ;
+            rr:objectMap
+                [
+                    rml:reference "ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter/efbc:ParameterCode[@listName='number-weight']";
+
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5422-LotsGroup";
+            rr:predicate epo:hasFixedValueType ;
+            rr:objectMap
+                [
+                    rml:reference "ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter/efbc:ParameterCode[@listName='number-fixed']";
+
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5423-LotsGroup";
+            rr:predicate epo:hasConstraint ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:AwardCriterionThreholdConstraint ;
                     rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(..)";
+                        rr:child "ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter";
+                        rr:parent ".";
                     ];
-                ]
+                ] ;
+        ] .
+
+
+tedm:AwardCriterionThreholdConstraint  a rr:TriplesMap ;
+    rdfs:comment "Intermediate class for BT-5423-LotsGroup";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='LotsGroup']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_AwardCriterionThreholdConstraint_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class cccev:Constraint
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasThresholdValue ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(efbc:ParameterCode[@listName='number-threshold'])) then efbc:ParameterCode[@listName='number-threshold'] else null";
+                ] ;
         ] .
 
 
@@ -667,3 +753,4 @@ tedm:country a rr:TriplesMap ;
             rml:reference
                 "conceptURI.value" ;
         ] .
+
