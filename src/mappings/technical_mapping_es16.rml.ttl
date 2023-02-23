@@ -728,6 +728,117 @@ tedm:AwardCriterionThreholdConstraint  a rr:TriplesMap ;
                 ] ;
         ] .
 
+#Change
+tedm:ElementChange  a rr:TriplesMap ;
+    rdfs:label "ND-Changes";
+    rdfs:comment "Applies to: GR-Change";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Changes" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ElementChange_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ElementChangeDescription
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-140-notice";
+            rr:predicate epo:hasChangeJustification ;
+            rr:objectMap
+                [
+                    rml:reference "efac:ChangeReason/cbc:ReasonCode";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-762-notice";
+            rr:predicate epo:hasChangeReasonDescription ;
+            rr:objectMap
+                [
+                    rml:reference "efac:ChangeReason/efbc:ReasonDescription";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-758-notice";
+            rr:predicate epo:hasID ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ChangeNoticeIdentifier ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-13716-notice";
+            rr:predicate epo:hasPreviousVersionOfElementReference ;
+            rr:objectMap
+                [
+                    rml:reference "efac:Change/efbc:ChangedSectionIdentifier";
+                    rr:datatype xsd:anyURI;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-141(a)-notice";
+            rr:predicate epo:hasChangeDescription ;
+            rr:objectMap
+                [
+                    rml:reference "efac:Change/efbc:ChangeDescription";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-718-notice";
+            rr:predicate epo:isProcurementDocumentChanged ;
+            rr:objectMap
+                [
+                    rml:reference "efac:Change/efbc:ProcurementDocumentsChangeIndicator";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-719-notice";
+            rr:predicate epo:hasProcurementDocumentChangeDate ;
+            rr:objectMap
+                [
+                    rml:reference "efac:Change/efbc:ProcurementDocumentsChangeDate";
+                    rr:datatype xsd:date;
+                ] ;
+        ] .
+
+tedm:ChangeNoticeIdentifier a rr:TriplesMap ;
+    rdfs:comment "The identifier of a change notice";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Changes";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rml:reference "if (exists(efbc:ChangedNoticeIdentifier)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ChangeNoticeIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-758-notice";
+            rr:predicate epo:hasIdentifierValue ;
+            rr:objectMap
+                [
+                    rml:reference "efbc:ChangedNoticeIdentifier";
+                    rr:datatype xsd:string;
+                ] ;
+        ] .
+
+
+
 
 tedm:nuts a rr:TriplesMap ;
     rml:logicalSource
