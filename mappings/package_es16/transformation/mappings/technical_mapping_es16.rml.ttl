@@ -1166,6 +1166,230 @@ tedm:LotTenderingTermIdentifier a rr:TriplesMap ;
                 ] ;
         ] .
 
+#Access Tendering Term
+tedm:AccessTerm a rr:TriplesMap ;
+    rdfs:label "ND-LotProcurementDocument";
+    rdfs:comment "Applies to: GR-Lot-ProcurementDocuments";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_AccessTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:AccessTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-14-Lot";
+            rr:predicate epo:isProcurementDocumentRestricted  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:DocumentType";
+
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-707-Lot";
+            rr:predicate epo:hasDocumentRestrictionJustification  ;
+            rr:objectMap
+                [
+                    rml:reference "descendant::cbc:DocumentTypeCode";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-708-Lot";
+            rr:predicate epo:hasOfficialLanguage  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:LanguageID[not(../cbc:DocumentStatusCode/text()='non-official')]";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-737-Lot";
+            rr:predicate epo:hasUnofficialLanguage  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:LanguageID[../cbc:DocumentStatusCode/text()='non-official']";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-15-Lot";
+            rr:predicate epo:hasPublicAccessURL  ;
+            rr:objectMap
+                [
+                    rml:reference "if(descendant::cbc:DocumentType/text() = 'non-restricted-document') then descendant::cbc:URI else ''";
+                    rr:datatype xsd:anyURI;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-615-Lot";
+            rr:predicate epo:hasRestrictedAccessURL  ;
+            rr:objectMap
+                [
+                    rml:reference "if(descendant::cbc:DocumentType/text() = 'restricted-document') then descendant::cbc:URI else ''";
+                    rr:datatype xsd:anyURI;
+                ] ;
+        ] .
+
+#Lot Tendering Terms
+tedm:Lot a rr:TriplesMap ;
+    rdfs:label   "ND-Lot";
+    rdfs:comment "Applies to: GR-Lot-Review";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Lot_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Lot
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-99-Lot";
+            rr:predicate epo:isSubjectToLotSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:LotReviewTerm ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../../..)";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "GR-Lot-SubmissionTool";
+            rr:predicate epo:usesChannel ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:LotChannel ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "GR-Lot-PublicOpeningEvent";
+            rr:predicate epo:isSubjectToLotSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:LotOpeningTerm ;
+                    rr:joinCondition[
+                        rr:child "path(..)";
+                        rr:parent "path(../../..)"
+                    ];
+                ] ;
+        ] .
+
+tedm:LotOpeningTerm a rr:TriplesMap ;
+    rdfs:label "ND-PublicOpening";
+    rdfs:comment "GR-Lot-PublicOpeningEvent";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:OpenTenderEvent";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_OpenTenderEvent_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class  epo:OpeningTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasOpeningDescription ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Description";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasOpeningDate ;
+            rr:objectMap
+                [
+                    rml:reference "concat(cbc:OccurrenceDate, ':', cbc:OccurrenceTime)";
+                ] ;
+        ] .
+
+
+
+tedm:LotChannel a rr:TriplesMap ;
+    rdfs:label   "ND-LotTenderingTerms";
+    rdfs:comment "Applies to: GR-Lot-SubmissionTool";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_LotChannel_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class  cv:Channel
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-124-Lot";
+            rr:predicate epo:hasURL ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:AccessToolsURI";
+                    rr:datatype xsd:anyURI;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-632-Lot";
+            rr:predicate epo:hasName ;
+            rr:objectMap
+                [
+                    rml:reference "descendant::efbc:AccessToolName";
+                    rr:datatype xsd:string;
+                ] ;
+        ] .
+
+tedm:LotReviewTerm a rr:TriplesMap ;
+    rdfs:label   "ND-LotTenderingTerms";
+    rdfs:comment "Applies to: GR-Lot-Review";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AppealTerms/cac:PresentationPeriod";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_LotReviewTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ReviewTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-99-Lot";
+            rr:predicate epo:hasReviewDeadlineInformation ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Description";
+                    rr:datatype xsd:string;
+                ] ;
+        ] .
+
+
 tedm:nuts a rr:TriplesMap ;
     rml:logicalSource
         [

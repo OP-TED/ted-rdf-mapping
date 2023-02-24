@@ -6,6 +6,11 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+epd:id__AccessTerm_naE3mfoLZyth2mWXywVhn6 a epo:AccessTerm;
+  epo:hasPublicAccessURL "https://www.publictendersscotland.publiccontractsscotland.gov.uk"^^xsd:anyURI;
+  epo:hasRestrictedAccessURL ""^^xsd:anyURI;
+  epo:isProcurementDocumentRestricted "non-restricted-document" .
+
 epd:id__ContactPoint_7iFD8NVFhULkdXRNPqKyHs a cccev:ContactPoint;
   epo:hasFax "(+12)345678909";
   cccev:email "douglas.mcewan@renfrewshire.gov.uk";
@@ -25,6 +30,19 @@ epd:id__ContactPoint_YG3RWHcWTBZPCNqFAQ7guC a cccev:ContactPoint;
   epo:hasFax "+123 456 7899";
   cccev:email "contact@example-mediator.com";
   cccev:telephone "+123 456 789" .
+
+epd:id__LotChannel_YWMCGu6i5HBxweh3xaUekn a cccev:Channel .
+
+epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B a epo:ReviewTerm;
+  epo:hasReviewDeadlineInformation "Precise information on deadline(s) for review procedures:   An economic operator that suffers or risks suffering, loss or damage attributable to a breach of duty under the Public Contracts (Scotland) Regulations 2015 (SSI 2015/446) may bring proceedings in the Sheriff Court or the Court of Session, provided that it has informed the contracting authority of the breach or apprehended breach of its duties and of its intention to bring proceedings relating to that breach. Proceedings must be brought within the timescales set out in the regulations." .
+
+epd:id__Lot_246rmGzZvwFBcxRNZTXjTW a epo:Lot;
+  epo:isSubjectToLotSpecificTerm epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B, epd:id__OpenTenderEvent_SJDjVPGsRNCb7nBWqTThP5;
+  epo:usesChannel epd:id__LotChannel_YWMCGu6i5HBxweh3xaUekn .
+
+epd:id__OpenTenderEvent_SJDjVPGsRNCb7nBWqTThP5 a epo:OpeningTerm;
+  epo:hasOpeningDate "2020-04-03+01:00:14:00:00+01:00";
+  epo:hasOpeningDescription "Strictly by invitation only." .
 
 epd:id__OrganisationAddress_CXdDFvgV5RjePYb9cagtRa a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
