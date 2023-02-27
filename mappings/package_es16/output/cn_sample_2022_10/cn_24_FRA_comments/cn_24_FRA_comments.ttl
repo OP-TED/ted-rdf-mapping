@@ -46,6 +46,16 @@ epd:id__ContactPoint_YG3RWHcWTBZPCNqFAQ7guC a cccev:ContactPoint;
   cccev:email "esender@example.com";
   cccev:telephone "+352 123456789" .
 
+epd:id__ContractTerm_TT87XZ7rfCixVuS4Z9trMH a epo:ContractTerm;
+  epo:hasEInvoicing "required";
+  epo:hasEPayment false;
+  epo:hasReservedExecution "no" .
+
+epd:id__ContractTerm_YWMCGu6i5HBxweh3xaUekn a epo:ContractTerm;
+  epo:hasEInvoicing "required";
+  epo:hasEPayment false;
+  epo:hasReservedExecution "no" .
+
 epd:id__LotChannel_TT87XZ7rfCixVuS4Z9trMH a cccev:Channel .
 
 epd:id__LotChannel_YWMCGu6i5HBxweh3xaUekn a cccev:Channel .
@@ -57,13 +67,17 @@ epd:id__LotReviewTerm_VZxmrBG8UMc3RvpZcKCpvE a epo:ReviewTerm;
   epo:hasReviewDeadlineInformation "Toute demande de revision doit être …" .
 
 epd:id__Lot_246rmGzZvwFBcxRNZTXjTW a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id__ContractTerm_YWMCGu6i5HBxweh3xaUekn;
   epo:isSubjectToLotSpecificTerm epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B, epd:id__OpenTenderTerm_SJDjVPGsRNCb7nBWqTThP5,
-    epd:id__SubmissionProcess_bq3rWUnhLReULR3Pe8QxDZ, epd:id__SubmissionTerm_YWMCGu6i5HBxweh3xaUekn;
+    epd:id__SecurityTerm_YWMCGu6i5HBxweh3xaUekn, epd:id__SubmissionProcess_bq3rWUnhLReULR3Pe8QxDZ,
+    epd:id__SubmissionTerm_YWMCGu6i5HBxweh3xaUekn;
   epo:usesChannel epd:id__LotChannel_YWMCGu6i5HBxweh3xaUekn .
 
 epd:id__Lot_daUDPcwCUoxbJRjGb7tKNQ a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id__ContractTerm_TT87XZ7rfCixVuS4Z9trMH;
   epo:isSubjectToLotSpecificTerm epd:id__LotReviewTerm_VZxmrBG8UMc3RvpZcKCpvE, epd:id__OpenTenderTerm_QuUbCTvwqkE5rYfeGgqExM,
-    epd:id__SubmissionProcess_4qCitbxYVRfdbqxnYtJTZF, epd:id__SubmissionTerm_TT87XZ7rfCixVuS4Z9trMH;
+    epd:id__SecurityTerm_TT87XZ7rfCixVuS4Z9trMH, epd:id__SubmissionProcess_4qCitbxYVRfdbqxnYtJTZF,
+    epd:id__SubmissionTerm_TT87XZ7rfCixVuS4Z9trMH;
   epo:usesChannel epd:id__LotChannel_TT87XZ7rfCixVuS4Z9trMH .
 
 epd:id__OpenTenderEventPlace_JFbBX6QvdBoDFe7oMMpuNc a locn:Location;
@@ -139,6 +153,10 @@ epd:id__OrganizationChannel_LmZfWzqV6Pr4nRLBcJSQYX a cccev:Channel;
 epd:id__OrganizationChannel_dncygpvZhCw79SnLWFkb6H a cccev:Channel;
   epo:hasEndpoint "https://www.marches-publics.info/accueil.htm";
   epo:hasURL "https://www.marches-publics.info/accueil.htm" .
+
+epd:id__SecurityTerm_TT87XZ7rfCixVuS4Z9trMH a epo:SecurityClearanceTerm .
+
+epd:id__SecurityTerm_YWMCGu6i5HBxweh3xaUekn a epo:SecurityClearanceTerm .
 
 epd:id__SubmissionProcess_4qCitbxYVRfdbqxnYtJTZF a epo:SubmissionTerm;
   epo:hasESubmissionPermission "allowed";

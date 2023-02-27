@@ -1320,7 +1320,206 @@ tedm:Lot a rr:TriplesMap ;
                         rr:parent "path(../.)";
                     ];
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "GR-Lot-PostAwardProcess";
+            rr:predicate epo:foreseesContractSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ContractTerm ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "Applies to: GR-Lot-Requirements2SecurityClearance1; GR-Lot-SecurityClearance2";
+            rr:predicate epo:isSubjectToLotSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:SecurityTerm ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ] ;
         ] .
+
+#NDA Business
+tedm:NDABusiness a rr:TriplesMap ;
+    rdfs:label "ND-NDA";
+    rdfs:comment "Applies to: GR-Nda";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:ContractExecutionRequirement[cbc:ExecutionRequirementCode/@listName='nda']";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_NDABusiness_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Business
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-801-Lot";
+            rr:predicate epo:isListedCompany ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ExecutionRequirementCode[@listName='nda']";
+                    rr:datatype xsd:boolean;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-802-Lot";
+            rr:predicate epo:hasDescription ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Description";
+                    rr:datatype xsd:boolean;
+                ] ;
+        ] .
+
+#Security Term
+tedm:SecurityTerm a rr:TriplesMap ;
+    rdfs:comment "Applies to: GR-Lot-Requirements2SecurityClearance1; GR-Lot-SecurityClearance2";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_SecurityTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:SecurityClearanceTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-79-Lot";
+            rr:predicate epo:hasPerformingStaffQualificationInformation ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:RequiredCurriculaCode";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-78-Lot";
+            rr:predicate epo:hasDeadline ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:LatestSecurityClearanceDate";
+                    rr:datatype xsd:dateTime;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-578-Lot";
+            rr:predicate epo:hasTitle ;
+            rr:objectMap
+                [
+                    rml:reference "cac:SecurityClearanceTerm/cbc:Code";
+
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-732-Lot";
+            rr:predicate epo:hasDescription ;
+            rr:objectMap
+                [
+                    rml:reference "cac:SecurityClearanceTerm/cbc:Description";
+                    rr:datatype xsd:string;
+                ] ;
+        ] .
+
+#Contract Term
+tedm:ContractTerm a rr:TriplesMap ;
+    rdfs:comment "Applies to: GR-Lot-PostAwardProcess";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ContractTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ContractTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-77-Lot";
+            rr:predicate epo:hasPaymentArrangement ;
+            rr:objectMap
+                [
+                    rml:reference "cac:PaymentTerms/cbc:Note";
+                    rr:datatype xsd:boolean;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-93-Lot";
+            rr:predicate epo:hasEPayment ;
+            rr:objectMap
+                [
+                    rml:reference "cac:PostAwardProcess/cbc:ElectronicPaymentUsageIndicator";
+                    rr:datatype xsd:boolean;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-92-Lot";
+            rr:predicate epo:hasEPayment ;
+            rr:objectMap
+                [
+                    rml:reference "cac:PostAwardProcess/cbc:ElectronicOrderUsageIndicator";
+                    rr:datatype xsd:boolean;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-736-Lot";
+            rr:predicate epo:hasReservedExecution  ;
+            rr:objectMap
+                [
+                    rml:reference "cac:ContractExecutionRequirement/cbc:ExecutionRequirementCode[@listName='reserved-execution']";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-744-Lot";
+            rr:predicate epo:isAdvancedElectronicSignatureRequired ;
+            rr:objectMap
+                [
+                    rml:reference "cac:ContractExecutionRequirement/cbc:ExecutionRequirementCode[@listName='esignature-submission']";
+                    rr:datatype xsd:boolean;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-743-Lot";
+            rr:predicate epo:hasEInvoicing  ;
+            rr:objectMap
+                [
+                    rml:reference "cac:ContractExecutionRequirement/cbc:ExecutionRequirementCode[@listName='einvoicing']";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-70-Lot";
+            rr:predicate epo:hasEInvoicing  ;
+            rr:objectMap
+                [
+                    rml:reference "cac:ContractExecutionRequirement[cbc:ExecutionRequirementCode/@listName='conditions']/cbc:Description";
+                ] ;
+        ] .
+
 
 #Submission Process
 tedm:SubmissionProcess a rr:TriplesMap ;

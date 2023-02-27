@@ -1,10 +1,26 @@
+@prefix cac: <urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2#> .
+@prefix cbc: <urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2#> .
 @prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix efac: <http://data.europa.eu/p27/eforms-ubl-extension-aggregate-components/1#> .
+@prefix efbc: <http://data.europa.eu/p27/eforms-ubl-extension-basic-components/1#> .
+@prefix efext: <http://data.europa.eu/p27/eforms-ubl-extensions/1#> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix ext: <urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xsi: <http://www.w3.org/2001/XMLSchema-instance#> .
 
 epd:id__AccessTerm_naE3mfoLZyth2mWXywVhn6 a epo:AccessTerm;
   epo:hasOfficialLanguage "ENG";
@@ -32,14 +48,20 @@ epd:id__ContactPoint_YG3RWHcWTBZPCNqFAQ7guC a cccev:ContactPoint;
   cccev:email "contact@example-mediator.com";
   cccev:telephone "+123 456 789" .
 
+epd:id__ContractTerm_YWMCGu6i5HBxweh3xaUekn a epo:ContractTerm;
+  epo:hasEInvoicing "required";
+  epo:hasEPayment false;
+  epo:hasReservedExecution "no" .
+
 epd:id__LotChannel_YWMCGu6i5HBxweh3xaUekn a cccev:Channel .
 
 epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B a epo:ReviewTerm;
   epo:hasReviewDeadlineInformation "An appeal can..." .
 
 epd:id__Lot_246rmGzZvwFBcxRNZTXjTW a epo:Lot;
-  epo:isSubjectToLotSpecificTerm epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B, epd:id__SubmissionProcess_bq3rWUnhLReULR3Pe8QxDZ,
-    epd:id__SubmissionTerm_YWMCGu6i5HBxweh3xaUekn;
+  epo:foreseesContractSpecificTerm epd:id__ContractTerm_YWMCGu6i5HBxweh3xaUekn;
+  epo:isSubjectToLotSpecificTerm epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B, epd:id__SecurityTerm_YWMCGu6i5HBxweh3xaUekn,
+    epd:id__SubmissionProcess_bq3rWUnhLReULR3Pe8QxDZ, epd:id__SubmissionTerm_YWMCGu6i5HBxweh3xaUekn;
   epo:usesChannel epd:id__LotChannel_YWMCGu6i5HBxweh3xaUekn .
 
 epd:id__OrganisationAddress_CXdDFvgV5RjePYb9cagtRa a locn:Address;
@@ -120,6 +142,8 @@ epd:id__OrganizationChannel_LmZfWzqV6Pr4nRLBcJSQYX a cccev:Channel;
 epd:id__OrganizationChannel_dncygpvZhCw79SnLWFkb6H a cccev:Channel;
   epo:hasEndpoint "http://www.cumbria.gov.uk/";
   epo:hasURL "http://www.cumbria.gov.uk/" .
+
+epd:id__SecurityTerm_YWMCGu6i5HBxweh3xaUekn a epo:SecurityClearanceTerm .
 
 epd:id__SubmissionProcess_bq3rWUnhLReULR3Pe8QxDZ a epo:SubmissionTerm;
   epo:hasESubmissionPermission "allowed";

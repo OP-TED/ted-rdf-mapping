@@ -139,6 +139,20 @@ epd:id__ContactPoint_dxvvStPQ7ekRVg6xG9QN3E a cccev:ContactPoint;
   cccev:email "esender@esendcorp.lu";
   cccev:telephone "+352 123456789" .
 
+epd:id__ContractTerm_PuAZ93vcjRYhKiN4rMvUZg a epo:ContractTerm;
+  epo:hasEInvoicing "Terms Performance ---", "required";
+  epo:hasEPayment true;
+  epo:hasPaymentArrangement "Terms Financial ---"^^xsd:boolean;
+  epo:hasReservedExecution "yes";
+  epo:isAdvancedElectronicSignatureRequired true .
+
+epd:id__ContractTerm_TT87XZ7rfCixVuS4Z9trMH a epo:ContractTerm;
+  epo:hasEInvoicing "Terms Performance ---", "required";
+  epo:hasEPayment true;
+  epo:hasPaymentArrangement "Terms Financial ---"^^xsd:boolean;
+  epo:hasReservedExecution "yes";
+  epo:isAdvancedElectronicSignatureRequired true .
+
 epd:id__LotChannel_PuAZ93vcjRYhKiN4rMvUZg a cccev:Channel .
 
 epd:id__LotChannel_TT87XZ7rfCixVuS4Z9trMH a cccev:Channel .
@@ -159,14 +173,20 @@ epd:id__LotTenderingTermIdentifier_UQ68EN9f2pUgR33WMf6WMM a epo:Identifier;
   epo:hasIdentifierValue "GLO-0001" .
 
 epd:id__Lot_8y8GPfmPvSRdBcci6WWcSi a epo:Lot;
-  epo:isSubjectToLotSpecificTerm epd:id__LotReviewTerm_bpDJYehUZE5dpNtnagJd4V, epd:id__SubmissionProcess_8APvjTVZXX8CxGPVJZoBww,
-    epd:id__SubmissionTerm_PuAZ93vcjRYhKiN4rMvUZg;
+  epo:foreseesContractSpecificTerm epd:id__ContractTerm_PuAZ93vcjRYhKiN4rMvUZg;
+  epo:isSubjectToLotSpecificTerm epd:id__LotReviewTerm_bpDJYehUZE5dpNtnagJd4V, epd:id__SecurityTerm_PuAZ93vcjRYhKiN4rMvUZg,
+    epd:id__SubmissionProcess_8APvjTVZXX8CxGPVJZoBww, epd:id__SubmissionTerm_PuAZ93vcjRYhKiN4rMvUZg;
   epo:usesChannel epd:id__LotChannel_PuAZ93vcjRYhKiN4rMvUZg .
 
 epd:id__Lot_daUDPcwCUoxbJRjGb7tKNQ a epo:Lot;
-  epo:isSubjectToLotSpecificTerm epd:id__LotReviewTerm_VZxmrBG8UMc3RvpZcKCpvE, epd:id__SubmissionProcess_4qCitbxYVRfdbqxnYtJTZF,
-    epd:id__SubmissionTerm_TT87XZ7rfCixVuS4Z9trMH;
+  epo:foreseesContractSpecificTerm epd:id__ContractTerm_TT87XZ7rfCixVuS4Z9trMH;
+  epo:isSubjectToLotSpecificTerm epd:id__LotReviewTerm_VZxmrBG8UMc3RvpZcKCpvE, epd:id__SecurityTerm_TT87XZ7rfCixVuS4Z9trMH,
+    epd:id__SubmissionProcess_4qCitbxYVRfdbqxnYtJTZF, epd:id__SubmissionTerm_TT87XZ7rfCixVuS4Z9trMH;
   epo:usesChannel epd:id__LotChannel_TT87XZ7rfCixVuS4Z9trMH .
+
+epd:id__NDABusiness_nBvpaQzZoyLxMerXsnffZR a epo:Business;
+  epo:hasDescription "Non Disclosure Agreement Description ---"^^xsd:boolean;
+  epo:isListedCompany true .
 
 epd:id__OrganisationAddress_9EoaX693zGgFRHUBTqQE58 a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
@@ -397,6 +417,18 @@ epd:id__PurposeLotGroup_246rmGzZvwFBcxRNZTXjTW a epo:LotGroup;
   epo:hasRestatedEstimatedValue epd:id__PurposeLotGroupEstimatedValue_EgMjw2pg9jruQvYxRQ9GAr;
   epo:hasTitle "Title of Group of Lots 1";
   epo:isSMESuitable "true" .
+
+epd:id__SecurityTerm_PuAZ93vcjRYhKiN4rMvUZg a epo:SecurityClearanceTerm;
+  epo:hasDeadline "2023-05-23+02:00"^^xsd:dateTime;
+  epo:hasDescription "Security Clearance Description ---";
+  epo:hasPerformingStaffQualificationInformation "t-requ";
+  epo:hasTitle "true" .
+
+epd:id__SecurityTerm_TT87XZ7rfCixVuS4Z9trMH a epo:SecurityClearanceTerm;
+  epo:hasDeadline "2023-05-23+02:00"^^xsd:dateTime;
+  epo:hasDescription "Security Clearance Description ---";
+  epo:hasPerformingStaffQualificationInformation "t-requ";
+  epo:hasTitle "true" .
 
 epd:id__SubmissionProcess_4qCitbxYVRfdbqxnYtJTZF a epo:SubmissionTerm;
   epo:hasAdditionalInformationDeadline "2023-05-20+01:00:20:59:32+01:00"^^xsd:dateTime;

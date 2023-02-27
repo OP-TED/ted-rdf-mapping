@@ -48,6 +48,11 @@ epd:id__ContactPoint_YG3RWHcWTBZPCNqFAQ7guC a cccev:ContactPoint;
   cccev:email "contact@example.com";
   cccev:telephone "+123 456 789" .
 
+epd:id__ContractTerm_YWMCGu6i5HBxweh3xaUekn a epo:ContractTerm;
+  epo:hasEInvoicing "required";
+  epo:hasEPayment true;
+  epo:hasReservedExecution "no" .
+
 epd:id__LotChannel_YWMCGu6i5HBxweh3xaUekn a cccev:Channel .
 
 epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B a epo:ReviewTerm;
@@ -77,8 +82,10 @@ epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B a epo:ReviewTerm;
     "В рамките на 2 месеца от получаването на известието от ищеца или, в случай че такова липсва, от деня, в който е станало известно на ищеца. Жалба до Европейския омбудсман нито спира този срок, нито води до откриване на нов срок за подаване на жалби." .
 
 epd:id__Lot_246rmGzZvwFBcxRNZTXjTW a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id__ContractTerm_YWMCGu6i5HBxweh3xaUekn;
   epo:isSubjectToLotSpecificTerm epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B, epd:id__OpenTenderTerm_SJDjVPGsRNCb7nBWqTThP5,
-    epd:id__SubmissionProcess_bq3rWUnhLReULR3Pe8QxDZ, epd:id__SubmissionTerm_YWMCGu6i5HBxweh3xaUekn;
+    epd:id__SecurityTerm_YWMCGu6i5HBxweh3xaUekn, epd:id__SubmissionProcess_bq3rWUnhLReULR3Pe8QxDZ,
+    epd:id__SubmissionTerm_YWMCGu6i5HBxweh3xaUekn;
   epo:usesChannel epd:id__LotChannel_YWMCGu6i5HBxweh3xaUekn .
 
 epd:id__OpenTenderEventPlace_JFbBX6QvdBoDFe7oMMpuNc a locn:Location;
@@ -201,6 +208,9 @@ epd:id__OrganizationChannel_LmZfWzqV6Pr4nRLBcJSQYX a cccev:Channel;
 
 epd:id__OrganizationChannel_dncygpvZhCw79SnLWFkb6H a cccev:Channel;
   epo:hasURL "https://op.europa.eu/" .
+
+epd:id__SecurityTerm_YWMCGu6i5HBxweh3xaUekn a epo:SecurityClearanceTerm;
+  epo:hasPerformingStaffQualificationInformation "t-requ" .
 
 epd:id__SubmissionProcess_bq3rWUnhLReULR3Pe8QxDZ a epo:SubmissionTerm;
   epo:hasESubmissionPermission "required";

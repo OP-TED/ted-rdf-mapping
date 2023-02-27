@@ -49,14 +49,20 @@ epd:id__ContactPoint_YG3RWHcWTBZPCNqFAQ7guC a cccev:ContactPoint;
   cccev:email "esender@example.com";
   cccev:telephone "+352 123456789" .
 
+epd:id__ContractTerm_YWMCGu6i5HBxweh3xaUekn a epo:ContractTerm;
+  epo:hasEInvoicing "required";
+  epo:hasEPayment false;
+  epo:hasReservedExecution "no" .
+
 epd:id__LotChannel_YWMCGu6i5HBxweh3xaUekn a cccev:Channel .
 
 epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B a epo:ReviewTerm;
   epo:hasReviewDeadlineInformation "There is no right of appeal in this procurement. If you have a complaint or seek to challenge the outcome, please follow the guidance on procedure contained in the previous section." .
 
 epd:id__Lot_246rmGzZvwFBcxRNZTXjTW a epo:Lot;
-  epo:isSubjectToLotSpecificTerm epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B, epd:id__SubmissionProcess_bq3rWUnhLReULR3Pe8QxDZ,
-    epd:id__SubmissionTerm_YWMCGu6i5HBxweh3xaUekn;
+  epo:foreseesContractSpecificTerm epd:id__ContractTerm_YWMCGu6i5HBxweh3xaUekn;
+  epo:isSubjectToLotSpecificTerm epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B, epd:id__SecurityTerm_YWMCGu6i5HBxweh3xaUekn,
+    epd:id__SubmissionProcess_bq3rWUnhLReULR3Pe8QxDZ, epd:id__SubmissionTerm_YWMCGu6i5HBxweh3xaUekn;
   epo:usesChannel epd:id__LotChannel_YWMCGu6i5HBxweh3xaUekn .
 
 epd:id__OrganisationAddress_CXdDFvgV5RjePYb9cagtRa a locn:Address;
@@ -138,6 +144,8 @@ epd:id__OrganizationChannel_Ud9UCKnRE7Ktx8vDgbsqmm a cccev:Channel;
 epd:id__OrganizationChannel_dncygpvZhCw79SnLWFkb6H a cccev:Channel;
   epo:hasEndpoint "https://www.gov.uk/government/organisations/land-registry";
   epo:hasURL "https://www.gov.uk/government/organisations/land-registry" .
+
+epd:id__SecurityTerm_YWMCGu6i5HBxweh3xaUekn a epo:SecurityClearanceTerm .
 
 epd:id__SubmissionProcess_bq3rWUnhLReULR3Pe8QxDZ a epo:SubmissionTerm;
   epo:hasESubmissionPermission "required";
