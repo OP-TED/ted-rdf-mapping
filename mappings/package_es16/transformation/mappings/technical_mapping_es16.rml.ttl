@@ -1226,7 +1226,7 @@ tedm:AccessTerm a rr:TriplesMap ;
             rr:predicate epo:hasPublicAccessURL  ;
             rr:objectMap
                 [
-                    rml:reference "if(descendant::cbc:DocumentType/text() = 'non-restricted-document') then descendant::cbc:URI else ''";
+                    rml:reference "if(descendant::cbc:DocumentType/text() = 'non-restricted-document') then descendant::cbc:URI else null";
                     rr:datatype xsd:anyURI;
                 ] ;
         ] ;
@@ -1236,12 +1236,12 @@ tedm:AccessTerm a rr:TriplesMap ;
             rr:predicate epo:hasRestrictedAccessURL  ;
             rr:objectMap
                 [
-                    rml:reference "if(descendant::cbc:DocumentType/text() = 'restricted-document') then descendant::cbc:URI else ''";
+                    rml:reference "if(descendant::cbc:DocumentType/text() = 'restricted-document') then descendant::cbc:URI else null";
                     rr:datatype xsd:anyURI;
                 ] ;
         ] .
 
-#Lot Tendering Terms
+#Lot
 tedm:Lot a rr:TriplesMap ;
     rdfs:label   "ND-Lot";
     rdfs:comment "Applies to: GR-Lot-Review";
@@ -1294,8 +1294,184 @@ tedm:Lot a rr:TriplesMap ;
                         rr:parent "path(../..)"
                     ];
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "GR-Lot-Deadlines1; GR-Lot-SubmissionMethod";
+            rr:predicate epo:isSubjectToLotSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:SubmissionProcess ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "GR-Lot-Deadlines1; GR-Lot-SubmissionMethod";
+            rr:predicate epo:isSubjectToLotSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:SubmissionTerm ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ] ;
         ] .
 
+#Submission Process
+tedm:SubmissionProcess a rr:TriplesMap ;
+    rdfs:label "ND-NonEsubmission; ND-NoESubmission; ND-SubmissionDeadline";
+    rdfs:comment "Applies to: GR-Lot-Deadlines1; GR-Lot-SubmissionMethod";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_SubmissionProcess_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:SubmissionTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-745-Lot";
+            rr:predicate epo:hasDescription ;
+            rr:objectMap
+                [
+                    rml:reference "cac:ProcessJustification[cbc:ProcessReasonCode/@listName='no-esubmission-justification']/cbc:Description";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-19-Lot";
+            rr:predicate epo:hasNonElectronicSubmissionJustification ;
+            rr:objectMap
+                [
+                    rml:reference "cac:ProcessJustification/cbc:ProcessReasonCode[@listName='no-esubmission-justification']";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-17-Lot";
+            rr:predicate epo:hasESubmissionPermission ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:SubmissionMethodCode[@listName='esubmission']";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-131-Lot";
+            rr:predicate epo:hasReceiptDeadline ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(cac:TenderSubmissionDeadlinePeriod/cbc:EndDate) and exists(cac:TenderSubmissionDeadlinePeriod/cbc:EndTime)) then concat(cac:TenderSubmissionDeadlinePeriod/cbc:EndDate, ':', cac:TenderSubmissionDeadlinePeriod/cbc:EndTime) else null";
+                    rr:datatype xsd:dateTime;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-1311-Lot";
+            rdfs:comment "Not sure about the property in this one";
+            rr:predicate epo:hasReceiptDeadline ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(cac:ParticipationRequestReceptionPeriod/cbc:EndDate) and exists(cac:ParticipationRequestReceptionPeriod/cbc:EndTime)) then concat(cac:ParticipationRequestReceptionPeriod/cbc:EndDate, ':', cac:ParticipationRequestReceptionPeriod/cbc:EndTime) else null";
+                    rr:datatype xsd:dateTime;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-130-Lot";
+            rr:predicate epo:hasEstimatedInvitationToTenderDate ;
+            rr:objectMap
+                [
+                    rml:reference "cac:InvitationSubmissionPeriod/cbc:StartDate";
+                    rr:datatype xsd:date;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-13-Lot";
+            rr:predicate epo:hasAdditionalInformationDeadline ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(cac:AdditionalInformationRequestPeriod/cbc:EndDate) and exists(cac:AdditionalInformationRequestPeriod/cbc:EndTime)) then concat(cac:AdditionalInformationRequestPeriod/cbc:EndDate, ':', cac:AdditionalInformationRequestPeriod/cbc:EndTime) else null";
+                    rr:datatype xsd:dateTime;
+                ] ;
+        ] .
+
+#Submission Term
+tedm:SubmissionTerm a rr:TriplesMap ;
+    rdfs:label "ND-NonEsubmission; ND-NoESubmission; ND-SubmissionDeadline";
+    rdfs:comment "Applies to: GR-Lot-TenderValidity; GR-Lot-PublicOpeningEvent; GR-Lot-FinancialGuarantee";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_SubmissionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:SubmissionTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-98-Lot";
+            rr:predicate epo:hasValidityPeriod ;
+            rr:objectMap
+                [
+                    rml:reference "cac:TenderValidityPeriod/cbc:DurationMeasure";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-97-Lot";
+            rr:predicate epo:hasLanguage ;
+            rr:objectMap
+                [
+                    rml:reference "cac:Language/cbc:ID";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-751-Lot";
+            rr:predicate epo:isGuaranteeRequired ;
+            rr:objectMap
+                [
+                    rml:reference "cac:RequiredFinancialGuarantee/cbc:GuaranteeTypeCode[@listName='tender-guarantee-required']";
+                    rr:datatype xsd:boolean;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-75-Lot";
+            rr:predicate epo:hasGuaranteeDescription ;
+            rr:objectMap
+                [
+                    rml:reference "cac:RequiredFinancialGuarantee/cbc:Description";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-18-Lot";
+            rr:predicate epo:hasSubmissionURL ;
+            rr:objectMap
+                [
+                    rml:reference "cac:TenderRecipientParty/cbc:EndpointID";
+                    rr:datatype xsd:anyURI;
+                ] ;
+        ] .
 
 tedm:LotOpeningTerm a rr:TriplesMap ;
     rdfs:label "ND-PublicOpening";
@@ -1424,6 +1600,10 @@ tedm:LotReviewTerm a rr:TriplesMap ;
                     rr:datatype xsd:string;
                 ] ;
         ] .
+
+
+
+
 
 
 tedm:nuts a rr:TriplesMap ;
