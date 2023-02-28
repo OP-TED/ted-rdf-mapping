@@ -28,6 +28,10 @@ epd:id__AccessTerm_naE3mfoLZyth2mWXywVhn6 a epo:AccessTerm;
   epo:hasRestrictedAccessURL "https://hmlandregistry.force.com"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted "restricted-document" .
 
+epd:id__AwardingTerms_kJu9SkmLfQYWH3GxqnddRV a epo:AwardCriterion;
+  epo:hasDescription "Price is not the only award criterion and all criteria are stated only in the procurement documents";
+  epo:hasNoNegotiationNecessary true .
+
 epd:id__ContactPoint_7iFD8NVFhULkdXRNPqKyHs a cccev:ContactPoint;
   epo:hasContactName "Helpdesk";
   epo:hasFax "(+12)345678909";
@@ -61,8 +65,10 @@ epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B a epo:ReviewTerm;
 
 epd:id__Lot_246rmGzZvwFBcxRNZTXjTW a epo:Lot;
   epo:foreseesContractSpecificTerm epd:id__ContractTerm_YWMCGu6i5HBxweh3xaUekn;
-  epo:isSubjectToLotSpecificTerm epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B, epd:id__SecurityTerm_YWMCGu6i5HBxweh3xaUekn,
-    epd:id__SubmissionProcess_bq3rWUnhLReULR3Pe8QxDZ, epd:id__SubmissionTerm_YWMCGu6i5HBxweh3xaUekn;
+  epo:hasReservedProcurement "none";
+  epo:isSubjectToLotSpecificTerm epd:id__AwardingTerms_kJu9SkmLfQYWH3GxqnddRV, epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B,
+    epd:id__SecurityTerm_YWMCGu6i5HBxweh3xaUekn, epd:id__SubmissionProcess_bq3rWUnhLReULR3Pe8QxDZ,
+    epd:id__SubmissionTerm_YWMCGu6i5HBxweh3xaUekn;
   epo:usesChannel epd:id__LotChannel_YWMCGu6i5HBxweh3xaUekn .
 
 epd:id__OrganisationAddress_CXdDFvgV5RjePYb9cagtRa a locn:Address;
@@ -154,4 +160,5 @@ epd:id__SubmissionProcess_bq3rWUnhLReULR3Pe8QxDZ a epo:SubmissionTerm;
 
 epd:id__SubmissionTerm_YWMCGu6i5HBxweh3xaUekn a epo:SubmissionTerm;
   epo:hasLanguage "ENG";
-  epo:hasSubmissionURL "https://hmlandregistry.force.com"^^xsd:anyURI .
+  epo:hasSubmissionURL "https://hmlandregistry.force.com"^^xsd:anyURI;
+  epo:hasVariantPermission "not-allowed" .

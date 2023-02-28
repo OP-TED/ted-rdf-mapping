@@ -30,6 +30,28 @@ epd:id__AccessTerm_naE3mfoLZyth2mWXywVhn6 a epo:AccessTerm;
   epo:hasPublicAccessURL "https://www.marches-publics.info/accueil.htm"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted "non-restricted-document" .
 
+epd:id__AwardingTermsConstrain_AdQ99ZtFwmVjXcjtXZ5Ltw a cccev:Constraint .
+
+epd:id__AwardingTermsConstrain_Db2ffnoGyMwzHUdCHcfUhw a cccev:Constraint .
+
+epd:id__AwardingTermsConstrain_JVL75jeUCa2GVzVjdQNXCr a cccev:Constraint .
+
+epd:id__AwardingTermsConstrain_L4DUqwYp7JsgSHbLPpDQRo a cccev:Constraint .
+
+epd:id__AwardingTerms_4cgbfPEuSgC4MeB6X9HTss a epo:AwardCriterion;
+  epo:hasAwardCriterionType "price", "quality";
+  epo:hasDescription "La valeur technique participle pour 60 % …", "Le prix contribue for 40 % …";
+  epo:hasFixedValue 40.0, 60.0;
+  cccev:name "Prix", "Qualité";
+  cccev:weight "per-exa"^^xsd:decimal .
+
+epd:id__AwardingTerms_kJu9SkmLfQYWH3GxqnddRV a epo:AwardCriterion;
+  epo:hasAwardCriterionType "price", "quality";
+  epo:hasDescription "La valeur technique participle pour 40 % …", "Le prix contribue for 60 % …";
+  epo:hasFixedValue 40.0, 60.0;
+  cccev:name "Prix", "Qualité";
+  cccev:weight "per-exa"^^xsd:decimal .
+
 epd:id__ContactPoint_7iFD8NVFhULkdXRNPqKyHs a cccev:ContactPoint;
   epo:hasContactName "Info desk";
   epo:hasFax "+33 235156169";
@@ -68,16 +90,18 @@ epd:id__LotReviewTerm_VZxmrBG8UMc3RvpZcKCpvE a epo:ReviewTerm;
 
 epd:id__Lot_246rmGzZvwFBcxRNZTXjTW a epo:Lot;
   epo:foreseesContractSpecificTerm epd:id__ContractTerm_YWMCGu6i5HBxweh3xaUekn;
-  epo:isSubjectToLotSpecificTerm epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B, epd:id__OpenTenderTerm_SJDjVPGsRNCb7nBWqTThP5,
-    epd:id__SecurityTerm_YWMCGu6i5HBxweh3xaUekn, epd:id__SubmissionProcess_bq3rWUnhLReULR3Pe8QxDZ,
-    epd:id__SubmissionTerm_YWMCGu6i5HBxweh3xaUekn;
+  epo:hasReservedProcurement "none";
+  epo:isSubjectToLotSpecificTerm epd:id__AwardingTerms_kJu9SkmLfQYWH3GxqnddRV, epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B,
+    epd:id__OpenTenderTerm_SJDjVPGsRNCb7nBWqTThP5, epd:id__SecurityTerm_YWMCGu6i5HBxweh3xaUekn,
+    epd:id__SubmissionProcess_bq3rWUnhLReULR3Pe8QxDZ, epd:id__SubmissionTerm_YWMCGu6i5HBxweh3xaUekn;
   epo:usesChannel epd:id__LotChannel_YWMCGu6i5HBxweh3xaUekn .
 
 epd:id__Lot_daUDPcwCUoxbJRjGb7tKNQ a epo:Lot;
   epo:foreseesContractSpecificTerm epd:id__ContractTerm_TT87XZ7rfCixVuS4Z9trMH;
-  epo:isSubjectToLotSpecificTerm epd:id__LotReviewTerm_VZxmrBG8UMc3RvpZcKCpvE, epd:id__OpenTenderTerm_QuUbCTvwqkE5rYfeGgqExM,
-    epd:id__SecurityTerm_TT87XZ7rfCixVuS4Z9trMH, epd:id__SubmissionProcess_4qCitbxYVRfdbqxnYtJTZF,
-    epd:id__SubmissionTerm_TT87XZ7rfCixVuS4Z9trMH;
+  epo:hasReservedProcurement "none";
+  epo:isSubjectToLotSpecificTerm epd:id__AwardingTerms_4cgbfPEuSgC4MeB6X9HTss, epd:id__LotReviewTerm_VZxmrBG8UMc3RvpZcKCpvE,
+    epd:id__OpenTenderTerm_QuUbCTvwqkE5rYfeGgqExM, epd:id__SecurityTerm_TT87XZ7rfCixVuS4Z9trMH,
+    epd:id__SubmissionProcess_4qCitbxYVRfdbqxnYtJTZF, epd:id__SubmissionTerm_TT87XZ7rfCixVuS4Z9trMH;
   epo:usesChannel epd:id__LotChannel_TT87XZ7rfCixVuS4Z9trMH .
 
 epd:id__OpenTenderEventPlace_JFbBX6QvdBoDFe7oMMpuNc a locn:Location;

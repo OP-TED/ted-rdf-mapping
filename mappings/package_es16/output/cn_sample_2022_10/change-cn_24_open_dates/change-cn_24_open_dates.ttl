@@ -26,6 +26,25 @@ epd:id__AccessTerm_naE3mfoLZyth2mWXywVhn6 a epo:AccessTerm;
   epo:hasPublicAccessURL "https://www.publictendersscotland.publiccontractsscotland.gov.uk"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted "non-restricted-document" .
 
+epd:id__AwardingTermsConstrain_AdQ99ZtFwmVjXcjtXZ5Ltw a cccev:Constraint .
+
+epd:id__AwardingTermsConstrain_L4DUqwYp7JsgSHbLPpDQRo a cccev:Constraint .
+
+epd:id__AwardingTermsConstrain_YjfCWDGJEUMCPdid6f6CBz a cccev:Constraint .
+
+epd:id__AwardingTermsConstrain_hqpGm8poZYKRrhYj59wn7E a cccev:Constraint .
+
+epd:id__AwardingTermsConstrain_ncCkXBjUANiqrMYoetfUTN a cccev:Constraint .
+
+epd:id__AwardingTerms_kJu9SkmLfQYWH3GxqnddRV a epo:AwardCriterion;
+  epo:hasAwardCriterionType "price", "quality";
+  epo:hasDescription "The community benefit methodology is evaluated by...", "The community benefits are evaluated by...",
+    "The methodology is evaluated by...", "The price is evaluated by...", "The quality working practices are evaluated by...";
+  epo:hasFixedValue 15.0, 2.0, 3.0, 5.0, 75.0;
+  cccev:name "Community benefit methodology", "Community benefits offered", "Fair working practices",
+    "Methodology and approach", "Price";
+  cccev:weight "per-exa"^^xsd:decimal .
+
 epd:id__ChangeNoticeIdentifier_ec9tbJ8ui7TUpJPbEsk6fj a epo:Identifier;
   epo:hasIdentifierValue "c4c415ee-ac08-4465-8fa6-57568cf69462-01" .
 
@@ -68,9 +87,10 @@ epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B a epo:ReviewTerm;
 
 epd:id__Lot_246rmGzZvwFBcxRNZTXjTW a epo:Lot;
   epo:foreseesContractSpecificTerm epd:id__ContractTerm_YWMCGu6i5HBxweh3xaUekn;
-  epo:isSubjectToLotSpecificTerm epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B, epd:id__OpenTenderTerm_SJDjVPGsRNCb7nBWqTThP5,
-    epd:id__SecurityTerm_YWMCGu6i5HBxweh3xaUekn, epd:id__SubmissionProcess_bq3rWUnhLReULR3Pe8QxDZ,
-    epd:id__SubmissionTerm_YWMCGu6i5HBxweh3xaUekn;
+  epo:hasReservedProcurement "none";
+  epo:isSubjectToLotSpecificTerm epd:id__AwardingTerms_kJu9SkmLfQYWH3GxqnddRV, epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B,
+    epd:id__OpenTenderTerm_SJDjVPGsRNCb7nBWqTThP5, epd:id__SecurityTerm_YWMCGu6i5HBxweh3xaUekn,
+    epd:id__SubmissionProcess_bq3rWUnhLReULR3Pe8QxDZ, epd:id__SubmissionTerm_YWMCGu6i5HBxweh3xaUekn;
   epo:usesChannel epd:id__LotChannel_YWMCGu6i5HBxweh3xaUekn .
 
 epd:id__OpenTenderEventPlace_JFbBX6QvdBoDFe7oMMpuNc a locn:Location;
@@ -168,4 +188,5 @@ epd:id__SubmissionProcess_bq3rWUnhLReULR3Pe8QxDZ a epo:SubmissionTerm;
 epd:id__SubmissionTerm_YWMCGu6i5HBxweh3xaUekn a epo:SubmissionTerm;
   epo:hasLanguage "ENG";
   epo:hasSubmissionURL "https://www.publictendersscotland.publiccontractsscotland.gov.uk"^^xsd:anyURI;
-  epo:hasValidityPeriod "150" .
+  epo:hasValidityPeriod "150";
+  epo:hasVariantPermission "not-allowed" .

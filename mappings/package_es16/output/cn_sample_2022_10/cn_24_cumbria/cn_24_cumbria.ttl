@@ -27,6 +27,17 @@ epd:id__AccessTerm_naE3mfoLZyth2mWXywVhn6 a epo:AccessTerm;
   epo:hasPublicAccessURL "https://www.the-chest.org.uk/"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted "non-restricted-document" .
 
+epd:id__AwardingTermsConstrain_AdQ99ZtFwmVjXcjtXZ5Ltw a cccev:Constraint .
+
+epd:id__AwardingTermsConstrain_L4DUqwYp7JsgSHbLPpDQRo a cccev:Constraint .
+
+epd:id__AwardingTerms_kJu9SkmLfQYWH3GxqnddRV a epo:AwardCriterion;
+  epo:hasAwardCriterionType "price", "quality";
+  epo:hasDescription "The price is evaluated by...", "The quality is evaluated by...";
+  epo:hasFixedValue 35.0, 65.0;
+  cccev:name "Price", "Quality";
+  cccev:weight "per-exa"^^xsd:decimal .
+
 epd:id__ContactPoint_7iFD8NVFhULkdXRNPqKyHs a cccev:ContactPoint;
   epo:hasContactName "Procurement contact point";
   epo:hasFax "+44 12282217439";
@@ -60,8 +71,10 @@ epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B a epo:ReviewTerm;
 
 epd:id__Lot_246rmGzZvwFBcxRNZTXjTW a epo:Lot;
   epo:foreseesContractSpecificTerm epd:id__ContractTerm_YWMCGu6i5HBxweh3xaUekn;
-  epo:isSubjectToLotSpecificTerm epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B, epd:id__SecurityTerm_YWMCGu6i5HBxweh3xaUekn,
-    epd:id__SubmissionProcess_bq3rWUnhLReULR3Pe8QxDZ, epd:id__SubmissionTerm_YWMCGu6i5HBxweh3xaUekn;
+  epo:hasReservedProcurement "none";
+  epo:isSubjectToLotSpecificTerm epd:id__AwardingTerms_kJu9SkmLfQYWH3GxqnddRV, epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B,
+    epd:id__SecurityTerm_YWMCGu6i5HBxweh3xaUekn, epd:id__SubmissionProcess_bq3rWUnhLReULR3Pe8QxDZ,
+    epd:id__SubmissionTerm_YWMCGu6i5HBxweh3xaUekn;
   epo:usesChannel epd:id__LotChannel_YWMCGu6i5HBxweh3xaUekn .
 
 epd:id__OrganisationAddress_CXdDFvgV5RjePYb9cagtRa a locn:Address;
@@ -153,4 +166,5 @@ epd:id__SubmissionTerm_YWMCGu6i5HBxweh3xaUekn a epo:SubmissionTerm;
   epo:hasLanguage "ENG";
   epo:hasSubmissionURL "https://www.the-chest.org.uk/"^^xsd:anyURI;
   epo:hasValidityPeriod "6";
+  epo:hasVariantPermission "not-allowed";
   epo:isGuaranteeRequired false .

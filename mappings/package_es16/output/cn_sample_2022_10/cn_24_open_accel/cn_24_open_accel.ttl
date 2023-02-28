@@ -26,6 +26,14 @@ epd:id__AccessTerm_naE3mfoLZyth2mWXywVhn6 a epo:AccessTerm;
   epo:hasPublicAccessURL "http://www.carabinieri.it/cittadino/informazioni/gare-appalto/gare-appalto/approvvigionamento-di-212-posti-letto-per-la-scuola-mar.-e-brig.-di-firenze"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted "non-restricted-document" .
 
+epd:id__AwardingTermsConstrain_AdQ99ZtFwmVjXcjtXZ5Ltw a cccev:Constraint .
+
+epd:id__AwardingTerms_kJu9SkmLfQYWH3GxqnddRV a epo:AwardCriterion;
+  epo:hasAwardCriterionType "price";
+  epo:hasDescription "Il prezzo è valutato da...";
+  epo:hasFixedValue 100.0;
+  cccev:weight "per-exa"^^xsd:decimal .
+
 epd:id__ContactPoint_7iFD8NVFhULkdXRNPqKyHs a cccev:ContactPoint;
   epo:hasFax "+39 06809822699";
   cccev:email "crm42527@pec.carabinieri.it";
@@ -68,9 +76,10 @@ epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B a epo:ReviewTerm;
 
 epd:id__Lot_246rmGzZvwFBcxRNZTXjTW a epo:Lot;
   epo:foreseesContractSpecificTerm epd:id__ContractTerm_YWMCGu6i5HBxweh3xaUekn;
-  epo:isSubjectToLotSpecificTerm epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B, epd:id__OpenTenderTerm_SJDjVPGsRNCb7nBWqTThP5,
-    epd:id__SecurityTerm_YWMCGu6i5HBxweh3xaUekn, epd:id__SubmissionProcess_bq3rWUnhLReULR3Pe8QxDZ,
-    epd:id__SubmissionTerm_YWMCGu6i5HBxweh3xaUekn;
+  epo:hasReservedProcurement "none";
+  epo:isSubjectToLotSpecificTerm epd:id__AwardingTerms_kJu9SkmLfQYWH3GxqnddRV, epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B,
+    epd:id__OpenTenderTerm_SJDjVPGsRNCb7nBWqTThP5, epd:id__SecurityTerm_YWMCGu6i5HBxweh3xaUekn,
+    epd:id__SubmissionProcess_bq3rWUnhLReULR3Pe8QxDZ, epd:id__SubmissionTerm_YWMCGu6i5HBxweh3xaUekn;
   epo:usesChannel epd:id__LotChannel_YWMCGu6i5HBxweh3xaUekn .
 
 epd:id__OpenTenderEventPlace_JFbBX6QvdBoDFe7oMMpuNc a locn:Location;
@@ -206,4 +215,5 @@ epd:id__SubmissionProcess_bq3rWUnhLReULR3Pe8QxDZ a epo:SubmissionTerm;
 epd:id__SubmissionTerm_YWMCGu6i5HBxweh3xaUekn a epo:SubmissionTerm;
   epo:hasLanguage "ITA";
   epo:hasSubmissionURL "https://www.acquistinretepa.it/negoziazioni/prv?pagina=iniziativaIns_stepMain&idT=2554061&submit=elenco&backPage=get:3338017180&hmac=ed61bcf821de9dcbc24205e2c515b0ca"^^xsd:anyURI;
-  epo:hasValidityPeriod "6" .
+  epo:hasValidityPeriod "6";
+  epo:hasVariantPermission "not-allowed" .
