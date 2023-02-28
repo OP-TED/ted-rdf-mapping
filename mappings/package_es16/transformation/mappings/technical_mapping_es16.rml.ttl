@@ -1363,11 +1363,215 @@ tedm:Lot a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rdfs:label "ND-SecondStage";
+            rdfs:comment "Applies to: GR-Lot-Candidates";
+            rr:predicate epo:isSubjectToLotSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MultipleStageProcedureTerm ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-SelectionCriteria";
+            rdfs:comment "Applies to: GR-Lot-SelectionCriteria";
+            rr:predicate epo:specifiesSelectionCriterion ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:SelectionTerm ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../../../../../..)";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
             rdfs:label "BT-71-Lot";
             rr:predicate epo:hasReservedProcurement  ;
             rr:objectMap
                 [
                     rml:reference "descendant::cbc:TendererRequirementTypeCode[@listName='reserved-procurement']";
+                ] ;
+        ] .
+
+#Selection Term
+tedm:SelectionTerm a rr:TriplesMap ;
+    rdfs:label "ND-SelectionCriteria";
+    rdfs:comment "Applies to: GR-Lot-SelectionCriteria";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:SelectionCriteria";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_SelectionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:SelectionTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-752-Lot";
+            rr:predicate cccev:type ;
+            rr:objectMap
+                [
+                    rml:reference "descendant::efbc:ParameterNumeric";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-7531-Lot";
+            rr:predicate cccev:weight ;
+            rr:objectMap
+                [
+                    rml:reference "descendant::efbc:ParameterCode[@listName='number-weight']";
+                    rr:datatype xsd:decimal;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-747-Lot";
+            rr:predicate epo:hasSelectionCriterionType ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:CriterionTypeCode[@listName='selection-criterion']";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-749-Lot";
+            rr:predicate epo:hasTitle ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Name";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-750-Lot";
+            rr:predicate epo:hasDescription ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Description";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-748-Lot";
+            rr:predicate epo:hasSelectionCriteriaUsage ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:CalculationExpressionCode[@listName='usage']";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-40-Lot";
+            rr:predicate epo:isUsedForCandidateRestriction;
+            rr:objectMap
+                [
+                    rml:reference "efbc:SecondStageIndicator";
+                    rr:datatype xsd:boolean;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-7532-Lot";
+            rr:predicate epo:hasConstraint ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:SelectionTermConstrain ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ] ;
+        ] .
+
+#Selection Term Constrain
+tedm:SelectionTermConstrain a rr:TriplesMap ;
+    rdfs:label "BT-7532-Lot";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:SelectionCriteria/efac:CriterionParameter";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_SelectionTermConstrain_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class cccev:Constraint
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasThresholdValue ;
+            rr:objectMap
+                [
+                    rml:reference "efbc:ParameterCode[@listName='number-threshold']";
+                ] ;
+        ] .
+
+
+#Multiple Stage Procedure Term
+tedm:MultipleStageProcedureTerm a rr:TriplesMap ;
+    rdfs:label "ND-SecondStage";
+    rdfs:comment "Applies to: GR-Lot-Candidates";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_MultipleStageProcedureTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:MultipleStageProcedureTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-52-Lot";
+            rr:predicate epo:hasSuccessiveReduction ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:CandidateReductionConstraintIndicator";
+                    rr:datatype xsd:boolean
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-661-Lot";
+            rr:predicate epo:hasEstimatedTenderInvitationDate ;
+            rr:objectMap
+                [
+                    rml:reference "descendant::cbc:LimitationDescription";
+                    rr:datatype xsd:integer
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-51-Lot";
+            rr:predicate epo:hasMaximumNumberOfCandidates ;
+            rr:objectMap
+                [
+                    rml:reference "descendant::cbc:MaximumQuantity";
+                    rr:datatype xsd:integer
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-50-Lot";
+            rr:predicate epo:hasMinimumNumberOfCandidates ;
+            rr:objectMap
+                [
+                    rml:reference "descendant::cbc:MinimumQuantity";
+                    rr:datatype xsd:integer
                 ] ;
         ] .
 
@@ -1482,8 +1686,8 @@ tedm:AwardingTerm a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:AwardingTermConstrain ;
                     rr:joinCondition [
-                        rr:child "path(..)";
-                        rr:parent "//efac:AwardCriterionParameter";
+                        rr:child "path(.)";
+                        rr:parent "path(../../../../../../..)";
                     ];
                 ] ;
         ] .
