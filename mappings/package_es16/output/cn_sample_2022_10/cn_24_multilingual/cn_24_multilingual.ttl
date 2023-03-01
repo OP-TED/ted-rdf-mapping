@@ -71,6 +71,9 @@ epd:id__ContactPoint_YG3RWHcWTBZPCNqFAQ7guC a cccev:ContactPoint;
   cccev:email "contact@example.com";
   cccev:telephone "+123 456 789" .
 
+epd:id__ContractExtension_BboGPQkCpLeHXdXL8io8wo a epo:ContractTerm;
+  epo:hasMaximumNumberOfRenewals 0 .
+
 epd:id__ContractTerm_YWMCGu6i5HBxweh3xaUekn a epo:ContractTerm;
   epo:hasEInvoicing "required";
   epo:hasEPayment true;
@@ -117,7 +120,8 @@ epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B a epo:ReviewTerm;
     "В рамките на 2 месеца от получаването на известието от ищеца или, в случай че такова липсва, от деня, в който е станало известно на ищеца. Жалба до Европейския омбудсман нито спира този срок, нито води до откриване на нов срок за подаване на жалби." .
 
 epd:id__Lot_246rmGzZvwFBcxRNZTXjTW a epo:Lot;
-  epo:foreseesContractSpecificTerm epd:id__ContractTerm_YWMCGu6i5HBxweh3xaUekn;
+  epo:foreseesContractSpecificTerm epd:id__ContractExtension_BboGPQkCpLeHXdXL8io8wo,
+    epd:id__ContractTerm_YWMCGu6i5HBxweh3xaUekn;
   epo:hasReservedProcurement "none";
   epo:isCoveredByGPA true;
   epo:isSubjectToLotSpecificTerm epd:id__AwardingTerms_kJu9SkmLfQYWH3GxqnddRV, epd:id__LotReviewTerm_GejsGJcoxiEimbiEooTo5B,

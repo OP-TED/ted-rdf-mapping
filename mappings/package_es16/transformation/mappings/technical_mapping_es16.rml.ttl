@@ -1468,6 +1468,56 @@ tedm:Lot a rr:TriplesMap ;
                         rr:parent "path(../../.)";
                     ];
                 ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-OptionsAndRenewals";
+            rdfs:comment "Applies to: GR-Lot-ContractExtension";
+            rr:predicate epo:foreseesContractSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ContractExtension ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ] ;
+        ] .
+
+#Contract Extension
+tedm:ContractExtension a rr:TriplesMap ;
+    rdfs:label "ND-OptionsAndRenewals";
+    rdfs:comment "Applies to: GR-Lot-ContractExtension";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ContractExtension_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class  epo:ContractTerm;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-54-Lot";
+            rr:predicate epo:hasOptionsDescription ;
+            rr:objectMap
+                [
+                    rml:reference "descendant::cbc:OptionsDescription";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-58-Lot";
+            rr:predicate epo:hasMaximumNumberOfRenewals ;
+            rr:objectMap
+                [
+                    rml:reference "descendant::cbc:MaximumNumberNumeric";
+                    rr:datatype xsd:integer;
+                ] ;
         ] .
 
 #Framework Term Agreement
