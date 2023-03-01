@@ -1397,6 +1397,238 @@ tedm:Lot a rr:TriplesMap ;
                 [
                     rml:reference "descendant::cbc:TendererRequirementTypeCode[@listName='reserved-procurement']";
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-300-Lot";
+            rr:predicate epo:hasAdditionalInformation  ;
+            rr:objectMap
+                [
+                    rml:reference "cac:ProcurementProject/cbc:Note";
+                    rr:datatype xsd:string
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-115-Lot";
+            rr:predicate epo:isCoveredByGPA  ;
+            rr:objectMap
+                [
+                    rml:reference "cac:TenderingProcess/cbc:GovernmentAgreementConstraintIndicator";
+                    rr:datatype xsd:boolean
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-60-Lot";
+            rr:predicate epo:isUsingEUFunds  ;
+            rr:objectMap
+                [
+                    rml:reference "cac:TenderingTerms/cbc:FundingProgramCode[@listName='eu-funded']";
+                    rr:datatype xsd:boolean
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-AuctionTerms";
+            rdfs:comment "Applies to: GR-Lot-AuctionTerms";
+            rr:predicate epo:usesTechnique ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:EAuctionTechnicalUsage ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../../.)";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:comment "Applies to: GR-Lot-ContractingSystem";
+            rr:predicate epo:usesTechnique ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:FrameworkAgreementTechnicalUsage ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../../.)";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-FA";
+            rdfs:comment "Applies to: GR-Lot-FrameworkAgreement";
+            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:FrameworkTermAgreement ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../../.)";
+                    ];
+                ] ;
+        ] .
+
+#Framework Term Agreement
+tedm:FrameworkTermAgreement a rr:TriplesMap ;
+    rdfs:label "ND-FA";
+    rdfs:comment "Applies to: GR-Lot-FrameworkAgreement";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:FrameworkAgreement";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_FrameworkTermAgreement_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:FrameworkAgreementTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-113-Lot";
+            rr:predicate epo:hasMaximumParticipantsNumber ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:MaximumOperatorQuantity";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-109-Lot";
+            rr:predicate epo:hasDurationExtensionJustification ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Justification";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-111-Lot";
+            rr:predicate epo:FrameworkAgreementTerm ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Justification";
+                    rr:datatype xsd:string;
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-271-Lot";
+            rr:predicate epo:hasFrameworkAgreementMaximumValue ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:FrameworkAgreementMonetaryValue ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../../../../../..)";
+                    ];
+                ] ;
+        ] .
+
+#Framework Agreement Monetary Value
+tedm:FrameworkAgreementMonetaryValue a rr:TriplesMap ;
+    rdfs:label "BT-271-Lot";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:RequestedTenderTotal/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_FrameworkAgreementMonetaryValue_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:MonetaryValue
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "efbc:FrameworkMaximumAmount";
+                    rr:datatype xsd:decimal;
+                ] ;
+        ] .
+
+#Framework Agreement Technical Usage
+tedm:FrameworkAgreementTechnicalUsage a rr:TriplesMap ;
+    rdfs:comment "Applies to: GR-Lot-ContractingSystem";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:ContractingSystem";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_FrameworkAgreementTechnicalUsage_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:TechniqueUsage
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-765-Lot";
+            rr:predicate epo:hasUsage ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ContractingSystemTypeCode[@listName='framework-agreement']";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-766-Lot";
+            rr:predicate epo:hasDPSScope ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ContractingSystemTypeCode[@listName='dps-usage']";
+                ] ;
+        ] .
+
+#EAuction Technical Usage
+tedm:EAuctionTechnicalUsage a rr:TriplesMap ;
+    rdfs:label "ND-AuctionTerms";
+    rdfs:comment "Applies to: GR-Lot-AuctionTerms";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:AuctionTerms";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_EAuctionTechnicalUsage_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:EAuctionTechniqueUsage
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-767-Lot";
+            rr:predicate  epo:hasUsage ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:AuctionConstraintIndicator";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-122-Lot";
+            rr:predicate epo:hasDescription ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Description";
+                    rr:datatype xsd:string
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-123-Lot";
+            rr:predicate epo:hasEAuctionURL ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:AuctionURI";
+                    rr:datatype xsd:anyURI
+                ] ;
         ] .
 
 #Selection Term
