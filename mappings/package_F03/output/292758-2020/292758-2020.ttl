@@ -15,6 +15,12 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+epd:id_2018-S-059-130419_Notice a epo:Notice;
+  epo:hasID epd:id_2018-S-059-130419_NoticeIdentifier_C5nS5y4XErvUqzRNMARW8r .
+
+epd:id_2018-S-059-130419_NoticeIdentifier_C5nS5y4XErvUqzRNMARW8r a epo:Identifier;
+  epo:hasIdentifierValue "2018/S 059-130419" .
+
 epd:id_2020-S-120-292758_AwardCriterionPrice_DRhJdosd6Y9c3T8UnSgTC9 a epo:AwardCriterion;
   epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/price> .
 
@@ -29,15 +35,15 @@ epd:id_2020-S-120-292758_ContactPoint_UU5jeWb9wCr2uQLNME2nwM a cccev:ContactPoin
   cccev:email "procurement@tii.ie";
   cccev:telephone "+353 16463400" .
 
-epd:id_2020-S-120-292758_ContractTermLocationAddress_DgNm7RuiSQ47VBTvdrHsRv a locn:Address;
+epd:id_2020-S-120-292758_ContractTermLotLocationAddress_DgNm7RuiSQ47VBTvdrHsRv a locn:Address;
   locn:fullAddress "Dublin."@en .
 
-epd:id_2020-S-120-292758_ContractTermLocation_DgNm7RuiSQ47VBTvdrHsRv a dct:Location;
+epd:id_2020-S-120-292758_ContractTermLotLocation_DgNm7RuiSQ47VBTvdrHsRv a dct:Location;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/IE>;
-  locn:address epd:id_2020-S-120-292758_ContractTermLocationAddress_DgNm7RuiSQ47VBTvdrHsRv .
+  locn:address epd:id_2020-S-120-292758_ContractTermLotLocationAddress_DgNm7RuiSQ47VBTvdrHsRv .
 
-epd:id_2020-S-120-292758_ContractTerm_DgNm7RuiSQ47VBTvdrHsRv a epo:ContractTerm;
-  epo:definesSpecificPlaceOfPerformance epd:id_2020-S-120-292758_ContractTermLocation_DgNm7RuiSQ47VBTvdrHsRv;
+epd:id_2020-S-120-292758_ContractTermLot_DgNm7RuiSQ47VBTvdrHsRv a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2020-S-120-292758_ContractTermLotLocation_DgNm7RuiSQ47VBTvdrHsRv;
   epo:hasOptions false .
 
 epd:id_2020-S-120-292758_DynamicPurchaseSystemTechniqueUsage_C5nS5y4XErvUqzRNMARW8r
@@ -46,7 +52,9 @@ epd:id_2020-S-120-292758_DynamicPurchaseSystemTechniqueUsage_C5nS5y4XErvUqzRNMAR
 epd:id_2020-S-120-292758_LotAwardOutcome_KaeDJ6cSC7UaS6sXtDUnvf a epo:LotAwardOutcome;
   epo:describesLot epd:id_2020-S-120-292758_Lot_DgNm7RuiSQ47VBTvdrHsRv;
   epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw>;
-  epo:hasNonAwardJustification <http://publications.europa.eu/resource/authority/non-award-justification/other> .
+  epo:hasNonAwardJustification <http://publications.europa.eu/resource/authority/non-award-justification/other>;
+  epo:hasNonAwardedContractNumber "1";
+  epo:hasNonAwardedContractTitle "Expert Qualifiication System"@en .
 
 epd:id_2020-S-120-292758_LotPurpose_DgNm7RuiSQ47VBTvdrHsRv a epo:Purpose;
   epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/71000000>, <http://data.europa.eu/cpv/cpv/71300000>,
@@ -55,7 +63,7 @@ epd:id_2020-S-120-292758_LotPurpose_DgNm7RuiSQ47VBTvdrHsRv a epo:Purpose;
     <http://data.europa.eu/cpv/cpv/73000000> .
 
 epd:id_2020-S-120-292758_Lot_DgNm7RuiSQ47VBTvdrHsRv a epo:Lot;
-  epo:foreseesContractSpecificTerm epd:id_2020-S-120-292758_ContractTerm_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:foreseesContractSpecificTerm epd:id_2020-S-120-292758_ContractTermLot_DgNm7RuiSQ47VBTvdrHsRv;
   epo:hasAdditionalInformation "This is to inform that the DPS is closed."@en;
   epo:hasDescription "TII wish to inform you that we are no longer continuing with the DPS. TII regret any inconvenience caused by this decision. All and any future opportunities will be advertised on eTenders by TII."@en;
   epo:hasPurpose epd:id_2020-S-120-292758_LotPurpose_DgNm7RuiSQ47VBTvdrHsRv;
@@ -63,19 +71,16 @@ epd:id_2020-S-120-292758_Lot_DgNm7RuiSQ47VBTvdrHsRv a epo:Lot;
   epo:specifiesAwardCriterion epd:id_2020-S-120-292758_AwardCriterionPrice_DRhJdosd6Y9c3T8UnSgTC9 .
 
 epd:id_2020-S-120-292758_Notice a epo:Notice, epo:ResultNotice;
-  epo:announcesNoticeAwardInformation epd:id_2020-S-120-292758_NoticeAwardInformation_faF7Q5dyoGpXu3Ru4RGg73;
-  epo:announcesRole epd:id_2020-S-120-292758_Reviewer_bdZjimbzCaRXbeYeBmF94j;
+  epo:announcesRole epd:id_2020-S-120-292758_Buyer_2DfWDD3NHHwpMGiWwzLc5d, epd:id_2020-S-120-292758_Reviewer_bdZjimbzCaRXbeYeBmF94j;
   epo:hasDispatchDate "2020-06-19"^^xsd:date;
-  epo:hasID epd:id_2020-S-120-292758_NoticeIdentifier_C5nS5y4XErvUqzRNMARW8r;
+  epo:hasID epd:id_2020-S-120-292758_NoticeIdentifier_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:hasPublicationDate "20200624";
   epo:refersToLot epd:id_2020-S-120-292758_Lot_DgNm7RuiSQ47VBTvdrHsRv;
-  epo:refersToPrevious epd:id_2020-S-120-292758_Notice;
-  epo:refersToProcedure epd:id_2020-S-120-292758_Procedure_faF7Q5dyoGpXu3Ru4RGg73;
-  epo:refersToRole epd:id_2020-S-120-292758_Buyer_2DfWDD3NHHwpMGiWwzLc5d .
+  epo:refersToPrevious epd:id_2018-S-059-130419_Notice;
+  epo:refersToProcedure epd:id_2020-S-120-292758_Procedure_faF7Q5dyoGpXu3Ru4RGg73 .
 
-epd:id_2020-S-120-292758_NoticeAwardInformation_faF7Q5dyoGpXu3Ru4RGg73 a epo:NoticeAwardInformation .
-
-epd:id_2020-S-120-292758_NoticeIdentifier_C5nS5y4XErvUqzRNMARW8r a epo:Identifier;
-  epo:hasIdentifierValue "2018/S 059-130419" .
+epd:id_2020-S-120-292758_NoticeIdentifier_faF7Q5dyoGpXu3Ru4RGg73 a epo:Identifier;
+  epo:hasIdentifierValue "2020/S 120-292758" .
 
 epd:id_2020-S-120-292758_OrganisationAddress_UU5jeWb9wCr2uQLNME2nwM a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/IRL>;
@@ -101,11 +106,10 @@ epd:id_2020-S-120-292758_ProcedurePurpose_faF7Q5dyoGpXu3Ru4RGg73 a epo:Purpose;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/71356300> .
 
-epd:id_2020-S-120-292758_ProcedureSpecificTerm_2DfWDD3NHHwpMGiWwzLc5d a epo:ProcedureSpecificTerm;
+epd:id_2020-S-120-292758_ProcedureTerm_faF7Q5dyoGpXu3Ru4RGg73 a epo:ProcedureTerm;
   epo:isAwardedByCPB true .
 
 epd:id_2020-S-120-292758_Procedure_faF7Q5dyoGpXu3Ru4RGg73 a epo:Procedure;
-  epo:foreseesContractSpecificTerm epd:id_2020-S-120-292758_ContractTerm_DgNm7RuiSQ47VBTvdrHsRv;
   epo:hasDescription "TII has a requirement to establish a panel of industry experts and specialists to provide ad-hoc specialist services for its projects as considered necessary. TII’s objective is to establish a standing list of industry experts and specialists, with expertise in certain specialist fields, who can be called upon to provide TII with ad-hoc support as required by TII. TII intends to establish a Dynamic Purchasing System (DPS) to provide a streamlined procurement route for engaging the specialist services of such individuals. For example, TII may have a requirement for a steering committee member, a project evaluation board member, an expert witness, an independent technical advisor, a trainer or an industry expert."@en;
   epo:hasID epd:id_2020-S-120-292758_ProcedureIdentifier_faF7Q5dyoGpXu3Ru4RGg73;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
@@ -114,7 +118,7 @@ epd:id_2020-S-120-292758_Procedure_faF7Q5dyoGpXu3Ru4RGg73 a epo:Procedure;
   epo:hasPurpose epd:id_2020-S-120-292758_ProcedurePurpose_faF7Q5dyoGpXu3Ru4RGg73;
   epo:hasTitle "Expert Qualifiication System"@en;
   epo:isCoveredByGPA true;
-  epo:isSubjectToProcedureSpecificTerm epd:id_2020-S-120-292758_ProcedureSpecificTerm_2DfWDD3NHHwpMGiWwzLc5d;
+  epo:isSubjectToProcedureSpecificTerm epd:id_2020-S-120-292758_ProcedureTerm_faF7Q5dyoGpXu3Ru4RGg73;
   epo:usesTechnique epd:id_2020-S-120-292758_DynamicPurchaseSystemTechniqueUsage_C5nS5y4XErvUqzRNMARW8r .
 
 epd:id_2020-S-120-292758_ProcurementProcessInformation_C5nS5y4XErvUqzRNMARW8r a epo:ProcurementProcessInformation;

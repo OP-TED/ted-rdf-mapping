@@ -1,11 +1,10 @@
-#title: II.2.3.2 - Main site or place of performance
-#description: “II.2.3.2 - Main site or place of performance” in SF corresponds to “BT-728 Place Performance Additional Information” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F23_2014/OBJECT_CONTRACT/OBJECT_DESCR/MAIN_SITE. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F23_2014/OBJECT_CONTRACT/OBJECT_DESCR/MAIN_SITE
+#title: II.2.3.1 - NUTS code
+#description: “II.2.3.1 - NUTS code” in SF corresponds to “BT-5071 Place Performance Country Subdivision” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F23_2014/OBJECT_CONTRACT/OBJECT_DESCR/NUTS/@CODE. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / dct:Location / at-voc:nuts (from nuts.json) .
+#xpath: /TED_EXPORT/FORM_SECTION/F23_2014/OBJECT_CONTRACT/OBJECT_DESCR/NUTS/@CODE
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value . }
+		?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / epo:hasNutsCode ?value . }

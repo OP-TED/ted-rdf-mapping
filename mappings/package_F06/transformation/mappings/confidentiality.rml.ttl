@@ -52,16 +52,17 @@ tedm:ElementConfidentialityDescription a rr:TriplesMap ;
                     rml:reference "if(exists(AWARD_CONTRACT/AGREE_TO_PUBLICATION_MAN/@PUBLICATION)) then 'IRI predicate' else null";
                     #--rr:termType rr:IRI;
                 ]
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasClassReference;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ContractorOrganisationGroup;
-                    rr:joinCondition [
-                        rr:child "'true'";
-                        rr:parent "if (exists()) then 'true' else null";
-                    ];
-                ]
+# Removing ary reference to ContractorOrganizationGroup as per GH issue #245
+#        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasClassReference;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:ContractorOrganisationGroup;
+#                    rr:joinCondition [
+#                        rr:child "'true'";
+#                        rr:parent "if (exists()) then 'true' else null";
+#                    ];
+#                ]
         ] .

@@ -1,10 +1,11 @@
-#title: II.2.4 - Description of the procurement
-#description: “II.2.4 - Description of the procurement” in SF corresponds to “BT-24 Description” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F25_2014/OBJECT_CONTRACT/OBJECT_DESCR/SHORT_DESCR. The expected ontology instances are epo: epo:Lot / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F25_2014/OBJECT_CONTRACT/OBJECT_DESCR/SHORT_DESCR
+#title: II.2.3.2 - Main site or place of performance
+#description: “II.2.3.2 - Main site or place of performance” in SF corresponds to “BT-728 Place Performance Additional Information” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F25_2014/OBJECT_CONTRACT/OBJECT_DESCR/MAIN_SITE. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F25_2014/OBJECT_CONTRACT/OBJECT_DESCR/MAIN_SITE
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:hasDescription ?value . }
+		?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value . }

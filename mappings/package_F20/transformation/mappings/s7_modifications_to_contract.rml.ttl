@@ -45,19 +45,19 @@ tedm:ProcedureModification a rr:TriplesMap ;
         ] .
 
 tedm:ProcedurePurposeModification a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasMainClassification ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:cpvsuppl;
-                    rr:joinCondition [
-                        rr:child "CPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE";
-                        rr:parent "code.value";
-                    ];
-                ] ;
-
-        ] ;
+# Not mapping supplementary CPV codes, as EPO does not provide a way to group them with "regular" CPV codes. See issues #119 and #205.
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasMainClassification ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:cpvsuppl;
+#                    rr:joinCondition [
+#                        rr:child "CPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE";
+#                        rr:parent "code.value";
+#                    ];
+#                ] ;
+#        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasMainClassification ;
@@ -243,7 +243,7 @@ tedm:LotModification a rr:TriplesMap ;
             rr:predicate epo:foreseesContractSpecificTerm;
             rr:objectMap
             [
-                rr:parentTriplesMap tedm:ContractTermModification;
+                rr:parentTriplesMap tedm:ContractTermLotModification;
                 rr:joinCondition [
                     rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                     rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
@@ -264,28 +264,18 @@ tedm:LotModification a rr:TriplesMap ;
                 ] ;
         ] .
 tedm:LotPurposeModification a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasAdditionalClassification ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:cpvsuppl;
-                    rr:joinCondition [
-                        rr:child "CPV_SUPPLEMENTARY_CODE/@CODE";
-                        rr:parent "code.value";
-                    ];
-                ] ;
-
-        ] ;
-#        rr:predicateObjectMap
+# Not mapping supplementary CPV codes, as EPO does not provide a way to group them with "regular" CPV codes. See issues #119 and #205.
+#    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasAdditionalClassification ;
 #            rr:objectMap
 #                [
-#                    rml:reference "if (not(exists(CPV_ADDITIONAL/CPV_SUPPLEMENTARY_CODE/@CODE))) then 'http://data.europa.eu/cpv/cpv/OP_DATPRO' else null";
-#                    rr:termType rr:IRI;
-#                ]
-#
+#                    rr:parentTriplesMap tedm:cpvsuppl;
+#                    rr:joinCondition [
+#                        rr:child "CPV_SUPPLEMENTARY_CODE/@CODE";
+#                        rr:parent "code.value";
+#                    ];
+#                ] ;
 #        ] ;
     rr:predicateObjectMap
         [
@@ -299,16 +289,6 @@ tedm:LotPurposeModification a rr:TriplesMap ;
                     ];
                 ] ;
         ] .
-#    rr:predicateObjectMap
-#        [
-#            rr:predicate epo:hasAdditionalClassification ;
-#            rr:objectMap
-#                [
-#                    rml:reference "if (not(exists(CPV_ADDITIONAL/CPV_CODE/@CODE))) then 'http://data.europa.eu/cpv/cpv/OP_DATPRO' else null";
-#                    rr:termType rr:IRI;
-#                ]
-#
-#        ] ;
 tedm:LotAwardOutcomeAwardedMonetaryValueModification a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -331,13 +311,13 @@ tedm:LotAwardOutcomeAwardedMonetaryValueModification a rr:TriplesMap ;
                     ];
                 ] ;
         ] .
-tedm:ContractTermModification a rr:TriplesMap ;
+tedm:ContractTermLotModification a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:definesSpecificPlaceOfPerformance ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ContractTermLocationModification;
+                    rr:parentTriplesMap tedm:ContractTermLotLocationModification;
 #                    rr:joinCondition [
 #                        rr:child "./@ITEM";
 #                        rr:parent "./@ITEM";
@@ -361,7 +341,7 @@ tedm:ContractTermModification a rr:TriplesMap ;
             ]
         ] .
 
-tedm:ContractTermLocationModification a rr:TriplesMap ;
+tedm:ContractTermLotLocationModification a rr:TriplesMap ;
 #    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasNutsCode ;
@@ -389,14 +369,14 @@ tedm:ContractTermLocationModification a rr:TriplesMap ;
             rr:predicate locn:address ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ContractTermLocationAddressModification;
+                    rr:parentTriplesMap tedm:ContractTermLotLocationAddressModification;
 #                    rr:joinCondition [
 #                        rr:child "./@ITEM";
 #                        rr:parent "./@ITEM";
 #                    ];
                 ] ;
         ] .
-tedm:ContractTermLocationAddressModification a rr:TriplesMap ;
+tedm:ContractTermLotLocationAddressModification a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate locn:fullAddress ;

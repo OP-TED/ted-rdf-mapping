@@ -45,7 +45,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#Procedure<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Procedure_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Procedure_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -252,36 +252,6 @@
             
                 
                     <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#isSubjectToProcedureSpecificTerm</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ProcedureSpecificTerm">http://data.europa.eu/a4g/mapping/sf-rml/ProcedureSpecificTerm</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
                         <dt>http://data.europa.eu/a4g/ontology#hasProcurementScopeDividedIntoLot</dt>
 
                         
@@ -454,7 +424,7 @@
         
             <dd><strong><em>Reference:</em></strong>
                 
-                    if(exists(../PROCEDURE/PT_OPEN)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/open' else if(exists(../PROCEDURE/PT_RESTRICTED)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted' else if(exists(../PROCEDURE/PT_COMPETITIVE_NEGOTIATION) or exists(../PROCEDURE/PT_INVOLVING_NEGOTIATION) or exists(../PROCEDURE/PT_NEGOTIATED_WITH_PRIOR_CALL)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call' else if(exists(../PROCEDURE/PT_COMPETITIVE_DIALOGUE)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial' else if(exists(../PROCEDURE/PT_INNOVATION_PARTNERSHIP)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation' else if(exists(../PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL) or exists(../PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_PUBLICATION)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call' else null
+                    if(exists(../PROCEDURE/PT_OPEN) or exists(../PROCEDURE/PT_AWARD_CONTRACT_WITH_PRIOR_PUBLICATION)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/open' else if(exists(../PROCEDURE/PT_RESTRICTED)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted' else if(exists(../PROCEDURE/PT_COMPETITIVE_NEGOTIATION) or exists(../PROCEDURE/PT_INVOLVING_NEGOTIATION) or exists(../PROCEDURE/PT_NEGOTIATED_WITH_PRIOR_CALL)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call' else if(exists(../PROCEDURE/PT_COMPETITIVE_DIALOGUE)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial' else if(exists(../PROCEDURE/PT_INNOVATION_PARTNERSHIP)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation' else if(exists(../PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL) or exists(../PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_PUBLICATION)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call' else null
                 
             </dd>
         
@@ -594,7 +564,7 @@
         
             <dd><strong><em>Parent Triple Map:</em></strong>
                 
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/OrganisationChannel">http://data.europa.eu/a4g/mapping/sf-rml/OrganisationChannel</a>
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ElectronicCommunicationChannel">http://data.europa.eu/a4g/mapping/sf-rml/ElectronicCommunicationChannel</a>
                 
             </dd>
         
@@ -780,36 +750,6 @@
             
                 
                     <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#isSubjectToTerm</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ProcessPlanningTermProcedure">http://data.europa.eu/a4g/mapping/sf-rml/ProcessPlanningTermProcedure</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
                         <dt>http://data.europa.eu/a4g/ontology#usesTechnique</dt>
 
                         
@@ -888,7 +828,7 @@
         
             <dd><strong><em>Parent Triple Map:</em></strong>
                 
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ContractTerm">http://data.europa.eu/a4g/mapping/sf-rml/ContractTerm</a>
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ContractTermProcedure">http://data.europa.eu/a4g/mapping/sf-rml/ContractTermProcedure</a>
                 
             </dd>
         
@@ -1467,44 +1407,6 @@
             
                 
                     <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasDirectAwardJustification</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if (exists(PT_AWARD_CONTRACT_WITHOUT_CALL/D_OUTSIDE_SCOPE)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/dir24-list' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
                         <dt>http://data.europa.eu/a4g/ontology#hasJustification</dt>
 
                         
@@ -1711,52 +1613,6 @@
                     </dl>
                 
             
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasClassReference</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationGroup">http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationGroup</a>
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Child:</em></strong>
-                
-                    'true'
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Parent:</em></strong>
-                
-                    if (exists()) then 'true' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
         </dd>
     </dl>
 
@@ -1780,7 +1636,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#Notice<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Notice
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Notice
         </dd>
         
     </dl>
@@ -1829,6 +1685,52 @@
             
                 
                     <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasID</dt>
+
+                        
+
+                        
+
+                        
+        
+            <dd><strong><em>Parent Triple Map:</em></strong>
+                
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/NoticeIdentifier">http://data.europa.eu/a4g/mapping/sf-rml/NoticeIdentifier</a>
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    path()
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    path()
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
                         <dt>http://data.europa.eu/a4g/ontology#announcesPlannedProcurementPart</dt>
 
                         
@@ -1844,6 +1746,36 @@
             </dd>
         
     
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasPublicationDate</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    /TED_EXPORT/CODED_DATA_SECTION/REF_OJS/DATE_PUB
+                
+            </dd>
+        
+    
+
+                        
+
+                        
 
                         
 
@@ -2009,7 +1941,7 @@
             
                 
                     <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#refersToRole</dt>
+                        <dt>http://data.europa.eu/a4g/ontology#announcesRole</dt>
 
                         
 
@@ -2039,7 +1971,7 @@
             
                 
                     <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#refersToRole</dt>
+                        <dt>http://data.europa.eu/a4g/ontology#announcesRole</dt>
 
                         
 
@@ -2069,7 +2001,7 @@
             
                 
                     <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#refersToRole</dt>
+                        <dt>http://data.europa.eu/a4g/ontology#announcesRole</dt>
 
                         
 
@@ -2099,7 +2031,7 @@
             
                 
                     <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#refersToRole</dt>
+                        <dt>http://data.europa.eu/a4g/ontology#announcesRole</dt>
 
                         
 
@@ -2431,6 +2363,68 @@
     </dl>
 
 
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/NoticeIdentifier">http://data.europa.eu/a4g/mapping/sf-rml/NoticeIdentifier</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+        <dd>
+            <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#Identifier<br>
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_NoticeIdentifier_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+        </dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasIdentifierValue</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    /TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
     <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/PlannedProcurementPart">http://data.europa.eu/a4g/mapping/sf-rml/PlannedProcurementPart</h2>
     
         
@@ -2564,7 +2558,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#OrganisationGroup<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_BuyerOrganisationGroup_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_BuyerOrganisationGroup_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -2572,36 +2566,6 @@
     <dl>
         <dt>Predicate object maps</dt>
         <dd>
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasDeliveryGateway</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/OrganisationChannel">http://data.europa.eu/a4g/mapping/sf-rml/OrganisationChannel</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
             
                 
                     <dl>
@@ -3212,7 +3176,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://www.w3.org/ns/org#Organization<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_AdditionalOrganisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_AdditionalOrganisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -3616,7 +3580,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://www.w3.org/ns/locn#Address<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_OrganisationAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_OrganisationAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -4064,7 +4028,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://www.w3.org/ns/org#Organization<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Organisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Organisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -4271,7 +4235,7 @@
         
             <dd><strong><em>Reference:</em></strong>
                 
-                    ../CA_ACTIVITY_OTHER
+                    if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then ../CA_ACTIVITY_OTHER else null
                 
             </dd>
         
@@ -4301,7 +4265,7 @@
         
             <dd><strong><em>Reference:</em></strong>
                 
-                    ../CE_ACTIVITY_OTHER
+                    if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then ../CE_ACTIVITY_OTHER else null
                 
             </dd>
         
@@ -4664,7 +4628,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://www.w3.org/ns/locn#Address<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_OrganisationAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_OrganisationAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -4859,7 +4823,7 @@
     </dl>
 
 
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/OrganisationChannel">http://data.europa.eu/a4g/mapping/sf-rml/OrganisationChannel</h2>
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ElectronicCommunicationChannel">http://data.europa.eu/a4g/mapping/sf-rml/ElectronicCommunicationChannel</h2>
     
         
 
@@ -4878,7 +4842,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://data.europa.eu/m8g/Channel<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Channel_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Channel_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -4915,6 +4879,8 @@
 
 
                     </dl>
+                
+            
                 
             
         </dd>
@@ -5087,7 +5053,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#ProcurementProcedureInformationProvider<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ProcurementProcedureInformationProvider_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ProcurementProcedureInformationProvider_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -5179,7 +5145,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#ProcurementProcedureInformationProvider<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ProcurementProcedureInformationProvider_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ProcurementProcedureInformationProvider_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -5271,7 +5237,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://www.w3.org/ns/org#Organization<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_InformationProviderOrganisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_InformationProviderOrganisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -5643,7 +5609,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://www.w3.org/ns/locn#Address<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_InformationProviderOrganisationAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_InformationProviderOrganisationAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -5857,7 +5823,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#TenderReceiver<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_TenderReceiver_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_TenderReceiver_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -5949,7 +5915,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#TenderReceiver<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_TenderReceiver_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_TenderReceiver_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -6041,7 +6007,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://www.w3.org/ns/org#Organization<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_TenderReceiverOrganisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_TenderReceiverOrganisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -6443,7 +6409,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://www.w3.org/ns/locn#Address<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_TenderReceiverOrganisationAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_TenderReceiverOrganisationAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -6654,11 +6620,6 @@
 
     <dl>
         <dt>Subject map</dt>
-        
-        <dd>
-            <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#NoticeAwardInformation<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_NoticeAwardInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
-        </dd>
         
     </dl>
 
@@ -7069,106 +7030,6 @@
     </dl>
 
 
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ProcedureSpecificTerm">http://data.europa.eu/a4g/mapping/sf-rml/ProcedureSpecificTerm</h2>
-    
-        
-
-        
-
-    
-    <dl>
-        <dt>Logical Source</dt>
-        
-        <dd>data/source.xml</dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Subject map</dt>
-        
-        <dd>
-            <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#ProcedureSpecificTerm<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ProcedureSpecificTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
-        </dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Predicate object maps</dt>
-        <dd>
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasCrossBorderLaw</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    PROCUREMENT_LAW
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Reference Language Map:</em></strong>
-                
-                    lower-case(ancestor::*/@LG)
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#isAwardedByCPB</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if(exists(CENTRAL_PURCHASING)) then 'true' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-        </dd>
-    </dl>
-
-
     <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueProcedure">http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueProcedure</h2>
     
         
@@ -7291,7 +7152,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#Purpose<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ProcedurePurpose_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ProcedurePurpose_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -7299,52 +7160,6 @@
     <dl>
         <dt>Predicate object maps</dt>
         <dd>
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasMainClassification</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/cpvsuppl">http://data.europa.eu/a4g/mapping/sf-rml/cpvsuppl</a>
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Child:</em></strong>
-                
-                    CPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Parent:</em></strong>
-                
-                    code.value
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-
-                    </dl>
-                
             
                 
                     <dl>
@@ -7629,7 +7444,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#Lot<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Lot_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Lot_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -7978,7 +7793,7 @@
         
             <dd><strong><em>Parent Triple Map:</em></strong>
                 
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ContractTerm">http://data.europa.eu/a4g/mapping/sf-rml/ContractTerm</a>
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLot">http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLot</a>
                 
             </dd>
         
@@ -8244,150 +8059,6 @@
             
                 
                     <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#specifiesSelectionCriterion</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/SelectionCriterion">http://data.europa.eu/a4g/mapping/sf-rml/SelectionCriterion</a>
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasReservedProcurement</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if(exists(../../LEFTI/RESTRICTED_SHELTERED_WORKSHOP)) then 'http://publications.europa.eu/resource/authority/reserved-procurement/res-ws' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasReservedProcurement</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if(exists(../../LEFTI/RESERVED_ORGANISATIONS_SERVICE_MISSION)) then 'http://publications.europa.eu/resource/authority/reserved-procurement/res-pub-ser' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasPerformingStaffQualificationInformation</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if(exists(../../LEFTI/PERFORMANCE_STAFF_QUALIFICATION)) then 'http://publications.europa.eu/resource/authority/requirement-stage/t-requ' else 'http://publications.europa.eu/resource/authority/requirement-stage/not-requ'
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
                         <dt>http://data.europa.eu/a4g/ontology#hasRestatedEstimatedValue</dt>
 
                         
@@ -8588,7 +8259,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#AwardCriterion<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_AwardCriterionQuality_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_AwardCriterionQuality_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -8734,7 +8405,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#AwardCriterion<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_AwardCriterionPrice_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_AwardCriterionPrice_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -8842,7 +8513,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#AwardCriterion<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_AwardCriterionCost_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_AwardCriterionCost_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -9072,7 +8743,7 @@
     </dl>
 
 
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ContractTerm">http://data.europa.eu/a4g/mapping/sf-rml/ContractTerm</h2>
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLot">http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLot</h2>
     
         
 
@@ -9091,7 +8762,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#ContractTerm<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ContractTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ContractTermLot_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -9150,7 +8821,7 @@
         
             <dd><strong><em>Parent Triple Map:</em></strong>
                 
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLocation">http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLocation</a>
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotLocation">http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotLocation</a>
                 
             </dd>
         
@@ -9203,8 +8874,24 @@
     
 
                         
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    if(exists(./@ITEM)) then ./@ITEM else 1
+                
+            </dd>
+        
+    
 
                         
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    if(exists(./@ITEM)) then ./@ITEM else 1
+                
+            </dd>
+        
+    
 
                         
 
@@ -9233,8 +8920,24 @@
     
 
                         
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    if(exists(./@ITEM)) then ./@ITEM else 1
+                
+            </dd>
+        
+    
 
                         
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    if(exists(../@ITEM)) then ../@ITEM else 1
+                
+            </dd>
+        
+    
 
                         
 
@@ -9274,169 +8977,11 @@
                     </dl>
                 
             
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasReservedExecution</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if(exists(../../LEFTI/RESTRICTED_SHELTERED_PROGRAM)) then 'http://publications.europa.eu/resource/authority/applicability/yes' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasPerformanceConditions</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    ../../LEFTI/PERFORMANCE_CONDITIONS
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasEOrdering</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if(exists(../../COMPLEMENTARY_INFO/EORDERING)) then 'true' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasEInvoicing</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if(exists(../../COMPLEMENTARY_INFO/EINVOICING)) then 'true' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasEPayment</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if(exists(../../COMPLEMENTARY_INFO/EPAYMENT)) then 'true' else null
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
         </dd>
     </dl>
 
 
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLocation">http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLocation</h2>
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotLocation">http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotLocation</h2>
     
         
 
@@ -9455,7 +9000,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://purl.org/dc/terms/Location<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ContractTermLocation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ContractTermLotLocation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -9522,7 +9067,7 @@
         
             <dd><strong><em>Parent Triple Map:</em></strong>
                 
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLocationAddress">http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLocationAddress</a>
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotLocationAddress">http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotLocationAddress</a>
                 
             </dd>
         
@@ -9532,7 +9077,7 @@
         
             <dd><strong><em>Join condition Child:</em></strong>
                 
-                    ./MAIN_SITE
+                    if(exists(./@ITEM)) then ./@ITEM else 1
                 
             </dd>
         
@@ -9542,7 +9087,7 @@
         
             <dd><strong><em>Join condition Parent:</em></strong>
                 
-                    ./MAIN_SITE
+                    if(exists(./@ITEM)) then ./@ITEM else 1
                 
             </dd>
         
@@ -9560,7 +9105,7 @@
     </dl>
 
 
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLocationAddress">http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLocationAddress</h2>
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotLocationAddress">http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotLocationAddress</h2>
     
         
 
@@ -9643,8 +9188,8 @@
         <dt>Subject map</dt>
         
         <dd>
-            <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#Duration<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Duration_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#SpecificDuration<br>
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Duration_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -9831,7 +9376,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#Purpose<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_LotPurpose_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_LotPurpose_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -9839,52 +9384,6 @@
     <dl>
         <dt>Predicate object maps</dt>
         <dd>
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasAdditionalClassification</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/cpvsuppl">http://data.europa.eu/a4g/mapping/sf-rml/cpvsuppl</a>
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Child:</em></strong>
-                
-                    CPV_SUPPLEMENTARY_CODE/@CODE
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Parent:</em></strong>
-                
-                    code.value
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-
-                    </dl>
-                
             
                 
                     <dl>
@@ -10045,6 +9544,74 @@
     <dl>
         <dt>Predicate object maps</dt>
         <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasCrossBorderLaw</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    ../CONTRACTING_BODY/PROCUREMENT_LAW
+                
+            </dd>
+        
+    
+
+                        
+        
+            <dd><strong><em>Reference Language Map:</em></strong>
+                
+                    lower-case(ancestor::*/@LG)
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#isAwardedByCPB</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if(exists(../CONTRACTING_BODY/CENTRAL_PURCHASING)) then 'true' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
             
                 
                     <dl>
@@ -10258,22 +9825,38 @@
                         <dt>http://data.europa.eu/a4g/ontology#hasQualificationSystemDuration</dt>
 
                         
+
+                        
+
+                        
         
-            <dd><strong><em>Reference:</em></strong>
+            <dd><strong><em>Parent Triple Map:</em></strong>
                 
-                    QS/INDEFINITE_DURATION
+                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/MultipleStageProcedureIndefiniteDuration">http://data.europa.eu/a4g/mapping/sf-rml/MultipleStageProcedureIndefiniteDuration</a>
                 
             </dd>
         
     
 
                         
+        
+            <dd><strong><em>Join condition Child:</em></strong>
+                
+                    unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')
+                
+            </dd>
+        
+    
 
                         
-
-                        
-
-                        
+        
+            <dd><strong><em>Join condition Parent:</em></strong>
+                
+                    unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')
+                
+            </dd>
+        
+    
 
                         
 
@@ -10515,196 +10098,6 @@
     </dl>
 
 
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/SelectionCriterion">http://data.europa.eu/a4g/mapping/sf-rml/SelectionCriterion</h2>
-    
-        
-
-        
-
-    
-    <dl>
-        <dt>Logical Source</dt>
-        
-        <dd>data/source.xml</dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Subject map</dt>
-        
-        <dd>
-            <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#SelectionCriterion<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_SelectionCriterion_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
-        </dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Predicate object maps</dt>
-        <dd>
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasSelectionCriterionType</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    if(exists(PARTICULAR_PROFESSION)) then 'http://publications.europa.eu/resource/authority/selection-criterion/sui-act' else null 
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Template term type:</em></strong>
-                
-                    http://www.w3.org/ns/r2rml#IRI
-                
-            </dd>
-        
-    
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/m8g/name</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    QUALIFICATION/CONDITIONS
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/m8g/description</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    REFERENCE_TO_LAW
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/m8g/description</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    QUALIFICATION/METHODS
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/m8g/description</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    RULES_CRITERIA
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-        </dd>
-    </dl>
-
-
     <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ProcedureIdentifier">http://data.europa.eu/a4g/mapping/sf-rml/ProcedureIdentifier</h2>
     
         
@@ -10737,63 +10130,6 @@
             <dd><strong><em>Reference:</em></strong>
                 
                     ./REFERENCE_NUMBER
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-        </dd>
-    </dl>
-
-
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ProcessPlanningTermProcedure">http://data.europa.eu/a4g/mapping/sf-rml/ProcessPlanningTermProcedure</h2>
-    
-        
-
-        
-
-    
-    <dl>
-        <dt>Logical Source</dt>
-        
-        <dd>data/source.xml</dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Subject map</dt>
-        
-    </dl>
-
-    <dl>
-        <dt>Predicate object maps</dt>
-        <dd>
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasAwardDateScheduled</dt>
-
-                        
-        
-            <dd><strong><em>Reference:</em></strong>
-                
-                    DATE_AWARD_SCHEDULED
                 
             </dd>
         
@@ -11032,7 +10368,7 @@
         
             <dd><strong><em>Reference:</em></strong>
                 
-                    if(../NOTICE/@TYPE='CONTRACT' or ../NOTICE/@TYPE='PRI' or ../NOTICE/@TYPE='QSU_ONLY' or ../NOTICE/@TYPE='QSU_CALL_COMPETITION' or ../NOTICE/@TYPE='PER_ONLY') then (if(exists(DATE_RECEIPT_TENDERS) and exists(TIME_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T' || TIME_RECEIPT_TENDERS || ':00' else if(exists(DATE_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T00:00:00' else null) else null
+                    if(../NOTICE/@TYPE='CONTRACT' or ../NOTICE/@TYPE='PRI' or ../NOTICE/@TYPE='QSU_ONLY' or ../NOTICE/@TYPE='QSU_CALL_COMPETITION' or ../NOTICE/@TYPE='PER_ONLY') then (if(exists(DATE_RECEIPT_TENDERS) and exists(TIME_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T' || TIME_RECEIPT_TENDERS else if(exists(DATE_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS else null) else null
                 
             </dd>
         
@@ -11062,7 +10398,7 @@
         
             <dd><strong><em>Reference:</em></strong>
                 
-                    if(../NOTICE/@TYPE='PRI_CALL_COMPETITION' or ../NOTICE/@TYPE='PER_CALL_COMPETITION') then (if(exists(DATE_RECEIPT_TENDERS) and exists(TIME_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T' || TIME_RECEIPT_TENDERS || ':00' else if(exists(DATE_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T00:00:00' else null) else null
+                    if(../NOTICE/@TYPE='PRI_CALL_COMPETITION' or ../NOTICE/@TYPE='PER_CALL_COMPETITION') then (if(exists(DATE_RECEIPT_TENDERS) and exists(TIME_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T' || TIME_RECEIPT_TENDERS else if(exists(DATE_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS else null) else null
                 
             </dd>
         
@@ -11135,125 +10471,6 @@
                         
 
                         
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-        </dd>
-    </dl>
-
-
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationGroup">http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationGroup</h2>
-    
-        
-
-        
-
-    
-    <dl>
-        <dt>Logical Source</dt>
-        
-        <dd>data/source.xml</dd>
-        
-    </dl>
-
-    <dl>
-        <dt>Subject map</dt>
-        
-    </dl>
-
-    <dl>
-        <dt>Predicate object maps</dt>
-        <dd>
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasMember</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisation">http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisation</a>
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Child:</em></strong>
-                
-                    ancestor::AWARD_CONTRACT/@ITEM
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Parent:</em></strong>
-                
-                    ancestor::AWARD_CONTRACT/@ITEM
-                
-            </dd>
-        
-    
-
-                        
-
-                        
-
-
-                    </dl>
-                
-            
-                
-                    <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasMember</dt>
-
-                        
-
-                        
-
-                        
-        
-            <dd><strong><em>Parent Triple Map:</em></strong>
-                
-                    <a href="#http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisation">http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisation</a>
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Child:</em></strong>
-                
-                    ancestor::AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR | ancestor::AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR
-                
-            </dd>
-        
-    
-
-                        
-        
-            <dd><strong><em>Join condition Parent:</em></strong>
-                
-                    ancestor::AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR | ancestor::AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR
-                
-            </dd>
-        
-    
 
                         
 
@@ -11793,7 +11010,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#LotAwardOutcome<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_LotAwardOutcome_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_LotAwardOutcome_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -11988,19 +11205,27 @@
             
                 
                     <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasAdditionalNonAwardJustification</dt>
+                        <dt>http://data.europa.eu/a4g/ontology#hasNonAwardedContractTitle</dt>
 
                         
         
             <dd><strong><em>Reference:</em></strong>
                 
-                    NO_AWARDED_CONTRACT/PROCUREMENT_DISCONTINUED/NO_DOC_EXT/@PUBLICATION
+                    if (exists(NO_AWARDED_CONTRACT)) then TITLE else null
                 
             </dd>
         
     
 
                         
+        
+            <dd><strong><em>Reference Language Map:</em></strong>
+                
+                    lower-case(ancestor::*/@LG)
+                
+            </dd>
+        
+    
 
                         
 
@@ -12018,13 +11243,13 @@
             
                 
                     <dl>
-                        <dt>http://data.europa.eu/a4g/ontology#hasAdditionalNonAwardJustification</dt>
+                        <dt>http://data.europa.eu/a4g/ontology#hasNonAwardedContractNumber</dt>
 
                         
         
             <dd><strong><em>Reference:</em></strong>
                 
-                    NO_AWARDED_PRIZE/PROCUREMENT_DISCONTINUED/NO_DOC_EXT/@PUBLICATION
+                    if (exists(NO_AWARDED_CONTRACT)) then CONTRACT_NO else null
                 
             </dd>
         
@@ -12262,7 +11487,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#Winner<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Winner_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Winner_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -12340,7 +11565,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://www.w3.org/ns/org#Organization<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ContractorOrganisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ContractorOrganisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -12866,7 +12091,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://www.w3.org/ns/locn#Address<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ContractorOrganisationAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ContractorOrganisationAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -13080,7 +12305,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#TenderAwardOutcome<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_TenderAwardOutcome_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_TenderAwardOutcome_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -13204,7 +12429,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#Tender<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Tender_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Tender_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -14160,7 +13385,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#SubmissionStatisticalInformation<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_SubmissionStatisticalInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_SubmissionStatisticalInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -15643,7 +14868,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#Reviewer<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Reviewer_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Reviewer_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -15705,7 +14930,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://www.w3.org/ns/org#Organization<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ReviewerOrganisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ReviewerOrganisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -16107,7 +15332,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://www.w3.org/ns/locn#Address<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ReviewerOrganisationAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ReviewerOrganisationAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -16275,7 +15500,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#Mediator<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Mediator_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Mediator_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -16337,7 +15562,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://www.w3.org/ns/org#Organization<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_MediatorOrganisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_MediatorOrganisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -16739,7 +15964,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://www.w3.org/ns/locn#Address<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_MediatorOrganisationAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_MediatorOrganisationAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -16907,7 +16132,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://data.europa.eu/a4g/ontology#ReviewProcedureInformationProvider<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ReviewProcedureInformationProvider_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ReviewProcedureInformationProvider_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -16969,7 +16194,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://www.w3.org/ns/org#Organization<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ReviewProcedureInformationProviderOrganisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ReviewProcedureInformationProviderOrganisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -17371,7 +16596,7 @@
         
         <dd>
             <strong><em>Class:</em></strong> http://www.w3.org/ns/locn#Address<br>
-            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ReviewProcedureInformationProviderAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
+            <strong><em>Template:</em></strong>  http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ReviewProcedureInformationProviderAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}
         </dd>
         
     </dl>
@@ -17520,6 +16745,123 @@
     </dl>
 
 
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/ContractTermProcedure">http://data.europa.eu/a4g/mapping/sf-rml/ContractTermProcedure</h2>
+    
+        
+
+        
+
+    
+    <dl>
+        <dt>Logical Source</dt>
+        
+        <dd>data/source.xml</dd>
+        
+    </dl>
+
+    <dl>
+        <dt>Subject map</dt>
+        
+    </dl>
+
+    <dl>
+        <dt>Predicate object maps</dt>
+        <dd>
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasEOrdering</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if(exists(../COMPLEMENTARY_INFO/EORDERING)) then 'true' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasEInvoicing</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if(exists(../COMPLEMENTARY_INFO/EINVOICING)) then 'true' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+                
+                    <dl>
+                        <dt>http://data.europa.eu/a4g/ontology#hasEPayment</dt>
+
+                        
+        
+            <dd><strong><em>Reference:</em></strong>
+                
+                    if(exists(../COMPLEMENTARY_INFO/EPAYMENT)) then 'true' else null
+                
+            </dd>
+        
+    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+
+                    </dl>
+                
+            
+        </dd>
+    </dl>
+
+
     <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/PreviousProcedure">http://data.europa.eu/a4g/mapping/sf-rml/PreviousProcedure</h2>
     
         
@@ -17628,7 +16970,7 @@
     </dl>
 
 
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/contractNature">http://data.europa.eu/a4g/mapping/sf-rml/contractNature</h2>
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/MultipleStageProcedureIndefiniteDuration">http://data.europa.eu/a4g/mapping/sf-rml/MultipleStageProcedureIndefiniteDuration</h2>
     
         
 
@@ -17638,7 +16980,7 @@
     <dl>
         <dt>Logical Source</dt>
         
-        <dd>transformation/resources/contract_nature.json</dd>
+        <dd>data/source.xml</dd>
         
     </dl>
 
@@ -17655,7 +16997,7 @@
     </dl>
 
 
-    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/cpvsuppl">http://data.europa.eu/a4g/mapping/sf-rml/cpvsuppl</h2>
+    <h2 id="http://data.europa.eu/a4g/mapping/sf-rml/contractNature">http://data.europa.eu/a4g/mapping/sf-rml/contractNature</h2>
     
         
 
@@ -17665,7 +17007,7 @@
     <dl>
         <dt>Logical Source</dt>
         
-        <dd>transformation/resources/cpvsuppl.json</dd>
+        <dd>transformation/resources/contract_nature.json</dd>
         
     </dl>
 
