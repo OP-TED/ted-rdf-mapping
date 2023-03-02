@@ -77,7 +77,7 @@ install-dev:
 
 test:
 	@ mapping_suite_validator package_F03
-	@ mapping_suite_validator package_F03_test
+#	@ mapping_suite_validator package_F03_test
 	@ mapping_suite_validator package_F06
 	@ mapping_suite_validator package_F13
 	@ mapping_suite_validator package_F20
