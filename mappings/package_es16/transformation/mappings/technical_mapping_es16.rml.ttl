@@ -227,7 +227,7 @@ tedm:OrganisationAddress  a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-510(a)-Organization-Company";
-            rr:predicate locn:thoroughfare ;
+            rr:predicate locn:fullAddress ;
             rr:objectMap
                 [
                     rml:reference "cbc:StreetName";
@@ -236,7 +236,7 @@ tedm:OrganisationAddress  a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-510(b)-Organization-Company";
-            rr:predicate locn:thoroughfare ;
+            rr:predicate locn:adminUnitL2 ;
             rr:objectMap
                 [
                     rml:reference "cbc:AdditionalStreetName";
@@ -543,7 +543,7 @@ tedm:TouchPointAddress  a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-510(a)-Organization-TouchPoint";
-            rr:predicate locn:thoroughfare ;
+            rr:predicate locn:fullAddress ;
             rr:objectMap
                 [
                     rml:reference "cbc:StreetName";
@@ -552,7 +552,7 @@ tedm:TouchPointAddress  a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-510(b)-Organization-TouchPoint";
-            rr:predicate locn:thoroughfare ;
+            rr:predicate locn:adminUnitL2 ;
             rr:objectMap
                 [
                     rml:reference "cbc:AdditionalStreetName";
@@ -2188,8 +2188,252 @@ tedm:ContractTerm a rr:TriplesMap ;
                     rml:reference "cac:TendererQualificationRequest[not(cac:SpecificTendererRequirement)]/cbc:CompanyLegalFormCode";
                     rr:datatype xsd:boolean;
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-LotDuration";
+            rdfs:comment "Applies to: GR-Lot-PlannedDuration";
+            rr:predicate epo:definesContractPeriod ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ContractPeriod ;
+                    rr:joinCondition[
+                        rr:child "path(..)";
+                        rr:parent "path(../..)"
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-LotPerformanceAddress";
+            rdfs:comment "Applies to: GR-Lot-PlaceOfPerformance";
+            rr:predicate epo:definesSpecificPlaceOfPerformance ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ContractLocation ;
+                    rr:joinCondition[
+                        rr:child "path(..)";
+                        rr:parent "path(../..)"
+                    ];
+                ] ;
         ] .
 
+#Contract Location
+tedm:ContractLocation a rr:TriplesMap ;
+    rdfs:label "ND-LotPerformanceAddress";
+    rdfs:comment "Applies to: GR-Lot-PlaceOfPerformance";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:RealizedLocation";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ContractLocation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class dct:Location
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate locn:address ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ContractAddress ;
+                    rr:joinCondition[
+                        rr:child "path(..)";
+                        rr:parent "path(../..)"
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-728-Lot";
+            rr:predicate locn:geographicName ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Description";
+                    rr:datatype xsd:string;
+                ] ;
+        ] .
+
+tedm:ContractAddress a rr:TriplesMap ;
+    rdfs:label "ND-LotPerformanceAddress";
+    rdfs:comment "Applies to: GR-Lot-PlaceOfPerformance";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:RealizedLocation/cac:Address";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ContractLocationAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class locn:Address
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5101(a)-Lot";
+            rr:predicate locn:fullAddress ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:StreetName";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5101(b)-Lot";
+            rr:predicate locn:adminUnitL2 ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:AdditionalStreetName";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5101(c)-Lot";
+            rr:predicate locn:thoroughfare ;
+            rr:objectMap
+                [
+                    rml:reference "cac:AddressLine/cbc:Line";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5131-Lot";
+            rr:predicate locn:postName ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:CityName";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5121-Lot";
+            rr:predicate locn:postCode ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:PostalZone";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-727-Lot";
+            rr:predicate locn:addressArea ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Region";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5071-Lot";
+            rr:predicate epo:hasNutsCode  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:nuts;
+                    rr:joinCondition [
+                        rr:child "cbc:CountrySubentityCode";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:comment "The identification information of the contract";
+            rr:predicate epo:hasID;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ContractAddressIdentifier;
+                    rr:joinCondition [
+                        rr:child "path(..)";
+                        rr:parent "path(../..)";
+                    ];
+                ]
+        ] .
+
+
+tedm:ContractAddressIdentifier a rr:TriplesMap ;
+    rdfs:comment "The identifier of a contract address";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:RealizedLocation/cac:Address/cac:Country";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rml:reference "if (exists(cbc:IdentificationCode)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ContractAddressIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5141-Lot";
+            rr:predicate epo:hasIdentifierValue ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:IdentificationCode";
+                ] ;
+        ] .
+
+#Contract Period
+tedm:ContractPeriod a rr:TriplesMap ;
+    rdfs:label "ND-LotDuration";
+    rdfs:comment "Applies to: GR-Lot-PlannedDuration";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:PlannedPeriod";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ContractPeriod_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Period
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-536-Lot";
+            rr:predicate epo:hasBeginning ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:StartDate";
+                    rr:datatype xsd:date;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-537-Lot";
+            rr:predicate epo:hasEnd ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:EndDate";
+                    rr:datatype xsd:date;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-36-Lot";
+            rr:predicate epo:hasTimePeriod ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:DurationMeasure";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-538-Lot";
+            rr:predicate epo:hasDescription ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:DescriptionCode";
+                ] ;
+        ] .
 
 #Submission Process
 tedm:SubmissionProcess a rr:TriplesMap ;

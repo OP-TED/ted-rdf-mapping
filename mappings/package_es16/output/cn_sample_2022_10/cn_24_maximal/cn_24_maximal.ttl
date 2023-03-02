@@ -165,6 +165,18 @@ epd:id__ContactPoint_dxvvStPQ7ekRVg6xG9QN3E a cccev:ContactPoint;
   cccev:email "esender@esendcorp.lu";
   cccev:telephone "+352 123456789" .
 
+epd:id__ContractAddressIdentifier_Q7DPpYUcK8HHYEtcbEzMDy a epo:Identifier;
+  epo:hasIdentifierValue "GBR" .
+
+epd:id__ContractAddressIdentifier_eCSCNCUQjLebsHvondhjZh a epo:Identifier;
+  epo:hasIdentifierValue "GBR" .
+
+epd:id__ContractAddressIdentifier_g7k7qviJsB2zdALP55mU5Y a epo:Identifier;
+  epo:hasIdentifierValue "GBR" .
+
+epd:id__ContractAddressIdentifier_jK5MUAXLeWAdRUx2fS9Q47 a epo:Identifier;
+  epo:hasIdentifierValue "GBR" .
+
 epd:id__ContractExtension_BDTC4WRLKSCg4KipkdMxR8 a epo:ContractTerm;
   epo:hasMaximumNumberOfRenewals 3;
   epo:hasOptionsDescription "Options description ---" .
@@ -173,7 +185,58 @@ epd:id__ContractExtension_QRFEJSYy7fATJoZShoDC4D a epo:ContractTerm;
   epo:hasMaximumNumberOfRenewals 3;
   epo:hasOptionsDescription "Options description ---" .
 
+epd:id__ContractLocationAddress_6pwBpb8FW5caR7TKqg7TvM a locn:Address;
+  epo:hasID epd:id__ContractAddressIdentifier_jK5MUAXLeWAdRUx2fS9Q47;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/UKI62>;
+  locn:adminUnitL2 "2 Gotham Street";
+  locn:fullAddress "Bruce Wayne House";
+  locn:postCode "N1 9FL";
+  locn:postName "London" .
+
+epd:id__ContractLocationAddress_TfeqsbtZz7bnSaeLJEmaKZ a locn:Address;
+  epo:hasID epd:id__ContractAddressIdentifier_g7k7qviJsB2zdALP55mU5Y;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/UKI62>;
+  locn:adminUnitL2 "2 Gotham Street";
+  locn:fullAddress "Bruce Wayne House";
+  locn:postCode "N1 9FL";
+  locn:postName "London" .
+
+epd:id__ContractLocationAddress_e4BUCegaReE8NKq7sHcoAX a locn:Address;
+  epo:hasID epd:id__ContractAddressIdentifier_eCSCNCUQjLebsHvondhjZh;
+  locn:addressArea "anyw-cou" .
+
+epd:id__ContractLocationAddress_es3GJHPAww7U8q366gSYas a locn:Address;
+  epo:hasID epd:id__ContractAddressIdentifier_Q7DPpYUcK8HHYEtcbEzMDy;
+  locn:addressArea "anyw-cou" .
+
+epd:id__ContractLocation_GBD3fMnrQ4xtMsH9iSvq9b a dct:Location;
+  locn:address epd:id__ContractLocationAddress_6pwBpb8FW5caR7TKqg7TvM, epd:id__ContractLocationAddress_es3GJHPAww7U8q366gSYas;
+  locn:geographicName "Additional information ---" .
+
+epd:id__ContractLocation_N4fbNQxys3ti3VyDu3NDMM a dct:Location;
+  locn:address epd:id__ContractLocationAddress_TfeqsbtZz7bnSaeLJEmaKZ, epd:id__ContractLocationAddress_e4BUCegaReE8NKq7sHcoAX;
+  locn:geographicName "The main location is ..." .
+
+epd:id__ContractLocation_VQprYhGmQN6wWMg9owRwcH a dct:Location;
+  locn:address epd:id__ContractLocationAddress_TfeqsbtZz7bnSaeLJEmaKZ, epd:id__ContractLocationAddress_e4BUCegaReE8NKq7sHcoAX;
+  locn:geographicName "Additional information ---" .
+
+epd:id__ContractLocation_hiAK8DLh3JtZ7KtSTBXFaB a dct:Location;
+  locn:address epd:id__ContractLocationAddress_6pwBpb8FW5caR7TKqg7TvM, epd:id__ContractLocationAddress_es3GJHPAww7U8q366gSYas;
+  locn:geographicName "The main location is ..." .
+
+epd:id__ContractPeriod_JNctcsx6JXdNkzdL4P6dek a epo:Period;
+  epo:hasBeginning "2023-01-01+01:00"^^xsd:date;
+  epo:hasEnd "2023-05-23+01:00"^^xsd:date .
+
+epd:id__ContractPeriod_SwK8Z4wjBuauCWAoBTPk4Z a epo:Period;
+  epo:hasBeginning "2023-01-01+01:00"^^xsd:date;
+  epo:hasEnd "2023-05-23+02:00"^^xsd:date .
+
 epd:id__ContractTerm_PuAZ93vcjRYhKiN4rMvUZg a epo:ContractTerm;
+  epo:definesContractPeriod epd:id__ContractPeriod_SwK8Z4wjBuauCWAoBTPk4Z;
+  epo:definesSpecificPlaceOfPerformance epd:id__ContractLocation_GBD3fMnrQ4xtMsH9iSvq9b,
+    epd:id__ContractLocation_hiAK8DLh3JtZ7KtSTBXFaB;
   epo:hasContractorLegalFormRequirement true;
   epo:hasContractorLegalFormRequirementDescription "Tenderer Legal Form Description ---";
   epo:hasEInvoicing "Terms Performance ---", "required";
@@ -183,6 +246,9 @@ epd:id__ContractTerm_PuAZ93vcjRYhKiN4rMvUZg a epo:ContractTerm;
   epo:isAdvancedElectronicSignatureRequired true .
 
 epd:id__ContractTerm_TT87XZ7rfCixVuS4Z9trMH a epo:ContractTerm;
+  epo:definesContractPeriod epd:id__ContractPeriod_JNctcsx6JXdNkzdL4P6dek;
+  epo:definesSpecificPlaceOfPerformance epd:id__ContractLocation_N4fbNQxys3ti3VyDu3NDMM,
+    epd:id__ContractLocation_VQprYhGmQN6wWMg9owRwcH;
   epo:hasContractorLegalFormRequirement true;
   epo:hasContractorLegalFormRequirementDescription "Tenderer Legal Form Description ---";
   epo:hasEInvoicing "Terms Performance ---", "required";
@@ -292,57 +358,62 @@ epd:id__OrganisationAddress_9EoaX693zGgFRHUBTqQE58 a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/UKI62>;
   epo:hasOrganisationUnit "Reviews and Complains";
+  locn:fullAddress "87 Big Avenue";
   locn:postCode "N1 9FL";
-  locn:postName "London";
-  locn:thoroughfare "87 Big Avenue" .
+  locn:postName "London" .
 
 epd:id__OrganisationAddress_9saVKYT6LaLiq7HmXaeWEQ a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/UKI62>;
   epo:hasOrganisationUnit "Tenders Evaluation Committee";
+  locn:adminUnitL2 "2 Gotham Street";
+  locn:fullAddress "Bruce Wayne House";
   locn:postCode "N1 9FL";
-  locn:postName "London";
-  locn:thoroughfare "2 Gotham Street", "Bruce Wayne House" .
+  locn:postName "London" .
 
 epd:id__OrganisationAddress_CXdDFvgV5RjePYb9cagtRa a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/UKI62>;
   epo:hasOrganisationUnit "Environment Information department";
+  locn:fullAddress "23 Nelson Square";
   locn:postCode "N1 9FL";
-  locn:postName "London";
-  locn:thoroughfare "23 Nelson Square" .
+  locn:postName "London" .
 
 epd:id__OrganisationAddress_DQ3D2nHojn4VijYMYRtvzY a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/UKI62>;
   epo:hasOrganisationUnit "Procurement Dpt";
+  locn:adminUnitL2 "2 Gotham Street";
+  locn:fullAddress "Bruce Wayne House";
   locn:postCode "N1 9FL";
-  locn:postName "London";
-  locn:thoroughfare "2 Gotham Street", "Bruce Wayne House" .
+  locn:postName "London" .
 
 epd:id__OrganisationAddress_JAQDkMB4STjLj2Z9DkzGKS a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/UKI62>;
   epo:hasOrganisationUnit "ABC Unit";
+  locn:adminUnitL2 "2nd floor";
+  locn:fullAddress "162 Broad Street";
   locn:postCode "N1 9FL";
-  locn:postName "London";
-  locn:thoroughfare "162 Broad Street", "2nd floor" .
+  locn:postName "London" .
 
 epd:id__OrganisationAddress_SyrXybB9qnydTsiCYvqfwn a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/UKI62>;
   epo:hasOrganisationUnit "Finance Division";
+  locn:adminUnitL2 "2 Gotham Street";
+  locn:fullAddress "Bruce Wayne House";
   locn:postCode "N1 9FL";
-  locn:postName "London";
-  locn:thoroughfare "2 Gotham Street", "Bruce Wayne House" .
+  locn:postName "London" .
 
 epd:id__OrganisationAddress_ZDibsmqh6XaKEG4WjjfUDb a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/UKI62>;
   epo:hasOrganisationUnit "Fin Adm Archives Dpt";
+  locn:adminUnitL2 "2 Gotham Street";
+  locn:fullAddress "Bruce Wayne House";
   locn:postCode "N1 9FL";
-  locn:postName "London";
-  locn:thoroughfare "2 Gotham Street", "Bruce Wayne House" .
+  locn:postName "London" .
 
 epd:id__OrganisationAddress_dtBY8KdbdWyJb9xZnV4Xcw a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/LUX>;
@@ -354,16 +425,16 @@ epd:id__OrganisationAddress_ikV4AfPuLDPpY2gzokb7GH a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/UKI62>;
   epo:hasOrganisationUnit "Public Procurement";
+  locn:fullAddress "85 Norwish Road";
   locn:postCode "N1 9FL";
-  locn:postName "London";
-  locn:thoroughfare "85 Norwish Road" .
+  locn:postName "London" .
 
 epd:id__OrganisationAddress_kp4YHhT2Gw9BnTPKnwxcdW a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/UKI62>;
+  locn:fullAddress "6 Main Street";
   locn:postCode "N1 9FL";
-  locn:postName "London";
-  locn:thoroughfare "6 Main Street" .
+  locn:postName "London" .
 
 epd:id__OrganisationIdentifier_7RNAdNBeN3NAMhHZ5nqf4W a epo:Identifier;
   epo:hasIdentifierValue "12345" .

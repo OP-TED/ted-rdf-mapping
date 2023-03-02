@@ -53,10 +53,27 @@ epd:id__ContactPoint_YG3RWHcWTBZPCNqFAQ7guC a cccev:ContactPoint;
   cccev:email "esender@example.com";
   cccev:telephone "+352 123456789" .
 
+epd:id__ContractAddressIdentifier_7r464q8uFV5jw2pXAmbZNX a epo:Identifier;
+  epo:hasIdentifierValue "GBR" .
+
 epd:id__ContractExtension_BboGPQkCpLeHXdXL8io8wo a epo:ContractTerm;
   epo:hasMaximumNumberOfRenewals 2 .
 
+epd:id__ContractLocationAddress_6KLSiuR7u4upEUz8ykdzrc a locn:Address;
+  epo:hasID epd:id__ContractAddressIdentifier_7r464q8uFV5jw2pXAmbZNX;
+  locn:addressArea "anyw-cou" .
+
+epd:id__ContractLocation_FfZ9Bw8LWfWqSRcwCecwNs a dct:Location;
+  locn:address epd:id__ContractLocationAddress_6KLSiuR7u4upEUz8ykdzrc;
+  locn:geographicName "Her Majesty's Land Registry, UK-wide" .
+
+epd:id__ContractPeriod_DW9uu9Ka9v6eCrwhU9MmBC a epo:Period;
+  epo:hasBeginning "2020-09-01+02:00"^^xsd:date;
+  epo:hasTimePeriod "66" .
+
 epd:id__ContractTerm_YWMCGu6i5HBxweh3xaUekn a epo:ContractTerm;
+  epo:definesContractPeriod epd:id__ContractPeriod_DW9uu9Ka9v6eCrwhU9MmBC;
+  epo:definesSpecificPlaceOfPerformance epd:id__ContractLocation_FfZ9Bw8LWfWqSRcwCecwNs;
   epo:hasEInvoicing "required";
   epo:hasEPayment false;
   epo:hasReservedExecution "no" .
@@ -105,24 +122,24 @@ epd:id__OrganisationAddress_CXdDFvgV5RjePYb9cagtRa a locn:Address;
 epd:id__OrganisationAddress_DQ3D2nHojn4VijYMYRtvzY a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/UKI62>;
+  locn:fullAddress "Trafalgar House, 1 Bedford Park";
   locn:postCode "CR0 2AQ";
-  locn:postName "Croydon";
-  locn:thoroughfare "Trafalgar House, 1 Bedford Park" .
+  locn:postName "Croydon" .
 
 epd:id__OrganisationAddress_SyrXybB9qnydTsiCYvqfwn a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/UKI62>;
   epo:hasOrganisationUnit "Trafalgar House";
+  locn:fullAddress "1 Bedford Park";
   locn:postCode "CR0 2AQ";
-  locn:postName "Croydon";
-  locn:thoroughfare "1 Bedford Park" .
+  locn:postName "Croydon" .
 
 epd:id__OrganisationAddress_kp4YHhT2Gw9BnTPKnwxcdW a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/UKI62>;
+  locn:fullAddress "Some Street";
   locn:postCode "ABC123";
-  locn:postName "Example City";
-  locn:thoroughfare "Some Street" .
+  locn:postName "Example City" .
 
 epd:id__OrganisationIdentifier_7RNAdNBeN3NAMhHZ5nqf4W a epo:Identifier;
   epo:hasIdentifierValue "111 111 111" .

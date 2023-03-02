@@ -70,6 +70,12 @@ epd:id__ContactPoint_YG3RWHcWTBZPCNqFAQ7guC a cccev:ContactPoint;
   cccev:email "esender@example.com";
   cccev:telephone "+352 123456789" .
 
+epd:id__ContractAddressIdentifier_7r464q8uFV5jw2pXAmbZNX a epo:Identifier;
+  epo:hasIdentifierValue "FRA" .
+
+epd:id__ContractAddressIdentifier_g7k7qviJsB2zdALP55mU5Y a epo:Identifier;
+  epo:hasIdentifierValue "FRA" .
+
 epd:id__ContractExtension_BDTC4WRLKSCg4KipkdMxR8 a epo:ContractTerm;
   epo:hasMaximumNumberOfRenewals 3;
   epo:hasOptionsDescription "Options description ---" .
@@ -78,12 +84,40 @@ epd:id__ContractExtension_BboGPQkCpLeHXdXL8io8wo a epo:ContractTerm;
   epo:hasMaximumNumberOfRenewals 3;
   epo:hasOptionsDescription "Options description ---" .
 
+epd:id__ContractLocationAddress_6KLSiuR7u4upEUz8ykdzrc a locn:Address;
+  epo:hasID epd:id__ContractAddressIdentifier_7r464q8uFV5jw2pXAmbZNX;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRD22> .
+
+epd:id__ContractLocationAddress_TfeqsbtZz7bnSaeLJEmaKZ a locn:Address;
+  epo:hasID epd:id__ContractAddressIdentifier_g7k7qviJsB2zdALP55mU5Y;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRD22> .
+
+epd:id__ContractLocation_FfZ9Bw8LWfWqSRcwCecwNs a dct:Location;
+  locn:address epd:id__ContractLocationAddress_6KLSiuR7u4upEUz8ykdzrc;
+  locn:geographicName "La liste exhaustive des lieux d'exécution se trouve dans le document de consultation intitulé «Décomposition du prix global et forfaitaires (DPGF) lot 1»." .
+
+epd:id__ContractLocation_N4fbNQxys3ti3VyDu3NDMM a dct:Location;
+  locn:address epd:id__ContractLocationAddress_TfeqsbtZz7bnSaeLJEmaKZ;
+  locn:geographicName "La liste exhaustive des lieux d'exécution se trouve dans le document de consultation intitulé «Décomposition du prix global et forfaitaires (DPGF) lot 1»." .
+
+epd:id__ContractPeriod_DW9uu9Ka9v6eCrwhU9MmBC a epo:Period;
+  epo:hasBeginning "2019-09-01+02:00"^^xsd:date;
+  epo:hasEnd "2020-12-31+01:00"^^xsd:date .
+
+epd:id__ContractPeriod_JNctcsx6JXdNkzdL4P6dek a epo:Period;
+  epo:hasBeginning "2019-09-01+02:00"^^xsd:date;
+  epo:hasEnd "2020-12-31+01:00"^^xsd:date .
+
 epd:id__ContractTerm_TT87XZ7rfCixVuS4Z9trMH a epo:ContractTerm;
+  epo:definesContractPeriod epd:id__ContractPeriod_JNctcsx6JXdNkzdL4P6dek;
+  epo:definesSpecificPlaceOfPerformance epd:id__ContractLocation_N4fbNQxys3ti3VyDu3NDMM;
   epo:hasEInvoicing "required";
   epo:hasEPayment false;
   epo:hasReservedExecution "no" .
 
 epd:id__ContractTerm_YWMCGu6i5HBxweh3xaUekn a epo:ContractTerm;
+  epo:definesContractPeriod epd:id__ContractPeriod_DW9uu9Ka9v6eCrwhU9MmBC;
+  epo:definesSpecificPlaceOfPerformance epd:id__ContractLocation_FfZ9Bw8LWfWqSRcwCecwNs;
   epo:hasEInvoicing "required";
   epo:hasEPayment false;
   epo:hasReservedExecution "no" .
@@ -181,16 +215,16 @@ epd:id__OrganisationAddress_CXdDFvgV5RjePYb9cagtRa a locn:Address;
 epd:id__OrganisationAddress_SyrXybB9qnydTsiCYvqfwn a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/FRD22>;
+  locn:fullAddress "5 place du Général de Gaulle";
   locn:postCode "76001";
-  locn:postName "Rouen Cedex 1";
-  locn:thoroughfare "5 place du Général de Gaulle" .
+  locn:postName "Rouen Cedex 1" .
 
 epd:id__OrganisationAddress_kp4YHhT2Gw9BnTPKnwxcdW a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/FRD22>;
+  locn:fullAddress "53 avenue Gustave Flaubert";
   locn:postCode "76000";
-  locn:postName "Rouen";
-  locn:thoroughfare "53 avenue Gustave Flaubert" .
+  locn:postName "Rouen" .
 
 epd:id__OrganisationIdentifier_7RNAdNBeN3NAMhHZ5nqf4W a epo:Identifier;
   epo:hasIdentifierValue "123 456 789" .

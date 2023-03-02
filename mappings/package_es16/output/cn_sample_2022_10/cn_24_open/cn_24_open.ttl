@@ -68,9 +68,26 @@ epd:id__ContactPoint_YG3RWHcWTBZPCNqFAQ7guC a cccev:ContactPoint;
   cccev:email "contact@example-mediator.com";
   cccev:telephone "+123 456 789" .
 
+epd:id__ContractAddressIdentifier_7r464q8uFV5jw2pXAmbZNX a epo:Identifier;
+  epo:hasIdentifierValue "GBR" .
+
 epd:id__ContractExtension_BboGPQkCpLeHXdXL8io8wo a epo:ContractTerm .
 
+epd:id__ContractLocationAddress_6KLSiuR7u4upEUz8ykdzrc a locn:Address;
+  epo:hasID epd:id__ContractAddressIdentifier_7r464q8uFV5jw2pXAmbZNX;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/UKM83> .
+
+epd:id__ContractLocation_FfZ9Bw8LWfWqSRcwCecwNs a dct:Location;
+  locn:address epd:id__ContractLocationAddress_6KLSiuR7u4upEUz8ykdzrc;
+  locn:geographicName "Public buildings within the geographical area of Renfrewshire Council." .
+
+epd:id__ContractPeriod_DW9uu9Ka9v6eCrwhU9MmBC a epo:Period;
+  epo:hasBeginning "2020-09-01+02:00"^^xsd:date;
+  epo:hasTimePeriod "36" .
+
 epd:id__ContractTerm_YWMCGu6i5HBxweh3xaUekn a epo:ContractTerm;
+  epo:definesContractPeriod epd:id__ContractPeriod_DW9uu9Ka9v6eCrwhU9MmBC;
+  epo:definesSpecificPlaceOfPerformance epd:id__ContractLocation_FfZ9Bw8LWfWqSRcwCecwNs;
   epo:hasEInvoicing "required";
   epo:hasEPayment true;
   epo:hasReservedExecution "no" .
@@ -118,9 +135,9 @@ epd:id__OpenTenderTerm_SJDjVPGsRNCb7nBWqTThP5 a epo:OpeningTerm;
 epd:id__OrganisationAddress_CXdDFvgV5RjePYb9cagtRa a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/UKI42>;
+  locn:fullAddress "Some Street";
   locn:postCode "ABC123";
-  locn:postName "Example City";
-  locn:thoroughfare "Some Street" .
+  locn:postName "Example City" .
 
 epd:id__OrganisationAddress_JAQDkMB4STjLj2Z9DkzGKS a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/LUX>;
@@ -131,9 +148,9 @@ epd:id__OrganisationAddress_JAQDkMB4STjLj2Z9DkzGKS a locn:Address;
 epd:id__OrganisationAddress_SyrXybB9qnydTsiCYvqfwn a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/UKM83>;
+  locn:fullAddress "Renfrewshire House, Cotton Street";
   locn:postCode "PA1 1JB";
-  locn:postName "Paisley";
-  locn:thoroughfare "Renfrewshire House, Cotton Street" .
+  locn:postName "Paisley" .
 
 epd:id__OrganisationAddress_kp4YHhT2Gw9BnTPKnwxcdW a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;

@@ -71,10 +71,48 @@ epd:id__ContactPoint_YG3RWHcWTBZPCNqFAQ7guC a cccev:ContactPoint;
   cccev:email "contact@example.com";
   cccev:telephone "+123 456 789" .
 
+epd:id__ContractAddressIdentifier_7r464q8uFV5jw2pXAmbZNX a epo:Identifier;
+  epo:hasIdentifierValue "LUX" .
+
 epd:id__ContractExtension_BboGPQkCpLeHXdXL8io8wo a epo:ContractTerm;
   epo:hasMaximumNumberOfRenewals 0 .
 
+epd:id__ContractLocationAddress_6KLSiuR7u4upEUz8ykdzrc a locn:Address;
+  epo:hasID epd:id__ContractAddressIdentifier_7r464q8uFV5jw2pXAmbZNX;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/LU000> .
+
+epd:id__ContractLocation_FfZ9Bw8LWfWqSRcwCecwNs a dct:Location;
+  locn:address epd:id__ContractLocationAddress_6KLSiuR7u4upEUz8ykdzrc;
+  locn:geographicName "A végrehajtás fő helye a nyertes ajánlattevő telephelye és az ajánlatkérő telephelye.",
+    "El principal lugar de ejecución son las instalaciones del contratista y las instalaciones del órgano de contratación.",
+    "Glavni kraj izvedbe bodo prostori izvajalca in prostori naročnika.", "Glavno su mjesto izvedbe prostori izvoditelja te prostori javnog naručitelja.",
+    "Głównym miejscem realizacji jest siedziba wykonawcy oraz siedziba instytucji zamawiającej.",
+    "Hauptausführungsort sind die Räumlichkeiten des Auftragnehmers und die Räumlichkeiten des öffentlichen Auftraggebers.",
+    "Hlavním místem provedení jsou prostory poskytovatele služeb a prostory veřejného zadavatele.",
+    "Hlavným miestom vykonania sú priestory dodávateľa a priestory verejného obstarávateľa.",
+    "Il luogo principale di esecuzione è la sede del contraente e la sede dell'ente appaltante.",
+    "Il-post ewlieni tat-twettiq huwa l-bini tal-kuntrattur u l-bini tal-awtorità li qiegħda toħroġ il-kuntratt.",
+    "Is ionann an phríomhláthair feidhmíochta agus áitreabh an chonraitheora agus áitreabh an údaráis chonarthaigh.",
+    "Le lieu d'exécution principal correspond aux locaux du contractant et du pouvoir adjudicateur.",
+    "Locul principal de executare este sediul contractantului și sediile autorității contractante.",
+    "O local de execução principal é nas instalações do contratante e nas instalações da entidade adjudicante.",
+    "Pagrindinė įgyvendinimo vieta yra rangovo patalpos ir perkančiosios organizacijos patalpos.",
+    "Peamine teostamise koht on töövõtja ruumid ja avaliku sektori hankija ruumid.", "Plats för utförande är huvudsakligen uppdragstagarens lokaler och den upphandlande myndighetens lokaler.",
+    "The main place of performance is the contractor's premises and the contracting authority's premises.",
+    "Udførelsesstedet er hovedsageligt kontrahentens lokaler og den ordregivende myndigheds lokaler.",
+    "de voornaamste plaats van uitvoering is in de kantoren van de contractant en in de kantoren van de aanbestedende dienst.",
+    "galvenā izpildes vieta ir darbuzņēmēja telpas un līgumslēdzējas iestādes telpas.",
+    "pääasiallinen suorituspaikka on sopimusosapuolen toimitilat ja hankintaviranomaisen toimitilat.",
+    "Ο τόπος παροχής είναι οι εγκαταστάσεις του αναδόχου και οι εγκαταστάσεις της αναθέτουσας αρχής.",
+    "Основното място на изпълнение е помещенията на изпълнителя и помещенията на възлагащия орган." .
+
+epd:id__ContractPeriod_DW9uu9Ka9v6eCrwhU9MmBC a epo:Period;
+  epo:hasBeginning "2020-06-01+02:00"^^xsd:date;
+  epo:hasTimePeriod "48" .
+
 epd:id__ContractTerm_YWMCGu6i5HBxweh3xaUekn a epo:ContractTerm;
+  epo:definesContractPeriod epd:id__ContractPeriod_DW9uu9Ka9v6eCrwhU9MmBC;
+  epo:definesSpecificPlaceOfPerformance epd:id__ContractLocation_FfZ9Bw8LWfWqSRcwCecwNs;
   epo:hasEInvoicing "required";
   epo:hasEPayment true;
   epo:hasReservedExecution "no" .
@@ -170,9 +208,9 @@ epd:id__OpenTenderTerm_SJDjVPGsRNCb7nBWqTThP5 a epo:OpeningTerm;
 epd:id__OrganisationAddress_CXdDFvgV5RjePYb9cagtRa a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/LUX>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/LU000>;
+  locn:fullAddress "Some Street";
   locn:postCode "ABC123";
-  locn:postName "Example City";
-  locn:thoroughfare "Some Street" .
+  locn:postName "Example City" .
 
 epd:id__OrganisationAddress_JAQDkMB4STjLj2Z9DkzGKS a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/LUX>;
@@ -183,16 +221,16 @@ epd:id__OrganisationAddress_JAQDkMB4STjLj2Z9DkzGKS a locn:Address;
 epd:id__OrganisationAddress_SyrXybB9qnydTsiCYvqfwn a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/LUX>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/LU000>;
+  locn:fullAddress "2, rue Mercier";
   locn:postCode "L-2985";
-  locn:postName "Luxembourg";
-  locn:thoroughfare "2, rue Mercier" .
+  locn:postName "Luxembourg" .
 
 epd:id__OrganisationAddress_kp4YHhT2Gw9BnTPKnwxcdW a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/LUX>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/LU000>;
+  locn:fullAddress "rue du Fort Niedergrünewald";
   locn:postCode "L-2925";
-  locn:postName "Luxembourg";
-  locn:thoroughfare "rue du Fort Niedergrünewald" .
+  locn:postName "Luxembourg" .
 
 epd:id__OrganisationIdentifier_7RNAdNBeN3NAMhHZ5nqf4W a epo:Identifier;
   epo:hasIdentifierValue "GCEU" .
