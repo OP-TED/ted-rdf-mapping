@@ -860,8 +860,8 @@ tedm:PurposeLotGroup  a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:PurposeLotGroupIdentifier ;
                     rr:joinCondition [
-                        rr:child ".";
-                        rr:parent ".";
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
                     ];
                 ] ;
         ] ;
@@ -873,8 +873,8 @@ tedm:PurposeLotGroup  a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:PurposeLotGroupInternalIdentifier ;
                     rr:joinCondition [
-                        rr:child "..";
-                        rr:parent "../..";
+                        rr:child "path(..)";
+                        rr:parent "path(../..)";
                     ];
                 ] ;
         ];
@@ -1481,6 +1481,427 @@ tedm:Lot a rr:TriplesMap ;
                         rr:child "path(.)";
                         rr:parent "path(../.)";
                     ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-StrategicProcurementType";
+            rdfs:comment "Applies to: GR-Lot-ProcurementType";
+            rr:predicate epo:fulfillsStrategicProcurement ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:StrategicProcurement ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-774-Lot";
+            rr:predicate epo:fulfillsStrategicProcurement ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:GreenProcurement ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../../.)";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-775-Lot";
+            rr:predicate epo:fulfillsStrategicProcurement ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:SocialProcurement ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../../.)";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-776-Lot";
+            rr:predicate epo:fulfillsStrategicProcurement ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:InnovativeProcurement ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../../.)";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+
+            rr:predicate epo:hasPurpose ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:LotPurpose ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-137-Lot";
+            rr:predicate epo:hasID ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:LotIdentifier ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ] ;
+        ] .
+
+#Lot Identifier
+tedm:LotIdentifier a rr:TriplesMap ;
+    rdfs:comment "The identifier of a lot";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_LotIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-137-Lot";
+            rr:predicate epo:hasIdentifierValue ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ID";
+                ] ;
+        ] .
+
+#Lot Purpose
+tedm:LotPurpose a rr:TriplesMap ;
+    rdfs:comment "Applies to: GR-Lot-Purpose";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_LotPurpose_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class  epo:Purpose;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-26(a)-Lot and BT-263-Lot";
+            rr:predicate epo:hasAdditionalClassification ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(cac:AdditionalCommodityClassification/ItemClassificationCode/@listName) and exists(cac:AdditionalCommodityClassification/ItemClassificationCode)) then concat(cac:AdditionalCommodityClassification/ItemClassificationCode, ':', cac:AdditionalCommodityClassification/ItemClassificationCode/@listName) else null";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-26(m)-Lot and BT-262-Lot";
+            rr:predicate epo:hasMainClassification ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(cac:MainCommodityClassification/ItemClassificationCode/@listName) and exists(cac:MainCommodityClassification/ItemClassificationCode)) then concat(cac:MainCommodityClassification/cbc:ItemClassificationCode, ':', cac:MainCommodityClassification/cbc:ItemClassificationCode/@listName) else null";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-726-Lot";
+            rr:predicate epo:isSMESuitable ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:SMESuitableIndicator";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-531-Lot";
+            rr:predicate epo:hasAdditionalContractNature  ;
+            rr:objectMap
+                [
+                    rml:reference "cac:ProcurementAdditionalType/cbc:ProcurementTypeCode[@listName='contract-nature']";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-23-Lot";
+            rr:predicate epo:hasContractNatureType  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ProcurementTypeCode[@listName='contract-nature']";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-24-Lot";
+            rr:predicate epo:hasDescription  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Description";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-21-Lot";
+            rr:predicate epo:hasTitle  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Name";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-27-Lot";
+            rr:predicate epo:hasRestatedEstimatedValue ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MonetaryValuePurpose ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-25-Lot and BT-625-Lot";
+            rr:predicate epo:hasTotalQuantity ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:QuantityPurpose ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-22-Lot";
+            rr:predicate epo:hasID ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:PurposeIdentifier ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ] ;
+        ] .
+
+#Purpose Identifier
+tedm:PurposeIdentifier a rr:TriplesMap ;
+    rdfs:comment "The identifier of a lot purpose";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_PurposeIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-22-Lot";
+            rr:predicate epo:hasIdentifierValue ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ID";
+                ] ;
+        ] .
+
+#Quantity Purpose
+tedm:QuantityPurpose a rr:TriplesMap ;
+    rdfs:labele "BT-25-Lot and BT-625-Lot";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_QuantityPurpose_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class  epo:Quantity;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasUnitCode  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:EstimatedOverallContractQuantity/@unitCode";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasQuantityValue  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:EstimatedOverallContractQuantity";
+                ] ;
+        ] .
+
+#Monetary Value Purpose
+tedm:MonetaryValuePurpose a rr:TriplesMap ;
+    rdfs:labele "BT-27-Lot";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:RequestedTenderTotal";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_MonetaryValuePurpose_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class  epo:MonetaryValue;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:EstimatedOverallContractAmount";
+                ] ;
+        ] .
+
+#Green Procurement
+tedm:GreenProcurement a rr:TriplesMap ;
+    rdfs:label "BT-774-Lot";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:ProcurementAdditionalType";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_GreenProcurement_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class  epo:GreenProcurement;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:fulfillsRequirement ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ProcurementTypeCode[@listName='environmental-impact']";
+                ] ;
+        ] .
+
+#Social Procurement
+tedm:SocialProcurement a rr:TriplesMap ;
+    rdfs:label "BT-775-Lot";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:ProcurementAdditionalType";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_SocialProcurement_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class  epo:SocialProcurement;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:fulfillsRequirement ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ProcurementTypeCode[@listName='social-objective']";
+                ] ;
+        ] .
+
+#Innovative Procurement
+tedm:InnovativeProcurement a rr:TriplesMap ;
+    rdfs:label "BT-776-Lot";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:ProcurementAdditionalType";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_InnovativeProcurement_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class  epo:InnovativeProcurement;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:fulfillsRequirement ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ProcurementTypeCode[@listName='innovative-acquisition']";
+                ] ;
+        ] .
+
+#Strategic Procurement
+tedm:StrategicProcurement a rr:TriplesMap ;
+    rdfs:label "ND-StrategicProcurementType";
+    rdfs:comment "Applies to: GR-Lot-ProcurementType";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_StrategicProcurement_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class  epo:StrategicProcurement;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-754-Lot";
+            rr:predicate epo:includesAccessibilityCriterion ;
+            rr:objectMap
+                [
+                    rml:reference "descendant::cbc:ProcurementTypeCode[@listName='accessibility']";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-755-Lot";
+            rr:predicate epo:hasNonAccessibilityCriterionJustification ;
+            rr:objectMap
+                [
+                    rml:reference "cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='accessibility']/cbc:ProcurementType";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-777-Lot";
+            rr:predicate epo:hasNonAccessibilityCriterionJustification ;
+            rr:objectMap
+                [
+                    rml:reference "cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='strategic-procurement']/cbc:ProcurementType";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-777-Lot";
+            rr:predicate epo:hasTitle ;
+            rr:objectMap
+                [
+                    rml:reference "cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='strategic-procurement']/cbc:ProcurementTypeCode[@listName='strategic-procurement']";
                 ] ;
         ] .
 
