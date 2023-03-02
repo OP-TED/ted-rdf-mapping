@@ -71,7 +71,9 @@ clear-output:
 
 install-dev:
 	@ echo -e "$(BUILD_PRINT)Installing the requirements$(END_BUILD_PRINT)"
-	@ pip install --upgrade --force-reinstall --no-deps ../ted-rdf-conversion-pipeline
+#	@ pip install --upgrade --force-reinstall --no-deps ../ted-rdf-conversion-pipeline
+	@ pip install --upgrade --force-reinstall git+https://github.com/meaningfy-ws/mapping-workbench@feature/TED-1090
+	@ pip install --upgrade --force-reinstall git+https://github.com/OP-TED/ted-rdf-conversion-pipeline@feature/TED-1090
 
 test:
 	@ mapping_suite_validator package_F03
