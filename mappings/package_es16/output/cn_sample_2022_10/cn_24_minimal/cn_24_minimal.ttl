@@ -1,14 +1,34 @@
+@prefix cac: <urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2#> .
+@prefix cbc: <urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2#> .
 @prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix efac: <http://data.europa.eu/p27/eforms-ubl-extension-aggregate-components/1#> .
+@prefix efbc: <http://data.europa.eu/p27/eforms-ubl-extension-basic-components/1#> .
+@prefix efext: <http://data.europa.eu/p27/eforms-ubl-extensions/1#> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix ext: <urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xsi: <http://www.w3.org/2001/XMLSchema-instance#> .
 
 epd:id__AccessTerm_naE3mfoLZyth2mWXywVhn6 a epo:AccessTerm;
   epo:hasRestrictedAccessURL "https://etendering.ted.europa.eu/cft/cft-display.html?cftId=5629"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted "restricted-document" .
+
+epd:id__Buyer_MT3gdCnJ9BA7aEqaGqKxAh a epo:AgentInRole;
+  epo:hasBuyerLegalType "eu-ins-bod-ag";
+  epo:hasMainActivity "gen-pub" .
 
 epd:id__ContactPoint_7iFD8NVFhULkdXRNPqKyHs a cccev:ContactPoint;
   cccev:email "op-appels-offres@publications.europa.eu";
@@ -27,6 +47,10 @@ epd:id__ContractTerm_YWMCGu6i5HBxweh3xaUekn a epo:ContractTerm;
 
 epd:id__EAuctionTechnicalUsage_Y7WNjU2HSM4HNny2xZsabR a epo:EAuctionTechniqueUsage;
   epo:hasUsage "false" .
+
+epd:id__ExtensionGroup_ZY3SnQBRXooC6NjbRDS9an a epo:ExclusionGround;
+  epo:hasDescription "As stated in the procurement documents.";
+  cccev:type "crime-org" .
 
 epd:id__FrameworkAgreementTechnicalUsage_FMazyeaSz8ZV7B2yN7rMR9 a epo:TechniqueUsage;
   epo:hasDPSScope "none" .
@@ -94,6 +118,18 @@ epd:id__Organisation_N4cgMQL3K4CA88AYBBwUNn a org:Organization;
   epo:hasLegalName "Publications Office of the European Union";
   epo:hasPrimaryContactPoint epd:id__ContactPoint_7iFD8NVFhULkdXRNPqKyHs;
   cccev:registeredAddress epd:id__OrganisationAddress_SyrXybB9qnydTsiCYvqfwn .
+
+epd:id__ProcedureProcess_5oS2EhqDWxnS4XBfhKaeUY a epo:Procedure;
+  epo:hasProcedureType "open" .
+
+epd:id__ProcedureTerms_UkA4NavMbVKymCiDgm45qc a epo:Procedure;
+  epo:hasLegalBasis "32014L0024  ";
+  epo:specifiesExclusionGround epd:id__ExtensionGroup_ZY3SnQBRXooC6NjbRDS9an .
+
+epd:id__ProcurementProject_eySzap22e3jkZr3f7VXYNj a epo:Procedure;
+  epo:hasDescription """Provision of IT services related to the information systems of the publications office (namely EUR-Lex, N-Lex, and Search Layer),
+			with the possibility to extend the provision to other information systems.""";
+  epo:hasTitle "Provision of IT Services Related to OP IT Systems (EUR-Lex, N-Lex, Search Layer, and Others)" .
 
 epd:id__QuantityPurpose_BboGPQkCpLeHXdXL8io8wo a epo:Quantity .
 

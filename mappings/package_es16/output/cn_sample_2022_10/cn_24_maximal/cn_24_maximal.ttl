@@ -106,6 +106,11 @@ epd:id__AwardingTerms_cvGnw3hJYztkzCgnhrJDWV a epo:AwardCriterion;
   cccev:name "Name of AC ---";
   cccev:weight "per-exa"^^xsd:decimal .
 
+epd:id__Buyer_MT3gdCnJ9BA7aEqaGqKxAh a epo:AgentInRole;
+  epo:hasBuyerLegalType "body-pl";
+  epo:hasBuyerProfile "https://profile.example.com"^^xsd:anyURI;
+  epo:hasMainActivity "econ-aff" .
+
 epd:id__ContactPoint_2KJnTZs6heaXxBaUWvBfGP a cccev:ContactPoint;
   epo:hasContactName "Info desk";
   epo:hasFax "+44 098765432";
@@ -264,10 +269,12 @@ epd:id__DirectAwardIdentifier_WoMnHyzoNPLZbD3ftSkt26 a epo:Identifier;
   epo:hasIdentifierValue "9c0fd704-64d3-4294-a3b6-6df45911ab9f-01" .
 
 epd:id__DirectAward_UinoqmoRR38aq4t6ex6TZE a epo:DirectAward;
-  epo:hasID epd:id__DirectAwardIdentifier_UinoqmoRR38aq4t6ex6TZE .
+  epo:hasID epd:id__DirectAwardIdentifier_UinoqmoRR38aq4t6ex6TZE;
+  epo:refersToPreviousProcedureLot epd:id__Lot_8y8GPfmPvSRdBcci6WWcSi .
 
 epd:id__DirectAward_WoMnHyzoNPLZbD3ftSkt26 a epo:DirectAward;
-  epo:hasID epd:id__DirectAwardIdentifier_WoMnHyzoNPLZbD3ftSkt26 .
+  epo:hasID epd:id__DirectAwardIdentifier_WoMnHyzoNPLZbD3ftSkt26;
+  epo:refersToPreviousProcedureLot epd:id__Lot_daUDPcwCUoxbJRjGb7tKNQ .
 
 epd:id__EAuctionTechnicalUsage_a3YxuhxVZtuVM6PB6isrBc a epo:EAuctionTechniqueUsage;
   epo:hasDescription "Electronic auction description ---";
@@ -278,6 +285,58 @@ epd:id__EAuctionTechnicalUsage_fEtfKJVcbukziY28mGZdui a epo:EAuctionTechniqueUsa
   epo:hasDescription "Electronic auction description ---";
   epo:hasEAuctionURL "https://electronic-auction.com"^^xsd:anyURI;
   epo:hasUsage "true" .
+
+epd:id__ExtensionGroup_65B5ieqPopJApHPkYdhiAi a epo:ExclusionGround;
+  epo:hasDescription "Exclusion Ground description ---";
+  cccev:type "socsec-pay" .
+
+epd:id__ExtensionGroup_BpL5yyeW3cMvEHbh6b4ScW a epo:ExclusionGround;
+  epo:hasDescription "Exclusion Ground description ---";
+  cccev:type "terr-offence" .
+
+epd:id__ExtensionGroup_LGVLo87ArD4HobVYoAGR5B a epo:ExclusionGround;
+  epo:hasDescription "Exclusion Ground description ---";
+  cccev:type "human-traffic" .
+
+epd:id__ExtensionGroup_SGPTD68m84zt8Q9GNUnuFA a epo:ExclusionGround;
+  epo:hasDescription "Other Exclusion Ground description ---";
+  cccev:type "nati-ground" .
+
+epd:id__ExtensionGroup_T2q43pjq3JHuJtvxjmL6vf a epo:ExclusionGround;
+  epo:hasDescription "Exclusion Ground description ---";
+  cccev:type "finan-laund" .
+
+epd:id__ExtensionGroup_TTD43oQXgzgzeUvR3mf5zL a epo:ExclusionGround;
+  epo:hasDescription "Exclusion Ground description ---";
+  cccev:type "corruption" .
+
+epd:id__ExtensionGroup_TTUy3kEUkWQjLYAVZE4jQa a epo:ExclusionGround;
+  epo:hasDescription "Exclusion Ground description ---";
+  cccev:type "envir-law" .
+
+epd:id__ExtensionGroup_TyUFN5TJLPnpNx9yoZf5Ti a epo:ExclusionGround;
+  epo:hasDescription "Exclusion Ground description ---";
+  cccev:type "tax-pay" .
+
+epd:id__ExtensionGroup_ZY3SnQBRXooC6NjbRDS9an a epo:ExclusionGround;
+  epo:hasDescription "Exclusion Ground description ---";
+  cccev:type "crime-org" .
+
+epd:id__ExtensionGroup_bm6uSwy7hkcan8rVF5YHgR a epo:ExclusionGround;
+  epo:hasDescription "Exclusion Ground description ---";
+  cccev:type "fraud" .
+
+epd:id__ExtensionGroup_eE9UGyZshPCAPa9HY5m3SS a epo:ExclusionGround;
+  epo:hasDescription "Exclusion Ground description ---";
+  cccev:type "insolvency" .
+
+epd:id__ExtensionGroup_gsqwnkSxN5gKbqYWRFqTmc a epo:ExclusionGround;
+  epo:hasDescription "Exclusion Ground description ---";
+  cccev:type "socsec-law" .
+
+epd:id__ExtensionGroup_hqawu5kJC8i3dxZ99zexxB a epo:ExclusionGround;
+  epo:hasDescription "Exclusion Ground description ---";
+  cccev:type "labour-law" .
 
 epd:id__FrameworkAgreementTechnicalUsage_KNqLLUjy6GZzHj8ETCZ3rW a epo:TechniqueUsage;
   epo:hasDPSScope "none" .
@@ -687,6 +746,59 @@ epd:id__OrganizationChannel_dncygpvZhCw79SnLWFkb6H a cccev:Channel;
 
 epd:id__OrganizationChannel_eDbiEwxGWAuxogTQsXHsws a cccev:Channel;
   epo:hasURL "https://www.pub-mediator.com" .
+
+epd:id__ProcedureProcess_5oS2EhqDWxnS4XBfhKaeUY a epo:Procedure;
+  epo:hasAcceleratedProcedureJustification "Procedure Accelerated Justification ---";
+  epo:hasMainFeature "Description of the procedure  ---";
+  epo:hasProcedureType "neg-w-call";
+  epo:isAccelerated true .
+
+epd:id__ProcedureTerms_UkA4NavMbVKymCiDgm45qc a epo:Procedure;
+  epo:hasCrossBorderLaw """
+			CrossBorderLaw
+			Cross border law description ---
+		 Cross border law description ---""";
+  epo:hasLegalBasis "32014L0024  ";
+  epo:hasMaximumLotSubmissionAllowed 2;
+  epo:hasMaximumNumberOfLotsToBeAwarded 2;
+  epo:specifiesExclusionGround epd:id__ExtensionGroup_65B5ieqPopJApHPkYdhiAi, epd:id__ExtensionGroup_BpL5yyeW3cMvEHbh6b4ScW,
+    epd:id__ExtensionGroup_LGVLo87ArD4HobVYoAGR5B, epd:id__ExtensionGroup_SGPTD68m84zt8Q9GNUnuFA,
+    epd:id__ExtensionGroup_T2q43pjq3JHuJtvxjmL6vf, epd:id__ExtensionGroup_TTD43oQXgzgzeUvR3mf5zL,
+    epd:id__ExtensionGroup_TTUy3kEUkWQjLYAVZE4jQa, epd:id__ExtensionGroup_TyUFN5TJLPnpNx9yoZf5Ti,
+    epd:id__ExtensionGroup_ZY3SnQBRXooC6NjbRDS9an, epd:id__ExtensionGroup_bm6uSwy7hkcan8rVF5YHgR,
+    epd:id__ExtensionGroup_eE9UGyZshPCAPa9HY5m3SS, epd:id__ExtensionGroup_gsqwnkSxN5gKbqYWRFqTmc,
+    epd:id__ExtensionGroup_hqawu5kJC8i3dxZ99zexxB .
+
+epd:id__ProcurementProjectContractAddress_CRWooKNHmeZWa48UQQFLR5 a epo:Identifier;
+  epo:hasIdentifierValue "GBR" .
+
+epd:id__ProcurementProjectContractAddress_RxWyYo5p6B6QKE6kAx4iDD a locn:Address;
+  locn:addressArea "anyw-eea" .
+
+epd:id__ProcurementProjectContractAddress_btiykpkF9yYEWFnDmvRf6a a locn:Address;
+  epo:hasID epd:id__ProcurementProjectContractAddress_CRWooKNHmeZWa48UQQFLR5;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/UKI62>;
+  locn:adminUnitL2 "2 Gotham Street";
+  locn:fullAddress "Bruce Wayne House";
+  locn:postCode "N1 9FL";
+  locn:postName "London" .
+
+epd:id__ProcurementProjectContractTerm_67o9ur9Jjef9htMoaQhdxm a epo:ContractTerm;
+  locn:address epd:id__ProcurementProjectContractAddress_RxWyYo5p6B6QKE6kAx4iDD .
+
+epd:id__ProcurementProjectContractTerm_QmFgWdHMQiunuxrdtntYZx a epo:ContractTerm;
+  locn:address epd:id__ProcurementProjectContractAddress_btiykpkF9yYEWFnDmvRf6a .
+
+epd:id__ProcurementProjectIdentifier_eySzap22e3jkZr3f7VXYNj a epo:Identifier;
+  epo:hasIdentifierValue "2023-P-0001" .
+
+epd:id__ProcurementProject_eySzap22e3jkZr3f7VXYNj a epo:Procedure;
+  epo:foreseesContractSpecificTerm epd:id__ProcurementProjectContractTerm_67o9ur9Jjef9htMoaQhdxm,
+    epd:id__ProcurementProjectContractTerm_QmFgWdHMQiunuxrdtntYZx;
+  epo:hasAdditionalInformation "Additional information ---";
+  epo:hasDescription "Description ---";
+  epo:hasID epd:id__ProcurementProjectIdentifier_eySzap22e3jkZr3f7VXYNj;
+  epo:hasTitle "Procurement Title ---" .
 
 epd:id__PurposeIdentifier_BDTC4WRLKSCg4KipkdMxR8 a epo:Identifier;
   epo:hasIdentifierValue "Object Reference Number---" .
