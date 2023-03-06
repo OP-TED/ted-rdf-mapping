@@ -144,7 +144,7 @@ tedm:ProcedureProcess a rr:TriplesMap ;
                     rml:reference "descendant::cbc:ProcessReason";
                     rr:datatype xsd:string
                 ] ;
-        ]  ;
+        ]   ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-763-Procedure";
@@ -153,8 +153,8 @@ tedm:ProcedureProcess a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:Lot;
                     rr:joinCondition [
-                        rr:child "path(../..)";
-                        rr:parent "path(.)";
+                        rr:child "path(..)";
+                        rr:parent "path(..)";
                     ];
                 ];
         ] .
@@ -179,7 +179,7 @@ tedm:ProcurementProject a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-300-Procedure";
-            rr:predicate  epo:hasAdditionalInformation  ;
+            rr:predicate  epo:hasAdditionalInformation;
             rr:objectMap
                 [
                     rml:reference "cbc:Note";
@@ -189,7 +189,7 @@ tedm:ProcurementProject a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-21-Procedure";
-            rr:predicate  epo:hasTitle  ;
+            rr:predicate  epo:hasTitle;
             rr:objectMap
                 [
                     rml:reference "cbc:Name";
@@ -199,11 +199,29 @@ tedm:ProcurementProject a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-24-Procedure";
-            rr:predicate  epo:hasDescription  ;
+            rr:predicate  epo:hasDescription;
             rr:objectMap
                 [
                     rml:reference "cbc:Description";
                     rr:datatype xsd:string
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-23-Procedure";
+            rr:predicate  epo:hasMainFeature;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ProcurementTypeCode";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-531-Procedure";
+            rr:predicate  epo:hasAdditionalInformation;
+            rr:objectMap
+                [
+                    rml:reference "cac:ProcurementAdditionalType/cbc:ProcurementTypeCode[not(@listName='transport-service')]";
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -233,6 +251,7 @@ tedm:ProcurementProject a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rdfs:label "BT-27-Procedure";
             rr:predicate epo:hasEstimatedValue ;
             rr:objectMap
                 [
@@ -242,6 +261,80 @@ tedm:ProcurementProject a rr:TriplesMap ;
                         rr:parent "path(../.)";
                     ];
                 ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-26(m)-Procedure and BT-262-Procedure";
+            rr:predicate epo:hasMainClassification ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MainClassificationProcedure;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-26(a)-Procedure and BT-263-Procedure";
+            rr:predicate epo:hasAdditionalClassification ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:AdditionalClassificationProcedure;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ]
+        ] .
+
+
+tedm:AdditionalClassificationProcedure a rr:TriplesMap ;
+    rdfs:comment "Applies to: GR-Procedure-Scope-AdditionalClassification";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProject/cac:AdditionalCommodityClassification";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_AdditionalClassificationProcedure_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Purpose
+        ]  ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-26(a)-Procedure and BT-263-Procedure";
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(cbc:ItemClassificationCode) and exists(cbc:ItemClassificationCode/@listName)) then concat(cbc:ItemClassificationCode, ':', cbc:ItemClassificationCode/@listName) else null";
+                ] ;
+        ] .
+
+tedm:MainClassificationProcedure a rr:TriplesMap ;
+    rdfs:label "ND-ProcedureMainClassification";
+    rdfs:comment "Applies to: GR-Procedure-Scope-MainClassification";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProject/cac:MainCommodityClassification";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_MainClassificationProcedure_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Purpose
+        ]  ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-26(m)-Procedure and BT-262-Procedure";
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(cbc:ItemClassificationCode) and exists(cbc:ItemClassificationCode/@listName)) then concat(cbc:ItemClassificationCode, ':', cbc:ItemClassificationCode/@listName) else null";
+                ] ;
         ] .
 
 tedm:ProcurementProjectMonetaryValue a rr:TriplesMap ;
@@ -529,7 +622,7 @@ tedm:ProcedureTerms a rr:TriplesMap ;
                         rr:parent "path(../../.)";
                     ];
                 ]
-        ] .
+        ].
 
 #Procedure Extension Group
 tedm:ExtensionGroup a rr:TriplesMap ;
