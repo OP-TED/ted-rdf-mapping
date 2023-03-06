@@ -230,8 +230,42 @@ tedm:ProcurementProject a rr:TriplesMap ;
                         rr:parent "path(../.)";
                     ];
                 ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasEstimatedValue ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ProcurementProjectMonetaryValue;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ]
         ] .
 
+tedm:ProcurementProjectMonetaryValue a rr:TriplesMap ;
+    rdfs:label "BT-27-Procedure";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProject/cac:RequestedTenderTotal";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ProcurementProjectMonetaryValue_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:MonetaryValue
+        ]  ;
+    rr:predicateObjectMap
+        [
+
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:EstimatedOverallContractAmount";
+                ] ;
+        ] .
 
 tedm:ProcurementProjectIdentifier a rr:TriplesMap ;
     rdfs:label "BT-22-Procedure";
