@@ -5,10 +5,12 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX epd: <http://data.europa.eu/a4g/resource/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
-SELECT ?s (COUNT(DISTINCT ?r) AS ?count) WHERE { 
-	?s rdf:type ?o .
+
+SELECT ?s (COUNT(DISTINCT ?r) AS ?count) WHERE {
+    ?s rdf:type ?o .
     FILTER(STRSTARTS(STR(?s), "http://data.europa.eu/a4g/resource/"))
     FILTER(STRSTARTS(STR(?o), "http://data.europa.eu/a4g/ontology#"))
     ?s ?r ?t
-    
+
 } GROUP BY ?s HAVING (?count = 1)
+
