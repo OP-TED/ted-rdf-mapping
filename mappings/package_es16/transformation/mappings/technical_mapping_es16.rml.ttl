@@ -34,36 +34,100 @@ tedm:technical_mapping_f03
   rdfs:label "TED-SWS mapping of eForm subtype 16"@en ;
   dct:date "2023-02-15"^^xsd:date .
 
-
-#Buyer
-tedm:Buyer a rr:TriplesMap ;
-    rdfs:label "ND-ContractingParty";
-    rdfs:comment "Applies to: GR-ContractingAuthority";
+#Notice for GR-ContractingAuthority-Buyer
+tedm:Notice-Buyer_ND-ServiceProvider a rr:TriplesMap ;
+    rdfs:label "Notice for GR-ContractingAuthority-Buyer";
+    rdfs:comment "This is the subset group GR-ContractingAuthority-Buyer containing ND-ServiceProvider fields, and represents the Motice that refers to a Buyer.";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*";
+            rml:referenceFormulation ql:XPath
+        ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Buyer_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class epo:AgentInRole
-
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_BuyerNotice_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Notice
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:comment "The notice refers to a Buyer role";
+            rdfs:label "GR-ContractingAuthority";
+            rr:predicate epo:refersToRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:GR-ContractingAuthority
+                ] ;
+        ] .
+
+#GR-ContractingAuthority
+tedm:GR-ContractingAuthority a rr:TriplesMap ;
+    rdfs:label "GR-ContractingAuthority mappings";
+    rdfs:comment "This is group GR-ContractingAuthority, which corresponds to ND-ContractingParty, and represents the Buyer role.";
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
             rml:iterator "/*/cac:ContractingParty";
             rml:referenceFormulation ql:XPath
         ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Buyer_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Buyer
+        ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-11-Procedure-Buyer";
-            rr:predicate  epo:hasBuyerLegalType  ;
+            rdfs:label "BT-508-Procedure";
+            rr:predicate   epo:hasBuyerProfile ;
             rr:objectMap
                 [
-                    rml:reference "descendant::cbc:PartyTypeCode[@listName='buyer-legal-type']";
+                    rml:reference "cbc:BuyerProfileURI";
+                    rr:datatype xsd:anyURI
                 ] ;
         ] ;
     rr:predicateObjectMap
         [
+            rdfs:comment "The buyer role is played by an organization";
+            rdfs:label "GR-ContractingAuthority-Buyer";
+            rr:predicate epo:playedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:GR-ContractingAuthority-Buyer_ND-ServiceProvider
+                ] ;
+        ] .
+
+#GR-ContractingAuthority-Buyer with ND-ServiceProvider
+tedm:GR-ContractingAuthority-Buyer_ND-ServiceProvider a rr:TriplesMap ;
+    rdfs:label "GR-ContractingAuthority-Buyer with ND-ServiceProvider mappings";
+    rdfs:comment "This is the subset group GR-ContractingAuthority-Buyer containing ND-ServiceProvider fields, and represents the Organization playing the Buyer role.";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ContractingParty/cac:Party";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_BuyerOrganization_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class org:Organization
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-11-Procedure-Buyer";
+            rr:predicate epo:hasBuyerLegalType ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:buyerLegalType;
+                    rr:joinCondition [
+                        rr:child "../cac:ContractingPartyType/cbc:PartyTypeCode[@listName='buyer-legal-type']";
+                        rr:parent "xmlElement";
+                    ];
+                ] ;
+        ]  ;
+    rr:predicateObjectMap
+        [
             rdfs:label "BT-10-Procedure-Buyer";
-            rr:predicate  epo:hasMainActivity  ;
+            rr:predicate   epo:hasMainActivity ;
             rr:objectMap
                 [
                     rml:reference "descendant::cbc:ActivityTypeCode[@listName='authority-activity']";
@@ -71,30 +135,70 @@ tedm:Buyer a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-508-Procedure-Buyer";
-            rr:predicate  epo:hasBuyerProfile  ;
+            rdfs:label "OPT-300-Procedure";
+            rdfs:comment "The identifier of a buyer organization";
+            rr:predicate epo:hasID ;
             rr:objectMap
                 [
-                    rml:reference "descendant::cbc:BuyerProfileURI";
-                    rr:datatype xsd:anyURI
+                    rr:parentTriplesMap tedm:BuyerOrganizationIdentifier;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ]
+        ] .
+
+tedm:BuyerOrganizationIdentifier a rr:TriplesMap ;
+    rdfs:label "OPT-300-Procedure";
+    rdfs:comment "The identifier of a buyer organization";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ContractingParty/cac:Party/cac:PartyIdentification";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ProcurementProjectIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+
+            rr:predicate epo:hasIdentifierValue ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ID";
                 ] ;
         ] .
 
-#ProcedureProcess
-tedm:ProcedureProcess a rr:TriplesMap ;
-    rdfs:label "ND-ProcedureTenderingProcess";
-    rdfs:comment "Applies to: GR-Procedure";
+tedm:buyerLegalType a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "transformation/resources/buyer_legal_type.csv" ;
+            rml:referenceFormulation ql:CSV
+        ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ProcedureProcess_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class epo:Procedure
+            rml:reference
+                "conceptURI" ;
+        ] .
 
-        ] ;
+#GR-Procedure with ND-ProcedureProcess
+tedm:GR-Procedure_ND-ProcedureProcess a rr:TriplesMap ;
+    rdfs:label "GR-Procedure with ND-ProcedureProcess mappings";
+    rdfs:comment "This is the subset group GR-Procedure containing ND-ProcedureProcess fields";
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
             rml:iterator "/*/cac:TenderingProcess";
             rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ProcedureProcess_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Procedure
+
         ] ;
     rr:predicateObjectMap
         [
@@ -160,21 +264,21 @@ tedm:ProcedureProcess a rr:TriplesMap ;
         ] .
 
 
-#Procurement Project
-tedm:ProcurementProject a rr:TriplesMap ;
-    rdfs:label "ND-ProcedureProcurementScope";
-    rdfs:comment "Applies to: GR-Procedure";
-    rr:subjectMap
-        [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ProcurementProject_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class epo:Procedure
-
-        ] ;
+#GR-Procedure with ND-ProcedureProject
+tedm:GR-Procedure_ND-ProcedureProject a rr:TriplesMap ;
+    rdfs:label "GR-Procedure with ND-ProcedureProject mappings";
+    rdfs:comment "This is the subset group GR-Procedure containing ND-ProcedureProject fields";
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
             rml:iterator "/*/cac:ProcurementProject";
             rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ProcurementProject_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Procedure
+
         ] ;
     rr:predicateObjectMap
         [
@@ -231,10 +335,6 @@ tedm:ProcurementProject a rr:TriplesMap ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ProcurementProjectIdentifier;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(.)";
-                    ];
                 ]
         ] ;
     rr:predicateObjectMap
@@ -265,10 +365,10 @@ tedm:ProcurementProject a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-26(m)-Procedure and BT-262-Procedure";
-            rr:predicate epo:hasMainClassification ;
+            rr:predicate epo:hasPurpose ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MainClassificationProcedure;
+                    rr:parentTriplesMap tedm:MainClassificationPurpose;
                     rr:joinCondition [
                         rr:child "path(.)";
                         rr:parent "path(../.)";
@@ -289,8 +389,8 @@ tedm:ProcurementProject a rr:TriplesMap ;
                 ]
         ] .
 
-
 tedm:AdditionalClassificationProcedure a rr:TriplesMap ;
+    rdfs:label "BT-26(a)-Procedure and BT-263-Procedure";
     rdfs:comment "Applies to: GR-Procedure-Scope-AdditionalClassification";
     rml:logicalSource
         [
@@ -306,14 +406,14 @@ tedm:AdditionalClassificationProcedure a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-26(a)-Procedure and BT-263-Procedure";
-            rr:predicate epo:hasAmountValue ;
+            rr:predicate epo:hasAdditionalClassification  ;
             rr:objectMap
                 [
                     rml:reference "if(exists(cbc:ItemClassificationCode) and exists(cbc:ItemClassificationCode/@listName)) then concat(cbc:ItemClassificationCode, ':', cbc:ItemClassificationCode/@listName) else null";
                 ] ;
         ] .
 
-tedm:MainClassificationProcedure a rr:TriplesMap ;
+tedm:MainClassificationPurpose a rr:TriplesMap ;
     rdfs:label "ND-ProcedureMainClassification";
     rdfs:comment "Applies to: GR-Procedure-Scope-MainClassification";
     rml:logicalSource
@@ -324,13 +424,13 @@ tedm:MainClassificationProcedure a rr:TriplesMap ;
         ];
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_MainClassificationProcedure_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_MainClassificationPurpose_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:Purpose
         ]  ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-26(m)-Procedure and BT-262-Procedure";
-            rr:predicate epo:hasAmountValue ;
+            rr:predicate epo:hasMainClassification  ;
             rr:objectMap
                 [
                     rml:reference "if(exists(cbc:ItemClassificationCode) and exists(cbc:ItemClassificationCode/@listName)) then concat(cbc:ItemClassificationCode, ':', cbc:ItemClassificationCode/@listName) else null";
@@ -543,21 +643,20 @@ tedm:ProcurementProjectContractAddressIdentifier a rr:TriplesMap ;
                 ] ;
         ] .
 
-#Procedure Terms
-tedm:ProcedureTerms a rr:TriplesMap ;
-    rdfs:label "ND-ProcedureTerms";
-    rdfs:comment "Applies to: GR-Procedure";
-    rr:subjectMap
-        [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ProcedureTerms_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class epo:Procedure
-
-        ] ;
+#GR-Procedure with ND-ProcedureTerms
+tedm:GR-Procedure_ND-ProcedureTerms a rr:TriplesMap ;
+    rdfs:label "GR-Procedure with ND-ProcedureTerms mappings";
+    rdfs:comment "This is the subset group GR-Procedure containing ND-ProcedureTerms fields";
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
             rml:iterator "/*/cac:TenderingTerms";
             rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ProcedureTerms_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Procedure
         ] ;
     rr:predicateObjectMap
         [
@@ -628,17 +727,17 @@ tedm:ProcedureTerms a rr:TriplesMap ;
 tedm:ExtensionGroup a rr:TriplesMap ;
     rdfs:label "ND-ProcedureValueEstimate";
     rdfs:comment "Applies to: GR-Procedure-ExclusionGrounds";
-    rr:subjectMap
-        [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ExtensionGroup_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class epo:ExclusionGround
-
-        ] ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
             rml:iterator "/*/cac:TenderingTerms/cac:TendererQualificationRequest/cac:SpecificTendererRequirement";
             rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ExtensionGroup_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ExclusionGround
+
         ] ;
     rr:predicateObjectMap
         [
@@ -660,22 +759,25 @@ tedm:ExtensionGroup a rr:TriplesMap ;
                 ] ;
         ] .
 
+##################################################################################################################################################################################################
+##################################################################################################################################################################################################
+##################################################################################################################################################################################################
 
 # Organization - Company
 tedm:Organisation a rr:TriplesMap ;
     rdfs:label "ND-Company";
     rdfs:comment "Applies to: GR-Company";
-    rr:subjectMap
-        [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Organisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class org:Organization
-
-        ] ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
             rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization";
             rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Organisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class org:Organization
+
         ] ;
     rr:predicateObjectMap
         [
@@ -959,17 +1061,17 @@ tedm:OrganisationIdentifier a rr:TriplesMap ;
 tedm:OrganisationTouchPoint a rr:TriplesMap ;
     rdfs:label "ND-TouchPoint";
     rdfs:comment "Applies to: GR-TouchPoint";
-    rr:subjectMap
-        [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Organisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class org:Organization
-
-        ] ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
             rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:TouchPoint";
             rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_Organisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class org:Organization
+
         ] ;
     rr:predicateObjectMap
         [
@@ -1464,6 +1566,10 @@ tedm:ChangeNoticeIdentifier a rr:TriplesMap ;
                 ] ;
         ] .
 
+##################################################################################################################################################################################################
+##################################################################################################################################################################################################
+##################################################################################################################################################################################################
+
 
 #Purpose Lot Group
 tedm:PurposeLotGroup  a rr:TriplesMap ;
@@ -1933,6 +2039,10 @@ tedm:DirectAwardIdentifier a rr:TriplesMap ;
                     rml:reference "cbc:ID";
                 ] ;
         ] .
+
+##################################################################################################################################################################################################
+##################################################################################################################################################################################################
+##################################################################################################################################################################################################
 
 #Lot
 tedm:Lot a rr:TriplesMap ;
@@ -3878,10 +3988,9 @@ tedm:LotReviewTerm a rr:TriplesMap ;
                 ] ;
         ] .
 
-
-
-
-
+##################################################################################################################################################################################################
+##################################################################################################################################################################################################
+##################################################################################################################################################################################################
 
 tedm:nuts a rr:TriplesMap ;
     rml:logicalSource
