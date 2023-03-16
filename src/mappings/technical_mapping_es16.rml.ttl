@@ -58,7 +58,56 @@ tedm:Notice-Buyer_ND-ServiceProvider a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:GR-ContractingAuthority
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPP-090-Procedure";
+            rdfs:comment "The identifier of a notice";
+            rr:predicate epo:hasID ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:NoticeIdentifier;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ]
         ] .
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "OPP-090-Procedure";
+#            rdfs:comment "This field defines a property that has domain/range epo:Notice and is comnibed with the Identifier of the Notice";
+#            rr:predicate epo:refersToPrevious ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:Notice-Buyer_ND-ServiceProvider
+#                ] ;
+#        ] .
+
+tedm:NoticeIdentifier a rr:TriplesMap ;
+    rdfs:label "OPP-090-Procedure";
+    rdfs:comment "The identifier of a notice";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:TenderingProcess/cac:NoticeDocumentReference";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_NoticeIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+
+            rr:predicate epo:hasIdentifierValue ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ID";
+                ] ;
+        ] .
+
 
 #GR-ContractingAuthority
 tedm:GR-ContractingAuthority a rr:TriplesMap ;
@@ -2548,7 +2597,7 @@ tedm:PurposeIdentifier a rr:TriplesMap ;
 
 #Quantity Purpose
 tedm:QuantityPurpose a rr:TriplesMap ;
-    rdfs:labele "BT-25-Lot and BT-625-Lot";
+    rdfs:label "BT-25-Lot and BT-625-Lot";
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -2557,7 +2606,8 @@ tedm:QuantityPurpose a rr:TriplesMap ;
         ];
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_QuantityPurpose_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if (exists(cbc:EstimatedOverallContractQuantity/@unitCode) or exists(cbc:EstimatedOverallContractQuantity)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_QuantityPurpose_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+#           rr:reference "if(exists(cbc:EstimatedOverallContractQuantity/@unitCode) or exists(cbc:EstimatedOverallContractQuantity)) then http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_QuantityPurpose_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')} else null" ;
             rr:class  epo:Quantity;
         ] ;
     rr:predicateObjectMap
