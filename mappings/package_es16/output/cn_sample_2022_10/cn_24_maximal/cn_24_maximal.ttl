@@ -25,40 +25,40 @@
 epd:id__AccessTerm_Aim3sQTrJD92cok54ZhnWW a epo:AccessTerm;
   epo:hasOfficialLanguage "FRA";
   epo:hasPublicAccessURL "http://nonrestricteddocuments.com"^^xsd:anyURI;
-  epo:isProcurementDocumentRestricted "non-restricted-document" .
+  epo:isProcurementDocumentRestricted "non-restricted-document"^^xsd:boolean .
 
 epd:id__AccessTerm_RrRXrztPAFwoTrNhP75ZJZ a epo:AccessTerm;
   epo:hasRestrictedAccessURL "http://accessto.com"^^xsd:anyURI;
-  epo:isProcurementDocumentRestricted "restricted-document" .
+  epo:isProcurementDocumentRestricted "restricted-document"^^xsd:boolean .
 
 epd:id__AccessTerm_SUjgiTfthNR3jeStaMcRex a epo:AccessTerm;
   epo:hasOfficialLanguage "ENG";
   epo:hasPublicAccessURL "http://nonrestricteddocuments.com"^^xsd:anyURI;
-  epo:isProcurementDocumentRestricted "non-restricted-document" .
+  epo:isProcurementDocumentRestricted "non-restricted-document"^^xsd:boolean .
 
 epd:id__AccessTerm_TTjvk4ng8FHMGggQfNMCNm a epo:AccessTerm;
   epo:hasPublicAccessURL "http://nonrestricteddocuments.com"^^xsd:anyURI;
   epo:hasUnofficialLanguage "CAT";
-  epo:isProcurementDocumentRestricted "non-restricted-document" .
+  epo:isProcurementDocumentRestricted "non-restricted-document"^^xsd:boolean .
 
 epd:id__AccessTerm_XnxqfcRqzA7sngzwrWyL3G a epo:AccessTerm;
   epo:hasOfficialLanguage "ENG";
   epo:hasPublicAccessURL "http://nonrestricteddocuments.com"^^xsd:anyURI;
-  epo:isProcurementDocumentRestricted "non-restricted-document" .
+  epo:isProcurementDocumentRestricted "non-restricted-document"^^xsd:boolean .
 
 epd:id__AccessTerm_fHHa5zNc2jy5cUXFhDq6nM a epo:AccessTerm;
   epo:hasOfficialLanguage "FRA";
   epo:hasPublicAccessURL "http://nonrestricteddocuments.com"^^xsd:anyURI;
-  epo:isProcurementDocumentRestricted "non-restricted-document" .
+  epo:isProcurementDocumentRestricted "non-restricted-document"^^xsd:boolean .
 
 epd:id__AccessTerm_hjn5LF75s8LS7Byp6WDWeS a epo:AccessTerm;
   epo:hasPublicAccessURL "http://nonrestricteddocuments.com"^^xsd:anyURI;
   epo:hasUnofficialLanguage "CAT";
-  epo:isProcurementDocumentRestricted "non-restricted-document" .
+  epo:isProcurementDocumentRestricted "non-restricted-document"^^xsd:boolean .
 
 epd:id__AccessTerm_oUHv54SLxwtS52U2qbb7DZ a epo:AccessTerm;
   epo:hasRestrictedAccessURL "http://accessto.com"^^xsd:anyURI;
-  epo:isProcurementDocumentRestricted "restricted-document" .
+  epo:isProcurementDocumentRestricted "restricted-document"^^xsd:boolean .
 
 epd:id__AdditionalClassificationProcedure_fVKZa9owrYBjqpVQKs8AZs a epo:Purpose;
   epo:hasAdditionalClassification "79720000:cpv" .
@@ -113,7 +113,9 @@ epd:id__BuyerNotice_MnX8qyREnFMNLeS5MJAX9K a epo:Notice;
   epo:refersToRole epd:id__Buyer_MT3gdCnJ9BA7aEqaGqKxAh .
 
 epd:id__BuyerOrganization_7WeLTCnpKBW84s7ozenKaS a org:Organization;
-  epo:hasID epd:id__ProcurementProjectIdentifier_cxNzNsZ3ina7HiMkahYPvW .
+  epo:hasBuyerLegalType "body-pl";
+  epo:hasID epd:id__ProcurementProjectIdentifier_cxNzNsZ3ina7HiMkahYPvW;
+  epo:hasMainActivity "econ-aff" .
 
 epd:id__Buyer_MT3gdCnJ9BA7aEqaGqKxAh a epo:Buyer;
   epo:hasBuyerProfile "https://profile.example.com"^^xsd:anyURI;
@@ -239,12 +241,12 @@ epd:id__ContractLocation_hiAK8DLh3JtZ7KtSTBXFaB a dct:Location;
   locn:geographicName "The main location is ..." .
 
 epd:id__ContractPeriod_JNctcsx6JXdNkzdL4P6dek a epo:Period;
-  epo:hasBeginning "2023-01-01+01:00"^^xsd:date;
-  epo:hasEnd "2023-05-23+01:00"^^xsd:date .
+  epo:hasBeginning "2023-01-01+01:00"^^xsd:dateTime;
+  epo:hasEnd "2023-05-23+01:00"^^xsd:dateTime .
 
 epd:id__ContractPeriod_SwK8Z4wjBuauCWAoBTPk4Z a epo:Period;
-  epo:hasBeginning "2023-01-01+01:00"^^xsd:date;
-  epo:hasEnd "2023-05-23+02:00"^^xsd:date .
+  epo:hasBeginning "2023-01-01+01:00"^^xsd:dateTime;
+  epo:hasEnd "2023-05-23+02:00"^^xsd:dateTime .
 
 epd:id__ContractTerm_PuAZ93vcjRYhKiN4rMvUZg a epo:ContractTerm;
   epo:definesContractPeriod epd:id__ContractPeriod_SwK8Z4wjBuauCWAoBTPk4Z;
@@ -252,9 +254,10 @@ epd:id__ContractTerm_PuAZ93vcjRYhKiN4rMvUZg a epo:ContractTerm;
     epd:id__ContractLocation_hiAK8DLh3JtZ7KtSTBXFaB;
   epo:hasContractorLegalFormRequirement true;
   epo:hasContractorLegalFormRequirementDescription "Tenderer Legal Form Description ---";
-  epo:hasEInvoicing "Terms Performance ---", "required";
+  epo:hasEInvoicing "required";
   epo:hasEPayment true;
   epo:hasPaymentArrangement "Terms Financial ---"^^xsd:boolean;
+  epo:hasPerformanceConditions "Terms Performance ---";
   epo:hasReservedExecution "yes";
   epo:isAdvancedElectronicSignatureRequired true .
 
@@ -264,9 +267,10 @@ epd:id__ContractTerm_TT87XZ7rfCixVuS4Z9trMH a epo:ContractTerm;
     epd:id__ContractLocation_VQprYhGmQN6wWMg9owRwcH;
   epo:hasContractorLegalFormRequirement true;
   epo:hasContractorLegalFormRequirementDescription "Tenderer Legal Form Description ---";
-  epo:hasEInvoicing "Terms Performance ---", "required";
+  epo:hasEInvoicing "required";
   epo:hasEPayment true;
   epo:hasPaymentArrangement "Terms Financial ---"^^xsd:boolean;
+  epo:hasPerformanceConditions "Terms Performance ---";
   epo:hasReservedExecution "yes";
   epo:isAdvancedElectronicSignatureRequired true .
 
@@ -724,39 +728,39 @@ epd:id__Organisation_jswDPvBnRAi22bpQbuphBJ a org:Organization;
   cccev:registeredAddress epd:id__OrganisationAddress_ikV4AfPuLDPpY2gzokb7GH .
 
 epd:id__OrganizationChannel_3PD5XH69rqe5ksKERcWv5s a cccev:Channel;
-  epo:hasURL "http://tender-evaluation.fin-adm.com" .
+  epo:hasURL "http://tender-evaluation.fin-adm.com"^^xsd:anyURI .
 
 epd:id__OrganizationChannel_BBv29sxfyiNoUqgRioRVLR a cccev:Channel;
-  epo:hasEndpoint "https://endpoint.employment-legis.com";
-  epo:hasURL "https://www.employment-legis.com" .
+  epo:hasEndpoint "https://endpoint.employment-legis.com"^^xsd:anyURI;
+  epo:hasURL "https://www.employment-legis.com"^^xsd:anyURI .
 
 epd:id__OrganizationChannel_EKMwTBqWjr3fuYY8QxHmKR a cccev:Channel;
-  epo:hasEndpoint "https://endpoint.env-dpt.com";
-  epo:hasURL "https://www.env-dpt.com" .
+  epo:hasEndpoint "https://endpoint.env-dpt.com"^^xsd:anyURI;
+  epo:hasURL "https://www.env-dpt.com"^^xsd:anyURI .
 
 epd:id__OrganizationChannel_LmZfWzqV6Pr4nRLBcJSQYX a cccev:Channel;
-  epo:hasEndpoint "https://contact.fin-leg.com";
-  epo:hasURL "https://www.fin-leg.com" .
+  epo:hasEndpoint "https://contact.fin-leg.com"^^xsd:anyURI;
+  epo:hasURL "https://www.fin-leg.com"^^xsd:anyURI .
 
 epd:id__OrganizationChannel_Ud9UCKnRE7Ktx8vDgbsqmm a cccev:Channel;
-  epo:hasURL "http://tender-submit.fin-adm.com" .
+  epo:hasURL "http://tender-submit.fin-adm.com"^^xsd:anyURI .
 
 epd:id__OrganizationChannel_VrhSdfx4KsPjDwzxKDzs5A a cccev:Channel;
-  epo:hasURL "http://archives.fin-adm.com" .
+  epo:hasURL "http://archives.fin-adm.com"^^xsd:anyURI .
 
 epd:id__OrganizationChannel_WQzyqnxasMWARdBs2EPBAJ a cccev:Channel;
-  epo:hasEndpoint "https://appeal-adm-proc.com/request";
-  epo:hasURL "https://www.appeal-adm-proc.com" .
+  epo:hasEndpoint "https://appeal-adm-proc.com/request"^^xsd:anyURI;
+  epo:hasURL "https://www.appeal-adm-proc.com"^^xsd:anyURI .
 
 epd:id__OrganizationChannel_aC3tNex2Mwc2kPpbGdjYmj a cccev:Channel;
-  epo:hasURL "https://esendercorp.eu" .
+  epo:hasURL "https://esendercorp.eu"^^xsd:anyURI .
 
 epd:id__OrganizationChannel_dncygpvZhCw79SnLWFkb6H a cccev:Channel;
-  epo:hasEndpoint "https://endpoint-example.fin-adm.com";
-  epo:hasURL "https://www.fin-adm.com" .
+  epo:hasEndpoint "https://endpoint-example.fin-adm.com"^^xsd:anyURI;
+  epo:hasURL "https://www.fin-adm.com"^^xsd:anyURI .
 
 epd:id__OrganizationChannel_eDbiEwxGWAuxogTQsXHsws a cccev:Channel;
-  epo:hasURL "https://www.pub-mediator.com" .
+  epo:hasURL "https://www.pub-mediator.com"^^xsd:anyURI .
 
 epd:id__ProcedureProcess_5oS2EhqDWxnS4XBfhKaeUY a epo:Procedure;
   epo:hasAcceleratedProcedureJustification "Procedure Accelerated Justification ---";
@@ -781,25 +785,26 @@ epd:id__ProcedureTerms_UkA4NavMbVKymCiDgm45qc a epo:Procedure;
     epd:id__ExtensionGroup_eE9UGyZshPCAPa9HY5m3SS, epd:id__ExtensionGroup_gsqwnkSxN5gKbqYWRFqTmc,
     epd:id__ExtensionGroup_hqawu5kJC8i3dxZ99zexxB .
 
-epd:id__ProcurementProjectContractAddress_CRWooKNHmeZWa48UQQFLR5 a epo:Identifier;
-  epo:hasIdentifierValue "GBR" .
-
-epd:id__ProcurementProjectContractAddress_RxWyYo5p6B6QKE6kAx4iDD a locn:Address;
-  locn:addressArea "anyw-eea" .
-
 epd:id__ProcurementProjectContractAddress_btiykpkF9yYEWFnDmvRf6a a locn:Address;
-  epo:hasID epd:id__ProcurementProjectContractAddress_CRWooKNHmeZWa48UQQFLR5;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/UKI62>;
   locn:adminUnitL2 "2 Gotham Street";
   locn:fullAddress "Bruce Wayne House";
   locn:postCode "N1 9FL";
   locn:postName "London" .
 
+epd:id__ProcurementProjectContractLocation_67o9ur9Jjef9htMoaQhdxm a dct:Location;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/> .
+
+epd:id__ProcurementProjectContractLocation_QmFgWdHMQiunuxrdtntYZx a dct:Location;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/UKI62>;
+  locn:address epd:id__ProcurementProjectContractAddress_btiykpkF9yYEWFnDmvRf6a .
+
 epd:id__ProcurementProjectContractTerm_67o9ur9Jjef9htMoaQhdxm a epo:ContractTerm;
-  locn:address epd:id__ProcurementProjectContractAddress_RxWyYo5p6B6QKE6kAx4iDD .
+  epo:definesSpecificPlaceOfPerformance epd:id__ProcurementProjectContractLocation_67o9ur9Jjef9htMoaQhdxm;
+  epo:hasBroadPlaceOfPerformance "anyw-eea" .
 
 epd:id__ProcurementProjectContractTerm_QmFgWdHMQiunuxrdtntYZx a epo:ContractTerm;
-  locn:address epd:id__ProcurementProjectContractAddress_btiykpkF9yYEWFnDmvRf6a .
+  epo:definesSpecificPlaceOfPerformance epd:id__ProcurementProjectContractLocation_QmFgWdHMQiunuxrdtntYZx .
 
 epd:id__ProcurementProjectIdentifier_cxNzNsZ3ina7HiMkahYPvW a epo:Identifier;
   epo:hasIdentifierValue "ORG-0001" .

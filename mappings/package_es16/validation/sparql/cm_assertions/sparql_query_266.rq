@@ -1,9 +1,10 @@
-#title: BT-506-Organization-Company content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Company-Contact - Organisation Contact Email Address
-#description: “BT-506-Organization-Company content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Company-Contact - Organisation Contact Email Address” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/Contact/ElectronicMail. The expected ontology instances are epo: epo:AgentInRole (from CL1) / cpov:ContactPoint / xsd:anyURI .
-#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/Contact/ElectronicMail
+#title: OPP-052-Organization content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Company-BuyerExclusive - Acquiring CPB Buyer Indicator
+#description: “OPP-052-Organization content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Company-BuyerExclusive - Acquiring CPB Buyer Indicator” in SF corresponds to “OPP-052 nan” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/AcquiringCPBIndicator. The expected ontology instances are epo: epo:AcquiringCentralPurchasingBody / xsd:boolean .
+#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/AcquiringCPBIndicator
 
-PREFIX cpov: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this epo:hasPrimaryContactPoint  / cpov:email ?value . }
+		?this rdf:type epo:AcquiringCentralPurchasingBody .
+		?this epo:isContractingEntity ?value }

@@ -1,8 +1,10 @@
-#title: BT-500-Organization-Company content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Company - Organisation Name
-#description: “BT-500-Organization-Company content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Company - Organisation Name” in SF corresponds to “BT-500 Organisation Name” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/PartyName/Name. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / rdf:langString .
-#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/PartyName/Name
+#title: GR-Company-Address content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations - Organisation Address
+#description: “GR-Company-Address content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations - Organisation Address” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/PostalAddress. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address .
+#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/PostalAddress
 
+PREFIX cv: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 
 ASK WHERE { 
-		?this epo:playedBy / epo:hasLegalName ?value . }
+		?this epo:playedBy / cv:registeredAddress / locn:thoroughfare ?value . }

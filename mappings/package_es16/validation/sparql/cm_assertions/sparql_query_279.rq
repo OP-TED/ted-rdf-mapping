@@ -1,10 +1,10 @@
-#title: BT-510(a)-Organization-TouchPoint content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Touch-Point.GR-TouchPoint-Address - Street
-#description: “BT-510(a)-Organization-TouchPoint content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Touch-Point.GR-TouchPoint-Address - Street” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/PostalAddress/StreetName. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .
-#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/PostalAddress/StreetName
+#title: BT-507-Organization-TouchPoint content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Touch-Point.GR-TouchPoint-Address - Country Subdivision
+#description: “BT-507-Organization-TouchPoint content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Touch-Point.GR-TouchPoint-Address - Country Subdivision” in SF corresponds to “BT-507 Organisation Country Subdivision” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/PostalAddress/CountrySubentityCode. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / dct:Location / at-voc:nuts (from nuts.json) .
+#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/PostalAddress/CountrySubentityCode
 
-PREFIX cv: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this epo:playedBy / cv:registeredAddress / locn:thoroughfare ?value . }
+		?this rdf:type epo:Lot .
+		?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / epo:hasNutsCode ?value . }

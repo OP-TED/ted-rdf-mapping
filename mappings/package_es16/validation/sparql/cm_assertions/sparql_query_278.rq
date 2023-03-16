@@ -1,8 +1,10 @@
-#title: GR-TouchPoint-Address content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Touch-Point - TouchPoint Address
-#description: “GR-TouchPoint-Address content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Touch-Point - TouchPoint Address” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/PostalAddress. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) .
-#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/PostalAddress
+#title: BT-512-Organization-TouchPoint content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Touch-Point.GR-TouchPoint-Address - Post Code
+#description: “BT-512-Organization-TouchPoint content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Touch-Point.GR-TouchPoint-Address - Post Code” in SF corresponds to “BT-512 Organisation Post Code” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/PostalAddress/PostalZone. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / rdf:langString .
+#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/PostalAddress/PostalZone
 
+PREFIX cv: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 
 ASK WHERE { 
-		?this epo:playedBy / epo:hasEndpoint ?value . }
+		?this epo:playedBy / cv:registeredAddress / locn:postCode ?value . }

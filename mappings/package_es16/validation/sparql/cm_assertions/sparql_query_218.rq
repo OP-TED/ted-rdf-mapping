@@ -1,10 +1,10 @@
-#title: BT-726-LotsGroup content.GR-LotsGroup.GR-LotsGroup-Purpose.GR-LotsGroup-Scope - Suitable For SMEs
-#description: “BT-726-LotsGroup content.GR-LotsGroup.GR-LotsGroup-Purpose.GR-LotsGroup-Scope - Suitable For SMEs” in SF corresponds to “BT-726 Suitable For SMEs” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/SMESuitableIndicator. The expected ontology instances are epo: epo:LotGroup / xsd:boolean .
-#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/SMESuitableIndicator
+#title: BT-157-LotsGroup content.GR-LotsGroup.GR-LotsGroup-Purpose.GR-LotsGroup-FrameworkAgreement - Group Framework Maximum Value
+#description: “BT-157-LotsGroup content.GR-LotsGroup.GR-LotsGroup-Purpose.GR-LotsGroup-FrameworkAgreement - Group Framework Maximum Value” in SF corresponds to “BT-157 Group Framework Maximum Value” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/FrameworkAgreement/EstimatedMaximumValueAmount. The expected ontology instances are epo: epo:LotGroup / xsd:MonetaryValue / xsd:decimal .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/FrameworkAgreement/EstimatedMaximumValueAmount
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:LotGroup .
-		?this epo:isSMESuitable ?value }
+		?this epo:hasEstimatedValue / epo:hasAmountValue ?value . }

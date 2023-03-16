@@ -1,10 +1,9 @@
-#title: BT-510(b)-Organization-TouchPoint content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Touch-Point.GR-TouchPoint-Address - Streetline 1
-#description: “BT-510(b)-Organization-TouchPoint content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Touch-Point.GR-TouchPoint-Address - Streetline 1” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/PostalAddress/AdditionalStreetName. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .
-#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/PostalAddress/AdditionalStreetName
+#title: BT-514-Organization-TouchPoint content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Touch-Point.GR-TouchPoint-Address - Country Code
+#description: “BT-514-Organization-TouchPoint content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Touch-Point.GR-TouchPoint-Address - Country Code” in SF corresponds to “BT-514 Organisation Country Code” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/PostalAddress/Country/IdentificationCode. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / at-voc:country (from country.json) .
+#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/PostalAddress/Country/IdentificationCode
 
 PREFIX cv: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX locn: <http://www.w3.org/ns/locn#>
 
 ASK WHERE { 
-		?this epo:playedBy / cv:registeredAddress / locn:thoroughfare ?value . }
+		?this epo:playedBy / cv:registeredAddress / epo:hasCountryCode ?value . }

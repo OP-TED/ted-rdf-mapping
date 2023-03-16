@@ -1,8 +1,8 @@
-#title: GR-Organisations content.GR-Organisations-Section.GR-Organisations-Subsection - A Party involved in the Competition from either side (Buyer or Tenderer) with a Legal Entity (Company) and possibly additional Contact Points (touchpoints)
-#description: “GR-Organisations content.GR-Organisations-Section.GR-Organisations-Subsection - A Party involved in the Competition from either side (Buyer or Tenderer) with a Legal Entity (Company) and possibly additional Contact Points (touchpoints)” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations. The expected ontology instances are epo: epo:OrganisationGroup (from CL2) .
-#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations
+#title: BT-501-Organization-Company content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Company - Organisation Identifier
+#description: “BT-501-Organization-Company content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Company - Organisation Identifier” in SF corresponds to “BT-501 Organisation Identifier” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/PartyLegalEntity/CompanyID. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / epo:Identifier / rdf:langString .
+#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/PartyLegalEntity/CompanyID
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
 ASK WHERE { 
-		?this a epo:OrganisationGroup }
+		?this epo:playedBy / epo:hasID / epo:hasIdentifierValue ?value . }

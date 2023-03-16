@@ -1,8 +1,8 @@
-#title: GR-Company content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations - Organisation
-#description: “GR-Company content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations - Organisation” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization. The expected ontology instances are epo: org:Organization (from CL2) .
-#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization
+#title: BT-509-Organization-Company content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Company - Organisation eDelivery Gateway
+#description: “BT-509-Organization-Company content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Company - Organisation eDelivery Gateway” in SF corresponds to “BT-509 Organisation eDelivery Gateway” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/EndpointID. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cv:Channel / xsd:anyURI .
+#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/EndpointID
 
-PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
 ASK WHERE { 
-		?this a org:Organization }
+		?this epo:playedBy / epo:hasDeliveryGateway / epo:hasEndpoint ?value . }

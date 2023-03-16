@@ -26,7 +26,7 @@ epd:id__AccessTerm_naE3mfoLZyth2mWXywVhn6 a epo:AccessTerm;
   epo:hasDocumentRestrictionJustification "tdf-non-av";
   epo:hasOfficialLanguage "ENG";
   epo:hasRestrictedAccessURL "https://hmlandregistry.force.com"^^xsd:anyURI;
-  epo:isProcurementDocumentRestricted "restricted-document" .
+  epo:isProcurementDocumentRestricted "restricted-document"^^xsd:boolean .
 
 epd:id__AwardingTerms_kJu9SkmLfQYWH3GxqnddRV a epo:AwardCriterion;
   epo:hasDescription "Price is not the only award criterion and all criteria are stated only in the procurement documents";
@@ -36,7 +36,9 @@ epd:id__BuyerNotice_MnX8qyREnFMNLeS5MJAX9K a epo:Notice;
   epo:refersToRole epd:id__Buyer_MT3gdCnJ9BA7aEqaGqKxAh .
 
 epd:id__BuyerOrganization_7WeLTCnpKBW84s7ozenKaS a org:Organization;
-  epo:hasID epd:id__ProcurementProjectIdentifier_cxNzNsZ3ina7HiMkahYPvW .
+  epo:hasBuyerLegalType "cga";
+  epo:hasID epd:id__ProcurementProjectIdentifier_cxNzNsZ3ina7HiMkahYPvW;
+  epo:hasMainActivity "gen-pub" .
 
 epd:id__Buyer_MT3gdCnJ9BA7aEqaGqKxAh a epo:Buyer;
   epo:playedBy epd:id__BuyerOrganization_7WeLTCnpKBW84s7ozenKaS .
@@ -77,7 +79,7 @@ epd:id__ContractLocation_FfZ9Bw8LWfWqSRcwCecwNs a dct:Location;
   locn:geographicName "Her Majesty's Land Registry, UK-wide" .
 
 epd:id__ContractPeriod_DW9uu9Ka9v6eCrwhU9MmBC a epo:Period;
-  epo:hasBeginning "2020-09-01+02:00"^^xsd:date;
+  epo:hasBeginning "2020-09-01+02:00"^^xsd:dateTime;
   epo:hasTimePeriod "66" .
 
 epd:id__ContractTerm_YWMCGu6i5HBxweh3xaUekn a epo:ContractTerm;
@@ -255,17 +257,17 @@ epd:id__Organisation_Ud9UCKnRE7Ktx8vDgbsqmm a org:Organization;
   cccev:registeredAddress epd:id__OrganisationAddress_DQ3D2nHojn4VijYMYRtvzY .
 
 epd:id__OrganizationChannel_EKMwTBqWjr3fuYY8QxHmKR a cccev:Channel;
-  epo:hasURL "https://esendercorp.eu" .
+  epo:hasURL "https://esendercorp.eu"^^xsd:anyURI .
 
 epd:id__OrganizationChannel_LmZfWzqV6Pr4nRLBcJSQYX a cccev:Channel;
-  epo:hasURL "https://example-mediator.eu" .
+  epo:hasURL "https://example-mediator.eu"^^xsd:anyURI .
 
 epd:id__OrganizationChannel_Ud9UCKnRE7Ktx8vDgbsqmm a cccev:Channel;
-  epo:hasURL "https://www.gov.uk/government/organisations/land-registry" .
+  epo:hasURL "https://www.gov.uk/government/organisations/land-registry"^^xsd:anyURI .
 
 epd:id__OrganizationChannel_dncygpvZhCw79SnLWFkb6H a cccev:Channel;
-  epo:hasEndpoint "https://www.gov.uk/government/organisations/land-registry";
-  epo:hasURL "https://www.gov.uk/government/organisations/land-registry" .
+  epo:hasEndpoint "https://www.gov.uk/government/organisations/land-registry"^^xsd:anyURI;
+  epo:hasURL "https://www.gov.uk/government/organisations/land-registry"^^xsd:anyURI .
 
 epd:id__ProcedureProcess_5oS2EhqDWxnS4XBfhKaeUY a epo:Procedure;
   epo:hasAcceleratedProcedureJustification "The needs of the contracting authority cannot be met without adaptation of ready available solutions.";
@@ -282,15 +284,12 @@ epd:id__ProcedureTerms_UkA4NavMbVKymCiDgm45qc a epo:Procedure;
     epd:id__ExtensionGroup_bm6uSwy7hkcan8rVF5YHgR, epd:id__ExtensionGroup_eE9UGyZshPCAPa9HY5m3SS,
     epd:id__ExtensionGroup_gsqwnkSxN5gKbqYWRFqTmc, epd:id__ExtensionGroup_hqawu5kJC8i3dxZ99zexxB .
 
-epd:id__ProcurementProjectContractAddress_CRWooKNHmeZWa48UQQFLR5 a epo:Identifier;
-  epo:hasIdentifierValue "GBR" .
-
-epd:id__ProcurementProjectContractAddress_btiykpkF9yYEWFnDmvRf6a a locn:Address;
-  epo:hasID epd:id__ProcurementProjectContractAddress_CRWooKNHmeZWa48UQQFLR5;
-  locn:addressArea "anyw-cou" .
+epd:id__ProcurementProjectContractLocation_QmFgWdHMQiunuxrdtntYZx a dct:Location;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR> .
 
 epd:id__ProcurementProjectContractTerm_QmFgWdHMQiunuxrdtntYZx a epo:ContractTerm;
-  locn:address epd:id__ProcurementProjectContractAddress_btiykpkF9yYEWFnDmvRf6a .
+  epo:definesSpecificPlaceOfPerformance epd:id__ProcurementProjectContractLocation_QmFgWdHMQiunuxrdtntYZx;
+  epo:hasBroadPlaceOfPerformance "anyw-cou" .
 
 epd:id__ProcurementProjectIdentifier_cxNzNsZ3ina7HiMkahYPvW a epo:Identifier;
   epo:hasIdentifierValue "ORG-0001" .

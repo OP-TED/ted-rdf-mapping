@@ -1,10 +1,8 @@
-#title: OPP-050-Organization content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Company-BuyerExclusive - Buyers Group Lead Indicator
-#description: “OPP-050-Organization content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Company-BuyerExclusive - Buyers Group Lead Indicator” in SF corresponds to “OPP-050 nan” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/GroupLeadIndicator. The expected ontology instances are epo: epo:LeadBuyer / xsd:boolean .
-#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/GroupLeadIndicator
+#title: BT-500-Organization-TouchPoint content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Touch-Point - Name
+#description: “BT-500-Organization-TouchPoint content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Touch-Point - Name” in SF corresponds to “BT-500 Organisation Name” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/PartyName/Name. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / rdf:langString .
+#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/PartyName/Name
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:LeadBuyer .
-		?this epo:isContractingEntity ?value }
+		?this epo:playedBy / epo:hasLegalName ?value . }

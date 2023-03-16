@@ -117,12 +117,18 @@ tedm:GR-ContractingAuthority-Buyer_ND-ServiceProvider a rr:TriplesMap ;
             rr:predicate epo:hasBuyerLegalType ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:buyerLegalType;
-                    rr:joinCondition [
-                        rr:child "../cac:ContractingPartyType/cbc:PartyTypeCode[@listName='buyer-legal-type']";
-                        rr:parent "xmlElement";
-                    ];
+                    rml:reference "../cac:ContractingPartyType/cbc:PartyTypeCode[@listName='buyer-legal-type']";
                 ] ;
+#this is how it was done in the standard forms but I think that we need to look at it in an other manner in the eForms
+#as in the eForm we have the buyer leagl type in the xml
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:buyerLegalType;
+#                    rr:joinCondition [
+#                        rr:child "../cac:ContractingPartyType/cbc:PartyTypeCode[@listName='buyer-legal-type']";
+#                        rr:parent "xmlElement";
+#                    ];
+#                ] ;
         ]  ;
     rr:predicateObjectMap
         [
@@ -130,7 +136,7 @@ tedm:GR-ContractingAuthority-Buyer_ND-ServiceProvider a rr:TriplesMap ;
             rr:predicate   epo:hasMainActivity ;
             rr:objectMap
                 [
-                    rml:reference "descendant::cbc:ActivityTypeCode[@listName='authority-activity']";
+                    rml:reference "../cac:ContractingActivity/cbc:ActivityTypeCode[@listName='authority-activity']";
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -499,6 +505,53 @@ tedm:ProcurementProjectContractTerm a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:definesSpecificPlaceOfPerformance ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ProcurementProjectContractLocation;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-727-Procedure";
+            rr:predicate epo:hasBroadPlaceOfPerformance ;
+            rr:objectMap
+                [
+                    rml:reference "cac:Address/cbc:Region";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-728-Procedure";
+            rr:predicate epo:hasPlaceOfPerformanceAdditionalInformation ;
+            rr:objectMap
+                [
+                    rml:reference "cac:Address/cbc:Description";
+                    rr:datatype xsd:string;
+                ] ;
+        ] .
+
+
+tedm:ProcurementProjectContractLocation a rr:TriplesMap ;
+    rdfs:comment "The location of a procurement project";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProject/cac:RealizedLocation";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ProcurementProjectContractLocation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class dct:Location
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate locn:address ;
             rr:objectMap
                 [
@@ -508,6 +561,29 @@ tedm:ProcurementProjectContractTerm a rr:TriplesMap ;
                         rr:parent "path(../.)";
                     ];
                 ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5071-Lot";
+            rr:predicate epo:hasNutsCode  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:nuts;
+                    rr:joinCondition [
+                        rr:child "descendant::cbc:CountrySubentityCode";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5141-Procedure";
+            rr:predicate epo:hasCountryCode  ;
+            rr:objectMap
+                [
+                    rml:reference "'http://publications.europa.eu/resource/authority/country/' || descendant::cbc:IdentificationCode";
+                    rr:termType rr:IRI;
+                ] ;
         ] .
 
 tedm:ProcurementProjectContractAddress a rr:TriplesMap ;
@@ -520,7 +596,8 @@ tedm:ProcurementProjectContractAddress a rr:TriplesMap ;
         ];
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ProcurementProjectContractAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if (exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line) or exists(cbc:CityName) or exists(cbc:PostalZone)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ProcurementProjectContractAddress_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+#            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ProcurementProjectContractAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class locn:Address
         ] ;
     rr:predicateObjectMap
@@ -572,76 +649,8 @@ tedm:ProcurementProjectContractAddress a rr:TriplesMap ;
                     rml:reference "cbc:PostalZone";
                     rr:datatype xsd:string;
                 ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-5071-Lot";
-            rr:predicate epo:hasNutsCode  ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:nuts;
-                    rr:joinCondition [
-                        rr:child "cbc:CountrySubentityCode";
-                        rr:parent "code.value";
-                    ];
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-727-Procedure";
-            rr:predicate locn:addressArea ;
-            rr:objectMap
-                [
-                    rml:reference "cbc:Region";
-                    rr:datatype xsd:string;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-728-Procedure";
-            rr:predicate locn:geographicName ;
-            rr:objectMap
-                [
-                    rml:reference "cbc:Description";
-                    rr:datatype xsd:string;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:comment "The identifier of a procurement object contract address identifier";
-            rr:predicate epo:hasID;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ProcurementProjectContractAddressIdentifier;
-                    rr:joinCondition [
-                        rr:child "path(..)";
-                        rr:parent "path(../..)";
-                    ];
-                ]
         ] .
 
-tedm:ProcurementProjectContractAddressIdentifier a rr:TriplesMap ;
-    rdfs:comment "The identifier of a procurement object contract address identifier";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProject/cac:RealizedLocation/cac:Address/cac:Country";
-            rml:referenceFormulation ql:XPath
-        ];
-    rr:subjectMap
-        [
-            rml:reference "if (exists(cbc:IdentificationCode)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ProcurementProjectContractAddress_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
-            rr:class epo:Identifier
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-5141-Lot";
-            rr:predicate epo:hasIdentifierValue ;
-            rr:objectMap
-                [
-                    rml:reference "cbc:IdentificationCode";
-                ] ;
-        ] .
 
 #GR-Procedure with ND-ProcedureTerms
 tedm:GR-Procedure_ND-ProcedureTerms a rr:TriplesMap ;
@@ -871,6 +880,7 @@ tedm:OrganisationChannel a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "cbc:EndpointID";
+                    rr:datatype xsd:anyURI;
                 ]
         ] ;
     rr:predicateObjectMap
@@ -880,6 +890,7 @@ tedm:OrganisationChannel a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "cbc:WebsiteURI";
+                    rr:datatype xsd:anyURI;
                 ] ;
         ].
 
@@ -1161,6 +1172,7 @@ tedm:OrganisationTouchPointChannel a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "cbc:EndpointID";
+                    rr:datatype xsd:anyURI;
                 ]
         ] ;
     rr:predicateObjectMap
@@ -1170,6 +1182,7 @@ tedm:OrganisationTouchPointChannel a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "cbc:WebsiteURI";
+                    rr:datatype xsd:anyURI;
                 ] ;
         ].
 
@@ -1528,7 +1541,7 @@ tedm:ElementChange  a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "efac:Change/efbc:ProcurementDocumentsChangeIndicator";
-                    rr:datatype xsd:string;
+                    rr:datatype xsd:boolean;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -1921,7 +1934,7 @@ tedm:AccessTerm a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "cbc:DocumentType";
-
+                    rr:datatype xsd:boolean
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -3382,12 +3395,13 @@ tedm:ContractTerm a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "cac:ContractExecutionRequirement/cbc:ExecutionRequirementCode[@listName='einvoicing']";
+                    rr:datatype xsd:string;
                 ] ;
         ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-70-Lot";
-            rr:predicate epo:hasEInvoicing  ;
+            rr:predicate epo:hasPerformanceConditions  ;
             rr:objectMap
                 [
                     rml:reference "cac:ContractExecutionRequirement[cbc:ExecutionRequirementCode/@listName='conditions']/cbc:Description";
@@ -3627,7 +3641,7 @@ tedm:ContractPeriod a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "cbc:StartDate";
-                    rr:datatype xsd:date;
+                    rr:datatype xsd:dateTime;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -3637,7 +3651,7 @@ tedm:ContractPeriod a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "cbc:EndDate";
-                    rr:datatype xsd:date;
+                    rr:datatype xsd:dateTime;
                 ] ;
         ] ;
     rr:predicateObjectMap
