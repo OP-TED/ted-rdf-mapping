@@ -34,9 +34,6 @@ tedm:technical_mapping_f03
   rdfs:label "TED-SWS mapping of eForm subtype 16"@en ;
   dct:date "2023-02-15"^^xsd:date .
 
-#create a previous notice that will have the ids from the notice
-#/*/cbc:ID[@schemeName='notice-id'] -> . for the previous notice
-#Notice for GR-ContractingAuthority-Buyer
 tedm:Notice-Buyer_ND-ServiceProvider a rr:TriplesMap ;
     rdfs:label "Notice for GR-ContractingAuthority-Buyer";
     rdfs:comment "This is the subset group GR-ContractingAuthority-Buyer containing ND-ServiceProvider fields, and represents the Motice.";
@@ -65,10 +62,10 @@ tedm:Notice-Buyer_ND-ServiceProvider a rr:TriplesMap ;
         [
             rdfs:label "OPP-090-Procedure";
             rdfs:comment "The identifier of a notice";
-            rr:predicate epo:hasID ;
+            rr:predicate epo:refersToPrevious ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:NoticeIdentifier;
+                    rr:parentTriplesMap tedm:PreviousNotice-Buyer_ND-ServiceProvider;
                     rr:joinCondition [
                         rr:child "path(.)";
                         rr:parent "path(../.)";
@@ -76,8 +73,36 @@ tedm:Notice-Buyer_ND-ServiceProvider a rr:TriplesMap ;
                 ]
         ] .
 
+tedm:PreviousNotice-Buyer_ND-ServiceProvider a rr:TriplesMap ;
+    rdfs:label "Previous Notice for GR-ContractingAuthority-Buyer";
+    rdfs:comment "This triples map refers to the previous notice that a notice mught be associated to.";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:TenderingProcess/cac:NoticeDocumentReference";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(., ' ', '-' ), '/' , '-')}_PreviousNotice" ;
+            rr:class epo:Notice
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPP-090-Procedure";
+            rdfs:comment "The identifier of a notice";
+            rr:predicate epo:hasID ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:PreviousNoticeIdentifier;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ]
+        ] .
 
-tedm:NoticeIdentifier a rr:TriplesMap ;
+tedm:PreviousNoticeIdentifier a rr:TriplesMap ;
     rdfs:label "OPP-090-Procedure";
     rdfs:comment "The identifier of a notice";
     rml:logicalSource
@@ -1500,7 +1525,7 @@ tedm:AwardCriterionThreholdConstraint  a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_AwardCriterionThreholdConstraint_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if (exists(efbc:ParameterCode[@listName='number-threshold'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_AwardCriterionThreholdConstraint_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class cccev:Constraint
         ] ;
     rr:predicateObjectMap
@@ -1508,7 +1533,7 @@ tedm:AwardCriterionThreholdConstraint  a rr:TriplesMap ;
             rr:predicate epo:hasThresholdValue ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(efbc:ParameterCode[@listName='number-threshold'])) then efbc:ParameterCode[@listName='number-threshold'] else null";
+                    rml:reference "efbc:ParameterCode[@listName='number-threshold']";
                 ] ;
         ] .
 
@@ -2600,7 +2625,6 @@ tedm:QuantityPurpose a rr:TriplesMap ;
     rr:subjectMap
         [
             rml:reference "if (exists(cbc:EstimatedOverallContractQuantity/@unitCode) or exists(cbc:EstimatedOverallContractQuantity)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_QuantityPurpose_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
-#           rr:reference "if(exists(cbc:EstimatedOverallContractQuantity/@unitCode) or exists(cbc:EstimatedOverallContractQuantity)) then http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_QuantityPurpose_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')} else null" ;
             rr:class  epo:Quantity;
         ] ;
     rr:predicateObjectMap
@@ -2654,7 +2678,7 @@ tedm:GreenProcurement a rr:TriplesMap ;
         ];
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_GreenProcurement_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if (exists(cbc:ProcurementTypeCode[@listName='environmental-impact'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_GreenProcurement_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class  epo:GreenProcurement;
         ] ;
     rr:predicateObjectMap
@@ -2677,7 +2701,7 @@ tedm:SocialProcurement a rr:TriplesMap ;
         ];
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SocialProcurement_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if (exists(cbc:ProcurementTypeCode[@listName='social-objective'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_SocialProcurement_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class  epo:SocialProcurement;
         ] ;
     rr:predicateObjectMap
@@ -2700,7 +2724,7 @@ tedm:InnovativeProcurement a rr:TriplesMap ;
         ];
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_InnovativeProcurement_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if (exists(cbc:ProcurementTypeCode[@listName='innovative-acquisition'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_InnovativeProcurement_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class  epo:InnovativeProcurement;
         ] ;
     rr:predicateObjectMap
@@ -2724,7 +2748,7 @@ tedm:StrategicProcurement a rr:TriplesMap ;
         ];
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_StrategicProcurement_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if (exists(descendant::cbc:ProcurementTypeCode[@listName='accessibility']) or exists(cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='accessibility']/cbc:ProcurementType) or exists(cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='strategic-procurement']/cbc:ProcurementType) or exists(cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='strategic-procurement']/cbc:ProcurementTypeCode[@listName='strategic-procurement'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_StrategicProcurement_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class  epo:StrategicProcurement;
         ] ;
     rr:predicateObjectMap
@@ -2776,7 +2800,7 @@ tedm:ContractExtension a rr:TriplesMap ;
         ];
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractExtension_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if (exists(descendant::cbc:OptionsDescription) or exists(descendant::cbc:MaximumNumberNumeric)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ContractExtension_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class  epo:ContractTerm;
         ] ;
     rr:predicateObjectMap
@@ -3093,7 +3117,7 @@ tedm:MultipleStageProcedureTerm a rr:TriplesMap ;
         ];
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_MultipleStageProcedureTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if (exists(cbc:CandidateReductionConstraintIndicator) or exists(descendant::cbc:LimitationDescription) or exists(descendant::cbc:MaximumQuantity) or exists(descendant::cbc:MinimumQuantity)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MultipleStageProcedureTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:MultipleStageProcedureTerm
         ] ;
     rr:predicateObjectMap
@@ -3265,7 +3289,7 @@ tedm:AwardingTermConstrain a rr:TriplesMap ;
         ];
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_AwardingTermsConstrain_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if (exists(efbc:ParameterCode[@listName='number-threshold'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_AwardingTermsConstrain_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class cccev:Constraint
         ] ;
     rr:predicateObjectMap
@@ -3325,7 +3349,7 @@ tedm:SecurityTerm a rr:TriplesMap ;
         ];
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SecurityTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if (exists(cbc:RequiredCurriculaCode) or exists(cbc:LatestSecurityClearanceDate) or exists(cac:SecurityClearanceTerm/cbc:Code) or exists(cac:SecurityClearanceTerm/cbc:Description)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_SecurityTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:SecurityClearanceTerm
         ] ;
     rr:predicateObjectMap
@@ -3996,8 +4020,8 @@ tedm:LotChannel a rr:TriplesMap ;
         ];
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotChannel_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class  cv:Channel
+           rml:reference "if (exists(cbc:AccessToolsURI) or exists(descendant::efbc:AccessToolName)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_LotChannel_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+           rr:class  cv:Channel
         ] ;
     rr:predicateObjectMap
         [
