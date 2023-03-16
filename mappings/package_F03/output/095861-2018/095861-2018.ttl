@@ -1,0 +1,241 @@
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epd:id_2018-S-044-095861_AwardCriterionPrice_DGubhTSDxCCPkKuRQcaACD a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/price> .
+
+epd:id_2018-S-044-095861_Buyer_2DfWDD3NHHwpMGiWwzLc5d a epo:Buyer;
+  epo:hasContactPointInRole epd:id_2018-S-044-095861_ContactPoint_UU5jeWb9wCr2uQLNME2nwM;
+  epo:playedBy epd:id_2018-S-044-095861_Organisation_UU5jeWb9wCr2uQLNME2nwM .
+
+epd:id_2018-S-044-095861_ContactPoint_UU5jeWb9wCr2uQLNME2nwM a cccev:ContactPoint;
+  epo:hasContactName "Andrzej Rechowicz"@pl;
+  epo:hasFax "+48 323581432";
+  epo:hasInternetAddress "www.uck.katowice.pl"^^xsd:anyURI;
+  cccev:email "zp@uck.katowice.pl";
+  cccev:telephone "+48 323581332" .
+
+epd:id_2018-S-044-095861_ContractIdentifier_b5oSxm7rDM9Z34S6VaWeyJ a epo:Identifier;
+  epo:hasIdentifierValue "DZP/381/123A/2017" .
+
+epd:id_2018-S-044-095861_ContractTermLotLocationAddress_DgNm7RuiSQ47VBTvdrHsRv a locn:Address;
+  locn:fullAddress """
+                  Katowice ul. Medyków 15.
+               """@pl .
+
+epd:id_2018-S-044-095861_ContractTermLotLocation_DgNm7RuiSQ47VBTvdrHsRv a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/PL22A>;
+  locn:address epd:id_2018-S-044-095861_ContractTermLotLocationAddress_DgNm7RuiSQ47VBTvdrHsRv .
+
+epd:id_2018-S-044-095861_ContractTermLot_DgNm7RuiSQ47VBTvdrHsRv a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2018-S-044-095861_ContractTermLotLocation_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasOptions false .
+
+epd:id_2018-S-044-095861_Contract_KaeDJ6cSC7UaS6sXtDUnvf a epo:Contract;
+  epo:hasContractConclusionDate "2017-11-24"^^xsd:date;
+  epo:hasID epd:id_2018-S-044-095861_ContractIdentifier_b5oSxm7rDM9Z34S6VaWeyJ;
+  epo:hasTitle """
+               Dostawa aparatu RTG kostno-płucnego z fluoroskopią wraz z wyposażeniem pracowni rentgenowskiej.
+            """@pl;
+  epo:includesLot epd:id_2018-S-044-095861_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:resultsFromLotAwardOutcome epd:id_2018-S-044-095861_LotAwardOutcome_KaeDJ6cSC7UaS6sXtDUnvf .
+
+epd:id_2018-S-044-095861_ContractorOrganisationAddress_jWk7Q5mQHDzJUFWcUXvZRM a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/PL22A>;
+  locn:postCode "40-760";
+  locn:postName "Katowice";
+  locn:thoroughfare "ul. Panewnicka 65" .
+
+epd:id_2018-S-044-095861_ContractorOrganisationIdentifier_jWk7Q5mQHDzJUFWcUXvZRM a
+    epo:Identifier;
+  epo:hasIdentifierValue "276200044" .
+
+epd:id_2018-S-044-095861_ContractorOrganisation_jWk7Q5mQHDzJUFWcUXvZRM a epo:Business,
+    org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasID epd:id_2018-S-044-095861_ContractorOrganisationIdentifier_jWk7Q5mQHDzJUFWcUXvZRM;
+  epo:hasLegalName "Helimed Diagnostic Imaging Sp. z o.o Sp. Komandytowa"@pl;
+  cccev:registeredAddress epd:id_2018-S-044-095861_ContractorOrganisationAddress_jWk7Q5mQHDzJUFWcUXvZRM .
+
+epd:id_2018-S-044-095861_DirectAwardTerm_C5nS5y4XErvUqzRNMARW8r a epo:DirectAwardTerm;
+  epo:hasDirectAwardJustification <http://publications.europa.eu/resource/authority/direct-award-justification/closure>;
+  epo:hasJustification """
+                  Zgodnie z art. 67 ust. 1 pkt. 8 ustawy Prawo zamówień publicznych – Zamawiający może udzielić zamówienia z wolnej ręki jeśli możliwe jest udzielenie zamówienia na dostawy na szczególnie korzystnych warunkach w związku z likwidacją działalności innego podmiotu. W przedmiotowym postępowaniu Wykonawca – Firma Helimed, w związku z planowaną likwidacją pracowni rentgenowskiej złożyła Szpitalowi ofertę (pismo DT/95/W/2017 z dnia 26.10.2017) sprzedaży posiadanego aparatu GE Connexity za kwotę 1 161 000,00 PLN brutto. Oferta obejmuje też wyposażenie dodatkowe pracowni (za kwotę 39 000,00 zł). Zamawiający, celem weryfikacji przedstawionych w ofercie cen, zlecił wycenę aparatu i wyposażenia firmie Bussines Management Consulting. Otrzymano raport z przeprowadzonej wyceny, zgodnie z którym aparat RTG Connexity został wyceniony na 1 182 000,00 PLN, a wyposażenie pracowni na kwotę: 11 120,00 PLN. Po przeprowadzeniu wnikliwej analizy rynku aparatury rentgenowskiej oraz uwzględniając szacunkowe koszty, jakie wiązałyby się z zakupem aparatu RTG.
+                  I kosztami adaptacji pomieszczeń, a także mając na uwadze czas konieczny na przeprowadzenie przetargu i adaptacji pomieszczeń oraz konieczność zlecania badań podmiotom zewnętrznym w czasie prowadzenia prac adaptacyjnych, uznano ofertę firmy Helimed za szczególnie korzystną. Dokonanie zakupu od firmy Helimed pozwala Zamawiającemu zaoszczędzić kwotę kilkuset tysięcy złotych.
+               """@pl .
+
+epd:id_2018-S-044-095861_LotAwardOutcomeAwardedMonetaryValue_KaeDJ6cSC7UaS6sXtDUnvf
+  a epo:MonetaryValue;
+  epo:hasAmountValue 1172120.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/PLN> .
+
+epd:id_2018-S-044-095861_LotAwardOutcome_KaeDJ6cSC7UaS6sXtDUnvf a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2018-S-044-095861_TenderAwardOutcome_SM6UbUtHRXNqgrskZtVN8v;
+  epo:describesLot epd:id_2018-S-044-095861_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue epd:id_2018-S-044-095861_LotAwardOutcomeAwardedMonetaryValue_KaeDJ6cSC7UaS6sXtDUnvf .
+
+epd:id_2018-S-044-095861_Lot_DgNm7RuiSQ47VBTvdrHsRv a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2018-S-044-095861_ContractTermLot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasDescription """
+                  Przedmiotem zamówienia jest dostawa aparatu RTG kostno-płucnego z fluoroskopią wraz z wyposażeniem pracowni rentgenowskiej.
+               """@pl;
+  epo:hasRestatedEstimatedValue epd:id_2018-S-044-095861_MonetaryValueLot_SM6UbUtHRXNqgrskZtVN8v;
+  epo:isUsingEUFunds false;
+  epo:specifiesAwardCriterion epd:id_2018-S-044-095861_AwardCriterionPrice_DGubhTSDxCCPkKuRQcaACD .
+
+epd:id_2018-S-044-095861_MediatorOrganisationAddress_M6TkjMS23JqaPx58tAwhvD a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
+  locn:postCode "02-676";
+  locn:postName "Krajowa Izba Odwoławcza";
+  locn:thoroughfare "ul. Postępu 17A" .
+
+epd:id_2018-S-044-095861_MediatorOrganisation_M6TkjMS23JqaPx58tAwhvD a org:Organization;
+  epo:hasLegalName "Krajowa Izba Odwoławcza"@pl;
+  cccev:registeredAddress epd:id_2018-S-044-095861_MediatorOrganisationAddress_M6TkjMS23JqaPx58tAwhvD .
+
+epd:id_2018-S-044-095861_Mediator_M6TkjMS23JqaPx58tAwhvD a epo:Mediator;
+  epo:playedBy epd:id_2018-S-044-095861_MediatorOrganisation_M6TkjMS23JqaPx58tAwhvD .
+
+epd:id_2018-S-044-095861_MonetaryValueLot_SM6UbUtHRXNqgrskZtVN8v a epo:MonetaryValue;
+  epo:hasAmountValue 1103485.09;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/PLN> .
+
+epd:id_2018-S-044-095861_Notice a epo:Notice, epo:ResultNotice;
+  epo:announcesContract epd:id_2018-S-044-095861_Contract_KaeDJ6cSC7UaS6sXtDUnvf;
+  epo:announcesNoticeAwardInformation epd:id_2018-S-044-095861_NoticeAwardInformation_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:announcesRole epd:id_2018-S-044-095861_Buyer_2DfWDD3NHHwpMGiWwzLc5d, epd:id_2018-S-044-095861_Mediator_M6TkjMS23JqaPx58tAwhvD,
+    epd:id_2018-S-044-095861_ReviewProcedureInformationProvider_eP5uWDhd4iYABCZbaj8dzQ,
+    epd:id_2018-S-044-095861_Reviewer_bdZjimbzCaRXbeYeBmF94j, epd:id_2018-S-044-095861_Winner_jWk7Q5mQHDzJUFWcUXvZRM;
+  epo:announcesTender epd:id_2018-S-044-095861_Tender_SM6UbUtHRXNqgrskZtVN8v;
+  epo:hasDispatchDate "2018-03-01"^^xsd:date;
+  epo:hasID epd:id_2018-S-044-095861_NoticeIdentifier_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:hasPublicationDate "20180303";
+  epo:refersToLot epd:id_2018-S-044-095861_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:refersToProcedure epd:id_2018-S-044-095861_Procedure_faF7Q5dyoGpXu3Ru4RGg73 .
+
+epd:id_2018-S-044-095861_NoticeAwardInformation_faF7Q5dyoGpXu3Ru4RGg73 a epo:NoticeAwardInformation;
+  epo:hasTotalAwardedValue epd:id_2018-S-044-095861_ProcurementMonetaryValue_faF7Q5dyoGpXu3Ru4RGg73 .
+
+epd:id_2018-S-044-095861_NoticeIdentifier_faF7Q5dyoGpXu3Ru4RGg73 a epo:Identifier;
+  epo:hasIdentifierValue "2018/S 044-095861" .
+
+epd:id_2018-S-044-095861_OrganisationAddress_UU5jeWb9wCr2uQLNME2nwM a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/PL22A>;
+  locn:postCode "40-514";
+  locn:postName "Katowice";
+  locn:thoroughfare "ul. Ceglana 35" .
+
+epd:id_2018-S-044-095861_OrganisationIdentifier_UU5jeWb9wCr2uQLNME2nwM a epo:Identifier;
+  epo:hasIdentifierValue "001325767" .
+
+epd:id_2018-S-044-095861_Organisation_UU5jeWb9wCr2uQLNME2nwM a org:Organization;
+  epo:hasBuyerLegalTypeDescription "Samodzielny Publiczny Zakład Opieki Zdrowotnej";
+  epo:hasID epd:id_2018-S-044-095861_OrganisationIdentifier_UU5jeWb9wCr2uQLNME2nwM;
+  epo:hasLegalName "Uniwersyteckie Centrum Kliniczne im. prof. K. Gibińskiego Śląskiego Uniwersytetu Medycznego w Katowicach"@pl;
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/health>;
+  cccev:registeredAddress epd:id_2018-S-044-095861_OrganisationAddress_UU5jeWb9wCr2uQLNME2nwM .
+
+epd:id_2018-S-044-095861_ProcedureIdentifier_faF7Q5dyoGpXu3Ru4RGg73 a epo:Identifier;
+  epo:hasIdentifierValue "DZP/381/123A/2017" .
+
+epd:id_2018-S-044-095861_ProcedurePurpose_faF7Q5dyoGpXu3Ru4RGg73 a epo:Purpose;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/33111000> .
+
+epd:id_2018-S-044-095861_Procedure_faF7Q5dyoGpXu3Ru4RGg73 a epo:Procedure;
+  epo:hasDescription """
+               Przedmiotem zamówienia jest dostawa aparatu RTG kostno-płucnego z fluoroskopią wraz z wyposażeniem pracowni rentgenowskiej.
+            """@pl;
+  epo:hasID epd:id_2018-S-044-095861_ProcedureIdentifier_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
+  epo:hasProcurementScopeDividedIntoLot epd:id_2018-S-044-095861_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasPurpose epd:id_2018-S-044-095861_ProcedurePurpose_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:hasTitle """
+               Dostawa aparatu RTG kostno-płucnego z fluoroskopią wraz z wyposażeniem pracowni rentgenowskiej.
+            """@pl;
+  epo:isCoveredByGPA false;
+  epo:isSubjectToProcedureSpecificTerm epd:id_2018-S-044-095861_DirectAwardTerm_C5nS5y4XErvUqzRNMARW8r .
+
+epd:id_2018-S-044-095861_ProcurementMonetaryValue_faF7Q5dyoGpXu3Ru4RGg73 a epo:MonetaryValue;
+  epo:hasAmountValue 1103485.09;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/PLN> .
+
+epd:id_2018-S-044-095861_ReviewProcedureInformationProviderAddress_eP5uWDhd4iYABCZbaj8dzQ
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
+  locn:postCode "02-676";
+  locn:postName "Warszawa";
+  locn:thoroughfare "ul. Postępu 17A" .
+
+epd:id_2018-S-044-095861_ReviewProcedureInformationProviderContactPoint_eP5uWDhd4iYABCZbaj8dzQ
+  a cccev:ContactPoint;
+  epo:hasFax "+48 224587800";
+  epo:hasInternetAddress "www.uzp.gov.pl"^^xsd:anyURI;
+  cccev:email "odwolania@uzp.gov.pl";
+  cccev:telephone "+48 224587801" .
+
+epd:id_2018-S-044-095861_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ
+  a org:Organization;
+  epo:hasLegalName "Krajowa Izba Odwoławcza"@pl;
+  epo:hasPrimaryContactPoint epd:id_2018-S-044-095861_ReviewProcedureInformationProviderContactPoint_eP5uWDhd4iYABCZbaj8dzQ;
+  cccev:registeredAddress epd:id_2018-S-044-095861_ReviewProcedureInformationProviderAddress_eP5uWDhd4iYABCZbaj8dzQ .
+
+epd:id_2018-S-044-095861_ReviewProcedureInformationProvider_eP5uWDhd4iYABCZbaj8dzQ
+  a epo:ReviewProcedureInformationProvider;
+  epo:playedBy epd:id_2018-S-044-095861_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ .
+
+epd:id_2018-S-044-095861_ReviewerContactPoint_bdZjimbzCaRXbeYeBmF94j a cccev:ContactPoint;
+  epo:hasFax "+48 224587800";
+  epo:hasInternetAddress "www.uzp.gov.pl"^^xsd:anyURI;
+  cccev:email "odwolania@uzp.gov.pl";
+  cccev:telephone "+48 224587801" .
+
+epd:id_2018-S-044-095861_ReviewerOrganisationAddress_bdZjimbzCaRXbeYeBmF94j a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
+  locn:postCode "02-676";
+  locn:postName "Krajowa Izba Odwoławcza";
+  locn:thoroughfare "ul. Postępu 17A" .
+
+epd:id_2018-S-044-095861_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j a org:Organization;
+  epo:hasLegalName "Krajowa Izba Odwoławcza"@pl;
+  epo:hasPrimaryContactPoint epd:id_2018-S-044-095861_ReviewerContactPoint_bdZjimbzCaRXbeYeBmF94j;
+  cccev:registeredAddress epd:id_2018-S-044-095861_ReviewerOrganisationAddress_bdZjimbzCaRXbeYeBmF94j .
+
+epd:id_2018-S-044-095861_Reviewer_bdZjimbzCaRXbeYeBmF94j a epo:Reviewer;
+  epo:playedBy epd:id_2018-S-044-095861_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j .
+
+epd:id_2018-S-044-095861_SubmissionStatisticalInformation_SM6UbUtHRXNqgrskZtVN8v a
+    epo:SubmissionStatisticalInformation;
+  epo:hasEUReceivedTenders 0;
+  epo:hasElectronicTenders 0;
+  epo:hasReceivedNonEUTenders 0;
+  epo:hasReceivedSMETenders 1;
+  epo:hasReceivedTenders 1;
+  epo:summarisesInformationForLotAwardOutcome epd:id_2018-S-044-095861_LotAwardOutcome_KaeDJ6cSC7UaS6sXtDUnvf .
+
+epd:id_2018-S-044-095861_TenderAwardOutcome_SM6UbUtHRXNqgrskZtVN8v a epo:TenderAwardOutcome;
+  epo:describesTender epd:id_2018-S-044-095861_Tender_SM6UbUtHRXNqgrskZtVN8v;
+  epo:indicatesAwardOfLotToWinner epd:id_2018-S-044-095861_Winner_jWk7Q5mQHDzJUFWcUXvZRM .
+
+epd:id_2018-S-044-095861_Tender_SM6UbUtHRXNqgrskZtVN8v a epo:Tender;
+  epo:isSubmittedForLot epd:id_2018-S-044-095861_Lot_DgNm7RuiSQ47VBTvdrHsRv .
+
+epd:id_2018-S-044-095861_Winner_jWk7Q5mQHDzJUFWcUXvZRM a epo:Winner;
+  epo:playedBy epd:id_2018-S-044-095861_ContractorOrganisation_jWk7Q5mQHDzJUFWcUXvZRM .

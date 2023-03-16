@@ -1,5 +1,6 @@
 #--- s7_modifications_to_contract.rml.ttl ---
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
@@ -11,8 +12,7 @@
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix cpov: <http://data.europa.eu/m8g/> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
+@prefix cv: <http://data.europa.eu/m8g/> .
 
 tedm:modifications_to_contract
   a owl:Ontology ;
@@ -37,7 +37,7 @@ tedm:ProcedureModification a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasOverallPurpose ;
+            rr:predicate epo:hasPurpose ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ProcedurePurposeModification
@@ -45,19 +45,19 @@ tedm:ProcedureModification a rr:TriplesMap ;
         ] .
 
 tedm:ProcedurePurposeModification a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasMainClassification ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:cpvsuppl;
-                    rr:joinCondition [
-                        rr:child "CPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE";
-                        rr:parent "code.value";
-                    ];
-                ] ;
-
-        ] ;
+# Not mapping supplementary CPV codes, as EPO does not provide a way to group them with "regular" CPV codes. See issues #119 and #205.
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasMainClassification ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:cpvsuppl;
+#                    rr:joinCondition [
+#                        rr:child "CPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE";
+#                        rr:parent "code.value";
+#                    ];
+#                ] ;
+#        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasMainClassification ;
@@ -78,14 +78,14 @@ tedm:LotAwardOutcomeModification a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:LotModification;
 #                    rr:joinCondition [
-##                        rr:parent "if (count(../OBJECT_DESCR)=1) then ./@ITEM else ./LOT_NO";
 ##                        rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ./LOT_NO";
-##                        rr:parent "if (count(../OBJECT_DESCR)=1) then ../OBJECT_DESCR else ./LOT_NO";
+##                        rr:parent "if (count(../OBJECT_DESCR)=1) then ./@ITEM else ./LOT_NO";
 ##                        rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)=1) then ../OBJECT_CONTRACT/OBJECT_DESCR else ./LOT_NO";
-#                        rr:parent "if (count(../OBJECT_DESCR)=1) then (if(exists(./@ITEM)) then ./@ITEM else 1) else ./LOT_NO";
+##                        rr:parent "if (count(../OBJECT_DESCR)=1) then ../OBJECT_DESCR else ./LOT_NO";
 #                        rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ./LOT_NO";
-##                        rr:parent "if (count(../OBJECT_DESCR)>1) then ./LOT_NO else if(exists(./@ITEM)) then ./@ITEM else 1";
+#                        rr:parent "if (count(../OBJECT_DESCR)=1) then (if(exists(./@ITEM)) then ./@ITEM else 1) else ./LOT_NO";
 ##                        rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)>1) then ./LOT_NO else 1";
+##                        rr:parent "if (count(../OBJECT_DESCR)>1) then ./LOT_NO else if(exists(./@ITEM)) then ./@ITEM else 1";
 #                    ];
                 ] ;
         ] ;
@@ -117,7 +117,7 @@ tedm:LotAwardOutcomeModification a rr:TriplesMap ;
                     ];
                 ] ;
         ] .
-tedm:TenderAwardOutcomeModification a rr:TripleMap ;
+tedm:TenderAwardOutcomeModification a rr:TriplesMap ;
         rr:predicateObjectMap
         [
             rr:predicate epo:indicatesAwardOfLotToWinner  ;
@@ -160,9 +160,20 @@ tedm:LotModification a rr:TriplesMap ;
                     ];
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasDescription ;
+            rr:objectMap
+                [
+                    rml:reference "SHORT_DESCR";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ] ;
+        ] ;
    rr:predicateObjectMap
         [
-            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
+            rr:predicate epo:isSubjectToLotSpecificTerm ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:FrameworkAgreementTermLot
@@ -232,7 +243,7 @@ tedm:LotModification a rr:TriplesMap ;
             rr:predicate epo:foreseesContractSpecificTerm;
             rr:objectMap
             [
-                rr:parentTriplesMap tedm:ContractTermModification;
+                rr:parentTriplesMap tedm:ContractTermLotModification;
                 rr:joinCondition [
                     rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                     rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
@@ -253,28 +264,18 @@ tedm:LotModification a rr:TriplesMap ;
                 ] ;
         ] .
 tedm:LotPurposeModification a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasAdditionalClassification ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:cpvsuppl;
-                    rr:joinCondition [
-                        rr:child "CPV_SUPPLEMENTARY_CODE/@CODE";
-                        rr:parent "code.value";
-                    ];
-                ] ;
-
-        ] ;
-#        rr:predicateObjectMap
+# Not mapping supplementary CPV codes, as EPO does not provide a way to group them with "regular" CPV codes. See issues #119 and #205.
+#    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasAdditionalClassification ;
 #            rr:objectMap
 #                [
-#                    rml:reference "if (not(exists(CPV_ADDITIONAL/CPV_SUPPLEMENTARY_CODE/@CODE))) then 'http://data.europa.eu/cpv/cpv/OP_DATPRO' else null";
-#                    rr:termType rr:IRI;
-#                ]
-#
+#                    rr:parentTriplesMap tedm:cpvsuppl;
+#                    rr:joinCondition [
+#                        rr:child "CPV_SUPPLEMENTARY_CODE/@CODE";
+#                        rr:parent "code.value";
+#                    ];
+#                ] ;
 #        ] ;
     rr:predicateObjectMap
         [
@@ -288,23 +289,13 @@ tedm:LotPurposeModification a rr:TriplesMap ;
                     ];
                 ] ;
         ] .
-#    rr:predicateObjectMap
-#        [
-#            rr:predicate epo:hasAdditionalClassification ;
-#            rr:objectMap
-#                [
-#                    rml:reference "if (not(exists(CPV_ADDITIONAL/CPV_CODE/@CODE))) then 'http://data.europa.eu/cpv/cpv/OP_DATPRO' else null";
-#                    rr:termType rr:IRI;
-#                ]
-#
-#        ] ;
 tedm:LotAwardOutcomeAwardedMonetaryValueModification a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasAmountValue ;
             rr:objectMap
                 [
-                    rml:reference "DESCRIPTION_PROCUREMENT/VALUES/VAL_TOTAL";
+                    rml:reference "DESCRIPTION_PROCUREMENT/VALUES/VAL_TOTAL | DESCRIPTION_PROCUREMENT/VAL_TOTAL";
                     rr:datatype xsd:decimal
                 ] ;
         ] ;
@@ -315,18 +306,18 @@ tedm:LotAwardOutcomeAwardedMonetaryValueModification a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:currency;
                     rr:joinCondition [
-                        rr:child "DESCRIPTION_PROCUREMENT/VALUES/VAL_TOTAL/@CURRENCY";
+                        rr:child "DESCRIPTION_PROCUREMENT/VALUES/VAL_TOTAL/@CURRENCY | DESCRIPTION_PROCUREMENT/VAL_TOTAL/@CURRENCY";
                         rr:parent "code.value";
                     ];
                 ] ;
         ] .
-tedm:ContractTermModification a rr:TriplesMap ;
+tedm:ContractTermLotModification a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:definesSpecificPlaceOfPerformance ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ContractTermLocationModification;
+                    rr:parentTriplesMap tedm:ContractTermLotLocationModification;
 #                    rr:joinCondition [
 #                        rr:child "./@ITEM";
 #                        rr:parent "./@ITEM";
@@ -350,7 +341,7 @@ tedm:ContractTermModification a rr:TriplesMap ;
             ]
         ] .
 
-tedm:ContractTermLocationModification a rr:TriplesMap ;
+tedm:ContractTermLotLocationModification a rr:TriplesMap ;
 #    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasNutsCode ;
@@ -378,14 +369,26 @@ tedm:ContractTermLocationModification a rr:TriplesMap ;
             rr:predicate locn:address ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ContractTermLocationAddressModification;
+                    rr:parentTriplesMap tedm:ContractTermLotLocationAddressModification;
 #                    rr:joinCondition [
 #                        rr:child "./@ITEM";
 #                        rr:parent "./@ITEM";
 #                    ];
                 ] ;
         ] .
-tedm:DurationModification a rr:TripleMap ;
+tedm:ContractTermLotLocationAddressModification a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate locn:fullAddress ;
+            rr:objectMap
+                 [
+                    rml:reference "MAIN_SITE";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ] ;
+        ] .
+tedm:DurationModification a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate time:numericDuration ;
@@ -401,17 +404,17 @@ tedm:DurationModification a rr:TripleMap ;
             rr:objectMap
                 [
                     rml:reference "if(./@TYPE='MONTH') then 'http://www.w3.org/2006/time#unitMonth' else if (./@TYPE='DAY') then 'http://www.w3.org/2006/time#unitDay' else null ";
-                    rr:termType rr:IRI;
+                     rr:termType rr:IRI;
                 ] ;
         ] .
-tedm:PeriodModification a rr:TripleMap ;
+tedm:PeriodModification a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasBeginning ;
             rr:objectMap
                 [
-                    rml:reference "DATE_START";
-                    rr:datatype xsd:datetime
+                    rml:reference "if(exists(DATE_START)) then DATE_START || 'T00:00:00' else null";
+                    rr:datatype xsd:dateTime
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -419,8 +422,8 @@ tedm:PeriodModification a rr:TripleMap ;
             rr:predicate epo:hasEnd ;
             rr:objectMap
                 [
-                    rml:reference "DATE_END";
-                    rr:datatype xsd:datetime
+                    rml:reference "if(exists(DATE_END)) then DATE_END || 'T00:00:00' else null";
+                    rr:datatype xsd:dateTime
                 ] ;
         ] .
 
@@ -450,18 +453,7 @@ tedm:ElementModificationDescription a rr:TriplesMap ;
                 [
                     rml:reference "SHORT_DESCR" ;
                     rml:languageMap [
-                         rml:reference "lower-case(ancestor::F20_2014/@LG)"
-                    ]
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasModificationReasonDescription ;
-            rr:objectMap
-                [
-                    rml:reference ".";
-                    rml:languageMap [
-                         rml:reference "lower-case(ancestor::F20_2014/@LG)"
+                        rml:reference "lower-case(ancestor::*/@LG)"
                     ]
                 ] ;
         ] ;
@@ -470,8 +462,19 @@ tedm:ElementModificationDescription a rr:TriplesMap ;
             rr:predicate epo:hasModificationJustification ;
             rr:objectMap
                 [
-                    rml:reference "if (.) then 'http://publications.europa.eu/resource/authority/modification-justification/add-wss' else null";
+                    rml:reference "if (exists(ADDITIONAL_NEED)) then 'http://publications.europa.eu/resource/authority/modification-justification/add-wss' else null";
                     rr:termType rr:IRI
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasModificationReasonDescription ;
+            rr:objectMap
+                [
+                    rml:reference "ADDITIONAL_NEED";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -480,18 +483,17 @@ tedm:ElementModificationDescription a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if (exists(UNFORESEEN_CIRCUMSTANCE)) then 'http://publications.europa.eu/resource/authority/modification-justification/mod-cir' else null";
-                    rr:termType rr:IRI
+                    rr:termType rr:IRI;
                 ] ;
         ] ;
-
     rr:predicateObjectMap
         [
             rr:predicate epo:hasModificationReasonDescription ;
             rr:objectMap
                 [
-                    rml:reference "UNFORESEEN_CIRCUMSTANCE/P";
+                    rml:reference "UNFORESEEN_CIRCUMSTANCE";
                     rml:languageMap [
-                         rml:reference "lower-case(ancestor::F20_2014/@LG)"
+                        rml:reference "lower-case(ancestor::*/@LG)"
                     ]
                 ] ;
         ] .
@@ -502,7 +504,10 @@ tedm:FrameworkAgreementTermLot a rr:TriplesMap ;
             rr:predicate epo:hasDurationExtensionJustification ;
             rr:objectMap
                 [
-                    rml:reference "JUSTIFICATION/P"
+                    rml:reference "JUSTIFICATION";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
                 ] ;
         ] .
 
@@ -513,9 +518,8 @@ tedm:ContractorOrganisationModification a rr:TriplesMap ;
                 rr:objectMap
                 [
                     rml:reference "if(exists(SME)) then 'http://publications.europa.eu/resource/authority/economic-operator-size/sme' else null";
-                    rr:termType rr:IRI;
+                     rr:termType rr:IRI;
                 ]
-
         ] ;
     rr:predicateObjectMap
         [
@@ -523,16 +527,26 @@ tedm:ContractorOrganisationModification a rr:TriplesMap ;
                 rr:objectMap
                 [
                     rml:reference "if(exists(SME)) then 'http://data.europa.eu/a4g/ontology#Business' else null";
-                    rr:termType rr:IRI;
+                     rr:termType rr:IRI;
                 ]
-
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasPrimaryContactPoint ;
+            rr:predicate epo:hasLegalName ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_CONTRACTOR/OFFICIALNAME";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasID;
             rr:objectMap
             [
-                rr:parentTriplesMap tedm:ContractorContactPointModification;
+                rr:parentTriplesMap tedm:ContractorOrganisationIdentifierModification;
                 rr:joinCondition [
                     rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                     rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
@@ -541,7 +555,7 @@ tedm:ContractorOrganisationModification a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
     [
-        rr:predicate legal:registeredAddress ;
+        rr:predicate cv:registeredAddress ;
         rr:objectMap
             [
                 rr:parentTriplesMap tedm:ContractorOrganisationAddressModification;
@@ -550,14 +564,13 @@ tedm:ContractorOrganisationModification a rr:TriplesMap ;
                     rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                 ];
             ] ;
-    ] ;
-
+        ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasID;
+            rr:predicate epo:hasPrimaryContactPoint ;
             rr:objectMap
             [
-                rr:parentTriplesMap tedm:ContractorOrganisationIdentifierModification;
+                rr:parentTriplesMap tedm:ContractorContactPointModification;
                 rr:joinCondition [
                     rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
                     rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
@@ -588,7 +601,7 @@ tedm:ContractorContactPointModification a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "ADDRESS_CONTRACTOR/URL";
-                    #-rr:termType rr:IRI;
+                    rr:datatype xsd:anyURI
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -606,6 +619,17 @@ tedm:ContractorContactPointModification a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "ADDRESS_CONTRACTOR/PHONE"
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContactName ;
+            rr:objectMap
+                [
+                    rml:reference "ADDRESS_CONTRACTOR/CONTACT_POINT";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
                 ]
         ] .
 tedm:ContractorOrganisationAddressModification a rr:TriplesMap ;

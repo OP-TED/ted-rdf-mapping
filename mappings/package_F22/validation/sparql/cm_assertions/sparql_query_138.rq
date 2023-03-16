@@ -1,10 +1,10 @@
-#title: IV.2.2.1 - Time limit for receipt of expressions of interest (Date/Time)
-#description: “IV.2.2.1 - Time limit for receipt of expressions of interest (Date/Time)” in SF corresponds to “BT-630 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/PROCEDURE/TIME_RECEIPT_TENDERS. The expected ontology instances are epo: epo:Procedure / epo:SubmissionTerm / xsd:datetime .
-#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/PROCEDURE/TIME_RECEIPT_TENDERS
+#title: V.1.1.1 - No tenders or requests to participate were received or all were rejected
+#description: “V.1.1.1 - No tenders or requests to participate were received or all were rejected” in SF corresponds to “BT-144 Not Awarded Reason” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/NO_AWARDED_CONTRACT/PROCUREMENT_UNSUCCESSFUL. The expected ontology instances are epo: epo:LotAwardOutcome / at-voc:non-award-justification .
+#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/NO_AWARDED_CONTRACT/PROCUREMENT_UNSUCCESSFUL
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Procedure .
-		?this epo:isSubjectToProcedureSpecificTerm  / epo:hasReceiptExpressionsDeadline ?value . }
+		?this rdf:type epo:LotAwardOutcome .
+		?this epo:hasNonAwardJustification <http://publications.europa.eu/resource/authority/non-award-justification/none-rej> . }

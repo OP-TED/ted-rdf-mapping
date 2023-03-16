@@ -1,12 +1,12 @@
-#title: I.1.6 - Postal code
-#description: “I.1.6 - Postal code” in SF corresponds to “BT-512 Place Performance Post Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/POSTAL_CODE. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F13_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/POSTAL_CODE
+#title: I.1.4 - Town
+#description: “I.1.4 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/TOWN. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F13_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/TOWN
 
+PREFIX cv: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX legal: <https://www.w3.org/ns/legal#>
 PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Buyer .
-		?this epo:playedBy / legal:registeredAddress / locn:postCode ?value . }
+		?this epo:playedBy / cv:registeredAddress / locn:postName ?value . }

@@ -80,22 +80,28 @@ tedm:DirectAwardTerm a rr:TriplesMap ;
                 ]
 
         ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasDirectAwardJustification ;
-            rr:objectMap
-                [
-                    rml:reference "if (exists(PT_AWARD_CONTRACT_WITHOUT_PUBLICATION/D_OUTSIDE_SCOPE)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/dir24-list' else null";
-                    rr:termType rr:IRI;
-                ]
-
-        ] ;
+# This mapping is commented out as per the definition of at-voc:direct-award-justification/dir24-list (which is very confusing)
+# this is code is not (always) appropriate to use to represent the exact meaning of the field
+# See issue https://github.com/OP-TED/ted-rdf-mapping/issues/308
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasDirectAwardJustification ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if (exists(PT_AWARD_CONTRACT_WITHOUT_PUBLICATION/D_OUTSIDE_SCOPE)) then 'http://publications.europa.eu/resource/authority/direct-award-justification/dir24-list' else null";
+#                    rr:termType rr:IRI;
+#                ]
+#
+#        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasJustification ;
             rr:objectMap
                 [
                     rml:reference "PT_AWARD_CONTRACT_WITHOUT_PUBLICATION/D_JUSTIFICATION";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
                 ]
 
         ] .

@@ -1,11 +1,10 @@
-#title: III.1.9.1 - Conditions to be fulfilled by economic operators in view of their qualification
-#description: “III.1.9.1 - Conditions to be fulfilled by economic operators in view of their qualification” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/LEFTI/QUALIFICATION/CONDITIONS. The expected ontology instances are epo: epo:Lot / epo:SelectionCriterion / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/LEFTI/QUALIFICATION/CONDITIONS
+#title: IV.1.3.2 - In the case of framework agreements, provide justification for any duration exceeding 8 years
+#description: “IV.1.3.2 - In the case of framework agreements, provide justification for any duration exceeding 8 years” in SF corresponds to “BT-109 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/PROCEDURE/FRAMEWORK/JUSTIFICATION. The expected ontology instances are epo: epo:Procedure /  epo:FrameworkAgreementTerm / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/PROCEDURE/FRAMEWORK/JUSTIFICATION
 
-PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Lot .
-		?this epo:specifiesSelectionCriterion / cccev:name ?value }
+		?this rdf:type epo:Procedure .
+		?this epo:isSubjectToProcedureSpecificTerm / epo:hasDurationExtensionJustification ?value . }

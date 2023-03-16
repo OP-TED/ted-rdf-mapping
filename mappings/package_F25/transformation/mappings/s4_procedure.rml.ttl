@@ -46,7 +46,7 @@ tedm:Procedure a rr:TriplesMap ;
             rr:predicate epo:hasProcedureType ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(../PROCEDURE/PT_OPEN)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/open' else if(exists(../PROCEDURE/PT_RESTRICTED)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted' else if(exists(../PROCEDURE/PT_COMPETITIVE_NEGOTIATION) or exists(../PROCEDURE/PT_INVOLVING_NEGOTIATION) or exists(../PROCEDURE/PT_NEGOTIATED_WITH_PRIOR_CALL)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call' else if(exists(../PROCEDURE/PT_COMPETITIVE_DIALOGUE)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial' else if(exists(../PROCEDURE/PT_INNOVATION_PARTNERSHIP)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation' else if(exists(../PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL) or exists(../PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_PUBLICATION)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call' else null";
+                    rml:reference "if(exists(../PROCEDURE/PT_OPEN) or exists(../PROCEDURE/PT_AWARD_CONTRACT_WITH_PRIOR_PUBLICATION)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/open' else if(exists(../PROCEDURE/PT_RESTRICTED)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted' else if(exists(../PROCEDURE/PT_COMPETITIVE_NEGOTIATION) or exists(../PROCEDURE/PT_INVOLVING_NEGOTIATION) or exists(../PROCEDURE/PT_NEGOTIATED_WITH_PRIOR_CALL)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call' else if(exists(../PROCEDURE/PT_COMPETITIVE_DIALOGUE)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial' else if(exists(../PROCEDURE/PT_INNOVATION_PARTNERSHIP)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation' else if(exists(../PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_CALL) or exists(../PROCEDURE/PT_AWARD_CONTRACT_WITHOUT_PUBLICATION)) then 'http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call' else null";
                     rr:termType rr:IRI
                 ] ;
         ] ;
@@ -55,7 +55,10 @@ tedm:Procedure a rr:TriplesMap ;
             rr:predicate epo:hasAcceleratedProcedureJustification ;
             rr:objectMap
                 [
-                    rml:reference "../PROCEDURE/ACCELERATED_PROC/P"
+                    rml:reference "../PROCEDURE/ACCELERATED_PROC";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -82,7 +85,7 @@ tedm:Procedure a rr:TriplesMap ;
             rr:predicate epo:usesChannel ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:OrganisationChannel;
+                    rr:parentTriplesMap tedm:ElectronicCommunicationChannel;
                     rr:joinCondition [
                         rr:child "..";
                         rr:parent "../..";
@@ -130,32 +133,36 @@ tedm:Procedure a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:AccessTerm
                 ] ;
         ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:isSubjectToTerm ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ProcessPlanningTermProcedure
-                ] ;
-        ] ;
+# Commenting this out as this is not an appropriate mapping for the field IV.2.5. EPO 3.1.0 does not provide an appropriate model.
+# We will map this field when future EPO versions will provide an appropriate representation for it.
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:isSubjectToTerm ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:ProcessPlanningTermProcedure
+#                ] ;
+#        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:usesTechnique ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:EauctionTechniqueUsage
+                    rr:parentTriplesMap tedm:EAuctionTechniqueUsage
                 ] ;
         ] .
-tedm:ProcessPlanningTermProcedure a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasAwardDateScheduled ;
-            rr:objectMap
-                [
-                    rml:reference "DATE_AWARD_SCHEDULED";
-                    rr:datatype xsd:date
-                ] ;
-        ] .
+# Commenting this out as this is not an appropriate mapping for the field IV.2.5. EPO 3.1.0 does not provide an appropriate model.
+# We will map this field when future EPO versions will provide an appropriate representation for it.
+#tedm:ProcessPlanningTermProcedure a rr:TriplesMap ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasAwardDateScheduled ;
+#            rr:objectMap
+#                [
+#                    rml:reference "DATE_AWARD_SCHEDULED";
+#                    rr:datatype xsd:date
+#                ] ;
+#        ] .
 tedm:ProcurementProcessInformation a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -198,7 +205,10 @@ tedm:FrameworkAgreementTerm a rr:TriplesMap ;
             rr:predicate epo:hasDurationExtensionJustification ;
             rr:objectMap
                 [
-                    rml:reference "FRAMEWORK/JUSTIFICATION"
+                    rml:reference "FRAMEWORK/JUSTIFICATION";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
                 ] ;
         ] .
 tedm:ProcedureTerm a rr:TriplesMap ;
@@ -208,8 +218,7 @@ tedm:ProcedureTerm a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "../PROCEDURE/URL_NATIONAL_PROCEDURE";
-                    ## one of the test notices is having a URL starting by www. and this type require a URL starting with http:
-                     ##rr:termType rr:IRI
+                    rr:datatype xsd:anyURI;
                 ] ;
         ] .
 tedm:SubmissionTerm a rr:TriplesMap ;
@@ -218,17 +227,26 @@ tedm:SubmissionTerm a rr:TriplesMap ;
             rr:predicate epo:hasReceiptDeadline ;
             rr:objectMap
                 [
-                    rml:reference "DATE_RECEIPT_TENDERS";
-                    rr:datatype xsd:datetime
+#                   # We likely don't need to include the conditions for the notice types:
+#                   # - "PRI", as in case of F23 this information will only appear in the "PRI notices (and should not appear in "CONCESSION_AWARD_CONTRACT" notices
+#                   # - "QSU_ONLY" and "PER_ONLY", as for those type of notices we should not have this type of information specified; however, in case they are (by mistake/oversight), we will map it to this property
+                    rml:reference "if(../NOTICE/@TYPE='CONTRACT' or ../NOTICE/@TYPE='PRI' or ../NOTICE/@TYPE='QSU_ONLY' or ../NOTICE/@TYPE='QSU_CALL_COMPETITION' or ../NOTICE/@TYPE='PER_ONLY') then (if(exists(DATE_RECEIPT_TENDERS) and exists(TIME_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T' || TIME_RECEIPT_TENDERS else if(exists(DATE_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS else null) else null";
+                    rr:datatype xsd:string
+#                    # below is the original, smarter, mapping to ensure conversion to a proper xsd:dateTime value:
+#                    rml:reference "if(../NOTICE/@TYPE='CONTRACT' or ../NOTICE/@TYPE='PRI' or ../NOTICE/@TYPE='QSU_ONLY' or ../NOTICE/@TYPE='QSU_CALL_COMPETITION' or ../NOTICE/@TYPE='PER_ONLY') then (if(exists(DATE_RECEIPT_TENDERS) and exists(TIME_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T' || TIME_RECEIPT_TENDERS || ':00' else if(exists(DATE_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T00:00:00' else null) else null";
+#                    rr:datatype xsd:dateTime
                 ] ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasReceiptExpressionsDeadline ;
+            rr:predicate epo:hasReceiptExpressionDeadline ;
             rr:objectMap
                 [
-                    rml:reference "TIME_RECEIPT_TENDERS";
-                    rr:datatype xsd:datetime
+                    rml:reference "if(../NOTICE/@TYPE='PRI_CALL_COMPETITION' or ../NOTICE/@TYPE='PER_CALL_COMPETITION') then (if(exists(DATE_RECEIPT_TENDERS) and exists(TIME_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T' || TIME_RECEIPT_TENDERS else if(exists(DATE_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS else null) else null";
+                    rr:datatype xsd:string
+#                    # below is the original, smarter, mapping to ensure conversion to a proper xsd:dateTime value:
+#                    rml:reference "if(../NOTICE/@TYPE='PRI_CALL_COMPETITION' or ../NOTICE/@TYPE='PER_CALL_COMPETITION') then (if(exists(DATE_RECEIPT_TENDERS) and exists(TIME_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T' || TIME_RECEIPT_TENDERS || ':00' else if(exists(DATE_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T00:00:00' else null) else null";
+#                    rr:datatype xsd:dateTime
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -245,8 +263,7 @@ tedm:SubmissionTerm a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "../CONTRACTING_BODY/URL_PARTICIPATION";
-                    ## some notices might have URL starting by www. and this type require a URL starting with http: #TODO:use "dynamic" typing, based on the value, as we did in another place
-                    ## rr:termType rr:IRI
+                    rr:datatype xsd:anyURI;
                 ] ;
         ] .
 

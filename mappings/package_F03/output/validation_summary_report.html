@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML report for SPARQL Validation</title>
+    <link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+                margin: 25px auto;
+                width: 80%;
+        }
+        .success, .valid, .unverifiable {
+          color: #3c763d;
+        }
+        .info {
+          color: #31708f;
+        }
+        .warning {
+          color: #8a6d3b;
+        }
+        .danger, .invalid, .error {
+          color: #a94442;
+        }
+        .strong {
+            font-weight: bold;
+        }
+        table thead th {
+            text-align: left;
+        }
+        table.display thead th {
+            padding-left: 10px;
+        }
+        [data-role=collapsible].collapsible-wrapper {
+            padding: 10px 0;
+        }
+        [data-role=collapsible] h4 {
+            margin: 0;
+        }
+        [data-role=collapsible] h4 a {
+            padding: 3px 10px;
+            background: #ccc;
+            width: 100%;
+            box-sizing: border-box;
+            display: block;
+            color: #111;
+            text-decoration: none;
+            margin: -3px 0;
+        }
+
+        [data-role=collapsible][data-state=collapsed] h4 a:before {
+            content: '+ expand';
+        }
+        [data-role=collapsible] h4 a:before {
+            content: '- collapse';
+        }
+        [data-role=collapsible][data-state=collapsed] .ui-collapsible-content {
+            visibility: hidden;
+            height: 0;
+            padding: 0 10px;;
+        }
+
+        [data-role=collapsible] .ui-collapsible-content {
+            padding: 10px;
+        }
+    </style>
+  </head>
+  <body>
+	<h1>Validation Summary HTML report </h1>
+	<hr>
+    <h2>Report details: </h2>
+    <ul>
+        <li>Date created: 2023-02-19T10:03:56.742520</li>
+        <li><div><hr></div>Notice identifier(s):
+            <div data-role="collapsible" data-state="collapsed"
+                class="collapsible-wrapper">
+                <h4><a href="#"></a></h4>
+                <div class="ui-collapsible-content">
+                
+                    <ul>
+                    
+                        <li>
+                            <a href="000163-2021/test_suite_report" target="_blank">000163-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="001331-2022/test_suite_report" target="_blank">001331-2022</a>
+                        </li>
+                    
+                        <li>
+                            <a href="002705-2021/test_suite_report" target="_blank">002705-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="006737-2021/test_suite_report" target="_blank">006737-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="006777-2019/test_suite_report" target="_blank">006777-2019</a>
+                        </li>
+                    
+                        <li>
+                            <a href="013921-2021/test_suite_report" target="_blank">013921-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="018036-2018/test_suite_report" target="_blank">018036-2018</a>
+                        </li>
+                    
+                        <li>
+                            <a href="019698-2021/test_suite_report" target="_blank">019698-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="021380-2018/test_suite_report" target="_blank">021380-2018</a>
+                        </li>
+                    
+                        <li>
+                            <a href="025647-2017/test_suite_report" target="_blank">025647-2017</a>
+                        </li>
+                    
+                        <li>
+                            <a href="028290-2021/test_suite_report" target="_blank">028290-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="029476-2021/test_suite_report" target="_blank">029476-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="036613-2017/test_suite_report" target="_blank">036613-2017</a>
+                        </li>
+                    
+                        <li>
+                            <a href="038976-2019/test_suite_report" target="_blank">038976-2019</a>
+                        </li>
+                    
+                        <li>
+                            <a href="042126-2021/test_suite_report" target="_blank">042126-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="046890-2021/test_suite_report" target="_blank">046890-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="048329-2019/test_suite_report" target="_blank">048329-2019</a>
+                        </li>
+                    
+                        <li>
+                            <a href="054538-2022/test_suite_report" target="_blank">054538-2022</a>
+                        </li>
+                    
+                        <li>
+                            <a href="054539-2020/test_suite_report" target="_blank">054539-2020</a>
+                        </li>
+                    
+                        <li>
+                            <a href="056148-2021/test_suite_report" target="_blank">056148-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="056333-2022/test_suite_report" target="_blank">056333-2022</a>
+                        </li>
+                    
+                        <li>
+                            <a href="076505-2022/test_suite_report" target="_blank">076505-2022</a>
+                        </li>
+                    
+                        <li>
+                            <a href="078788-2017/test_suite_report" target="_blank">078788-2017</a>
+                        </li>
+                    
+                        <li>
+                            <a href="083598-2018/test_suite_report" target="_blank">083598-2018</a>
+                        </li>
+                    
+                        <li>
+                            <a href="095861-2017/test_suite_report" target="_blank">095861-2017</a>
+                        </li>
+                    
+                        <li>
+                            <a href="095861-2018/test_suite_report" target="_blank">095861-2018</a>
+                        </li>
+                    
+                        <li>
+                            <a href="098926-2020/test_suite_report" target="_blank">098926-2020</a>
+                        </li>
+                    
+                        <li>
+                            <a href="105195-2022/test_suite_report" target="_blank">105195-2022</a>
+                        </li>
+                    
+                        <li>
+                            <a href="112330-2018/test_suite_report" target="_blank">112330-2018</a>
+                        </li>
+                    
+                        <li>
+                            <a href="118586-2021/test_suite_report" target="_blank">118586-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="121970-2022/test_suite_report" target="_blank">121970-2022</a>
+                        </li>
+                    
+                        <li>
+                            <a href="122292-2018/test_suite_report" target="_blank">122292-2018</a>
+                        </li>
+                    
+                        <li>
+                            <a href="131568-2021/test_suite_report" target="_blank">131568-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="135100-2021/test_suite_report" target="_blank">135100-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="135107-2022/test_suite_report" target="_blank">135107-2022</a>
+                        </li>
+                    
+                        <li>
+                            <a href="135288-2018/test_suite_report" target="_blank">135288-2018</a>
+                        </li>
+                    
+                        <li>
+                            <a href="142024-2017/test_suite_report" target="_blank">142024-2017</a>
+                        </li>
+                    
+                        <li>
+                            <a href="142968-2018/test_suite_report" target="_blank">142968-2018</a>
+                        </li>
+                    
+                        <li>
+                            <a href="146541-2017/test_suite_report" target="_blank">146541-2017</a>
+                        </li>
+                    
+                        <li>
+                            <a href="148511-2021/test_suite_report" target="_blank">148511-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="149234-2022/test_suite_report" target="_blank">149234-2022</a>
+                        </li>
+                    
+                        <li>
+                            <a href="153994-2017/test_suite_report" target="_blank">153994-2017</a>
+                        </li>
+                    
+                        <li>
+                            <a href="160640-2021/test_suite_report" target="_blank">160640-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="160659-2021/test_suite_report" target="_blank">160659-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="165110-2017/test_suite_report" target="_blank">165110-2017</a>
+                        </li>
+                    
+                        <li>
+                            <a href="169338-2022/test_suite_report" target="_blank">169338-2022</a>
+                        </li>
+                    
+                        <li>
+                            <a href="171746-2017/test_suite_report" target="_blank">171746-2017</a>
+                        </li>
+                    
+                        <li>
+                            <a href="174358-2021/test_suite_report" target="_blank">174358-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="176159-2020/test_suite_report" target="_blank">176159-2020</a>
+                        </li>
+                    
+                        <li>
+                            <a href="183277-2021/test_suite_report" target="_blank">183277-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="185063-2021/test_suite_report" target="_blank">185063-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="206345-2022/test_suite_report" target="_blank">206345-2022</a>
+                        </li>
+                    
+                        <li>
+                            <a href="207833-2017/test_suite_report" target="_blank">207833-2017</a>
+                        </li>
+                    
+                        <li>
+                            <a href="214679-2021/test_suite_report" target="_blank">214679-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="222084-2021/test_suite_report" target="_blank">222084-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="223750-2017/test_suite_report" target="_blank">223750-2017</a>
+                        </li>
+                    
+                        <li>
+                            <a href="234762-2021/test_suite_report" target="_blank">234762-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="236116-2017/test_suite_report" target="_blank">236116-2017</a>
+                        </li>
+                    
+                        <li>
+                            <a href="238090-2021/test_suite_report" target="_blank">238090-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="242365-2021/test_suite_report" target="_blank">242365-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="254891-2017/test_suite_report" target="_blank">254891-2017</a>
+                        </li>
+                    
+                        <li>
+                            <a href="267730-2017/test_suite_report" target="_blank">267730-2017</a>
+                        </li>
+                    
+                        <li>
+                            <a href="270899-2021/test_suite_report" target="_blank">270899-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="273048-2016/test_suite_report" target="_blank">273048-2016</a>
+                        </li>
+                    
+                        <li>
+                            <a href="273248-2018/test_suite_report" target="_blank">273248-2018</a>
+                        </li>
+                    
+                        <li>
+                            <a href="274649-2022/test_suite_report" target="_blank">274649-2022</a>
+                        </li>
+                    
+                        <li>
+                            <a href="279321-2017/test_suite_report" target="_blank">279321-2017</a>
+                        </li>
+                    
+                        <li>
+                            <a href="280005-2016/test_suite_report" target="_blank">280005-2016</a>
+                        </li>
+                    
+                        <li>
+                            <a href="280011-2021/test_suite_report" target="_blank">280011-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="281577-2022/test_suite_report" target="_blank">281577-2022</a>
+                        </li>
+                    
+                        <li>
+                            <a href="284950-2018/test_suite_report" target="_blank">284950-2018</a>
+                        </li>
+                    
+                        <li>
+                            <a href="287692-2019/test_suite_report" target="_blank">287692-2019</a>
+                        </li>
+                    
+                        <li>
+                            <a href="292273-2021/test_suite_report" target="_blank">292273-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="292288-2021/test_suite_report" target="_blank">292288-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="292758-2020/test_suite_report" target="_blank">292758-2020</a>
+                        </li>
+                    
+                        <li>
+                            <a href="294562-2018/test_suite_report" target="_blank">294562-2018</a>
+                        </li>
+                    
+                        <li>
+                            <a href="300414-2021/test_suite_report" target="_blank">300414-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="306900-2017/test_suite_report" target="_blank">306900-2017</a>
+                        </li>
+                    
+                        <li>
+                            <a href="320330-2020/test_suite_report" target="_blank">320330-2020</a>
+                        </li>
+                    
+                        <li>
+                            <a href="325008-2021/test_suite_report" target="_blank">325008-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="327465-2021/test_suite_report" target="_blank">327465-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="328174-2021/test_suite_report" target="_blank">328174-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="331730-2021/test_suite_report" target="_blank">331730-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="337268-2016/test_suite_report" target="_blank">337268-2016</a>
+                        </li>
+                    
+                        <li>
+                            <a href="337360-2021/test_suite_report" target="_blank">337360-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="337795-2017/test_suite_report" target="_blank">337795-2017</a>
+                        </li>
+                    
+                        <li>
+                            <a href="348503-2021/test_suite_report" target="_blank">348503-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="357190-2021/test_suite_report" target="_blank">357190-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="358415-2022/test_suite_report" target="_blank">358415-2022</a>
+                        </li>
+                    
+                        <li>
+                            <a href="362730-2016/test_suite_report" target="_blank">362730-2016</a>
+                        </li>
+                    
+                        <li>
+                            <a href="365263-2021/test_suite_report" target="_blank">365263-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="366836-2021/test_suite_report" target="_blank">366836-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="372423-2018/test_suite_report" target="_blank">372423-2018</a>
+                        </li>
+                    
+                        <li>
+                            <a href="373713-2021/test_suite_report" target="_blank">373713-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="374848-2016/test_suite_report" target="_blank">374848-2016</a>
+                        </li>
+                    
+                        <li>
+                            <a href="377666-2021/test_suite_report" target="_blank">377666-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="377668-2021/test_suite_report" target="_blank">377668-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="383425-2017/test_suite_report" target="_blank">383425-2017</a>
+                        </li>
+                    
+                        <li>
+                            <a href="388458-2017/test_suite_report" target="_blank">388458-2017</a>
+                        </li>
+                    
+                        <li>
+                            <a href="398934-2016/test_suite_report" target="_blank">398934-2016</a>
+                        </li>
+                    
+                        <li>
+                            <a href="398963-2016/test_suite_report" target="_blank">398963-2016</a>
+                        </li>
+                    
+                        <li>
+                            <a href="404576-2016/test_suite_report" target="_blank">404576-2016</a>
+                        </li>
+                    
+                        <li>
+                            <a href="405075-2022/test_suite_report" target="_blank">405075-2022</a>
+                        </li>
+                    
+                        <li>
+                            <a href="407172-2022/test_suite_report" target="_blank">407172-2022</a>
+                        </li>
+                    
+                        <li>
+                            <a href="415672-2020/test_suite_report" target="_blank">415672-2020</a>
+                        </li>
+                    
+                        <li>
+                            <a href="421528-2021/test_suite_report" target="_blank">421528-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="431462-2021/test_suite_report" target="_blank">431462-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="433728-2016/test_suite_report" target="_blank">433728-2016</a>
+                        </li>
+                    
+                        <li>
+                            <a href="437927-2022/test_suite_report" target="_blank">437927-2022</a>
+                        </li>
+                    
+                        <li>
+                            <a href="438840-2022/test_suite_report" target="_blank">438840-2022</a>
+                        </li>
+                    
+                        <li>
+                            <a href="453564-2020/test_suite_report" target="_blank">453564-2020</a>
+                        </li>
+                    
+                        <li>
+                            <a href="458365-2017/test_suite_report" target="_blank">458365-2017</a>
+                        </li>
+                    
+                        <li>
+                            <a href="463329-2021/test_suite_report" target="_blank">463329-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="465007-2022/test_suite_report" target="_blank">465007-2022</a>
+                        </li>
+                    
+                        <li>
+                            <a href="466720-2022/test_suite_report" target="_blank">466720-2022</a>
+                        </li>
+                    
+                        <li>
+                            <a href="469673-2019/test_suite_report" target="_blank">469673-2019</a>
+                        </li>
+                    
+                        <li>
+                            <a href="488951-2021/test_suite_report" target="_blank">488951-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="503174-2021/test_suite_report" target="_blank">503174-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="607499-2021/test_suite_report" target="_blank">607499-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="611199-2020/test_suite_report" target="_blank">611199-2020</a>
+                        </li>
+                    
+                        <li>
+                            <a href="622406-2019/test_suite_report" target="_blank">622406-2019</a>
+                        </li>
+                    
+                        <li>
+                            <a href="631687-2020/test_suite_report" target="_blank">631687-2020</a>
+                        </li>
+                    
+                        <li>
+                            <a href="661127-2021/test_suite_report" target="_blank">661127-2021</a>
+                        </li>
+                    
+                        <li>
+                            <a href="663165-2021/test_suite_report" target="_blank">663165-2021</a>
+                        </li>
+                    
+                    </ul>
+                
+                </div>
+            </div>
+        </li>
+    </ul>
+    <hr>
+    <h2>XML Manifestation</h2>
+    <p>----------</p>
+    <h3>XPATH Coverage Summary</h3>
+    <h4>Report details: </h4>
+    <ul>
+        <li>Mapping suite identifier: package_F03</li>
+        <li>XPATHs covered: 8850</li>
+        <li>XPATHs not covered: 4607</li>
+    </ul>
+
+    <hr>
+
+    <h2>RDF Manifestation</h2>
+    
+    <p>----------</p>
+    <h3>SPARQL Summary</h3>
+    <h4>Report details: </h4>
+    <ul>
+        <li class="strong valid">Valid: 9759</li>
+        <li class="strong unverifiable">Unverifiable: 11088</li>
+        <li class="strong warning">Warning: 3588</li>
+        <li class="strong invalid">Invalid: 365</li>
+        <li class="strong error">Error: 0</li>
+    </ul>
+        <p>-----</p>
+    <h4>Validation results: </h4>
+     
+     
+         <p>---</p>
+    <ul>
+        <li>Mapping suite identifier: package_F03_v6.7.3</li>
+        <li>Test suite identifier: cm_assertions</li>
+    </ul>
+    <h5>Results summary</h5>
+    <table class="display" data-order='[[0, "asc"]]'>
+        <thead class="center aligned">
+        <tr>
+            <th>Result</th>
+            <th>Count</th>
+            <th>Ratio (%)</th>
+        </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td class="strong valid">Valid</td>
+                <td>9759</td>
+                <td>41.21%</td>
+            </tr>
+            <tr>
+                <td class="strong unverifiable">Unverifiable</td>
+                <td>11088</td>
+                <td>46.82%</td>
+            </tr>
+            <tr>
+                <td class="strong invalid">Invalid</td>
+                <td>365</td>
+                <td>1.54%</td>
+            </tr>
+            <tr>
+                <td class="strong warning">Warning</td>
+                <td>2472</td>
+                <td>10.44%</td>
+            </tr>
+            <tr>
+                <td class="strong error">Error</td>
+                <td>0</td>
+                <td>0.0%</td>
+            </tr>
+            
+        </tbody>
+    </table>
+    
+     
+         <p>---</p>
+    <ul>
+        <li>Mapping suite identifier: package_F03_v6.7.3</li>
+        <li>Test suite identifier: integration_tests</li>
+    </ul>
+    <h5>Results summary</h5>
+    <table class="display" data-order='[[0, "asc"]]'>
+        <thead class="center aligned">
+        <tr>
+            <th>Result</th>
+            <th>Count</th>
+            <th>Ratio (%)</th>
+        </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td class="strong valid">Valid</td>
+                <td>0</td>
+                <td>0.0%</td>
+            </tr>
+            <tr>
+                <td class="strong unverifiable">Unverifiable</td>
+                <td>0</td>
+                <td>0.0%</td>
+            </tr>
+            <tr>
+                <td class="strong invalid">Invalid</td>
+                <td>0</td>
+                <td>0.0%</td>
+            </tr>
+            <tr>
+                <td class="strong warning">Warning</td>
+                <td>1116</td>
+                <td>100.0%</td>
+            </tr>
+            <tr>
+                <td class="strong error">Error</td>
+                <td>0</td>
+                <td>0.0%</td>
+            </tr>
+            
+        </tbody>
+    </table>
+    
+    <p>-------</p>
+    <h3>SHACL Summary</h3>
+    <h4>Result severity: </h4>
+    <ul>
+        <li>Info: 0</li>
+        <li>Warning: 0</li>
+        <li>Violation: 1467</li>
+    </ul>
+    <p>-----</p>
+    <h4>Result severity by validation results: </h4>
+    
+    
+    
+    <p>---</p>
+    <ul>
+        <li>Mapping suite identifier: package_F03_v6.7.3</li>
+        <li>Test suite identifier: epo</li>
+    </ul>
+    <h5>Results summary</h5>
+        <table class="display">
+            <thead class="center aligned">
+            <tr>
+                <th>Severity</th>
+                <th>Count</th>
+                <th>Ratio (%)</th>
+            </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    <td>Info</td>
+                    <td>0</td>
+                    <td>0.0%</td>
+                </tr>
+                <tr>
+                    <td>Warning</td>
+                    <td>0</td>
+                    <td>0.0%</td>
+                </tr>
+                <tr>
+                    <td>Violation</td>
+                    <td>1467</td>
+                    <td>100.0%</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    
+    <p>-------</p>
+
+    <hr>
+
+    <h2>Distilled RDF Manifestation</h2>
+    
+    <p>----------</p>
+    <h3>SPARQL Summary</h3>
+    <h4>Report details: </h4>
+    <ul>
+        <li class="strong valid">Valid: 9759</li>
+        <li class="strong unverifiable">Unverifiable: 11088</li>
+        <li class="strong warning">Warning: 3588</li>
+        <li class="strong invalid">Invalid: 365</li>
+        <li class="strong error">Error: 0</li>
+    </ul>
+        <p>-----</p>
+    <h4>Validation results: </h4>
+     
+     
+         <p>---</p>
+    <ul>
+        <li>Mapping suite identifier: package_F03_v6.7.3</li>
+        <li>Test suite identifier: cm_assertions</li>
+    </ul>
+    <h5>Results summary</h5>
+    <table class="display" data-order='[[0, "asc"]]'>
+        <thead class="center aligned">
+        <tr>
+            <th>Result</th>
+            <th>Count</th>
+            <th>Ratio (%)</th>
+        </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td class="strong valid">Valid</td>
+                <td>9759</td>
+                <td>41.21%</td>
+            </tr>
+            <tr>
+                <td class="strong unverifiable">Unverifiable</td>
+                <td>11088</td>
+                <td>46.82%</td>
+            </tr>
+            <tr>
+                <td class="strong invalid">Invalid</td>
+                <td>365</td>
+                <td>1.54%</td>
+            </tr>
+            <tr>
+                <td class="strong warning">Warning</td>
+                <td>2472</td>
+                <td>10.44%</td>
+            </tr>
+            <tr>
+                <td class="strong error">Error</td>
+                <td>0</td>
+                <td>0.0%</td>
+            </tr>
+            
+        </tbody>
+    </table>
+    
+     
+         <p>---</p>
+    <ul>
+        <li>Mapping suite identifier: package_F03_v6.7.3</li>
+        <li>Test suite identifier: integration_tests</li>
+    </ul>
+    <h5>Results summary</h5>
+    <table class="display" data-order='[[0, "asc"]]'>
+        <thead class="center aligned">
+        <tr>
+            <th>Result</th>
+            <th>Count</th>
+            <th>Ratio (%)</th>
+        </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td class="strong valid">Valid</td>
+                <td>0</td>
+                <td>0.0%</td>
+            </tr>
+            <tr>
+                <td class="strong unverifiable">Unverifiable</td>
+                <td>0</td>
+                <td>0.0%</td>
+            </tr>
+            <tr>
+                <td class="strong invalid">Invalid</td>
+                <td>0</td>
+                <td>0.0%</td>
+            </tr>
+            <tr>
+                <td class="strong warning">Warning</td>
+                <td>1116</td>
+                <td>100.0%</td>
+            </tr>
+            <tr>
+                <td class="strong error">Error</td>
+                <td>0</td>
+                <td>0.0%</td>
+            </tr>
+            
+        </tbody>
+    </table>
+    
+    <p>-------</p>
+    <h3>SHACL Summary</h3>
+    <h4>Result severity: </h4>
+    <ul>
+        <li>Info: 0</li>
+        <li>Warning: 0</li>
+        <li>Violation: 1467</li>
+    </ul>
+    <p>-----</p>
+    <h4>Result severity by validation results: </h4>
+    
+    
+    
+    <p>---</p>
+    <ul>
+        <li>Mapping suite identifier: package_F03_v6.7.3</li>
+        <li>Test suite identifier: epo</li>
+    </ul>
+    <h5>Results summary</h5>
+        <table class="display">
+            <thead class="center aligned">
+            <tr>
+                <th>Severity</th>
+                <th>Count</th>
+                <th>Ratio (%)</th>
+            </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    <td>Info</td>
+                    <td>0</td>
+                    <td>0.0%</td>
+                </tr>
+                <tr>
+                    <td>Warning</td>
+                    <td>0</td>
+                    <td>0.0%</td>
+                </tr>
+                <tr>
+                    <td>Violation</td>
+                    <td>1467</td>
+                    <td>100.0%</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    
+    <p>-------</p>
+  </body>
+</html>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("[data-role=collapsible] h4 a").on("click", function(e) {
+            $p = $(this).closest("[data-role=collapsible]");
+            $p.attr("data-state", $p.attr("data-state") == "collapsed" ? "expanded" : "collapsed");
+            $c = $p.find('.ui-collapsible-content');
+            $c.attr("data-state", $c.attr("data-state") == "collapsed" ? "expanded" : "collapsed");
+            return false;
+        });
+        $("table.display").DataTable({
+            dom: 'B<"clear">t',
+            buttons: [],
+            "lengthMenu": [[5, 15, 30, -1], [5, 15, 30, "All"]],
+            "pageLength": 15,
+            responsive: {
+                details: true
+            }
+        });
+
+    });
+
+</script>

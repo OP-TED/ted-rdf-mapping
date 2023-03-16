@@ -1,10 +1,10 @@
-#title: VII.2.3.3 - Total contract value after the modifications
-#description: “VII.2.3.3 - Total contract value after the modifications” in SF corresponds to “no match nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/INFO_MODIFICATIONS/VALUES/VAL_TOTAL_AFTER. The expected ontology instances are epo: epo:LotAwardOutcome / epo:MonetaryValue / xsd:decimal .
-#xpath: /TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/INFO_MODIFICATIONS/VALUES/VAL_TOTAL_AFTER
+#title: VII.2.3.2 - Currency
+#description: “VII.2.3.2 - Currency” in SF corresponds to “no direct match nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/INFO_MODIFICATIONS/VALUES/VAL_TOTAL_BEFORE/@CURRENCY, /TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/INFO_MODIFICATIONS/VAL_TOTAL_BEFORE/@CURRENCY. The expected ontology instances are epo: epo:LotAwardOutcome / epo:MonetaryValue / at-voc:currency (from currency.json) .
+#xpath: /TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/INFO_MODIFICATIONS/VALUES/VAL_TOTAL_BEFORE/@CURRENCY,/TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/INFO_MODIFICATIONS/VAL_TOTAL_BEFORE/@CURRENCY
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:LotAwardOutcome .
-		?this epo:hasAwardedValue / epo:hasAmountValue ?value . }
+		?this epo:hasRestatedAwardedValue / epo:hasCurrency ?value . }

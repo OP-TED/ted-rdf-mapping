@@ -1,10 +1,10 @@
-#title: V.2.4.2.1 - Currency
-#description: “V.2.4.2.1 - Currency” in SF corresponds to “no direct match nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_TOTAL/@CURRENCY. The expected ontology instances are epo: epo:LotAwardOutcome / epo:MonetaryValue / at-voc:currency (from currency.json) .
-#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_TOTAL/@CURRENCY
+#title: VI.2.2 - Electronic invoicing will be accepted
+#description: “VI.2.2 - Electronic invoicing will be accepted” in SF corresponds to “BT-743 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/COMPLEMENTARY_INFO/EINVOICING. The expected ontology instances are epo: epo:Procedure / epo:ContractTerm / xsd:boolean .
+#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/COMPLEMENTARY_INFO/EINVOICING
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:LotAwardOutcome .
-		?this epo:hasAwardedValue / epo:hasCurrency ?value . }
+		?this rdf:type epo:Procedure .
+		?this epo:foreseesContractSpecificTerm / epo:hasEInvoicing true . }

@@ -1,8 +1,10 @@
-#title: V.2.3.1 - Official name
-#description: “V.2.3.1 - Official name” in SF corresponds to “BT-500 Organisation Name” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F20_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/OFFICIALNAME. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F20_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/OFFICIALNAME
+#title: V.2.1 - Date of conclusion of the contract/concession award decision
+#description: “V.2.1 - Date of conclusion of the contract/concession award decision” in SF corresponds to “BT-145 Contract Conclusion Date” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F20_2014/AWARD_CONTRACT/AWARDED_CONTRACT/DATE_CONCLUSION_CONTRACT. The expected ontology instances are epo: epo:LotAwardOutcome / xsd:date .
+#xpath: /TED_EXPORT/FORM_SECTION/F20_2014/AWARD_CONTRACT/AWARDED_CONTRACT/DATE_CONCLUSION_CONTRACT
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this epo:playedBy / epo:hasLegalName ?value . }
+		?this rdf:type epo:LotAwardOutcome .
+		?this epo:hasAwardDecisionDate ?value . }

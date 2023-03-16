@@ -1,10 +1,8 @@
-#title: VII.1.7.3 - Postal address
-#description: “VII.1.7.3 - Postal address” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/ADDRESS. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/ADDRESS
+#title: VII.1.7.2 - National registration number
+#description: “VII.1.7.2 - National registration number” in SF corresponds to “BT-501 Organisation Identifier” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/NATIONALID, /TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTOR/ADDRESS_CONTRACTOR/NATIONALID. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / epo:Identifier / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/NATIONALID,/TED_EXPORT/FORM_SECTION/F20_2014/MODIFICATIONS_CONTRACT/DESCRIPTION_PROCUREMENT/CONTRACTOR/ADDRESS_CONTRACTOR/NATIONALID
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX legal: <https://www.w3.org/ns/legal#>
-PREFIX locn: <http://www.w3.org/ns/locn#>
 
 ASK WHERE { 
-		?this epo:playedBy / legal:registeredAddress / locn:thoroughfare ?value . }
+		?this epo:playedBy / epo:hasID / epo:hasIdentifierValue ?value . }

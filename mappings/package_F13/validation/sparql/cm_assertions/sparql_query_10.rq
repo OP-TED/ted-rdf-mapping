@@ -1,11 +1,10 @@
-#title: I.1.10 - E-mail
-#description: “I.1.10 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/E_MAIL. The expected ontology instances are epo: epo:AgentInRole (from CL1) / cpov:ContactPoint / xsd:anyURI .
-#xpath: /TED_EXPORT/FORM_SECTION/F13_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/E_MAIL
+#title: I.1.8 - Contact person
+#description: “I.1.8 - Contact person” in SF corresponds to “BT-502 Organisation Contact Point” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/CONTACT_POINT. The expected ontology instances are epo: epo:AgentInRole (from CL1) / cpov:ContactPoint / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F13_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/CONTACT_POINT
 
-PREFIX cpov: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Buyer .
-		?this epo:hasContactPointInRole  / cpov:email ?value . }
+		?this epo:hasContactPointInRole / epo:hasContactName ?value . }

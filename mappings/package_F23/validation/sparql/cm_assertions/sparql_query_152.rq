@@ -1,10 +1,11 @@
-#title: V.2.4.5 - Any other details relevant to the value of the concession according to Art. 8(3) of the directive
-#description: “V.2.4.5 - Any other details relevant to the value of the concession according to Art. 8(3) of the directive” in SF corresponds to “BT-163 Concession Value Description” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F23_2014/AWARD_CONTRACT/AWARDED_CONTRACT/INFO_ADD_VALUE. The expected ontology instances are epo: epo:Tender / epo:ConcessionEstimate / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F23_2014/AWARD_CONTRACT/AWARDED_CONTRACT/INFO_ADD_VALUE
+#title: VI.4.1.5 - Country
+#description: “VI.4.1.5 - Country” in SF corresponds to “BT-514 Organisation Country Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F23_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY/COUNTRY. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / at-voc:country (from country.json) .
+#xpath: /TED_EXPORT/FORM_SECTION/F23_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY/COUNTRY
 
+PREFIX cv: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Tender .
-		?this epo:foreseesConcession / epo:hasCalculationMethod ?value . }
+		?this rdf:type epo:Reviewer .
+		?this epo:playedBy / cv:registeredAddress / epo:hasCountryCode ?value . }

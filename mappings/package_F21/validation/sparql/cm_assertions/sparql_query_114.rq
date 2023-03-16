@@ -1,10 +1,10 @@
-#title: II.3 - Estimated date of publication of contract notice
-#description: “II.3 - Estimated date of publication of contract notice” in SF corresponds to “BT-127 nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/DATE_PUBLICATION_NOTICE. The expected ontology instances are epo: epo:Notice / epo:PlannedProcurementPart / epo:ProcessPlanningTerm / xsd:date .
-#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/OBJECT_CONTRACT/DATE_PUBLICATION_NOTICE
+#title: IV.1.1.1 - Open procedure
+#description: “IV.1.1.1 - Open procedure” in SF corresponds to “BT-105 Procedure Type” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/PROCEDURE/PT_OPEN. The expected ontology instances are epo: epo:Procedure / at-voc:procurement-procedure-type .
+#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/PROCEDURE/PT_OPEN
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Notice .
-		?this  epo-not:announcesPlannedProcurementPart / epo:isSubjectToTerm / epo:hasEstimatedContractNoticePublicationDate ?value }
+		?this rdf:type epo:Procedure .
+		?this epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open> . }

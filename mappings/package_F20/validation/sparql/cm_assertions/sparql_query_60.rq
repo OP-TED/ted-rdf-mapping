@@ -1,10 +1,8 @@
-#title: V.2.4.2 - Total value of the contract/lot
-#description: “V.2.4.2 - Total value of the contract/lot” in SF corresponds to “BT-720 Tender Value” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F20_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_TOTAL. The expected ontology instances are epo: epo:LotAwardOutcome / epo:MonetaryValue / xsd:decimal .
-#xpath: /TED_EXPORT/FORM_SECTION/F20_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_TOTAL
+#title: V.2.3.12 - The contractor is an SME
+#description: “V.2.3.12 - The contractor is an SME” in SF corresponds to “BT-165 Winner Size” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F20_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/SME, /TED_EXPORT/FORM_SECTION/F20_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR/SME. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2)  / at-voc:economic-operator-size .
+#xpath: /TED_EXPORT/FORM_SECTION/F20_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/SME,/TED_EXPORT/FORM_SECTION/F20_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR/SME
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:LotAwardOutcome .
-		?this epo:hasAwardedValue / epo:hasAmountValue ?value . }
+		?this epo:playedBy / epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme> }

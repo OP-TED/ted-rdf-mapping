@@ -1,0 +1,15 @@
+#title: Empty Individuals SELECT TED-929/TED-933
+#description: Finds "empty" individuals, i.e. individuals that do not have any property values attached other than their type
+
+PREFIX epd: <http://data.europa.eu/a4g/resource/>
+
+SELECT ?this WHERE {
+    {
+      SELECT ?this (COUNT(?someValue) AS ?vCount)  WHERE {
+        ?this ?property ?someValue.
+  		FILTER strstarts(str(?this),str(epd:)).
+      } GROUP BY ?this
+    }
+    FILTER ((EXISTS {?this a ?class}) && ?vCount = 1)
+}
+ORDER BY ?this

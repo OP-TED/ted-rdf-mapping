@@ -1,0 +1,132 @@
+#--- s6_complementary_information.rml.ttl ---
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix cv: <http://data.europa.eu/m8g/> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+
+tedm:legal_economic_financial
+  a owl:Ontology ;
+  owl:imports dct:, <http://www.w3.org/2004/02/skos/core> ;
+  dct:description """
+        This module provides the mapping definitions for the ..."""@en ;
+  rdfs:label "TED-SWS mapping of "@en ;
+  dct:date "2022-08-20"^^xsd:date .
+
+#tedm:SelectionCriterion a rr:TriplesMap ;
+# mapping for field III.2.1.1 was removed as it cannot be properly mapped to EPO v3.1.0
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasSelectionCriterionType ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if(exists(PARTICULAR_PROFESSION)) then 'http://publications.europa.eu/resource/authority/selection-criterion/sui-act' else null ";
+#                    rr:termType rr:IRI;
+#                ] ;
+#        ] ;
+# mapping for field III.2.1.2 was removed as it cannot be properly mapped to EPO v3.1.0
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate cccev:description ;
+#            rr:objectMap
+#                [
+#                    rml:reference "REFERENCE_TO_LAW";
+#                ] ;
+#        ] ;
+# mapping for field III.1.9.1 was removed as it cannot be properly mapped to EPO v3.1.0
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate cccev:name ;
+#            rr:objectMap
+#                [
+#                    rml:reference "QUALIFICATION/CONDITIONS";
+#                ] ;
+#        ] ;
+# mapping for field III.1.9.2 was removed as it cannot be properly mapped to EPO v3.1.0
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate cccev:description ;
+#            rr:objectMap
+#                [
+#                    rml:reference "QUALIFICATION/METHODS";
+#                ] ;
+#        ] ;
+# mapping for field III.1.4.1 was removed as it cannot be properly mapped to EPO v3.1.0
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate cccev:description ;
+#            rr:objectMap
+#                [
+#                    rml:reference "RULES_CRITERIA";
+#                ] ;
+#        ] .
+
+#tedm:Lot a rr:TriplesMap ;
+# used to be part of the mapping for fields III.1.4.1, III.1.9.1, III.1.9.2, III.2.1.1 and III.2.1.2, but it was removed as EPO v3.1.0 doesn't provide the proper model to represent these fields
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:specifiesSelectionCriterion;
+#            rr:objectMap
+#            [
+#                rr:parentTriplesMap tedm:SelectionCriterion;
+#            ]
+#        ] ;
+# mapping for field III.1.5.1 was removed as it cannot be properly mapped to EPO v3.1.0. See notes in CM.
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasReservedProcurement;
+#            rr:objectMap
+#                [
+#                    rml:reference "if(exists(../../LEFTI/RESTRICTED_SHELTERED_WORKSHOP)) then 'http://publications.europa.eu/resource/authority/reserved-procurement/res-ws' else null";
+#                    rr:termType rr:IRI
+#                ]
+#        ] ;
+# mapping for field III.1.5.3 was removed as it cannot be properly mapped to EPO v3.1.0. See notes in CM.
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasReservedProcurement;
+#            rr:objectMap
+#                [
+#                    rml:reference "if(exists(../../LEFTI/RESERVED_ORGANISATIONS_SERVICE_MISSION)) then 'http://publications.europa.eu/resource/authority/reserved-procurement/res-pub-ser' else null";
+#                    rr:termType rr:IRI
+#                ]
+#        ] .
+
+#tedm:ContractTermProcedure a rr:TriplesMap ;
+# mapping for field III.1.5.2 was removed as it cannot be properly mapped to EPO v3.1.0. See notes in CM.
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasReservedExecution;
+#            rr:objectMap
+#                [
+#                    rml:reference "if(exists(../LEFTI/RESTRICTED_SHELTERED_PROGRAM)) then 'http://publications.europa.eu/resource/authority/applicability/yes' else null";
+#                    rr:termType rr:IRI
+#                ]
+#        ] ;
+# mapping for field III.2.2 was removed as it cannot be properly mapped to EPO v3.1.0. See notes in CM.
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasPerformanceConditions;
+#            rr:objectMap
+#                [
+#                    rml:reference "../LEFTI/PERFORMANCE_CONDITIONS"
+#                ]
+#        ] .
+
+# mapping for field III.2.3.1 was removed as it cannot be properly mapped to EPO v3.1.0. See notes in CM.
+#tedm:Lot a rr:TriplesMap ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasPerformingStaffQualificationInformation;
+#            rr:objectMap
+#                [
+#                    rml:reference "if(exists(../../LEFTI/PERFORMANCE_STAFF_QUALIFICATION)) then 'http://publications.europa.eu/resource/authority/requirement-stage/t-requ' else 'http://publications.europa.eu/resource/authority/requirement-stage/not-requ'";
+#                    rr:termType rr:IRI
+#                ]
+#        ] .
