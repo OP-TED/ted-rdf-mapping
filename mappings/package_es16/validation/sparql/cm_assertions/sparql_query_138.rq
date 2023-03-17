@@ -1,10 +1,11 @@
-#title: GR-Lot-AwardCriteria-Criterion-Parameter content.GR-Lot.GR-Lot-TenderingTerms.GR-Lot-AwardCriteria.GR-Lot-AwardCriteria-Criterion.GR-Lot-AwardCriteria-Criterion-Parameters - Lot Award Criterion Parameter (Value and associated Code)
-#description: “GR-Lot-AwardCriteria-Criterion-Parameter content.GR-Lot.GR-Lot-TenderingTerms.GR-Lot-AwardCriteria.GR-Lot-AwardCriteria-Criterion.GR-Lot-AwardCriteria-Criterion-Parameters - Lot Award Criterion Parameter (Value and associated Code)” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/AwardingTerms/AwardingCriterion/SubordinateAwardingCriterion/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/AwardCriterionParameter. The expected ontology instances are epo: epo:AwardCriterion .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/AwardingTerms/AwardingCriterion/SubordinateAwardingCriterion/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/AwardCriterionParameter
+#title: BT-543-Lot content.GR-Lot.GR-Lot-TenderingTerms.GR-Lot-AwardCriteria - Award Criteria Complicated
+#description: “BT-543-Lot content.GR-Lot.GR-Lot-TenderingTerms.GR-Lot-AwardCriteria - Award Criteria Complicated” in SF corresponds to “BT-543 Award Criteria Complicated” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/AwardingTerms/AwardingCriterion/CalculationExpression. The expected ontology instances are epo: epo:Lot / epo:AwardCriterion / rdf:langString .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/AwardingTerms/AwardingCriterion/CalculationExpression
 
+PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:AwardCriterion .
-		?this a epo:AwardCriterion }
+		?this rdf:type epo:Lot .
+		?this epo:isSubjectToLotSpecificTerm / cccev:description ?value . }

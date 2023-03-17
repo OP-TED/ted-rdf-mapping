@@ -1,10 +1,10 @@
-#title: BT-540-Lot content.GR-Lot.GR-Lot-TenderingTerms.GR-Lot-AwardCriteria.GR-Lot-AwardCriteria-Criterion - Award Criterion Description
-#description: “BT-540-Lot content.GR-Lot.GR-Lot-TenderingTerms.GR-Lot-AwardCriteria.GR-Lot-AwardCriteria-Criterion - Award Criterion Description” in SF corresponds to “BT-540 Award Criterion Description” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/AwardingTerms/AwardingCriterion/SubordinateAwardingCriterion/Description. The expected ontology instances are epo: epo:Lot / epo:AwardCriterion / rdf:langString .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/AwardingTerms/AwardingCriterion/SubordinateAwardingCriterion/Description
+#title: BT-5423-Lot content.GR-Lot.GR-Lot-TenderingTerms.GR-Lot-AwardCriteria.GR-Lot-AwardCriteria-Criterion.GR-Lot-AwardCriteria-Criterion-Parameters.GR-Lot-AwardCriteria-Criterion-Parameter - Award Criterion Number Threshold
+#description: “BT-5423-Lot content.GR-Lot.GR-Lot-TenderingTerms.GR-Lot-AwardCriteria.GR-Lot-AwardCriteria-Criterion.GR-Lot-AwardCriteria-Criterion-Parameters.GR-Lot-AwardCriteria-Criterion-Parameter - Award Criterion Number Threshold” in SF corresponds to “BT-5423 Award Criterion Number Threshold” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/AwardingTerms/AwardingCriterion/SubordinateAwardingCriterion/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/AwardCriterionParameter/ParameterCode/@listName. The expected ontology instances are epo: epo:Lot / epo:AwardCriterion / cccev:Constraint / xsd:decimal .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/AwardingTerms/AwardingCriterion/SubordinateAwardingCriterion/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/AwardCriterionParameter/ParameterCode/@listName
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:isSubjectToLotSpecificTerm / epo:hasDescription ?value }
+		?this epo:isSubjectToLotSpecificTerm / epo:hasConstraint / epo:hasThresholdValue ?value }

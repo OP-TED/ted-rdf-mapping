@@ -1,10 +1,10 @@
-#title: BT-541-LotsGroup content.GR-LotsGroup.GR-LotsGroup-TenderingTerms.GR-LotsGroup-AwardCriteria.GR-LotsGroup-AwardCriteria-Criterion.GR-LotsGroup-AwardCriteria-Criterion-Parameters.GR-LotsGroup-AwardCriteria-Criterion-Parameter - Award Criterion Number
-#description: “BT-541-LotsGroup content.GR-LotsGroup.GR-LotsGroup-TenderingTerms.GR-LotsGroup-AwardCriteria.GR-LotsGroup-AwardCriteria-Criterion.GR-LotsGroup-AwardCriteria-Criterion-Parameters.GR-LotsGroup-AwardCriteria-Criterion-Parameter - Award Criterion Number” in SF corresponds to “BT-541 Award Criterion Number” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/AwardingTerms/AwardingCriterion/SubordinateAwardingCriterion/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/AwardCriterionParameter/ParameterNumeric. The expected ontology instances are epo: epo:AwardCriterion / xsd:decimal .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/AwardingTerms/AwardingCriterion/SubordinateAwardingCriterion/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/AwardCriterionParameter/ParameterNumeric
+#title: BT-733-LotsGroup content.GR-LotsGroup.GR-LotsGroup-TenderingTerms.GR-LotsGroup-AwardCriteria - Award Criteria Order Justification
+#description: “BT-733-LotsGroup content.GR-LotsGroup.GR-LotsGroup-TenderingTerms.GR-LotsGroup-AwardCriteria - Award Criteria Order Justification” in SF corresponds to “BT-733 Award Criteria Order Justification” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/AwardingTerms/AwardingCriterion/Description. The expected ontology instances are epo: epo:Lot / epo:AwardEvaluationTerm / rdf:langString .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/AwardingTerms/AwardingCriterion/Description
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:AwardCriterion .
-		?this epo:hasFixedValue ?value }
+		?this rdf:type epo:Lot .
+		?this epo:isSubjectToLotSpecificTerm / epo:hasAwardCriteriaOrderJustification ?value }

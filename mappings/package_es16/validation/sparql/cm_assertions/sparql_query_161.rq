@@ -1,10 +1,10 @@
-#title: BT-78-Lot content.GR-Lot.GR-Lot-TenderingTerms.GR-Lot-Requirements2SecurityClearance1 - Security Clearance Deadline
-#description: “BT-78-Lot content.GR-Lot.GR-Lot-TenderingTerms.GR-Lot-Requirements2SecurityClearance1 - Security Clearance Deadline” in SF corresponds to “BT-78 Security Clearance Deadline” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/LatestSecurityClearanceDate. The expected ontology instances are epo: epo:Lot / epo:SecurityClearanceTerm / xsd:dateTime .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/LatestSecurityClearanceDate
+#title: BT-744-Lot content.GR-Lot.GR-Lot-TenderingTerms.GR-Lot-ElectronicSignatureRequired - Submission Electronic Signature
+#description: “BT-744-Lot content.GR-Lot.GR-Lot-TenderingTerms.GR-Lot-ElectronicSignatureRequired - Submission Electronic Signature” in SF corresponds to “BT-744 Submission Electronic Signature” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/ContractExecutionRequirement/ExecutionRequirementCode/@listName. The expected ontology instances are epo: epo:Lot / epo:SubmissionTerm / xsd:boolean .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/ContractExecutionRequirement/ExecutionRequirementCode/@listName
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:isSubjectToLotSpecificTerm / epo:hasDeadline ?value }
+		?this epo:isSubjectToLotSpecificTerm  / epo:isAdvancedElectronicSignatureRequired ?value . }

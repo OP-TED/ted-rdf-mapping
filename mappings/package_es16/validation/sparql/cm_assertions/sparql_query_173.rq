@@ -1,10 +1,10 @@
-#title: BT-634-Lot content.GR-Lot.GR-Lot-SubmissionInfo.GR-Lot-Procedure - Procurement Relaunch
-#description: “BT-634-Lot content.GR-Lot.GR-Lot-SubmissionInfo.GR-Lot-Procedure - Procurement Relaunch” in SF corresponds to “BT-634 Procurement Relaunch” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/ProcedureRelaunchIndicator. The expected ontology instances are epo: epo:ProcurementProcessInformation / xsd:boolean .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/ProcedureRelaunchIndicator
+#title: BT-13(d)-Lot content.GR-Lot.GR-Lot-SubmissionInfo.GR-Lot-Deadlines1 - Additional Information Deadline
+#description: “BT-13(d)-Lot content.GR-Lot.GR-Lot-SubmissionInfo.GR-Lot-Deadlines1 - Additional Information Deadline” in SF corresponds to “BT-13 Additional Information Deadline” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/AdditionalInformationRequestPeriod/EndDate. The expected ontology instances are epo: epo:Lot / epo:SubmissionTerm / xsd:dateTime .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/AdditionalInformationRequestPeriod/EndDate
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:ProcurementProcessInformation .
-		?this epo:isToBeRelaunched ?value }
+		?this rdf:type epo:Lot .
+		?this epo:isSubjectToLotSpecificTerm  / epo:hasAdditionalInformationDeadline ?value . }

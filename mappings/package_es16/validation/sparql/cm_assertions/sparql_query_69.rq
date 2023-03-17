@@ -1,10 +1,10 @@
-#title: BT-26(a)-Lot content.GR-Lot.GR-Lot-Purpose.GR-Lot-Scope.GR-Lot-Scope-AdditionalClassification - Classification Type (e.g. CPV)
-#description: “BT-26(a)-Lot content.GR-Lot.GR-Lot-Purpose.GR-Lot-Scope.GR-Lot-Scope-AdditionalClassification - Classification Type (e.g. CPV)” in SF corresponds to “BT-26 Classification Type” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/AdditionalCommodityClassification/ItemClassificationCode/@listName. The expected ontology instances are epo: epo:Lot / epo:Purpose / at-voc:cpvsuppl (from cpvsuppl.json) .
-#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/AdditionalCommodityClassification/ItemClassificationCode/@listName
+#title: BT-776-Lot content.GR-Lot.GR-Lot-Purpose.GR-Lot-ProcurementType - Procurement of Innovation
+#description: “BT-776-Lot content.GR-Lot.GR-Lot-Purpose.GR-Lot-ProcurementType - Procurement of Innovation” in SF corresponds to “BT-776 Procurement of Innovation” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/ProcurementAdditionalType/ProcurementTypeCode/@listName. The expected ontology instances are epo: epo:Lot / epo:InnovativeProcurement / at-voc:innovative-acquisition .
+#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/ProcurementAdditionalType/ProcurementTypeCode/@listName
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:hasPurpose / epo:hasAdditionalClassification ?value . }
+		?this epo:fulfillsStrategicProcurement / epo:fulfillsRequirement ?value }

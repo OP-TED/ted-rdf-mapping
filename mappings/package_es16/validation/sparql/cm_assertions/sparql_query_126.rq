@@ -1,11 +1,10 @@
-#title: BT-7531-Lot content.GR-Lot.GR-Lot-TenderingTerms.GR-Lot-SelectionCriteria.GR-Lot-SelectionCriteria-SecondStageInvite - Selection Criteria Second Stage Invite Number Weight
-#description: “BT-7531-Lot content.GR-Lot.GR-Lot-TenderingTerms.GR-Lot-SelectionCriteria.GR-Lot-SelectionCriteria-SecondStageInvite - Selection Criteria Second Stage Invite Number Weight” in SF corresponds to “BT-7531 Selection Criteria Second Stage Invite Number Weight” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/SelectionCriteria/CriterionParameter/ParameterCode/@listName. The expected ontology instances are epo: epo:Lot / epo:SelectionCriterion / xsd:decimal .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/SelectionCriteria/CriterionParameter/ParameterCode/@listName
+#title: BT-50-Lot content.GR-Lot.GR-Lot-TenderingTerms.GR-Lot-Candidates - Minimum Candidates
+#description: “BT-50-Lot content.GR-Lot.GR-Lot-TenderingTerms.GR-Lot-Candidates - Minimum Candidates” in SF corresponds to “BT-50 Minimum Candidates” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/EconomicOperatorShortList/MinimumQuantity. The expected ontology instances are epo: epo:Lot / epo:MultipleStageProcedureTerm / xsd:integer .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/EconomicOperatorShortList/MinimumQuantity
 
-PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:specifiesSelectionCriterion / cccev:weight ?value }
+		?this epo:specifiesSelectionCriterion / epo:hasMinimumNumberOfCandidates ?value }

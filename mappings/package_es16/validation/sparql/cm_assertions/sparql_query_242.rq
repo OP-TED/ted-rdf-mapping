@@ -1,10 +1,8 @@
-#title: BT-719-notice content.GR-Change.GR-ChangeSections - Change Procurement Documents Date
-#description: “BT-719-notice content.GR-Change.GR-ChangeSections - Change Procurement Documents Date” in SF corresponds to “BT-719 Change Procurement Documents Date” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Changes/Change/ProcurementDocumentsChangeDate. The expected ontology instances are epo: epo:ElementChangeDescription / xsd:date .
-#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Changes/Change/ProcurementDocumentsChangeDate
+#title: BT-509-Organization-Company content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Company - Organisation eDelivery Gateway
+#description: “BT-509-Organization-Company content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Company - Organisation eDelivery Gateway” in SF corresponds to “BT-509 Organisation eDelivery Gateway” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/EndpointID. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cv:Channel / xsd:anyURI .
+#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/EndpointID
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:ElementChangeDescription .
-		?this epo:hasProcurementDocumentChangeDate ?value }
+		?this epo:playedBy / epo:hasDeliveryGateway / epo:hasEndpoint ?value . }

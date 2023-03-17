@@ -1,10 +1,10 @@
-#title: OPP-052-Organization content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Company-BuyerExclusive - Acquiring CPB Buyer Indicator
-#description: “OPP-052-Organization content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Company-BuyerExclusive - Acquiring CPB Buyer Indicator” in SF corresponds to “OPP-052 nan” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/AcquiringCPBIndicator. The expected ontology instances are epo: epo:AcquiringCentralPurchasingBody / xsd:boolean .
-#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/AcquiringCPBIndicator
+#title: BT-512-Organization-TouchPoint content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Touch-Point.GR-TouchPoint-Address - Post Code
+#description: “BT-512-Organization-TouchPoint content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Touch-Point.GR-TouchPoint-Address - Post Code” in SF corresponds to “BT-512 Organisation Post Code” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/PostalAddress/PostalZone. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / rdf:langString .
+#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/PostalAddress/PostalZone
 
+PREFIX cv: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 
 ASK WHERE { 
-		?this rdf:type epo:AcquiringCentralPurchasingBody .
-		?this epo:isContractingEntity ?value }
+		?this epo:playedBy / cv:registeredAddress / locn:postCode ?value . }

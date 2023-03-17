@@ -1,10 +1,10 @@
-#title: BT-736-Lot content.GR-Lot.GR-Lot-TenderingTerms.GR-Lot-ContractExecutionRequirements - Reserved Execution
-#description: “BT-736-Lot content.GR-Lot.GR-Lot-TenderingTerms.GR-Lot-ContractExecutionRequirements - Reserved Execution” in SF corresponds to “BT-736 Reserved Execution” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/ContractExecutionRequirement/ExecutionRequirementCode/@listName. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / at-voc:applicability .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/ContractExecutionRequirement/ExecutionRequirementCode/@listName
+#title: BT-732-Lot content.GR-Lot.GR-Lot-TenderingTerms.GR-Lot-SecurityClearance2 - Security Clearance Description
+#description: “BT-732-Lot content.GR-Lot.GR-Lot-TenderingTerms.GR-Lot-SecurityClearance2 - Security Clearance Description” in SF corresponds to “BT-732 Security Clearance Description” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/SecurityClearanceTerm/Description. The expected ontology instances are epo: epo:Lot / epo:SecurityClearanceTerm / rdf:langString .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/SecurityClearanceTerm/Description
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:foreseesContractSpecificTerm / epo:hasReservedExecution ?value }
+		?this epo:isSubjectToLotSpecificTerm  / epo:hasDescription ?value . }

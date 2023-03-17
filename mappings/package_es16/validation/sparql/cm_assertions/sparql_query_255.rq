@@ -1,10 +1,10 @@
-#title: BT-513-Organization-Company content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Company-Address - Organisation City
-#description: “BT-513-Organization-Company content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Company-Address - Organisation City” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/PostalAddress/CityName. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .
-#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/PostalAddress/CityName
+#title: OPP-051-Organization content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Company-BuyerExclusive - Awarding CPB Buyer Indicator
+#description: “OPP-051-Organization content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Company-BuyerExclusive - Awarding CPB Buyer Indicator” in SF corresponds to “OPP-051 nan” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/AwardingCPBIndicator. The expected ontology instances are epo: epo:AwardingCentralPurchasingBody / xsd:boolean .
+#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/AwardingCPBIndicator
 
-PREFIX cv: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this epo:playedBy / cv:registeredAddress / locn:postName ?value . }
+		?this rdf:type epo:AwardingCentralPurchasingBody .
+		?this epo:isContractingEntity ?value }

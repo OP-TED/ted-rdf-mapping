@@ -1,10 +1,10 @@
-#title: BT-52-Lot content.GR-Lot.GR-Lot-TenderingTerms.GR-Lot-Candidates - Successive Reduction Indicator (Lot)
-#description: “BT-52-Lot content.GR-Lot.GR-Lot-TenderingTerms.GR-Lot-Candidates - Successive Reduction Indicator (Lot)” in SF corresponds to “BT-52 Successive Reduction” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/CandidateReductionConstraintIndicator. The expected ontology instances are epo: epo:Lot / epo:MultipleStageProcedureTerm / xsd:boolean .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/CandidateReductionConstraintIndicator
+#title: BT-539-Lot content.GR-Lot.GR-Lot-TenderingTerms.GR-Lot-AwardCriteria.GR-Lot-AwardCriteria-Criterion - Award Criterion Type
+#description: “BT-539-Lot content.GR-Lot.GR-Lot-TenderingTerms.GR-Lot-AwardCriteria.GR-Lot-AwardCriteria-Criterion - Award Criterion Type” in SF corresponds to “BT-539 Award Criterion Type” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/AwardingTerms/AwardingCriterion/SubordinateAwardingCriterion/AwardingCriterionTypeCode/@listName. The expected ontology instances are epo: epo:Lot / epo:AwardCriterion / at-voc:award-criterion-type .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/AwardingTerms/AwardingCriterion/SubordinateAwardingCriterion/AwardingCriterionTypeCode/@listName
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:specifiesSelectionCriterion / epo:hasSuccessiveReduction ?value }
+		?this epo:isSubjectToLotSpecificTerm / epo:hasAwardCriterionType ?value }

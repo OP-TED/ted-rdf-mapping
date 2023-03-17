@@ -1,10 +1,11 @@
-#title: BT-754-Lot content.GR-Lot.GR-Lot-Purpose.GR-Lot-ProcurementType.GR-Lot-ProcurementType-Accessibility - Accessibility
-#description: “BT-754-Lot content.GR-Lot.GR-Lot-Purpose.GR-Lot-ProcurementType.GR-Lot-ProcurementType-Accessibility - Accessibility” in SF corresponds to “BT-754 Accessibility” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/ProcurementAdditionalType/ProcurementTypeCode/@listName. The expected ontology instances are epo: epo:Lot / epo:StrategicProcurement / at-voc:accessibility .
-#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/ProcurementAdditionalType/ProcurementTypeCode/@listName
+#title: BT-5101(c)-Lot content.GR-Lot.GR-Lot-Purpose.GR-Lot-PlaceOfPerformance - Place Performance Streetline 2
+#description: “BT-5101(c)-Lot content.GR-Lot.GR-Lot-Purpose.GR-Lot-PlaceOfPerformance - Place Performance Streetline 2” in SF corresponds to “BT-5101 Place Performance Street” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/RealizedLocation/Address/AddressLine/Line. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:langString .
+#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/RealizedLocation/Address/AddressLine/Line
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:fulfillsStrategicProcurement / epo:includesAccessibilityCriterion ?value }
+		?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:thoroughfare ?value . }

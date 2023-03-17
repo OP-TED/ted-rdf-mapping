@@ -1,8 +1,10 @@
-#title: OPT-301-Lot-Mediator content.GR-Lot.GR-Lot-Review.GR-Lot-Mediator - Mediator Technical Identifier Reference
-#description: “OPT-301-Lot-Mediator content.GR-Lot.GR-Lot-Review.GR-Lot-Mediator - Mediator Technical Identifier Reference” in SF corresponds to “OPT-301 nan” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/AppealTerms/MediationParty/PartyIdentification/ID. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / epo:Identifier / rdf:langString .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/AppealTerms/MediationParty/PartyIdentification/ID
+#title: BT-24-LotsGroup content.GR-LotsGroup.GR-LotsGroup-Purpose.GR-LotsGroup-Description - Description
+#description: “BT-24-LotsGroup content.GR-LotsGroup.GR-LotsGroup-Purpose.GR-LotsGroup-Description - Description” in SF corresponds to “BT-24 Description” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/Description. The expected ontology instances are epo: epo:LotGroup / rdf:langString .
+#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/Description
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this epo:playedBy / epo:hasID / epo:hasIdentifierValue ?value . }
+		?this rdf:type epo:LotGroup .
+		?this epo:hasDescription ?value . }

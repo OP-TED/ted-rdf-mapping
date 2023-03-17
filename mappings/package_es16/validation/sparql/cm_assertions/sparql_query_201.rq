@@ -1,10 +1,8 @@
-#title: OPT-140-Lot content.GR-Lot.GR-Lot-SubmissionInfo.GR-Lot-ProcurementDocuments - Procurement Documents ID
-#description: “OPT-140-Lot content.GR-Lot.GR-Lot-SubmissionInfo.GR-Lot-ProcurementDocuments - Procurement Documents ID” in SF corresponds to “OPT-140 nan” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/CallForTendersDocumentReference/ID. The expected ontology instances are epo: epo:AccessTerm / epo:Identifier / rf:langString .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/CallForTendersDocumentReference/ID
+#title: OPT-301-Lot-ReviewOrg content.GR-Lot.GR-Lot-Review.GR-Lot-ReviewOrg - Review Organization Technical Identifier Reference
+#description: “OPT-301-Lot-ReviewOrg content.GR-Lot.GR-Lot-Review.GR-Lot-ReviewOrg - Review Organization Technical Identifier Reference” in SF corresponds to “OPT-301 nan” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/AppealTerms/AppealReceiverParty/PartyIdentification/ID. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / epo:Identifier / rdf:langString .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/AppealTerms/AppealReceiverParty/PartyIdentification/ID
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:AccessTerm .
-		?this epo:hasID / epo:hasIdentifierValue ?value }
+		?this epo:playedBy / epo:hasID / epo:hasIdentifierValue ?value . }

@@ -1,10 +1,10 @@
-#title: BT-726-Lot content.GR-Lot.GR-Lot-Purpose.GR-Lot-Scope - Suitable For SMEs
-#description: “BT-726-Lot content.GR-Lot.GR-Lot-Purpose.GR-Lot-Scope - Suitable For SMEs” in SF corresponds to “BT-726 Suitable For SMEs” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/SMESuitableIndicator. The expected ontology instances are epo: epo:Lot / epo:hasPurpose / xsd:boolean .
-#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/SMESuitableIndicator
+#title: BT-27-Lot content.GR-Lot.GR-Lot-Purpose.GR-Lot-Scope - Estimated Value
+#description: “BT-27-Lot content.GR-Lot.GR-Lot-Purpose.GR-Lot-Scope - Estimated Value” in SF corresponds to “BT-27 Estimated Value” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/RequestedTenderTotal/EstimatedOverallContractAmount. The expected ontology instances are epo: epo:Lot / epo:hasPurpose / epo:MonetaryValue / xsd:decimal .
+#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/RequestedTenderTotal/EstimatedOverallContractAmount
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:hasPurpose / epo:isSMESuitable ?value }
+		?this epo:hasPurpose / epo:hasRestatedEstimatedValue / epo:hasAmountValue ?value . }

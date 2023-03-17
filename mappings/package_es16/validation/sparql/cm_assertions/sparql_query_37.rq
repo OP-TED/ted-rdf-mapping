@@ -1,10 +1,11 @@
-#title: BT-728-Procedure content.GR-Procedure.GR-Procedure-Purpose.GR-Procedure-PlaceOfPerformance - Place Performance Additional Information
-#description: “BT-728-Procedure content.GR-Procedure.GR-Procedure-Purpose.GR-Procedure-PlaceOfPerformance - Place Performance Additional Information” in SF corresponds to “BT-728 Place Performance Additional Information” in eForms. The corresponding XML element is /ContractNotice/ProcurementProject/RealizedLocation/Description. The expected ontology instances are epo: epo:Procedure / epo:ContractTerm / rdf:langString .
-#xpath: /ContractNotice/ProcurementProject/RealizedLocation/Description
+#title: BT-67(a)-Procedure content.GR-Procedure.GR-Procedure-TenderingTerms.GR-Procedure-ExclusionGrounds - Exclusion Grounds
+#description: “BT-67(a)-Procedure content.GR-Procedure.GR-Procedure-TenderingTerms.GR-Procedure-ExclusionGrounds - Exclusion Grounds” in SF corresponds to “BT-67 Exclusion Grounds” in eForms. The corresponding XML element is /ContractNotice/TenderingTerms/TendererQualificationRequest/SpecificTendererRequirement/TendererRequirementTypeCode/@listName. The expected ontology instances are epo: epo:Procedure / epo:ExclusionGround / at-voc:criterion .
+#xpath: /ContractNotice/TenderingTerms/TendererQualificationRequest/SpecificTendererRequirement/TendererRequirementTypeCode/@listName
 
+PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Procedure .
-		?this epo:foreseesContractSpecificTerm / epo:hasPlaceOfPerformanceAdditionalInformation ?value . }
+		?this epo:specifiesExclusionGround / cccev:type ?value }

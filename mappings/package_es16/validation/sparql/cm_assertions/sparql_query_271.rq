@@ -1,8 +1,9 @@
-#title: BT-505-Organization-TouchPoint content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Touch-Point - Internet Address
-#description: “BT-505-Organization-TouchPoint content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Touch-Point - Internet Address” in SF corresponds to “BT-505 Organisation Internet Address” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/WebsiteURI. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / xsd:anyURI .
-#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/WebsiteURI
+#title: BT-503-Organization-TouchPoint content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Touch-Point.GR-TouchPoint-Contact - Contact Telephone Number
+#description: “BT-503-Organization-TouchPoint content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations.GR-Touch-Point.GR-TouchPoint-Contact - Contact Telephone Number” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/Contact/Telephone. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / rdf:langString .
+#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/Contact/Telephone
 
+PREFIX cpov: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
 ASK WHERE { 
-		?this epo:playedBy / epo:hasURL ?value . }
+		?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:telephone ?value . }

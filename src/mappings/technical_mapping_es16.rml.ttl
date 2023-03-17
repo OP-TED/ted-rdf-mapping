@@ -52,7 +52,7 @@ tedm:Notice-Buyer_ND-ServiceProvider a rr:TriplesMap ;
         [
             rdfs:comment "The notice refers to a Buyer role";
             rdfs:label "GR-ContractingAuthority";
-            rr:predicate epo:refersToRole ;
+            rr:predicate epo:announcesRole ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:GR-ContractingAuthority
@@ -321,20 +321,7 @@ tedm:GR-Procedure_ND-ProcedureProcess a rr:TriplesMap ;
                     rml:reference "descendant::cbc:ProcessReason";
                     rr:datatype xsd:string
                 ] ;
-        ]   ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-763-Procedure";
-            rr:predicate   epo:hasProcurementScopeDividedIntoLot  ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:Lot;
-                    rr:joinCondition [
-                        rr:child "path(..)";
-                        rr:parent "path(..)";
-                    ];
-                ];
-        ] .
+        ]   .
 
 
 #GR-Procedure with ND-ProcedureProject
@@ -383,24 +370,24 @@ tedm:GR-Procedure_ND-ProcedureProject a rr:TriplesMap ;
                     rr:datatype xsd:string
                 ] ;
         ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-23-Procedure";
-            rr:predicate  epo:hasMainFeature;
-            rr:objectMap
-                [
-                    rml:reference "cbc:ProcurementTypeCode";
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-531-Procedure";
-            rr:predicate  epo:hasAdditionalInformation;
-            rr:objectMap
-                [
-                    rml:reference "cac:ProcurementAdditionalType/cbc:ProcurementTypeCode[not(@listName='transport-service')]";
-                ] ;
-        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "BT-26(a)-Procedure and BT-263-Procedure";
+#            rr:predicate epo:hasAdditionalClassification  ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if(exists(descendant::cbc:ItemClassificationCode) and exists(descendant::cbc:ItemClassificationCode/@listName)) then concat(cbc:ItemClassificationCode, ':', cbc:ItemClassificationCode/@listName) else null";
+#                ] ;
+#        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "BT-26(m)-Procedure and BT-262-Procedure";
+#            rr:predicate epo:hasMainClassification  ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if(exists(descendant::cbc:ItemClassificationCode) and exists(descendant::cbc:ItemClassificationCode/@listName)) then concat(cbc:ItemClassificationCode, ':', cbc:ItemClassificationCode/@listName) else null";
+#                ] ;
+#        ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-22-Procedure";
@@ -434,80 +421,6 @@ tedm:GR-Procedure_ND-ProcedureProject a rr:TriplesMap ;
                         rr:parent "path(../.)";
                     ];
                 ]
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-26(m)-Procedure and BT-262-Procedure";
-            rr:predicate epo:hasPurpose ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MainClassificationPurpose;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(../.)";
-                    ];
-                ]
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-26(a)-Procedure and BT-263-Procedure";
-            rr:predicate epo:hasAdditionalClassification ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:AdditionalClassificationProcedure;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(../.)";
-                    ];
-                ]
-        ] .
-
-tedm:AdditionalClassificationProcedure a rr:TriplesMap ;
-    rdfs:label "BT-26(a)-Procedure and BT-263-Procedure";
-    rdfs:comment "Applies to: GR-Procedure-Scope-AdditionalClassification";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProject/cac:AdditionalCommodityClassification";
-            rml:referenceFormulation ql:XPath
-        ];
-    rr:subjectMap
-        [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_AdditionalClassificationProcedure_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class epo:Purpose
-        ]  ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-26(a)-Procedure and BT-263-Procedure";
-            rr:predicate epo:hasAdditionalClassification  ;
-            rr:objectMap
-                [
-                    rml:reference "if(exists(cbc:ItemClassificationCode) and exists(cbc:ItemClassificationCode/@listName)) then concat(cbc:ItemClassificationCode, ':', cbc:ItemClassificationCode/@listName) else null";
-                ] ;
-        ] .
-
-tedm:MainClassificationPurpose a rr:TriplesMap ;
-    rdfs:label "ND-ProcedureMainClassification";
-    rdfs:comment "Applies to: GR-Procedure-Scope-MainClassification";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProject/cac:MainCommodityClassification";
-            rml:referenceFormulation ql:XPath
-        ];
-    rr:subjectMap
-        [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_MainClassificationPurpose_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class epo:Purpose
-        ]  ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-26(m)-Procedure and BT-262-Procedure";
-            rr:predicate epo:hasMainClassification  ;
-            rr:objectMap
-                [
-                    rml:reference "if(exists(cbc:ItemClassificationCode) and exists(cbc:ItemClassificationCode/@listName)) then concat(cbc:ItemClassificationCode, ':', cbc:ItemClassificationCode/@listName) else null";
-                ] ;
         ] .
 
 tedm:ProcurementProjectMonetaryValue a rr:TriplesMap ;
@@ -601,6 +514,24 @@ tedm:ProcurementProjectContractTerm a rr:TriplesMap ;
                     rml:reference "cac:Address/cbc:Description";
                     rr:datatype xsd:string;
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-531-Procedure";
+            rr:predicate  epo:hasAdditionalContractNature;
+            rr:objectMap
+                [
+                    rml:reference "../cac:ProcurementAdditionalType/cbc:ProcurementTypeCode[not(@listName='transport-service')]";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-23-Procedure";
+            rr:predicate  epo:hasContractNatureType;
+            rr:objectMap
+                [
+                    rml:reference "../cbc:ProcurementTypeCode";
+                ] ;
         ] .
 
 
@@ -628,29 +559,6 @@ tedm:ProcurementProjectContractLocation a rr:TriplesMap ;
                         rr:parent "path(../.)";
                     ];
                 ]
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-5071-Lot";
-            rr:predicate epo:hasNutsCode  ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:nuts;
-                    rr:joinCondition [
-                        rr:child "descendant::cbc:CountrySubentityCode";
-                        rr:parent "code.value";
-                    ];
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-5141-Procedure";
-            rr:predicate epo:hasCountryCode  ;
-            rr:objectMap
-                [
-                    rml:reference "'http://publications.europa.eu/resource/authority/country/' || descendant::cbc:IdentificationCode";
-                    rr:termType rr:IRI;
-                ] ;
         ] .
 
 tedm:ProcurementProjectContractAddress a rr:TriplesMap ;
@@ -664,7 +572,6 @@ tedm:ProcurementProjectContractAddress a rr:TriplesMap ;
     rr:subjectMap
         [
             rml:reference "if (exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line) or exists(cbc:CityName) or exists(cbc:PostalZone)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcurementProjectContractAddress_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
-#            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcurementProjectContractAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class locn:Address
         ] ;
     rr:predicateObjectMap
@@ -709,12 +616,35 @@ tedm:ProcurementProjectContractAddress a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rdfs:label "BT-5071-Lot";
+            rr:predicate epo:hasNutsCode  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:nuts;
+                    rr:joinCondition [
+                        rr:child "descendant::cbc:CountrySubentityCode";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
             rdfs:label "BT-5121-Procedure";
             rr:predicate locn:postCode ;
             rr:objectMap
                 [
                     rml:reference "cbc:PostalZone";
                     rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5141-Procedure";
+            rr:predicate epo:hasCountryCode  ;
+            rr:objectMap
+                [
+                    rml:reference "'http://publications.europa.eu/resource/authority/country/' || descendant::cbc:IdentificationCode";
+                    rr:termType rr:IRI;
                 ] ;
         ] .
 
@@ -756,16 +686,6 @@ tedm:GR-Procedure_ND-ProcedureTerms a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-09(a)-Procedure and BT-09(b)-Procedure";
-            rr:predicate  epo:hasCrossBorderLaw  ;
-            rr:objectMap
-                [
-                    rml:reference "if(exists(cac:ProcurementLegislationDocumentReference[cbc:ID/text()='CrossBorderLaw']/cbc:ID[text()='CrossBorderLaw']) or exists(cac:ProcurementLegislationDocumentReference[cbc:ID/text()='CrossBorderLaw']/cbc:DocumentDescription)) then concat(cac:ProcurementLegislationDocumentReference[cbc:ID/text()='CrossBorderLaw'], ' ', cac:ProcurementLegislationDocumentReference[cbc:ID/text()='CrossBorderLaw']/cbc:DocumentDescription) else null";
-                    rr:datatype xsd:string
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
             rdfs:label "BT-01-notice and BT-01(c)-notice and BT-01(d)-notice";
             rr:predicate  epo:hasLegalBasis  ;
             rr:objectMap
@@ -797,7 +717,46 @@ tedm:GR-Procedure_ND-ProcedureTerms a rr:TriplesMap ;
                         rr:parent "path(../../.)";
                     ];
                 ]
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "ProcedureTerm";
+            rdfs:comment "This is the ProcedureTerm that is associated with a Procedure";
+            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ProcedureTerm;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ]
         ].
+
+tedm:ProcedureTerm a rr:TriplesMap ;
+    rdfs:label "ProcedureTerm";
+    rdfs:comment "This is the ProcedureTerm that is associated with a Procedure";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:TenderingTerms";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcedureTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ProcedureTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-09(a)-Procedure and BT-09(b)-Procedure";
+            rr:predicate  epo:hasCrossBorderLaw  ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(cac:ProcurementLegislationDocumentReference[cbc:ID/text()='CrossBorderLaw']/cbc:ID[text()='CrossBorderLaw'])) then cac:ProcurementLegislationDocumentReference[cbc:ID/text()='CrossBorderLaw'] else null";
+                    rr:datatype xsd:string
+                ] ;
+        ] .
 
 #Procedure Extension Group
 tedm:ExtensionGroup a rr:TriplesMap ;
@@ -827,7 +786,7 @@ tedm:ExtensionGroup a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-67(b)-Procedure";
-            rr:predicate  epo:hasDescription  ;
+            rr:predicate  cccev:descrition  ;
             rr:objectMap
                 [
                     rml:reference "cbc:Description";
@@ -838,6 +797,37 @@ tedm:ExtensionGroup a rr:TriplesMap ;
 ##################################################################################################################################################################################################
 ##################################################################################################################################################################################################
 ##################################################################################################################################################################################################
+
+#GR-Organisations-Subsection content.GR-Organisations-Section
+tedm:GR-ContractingAuthorityCompany a rr:TriplesMap ;
+    rdfs:label "GR-Organisations-Subsection content.GR-Organisations-Section";
+    rdfs:comment "This is group GR-Organisations-Subsection content.GR-Organisations-Section, which corresponds to the Buyer role for a company.";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Buyer_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Buyer
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:comment "The buyer role is played by an organizations";
+            rdfs:label "GR-Organisations-Subsection content.GR-Organisations-Section";
+            rr:predicate epo:playedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Organisation;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ]
+        ] .
+
 
 # Organization - Company
 tedm:Organisation a rr:TriplesMap ;
@@ -1135,6 +1125,38 @@ tedm:OrganisationIdentifier a rr:TriplesMap ;
                 ] ;
         ] .
 
+
+#GR-Touch-Point content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations
+tedm:GR-ContractingAuthorityTouchPoint a rr:TriplesMap ;
+    rdfs:label "GR-Touch-Point content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations";
+    rdfs:comment "This is group GR-Organisations-Subsection content.GR-Organisations-Section, which corresponds to the Buyer role for a touch point.";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Buyer_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Buyer
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:comment "The buyer role is played by an organizations";
+            rdfs:label "GR-Touch-Point content.GR-Organisations-Section.GR-Organisations-Subsection.GR-Organisations";
+            rr:predicate epo:playedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:OrganisationTouchPoint;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../../.)";
+                    ];
+                ]
+        ] .
+
+
 #Organization - TouchPoint
 tedm:OrganisationTouchPoint a rr:TriplesMap ;
     rdfs:label "ND-TouchPoint";
@@ -1147,7 +1169,7 @@ tedm:OrganisationTouchPoint a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_TouchPoint_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class org:Organization
 
         ] ;
@@ -2486,24 +2508,6 @@ tedm:LotPurpose a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-26(a)-Lot and BT-263-Lot";
-            rr:predicate epo:hasAdditionalClassification ;
-            rr:objectMap
-                [
-                    rml:reference "if(exists(cac:AdditionalCommodityClassification/ItemClassificationCode/@listName) and exists(cac:AdditionalCommodityClassification/ItemClassificationCode)) then concat(cac:AdditionalCommodityClassification/ItemClassificationCode, ':', cac:AdditionalCommodityClassification/ItemClassificationCode/@listName) else null";
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-26(m)-Lot and BT-262-Lot";
-            rr:predicate epo:hasMainClassification ;
-            rr:objectMap
-                [
-                    rml:reference "if(exists(cac:MainCommodityClassification/ItemClassificationCode/@listName) and exists(cac:MainCommodityClassification/ItemClassificationCode)) then concat(cac:MainCommodityClassification/cbc:ItemClassificationCode, ':', cac:MainCommodityClassification/cbc:ItemClassificationCode/@listName) else null";
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
             rdfs:label "BT-726-Lot";
             rr:predicate epo:isSMESuitable ;
             rr:objectMap
@@ -3192,7 +3196,7 @@ tedm:AwardingTerm a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "descendant::cac:SubordinateAwardingCriterion/cbc:Description";
-                    rr:datatype xsd:string;
+                    rr:datatype xsd:string
                 ] ;
         ] ;
     rr:predicateObjectMap

@@ -1,11 +1,10 @@
-#title: BT-5121-Lot content.GR-Lot.GR-Lot-Purpose.GR-Lot-PlaceOfPerformance - Place Performance Post Code
-#description: “BT-5121-Lot content.GR-Lot.GR-Lot-Purpose.GR-Lot-PlaceOfPerformance - Place Performance Post Code” in SF corresponds to “BT-5121 Place Performance Post Code” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/RealizedLocation/Address/PostalZone. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:langString .
-#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/RealizedLocation/Address/PostalZone
+#title: BT-536-Lot content.GR-Lot.GR-Lot-Purpose.GR-Lot-PlannedDuration.GR-Lot-PlannedDuration-Dates - Duration Start Date
+#description: “BT-536-Lot content.GR-Lot.GR-Lot-Purpose.GR-Lot-PlannedDuration.GR-Lot-PlannedDuration-Dates - Duration Start Date” in SF corresponds to “BT-536 Duration Start Date” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/PlannedPeriod/StartDate. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / epo:Period / xsd:dateTime .
+#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/PlannedPeriod/StartDate
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:postCode ?value . }
+		?this epo:foreseesContractSpecificTerm / epo:definesContractPeriod / epo:hasBeginning ?value . }
