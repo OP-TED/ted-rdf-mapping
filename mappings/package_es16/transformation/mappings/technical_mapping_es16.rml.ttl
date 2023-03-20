@@ -654,14 +654,17 @@ tedm:ProcurementProjectContractAddress a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-5141-Procedure";
+            rdfs:label "BT-5141-Lot";
             rr:predicate epo:hasCountryCode  ;
             rr:objectMap
                 [
-                    rml:reference "'http://publications.europa.eu/resource/authority/country/' || descendant::cbc:IdentificationCode";
-                    rr:termType rr:IRI;
+                    rr:parentTriplesMap tedm:country;
+                    rr:joinCondition [
+                        rr:child "cbc:IdentificationCode";
+                        rr:parent "code.value";
+                    ];
                 ] ;
-        ] .
+        ].
 
 
 #GR-Procedure with ND-ProcedureTerms
@@ -3464,6 +3467,26 @@ tedm:ContractTerm a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rdfs:label "BT-728-Lot";
+            rr:predicate epo:hasPlaceOfPerformanceAdditionalInformation ;
+            rr:objectMap
+                [
+                    rml:reference "descendant::cbc:Description";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-727-Lot";
+            rr:predicate epo:hasBroadPlaceOfPerformance ;
+            rr:objectMap
+                [
+                    rml:reference "descendant::cbc:Region";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
             rdfs:label "BT-77-Lot";
             rr:predicate epo:hasPaymentArrangement ;
             rr:objectMap
@@ -3557,7 +3580,7 @@ tedm:ContractTerm a rr:TriplesMap ;
             rr:predicate epo:definesContractPeriod ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ContractPeriod ;
+                    rr:parentTriplesMap tedm:SpecificDuration ;
                     rr:joinCondition[
                         rr:child "path(..)";
                         rr:parent "path(../..)"
@@ -3618,16 +3641,6 @@ tedm:ContractLocation a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-728-Lot";
-            rr:predicate locn:geographicName ;
-            rr:objectMap
-                [
-                    rml:reference "cbc:Description";
-                    rr:datatype xsd:string;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
             rdfs:label "BT-5071-Lot";
             rr:predicate epo:hasNutsCode  ;
             rr:objectMap
@@ -3635,6 +3648,19 @@ tedm:ContractLocation a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:nuts;
                     rr:joinCondition [
                         rr:child "cbc:CountrySubentityCode";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5141-Lot";
+            rr:predicate epo:hasCountryCode  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:country;
+                    rr:joinCondition [
+                        rr:child "cbc:IdentificationCode";
                         rr:parent "code.value";
                     ];
                 ] ;
@@ -3706,16 +3732,6 @@ tedm:ContractAddress a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-727-Lot";
-            rr:predicate locn:addressArea ;
-            rr:objectMap
-                [
-                    rml:reference "cbc:Region";
-                    rr:datatype xsd:string;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
             rdfs:comment "The identification information of the contract";
             rr:predicate epo:hasID;
             rr:objectMap
@@ -3753,7 +3769,7 @@ tedm:ContractAddressIdentifier a rr:TriplesMap ;
         ] .
 
 #Contract Period
-tedm:ContractPeriod a rr:TriplesMap ;
+tedm:SpecificDuration a rr:TriplesMap ;
     rdfs:label "ND-LotDuration";
     rdfs:comment "Applies to: GR-Lot-PlannedDuration";
     rml:logicalSource
@@ -3767,30 +3783,31 @@ tedm:ContractPeriod a rr:TriplesMap ;
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractPeriod_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:Period
         ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-536-Lot";
-            rr:predicate epo:hasBeginning ;
-            rr:objectMap
-                [
-                    rml:reference "cbc:StartDate";
-                    rr:datatype xsd:dateTime;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-537-Lot";
-            rr:predicate epo:hasEnd ;
-            rr:objectMap
-                [
-                    rml:reference "cbc:EndDate";
-                    rr:datatype xsd:dateTime;
-                ] ;
-        ] ;
+#if this is to specific duration uncomment, but I will need to wait for the reviews
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "BT-536-Lot";
+#            rr:predicate epo:hasBeginning ;
+#            rr:objectMap
+#                [
+#                    rml:reference "cbc:StartDate";
+#                    rr:datatype xsd:dateTime;
+#                ] ;
+#        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "BT-537-Lot";
+#            rr:predicate epo:hasEnd ;
+#            rr:objectMap
+#                [
+#                    rml:reference "cbc:EndDate";
+#                    rr:datatype xsd:dateTime;
+#                ] ;
+#        ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-36-Lot";
-            rr:predicate epo:hasTimePeriod ;
+            rr:predicate time:numericDuration ;
             rr:objectMap
                 [
                     rml:reference "cbc:DurationMeasure";
@@ -3799,7 +3816,7 @@ tedm:ContractPeriod a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-538-Lot";
-            rr:predicate epo:hasDescription ;
+            rr:predicate time:unitType ;
             rr:objectMap
                 [
                     rml:reference "cbc:DescriptionCode";
