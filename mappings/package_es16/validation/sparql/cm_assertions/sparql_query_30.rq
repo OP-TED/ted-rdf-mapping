@@ -1,0 +1,11 @@
+#title: BT-5131-Procedure content.GR-Procedure.GR-Procedure-Purpose.GR-Procedure-PlaceOfPerformance - Place Performance City
+#description: “BT-5131-Procedure content.GR-Procedure.GR-Procedure-Purpose.GR-Procedure-PlaceOfPerformance - Place Performance City” in SF corresponds to “BT-5131 Place Performance City” in eForms. The corresponding XML element is /ContractNotice/ProcurementProject/RealizedLocation/Address/CityName. The expected ontology instances are epo: epo:Procedure / epo:ContractTerm / dct:Location / locn:Address / rdf:langString .
+#xpath: /ContractNotice/ProcurementProject/RealizedLocation/Address/CityName
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+		?this rdf:type epo:Procedure .
+		?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:addressArea ?value . }
