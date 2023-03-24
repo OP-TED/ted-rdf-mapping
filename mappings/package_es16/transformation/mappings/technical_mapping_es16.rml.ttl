@@ -256,18 +256,6 @@ tedm:BuyerOrganizationIdentifier a rr:TriplesMap ;
                 ] ;
         ] .
 
-tedm:buyerLegalType a rr:TriplesMap ;
-    rml:logicalSource
-        [
-            rml:source "transformation/resources/buyer_legal_type.csv" ;
-            rml:referenceFormulation ql:CSV
-        ] ;
-    rr:subjectMap
-        [
-            rml:reference
-                "conceptURI" ;
-        ] .
-
 
 #ND-ProcedureTenderingProcess
 tedm:ND-ProcedureTenderingProcess a rr:TriplesMap ;
@@ -280,7 +268,8 @@ tedm:ND-ProcedureTenderingProcess a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcedureProcess_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            #This one maps to the parent path
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Procedure_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
             rr:class epo:Procedure
 
         ] ;
@@ -332,23 +321,6 @@ tedm:ND-ProcedureTenderingProcess a rr:TriplesMap ;
                     rml:reference "if(exists(/*/cbc:RegulatoryDomain) or exists(cac:ProcurementLegislationDocumentReference[not(cbc:ID/text()=('CrossBorderLaw','LocalLegalBasis'))]/cbc:ID[not(text()=('CrossBorderLaw','LocalLegalBasis'))]) or exists(cac:ProcurementLegislationDocumentReference[not(cbc:ID/text()=('CrossBorderLaw','LocalLegalBasis'))]/cbc:DocumentDescription)) then concat(/*/cbc:RegulatoryDomain, ' ',concat(cac:ProcurementLegislationDocumentReference[not(cbc:ID/text()=('CrossBorderLaw','LocalLegalBasis'))]/cbc:ID[not(text()=('CrossBorderLaw','LocalLegalBasis'))], ' ', cac:ProcurementLegislationDocumentReference[not(cbc:ID/text()=('CrossBorderLaw','LocalLegalBasis'))]/cbc:DocumentDescription)) else null";
                     rr:datatype xsd:string
                 ] ;
-        ] .
-
-
-#ND-ProcedureTenderingProcess
-tedm:ND-AcceleratedProcedure a rr:TriplesMap ;
-    rdfs:label "ND-AcceleratedProcedure";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:TenderingProcess/cac:ProcessJustification[cbc:ProcessReasonCode/@listName='accelerated-procedure']";
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcedureProcess_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class epo:Procedure
-
         ] ;
     rr:predicateObjectMap
         [
@@ -369,4 +341,1112 @@ tedm:ND-AcceleratedProcedure a rr:TriplesMap ;
                     rml:reference "descendant::cbc:ProcessReason";
                     rr:datatype xsd:string
                 ] ;
-        ]   .
+        ]   ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ProcedureTerm";
+            rdfs:comment "This is the ProcedureTerm that is associated with a Procedure";
+            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ND-ProcedureTerms;
+                    rr:joinCondition [
+                        rr:child "path(/*/cac:TenderingTerms)";
+                        rr:parent "path(.)";
+                    ];
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-ExclusionGrounds";
+            rr:predicate epo:specifiesExclusionGround ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ND-ExclusionGrounds;
+                    rr:joinCondition [
+                        rr:child "path(..)";
+                        rr:parent "path(../../..)";
+                    ];
+                ]
+        ].
+
+
+#ND-ProcedureTerms
+tedm:ND-ProcedureTerms a rr:TriplesMap ;
+    rdfs:label "ND-ProcedureTerms";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:TenderingTerms";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcedureTerms_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ProcedureTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-31-Procedure";
+            rr:predicate  epo:hasMaximumLotSubmissionAllowed  ;
+            rr:objectMap
+                [
+                    rml:reference "descendant::cbc:MaximumLotsSubmittedNumeric";
+                    rr:datatype xsd:integer
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-33-Procedure";
+            rr:predicate  epo:hasMaximumNumberOfLotsToBeAwarded  ;
+            rr:objectMap
+                [
+                    rml:reference "descendant::cbc:MaximumLotsAwardedNumeric";
+                    rr:datatype xsd:integer
+                ] ;
+        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "BT-01-notice and BT-01(c)-notice and BT-01(d)-notice";
+#            rr:predicate  epo:hasLegalBasis  ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if(exists(/*/cbc:RegulatoryDomain) or exists(cac:ProcurementLegislationDocumentReference[not(cbc:ID/text()=('CrossBorderLaw','LocalLegalBasis'))]/cbc:ID[not(text()=('CrossBorderLaw','LocalLegalBasis'))]) or exists(cac:ProcurementLegislationDocumentReference[not(cbc:ID/text()=('CrossBorderLaw','LocalLegalBasis'))]/cbc:DocumentDescription)) then concat(/*/cbc:RegulatoryDomain, ' ',concat(cac:ProcurementLegislationDocumentReference[not(cbc:ID/text()=('CrossBorderLaw','LocalLegalBasis'))]/cbc:ID[not(text()=('CrossBorderLaw','LocalLegalBasis'))], ' ', cac:ProcurementLegislationDocumentReference[not(cbc:ID/text()=('CrossBorderLaw','LocalLegalBasis'))]/cbc:DocumentDescription)) else null";
+#                    rr:datatype xsd:string
+#                ] ;
+#        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "BT-01-notice and BT-01(e)-notice and BT-01(f)-notice";
+#            rr:predicate  epo:hasLegalBasis  ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if(exists(/*/cbc:RegulatoryDomain) or exists(cac:ProcurementLegislationDocumentReference[cbc:ID/text()='LocalLegalBasis']/cbc:ID[text()='LocalLegalBasis']) or exists(cac:ProcurementLegislationDocumentReference[cbc:ID/text()='LocalLegalBasis']/cbc:DocumentDescription)) then concat(/*/cbc:RegulatoryDomain, ' ',concat(cac:ProcurementLegislationDocumentReference[cbc:ID/text()='LocalLegalBasis']/cbc:ID[text()='LocalLegalBasis'], ' ', cac:ProcurementLegislationDocumentReference[cbc:ID/text()='LocalLegalBasis']/cbc:DocumentDescription)) else null";
+#                    rr:datatype xsd:string
+#                ] ;
+#        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-09(a)-Procedure and BT-09(b)-Procedure";
+            rr:predicate  epo:hasCrossBorderLaw  ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(cac:ProcurementLegislationDocumentReference[cbc:ID/text()='CrossBorderLaw']/cbc:ID[text()='CrossBorderLaw'])) then cac:ProcurementLegislationDocumentReference[cbc:ID/text()='CrossBorderLaw'] else null";
+                    rr:datatype xsd:string
+                ] ;
+        ] .
+
+#ND-ExclusionGrounds
+tedm:ND-ExclusionGrounds a rr:TriplesMap ;
+    rdfs:label "ND-ExclusionGrounds";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:TenderingTerms/cac:TendererQualificationRequest/cac:SpecificTendererRequirement";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ExtensionGroup_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ExclusionGround
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-67(a)-Procedure";
+            rr:predicate  cccev:type  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:TendererRequirementTypeCode[@listName='exclusion-ground']";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-67(b)-Procedure";
+            rr:predicate  cccev:descrition  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Description";
+                    rr:datatype xsd:string
+                ] ;
+        ] .
+
+
+
+#ND-ProcedureProcurementScope
+tedm:ND-ProcedureProcurementScope a rr:TriplesMap ;
+    rdfs:label "ND-ProcedureProcurementScope";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProject";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            #This one maps to the parent path
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Procedure_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:class epo:Procedure
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-300-Procedure";
+            rr:predicate  epo:hasAdditionalInformation;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Note";
+                    rr:datatype xsd:string
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-21-Procedure";
+            rr:predicate  epo:hasTitle;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Name";
+                    rr:datatype xsd:string
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-24-Procedure";
+            rr:predicate  epo:hasDescription;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Description";
+                    rr:datatype xsd:string
+                ] ;
+        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "BT-26(a)-Procedure and BT-263-Procedure";
+#            rr:predicate epo:hasAdditionalClassification  ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if(exists(descendant::cbc:ItemClassificationCode) and exists(descendant::cbc:ItemClassificationCode/@listName)) then concat(cbc:ItemClassificationCode, ':', cbc:ItemClassificationCode/@listName) else null";
+#                ] ;
+#        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "BT-26(m)-Procedure and BT-262-Procedure";
+#            rr:predicate epo:hasMainClassification  ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if(exists(descendant::cbc:ItemClassificationCode) and exists(descendant::cbc:ItemClassificationCode/@listName)) then concat(cbc:ItemClassificationCode, ':', cbc:ItemClassificationCode/@listName) else null";
+#                ] ;
+#        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-22-Procedure";
+            rr:predicate epo:hasID ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ProcurementProjectIdentifier;
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:foreseesContractSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ND-ProcedurePlacePerformanceAdditionalInformation;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-27-Procedure";
+            rr:predicate epo:hasEstimatedValue ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ND-ProcedureValueEstimate;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ]
+        ] .
+
+tedm:ND-ProcedureValueEstimate a rr:TriplesMap ;
+    rdfs:label "ND-ProcedureValueEstimate";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProject/cac:RequestedTenderTotal";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcurementProjectMonetaryValue_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:MonetaryValue
+        ]  ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-27-Procedure";
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:EstimatedOverallContractAmount";
+                ] ;
+        ] .
+
+tedm:ProcurementProjectIdentifier a rr:TriplesMap ;
+    rdfs:label "BT-22-Procedure";
+    rdfs:comment "The identifier of a procurement project";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProject";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcurementProjectIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+
+            rr:predicate epo:hasIdentifierValue ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ID";
+                ] ;
+        ] .
+
+tedm:ND-ProcedurePlacePerformanceAdditionalInformation a rr:TriplesMap ;
+    rdfs:label "ND-ProcedurePlacePerformanceAdditionalInformation";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProject/cac:RealizedLocation";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcurementProjectContractTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ContractTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:definesSpecificPlaceOfPerformance ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ProcurementProjectContractLocation;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-727-Procedure";
+            rr:predicate epo:hasBroadPlaceOfPerformance ;
+            rr:objectMap
+                [
+                    rml:reference "cac:Address/cbc:Region";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-728-Procedure";
+            rr:predicate epo:hasPlaceOfPerformanceAdditionalInformation ;
+            rr:objectMap
+                [
+                    rml:reference "cac:Address/cbc:Description";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-531-Procedure";
+            rr:predicate  epo:hasAdditionalContractNature;
+            rr:objectMap
+                [
+                    rml:reference "../cac:ProcurementAdditionalType/cbc:ProcurementTypeCode[not(@listName='transport-service')]";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-23-Procedure";
+            rr:predicate  epo:hasContractNatureType;
+            rr:objectMap
+                [
+                    rml:reference "../cbc:ProcurementTypeCode";
+                ] ;
+        ] .
+
+
+tedm:ProcurementProjectContractLocation a rr:TriplesMap ;
+    rdfs:comment "This is an iterator for the location it has the same xpath with the ND-ProcedurePlacePerformanceAdditionalInformation as this one goes through the ContractTerm";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProject/cac:RealizedLocation";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcurementProjectContractLocation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class dct:Location
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate locn:address ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ND-ProcedurePlacePerformance;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ]
+        ] .
+
+tedm:ND-ProcedurePlacePerformance a rr:TriplesMap ;
+    rdfs:label "ND-ProcedurePlacePerformance";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProject/cac:RealizedLocation/cac:Address";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rml:reference "if (exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line) or exists(cbc:CityName) or exists(cbc:PostalZone)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcurementProjectContractAddress_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class locn:Address
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5101(a)-Lot";
+            rr:predicate locn:fullAddress ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:StreetName";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5101(b)-Lot";
+            rr:predicate locn:adminUnitL2 ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:AdditionalStreetName";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5101(c)-Lot";
+            rr:predicate locn:thoroughfare ;
+            rr:objectMap
+                [
+                    rml:reference "cac:AddressLine/cbc:Line";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5131-Procedure";
+            rr:predicate locn:postName ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:CityName";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5071-Lot";
+            rr:predicate epo:hasNutsCode  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:nuts;
+                    rr:joinCondition [
+                        rr:child "descendant::cbc:CountrySubentityCode";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5121-Procedure";
+            rr:predicate locn:postCode ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:PostalZone";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5141-Lot";
+            rr:predicate epo:hasCountryCode  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:country;
+                    rr:joinCondition [
+                        rr:child "cbc:IdentificationCode";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ].
+
+##################################################################################################################################################################################################
+##################################################################################################################################################################################################
+##################################################################################################################################################################################################
+#ND-Organization
+tedm:ND-Organization a rr:TriplesMap ;
+    rdfs:label "ND-Organization";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Buyer_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Buyer
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-Company";
+            rr:predicate epo:playedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ND-Company;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-633-Organization";
+            rr:predicate foaf:name ;
+            rr:objectMap
+                [
+                    rml:reference "descendant::efbc:NaturalPersonIndicator"
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-TouchPoint";
+            rr:predicate epo:playedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ND-TouchPoint;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ]
+        ] .
+
+#ND-Company
+tedm:ND-Company a rr:TriplesMap ;
+    rdfs:label "ND-Company";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Company_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class org:Organization
+
+        ];
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasPrimaryContactPoint ;
+            rr:objectMap
+                [
+                    rdfs:label "ND-CompanyContact";
+                    rr:parentTriplesMap tedm:ND-CompanyContact ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            #The channel of ND-Company it is created for the BT-509-Organization-Company it does not correspond to a node"
+            rr:predicate epo:hasDeliveryGateway ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ND-CompanyChannel ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate cv:registeredAddress ;
+            rr:objectMap
+                [
+                    rdfs:label "ND-CompanyAddress";
+                    rr:parentTriplesMap tedm:ND-CompanyAddress;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ]
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-500-Organization-Company";
+            rr:predicate epo:hasLegalName ;
+            rr:objectMap
+                [
+                    rml:reference "cac:PartyName/cbc:Name"
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-16-Organization-TouchPoint";
+            rr:predicate epo:hasOrganisationUnit ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Department";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            #The identifier of the company"
+            rr:predicate epo:hasID;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:CompanyIdentifier;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ]
+        ] .
+
+tedm:CompanyIdentifier a rr:TriplesMap ;
+    rdfs:comment "BT-501-Organization-Company and OPT-200-Organization-Company";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:PartyLegalEntity";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rml:reference "if (exists(cbc:CompanyID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_OrganisationIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-501-Organization-Company and OPT-200-Organization-Company";
+            rr:predicate epo:hasIdentifierValue ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:CompanyID";
+                ] ;
+        ] .
+
+tedm:ND-CompanyContact   a rr:TriplesMap ;
+    rdfs:label "ND-CompanyContact";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:Contact" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference "if(exists(cbc:Name) or exists(cbc:ElectronicMail) or exists(cbc:Telephone) or exists(cbc:Telefax)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_CompanyContactPoint_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class cpov:ContactPoint
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-502-Organization-Company";
+            rr:predicate epo:hasContactName  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Name";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-506-Organization-Company";
+            rr:predicate cpov:email  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ElectronicMail";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-503-Organization-Company";
+            rr:predicate cpov:telephone  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Telephone";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-739-Organization-Company";
+            rr:predicate epo:hasFax  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Telefax";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-505-Organization-Company";
+            rr:predicate epo:hasInternetAddress  ;
+            rr:objectMap
+                [
+                    rml:reference "../efac:Company/cbc:WebsiteURI";
+                    rr:datatype xsd:anyURI;
+                ] ;
+        ].
+
+#This is a triplesmap for the channel of a ND-Company it does not exist as a node but I had to recreate it for the BT-509-Organization-Company
+tedm:ND-CompanyChannel a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference "if(exists(cbc:EndpointID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_CompanyChannel_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null";
+            rr:class cv:Channel
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-509-Organization-Company";
+            rr:predicate epo:hasEndpoint;
+            rr:objectMap
+                [
+                    rml:reference "cbc:EndpointID";
+                    rr:datatype xsd:anyURI;
+                ]
+        ] .
+
+tedm:ND-CompanyAddress  a rr:TriplesMap ;
+    rdfs:label "ND-CompanyAddress";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:PostalAddress" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_CompanyAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class locn:Address
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-510(a)-Organization-Company";
+            rr:predicate locn:fullAddress ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:StreetName";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-510(b)-Organization-Company";
+            rr:predicate locn:adminUnitL2 ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:AdditionalStreetName";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-510(c)-Organization-Company";
+            rr:predicate locn:thoroughfare ;
+            rr:objectMap
+                [
+                    rml:reference "cac:AddressLine/cbc:Line";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-513-Organization-Company";
+            rr:predicate locn:addressArea ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:CityName";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-512-Organization-Company";
+            rr:predicate locn:postCode  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:PostalZone";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-507-Organization-Company";
+            rr:predicate epo:hasNutsCode  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:nuts;
+                    rr:joinCondition [
+                        rr:child "cbc:CountrySubentityCode";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-514-Organization-Company";
+            rr:predicate epo:hasCountryCode  ;
+            rr:objectMap
+                [
+                    rml:reference "'http://publications.europa.eu/resource/authority/country/' || cac:Country/cbc:IdentificationCode";
+                    rr:termType rr:IRI;
+                ] ;
+        ] .
+##################################################################################################################################################################################################
+##################################################################################################################################################################################################
+##################################################################################################################################################################################################
+#ND-TouchPoint
+tedm:ND-TouchPoint a rr:TriplesMap ;
+    rdfs:label "ND-TouchPoint";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:TouchPoint";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_TouchPoint_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class org:Organization
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-500-Organization-TouchPoint";
+            rr:predicate epo:hasLegalName ;
+            rr:objectMap
+                [
+                    rml:reference "cac:PartyName/cbc:Name"
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-16-Organization-TouchPoint";
+            rr:predicate epo:hasOrganisationUnit ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Department";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasID ;
+            rr:objectMap
+                [
+                    #The identifier of a ND-TouchPoint
+                    rr:parentTriplesMap tedm:ND-TouchPointIdentifier;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasDeliveryGateway ;
+            rr:objectMap
+                [
+                    #The channel of ND-Company it is created for the BT-509-Organization-Company it does not correspond to a node
+                    rr:parentTriplesMap tedm:ND-TouchPointChannel ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+
+                ];
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasPrimaryContactPoint ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ND-TouchpointContact ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate cv:registeredAddress ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ND-TouchpointAddress;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ]
+        ].
+
+
+#ND-TouchpointContact
+tedm:ND-TouchpointContact   a rr:TriplesMap ;
+    rdfs:label "ND-TouchpointContact";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:TouchPoint/cac:Contact" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference "if(exists(cbc:Name) or exists(cbc:ElectronicMail) or exists(cbc:Telephone) or exists(cbc:Telefax)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_TouchPointContact_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class cpov:ContactPoint
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-502-Organization-TouchPoint";
+            rr:predicate epo:hasContactName  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Name";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-506-Organization-TouchPoint";
+            rr:predicate cpov:email  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ElectronicMail";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-503-Organization-TouchPoint";
+            rr:predicate cpov:telephone  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Telephone";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-739-Organization-TouchPoint";
+            rr:predicate epo:hasFax  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Telefax";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-505-Organization-TouchPoint";
+            rr:predicate epo:hasInternetAddress  ;
+            rr:objectMap
+                [
+                    rml:reference "../efac:TouchPoint/cbc:WebsiteURI";
+                    rr:datatype xsd:anyURI;
+                ] ;
+        ].
+
+#The identifier of a touch point
+tedm:ND-TouchPointIdentifier a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:TouchPoint/cac:PartyIdentification";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_TouchPointIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-201-Organization-TouchPoint";
+            rr:predicate epo:hasIdentifierValue ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ID";
+                ] ;
+        ] .
+
+#This is a triplesmap for the channel of a ND-TouchPoint it does not exist as a node but I had to recreate it for the BT-509-Organization-Company
+tedm:ND-TouchPointChannel a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:TouchPoint" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference "if(exists(cbc:EndpointID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_TouchPointChannel_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null";
+            rr:class cv:Channel
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-509-Organization-TouchPoint";
+            rr:predicate epo:hasEndpoint;
+            rr:objectMap
+                [
+                    rml:reference "cbc:EndpointID";
+                    rr:datatype xsd:anyURI;
+                ]
+        ] .
+
+tedm:ND-TouchpointAddress  a rr:TriplesMap ;
+    rdfs:label "ND-TouchpointAddress";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:TouchPoint/cac:PostalAddress" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_TouchPointAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class locn:Address
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-510(a)-Organization-TouchPoint";
+            rr:predicate locn:fullAddress ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:StreetName";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-510(b)-Organization-TouchPoint";
+            rr:predicate locn:adminUnitL2 ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:AdditionalStreetName";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-510(c)-Organization-TouchPoint";
+            rr:predicate locn:thoroughfare ;
+            rr:objectMap
+                [
+                    rml:reference "cac:AddressLine/cbc:Line";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-513-Organization-TouchPoint";
+            rr:predicate locn:postName ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:CityName";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-512-Organization-TouchPoint";
+            rr:predicate locn:postCode  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:PostalZone";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-507-Organization-TouchPoint";
+            rr:predicate epo:hasNutsCode  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:nuts;
+                    rr:joinCondition [
+                        rr:child "cbc:CountrySubentityCode";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-514-Organization-TouchPoint";
+            rr:predicate epo:hasCountryCode  ;
+            rr:objectMap
+                [
+                    rml:reference "'http://publications.europa.eu/resource/authority/country/' || cac:Country/cbc:IdentificationCode";
+                    rr:termType rr:IRI;
+                ] ;
+        ] .
+
+##################################################################################################################################################################################################
+##################################################################################################################################################################################################
+##################################################################################################################################################################################################
+#Helper Lists
+tedm:buyerLegalType a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "transformation/resources/buyer_legal_type.csv" ;
+            rml:referenceFormulation ql:CSV
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference
+                "conceptURI" ;
+        ] .
+
+tedm:nuts a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "transformation/resources/nuts.json" ;
+            rml:iterator "$.results.bindings[*]" ;
+            rml:referenceFormulation ql:JSONPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference
+                "conceptURI.value" ;
+        ] .
+tedm:country a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "transformation/resources/country.json" ;
+            rml:iterator "$.results.bindings[*]" ;
+            rml:referenceFormulation ql:JSONPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference
+                "conceptURI.value" ;
+        ] .
