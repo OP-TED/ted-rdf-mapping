@@ -491,16 +491,6 @@ tedm:ND-ProcedureProcurementScope a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-300-Procedure";
-            rr:predicate  epo:hasAdditionalInformation;
-            rr:objectMap
-                [
-                    rml:reference "cbc:Note";
-                    rr:datatype xsd:string
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
             rdfs:label "BT-21-Procedure";
             rr:predicate  epo:hasTitle;
             rr:objectMap
@@ -1722,7 +1712,7 @@ tedm:ND-LotsGroupAwardCriteria  a rr:TriplesMap ;
             rr:predicate epo:hasAwardCriterionType ;
             rr:objectMap
                 [
-                    rml:reference "cbc:AwardingCriterionTypeCode[@listName='award-criterion-type']";
+                    rml:reference "if(exists(cbc:AwardingCriterionTypeCode[@listName='award-criterion-type'])) then cbc:AwardingCriterionTypeCode[@listName='award-criterion-type'] else null";
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -1731,7 +1721,7 @@ tedm:ND-LotsGroupAwardCriteria  a rr:TriplesMap ;
             rr:predicate cccev:description ;
             rr:objectMap
                 [
-                    rml:reference "cbc:Description";
+                    rml:reference "if(exists(cbc:Description)) then cbc:Description else null";
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -1740,7 +1730,7 @@ tedm:ND-LotsGroupAwardCriteria  a rr:TriplesMap ;
             rr:predicate cccev:name ;
             rr:objectMap
                 [
-                    rml:reference "cbc:Name";
+                    rml:reference "if(exists(cbc:Name)) then cbc:Name else null";
 
                 ] ;
         ] ;
@@ -1750,7 +1740,7 @@ tedm:ND-LotsGroupAwardCriteria  a rr:TriplesMap ;
             rr:predicate epo:hasFixedValue ;
             rr:objectMap
                 [
-                    rml:reference "ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter/efbc:ParameterNumeric";
+                    rml:reference "if(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter/efbc:ParameterNumeric)) then  ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter/efbc:ParameterNumeric else null";
 
                 ] ;
         ] ;
@@ -1760,7 +1750,7 @@ tedm:ND-LotsGroupAwardCriteria  a rr:TriplesMap ;
             rr:predicate cccev:weight ;
             rr:objectMap
                 [
-                    rml:reference "ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter/efbc:ParameterCode[@listName='number-weight']";
+                    rml:reference "if(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter/efbc:ParameterCode[@listName='number-weight'])) then ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter/efbc:ParameterCode[@listName='number-weight'] else null";
 
                 ] ;
         ] ;
@@ -1770,7 +1760,7 @@ tedm:ND-LotsGroupAwardCriteria  a rr:TriplesMap ;
             rr:predicate epo:hasFixedValueType ;
             rr:objectMap
                 [
-                    rml:reference "ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter/efbc:ParameterCode[@listName='number-fixed']";
+                    rml:reference "if(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter/efbc:ParameterCode[@listName='number-fixed'])) then  ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter/efbc:ParameterCode[@listName='number-fixed'] else null";
 
                 ] ;
         ] ;
@@ -1806,7 +1796,7 @@ tedm:ND-LotsGroupAwardCriteriaConstraint  a rr:TriplesMap ;
             rr:predicate epo:hasThresholdValue ;
             rr:objectMap
                 [
-                    rml:reference "efbc:ParameterCode[@listName='number-threshold']";
+                    rml:reference "if (exists(efbc:ParameterCode[@listName='number-threshold'])) then  efbc:ParameterCode[@listName='number-threshold'] else null";
                 ] ;
         ] .
 
@@ -2261,12 +2251,94 @@ tedm:ND-Lot a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-300-Lot";
-            rr:predicate epo:hasAdditionalInformation  ;
+            rdfs:label "ND-SelectionCriteria";
+            rr:predicate epo:specifiesSelectionCriterion ;
             rr:objectMap
                 [
-                    rml:reference "cac:ProcurementProject/cbc:Note";
-                    rr:datatype xsd:string
+                    rr:parentTriplesMap tedm:ND-SelectionCriteria ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../../../../../../.)";
+
+                        ];
+                ] ;
+        ]  ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-SecondStage";
+            rr:predicate epo:isSubjectToLotSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ND-SecondStage ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../../.)";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-AwardingTerms";
+            rr:predicate epo:isSubjectToLotSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ND-AwardingTerms ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../..)";
+                    ];
+                ] ;
+        ]    ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-LateTendererInformation; ND-LotReservedProcurement";
+            rr:predicate epo:isSubjectToLotSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ND-LotReservedProcurement ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-SecurityClearanceTerms";
+            rr:predicate epo:isSubjectToLotSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ND-SecurityClearanceTerms ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../../.)";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-PublicOpening";
+            rr:predicate epo:isSubjectToLotSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ND-PublicOpening ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(../../.)"
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-LotProcurementDocument; ND-LotDocumentsReference; ND-LotRestrictedDocuments";
+            rr:predicate epo:isSubjectToLotSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ND-LotProcurementDocument ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(../../.)"
+                    ];
                 ] ;
         ] .
 
@@ -2293,49 +2365,520 @@ tedm:LotIdentifier a rr:TriplesMap ;
                 [
                     rml:reference "cbc:ID";
                 ] ;
+        ] .
+
+##########################################ND-LotProcurementDocument & ND-LotDocumentsReference & ND-LotRestrictedDocuments#########################################################################################################################
+#ND-LotProcurementDocument
+tedm:ND-LotProcurementDocument a rr:TriplesMap ;
+    rdfs:label "ND-LotProcurementDocument";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_AccessTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:class epo:AccessTerm
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "ND-SelectionCriteria";
-            rr:predicate epo:specifiesSelectionCriterion ;
+            rdfs:label "BT-14-Lot";
+            rr:predicate epo:isProcurementDocumentRestricted  ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ND-SelectionCriteria ;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(../../../../../..)";
-                    ];
-                ] ;
-        ]  ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "ND-SecondStage";
-            rr:predicate epo:isSubjectToLotSpecificTerm ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ND-SecondStage ;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(../.)";
-                    ];
+                    rml:reference "cbc:DocumentType";
+                    rr:datatype xsd:boolean
                 ] ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "ND-AwardingTerms";
-            rr:predicate epo:isSubjectToLotSpecificTerm ;
+            rdfs:label "BT-707-Lot";
+            rr:predicate epo:hasDocumentRestrictionJustification  ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ND-AwardingTerms ;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(../..)";
+                    rml:reference "descendant::cbc:DocumentTypeCode";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-708-Lot";
+            rr:predicate epo:hasOfficialLanguage  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:LanguageID[not(../cbc:DocumentStatusCode/text()='non-official')]";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-737-Lot";
+            rr:predicate epo:hasUnofficialLanguage  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:LanguageID[../cbc:DocumentStatusCode/text()='non-official']";
+                    rr:datatype xsd:string;
+                ] ;
+        ] .
+
+#ND-LotDocumentsReference
+tedm:ND-LotDocumentsReference a rr:TriplesMap ;
+    rdfs:label "ND-LotDocumentsReference";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference[not(cbc:DocumentType/text()='restricted-document')]";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_AccessTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:class epo:AccessTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-15-Lot";
+            rr:predicate epo:hasPublicAccessURL  ;
+            rr:objectMap
+                [
+                    rml:reference "if(descendant::cbc:DocumentType/text() = 'non-restricted-document') then descendant::cbc:URI else null";
+                    rr:datatype xsd:anyURI;
+                ] ;
+        ] .
+
+#ND-LotRestrictedDocuments
+tedm:ND-LotRestrictedDocuments a rr:TriplesMap ;
+    rdfs:label "ND-LotRestrictedDocuments";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference[cbc:DocumentType/text()='restricted-document']";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_AccessTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:class epo:AccessTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-615-Lot";
+            rr:predicate epo:hasRestrictedAccessURL  ;
+            rr:objectMap
+                [
+                    rml:reference "if(descendant::cbc:DocumentType/text() = 'restricted-document') then descendant::cbc:URI else null";
+                    rr:datatype xsd:anyURI;
+                ] ;
+        ] .
+##########################################ND-PublicOpening & ND-PublicOpeningPlace#########################################################################################################################
+#ND-PublicOpening
+tedm:ND-PublicOpening a rr:TriplesMap ;
+    rdfs:label "ND-PublicOpening";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:OpenTenderEvent";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_OpeningTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class  epo:OpeningTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasOpeningDescription ;
+            rr:objectMap
+                [
+                    rdfs:label "BT-134-Lot";
+                    rml:reference "cbc:Description";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-132-Lot";
+            rr:predicate epo:hasOpeningDate ;
+            rr:objectMap
+                [
+                    rml:reference "concat(replace(cbc:OccurrenceDate, 'Z', ''), ':', replace(cbc:OccurrenceTime, 'Z', ''))";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-133-Lot";
+            rr:predicate epo:definesOpeningPlace ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ND-PublicOpeningPlace ;
+                    rr:joinCondition[
+                        rr:child "path(..)";
+                        rr:parent "path(../..)"
                     ];
                 ] ;
         ] .
 
-############################################ND-LotAwardCriterion & ND-LotAwardCriterionParameter##########################################################################################################
-#ND-LotAwardCriterion
+#ND-PublicOpeningPlace
+tedm:ND-PublicOpeningPlace a rr:TriplesMap ;
+    rdfs:label "ND-PublicOpeningPlace";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:OpenTenderEvent/cac:OccurenceLocation";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_OpenTenderEventPlace_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class  locn:Address
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-133-Lot";
+            rr:predicate locn:locatorDesignator ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Description";
+                ] ;
+        ] .
+
+##########################################ND-FinancialGuarantee & ND-NonEsubmission & ND-NoESubmission##############################################################################################
+#ND-FinancialGuarantee
+tedm:ND-FinancialGuarantee a rr:TriplesMap ;
+    rdfs:label "ND-FinancialGuarantee";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:RequiredFinancialGuarantee";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
+            rr:class epo:SubmissionTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-751-Lot";
+            rr:predicate epo:isGuaranteeRequired ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:GuaranteeTypeCode[@listName='tender-guarantee-required']";
+                    rr:datatype xsd:boolean;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-75-Lot";
+            rr:predicate epo:hasGuaranteeDescription ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Description";
+                    rr:datatype xsd:string;
+                ] ;
+        ] .
+
+
+#ND-NoESubmission
+tedm:ND-NoESubmission a rr:TriplesMap ;
+    rdfs:label "ND-NoESubmission";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:ProcessJustification";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
+            rr:class epo:SubmissionTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-19-Lot";
+            rr:predicate epo:hasNonElectronicSubmissionJustification ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ProcessReasonCode[@listName='no-esubmission-justification']";
+                    rr:datatype xsd:string;
+                ] ;
+        ] .
+
+
+#ND-NonEsubmission
+tedm:ND-NonEsubmission a rr:TriplesMap ;
+    rdfs:label "ND-NonEsubmission";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:ProcessJustification[cbc:ProcessReasonCode/@listName='no-esubmission-justification']";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
+            rr:class epo:SubmissionTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-745-Lot";
+            rr:predicate epo:hasDescription ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Description";
+                    rr:datatype xsd:string;
+                ] ;
+        ] .
+##########################################ND-SubmissionDeadline & ND-ParticipationRequestPeriod & ND-LotInfoRequestPeriod#########################################################################################################################
+#ND-SubmissionDeadline
+tedm:ND-SubmissionDeadline a rr:TriplesMap ;
+    rdfs:label "ND-SubmissionDeadline";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:TenderSubmissionDeadlinePeriod";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
+            rr:class epo:SubmissionTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-130-Lot";
+            rr:predicate epo:hasEstimatedInvitationToTenderDate ;
+            rr:objectMap
+                [
+                    rml:reference "../cac:InvitationSubmissionPeriod/cbc:StartDate";
+                    rr:datatype xsd:date;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-131-Lot";
+            rr:predicate epo:hasReceiptDeadline ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(cbc:EndDate) and exists(cbc:EndTime)) then concat(cbc:EndDate, ':', cbc:EndTime) else null";
+                    rr:datatype xsd:dateTime;
+                ] ;
+        ] .
+
+#ND-ParticipationRequestPeriod
+tedm:ND-ParticipationRequestPeriod a rr:TriplesMap ;
+    rdfs:label "ND-ParticipationRequestPeriod";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:ParticipationRequestReceptionPeriod";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
+            rr:class epo:SubmissionTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-1311-Lot";
+            rdfs:comment "Not sure about the property in this one";
+            rr:predicate epo:hasReceiptDeadline ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(cac:ParticipationRequestReceptionPeriod/cbc:EndDate) and exists(cac:ParticipationRequestReceptionPeriod/cbc:EndTime)) then concat(cac:ParticipationRequestReceptionPeriod/cbc:EndDate, ':', cac:ParticipationRequestReceptionPeriod/cbc:EndTime) else null";
+                    rr:datatype xsd:dateTime;
+                ] ;
+        ] .
+
+#ND-LotInfoRequestPeriod
+tedm:ND-LotInfoRequestPeriod a rr:TriplesMap ;
+    rdfs:label "ND-LotInfoRequestPeriod";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:AdditionalInformationRequestPeriod";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
+            rr:class epo:SubmissionTerm
+        ]   ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-13-Lot";
+            rr:predicate epo:hasAdditionalInformationDeadline ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(cac:AdditionalInformationRequestPeriod/cbc:EndDate) and exists(cac:AdditionalInformationRequestPeriod/cbc:EndTime)) then concat(cac:AdditionalInformationRequestPeriod/cbc:EndDate, ':', cac:AdditionalInformationRequestPeriod/cbc:EndTime) else null";
+                    rr:datatype xsd:dateTime;
+                ] ;
+        ] .
+##########################################ND-SecurityClearanceTerms#########################################################################################################################
+#ND-SecurityClearanceTerms
+tedm:ND-SecurityClearanceTerms a rr:TriplesMap ;
+    rdfs:comment "ND-SecurityClearanceTerms";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:SecurityClearanceTerm";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rml:reference "if (exists(cbc:Code) or exists(../cbc:LatestSecurityClearanceDate) or exists(cbc:Description)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_SecurityTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:SecurityClearanceTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-78-Lot";
+            rr:predicate epo:hasDeadline ;
+            rr:objectMap
+                [
+                    rml:reference "../cbc:LatestSecurityClearanceDate";
+                    rr:datatype xsd:dateTime;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-578-Lot";
+            rr:predicate epo:hasTitle ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Code";
+
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-732-Lot";
+            rr:predicate epo:hasDescription ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Description";
+                    rr:datatype xsd:string;
+                ] ;
+        ] .
+
+##########################################ND-LateTendererInformation & ND-LotReservedProcurement##############################################################################################
+#ND-LateTendererInformation
+tedm:ND-LateTendererInformation a rr:TriplesMap ;
+    rdfs:label "ND-LateTendererInformation";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:TendererQualificationRequest[not(cbc:CompanyLegalFormCode)]/cac:SpecificTendererRequirement[not(cbc:TendererRequirementTypeCode[@listName='reserved-procurement'])]";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(ancestor::node()[3])) || '?response_type=raw')}" ;
+            rr:class epo:SubmissionTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-772-Lot";
+            rr:predicate epo:hasLateSubmissionInformationDescription;
+            rr:objectMap
+                [
+                    rml:reference "descendant::cac:SpecificTendererRequirement[not(cbc:TendererRequirementTypeCode[@listName='reserved-procurement'])]/cbc:Description";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-771-Lot";
+            rr:predicate epo:hasLateSubmissionPermission;
+            rr:objectMap
+                [
+                    rml:reference "descendant::cbc:TendererRequirementTypeCode[@listName='missing-info-submission']";
+                ] ;
+        ].
+
+#ND-LotReservedProcurement
+tedm:ND-LotReservedProcurement a rr:TriplesMap ;
+    rdfs:label "ND-LotReservedProcurement";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:class epo:SubmissionTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-94-Lot";
+            rr:predicate epo:hasRecurrenceDescription ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:RecurringProcurementDescription";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-97-Lot";
+            rr:predicate epo:hasLanguage ;
+            rr:objectMap
+                [
+                    rml:reference "cac:Language/cbc:ID";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-63-Lot";
+            rr:predicate epo:hasVariantPermission ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:VariantConstraintCode";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-95-Lot";
+            rr:predicate epo:isRecurrent ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:RecurringProcurementIndicator";
+                    rr:datatype xsd:boolean;
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-769-Lot";
+            rr:predicate epo:isMultipleTenderSubmissionAllowed ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:MultipleTendersCode";
+                    rr:datatype xsd:boolean;
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-98-Lot";
+            rr:predicate epo:hasValidityPeriod ;
+            rr:objectMap
+                [
+                    rml:reference "cac:TenderValidityPeriod/cbc:DurationMeasure";
+                ] ;
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-18-Lot";
+            rr:predicate epo:hasSubmissionURL ;
+            rr:objectMap
+                [
+                    rml:reference "cac:TenderRecipientParty/cbc:EndpointID";
+                    rr:datatype xsd:anyURI;
+                ] ;
+        ] .
+############################################ND-AwardingTerms & ND-LotAwardCriterion & ND-LotAwardCriterionParameter##########################################################################################################
+#ND-AwardingTerms
 tedm:ND-AwardingTerms a rr:TriplesMap ;
     rdfs:label "ND-AwardingTerms";
     rml:logicalSource
@@ -2346,7 +2889,77 @@ tedm:ND-AwardingTerms a rr:TriplesMap ;
         ];
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_AwardingTerms_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_AwardingTerms_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(ancestor::node()[8])) || '?response_type=raw')}" ;
+            rr:class epo:AwardCriterion
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-120-Lot";
+            rr:predicate epo:hasNoNegotiationNecessary ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(cbc:NoFurtherNegotiationIndicator)) then cbc:NoFurtherNegotiationIndicator else null";
+                    rr:datatype xsd:decimal;
+                ] ;
+        ] .
+
+#ND-LotAwardCriteria
+tedm:ND-LotAwardCriteria a rr:TriplesMap ;
+    rdfs:label "ND-LotAwardCriteria";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_AwardingTerms_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:class epo:AwardCriterion
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-734-Lot";
+            rr:predicate cccev:name ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(cbc:Name)) then descendant::cbc:Name else null";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-541-Lot";
+            rr:predicate epo:hasFixedValue ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(efbc:ParameterNumeric)) then descendant::efbc:ParameterNumeric else null";
+                    rr:datatype xsd:decimal;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-733-Lot";
+            rr:predicate epo:hasAwardCriteriaOrderJustification ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(cbc:Description)) then cbc:Description else null";
+                    rr:datatype xsd:string;
+                ] ;
+        ] .
+
+#ND-LotAwardCriterion
+tedm:ND-LotAwardCriterion a rr:TriplesMap ;
+    rdfs:label "ND-LotAwardCriterion";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_AwardingTerms_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
             rr:class epo:AwardCriterion
         ] ;
     rr:predicateObjectMap
@@ -2355,7 +2968,7 @@ tedm:ND-AwardingTerms a rr:TriplesMap ;
             rr:predicate epo:hasAwardCriterionType ;
             rr:objectMap
                 [
-                    rml:reference "descendant::cbc:AwardingCriterionTypeCode[@listName='award-criterion-type']";
+                    rml:reference "if(exists(cbc:AwardingCriterionTypeCode[@listName='award-criterion-type'])) then cbc:AwardingCriterionTypeCode[@listName='award-criterion-type'] else null";
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -2364,7 +2977,7 @@ tedm:ND-AwardingTerms a rr:TriplesMap ;
             rr:predicate epo:hasDescription ;
             rr:objectMap
                 [
-                    rml:reference "descendant::cac:SubordinateAwardingCriterion/cbc:Description";
+                    rml:reference "if(exists(cbc:Description)) then cbc:Description else null";
                     rr:datatype xsd:string
                 ] ;
         ] .
@@ -2376,33 +2989,13 @@ tedm:ND-LotAwardCriterionParameter a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms";
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter";
             rml:referenceFormulation ql:XPath
         ];
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_AwardingTerms_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_AwardingTerms_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(ancestor::node()[7])) || '?response_type=raw')}" ;
             rr:class epo:AwardCriterion
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-120-Lot";
-            rr:predicate epo:hasNoNegotiationNecessary ;
-            rr:objectMap
-                [
-                    rml:reference "cbc:NoFurtherNegotiationIndicator";
-                    rr:datatype xsd:boolean;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-733-Lot";
-            rr:predicate epo:hasAwardCriteriaOrderJustification ;
-            rr:objectMap
-                [
-                    rml:reference "if(exists(cac:AwardingCriterion/cbc:Description)) then cac:AwardingCriterion/cbc:Description else null";
-                    rr:datatype xsd:string;
-                ] ;
         ] ;
     rr:predicateObjectMap
         [
@@ -2410,28 +3003,8 @@ tedm:ND-LotAwardCriterionParameter a rr:TriplesMap ;
             rr:predicate cccev:description ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(descendant::cbc:CalculationExpression)) then descendant::cbc:CalculationExpression else null";
+                    rml:reference "if(exists(cbc:CalculationExpression)) then cbc:CalculationExpression else null";
                     rr:datatype xsd:string;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-734-Lot";
-            rr:predicate cccev:name ;
-            rr:objectMap
-                [
-                    rml:reference "if(exists(descendant::cbc:Name)) then descendant::cbc:Name else null";
-                    rr:datatype xsd:string;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-541-Lot";
-            rr:predicate epo:hasFixedValue ;
-            rr:objectMap
-                [
-                    rml:reference "if(exists(descendant::efbc:ParameterNumeric)) then descendant::efbc:ParameterNumeric else null";
-                    rr:datatype xsd:decimal;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -2440,7 +3013,7 @@ tedm:ND-LotAwardCriterionParameter a rr:TriplesMap ;
             rr:predicate cccev:weight;
             rr:objectMap
                 [
-                    rml:reference "if(exists(descendant::efbc:ParameterCode[@listName='number-weight'])) then descendant::efbc:ParameterCode[@listName='number-weight'] else null";
+                    rml:reference "if(exists(efbc:ParameterCode[@listName='number-weight'])) then efbc:ParameterCode[@listName='number-weight'] else null";
                     rr:datatype xsd:decimal;
                 ] ;
         ] ;
@@ -2450,47 +3023,14 @@ tedm:ND-LotAwardCriterionParameter a rr:TriplesMap ;
             rr:predicate epo:hasFixedValueType;
             rr:objectMap
                 [
-                    rml:reference "if(exists(descendant::efbc:ParameterCode[@listName='number-fixed'])) then descendant::efbc:ParameterCode[@listName='number-fixed'] else null";
+                    rml:reference "if(exists(efbc:ParameterCode[@listName='number-fixed'])) then efbc:ParameterCode[@listName='number-fixed'] else null";
                 ] ;
-        ]  ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-5423-Lot";
-            rr:predicate epo:hasConstraint ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ND-LotAwardCriterionParameterConstrain ;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(../../../../../../..)";
-                    ];
-                ] ;
-        ] .
+        ]  .
 
-#AwardingTerm Constrain
-tedm:ND-LotAwardCriterionParameterConstrain a rr:TriplesMap ;
-    rdfs:label "BT-5423-Lot";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter";
-            rml:referenceFormulation ql:XPath
-        ];
-    rr:subjectMap
-        [
-            rml:reference "if (exists(efbc:ParameterCode[@listName='number-threshold'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_AwardingTermsConstrain_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
-            rr:class cccev:Constraint
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasThresholdValue ;
-            rr:objectMap
-                [
-                    rml:reference "efbc:ParameterCode[@listName='number-threshold']";
-                    rr:datatype xsd:decimal;
-                ] ;
-        ] .
+
+
 ############################################ND-SelectionCriteria & ND-SecondStageCriterionParameter & ND-SecondStage##########################################################################################################
+
 #ND-SelectionCriteria
 tedm:ND-SelectionCriteria a rr:TriplesMap ;
     rdfs:label "ND-SelectionCriteria";
@@ -2560,12 +3100,12 @@ tedm:ND-SecondStageCriterionParameter a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:SelectionCriteria";
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:SelectionCriteria/efac:CriterionParameter";
             rml:referenceFormulation ql:XPath
         ];
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SelectionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SelectionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
             rr:class epo:SelectionTerm
         ] ;
     rr:predicateObjectMap
@@ -2574,7 +3114,7 @@ tedm:ND-SecondStageCriterionParameter a rr:TriplesMap ;
             rr:predicate cccev:type ;
             rr:objectMap
                 [
-                    rml:reference "descendant::efbc:ParameterNumeric";
+                    rml:reference "efbc:ParameterNumeric";
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -2583,7 +3123,7 @@ tedm:ND-SecondStageCriterionParameter a rr:TriplesMap ;
             rr:predicate cccev:weight ;
             rr:objectMap
                 [
-                    rml:reference "descendant::efbc:ParameterCode[@listName='number-weight']";
+                    rml:reference "efbc:ParameterCode[@listName='number-weight']";
                     rr:datatype xsd:decimal;
                 ] ;
         ] ;
@@ -2607,7 +3147,7 @@ tedm:ND-SecondStageCriterionConstrain a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:SelectionCriteria/efac:CriterionParameter";
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:SelectionCriteria/efac:CriterionParameter/efac:CriterionParameter";
             rml:referenceFormulation ql:XPath
         ];
     rr:subjectMap
@@ -2630,7 +3170,7 @@ tedm:ND-SecondStage a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess";
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:EconomicOperatorShortList";
             rml:referenceFormulation ql:XPath
         ];
     rr:subjectMap
@@ -2644,7 +3184,7 @@ tedm:ND-SecondStage a rr:TriplesMap ;
             rr:predicate epo:hasSuccessiveReduction ;
             rr:objectMap
                 [
-                    rml:reference "cbc:CandidateReductionConstraintIndicator";
+                    rml:reference "../cbc:CandidateReductionConstraintIndicator";
                     rr:datatype xsd:boolean
                 ] ;
         ] ;
@@ -2654,7 +3194,7 @@ tedm:ND-SecondStage a rr:TriplesMap ;
             rr:predicate epo:hasEstimatedTenderInvitationDate ;
             rr:objectMap
                 [
-                    rml:reference "descendant::cbc:LimitationDescription";
+                    rml:reference "cbc:LimitationDescription";
                     rr:datatype xsd:integer
                 ] ;
         ] ;
@@ -2664,7 +3204,7 @@ tedm:ND-SecondStage a rr:TriplesMap ;
             rr:predicate epo:hasMaximumNumberOfCandidates ;
             rr:objectMap
                 [
-                    rml:reference "descendant::cbc:MaximumQuantity";
+                    rml:reference "cbc:MaximumQuantity";
                     rr:datatype xsd:integer
                 ] ;
         ] ;
@@ -2674,7 +3214,7 @@ tedm:ND-SecondStage a rr:TriplesMap ;
             rr:predicate epo:hasMinimumNumberOfCandidates ;
             rr:objectMap
                 [
-                    rml:reference "descendant::cbc:MinimumQuantity";
+                    rml:reference "cbc:MinimumQuantity";
                     rr:datatype xsd:integer
                 ] ;
         ] .
@@ -2701,6 +3241,16 @@ tedm:ND-LotTenderingTerms_FrameworkAgreementTechniqueUsage a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "cac:ContractingSystem/cbc:ContractingSystemTypeCode[@listName='framework-agreement']";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-17-Lot";
+            rr:predicate epo:hasESubmissionPermission ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:SubmissionMethodCode[@listName='esubmission']";
+                    rr:datatype xsd:string;
                 ] ;
         ] .
 
@@ -2923,6 +3473,16 @@ tedm:ND-LotProcurementScope_Lot_Purpose a rr:TriplesMap ;
                         rr:parent "path(.)";
                     ];
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-300-Procedure";
+            rr:predicate  epo:hasAdditionalInformation;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Note";
+                    rr:datatype xsd:string
+                ] ;
         ] .
 
 #This triple map is not considered in the three aforementioned triples maps that define ND-LotProcurementScope, but is a helper triple map for ND-LotProcurementScope_Lot_Purpose
@@ -2991,7 +3551,7 @@ tedm:ND-LotProcurementScope_Contract_Extension a rr:TriplesMap ;
         ];
     rr:subjectMap
         [
-            rml:reference "if (exists(descendant::cbc:OptionsDescription) or exists(descendant::cbc:MaximumNumberNumeric) or exists(cbc:ProcurementTypeCode[@listName='contract-nature']) or exists(cac:ProcurementAdditionalType/cbc:ProcurementTypeCode[@listName='contract-nature'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ContractExtension_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(descendant::cbc:OptionsDescription) or exists(descendant::cbc:MaximumNumberNumeric) or exists(cbc:ProcurementTypeCode[@listName='contract-nature']) or exists(cac:ProcurementAdditionalType/cbc:ProcurementTypeCode[@listName='contract-nature'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ContractExtension_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw') else null" ;
             rr:class  epo:ContractTerm;
         ] ;
     rr:predicateObjectMap
@@ -3046,6 +3606,136 @@ tedm:ND-LotProcurementScope_Contract_Extension a rr:TriplesMap ;
                 ] ;
         ] .
 
+#ND-TendererLegalForm
+tedm:ND-TendererLegalForm a rr:TriplesMap ;
+    rdfs:comment "ND-TendererLegalForm";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:TendererQualificationRequest[not(cac:SpecificTendererRequirement)]";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}";
+            rr:class epo:ContractTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-76-Lot";
+            rr:predicate epo:hasContractorLegalFormRequirementDescription  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:CompanyLegalForm";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-761-Lot";
+            rr:predicate epo:hasContractorLegalFormRequirement  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:CompanyLegalFormCode";
+                    rr:datatype xsd:boolean;
+                ] ;
+        ] .
+
+
+#ND-ExecutionRequirements for the contract term class
+tedm:ND-ExecutionRequirements_Contract_Term a rr:TriplesMap ;
+    rdfs:comment "ND-ExecutionRequirements_Contract_Term";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:ContractExecutionRequirement[cbc:ExecutionRequirementCode/@listName='conditions']";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}";
+            rr:class epo:ContractTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-743-Lot";
+            rr:predicate epo:hasEInvoicing  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ExecutionRequirementCode[@listName='einvoicing']";
+                    rr:datatype xsd:string;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-70-Lot";
+            rr:predicate epo:hasPerformanceConditions  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Description";
+                ] ;
+        ] .
+
+#ND-PostAwarProcess for the contract term class
+tedm:ND-PostAwarProcess_Contract_Term a rr:TriplesMap ;
+    rdfs:comment "ND-PostAwarProcess_Contract_Term";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:PostAwardProcess";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}";
+            rr:class epo:ContractTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-93-Lot";
+            rr:predicate epo:hasEPayment ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ElectronicPaymentUsageIndicator";
+                    rr:datatype xsd:boolean;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-92-Lot";
+            rr:predicate epo:hasEPayment ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ElectronicOrderUsageIndicator";
+                    rr:datatype xsd:boolean;
+                ] ;
+        ] .
+
+
+#ND-PaymentTerms for the contract term class
+tedm:ND-PaymentTerms_Contract_Term a rr:TriplesMap ;
+    rdfs:comment "ND-PaymentTerms_Contract_Term";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:PaymentTerms";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}";
+            rr:class epo:ContractTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-77-Lot";
+            rr:predicate epo:hasPaymentArrangement ;
+            rr:objectMap
+                [
+                    rml:reference "cac:PaymentTerms/cbc:Note";
+                    rr:datatype xsd:boolean;
+                ] ;
+        ] .
 ###############################################################The address of a Lot Contract##############################################################################################
 #ND-LotPerformanceAddress
 tedm:ND-LotPerformanceAddress a rr:TriplesMap ;
