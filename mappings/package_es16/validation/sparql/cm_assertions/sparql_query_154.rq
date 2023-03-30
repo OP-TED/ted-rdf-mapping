@@ -1,0 +1,10 @@
+#title: OPT-301-Lot-TenderEval ND-Lot.ND-LotTenderingTerms.OPT-301-Lot-TenderEval - OPT-301-Lot-TenderReceipt
+#description: “OPT-301-Lot-TenderEval ND-Lot.ND-LotTenderingTerms.OPT-301-Lot-TenderEval - OPT-301-Lot-TenderReceipt” in SF corresponds to “OPT-301 nan” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/TenderRecipientParty/PartyIdentification/ID. The expected ontology instances are epo: epo:Lot / epo:SubmissionTerm / epo:TenderProcessor / epo:Identifier / raf:langString .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/TenderRecipientParty/PartyIdentification/ID
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+		?this rdf:type epo:Lot .
+		?this epo:isSubjectToLotSpecificTerm / epo:definesTenderProcessor / epo:hasID / epo:hasIdentifierValue ?value }

@@ -1,0 +1,10 @@
+#title: ND-AwardingTerms ND-Lot.ND-LotTenderingTerms.ND-AwardingTerms - BT-50-Lot
+#description: “ND-AwardingTerms ND-Lot.ND-LotTenderingTerms.ND-AwardingTerms - BT-50-Lot” in SF corresponds to “BT-50 Minimum Candidates” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/EconomicOperatorShortList/MinimumQuantity. The expected ontology instances are epo: epo:Lot / epo:MultipleStageProcedureTerm / xsd:integer .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/EconomicOperatorShortList/MinimumQuantity
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+		?this rdf:type epo:Lot .
+		?this epo:isSubjectToLotSpecificTerm / epo:hasMinimumNumberOfCandidates ?value }

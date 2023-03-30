@@ -1,0 +1,10 @@
+#title: BT-115-Lot ND-Lot.ND-LotTenderingProcess.BT-115-Lot - BT-123-Lot
+#description: “BT-115-Lot ND-Lot.ND-LotTenderingProcess.BT-115-Lot - BT-123-Lot” in SF corresponds to “BT-123 Electronic Auction URL” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/AuctionTerms/AuctionURI. The expected ontology instances are epo: epo:Lot / epo:SubmissionTerm / xsd:anyURI .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/AuctionTerms/AuctionURI
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+		?this rdf:type epo:Lot .
+		?this epo:isSubjectToLotSpecificTerm / epo:hasEAuctionURL ?value }
