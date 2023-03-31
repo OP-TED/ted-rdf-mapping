@@ -1,10 +1,10 @@
-#title: BT-57-Lot ND-Lot.ND-LotProcurementScope.ND-OptionsAndRenewals.ND-OptionsDescription.BT-57-Lot - ND-OptionsDescription
-#description: “BT-57-Lot ND-Lot.ND-LotProcurementScope.ND-OptionsAndRenewals.ND-OptionsDescription.BT-57-Lot - ND-OptionsDescription” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/ContractExtension/Renewal/Period. The expected ontology instances are epo: epo:ContractTerm .
-#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/ContractExtension/Renewal/Period
+#title: BT-765-Lot ND-Lot.ND-LotTenderingProcess.BT-765-Lot - BT-60-Lot
+#description: “BT-765-Lot ND-Lot.ND-LotTenderingProcess.BT-765-Lot - BT-60-Lot” in SF corresponds to “BT-60 EU Funds” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/FundingProgramCode/@listName. The expected ontology instances are epo: epo:Lot / xsd:boolean .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/FundingProgramCode/@listName
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:ContractTerm .
-		?this a epo:ContractTerm }
+		?this rdf:type epo:Lot .
+		?this epo:isUsingEUFunds ?value . }

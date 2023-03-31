@@ -1,10 +1,11 @@
-#title: BT-728-Procedure ND-ProcedureProcurementScope.ND-ProcedurePlacePerformanceAdditionalInformation.BT-728-Procedure - BT-727-Procedure
-#description: “BT-728-Procedure ND-ProcedureProcurementScope.ND-ProcedurePlacePerformanceAdditionalInformation.BT-728-Procedure - BT-727-Procedure” in SF corresponds to “BT-727 Place Performance Services Other” in eForms. The corresponding XML element is /ContractNotice/ProcurementProject/RealizedLocation/Address/Region. The expected ontology instances are epo: epo:Procedure / epo:ContractTerm / at-voc:other-place-service .
-#xpath: /ContractNotice/ProcurementProject/RealizedLocation/Address/Region
+#title: ND-CrossBorderLaw ND-ProcedureTerms.ND-CrossBorderLaw - BT-67(b)-Procedure
+#description: “ND-CrossBorderLaw ND-ProcedureTerms.ND-CrossBorderLaw - BT-67(b)-Procedure” in SF corresponds to “BT-67 Exclusion Grounds” in eForms. The corresponding XML element is /ContractNotice/TenderingTerms/TendererQualificationRequest/SpecificTendererRequirement/Description. The expected ontology instances are epo: epo:Procedure / epo:ExclusionGround / rdf:langString .
+#xpath: /ContractNotice/TenderingTerms/TendererQualificationRequest/SpecificTendererRequirement/Description
 
+PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Procedure .
-		?this epo:foreseesContractSpecificTerm / epo:hasBroadPlaceOfPerformance ?value . }
+		?this epo:specifiesExclusionGround / cccev:descrition ?value }

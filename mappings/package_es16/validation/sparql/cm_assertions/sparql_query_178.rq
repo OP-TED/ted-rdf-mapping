@@ -1,10 +1,8 @@
-#title: BT-707-Lot ND-Lot.ND-LotTenderingTerms.ND-LotRestrictedDocuments.BT-707-Lot - OPT-050-Lot
-#description: “BT-707-Lot ND-Lot.ND-LotTenderingTerms.ND-LotRestrictedDocuments.BT-707-Lot - OPT-050-Lot” in SF corresponds to “OPT-050 nan” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/CallForTendersDocumentReference/DocumentStatusCode. The expected ontology instances are epo: epo:LotAwardOutcome /  at-voc:winner-selection-status .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/CallForTendersDocumentReference/DocumentStatusCode
+#title: ND-LotReviewTerms ND-Lot.ND-LotTenderingTerms.ND-LotReviewTerms - OPT-301-Lot-DocProvider
+#description: “ND-LotReviewTerms ND-Lot.ND-LotTenderingTerms.ND-LotReviewTerms - OPT-301-Lot-DocProvider” in SF corresponds to “OPT-301 nan” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/DocumentProviderParty/PartyIdentification/ID. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / epo:Identifier / rdf:langString .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/DocumentProviderParty/PartyIdentification/ID
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:LotAwardOutcome .
-		?this epo:hasAwardStatus ?value }
+		?this epo:playedBy / epo:hasID / epo:hasIdentifierValue ?value . }

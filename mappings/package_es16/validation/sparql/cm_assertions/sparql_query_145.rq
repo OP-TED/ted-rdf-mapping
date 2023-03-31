@@ -1,11 +1,10 @@
-#title: BT-732-Lot ND-Lot.ND-LotTenderingTerms.ND-SecurityClearanceTerms.BT-732-Lot - BT-578-Lot
-#description: “BT-732-Lot ND-Lot.ND-LotTenderingTerms.ND-SecurityClearanceTerms.BT-732-Lot - BT-578-Lot” in SF corresponds to “BT-578 Security Clearance” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/SecurityClearanceTerm/Code. The expected ontology instances are epo: epo:Lot / epo:SecurityClearanceTerm .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/SecurityClearanceTerm/Code
+#title: ND-LotTenderingProcessExtension ND-Lot.ND-LotTenderingProcess.ND-LotTenderingProcessExtension - OPT-301-Lot-TenderEval
+#description: “ND-LotTenderingProcessExtension ND-Lot.ND-LotTenderingProcess.ND-LotTenderingProcessExtension - OPT-301-Lot-TenderEval” in SF corresponds to “OPT-301 nan” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/TenderEvaluationParty/PartyIdentification/ID. The expected ontology instances are epo: epo:Lot / epo:SubmissionTerm / epo:TenderReceiver / epo:Identifier / raf:langString .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/TenderEvaluationParty/PartyIdentification/ID
 
-PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:isSubjectToLotSpecificTerm / cccev:title  ?value . }
+		?this epo:isSubjectToLotSpecificTerm / epo:definesTenderReceiver / epo:hasID / epo:hasIdentifierValue ?value }

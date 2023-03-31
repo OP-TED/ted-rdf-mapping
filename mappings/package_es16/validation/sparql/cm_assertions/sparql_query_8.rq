@@ -1,8 +1,10 @@
-#title: ND-ProcedureTenderingProcess ND-ProcedureTenderingProcess - OPT-030-Procedure-SProvider
-#description: “ND-ProcedureTenderingProcess ND-ProcedureTenderingProcess - OPT-030-Procedure-SProvider” in SF corresponds to “OPT-030 nan” in eForms. The corresponding XML element is /ContractNotice/ContractingParty/Party/ServiceProviderParty/ServiceTypeCode. The expected ontology instances are epo: epo:AgentInRole (from CL1) / rdf:langString .
-#xpath: /ContractNotice/ContractingParty/Party/ServiceProviderParty/ServiceTypeCode
+#title: BT-01-notice BT-01-notice - OPP-090-Procedure
+#description: “BT-01-notice BT-01-notice - OPP-090-Procedure” in SF corresponds to “OPP-090 nan” in eForms. The corresponding XML element is /ContractNotice/TenderingProcess/NoticeDocumentReference/ID. The expected ontology instances are epo: epo:Notice / epo:Notice / epo:Identifier / xsd:string .
+#xpath: /ContractNotice/TenderingProcess/NoticeDocumentReference/ID
 
-PREFIX cccev: <http://data.europa.eu/m8g/>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this cccev:description ?value }
+		?this rdf:type epo:Notice .
+		?this epo:refersToPrevious / epo:hasID / epo:hasIdentifierValue ?value }

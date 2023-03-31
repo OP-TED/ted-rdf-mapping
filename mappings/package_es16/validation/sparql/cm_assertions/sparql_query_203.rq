@@ -1,10 +1,10 @@
-#title: ND-LotsGroupAwardingTerms ND-LotsGroup.ND-LotsGroupAwardingTerms - BT-300-LotsGroup
-#description: “ND-LotsGroupAwardingTerms ND-LotsGroup.ND-LotsGroupAwardingTerms - BT-300-LotsGroup” in SF corresponds to “BT-300 Additional Information” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/Note. The expected ontology instances are epo: epo:LotGroup / rdf:langString .
-#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/Note
+#title: BT-734-LotsGroup ND-LotsGroup.ND-LotsGroupAwardingTerms.ND-LotsGroupAwardCriteria.ND-LotsGroupAwardCriterion.BT-734-LotsGroup - BT-5423-LotsGroup
+#description: “BT-734-LotsGroup ND-LotsGroup.ND-LotsGroupAwardingTerms.ND-LotsGroupAwardCriteria.ND-LotsGroupAwardCriterion.BT-734-LotsGroup - BT-5423-LotsGroup” in SF corresponds to “BT-5423 Award Criterion Number Threshold” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/AwardingTerms/AwardingCriterion/SubordinateAwardingCriterion/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/AwardCriterionParameter/ParameterCode/@listName. The expected ontology instances are epo: epo:AwardCriterion / cccev:Constraint / xsd:decimal .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/AwardingTerms/AwardingCriterion/SubordinateAwardingCriterion/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/AwardCriterionParameter/ParameterCode/@listName
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:LotGroup .
-		?this epo:hasAdditionalInformation ?value . }
+		?this rdf:type epo:AwardCriterion .
+		?this epo:hasConstraint / epo:hasThresholdValue ?value }

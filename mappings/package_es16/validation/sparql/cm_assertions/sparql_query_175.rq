@@ -1,11 +1,10 @@
-#title: ND-LotProcurementDocument ND-Lot.ND-LotTenderingTerms.ND-LotProcurementDocument - BT-745-Lot
-#description: “ND-LotProcurementDocument ND-Lot.ND-LotTenderingTerms.ND-LotProcurementDocument - BT-745-Lot” in SF corresponds to “BT-745 Submission Non-electronic Description” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/ProcessJustification/Description. The expected ontology instances are epo: epo:Lot / epo:SubmissionTerm /  at-voc:non-publication-justification .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/ProcessJustification/Description
+#title: BT-124-Lot ND-Lot.ND-LotTenderingProcess.BT-124-Lot - BT-632-Lot
+#description: “BT-124-Lot ND-Lot.ND-LotTenderingProcess.BT-124-Lot - BT-632-Lot” in SF corresponds to “BT-632 Tool Name” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/AccessToolName. The expected ontology instances are epo: epo:Lot / cv:Channel / rddf:langString .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/AccessToolName
 
-PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:isSubjectToLotSpecificTerm / cccev:description ?value }
+		?this epo:usesChannel  / epo:hasName ?value . }

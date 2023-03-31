@@ -1,8 +1,10 @@
-#title: OPT-301-Lot-Mediator ND-Lot.ND-LotTenderingTerms.ND-LotReviewTerms.OPT-301-Lot-Mediator - OPT-301-Lot-ReviewInfo
-#description: “OPT-301-Lot-Mediator ND-Lot.ND-LotTenderingTerms.ND-LotReviewTerms.OPT-301-Lot-Mediator - OPT-301-Lot-ReviewInfo” in SF corresponds to “OPT-301 nan” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/AppealTerms/AppealInformationParty/PartyIdentification/ID. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / epo:Identifier / rdf:langString .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/AppealTerms/AppealInformationParty/PartyIdentification/ID
+#title: ND-LotsGroupValueEstimate ND-LotsGroup.ND-LotsGroupProcurementScope.ND-LotsGroupValueEstimate - BT-157-LotsGroup
+#description: “ND-LotsGroupValueEstimate ND-LotsGroup.ND-LotsGroupProcurementScope.ND-LotsGroupValueEstimate - BT-157-LotsGroup” in SF corresponds to “BT-157 Group Framework Maximum Value” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/FrameworkAgreement/EstimatedMaximumValueAmount. The expected ontology instances are epo: epo:LotGroup / xsd:MonetaryValue / xsd:decimal .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/FrameworkAgreement/EstimatedMaximumValueAmount
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this epo:playedBy / epo:hasID / epo:hasIdentifierValue ?value . }
+		?this rdf:type epo:LotGroup .
+		?this epo:hasEstimatedValue / epo:hasAmountValue ?value . }

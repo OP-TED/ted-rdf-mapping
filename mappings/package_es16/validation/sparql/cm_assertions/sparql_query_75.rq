@@ -1,10 +1,10 @@
-#title: ND-LotPlacePerformance ND-Lot.ND-LotProcurementScope.ND-LotPlacePerformance - BT-755-Lot
-#description: “ND-LotPlacePerformance ND-Lot.ND-LotProcurementScope.ND-LotPlacePerformance - BT-755-Lot” in SF corresponds to “BT-755 Accessibility Justification” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/ProcurementAdditionalType/ProcurementType. The expected ontology instances are epo: epo:Lot / epo:StrategicProcurement / at-voc:accessibility .
-#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/ProcurementAdditionalType/ProcurementType
+#title: BT-5141-Lot ND-Lot.ND-LotProcurementScope.ND-LotPlacePerformance.ND-LotPerformanceAddress.BT-5141-Lot - BT-5071-Lot
+#description: “BT-5141-Lot ND-Lot.ND-LotProcurementScope.ND-LotPlacePerformance.ND-LotPerformanceAddress.BT-5141-Lot - BT-5071-Lot” in SF corresponds to “BT-5071 Place Performance Country Subdivision” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/RealizedLocation/Address/CountrySubentityCode. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / dct:Location / locn:Address / at-voc:nuts (from nuts.json) .
+#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/RealizedLocation/Address/CountrySubentityCode
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:fulfillsStrategicProcurement / epo:hasNonAccessibilityCriterionJustification ?value }
+		?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / epo:hasNutsCode ?value . }

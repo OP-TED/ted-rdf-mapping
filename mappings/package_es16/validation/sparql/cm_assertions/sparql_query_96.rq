@@ -1,11 +1,10 @@
-#title: BT-123-Lot ND-Lot.ND-LotTenderingProcess.ND-AuctionTerms.BT-123-Lot - BT-122-Lot
-#description: “BT-123-Lot ND-Lot.ND-LotTenderingProcess.ND-AuctionTerms.BT-123-Lot - BT-122-Lot” in SF corresponds to “BT-122 Electronic Auction Description” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/AuctionTerms/Description. The expected ontology instances are epo: epo:Lot / epo:EAuctionTechniqueUsage / rdf:langString .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/AuctionTerms/Description
+#title: BT-109-Lot ND-Lot.ND-LotTenderingProcess.ND-FA.BT-109-Lot - BT-113-Lot
+#description: “BT-109-Lot ND-Lot.ND-LotTenderingProcess.ND-FA.BT-109-Lot - BT-113-Lot” in SF corresponds to “BT-113 Framework Maximum Participants Number” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/FrameworkAgreement/MaximumOperatorQuantity. The expected ontology instances are epo: epo:Lot / epo:FrameworkAgreementTerm / rdf:langString .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/FrameworkAgreement/MaximumOperatorQuantity
 
-PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:usesTechnique / cccev:description ?value }
+		?this epo:isSubjectToProcedureSpecificTerm / epo:hasMaximumParticipantsNumber ?value . }

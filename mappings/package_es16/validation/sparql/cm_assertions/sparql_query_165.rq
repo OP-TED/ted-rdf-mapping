@@ -1,10 +1,11 @@
-#title: ND-PublicOpening ND-Lot.ND-LotTenderingProcess.ND-PublicOpening - BT-97-Lot
-#description: “ND-PublicOpening ND-Lot.ND-LotTenderingProcess.ND-PublicOpening - BT-97-Lot” in SF corresponds to “BT-97 Submission Language” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/Language/ID. The expected ontology instances are epo: epo:Lot / epo:SubmissionTerm / at-voc:language .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/Language/ID
+#title: ND-LotProcurementDocument ND-Lot.ND-LotTenderingTerms.ND-LotProcurementDocument - BT-745-Lot
+#description: “ND-LotProcurementDocument ND-Lot.ND-LotTenderingTerms.ND-LotProcurementDocument - BT-745-Lot” in SF corresponds to “BT-745 Submission Non-electronic Description” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/ProcessJustification/Description. The expected ontology instances are epo: epo:Lot / epo:SubmissionTerm /  at-voc:non-publication-justification .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/ProcessJustification/Description
 
+PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:isSubjectToLotSpecificTerm  / epo:hasLanguage ?value . }
+		?this epo:isSubjectToLotSpecificTerm / cccev:description ?value }

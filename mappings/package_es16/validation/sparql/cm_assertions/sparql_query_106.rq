@@ -1,10 +1,10 @@
-#title: ND-LotFiscalLegislation ND-Lot.ND-LotTenderingTerms.ND-LotFiscalLegislation - BT-271-Lot
-#description: “ND-LotFiscalLegislation ND-Lot.ND-LotTenderingTerms.ND-LotFiscalLegislation - BT-271-Lot” in SF corresponds to “BT-271 Framework Maximum Value” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/RequestedTenderTotal/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/FrameworkMaximumAmount. The expected ontology instances are epo: epo:LotAwardOutcome / epo:MonetaryValue / xsd:decimal .
-#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/RequestedTenderTotal/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/FrameworkMaximumAmount
+#title: BT-7532-Lot ND-Lot.ND-LotTenderingTerms.ND-NonUBLTenderingTerms.ND-SelectionCriteria.ND-SecondStageCriterionParameter.BT-7532-Lot - BT-7531-Lot
+#description: “BT-7532-Lot ND-Lot.ND-LotTenderingTerms.ND-NonUBLTenderingTerms.ND-SelectionCriteria.ND-SecondStageCriterionParameter.BT-7532-Lot - BT-7531-Lot” in SF corresponds to “BT-7531 Selection Criteria Second Stage Invite Number Weight” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/SelectionCriteria/CriterionParameter/ParameterCode/@listName. The expected ontology instances are epo: epo:Lot / epo:SelectionCriterion / at-voc:number-weight .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/SelectionCriteria/CriterionParameter/ParameterCode/@listName
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:LotAwardOutcome .
-		?this epo:hasFrameworkAgreementMaximumValue / epo:hasAmountValue ?value . }
+		?this rdf:type epo:Lot .
+		?this epo:specifiesSelectionCriterion / epo:hasWeightValueType ?value }

@@ -1,8 +1,11 @@
-#title: BT-11-Procedure-Buyer ND-ContractingParty.BT-11-Procedure-Buyer - OPT-300-Procedure-Buyer
-#description: “BT-11-Procedure-Buyer ND-ContractingParty.BT-11-Procedure-Buyer - OPT-300-Procedure-Buyer” in SF corresponds to “OPT-300 nan” in eForms. The corresponding XML element is /ContractNotice/ContractingParty/Party/PartyIdentification/ID. The expected ontology instances are epo: epo:AgentInRole (from CL1) / foaf:Agent / epo:Idenitifier / rdf:langString .
-#xpath: /ContractNotice/ContractingParty/Party/PartyIdentification/ID
+#title: BT-10-Procedure-Buyer ND-ContractingParty.BT-10-Procedure-Buyer - BT-11-Procedure-Buyer
+#description: “BT-10-Procedure-Buyer ND-ContractingParty.BT-10-Procedure-Buyer - BT-11-Procedure-Buyer” in SF corresponds to “BT-11 Buyer Legal Type” in eForms. The corresponding XML element is /ContractNotice/ContractingParty/ContractingPartyType/PartyTypeCode/@listName. The expected ontology instances are epo: org:Organization / at-voc:buyer-legal-type (from buyer_legal_type.csv) .
+#xpath: /ContractNotice/ContractingParty/ContractingPartyType/PartyTypeCode/@listName
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this epo:playedBy / epo:hasID / epo:hasIdentifierValue ?value }
+		?this rdf:type org:Organization .
+		?this epo:hasBuyerLegalType ?value . }

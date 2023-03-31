@@ -19,6 +19,7 @@
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix xsi: <http://www.w3.org/2001/XMLSchema-instance#> .
 
@@ -43,8 +44,10 @@ epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_AuctionTerms_fEtfKJVcbukziY28mGZdui 
 epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_AwardingTerms_4cgbfPEuSgC4MeB6X9HTss a
     epo:AwardCriterion;
   epo:hasAwardCriterionType "price", "quality";
+  epo:hasFixedValue 40.0, 60.0;
   epo:hasWeightValueType 40.0, 60.0;
-  cccev:description "La valeur technique participle pour 60 % …", "Le prix contribue for 40 % …" .
+  cccev:description "La valeur technique participle pour 60 % …", "Le prix contribue for 40 % …";
+  cccev:name "Prix", "Qualité" .
 
 epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_AwardingTerms_G2XvSSebd6Tc4bHMenwxLy a
     epo:AwardCriterion .
@@ -52,8 +55,10 @@ epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_AwardingTerms_G2XvSSebd6Tc4bHMenwxLy
 epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_AwardingTerms_kJu9SkmLfQYWH3GxqnddRV a
     epo:AwardCriterion;
   epo:hasAwardCriterionType "price", "quality";
+  epo:hasFixedValue 40.0, 60.0;
   epo:hasWeightValueType 40.0, 60.0;
-  cccev:description "La valeur technique participle pour 40 % …", "Le prix contribue for 60 % …" .
+  cccev:description "La valeur technique participle pour 40 % …", "Le prix contribue for 60 % …";
+  cccev:name "Prix", "Qualité" .
 
 epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_BuyerOrganization_7WeLTCnpKBW84s7ozenKaS
   a org:Organization;
@@ -146,17 +151,11 @@ epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractAddressIdentifier_g7k7qviJsB
   a epo:Identifier;
   epo:hasIdentifierValue "FRA" .
 
-epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractExtension_BDTC4WRLKSCg4KipkdMxR8
-  a epo:ContractTerm;
-  epo:hasMaximumNumberOfRenewals 3;
-  epo:hasOptionsDescription "Options description ---";
-  epo:hasRenewalDescription "L'accord-cadre est reconductible de manière tacite, dans les conditions définies au cahier des clauses administratives particulières, 3 fois, pour une période de 12 mois, à compter du 1.1.2021, sans pouvoir excéder le 31.12.2023." .
+epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractDuration_DW9uu9Ka9v6eCrwhU9MmBC
+  a epo:SpecificDuration .
 
-epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractExtension_BboGPQkCpLeHXdXL8io8wo
-  a epo:ContractTerm;
-  epo:hasMaximumNumberOfRenewals 3;
-  epo:hasOptionsDescription "Options description ---";
-  epo:hasRenewalDescription "L'accord-cadre est reconductible de manière tacite, dans les conditions définies au cahier des clauses administratives particulières, 3 fois, pour une période de 12 mois, à compter du 1.1.2021, sans pouvoir excéder le 31.12.2023." .
+epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractDuration_JNctcsx6JXdNkzdL4P6dek
+  a epo:SpecificDuration .
 
 epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractLocationAddress_6KLSiuR7u4upEUz8ykdzrc
   a locn:Address;
@@ -168,15 +167,47 @@ epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractLocationAddress_TfeqsbtZz7bn
 
 epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractLocation_FfZ9Bw8LWfWqSRcwCecwNs
   a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRD22>;
   locn:address epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractLocationAddress_6KLSiuR7u4upEUz8ykdzrc .
 
 epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractLocation_N4fbNQxys3ti3VyDu3NDMM
   a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FRD22>;
   locn:address epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractLocationAddress_TfeqsbtZz7bnSaeLJEmaKZ .
+
+epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractPeriod_DW9uu9Ka9v6eCrwhU9MmBC
+  a epo:Period;
+  epo:hasBeginning "2019-09-01+02:00"^^xsd:dateTime;
+  epo:hasEnd "2020-12-31+01:00"^^xsd:dateTime .
+
+epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractPeriod_JNctcsx6JXdNkzdL4P6dek
+  a epo:Period;
+  epo:hasBeginning "2019-09-01+02:00"^^xsd:dateTime;
+  epo:hasEnd "2020-12-31+01:00"^^xsd:dateTime .
 
 epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractTerm_246rmGzZvwFBcxRNZTXjTW a
     epo:ContractTerm;
   epo:hasEPayment false .
+
+epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractTerm_BDTC4WRLKSCg4KipkdMxR8 a
+    epo:ContractTerm;
+  epo:definesContractDuration epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractDuration_JNctcsx6JXdNkzdL4P6dek;
+  epo:definesContractPeriod epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractPeriod_JNctcsx6JXdNkzdL4P6dek;
+  epo:hasAdditionalContractNature "services";
+  epo:hasContractNatureType "services";
+  epo:hasMaximumNumberOfRenewals 3;
+  epo:hasOptionsDescription "Options description ---";
+  epo:hasRenewalDescription "L'accord-cadre est reconductible de manière tacite, dans les conditions définies au cahier des clauses administratives particulières, 3 fois, pour une période de 12 mois, à compter du 1.1.2021, sans pouvoir excéder le 31.12.2023." .
+
+epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractTerm_BboGPQkCpLeHXdXL8io8wo a
+    epo:ContractTerm;
+  epo:definesContractDuration epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractDuration_DW9uu9Ka9v6eCrwhU9MmBC;
+  epo:definesContractPeriod epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractPeriod_DW9uu9Ka9v6eCrwhU9MmBC;
+  epo:hasAdditionalContractNature "services";
+  epo:hasContractNatureType "services";
+  epo:hasMaximumNumberOfRenewals 3;
+  epo:hasOptionsDescription "Options description ---";
+  epo:hasRenewalDescription "L'accord-cadre est reconductible de manière tacite, dans les conditions définies au cahier des clauses administratives particulières, 3 fois, pour une période de 12 mois, à compter du 1.1.2021, sans pouvoir excéder le 31.12.2023." .
 
 epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractTerm_daUDPcwCUoxbJRjGb7tKNQ a
     epo:ContractTerm;
@@ -252,12 +283,10 @@ epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ExtensionGroup_hqawu5kJC8i3dxZ99zexx
 
 epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_FrameworkAgreementTechnicalUsage_4qCitbxYVRfdbqxnYtJTZF
   a epo:FrameworkAgreementTechniqueUsage;
-  epo:hasESubmissionPermission "allowed";
   epo:hasUsage "none" .
 
 epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_FrameworkAgreementTechnicalUsage_bq3rWUnhLReULR3Pe8QxDZ
   a epo:FrameworkAgreementTechniqueUsage;
-  epo:hasESubmissionPermission "allowed";
   epo:hasUsage "none" .
 
 epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_LotIdentifier_BDTC4WRLKSCg4KipkdMxR8 a
@@ -268,14 +297,13 @@ epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_LotIdentifier_BboGPQkCpLeHXdXL8io8wo
     epo:Identifier;
   epo:hasIdentifierValue "1" .
 
-epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_LotPurpose_BDTC4WRLKSCg4KipkdMxR8 a epo:Purpose;
-  epo:hasAdditionalInformation "Il est ici précisé que dans le but de mieux assurer la satisfaction de ses besoins en s'adressant à une pluralité de cocontractants ou de favoriser l'émergence d'une plus grande concurrence, le pouvoir adjudicateur impose une limitation du nombre de lots attribués à 1 pour un même attributaire. La règle d'attribution est explicitée à l'article 3-7 du règlement de la consultation." .
+epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_LotPurpose_BDTC4WRLKSCg4KipkdMxR8 a epo:Purpose .
 
-epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_LotPurpose_BboGPQkCpLeHXdXL8io8wo a epo:Purpose;
-  epo:hasAdditionalInformation "Il est ici précisé que dans le but de mieux assurer la satisfaction de ses besoins en s'adressant à une pluralité de cocontractants ou de favoriser l'émergence d'une plus grande concurrence, le pouvoir adjudicateur impose une limitation du nombre de lots attribués à 1 pour un même attributaire. La règle d'attribution est explicitée à l'article 3-7 du règlement de la consultation." .
+epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_LotPurpose_BboGPQkCpLeHXdXL8io8wo a epo:Purpose .
 
 epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_Lot_246rmGzZvwFBcxRNZTXjTW a epo:Lot;
-  epo:foreseesContractSpecificTerm epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractExtension_BboGPQkCpLeHXdXL8io8wo;
+  epo:foreseesContractSpecificTerm epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractTerm_BboGPQkCpLeHXdXL8io8wo;
+  epo:hasID epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_LotIdentifier_BboGPQkCpLeHXdXL8io8wo;
   epo:hasPurpose epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_LotPurpose_BboGPQkCpLeHXdXL8io8wo;
   epo:isCoveredByGPA true;
   epo:isSubjectToLotSpecificTerm epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_AccessTerm_YWMCGu6i5HBxweh3xaUekn,
@@ -299,7 +327,8 @@ epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_Lot_246rmGzZvwFBcxRNZTXjTW a epo:Lot
   cccev:title "Agence centre", "Prix", "Qualité" .
 
 epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_Lot_daUDPcwCUoxbJRjGb7tKNQ a epo:Lot;
-  epo:foreseesContractSpecificTerm epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractExtension_BDTC4WRLKSCg4KipkdMxR8;
+  epo:foreseesContractSpecificTerm epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_ContractTerm_BDTC4WRLKSCg4KipkdMxR8;
+  epo:hasID epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_LotIdentifier_BDTC4WRLKSCg4KipkdMxR8;
   epo:hasPurpose epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_LotPurpose_BDTC4WRLKSCg4KipkdMxR8;
   epo:isCoveredByGPA true;
   epo:isSubjectToLotSpecificTerm epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_AccessTerm_TT87XZ7rfCixVuS4Z9trMH,
@@ -335,11 +364,11 @@ epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_OpenTenderEventPlace_TpCFHZDentQZiC2
 
 epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_OpeningTerm_QuUbCTvwqkE5rYfeGgqExM a epo:OpeningTerm;
   epo:definesOpeningPlace epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_OpenTenderEventPlace_TpCFHZDentQZiC2NomrGLF;
-  epo:hasOpeningDate "2019-06-25:09:00:00" .
+  epo:hasOpeningDateTime "2019-06-25Z" .
 
 epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_OpeningTerm_SJDjVPGsRNCb7nBWqTThP5 a epo:OpeningTerm;
   epo:definesOpeningPlace epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_OpenTenderEventPlace_JFbBX6QvdBoDFe7oMMpuNc;
-  epo:hasOpeningDate "2019-06-25:09:00:00" .
+  epo:hasOpeningDateTime "2019-06-25Z" .
 
 epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_OrganisationIdentifier_7RNAdNBeN3NAMhHZ5nqf4W
   a epo:Identifier;
@@ -442,6 +471,7 @@ epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_SelectionTerm_QwLGZTLYe95szz5vdsUu7F
 epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_SubmissionTerm_246rmGzZvwFBcxRNZTXjTW
   a epo:SubmissionTerm;
   epo:hasEAuctionURL "https://my-online-eauction.eu/"^^xsd:anyURI;
+  epo:hasESubmissionPermission "allowed";
   epo:hasLanguage "FRA";
   epo:hasReceiptDeadline "2019-06-24Z:16:00:00Z"^^xsd:dateTime;
   epo:hasSubmissionURL "https://www.marches-publics.info/accueil.htm"^^xsd:anyURI;
@@ -450,6 +480,7 @@ epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_SubmissionTerm_246rmGzZvwFBcxRNZTXjT
 epd:id_da4d46e9-490b-41ff-a2ae-8166d356a619_SubmissionTerm_daUDPcwCUoxbJRjGb7tKNQ
   a epo:SubmissionTerm;
   epo:hasEAuctionURL "https://my-online-eauction.eu/"^^xsd:anyURI;
+  epo:hasESubmissionPermission "allowed";
   epo:hasLanguage "FRA";
   epo:hasReceiptDeadline "2019-06-24Z:16:00:00Z"^^xsd:dateTime;
   epo:hasSubmissionURL "https://www.marches-publics.info/accueil.htm"^^xsd:anyURI;

@@ -1,10 +1,10 @@
-#title: BT-18-Lot ND-Lot.ND-LotTenderingTerms.ND-TenderRecipient.BT-18-Lot - BT-17-Lot
-#description: “BT-18-Lot ND-Lot.ND-LotTenderingTerms.ND-TenderRecipient.BT-18-Lot - BT-17-Lot” in SF corresponds to “BT-17 Submission Electronic” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/SubmissionMethodCode/@listName. The expected ontology instances are epo: epo:Lot / epo:SubmissionTerm / at-voc:permission .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/SubmissionMethodCode/@listName
+#title: ND-LotRestrictedDocuments ND-Lot.ND-LotTenderingTerms.ND-LotRestrictedDocuments - BT-15-Lot
+#description: “ND-LotRestrictedDocuments ND-Lot.ND-LotTenderingTerms.ND-LotRestrictedDocuments - BT-15-Lot” in SF corresponds to “BT-15 Documents URL” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/CallForTendersDocumentReference/Attachment/ExternalReference/URI. The expected ontology instances are epo: epo:AccessTerm / xsd:anyURI .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/CallForTendersDocumentReference/Attachment/ExternalReference/URI
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Lot .
-		?this epo:isSubjectToLotSpecificTerm / epo:hasESubmissionPermission ?value . }
+		?this rdf:type epo:AccessTerm .
+		?this epo:hasPublicAccessURL ?value }

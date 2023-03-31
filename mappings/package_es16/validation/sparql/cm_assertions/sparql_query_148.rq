@@ -1,11 +1,10 @@
-#title: BT-764-Lot ND-Lot.ND-LotTenderingTerms.BT-764-Lot - BT-802-Lot
-#description: “BT-764-Lot ND-Lot.ND-LotTenderingTerms.BT-764-Lot - BT-802-Lot” in SF corresponds to “BT-802 Non-Disclosure Agreement Description” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/ContractExecutionRequirement/Description. The expected ontology instances are epo: epo:Business / rdf:langString .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/ContractExecutionRequirement/Description
+#title: BT-130-Lot ND-Lot.ND-LotTenderingProcess.BT-130-Lot - BT-131(t)-Lot
+#description: “BT-130-Lot ND-Lot.ND-LotTenderingProcess.BT-130-Lot - BT-131(t)-Lot” in SF corresponds to “BT-131 Deadline Receipt Tenders” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/TenderSubmissionDeadlinePeriod/EndTime. The expected ontology instances are epo: epo:Lot / epo:SubmissionTerm / xsd:dateTime .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/TenderSubmissionDeadlinePeriod/EndTime
 
-PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Business .
-		?this cccev:description ?value . }
+		?this rdf:type epo:Lot .
+		?this epo:isSubjectToLotSpecificTerm  / epo:hasReceiptDeadline ?value . }

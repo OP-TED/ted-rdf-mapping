@@ -1,11 +1,10 @@
-#title: BT-5101(c)-Procedure ND-ProcedureProcurementScope.ND-ProcedurePlacePerformanceAdditionalInformation.ND-ProcedurePlacePerformance.BT-5101(c)-Procedure - BT-5101(b)-Procedure
-#description: “BT-5101(c)-Procedure ND-ProcedureProcurementScope.ND-ProcedurePlacePerformanceAdditionalInformation.ND-ProcedurePlacePerformance.BT-5101(c)-Procedure - BT-5101(b)-Procedure” in SF corresponds to “BT-5101 Place Performance Street” in eForms. The corresponding XML element is /ContractNotice/ProcurementProject/RealizedLocation/Address/AdditionalStreetName. The expected ontology instances are epo: epo:Procedure / epo:ContractTerm / dct:Location / locn:Address / rdf:langString .
-#xpath: /ContractNotice/ProcurementProject/RealizedLocation/Address/AdditionalStreetName
+#title: BT-5141-Procedure ND-ProcedureProcurementScope.ND-ProcedurePlacePerformanceAdditionalInformation.ND-ProcedurePlacePerformance.BT-5141-Procedure - BT-5071-Procedure
+#description: “BT-5141-Procedure ND-ProcedureProcurementScope.ND-ProcedurePlacePerformanceAdditionalInformation.ND-ProcedurePlacePerformance.BT-5141-Procedure - BT-5071-Procedure” in SF corresponds to “BT-5071 Place Performance Country Subdivision” in eForms. The corresponding XML element is /ContractNotice/ProcurementProject/RealizedLocation/Address/CountrySubentityCode. The expected ontology instances are epo: epo:Procedure / epo:ContractTerm / dct:Location / at-voc:nuts (from nuts.json) .
+#xpath: /ContractNotice/ProcurementProject/RealizedLocation/Address/CountrySubentityCode
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Procedure .
-		?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address /  locn:adminUnitL2 ?value . }
+		?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / epo:hasNutsCode ?value . }

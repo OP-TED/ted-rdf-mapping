@@ -1,10 +1,11 @@
-#title: BT-727-Procedure ND-ProcedureProcurementScope.ND-ProcedurePlacePerformanceAdditionalInformation.ND-ProcedurePlacePerformance.BT-727-Procedure - BT-5141-Procedure
-#description: “BT-727-Procedure ND-ProcedureProcurementScope.ND-ProcedurePlacePerformanceAdditionalInformation.ND-ProcedurePlacePerformance.BT-727-Procedure - BT-5141-Procedure” in SF corresponds to “BT-5141 Place Performance Country Code” in eForms. The corresponding XML element is /ContractNotice/ProcurementProject/RealizedLocation/Address/Country/IdentificationCode. The expected ontology instances are epo: epo:Procedure / epo:ContractTerm / dct:Location / at-voc:nuts .
-#xpath: /ContractNotice/ProcurementProject/RealizedLocation/Address/Country/IdentificationCode
+#title: BT-67(b)-Procedure ND-ProcedureTerms.ND-TendererQualificationRequest.ND-ExclusionGrounds.BT-67(b)-Procedure - BT-67(a)-Procedure
+#description: “BT-67(b)-Procedure ND-ProcedureTerms.ND-TendererQualificationRequest.ND-ExclusionGrounds.BT-67(b)-Procedure - BT-67(a)-Procedure” in SF corresponds to “BT-67 Exclusion Grounds” in eForms. The corresponding XML element is /ContractNotice/TenderingTerms/TendererQualificationRequest/SpecificTendererRequirement/TendererRequirementTypeCode/@listName. The expected ontology instances are epo: epo:Procedure / epo:ExclusionGround / at-voc:criterion .
+#xpath: /ContractNotice/TenderingTerms/TendererQualificationRequest/SpecificTendererRequirement/TendererRequirementTypeCode/@listName
 
+PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Procedure .
-		?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / epo:hasCountryCode ?value . }
+		?this epo:specifiesExclusionGround / cccev:type ?value }

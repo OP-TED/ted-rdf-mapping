@@ -1,8 +1,10 @@
-#title: ND-LotsGroup ND-LotsGroup - OPT-301-Lot-Mediator
-#description: “ND-LotsGroup ND-LotsGroup - OPT-301-Lot-Mediator” in SF corresponds to “OPT-301 nan” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/AppealTerms/MediationParty/PartyIdentification/ID. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / epo:Identifier / rdf:langString .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/AppealTerms/MediationParty/PartyIdentification/ID
+#title: BT-300-LotsGroup ND-LotsGroup.ND-LotsGroupProcurementScope.BT-300-LotsGroup - BT-271-LotsGroup
+#description: “BT-300-LotsGroup ND-LotsGroup.ND-LotsGroupProcurementScope.BT-300-LotsGroup - BT-271-LotsGroup” in SF corresponds to “BT-271 Framework Maximum Value” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/RequestedTenderTotal/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/FrameworkMaximumAmount. The expected ontology instances are epo: epo:LotGroup / xsd:MonetaryValue / xsd:decimal .
+#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/RequestedTenderTotal/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/FrameworkMaximumAmount
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this epo:playedBy / epo:hasID / epo:hasIdentifierValue ?value . }
+		?this rdf:type epo:LotGroup .
+		?this epo:hasFrameworkAgreementMaximumValue / epo:hasAmountValue ?value . }

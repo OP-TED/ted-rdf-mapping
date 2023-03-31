@@ -1,9 +1,8 @@
-#title: BT-503-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.ND-CompanyContact.BT-503-Organization-Company - BT-506-Organization-Company
-#description: “BT-503-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.ND-CompanyContact.BT-503-Organization-Company - BT-506-Organization-Company” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/Contact/ElectronicMail. The expected ontology instances are epo: epo:AgentInRole (from CL1) / cpov:ContactPoint / xsd:anyURI .
-#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/Contact/ElectronicMail
+#title: BT-510(a)-Organization-TouchPoint ND-RootExtension.ND-Organizations.ND-Organization.ND-Touchpoint.ND-TouchpointAddress.BT-510(a)-Organization-TouchPoint - BT-509-Organization-TouchPoint
+#description: “BT-510(a)-Organization-TouchPoint ND-RootExtension.ND-Organizations.ND-Organization.ND-Touchpoint.ND-TouchpointAddress.BT-510(a)-Organization-TouchPoint - BT-509-Organization-TouchPoint” in SF corresponds to “BT-509 Organisation eDelivery Gateway” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/EndpointID. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cv:Channel / xsd:anyURI .
+#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/EndpointID
 
-PREFIX cpov: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
 ASK WHERE { 
-		?this epo:hasPrimaryContactPoint  / cpov:email ?value . }
+		?this epo:playedBy / epo:hasDeliveryGateway / epo:hasEndpoint ?value . }

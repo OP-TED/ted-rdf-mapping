@@ -1,10 +1,10 @@
-#title: BT-26(m)-Lot ND-Lot.ND-LotProcurementScope.ND-LotMainClassification.ND-LotMainClassificationCode.BT-26(m)-Lot - ND-LotMainClassificationCode
-#description: “BT-26(m)-Lot ND-Lot.ND-LotProcurementScope.ND-LotMainClassification.ND-LotMainClassificationCode.BT-26(m)-Lot - ND-LotMainClassificationCode” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/MainCommodityClassification/ItemClassificationCode. The expected ontology instances are epo: epo:Lot / epo:Purpose / at-voc:cpv (from cpv.json) .
-#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/MainCommodityClassification/ItemClassificationCode
+#title: ND-AccessibilityJustification ND-Lot.ND-LotProcurementScope.ND-AccessibilityJustification - BT-777-Lot
+#description: “ND-AccessibilityJustification ND-Lot.ND-LotProcurementScope.ND-AccessibilityJustification - BT-777-Lot” in SF corresponds to “BT-777 Strategic Procurement Description” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/ProcurementAdditionalType/ProcurementType. The expected ontology instances are epo: epo:Lot / epo:StrategicProcurement / rdf:langString .
+#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/ProcurementAdditionalType/ProcurementType
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:hasPurpose / epo:hasMainClassification ?value . }
+		?this epo:fulfillsStrategicProcurement / epo:hasStrategicProcurementDescription ?value }

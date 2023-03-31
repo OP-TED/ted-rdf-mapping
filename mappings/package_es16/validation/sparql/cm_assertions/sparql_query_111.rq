@@ -1,10 +1,10 @@
-#title: BT-40-Lot ND-Lot.ND-LotTenderingTerms.ND-NonUBLTenderingTerms.ND-SelectionCriteria.BT-40-Lot - BT-748-Lot
-#description: “BT-40-Lot ND-Lot.ND-LotTenderingTerms.ND-NonUBLTenderingTerms.ND-SelectionCriteria.BT-40-Lot - BT-748-Lot” in SF corresponds to “BT-748 Selection Criteria Used” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/SelectionCriteria/CalculationExpressionCode/@listName. The expected ontology instances are epo: epo:Lot / epo:SelectionCriterion / at-voc:usage .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/SelectionCriteria/CalculationExpressionCode/@listName
+#title: ND-AwardingTerms ND-Lot.ND-LotTenderingTerms.ND-AwardingTerms - BT-50-Lot
+#description: “ND-AwardingTerms ND-Lot.ND-LotTenderingTerms.ND-AwardingTerms - BT-50-Lot” in SF corresponds to “BT-50 Minimum Candidates” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/EconomicOperatorShortList/MinimumQuantity. The expected ontology instances are epo: epo:Lot / epo:MultipleStageProcedureTerm / xsd:integer .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/EconomicOperatorShortList/MinimumQuantity
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:specifiesSelectionCriterion / epo:hasSelectionCriteriaUsage ?value }
+		?this epo:isSubjectToLotSpecificTerm / epo:hasMinimumNumberOfCandidates ?value }

@@ -1,10 +1,10 @@
-#title: BT-137-Lot ND-Lot.BT-137-Lot - ND-Lot
-#description: “BT-137-Lot ND-Lot.BT-137-Lot - ND-Lot” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot. The expected ontology instances are epo: epo:Lot .
-#xpath: /ContractNotice/ProcurementProjectLot
+#title: ND-LotProcurementScope ND-Lot.ND-LotProcurementScope - BT-1251-Lot
+#description: “ND-LotProcurementScope ND-Lot.ND-LotProcurementScope - BT-1251-Lot” in SF corresponds to “BT-1251 Previous Planning Part Identifier” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/NoticeDocumentReference/ReferencedDocumentInternalAddress. The expected ontology instances are epo: epo-not:PlanningNotice / epo:PlannedProcurementPart / epo:Identifier / xsd:string .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/NoticeDocumentReference/ReferencedDocumentInternalAddress
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Lot .
-		?this a epo:Lot }
+		?this rdf:type epo-not:PlanningNotice .
+		?this epo-not:announcesPlannedProcurementPart / epo:hasID / epo:hasIdentifierValue ?value }

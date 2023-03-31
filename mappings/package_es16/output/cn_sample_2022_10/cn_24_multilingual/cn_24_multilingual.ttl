@@ -19,6 +19,7 @@
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix xsi: <http://www.w3.org/2001/XMLSchema-instance#> .
 
@@ -37,6 +38,7 @@ epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_AwardingTerms_G2XvSSebd6Tc4bHMenwxLy
 epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_AwardingTerms_kJu9SkmLfQYWH3GxqnddRV a
     epo:AwardCriterion;
   epo:hasAwardCriterionType "price", "quality";
+  epo:hasFixedValue 30.0, 70.0;
   epo:hasWeightValueType 30.0, 70.0;
   cccev:description "A közbeszerzési dokumentumok szerinti technikai odaítélési kritériumok",
     "Criteri di aggiudicazione tecnici stabiliti nei documenti di gara", "Criterii tehnice de atribuire prevăzute în dosarul achiziției",
@@ -170,9 +172,9 @@ epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_ContractAddressIdentifier_7r464q8uFV
   a epo:Identifier;
   epo:hasIdentifierValue "LUX" .
 
-epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_ContractExtension_BboGPQkCpLeHXdXL8io8wo
-  a epo:ContractTerm;
-  epo:hasMaximumNumberOfRenewals 0 .
+epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_ContractDuration_DW9uu9Ka9v6eCrwhU9MmBC
+  a epo:SpecificDuration;
+  time:numericDuration "48" .
 
 epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_ContractLocationAddress_6KLSiuR7u4upEUz8ykdzrc
   a locn:Address;
@@ -180,11 +182,24 @@ epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_ContractLocationAddress_6KLSiuR7u4up
 
 epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_ContractLocation_FfZ9Bw8LWfWqSRcwCecwNs
   a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/LU000>;
   locn:address epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_ContractLocationAddress_6KLSiuR7u4upEUz8ykdzrc .
+
+epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_ContractPeriod_DW9uu9Ka9v6eCrwhU9MmBC
+  a epo:Period;
+  epo:hasBeginning "2020-06-01+02:00"^^xsd:dateTime .
 
 epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_ContractTerm_246rmGzZvwFBcxRNZTXjTW a
     epo:ContractTerm;
   epo:hasEPayment true .
+
+epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_ContractTerm_BboGPQkCpLeHXdXL8io8wo a
+    epo:ContractTerm;
+  epo:definesContractDuration epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_ContractDuration_DW9uu9Ka9v6eCrwhU9MmBC;
+  epo:definesContractPeriod epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_ContractPeriod_DW9uu9Ka9v6eCrwhU9MmBC;
+  epo:hasAdditionalContractNature "services";
+  epo:hasContractNatureType "services";
+  epo:hasMaximumNumberOfRenewals 0 .
 
 epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_DynamicPurchaseSystemTechnicalUsage_bq3rWUnhLReULR3Pe8QxDZ
   a epo:DynamicPurchaseSystemTechniqueUsage;
@@ -207,7 +222,6 @@ epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_ExtensionGroup_ZY3SnQBRXooC6NjbRDS9a
 
 epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_FrameworkAgreementTechnicalUsage_bq3rWUnhLReULR3Pe8QxDZ
   a epo:FrameworkAgreementTechniqueUsage;
-  epo:hasESubmissionPermission "required";
   epo:hasUsage "fa-wo-rc" .
 
 epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_FrameworkTermAgreement_gLuU9xVSAhVSewi2MZNMhW
@@ -221,7 +235,8 @@ epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_LotIdentifier_BboGPQkCpLeHXdXL8io8wo
 epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_LotPurpose_BboGPQkCpLeHXdXL8io8wo a epo:Purpose .
 
 epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_Lot_246rmGzZvwFBcxRNZTXjTW epo:foreseesContractSpecificTerm
-    epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_ContractExtension_BboGPQkCpLeHXdXL8io8wo;
+    epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_ContractTerm_BboGPQkCpLeHXdXL8io8wo;
+  epo:hasID epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_LotIdentifier_BboGPQkCpLeHXdXL8io8wo;
   epo:hasPurpose epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_LotPurpose_BboGPQkCpLeHXdXL8io8wo;
   epo:hasRestatedEstimatedValue epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_MonetaryValueLot_EgMjw2pg9jruQvYxRQ9GAr;
   epo:isCoveredByGPA true;
@@ -387,7 +402,7 @@ epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_OpenTenderEventPlace_JFbBX6QvdBoDFe7
 
 epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_OpeningTerm_SJDjVPGsRNCb7nBWqTThP5 a epo:OpeningTerm;
   epo:definesOpeningPlace epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_OpenTenderEventPlace_JFbBX6QvdBoDFe7oMMpuNc;
-  epo:hasOpeningDate "2020-02-04:09:00:00";
+  epo:hasOpeningDateTime "2020-02-04Z";
   epo:hasOpeningDescription "Ako je uvedené v súťažných podkladoch.", "As stated in the procurement documents.",
     "Astfel cum se indică în dosarul achiziției.", "Come indicato nei documenti di gara.",
     "Enligt vad som anges i upphandlingsdokumenten.", "Jak je uvedeno v zadávací dokumentaci.",
@@ -573,6 +588,7 @@ epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_SelectionTerm_QwLGZTLYe95szz5vdsUu7F
 
 epd:id_55aae64f-88a8-44a5-b2fb-8228e97fe6ee_SubmissionTerm_246rmGzZvwFBcxRNZTXjTW
   a epo:SubmissionTerm;
+  epo:hasESubmissionPermission "required";
   epo:hasLanguage "BUL", "CES", "DAN", "DEU", "ELL", "ENG", "EST", "FIN", "FRA", "GLE",
     "HRV", "HUN", "ITA", "LAV", "LIT", "MLT", "NLD", "POL", "POR", "RON", "SLK", "SLV",
     "SPA", "SWE";

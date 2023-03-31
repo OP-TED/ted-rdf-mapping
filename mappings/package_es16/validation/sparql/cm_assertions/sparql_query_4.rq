@@ -1,11 +1,8 @@
-#title: BT-508-Procedure-Buyer ND-ContractingParty.BT-508-Procedure-Buyer - BT-10-Procedure-Buyer
-#description: “BT-508-Procedure-Buyer ND-ContractingParty.BT-508-Procedure-Buyer - BT-10-Procedure-Buyer” in SF corresponds to “BT-10 Activity Authority” in eForms. The corresponding XML element is /ContractNotice/ContractingParty/ContractingActivity/ActivityTypeCode/@listName. The expected ontology instances are epo: org:Organization / at-voc:main-activity (from main_activity.csv) .
-#xpath: /ContractNotice/ContractingParty/ContractingActivity/ActivityTypeCode/@listName
+#title: ND-ServiceProviderParty ND-ContractingParty.ND-ServiceProvider.ND-ServiceProviderParty - BT-508-Procedure-Buyer
+#description: “ND-ServiceProviderParty ND-ContractingParty.ND-ServiceProvider.ND-ServiceProviderParty - BT-508-Procedure-Buyer” in SF corresponds to “BT-508 Buyer Profile URL” in eForms. The corresponding XML element is /ContractNotice/ContractingParty/BuyerProfileURI. The expected ontology instances are epo: epo:AgentInRole (from CL1) / xsd:anyURI .
+#xpath: /ContractNotice/ContractingParty/BuyerProfileURI
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX org: <http://www.w3.org/ns/org#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type org:Organization .
-		?this epo:hasMainActivity ?value . }
+		?this epo:hasBuyerProfile ?value . }

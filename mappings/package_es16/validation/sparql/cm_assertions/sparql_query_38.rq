@@ -1,11 +1,10 @@
-#title: BT-67(b)-Procedure ND-ProcedureTerms.ND-TendererQualificationRequest.ND-ExclusionGrounds.BT-67(b)-Procedure - BT-67(a)-Procedure
-#description: “BT-67(b)-Procedure ND-ProcedureTerms.ND-TendererQualificationRequest.ND-ExclusionGrounds.BT-67(b)-Procedure - BT-67(a)-Procedure” in SF corresponds to “BT-67 Exclusion Grounds” in eForms. The corresponding XML element is /ContractNotice/TenderingTerms/TendererQualificationRequest/SpecificTendererRequirement/TendererRequirementTypeCode/@listName. The expected ontology instances are epo: epo:Procedure / epo:ExclusionGround / at-voc:criterion .
-#xpath: /ContractNotice/TenderingTerms/TendererQualificationRequest/SpecificTendererRequirement/TendererRequirementTypeCode/@listName
+#title: BT-33-Procedure ND-ProcedureTerms.ND-LotDistribution.BT-33-Procedure - BT-31-Procedure
+#description: “BT-33-Procedure ND-ProcedureTerms.ND-LotDistribution.BT-33-Procedure - BT-31-Procedure” in SF corresponds to “BT-31 Lots Max Allowed” in eForms. The corresponding XML element is /ContractNotice/TenderingTerms/LotDistribution/MaximumLotsSubmittedNumeric. The expected ontology instances are epo: epo:Procedure / epo:ProcedureTerm / rdf:langString .
+#xpath: /ContractNotice/TenderingTerms/LotDistribution/MaximumLotsSubmittedNumeric
 
-PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Procedure .
-		?this epo:specifiesExclusionGround / cccev:type ?value }
+		?this epo:isSubjectToProcedureSpecificTerm / epo:hasMaximumLotSubmissionAllowed ?value }

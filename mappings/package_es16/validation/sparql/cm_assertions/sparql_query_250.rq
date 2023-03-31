@@ -1,8 +1,9 @@
-#title: BT-510(a)-Organization-TouchPoint ND-RootExtension.ND-Organizations.ND-Organization.ND-Touchpoint.ND-TouchpointAddress.BT-510(a)-Organization-TouchPoint - BT-509-Organization-TouchPoint
-#description: “BT-510(a)-Organization-TouchPoint ND-RootExtension.ND-Organizations.ND-Organization.ND-Touchpoint.ND-TouchpointAddress.BT-510(a)-Organization-TouchPoint - BT-509-Organization-TouchPoint” in SF corresponds to “BT-509 Organisation eDelivery Gateway” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/EndpointID. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cv:Channel / xsd:anyURI .
-#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/EndpointID
+#title: BT-739-Organization-TouchPoint ND-RootExtension.ND-Organizations.ND-Organization.ND-Touchpoint.ND-TouchpointContact.BT-739-Organization-TouchPoint - BT-503-Organization-TouchPoint
+#description: “BT-739-Organization-TouchPoint ND-RootExtension.ND-Organizations.ND-Organization.ND-Touchpoint.ND-TouchpointContact.BT-739-Organization-TouchPoint - BT-503-Organization-TouchPoint” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/Contact/Telephone. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / rdf:langString .
+#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/Contact/Telephone
 
+PREFIX cpov: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
 ASK WHERE { 
-		?this epo:playedBy / epo:hasDeliveryGateway / epo:hasEndpoint ?value . }
+		?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:telephone ?value . }

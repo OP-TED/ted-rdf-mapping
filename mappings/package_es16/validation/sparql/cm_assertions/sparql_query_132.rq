@@ -1,10 +1,10 @@
-#title: ND-TendererLegalForm ND-Lot.ND-LotTenderingTerms.ND-TendererLegalForm - BT-120-Lot
-#description: “ND-TendererLegalForm ND-Lot.ND-LotTenderingTerms.ND-TendererLegalForm - BT-120-Lot” in SF corresponds to “BT-120 No Negotiation Necessary” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/AwardingTerms/NoFurtherNegotiationIndicator. The expected ontology instances are epo: epo:Lot / epo:MultipleStageProcedureTerm / xsd:boolean .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/AwardingTerms/NoFurtherNegotiationIndicator
+#title: BT-95-Lot ND-Lot.ND-LotTenderingTerms.BT-95-Lot - BT-94-Lot
+#description: “BT-95-Lot ND-Lot.ND-LotTenderingTerms.BT-95-Lot - BT-94-Lot” in SF corresponds to “BT-94 Recurrence” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/RecurringProcurementIndicator. The expected ontology instances are epo: epo:Lot / xsd:boolean .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/RecurringProcurementIndicator
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:isSubjectToLotSpecificTerm / epo:hasNoNegotiationNecessary ?value }
+		?this epo:isRecurrent ?value . }

@@ -1,10 +1,11 @@
-#title: ND-AwardingTerms ND-Lot.ND-LotTenderingTerms.ND-AwardingTerms - BT-50-Lot
-#description: “ND-AwardingTerms ND-Lot.ND-LotTenderingTerms.ND-AwardingTerms - BT-50-Lot” in SF corresponds to “BT-50 Minimum Candidates” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/EconomicOperatorShortList/MinimumQuantity. The expected ontology instances are epo: epo:Lot / epo:MultipleStageProcedureTerm / xsd:integer .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/EconomicOperatorShortList/MinimumQuantity
+#title: BT-5421-Lot ND-Lot.ND-LotTenderingTerms.ND-AwardingTerms.ND-LotAwardCriteria.ND-LotAwardCriterion.ND-LotAwardCriterionParameters.ND-LotAwardCriterionParameter.BT-5421-Lot - BT-541-Lot
+#description: “BT-5421-Lot ND-Lot.ND-LotTenderingTerms.ND-AwardingTerms.ND-LotAwardCriteria.ND-LotAwardCriterion.ND-LotAwardCriterionParameters.ND-LotAwardCriterionParameter.BT-5421-Lot - BT-541-Lot” in SF corresponds to “BT-541 Award Criterion Number” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/AwardingTerms/AwardingCriterion/SubordinateAwardingCriterion/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/AwardCriterionParameter/ParameterNumeric. The expected ontology instances are epo: epo:Lot / epo:AwardCriterion / xsd:decimal OR epo:Lot / epo:AwardCriterion / xsd:decimal OR epo:Lot / epo:AwardCriterion / cccev:Constraint / xsd:decimal .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/AwardingTerms/AwardingCriterion/SubordinateAwardingCriterion/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/AwardCriterionParameter/ParameterNumeric
 
+PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:isSubjectToLotSpecificTerm / epo:hasMinimumNumberOfCandidates ?value }
+		{?this epo:specifiesAwardCriterion / cccev:weight ?value} UNION {?this epo:specifiesAwardCriterion / epo:hasFixedValue ?value} UNION  {?this epo:specifiesAwardCriterion / epo:hasConstraint / epo:hasThresholdValue ?value} }

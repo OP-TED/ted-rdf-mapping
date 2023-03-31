@@ -1,10 +1,10 @@
-#title: BT-27-Lot ND-Lot.ND-LotProcurementScope.ND-LotValueEstimate.BT-27-Lot - BT-726-Lot
-#description: “BT-27-Lot ND-Lot.ND-LotProcurementScope.ND-LotValueEstimate.BT-27-Lot - BT-726-Lot” in SF corresponds to “BT-726 Suitable For SMEs” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/SMESuitableIndicator. The expected ontology instances are epo: epo:Lot /  xsd:boolean .
-#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/SMESuitableIndicator
+#title: ND-StrategicProcurementType ND-Lot.ND-LotProcurementScope.ND-StrategicProcurementType - BT-776-Lot
+#description: “ND-StrategicProcurementType ND-Lot.ND-LotProcurementScope.ND-StrategicProcurementType - BT-776-Lot” in SF corresponds to “BT-776 Procurement of Innovation” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/ProcurementAdditionalType/ProcurementTypeCode/@listName. The expected ontology instances are epo: epo:Lot / epo:InnovativeProcurement / at-voc:innovative-acquisition .
+#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/ProcurementAdditionalType/ProcurementTypeCode/@listName
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:isSMESuitable ?value }
+		?this epo:fulfillsStrategicProcurement / epo:fulfillsRequirement ?value }

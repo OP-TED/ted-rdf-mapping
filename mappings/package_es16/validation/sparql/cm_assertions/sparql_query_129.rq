@@ -1,11 +1,10 @@
-#title: BT-543-Lot ND-Lot.ND-LotTenderingTerms.ND-AwardingTerms.ND-LotAwardCriteria.BT-543-Lot - BT-734-Lot
-#description: “BT-543-Lot ND-Lot.ND-LotTenderingTerms.ND-AwardingTerms.ND-LotAwardCriteria.BT-543-Lot - BT-734-Lot” in SF corresponds to “BT-734 Award Criterion Name” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/AwardingTerms/AwardingCriterion/SubordinateAwardingCriterion/Name. The expected ontology instances are epo: epo:Lot / epo:AwardCriterion / rdf:langString .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/AwardingTerms/AwardingCriterion/SubordinateAwardingCriterion/Name
+#title: ND-LotReservedParticipation ND-Lot.ND-LotTenderingTerms.ND-LotReservedParticipation - BT-772-Lot
+#description: “ND-LotReservedParticipation ND-Lot.ND-LotTenderingTerms.ND-LotReservedParticipation - BT-772-Lot” in SF corresponds to “BT-772 Late Tenderer Information Description” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/TendererQualificationRequest/SpecificTendererRequirement/Description. The expected ontology instances are epo: epo:Lot / epo:SubmissionTerm / rdf:langString .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/TendererQualificationRequest/SpecificTendererRequirement/Description
 
-PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:specifiesAwardCriterion / cccev:name ?value . }
+		?this epo:isSubjectToLotSpecificTerm  / epo:hasLateSubmissionInformationDescription ?value . }
