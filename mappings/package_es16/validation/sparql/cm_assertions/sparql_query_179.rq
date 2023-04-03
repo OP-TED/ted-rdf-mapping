@@ -1,10 +1,8 @@
-#title: OPT-301-Lot-ReviewOrg ND-Lot.ND-LotTenderingTerms.ND-LotReviewTerms.OPT-301-Lot-ReviewOrg - BT-99-Lot
-#description: “OPT-301-Lot-ReviewOrg ND-Lot.ND-LotTenderingTerms.ND-LotReviewTerms.OPT-301-Lot-ReviewOrg - BT-99-Lot” in SF corresponds to “BT-99 Review Deadline Description” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/AppealTerms/PresentationPeriod/Description. The expected ontology instances are epo: epo:Lot / epo:ReviewTerm / rdf:langString .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/AppealTerms/PresentationPeriod/Description
+#title: OPT-301-Lot-ReviewOrg ND-Lot.ND-LotTenderingTerms.ND-LotReviewTerms.OPT-301-Lot-ReviewOrg - OPT-301-Lot-ReviewOrg
+#description: “OPT-301-Lot-ReviewOrg ND-Lot.ND-LotTenderingTerms.ND-LotReviewTerms.OPT-301-Lot-ReviewOrg - OPT-301-Lot-ReviewOrg” in SF corresponds to “OPT-301 nan” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/AppealTerms/AppealReceiverParty/PartyIdentification/ID. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / epo:Identifier / rdf:langString .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/AppealTerms/AppealReceiverParty/PartyIdentification/ID
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Lot .
-		?this epo:isSubjectToLotSpecificTerm / epo:hasReviewDeadlineInformation ?value . }
+		?this epo:playedBy / epo:hasID / epo:hasIdentifierValue ?value . }

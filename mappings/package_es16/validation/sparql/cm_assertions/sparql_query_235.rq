@@ -1,10 +1,8 @@
-#title: ND-Touchpoint ND-RootExtension.ND-Organizations.ND-Organization.ND-Touchpoint - OPP-052-Organization
-#description: “ND-Touchpoint ND-RootExtension.ND-Organizations.ND-Organization.ND-Touchpoint - OPP-052-Organization” in SF corresponds to “OPP-052 nan” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/AcquiringCPBIndicator. The expected ontology instances are epo: epo:AcquiringCentralPurchasingBody / xsd:boolean .
-#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/AcquiringCPBIndicator
+#title: OPT-201-Organization-TouchPoint ND-RootExtension.ND-Organizations.ND-Organization.ND-Touchpoint.OPT-201-Organization-TouchPoint - OPT-201-Organization-TouchPoint
+#description: “OPT-201-Organization-TouchPoint ND-RootExtension.ND-Organizations.ND-Organization.ND-Touchpoint.OPT-201-Organization-TouchPoint - OPT-201-Organization-TouchPoint” in SF corresponds to “OPT-201 nan” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/PartyIdentification/ID. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / epo:Identifier rdf:langString .
+#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/PartyIdentification/ID
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:AcquiringCentralPurchasingBody .
-		?this epo:isContractingEntity ?value }
+		?this epo:playedBy / epo:hasID / epo:hasIdentfierValue ?value }

@@ -1,10 +1,10 @@
-#title: ND-FABuyerCategories ND-Lot.ND-LotTenderingProcess.ND-FA.ND-FABuyerCategories - BT-109-Lot
-#description: “ND-FABuyerCategories ND-Lot.ND-LotTenderingProcess.ND-FA.ND-FABuyerCategories - BT-109-Lot” in SF corresponds to “BT-109 Framework Duration Justification” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/FrameworkAgreement/Justification. The expected ontology instances are epo: epo:Lot / epo:FrameworkAgreementTerm / rdf:langString .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/FrameworkAgreement/Justification
+#title: BT-271-Lot ND-Lot.ND-LotProcurementScope.ND-LotValueEstimate.ND-LotValueEstimateExtension.BT-271-Lot - BT-271-Lot
+#description: “BT-271-Lot ND-Lot.ND-LotProcurementScope.ND-LotValueEstimate.ND-LotValueEstimateExtension.BT-271-Lot - BT-271-Lot” in SF corresponds to “BT-271 Framework Maximum Value” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/RequestedTenderTotal/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/FrameworkMaximumAmount. The expected ontology instances are epo: epo:LotAwardOutcome / epo:MonetaryValue / xsd:decimal .
+#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/RequestedTenderTotal/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/FrameworkMaximumAmount
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Lot .
-		?this epo:isSubjectToProcedureSpecificTerm / epo:hasDurationExtensionJustification ?value . }
+		?this rdf:type epo:LotAwardOutcome .
+		?this epo:hasFrameworkAgreementMaximumValue / epo:hasAmountValue ?value . }

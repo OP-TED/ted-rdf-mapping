@@ -1,11 +1,10 @@
-#title: BT-123-Lot ND-Lot.ND-LotTenderingProcess.ND-AuctionTerms.BT-123-Lot - BT-122-Lot
-#description: “BT-123-Lot ND-Lot.ND-LotTenderingProcess.ND-AuctionTerms.BT-123-Lot - BT-122-Lot” in SF corresponds to “BT-122 Electronic Auction Description” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/AuctionTerms/Description. The expected ontology instances are epo: epo:Lot / epo:EAuctionTechniqueUsage / rdf:langString .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/AuctionTerms/Description
+#title: BT-115-Lot ND-Lot.ND-LotTenderingProcess.BT-115-Lot - BT-115-Lot
+#description: “BT-115-Lot ND-Lot.ND-LotTenderingProcess.BT-115-Lot - BT-115-Lot” in SF corresponds to “BT-115 GPA Coverage” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/GovernmentAgreementConstraintIndicator. The expected ontology instances are epo: epo:Lot / xsd:boolean .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/GovernmentAgreementConstraintIndicator
 
-PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:usesTechnique / cccev:description ?value }
+		?this epo:isCoveredByGPA ?value . }

@@ -1,9 +1,8 @@
-#title: ND-CompanyContact ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.ND-CompanyContact - BT-514-Organization-Company
-#description: “ND-CompanyContact ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.ND-CompanyContact - BT-514-Organization-Company” in SF corresponds to “BT-514 Organisation Country Code” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/PostalAddress/Country/IdentificationCode. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / at-voc:country (from country.json) .
-#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/PostalAddress/Country/IdentificationCode
+#title: BT-502-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.ND-CompanyContact.BT-502-Organization-Company - BT-502-Organization-Company
+#description: “BT-502-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.ND-CompanyContact.BT-502-Organization-Company - BT-502-Organization-Company” in SF corresponds to “BT-502 Organisation Contact Point” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/Contact/Name. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / xsd:anyURI .
+#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/Contact/Name
 
-PREFIX cv: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
 ASK WHERE { 
-		?this epo:playedBy / cv:registeredAddress / epo:hasCountryCode ?value . }
+		?this epo:hasPrimaryContactPoint / epo:hasContactName  ?value . }

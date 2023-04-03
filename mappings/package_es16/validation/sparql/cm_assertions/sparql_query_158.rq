@@ -1,10 +1,11 @@
-#title: ND-PublicOpeningPlace ND-Lot.ND-LotTenderingProcess.ND-PublicOpening.ND-PublicOpeningPlace - BT-134-Lot
-#description: “ND-PublicOpeningPlace ND-Lot.ND-LotTenderingProcess.ND-PublicOpening.ND-PublicOpeningPlace - BT-134-Lot” in SF corresponds to “BT-134 Public Opening Description” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/OpenTenderEvent/Description. The expected ontology instances are epo: epo:Lot / epo:OpeningTerm / rdf:langString .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/OpenTenderEvent/Description
+#title: BT-133-Lot ND-Lot.ND-LotTenderingProcess.ND-PublicOpening.ND-PublicOpeningPlace.BT-133-Lot - BT-133-Lot
+#description: “BT-133-Lot ND-Lot.ND-LotTenderingProcess.ND-PublicOpening.ND-PublicOpeningPlace.BT-133-Lot - BT-133-Lot” in SF corresponds to “BT-133 Public Opening Place” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/OpenTenderEvent/OccurenceLocation/Description. The expected ontology instances are epo: epo:Lot / epo:OpeningTerm / locn:Address / rdf:langString .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/OpenTenderEvent/OccurenceLocation/Description
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:isSubjectToLotSpecificTerm / epo:hasOpeningDescription ?value }
+		?this epo:isSubjectToLotSpecificTerm / epo:definesOpeningPlace / locn:locatorDesignator ?value }

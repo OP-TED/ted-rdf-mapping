@@ -1,11 +1,10 @@
-#title: BT-52-Lot ND-Lot.ND-LotTenderingProcess.BT-52-Lot - BT-752-Lot
-#description: “BT-52-Lot ND-Lot.ND-LotTenderingProcess.BT-52-Lot - BT-752-Lot” in SF corresponds to “BT-752 Selection Criteria Second Stage Invite Number” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/SelectionCriteria/CriterionParameter/ParameterNumeric. The expected ontology instances are epo: epo:Lot / epo:SelectionCriterion / xsd:decimal OR epo:Lot / epo:SelectionCriterion / cccev:Constraint / xsd:decimal .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/SelectionCriteria/CriterionParameter/ParameterNumeric
+#title: BT-51-Lot ND-Lot.ND-LotTenderingProcess.ND-SecondStage.BT-51-Lot - BT-51-Lot
+#description: “BT-51-Lot ND-Lot.ND-LotTenderingProcess.ND-SecondStage.BT-51-Lot - BT-51-Lot” in SF corresponds to “BT-51 Maximum Candidates Number” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/EconomicOperatorShortList/MaximumQuantity. The expected ontology instances are epo: epo:Lot / epo:MultipleStageProcedureTerm / xsd:integer .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/EconomicOperatorShortList/MaximumQuantity
 
-PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		{?this epo:specifiesSelectionCriterion / cccev:weight ?value} UNION {?this epo:specifiesSelectionCriterion / epo:hasConstraint / epo:hasThresholdValue ?value} }
+		?this epo:isSubjectToLotSpecificTerm / epo:hasMaximumNumberOfCandidates ?value }

@@ -1,14 +1,10 @@
-#title: ND-LateTendererInformation ND-Lot.ND-LotTenderingTerms.ND-LateTendererInformation - BT-76-Lot
-#description: “ND-LateTendererInformation ND-Lot.ND-LotTenderingTerms.ND-LateTendererInformation - BT-76-Lot” in SF corresponds to “BT-76 Tenderer Legal Form Description” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/TendererQualificationRequest/CompanyLegalForm. The expected ontology instances are epo: epo:Tender / epo:Lot .
-
-epo:Tender / epo:Tenderer / org:Organization / rdf:langString . .
-#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/TendererQualificationRequest/CompanyLegalForm
+#title: ND-LateTendererInformation ND-Lot.ND-LotTenderingTerms.ND-LateTendererInformation - ND-LateTendererInformation
+#description: “ND-LateTendererInformation ND-Lot.ND-LotTenderingTerms.ND-LateTendererInformation - ND-LateTendererInformation” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/TendererQualificationRequest/SpecificTendererRequirement. The expected ontology instances are epo: epo:SubmissionTerm .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/TendererQualificationRequest/SpecificTendererRequirement
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Tender .
-		?this epo:SubmittedForLot ?value .
-
-?this epo:isSubmittedBy / epo:playedBy / epo:hasLegalFormType ?value . }
+		?this rdf:type epo:SubmissionTerm .
+		?this a epo:SubmissionTerm }

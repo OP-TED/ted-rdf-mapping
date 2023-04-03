@@ -1,11 +1,10 @@
-#title: ND-OptionsAndRenewals ND-Lot.ND-LotProcurementScope.ND-OptionsAndRenewals - BT-538-Lot
-#description: “ND-OptionsAndRenewals ND-Lot.ND-LotProcurementScope.ND-OptionsAndRenewals - BT-538-Lot” in SF corresponds to “BT-538 Duration Other” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/PlannedPeriod/DescriptionCode. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / epo:SpecificDuration / time:TemporalUnit .
-#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/PlannedPeriod/DescriptionCode
+#title: BT-58-Lot ND-Lot.ND-LotProcurementScope.ND-OptionsAndRenewals.BT-58-Lot - BT-58-Lot
+#description: “BT-58-Lot ND-Lot.ND-LotProcurementScope.ND-OptionsAndRenewals.BT-58-Lot - BT-58-Lot” in SF corresponds to “BT-58 Renewal Maximum” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/ContractExtension/MaximumNumberNumeric. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / xsd:integer .
+#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/ContractExtension/MaximumNumberNumeric
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX time: <http://www.w3.org/2006/time#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:foreseesContractSpecificTerm / epo:definesContractDuration / time:unitType ?value . }
+		?this epo:foreseesContractSpecificTerm / epo:hasMaximumNumberOfRenewals ?value }

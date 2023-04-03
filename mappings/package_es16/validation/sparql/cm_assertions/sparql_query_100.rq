@@ -1,10 +1,11 @@
-#title: ND-NonUBLTenderingTerms ND-Lot.ND-LotTenderingTerms.ND-NonUBLTenderingTerms - BT-300-Lot
-#description: “ND-NonUBLTenderingTerms ND-Lot.ND-LotTenderingTerms.ND-NonUBLTenderingTerms - BT-300-Lot” in SF corresponds to “BT-300 Additional Information” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/Note. The expected ontology instances are epo: epo:Lot / rdf:langString .
-#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/Note
+#title: BT-749-Lot ND-Lot.ND-LotTenderingTerms.ND-NonUBLTenderingTerms.ND-SelectionCriteria.BT-749-Lot - BT-749-Lot
+#description: “BT-749-Lot ND-Lot.ND-LotTenderingTerms.ND-NonUBLTenderingTerms.ND-SelectionCriteria.BT-749-Lot - BT-749-Lot” in SF corresponds to “BT-749 Selection Criteria Name” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingTerms/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/SelectionCriteria/Name. The expected ontology instances are epo: epo:Lot / epo:SelectionCriterion / rdf:langString .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingTerms/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/SelectionCriteria/Name
 
+PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:hasAdditionalInformation ?value . }
+		?this epo:specifiesSelectionCriterion / cccev:name ?value }

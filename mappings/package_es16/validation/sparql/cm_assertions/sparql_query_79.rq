@@ -1,10 +1,11 @@
-#title: BT-537-Lot ND-Lot.ND-LotProcurementScope.ND-LotDuration.BT-537-Lot - BT-536-Lot
-#description: “BT-537-Lot ND-Lot.ND-LotProcurementScope.ND-LotDuration.BT-537-Lot - BT-536-Lot” in SF corresponds to “BT-536 Duration Start Date” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/PlannedPeriod/StartDate. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / epo:Period / xsd:dateTime .
-#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/PlannedPeriod/StartDate
+#title: BT-36-Lot ND-Lot.ND-LotProcurementScope.ND-LotDuration.BT-36-Lot - BT-36-Lot
+#description: “BT-36-Lot ND-Lot.ND-LotProcurementScope.ND-LotDuration.BT-36-Lot - BT-36-Lot” in SF corresponds to “BT-36 Duration Period” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/PlannedPeriod/DurationMeasure. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / epo:SpecificDuration / xsd:decimal .
+#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/PlannedPeriod/DurationMeasure
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX time: <http://www.w3.org/2006/time#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:foreseesContractSpecificTerm / epo:definesContractPeriod / epo:hasBeginning ?value . }
+		?this epo:foreseesContractSpecificTerm / epo:definesContractDuration / time:numericDuration ?value }

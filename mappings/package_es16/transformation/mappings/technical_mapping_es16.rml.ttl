@@ -2063,7 +2063,7 @@ tedm:ND-Lot a rr:TriplesMap ;
             rr:predicate epo:isSMESuitable ;
             rr:objectMap
                 [
-                    rml:reference "cbc:SMESuitableIndicator";
+                    rml:reference "descendant::cbc:SMESuitableIndicator";
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -2406,7 +2406,17 @@ tedm:ND-Lot a rr:TriplesMap ;
                     rml:reference "if(exists(descendant::cbc:RequiredCurriculaCode)) then descendant::cbc:RequiredCurriculaCode else null";
                     rr:datatype xsd:string;
                 ] ;
-        ].
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-300-Lot";
+            rr:predicate  epo:hasAdditionalInformation;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(descendant::cbc:Note)) then descendant::cbc:Note else null";
+                    rr:datatype xsd:string
+                ] ;
+        ] .
 
 #Lot Identifier
 tedm:LotIdentifier a rr:TriplesMap ;
@@ -2622,7 +2632,7 @@ tedm:ND-LotRestrictedDocuments a rr:TriplesMap ;
             rr:predicate epo:hasRestrictedAccessURL  ;
             rr:objectMap
                 [
-                    rml:reference "if(descendant::cbc:DocumentType/text() = 'restricted-document') then descendant::cbc:URI else null";
+                    rml:reference "if(exists(descendant::cbc:URI)) then descendant::cbc:URI else null";
                     rr:datatype xsd:anyURI;
                 ] ;
         ] .
