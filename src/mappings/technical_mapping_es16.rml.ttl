@@ -2632,11 +2632,38 @@ tedm:ND-LotProcurementDocument a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:involvesProcurementDocument ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:AccessTerm_UnofficialLanguage ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ] ;
+        ] .
+
+#BT-708-Lot and BT-737-Lot
+tedm:AccessTerm_UnofficialLanguage a rr:TriplesMap ;
+    rdfs:label "BT-708-Lot and BT-737-Lot";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rml:reference "if (exists(cbc:LanguageID[not(../cbc:DocumentStatusCode/text()='non-official')]) or exists(cbc:LanguageID[../cbc:DocumentStatusCode/text()='non-official'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcurementDocument_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:ProcurementDocument
+        ] ;
+    rr:predicateObjectMap
+        [
             rdfs:label "BT-708-Lot";
             rr:predicate epo:hasOfficialLanguage  ;
             rr:objectMap
                 [
-                    rml:reference "cbc:LanguageID[not(../cbc:DocumentStatusCode/text()='non-official')]";
+                    rml:reference "if(exists(cbc:LanguageID[not(../cbc:DocumentStatusCode/text()='non-official')])) then cbc:LanguageID else null";
                     rr:datatype xsd:string;
                 ] ;
         ] ;
@@ -2646,7 +2673,7 @@ tedm:ND-LotProcurementDocument a rr:TriplesMap ;
             rr:predicate epo:hasUnofficialLanguage  ;
             rr:objectMap
                 [
-                    rml:reference "cbc:LanguageID[../cbc:DocumentStatusCode/text()='non-official']";
+                    rml:reference "if(exists(cbc:LanguageID[../cbc:DocumentStatusCode/text()='non-official'])) then cbc:LanguageID else null";
                     rr:datatype xsd:string;
                 ] ;
         ] .
@@ -2730,7 +2757,8 @@ tedm:ND-PublicOpening a rr:TriplesMap ;
             rr:predicate epo:hasOpeningDateTime ;
             rr:objectMap
                 [
-                    rml:reference "cbc:OccurrenceDate";
+                    rml:reference "if(exists(cbc:OccurrenceDate) and exists(cbc:OccurrenceTime)) then cbc:OccurrenceDate || 'T' || cbc:OccurrenceTime else if(exists(cbc:OccurrenceDate)) then cbc:OccurrenceDate else null";
+                    rr:datatype xsd:string;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -2764,7 +2792,7 @@ tedm:ND-PublicOpeningPlace a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-133-Lot";
-            rr:predicate locn:locatorDesignator ;
+            rr:predicate locn:fullAddress ;
             rr:objectMap
                 [
                     rml:reference "cbc:Description";
@@ -2875,7 +2903,7 @@ tedm:ND-NonEsubmission a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-745-Lot";
-            rr:predicate cccev:description ;
+            rr:predicate epo:hasNonElectronicSubmissionDescription ;
             rr:objectMap
                 [
                     rml:reference "cbc:Description";
@@ -2928,7 +2956,7 @@ tedm:ND-SubmissionDeadline a rr:TriplesMap ;
             rr:predicate epo:hasEstimatedInvitationToTenderDate ;
             rr:objectMap
                 [
-                    rml:reference "../cac:InvitationSubmissionPeriod/cbc:StartDate";
+                    rml:reference "descendant::cbc:StartDate";
                     rr:datatype xsd:date;
                 ] ;
         ] ;
@@ -2938,8 +2966,8 @@ tedm:ND-SubmissionDeadline a rr:TriplesMap ;
             rr:predicate epo:hasReceiptDeadline ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(cbc:EndDate) and exists(cbc:EndTime)) then concat(cbc:EndDate, ':', cbc:EndTime) else null";
-                    rr:datatype xsd:dateTime;
+                    rml:reference "if(exists(cbc:EndDate) and exists(cbc:EndTime)) then cbc:EndDate || 'T' || cbc:EndTime else if(exists(cbc:EndDate)) then cbc:EndDate else null";
+                    rr:datatype xsd:string;
                 ] ;
         ] .
 
@@ -2960,12 +2988,11 @@ tedm:ND-ParticipationRequestPeriod a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-1311-Lot";
-            rdfs:comment "Not sure about the property in this one";
-            rr:predicate epo:hasReceiptDeadline ;
+            rr:predicate epo:hasReceiptExpressionDeadline ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(cac:ParticipationRequestReceptionPeriod/cbc:EndDate) and exists(cac:ParticipationRequestReceptionPeriod/cbc:EndTime)) then concat(cac:ParticipationRequestReceptionPeriod/cbc:EndDate, ':', cac:ParticipationRequestReceptionPeriod/cbc:EndTime) else null";
-                    rr:datatype xsd:dateTime;
+                    rml:reference "if(exists(cbc:EndDate) and exists(cbc:EndTime)) then cbc:EndDate || 'T' || cbc:EndTime else if(exists(cbc:EndDate)) then cbc:EndDate else null";
+                    rr:datatype xsd:string;
                 ] ;
         ] .
 
@@ -2989,8 +3016,8 @@ tedm:ND-LotInfoRequestPeriod a rr:TriplesMap ;
             rr:predicate epo:hasAdditionalInformationDeadline ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(cac:AdditionalInformationRequestPeriod/cbc:EndDate) and exists(cac:AdditionalInformationRequestPeriod/cbc:EndTime)) then concat(cac:AdditionalInformationRequestPeriod/cbc:EndDate, ':', cac:AdditionalInformationRequestPeriod/cbc:EndTime) else null";
-                    rr:datatype xsd:dateTime;
+                    rml:reference "if(exists(cbc:EndDate) and exists(cbc:EndTime)) then cbc:EndDate || 'T' || cbc:EndTime else if(exists(cbc:EndDate)) then cbc:EndDate else null";
+                    rr:datatype xsd:string;
                 ] ;
         ] .
 ##########################################ND-SecurityClearanceTerms#########################################################################################################################
