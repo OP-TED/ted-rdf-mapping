@@ -1,10 +1,10 @@
-#title: BT-718-notice ND-RootExtension.ND-Changes.ND-Change.BT-718-notice - BT-718-notice
-#description: “BT-718-notice ND-RootExtension.ND-Changes.ND-Change.BT-718-notice - BT-718-notice” in SF corresponds to “BT-718 Change Procurement Documents” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Changes/Change/ProcurementDocumentsChangeIndicator. The expected ontology instances are epo: epo:ElementChangeDescription / xsd:boolean .
-#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Changes/Change/ProcurementDocumentsChangeIndicator
+#title: BT-510(b)-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.ND-CompanyAddress.BT-510(b)-Organization-Company - BT-510(b)-Organization-Company
+#description: “BT-510(b)-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.ND-CompanyAddress.BT-510(b)-Organization-Company - BT-510(b)-Organization-Company” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/PostalAddress/AdditionalStreetName. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .
+#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/PostalAddress/AdditionalStreetName
 
+PREFIX cv: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 
 ASK WHERE { 
-		?this rdf:type epo:ElementChangeDescription .
-		?this epo:isProcurementDocumentChanged ?value }
+		?this epo:playedBy / cv:registeredAddress / locn:adminUnitL2 ?value . }

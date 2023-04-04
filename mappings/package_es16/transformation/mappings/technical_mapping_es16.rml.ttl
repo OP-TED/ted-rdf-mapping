@@ -395,6 +395,19 @@ tedm:ND-ProcedureTenderingProcess a rr:TriplesMap ;
                         rr:parent "path(../../..)";
                     ];
                 ]
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-09(b)-Procedure";
+            rr:predicate epo:refersToProcedure ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ND-ProcedureTenderingProcess;
+                    rr:joinCondition [
+                        rr:child "path(/*/cac:TenderingProcess)";
+                        rr:parent "path(.)";
+                    ];
+                ]
         ].
 
 
@@ -454,11 +467,11 @@ tedm:ND-ProcedureTerms a rr:TriplesMap ;
 #        ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-09(a)-Procedure and BT-09(b)-Procedure";
+            rdfs:label "BT-09(a)-Procedure";
             rr:predicate  epo:hasCrossBorderLaw  ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(cac:ProcurementLegislationDocumentReference[cbc:ID/text()='CrossBorderLaw']/cbc:ID[text()='CrossBorderLaw'])) then cac:ProcurementLegislationDocumentReference[cbc:ID/text()='CrossBorderLaw'] else null";
+                    rml:reference "if(exists(cac:ProcurementLegislationDocumentReference[cbc:ID/text()='CrossBorderLaw']/cbc:ID[text()='CrossBorderLaw'])) then cac:ProcurementLegislationDocumentReference else null";
                     rr:datatype xsd:string
                 ] ;
         ] .
@@ -677,7 +690,7 @@ tedm:ND-ProcedurePlacePerformanceAdditionalInformation a rr:TriplesMap ;
             rr:predicate epo:hasBroadPlaceOfPerformance ;
             rr:objectMap
                 [
-                    rml:reference "cac:Address/cbc:Region";
+                    rml:reference "descendant::cbc:Region";
                     rr:datatype xsd:string;
                 ] ;
         ] ;
@@ -687,7 +700,7 @@ tedm:ND-ProcedurePlacePerformanceAdditionalInformation a rr:TriplesMap ;
             rr:predicate epo:hasPlaceOfPerformanceAdditionalInformation ;
             rr:objectMap
                 [
-                    rml:reference "cac:Address/cbc:Description";
+                    rml:reference "descendant::cbc:Description";
                     rr:datatype xsd:string;
                 ] ;
         ] ;
@@ -2178,7 +2191,7 @@ tedm:ND-Lot a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-27-Lot";
-            rr:predicate epo:hasRestatedEstimatedValue ;
+            rr:predicate epo:hasEstimatedValue ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ND-LotProcurementScope_Monetary_Value_Purpose ;
@@ -2757,7 +2770,8 @@ tedm:ND-PublicOpening a rr:TriplesMap ;
             rr:predicate epo:hasOpeningDateTime ;
             rr:objectMap
                 [
-                    rml:reference "cbc:OccurrenceDate";
+                    rml:reference "if(exists(cbc:OccurrenceDate) and exists(cbc:OccurrenceTime)) then cbc:OccurrenceDate || 'T' || cbc:OccurrenceTime else if(exists(cbc:OccurrenceDate)) then cbc:OccurrenceDate else null";
+                    rr:datatype xsd:string;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -3478,7 +3492,7 @@ tedm:ND-SecondStage a rr:TriplesMap ;
         ];
     rr:subjectMap
         [
-            rml:reference "if (exists(cbc:CandidateReductionConstraintIndicator) or exists(descendant::cbc:LimitationDescription) or exists(descendant::cbc:MaximumQuantity) or exists(descendant::cbc:MinimumQuantity)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MultipleStageProcedureTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(cbc:CandidateReductionConstraintIndicator) or exists(descendant::cbc:LimitationDescription) or exists(descendant::cbc:MaximumQuantity) or exists(descendant::cbc:MinimumQuantity)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MultipleStageProcedureTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw') else null" ;
             rr:class epo:MultipleStageProcedureTerm
         ] ;
     rr:predicateObjectMap
@@ -3487,7 +3501,7 @@ tedm:ND-SecondStage a rr:TriplesMap ;
             rr:predicate epo:hasSuccessiveReduction ;
             rr:objectMap
                 [
-                    rml:reference "../cbc:CandidateReductionConstraintIndicator";
+                    rml:reference "descendant::cbc:CandidateReductionConstraintIndicator";
                     rr:datatype xsd:boolean
                 ] ;
         ] ;
@@ -3510,6 +3524,21 @@ tedm:ND-SecondStage a rr:TriplesMap ;
                     rml:reference "cbc:MinimumQuantity";
                     rr:datatype xsd:integer
                 ] ;
+        ] .
+
+#ND-SecondStage for BT-120-Lot
+tedm:ND-SecondStage_BT-120-Lot a rr:TriplesMap ;
+    rdfs:label "BT-120-Lot";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rml:reference "if (exists(cbc:NoFurtherNegotiationIndicator)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MultipleStageProcedureTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw') else null" ;
+            rr:class epo:MultipleStageProcedureTerm
         ] ;
     rr:predicateObjectMap
         [
@@ -3517,7 +3546,7 @@ tedm:ND-SecondStage a rr:TriplesMap ;
             rr:predicate epo:hasNoNegotiationNecessary ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(../cbc:NoFurtherNegotiationIndicator)) then ../cbc:NoFurtherNegotiationIndicator else null";
+                    rml:reference "cbc:NoFurtherNegotiationIndicator";
                     rr:datatype xsd:decimal;
                 ] ;
         ] .
@@ -3648,7 +3677,7 @@ tedm:ND-FABuyerCategories a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-111-Lot";
-            rr:predicate epo:FrameworkAgreementTerm ;
+            rr:predicate epo:hasBuyerCategoryDescription ;
             rr:objectMap
                 [
                     rml:reference "cbc:Description";
@@ -3815,19 +3844,6 @@ tedm:ND-LotProcurementScope_Quantity_Purpose a rr:TriplesMap ;
                 [
                     rml:reference "cbc:EstimatedOverallContractQuantity";
                 ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "ND-LotPerformanceAddress";
-            rr:predicate epo:definesSpecificPlaceOfPerformance ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ND-LotPerformanceAddress ;
-                    rr:joinCondition[
-                        rr:child "path(.)";
-                        rr:parent "path(../.)"
-                    ];
-                ] ;
         ] .
 
 #ND-LotProcurementScope_Monetary_Value_Lot
@@ -3876,6 +3892,16 @@ tedm:ND-LotProcurementScope_Contract_Term a rr:TriplesMap ;
                     rml:reference "if(exists(cbc:ProcurementTypeCode[@listName='contract-nature'])) then cbc:ProcurementTypeCode else null";
                 ] ;
         ] ;
+
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-727-Lot";
+            rr:predicate epo:hasBroadPlaceOfPerformance  ;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(descendant::cbc:Region)) then descendant::cbc:Region else null";
+                ] ;
+        ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-531-Lot";
@@ -3905,6 +3931,19 @@ tedm:ND-LotProcurementScope_Contract_Term a rr:TriplesMap ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ContractPeriod ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(../.)"
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-LotPerformanceAddress";
+            rr:predicate epo:definesSpecificPlaceOfPerformance ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ND-LotPerformanceAddress ;
                     rr:joinCondition[
                         rr:child "path(.)";
                         rr:parent "path(../.)"
@@ -4176,8 +4215,8 @@ tedm:ND-LotPerformanceAddress a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:ContractAddress ;
                     rr:joinCondition[
-                        rr:child "path(..)";
-                        rr:parent "path(../..)"
+                        rr:child "path(.)";
+                        rr:parent "path(../.)"
                     ];
                 ] ;
         ] ;
@@ -4278,8 +4317,8 @@ tedm:ContractAddress a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:ContractAddressIdentifier;
                     rr:joinCondition [
-                        rr:child "path(..)";
-                        rr:parent "path(../..)";
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
                     ];
                 ]
         ] .

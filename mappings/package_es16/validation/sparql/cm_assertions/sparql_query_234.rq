@@ -1,10 +1,9 @@
-#title: OPP-052-Organization ND-RootExtension.ND-Organizations.ND-Organization.OPP-052-Organization - OPP-052-Organization
-#description: “OPP-052-Organization ND-RootExtension.ND-Organizations.ND-Organization.OPP-052-Organization - OPP-052-Organization” in SF corresponds to “OPP-052 nan” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/AcquiringCPBIndicator. The expected ontology instances are epo: epo:AcquiringCentralPurchasingBody / xsd:boolean .
-#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/AcquiringCPBIndicator
+#title: BT-506-Organization-TouchPoint ND-RootExtension.ND-Organizations.ND-Organization.ND-Touchpoint.ND-TouchpointContact.BT-506-Organization-TouchPoint - BT-506-Organization-TouchPoint
+#description: “BT-506-Organization-TouchPoint ND-RootExtension.ND-Organizations.ND-Organization.ND-Touchpoint.ND-TouchpointContact.BT-506-Organization-TouchPoint - BT-506-Organization-TouchPoint” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/Contact/ElectronicMail. The expected ontology instances are epo: epo:AgentInRole (from CL1) / cpov:ContactPoint / xsd:anyURI .
+#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/Contact/ElectronicMail
 
+PREFIX cpov: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:AcquiringCentralPurchasingBody .
-		?this epo:isContractingEntity ?value }
+		?this epo:hasContactPointInRole  / cpov:email ?value . }

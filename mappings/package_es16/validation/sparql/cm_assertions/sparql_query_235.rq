@@ -1,8 +1,9 @@
-#title: OPT-201-Organization-TouchPoint ND-RootExtension.ND-Organizations.ND-Organization.ND-Touchpoint.OPT-201-Organization-TouchPoint - OPT-201-Organization-TouchPoint
-#description: “OPT-201-Organization-TouchPoint ND-RootExtension.ND-Organizations.ND-Organization.ND-Touchpoint.OPT-201-Organization-TouchPoint - OPT-201-Organization-TouchPoint” in SF corresponds to “OPT-201 nan” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/PartyIdentification/ID. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / epo:Identifier rdf:langString .
-#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/PartyIdentification/ID
+#title: BT-503-Organization-TouchPoint ND-RootExtension.ND-Organizations.ND-Organization.ND-Touchpoint.ND-TouchpointContact.BT-503-Organization-TouchPoint - BT-503-Organization-TouchPoint
+#description: “BT-503-Organization-TouchPoint ND-RootExtension.ND-Organizations.ND-Organization.ND-Touchpoint.ND-TouchpointContact.BT-503-Organization-TouchPoint - BT-503-Organization-TouchPoint” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/Contact/Telephone. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / rdf:langString .
+#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/Contact/Telephone
 
+PREFIX cpov: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
 ASK WHERE { 
-		?this epo:playedBy / epo:hasID / epo:hasIdentfierValue ?value }
+		?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:telephone ?value . }

@@ -1,10 +1,8 @@
-#title: BT-13716-notice ND-RootExtension.ND-Changes.ND-Change.BT-13716-notice - BT-13716-notice
-#description: “BT-13716-notice ND-RootExtension.ND-Changes.ND-Change.BT-13716-notice - BT-13716-notice” in SF corresponds to “BT-13716 Change Previous Notice Section Identifier” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Changes/Change/ChangedSectionIdentifier. The expected ontology instances are epo: epo:ElementChangeDescription / xsd:anyURI .
-#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Changes/Change/ChangedSectionIdentifier
+#title: BT-509-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.BT-509-Organization-Company - BT-509-Organization-Company
+#description: “BT-509-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.BT-509-Organization-Company - BT-509-Organization-Company” in SF corresponds to “BT-509 Organisation eDelivery Gateway” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/EndpointID. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cv:Channel / xsd:anyURI .
+#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/EndpointID
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:ElementChangeDescription .
-		?this epo:hasPreviousVersionOfElementReference ?value }
+		?this epo:playedBy / epo:hasDeliveryGateway / epo:hasEndpoint ?value . }

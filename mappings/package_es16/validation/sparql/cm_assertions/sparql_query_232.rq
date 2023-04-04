@@ -1,10 +1,9 @@
-#title: OPP-050-Organization ND-RootExtension.ND-Organizations.ND-Organization.OPP-050-Organization - OPP-050-Organization
-#description: “OPP-050-Organization ND-RootExtension.ND-Organizations.ND-Organization.OPP-050-Organization - OPP-050-Organization” in SF corresponds to “OPP-050 nan” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/GroupLeadIndicator. The expected ontology instances are epo: epo:LeadBuyer / xsd:boolean .
-#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/GroupLeadIndicator
+#title: BT-514-Organization-TouchPoint ND-RootExtension.ND-Organizations.ND-Organization.ND-Touchpoint.ND-TouchpointAddress.BT-514-Organization-TouchPoint - BT-514-Organization-TouchPoint
+#description: “BT-514-Organization-TouchPoint ND-RootExtension.ND-Organizations.ND-Organization.ND-Touchpoint.ND-TouchpointAddress.BT-514-Organization-TouchPoint - BT-514-Organization-TouchPoint” in SF corresponds to “BT-514 Organisation Country Code” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/PostalAddress/Country/IdentificationCode. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / at-voc:country (from country.json) .
+#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/TouchPoint/PostalAddress/Country/IdentificationCode
 
+PREFIX cv: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:LeadBuyer .
-		?this epo:isContractingEntity ?value }
+		?this epo:playedBy / cv:registeredAddress / epo:hasCountryCode ?value . }

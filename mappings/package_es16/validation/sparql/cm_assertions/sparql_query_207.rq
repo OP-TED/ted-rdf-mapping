@@ -1,10 +1,8 @@
-#title: BT-762-notice ND-RootExtension.ND-Changes.ND-ChangeReason.BT-762-notice - BT-762-notice
-#description: “BT-762-notice ND-RootExtension.ND-Changes.ND-ChangeReason.BT-762-notice - BT-762-notice” in SF corresponds to “BT-762 Change Reason Description” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Changes/ChangeReason/ReasonDescription. The expected ontology instances are epo: epo:ElementChangeDescription / rdf:langString .
-#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Changes/ChangeReason/ReasonDescription
+#title: BT-501-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.BT-501-Organization-Company - BT-501-Organization-Company
+#description: “BT-501-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.BT-501-Organization-Company - BT-501-Organization-Company” in SF corresponds to “BT-501 Organisation Identifier” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/PartyLegalEntity/CompanyID. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / epo:Identifier / rdf:langString .
+#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/PartyLegalEntity/CompanyID
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:ElementChangeDescription .
-		?this epo:hasChangeReasonDescription ?value }
+		?this epo:playedBy / epo:hasID / epo:hasIdentifierValue ?value . }

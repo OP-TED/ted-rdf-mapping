@@ -1,10 +1,8 @@
-#title: ND-Change ND-RootExtension.ND-Changes.ND-Change - ND-Change
-#description: “ND-Change ND-RootExtension.ND-Changes.ND-Change - ND-Change” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Changes/Change. The expected ontology instances are epo: epo:ElementChangeDescription .
-#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Changes/Change
+#title: BT-505-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.BT-505-Organization-Company - BT-505-Organization-Company
+#description: “BT-505-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.BT-505-Organization-Company - BT-505-Organization-Company” in SF corresponds to “BT-505 Organisation Internet Address” in eForms. The corresponding XML element is /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/WebsiteURI. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / xsd:anyURI .
+#xpath: /ContractNotice/UBLExtensions/UBLExtension/ExtensionContent/EformsExtension/Organizations/Organization/Company/WebsiteURI
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:ElementChangeDescription .
-		?this a epo:ElementChangeDescription }
+		?this epo:playedBy / epo:hasPrimaryContactPoint / epo:hasInternetAddress ?value . }
