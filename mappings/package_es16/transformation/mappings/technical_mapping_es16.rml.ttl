@@ -844,41 +844,41 @@ tedm:ND-ProcedurePlacePerformance a rr:TriplesMap ;
 ##################################################################################################################################################################################################
 ##################################################################################################################################################################################################
 #ND-Organization
-tedm:ND-Organization a rr:TriplesMap ;
-    rdfs:label "ND-Organization";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization";
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Buyer_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class epo:Buyer
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "ND-Company";
-            rr:predicate epo:playedBy ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ND-Company;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(../.)";
-                    ];
-                ]
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-633-Organization";
-            rr:predicate foaf:name ;
-            rr:objectMap
-                [
-                    rml:reference "descendant::efbc:NaturalPersonIndicator"
-                ] ;
-        ] .
+#tedm:ND-Organization a rr:TriplesMap ;
+#    rdfs:label "ND-Organization";
+#    rml:logicalSource
+#        [
+#            rml:source "data/source.xml" ;
+#            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization";
+#            rml:referenceFormulation ql:XPath
+#        ] ;
+#    rr:subjectMap
+#        [
+#            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Buyer_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+#            rr:class epo:Buyer
+#        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "ND-Company";
+#            rr:predicate epo:playedBy ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:ND-Company;
+#                    rr:joinCondition [
+#                        rr:child "path(.)";
+#                        rr:parent "path(../.)";
+#                    ];
+#                ]
+#        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "BT-633-Organization";
+#            rr:predicate foaf:name ;
+#            rr:objectMap
+#                [
+#                    rml:reference "descendant::efbc:NaturalPersonIndicator"
+#                ] ;
+#        ] .
 #    rr:predicateObjectMap
 #        [
 #            rdfs:label "ND-TouchPoint";
@@ -892,6 +892,62 @@ tedm:ND-Organization a rr:TriplesMap ;
 #                    ];
 #                ]
 #        ] .
+
+#OPP-050-Organization
+tedm:LeadBuyer a rr:TriplesMap ;
+    rdfs:label "OPP-050-Organization";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference "if(exists(efbc:GroupLeadIndicator)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_LeadBuyer_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null";
+            rr:class epo:LeadBuyer
+        ];
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:playedBy ;
+            rr:objectMap
+                [
+                    rdfs:label "ND-Company";
+                    rr:parentTriplesMap tedm:ND-Company ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ]
+        ] .
+
+#OPP-051-Organization and OPP-052-Organization
+tedm:AwardingCentralPurchasingBody a rr:TriplesMap ;
+    rdfs:label "OPP-051-Organization and OPP-052-Organization";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference "if(exists(efbc:AwardingCPBIndicator) or exists(efbc:AcquiringCPBIndicator)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_AwardingCentralPurchasingBody_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null";
+            rr:class epo:AwardingCentralPurchasingBody
+        ];
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:playedBy ;
+            rr:objectMap
+                [
+                    rdfs:label "ND-Company";
+                    rr:parentTriplesMap tedm:ND-Company ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ]
+        ] .
 
 #ND-Company
 tedm:ND-Company a rr:TriplesMap ;
@@ -953,7 +1009,7 @@ tedm:ND-Company a rr:TriplesMap ;
             rr:predicate epo:hasLegalName ;
             rr:objectMap
                 [
-                    rml:reference "cac:PartyName/cbc:Name"
+                    rml:reference "descendant::cbc:Name"
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -980,7 +1036,7 @@ tedm:ND-Company a rr:TriplesMap ;
         ] .
 
 tedm:CompanyIdentifier a rr:TriplesMap ;
-    rdfs:comment "BT-501-Organization-Company and OPT-200-Organization-Company";
+    rdfs:comment "BT-501-Organization-Company";
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -994,7 +1050,7 @@ tedm:CompanyIdentifier a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-501-Organization-Company and OPT-200-Organization-Company";
+            rdfs:label "BT-501-Organization-Company";
             rr:predicate epo:hasIdentifierValue ;
             rr:objectMap
                 [
@@ -1104,7 +1160,7 @@ tedm:ND-CompanyAddress  a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-510(a)-Organization-Company";
-            rr:predicate locn:fullAddress ;
+            rr:predicate locn:thoroughfare ;
             rr:objectMap
                 [
                     rml:reference "cbc:StreetName";
@@ -1113,7 +1169,7 @@ tedm:ND-CompanyAddress  a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-510(b)-Organization-Company";
-            rr:predicate locn:adminUnitL2 ;
+            rr:predicate locn:thoroughfare ;
             rr:objectMap
                 [
                     rml:reference "cbc:AdditionalStreetName";
@@ -1165,7 +1221,7 @@ tedm:ND-CompanyAddress  a rr:TriplesMap ;
             rr:predicate epo:hasCountryCode  ;
             rr:objectMap
                 [
-                    rml:reference "'http://publications.europa.eu/resource/authority/country/' || cac:Country/cbc:IdentificationCode";
+                    rml:reference "cbc:IdentificationCode";
                     rr:termType rr:IRI;
                 ] ;
         ] .
