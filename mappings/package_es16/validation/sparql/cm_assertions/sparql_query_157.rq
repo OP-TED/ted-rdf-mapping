@@ -1,0 +1,10 @@
+#title: BT-19-Lot ND-Lot.ND-LotTenderingProcess.ND-NonEsubmission.BT-19-Lot - BT-19-Lot
+#description: “BT-19-Lot ND-Lot.ND-LotTenderingProcess.ND-NonEsubmission.BT-19-Lot - BT-19-Lot” in SF corresponds to “BT-19 Submission Non-electronic Justification” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/TenderingProcess/ProcessJustification/ProcessReasonCode/@listName. The expected ontology instances are epo: epo:Lot / epo:SubmissionTerm / at-voc:communication-justification .
+#xpath: /ContractNotice/ProcurementProjectLot/TenderingProcess/ProcessJustification/ProcessReasonCode/@listName
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+		?this rdf:type epo:Lot .
+		?this epo:isSubjectToLotSpecificTerm / epo:hasNonElectronicSubmissionJustification ?value . }

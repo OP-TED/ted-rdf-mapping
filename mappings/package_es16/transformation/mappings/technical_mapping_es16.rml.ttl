@@ -949,6 +949,22 @@ tedm:AwardingCentralPurchasingBody a rr:TriplesMap ;
                 ]
         ] .
 
+#BT-633-Organization
+tedm:NaturalPerson a rr:TriplesMap ;
+    rdfs:label "BT-633-Organization";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efbc:NaturalPersonIndicator";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference "if(lowercase(text()) = 'true') then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Person_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null";
+            rr:class cv:Person
+
+        ] .
+
 #ND-Company
 tedm:ND-Company a rr:TriplesMap ;
     rdfs:label "ND-Company";

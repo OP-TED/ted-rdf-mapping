@@ -1,0 +1,10 @@
+#title: BT-25-Lot ND-Lot.ND-LotProcurementScope.BT-25-Lot - BT-25-Lot
+#description: “BT-25-Lot ND-Lot.ND-LotProcurementScope.BT-25-Lot - BT-25-Lot” in SF corresponds to “BT-25 Quantity” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/EstimatedOverallContractQuantity. The expected ontology instances are epo: epo:Lot / epo:Purpose / epo:Quantity / xsd:decimal .
+#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/EstimatedOverallContractQuantity
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+		?this rdf:type epo:Lot .
+		?this epo:hasPurpose / epo:hasTotalQuantity / epo:hasQuantityValue ?value . }

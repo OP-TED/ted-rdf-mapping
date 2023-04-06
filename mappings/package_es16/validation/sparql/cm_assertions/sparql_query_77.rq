@@ -1,0 +1,10 @@
+#title: BT-536-Lot ND-Lot.ND-LotProcurementScope.ND-LotDuration.BT-536-Lot - BT-536-Lot
+#description: “BT-536-Lot ND-Lot.ND-LotProcurementScope.ND-LotDuration.BT-536-Lot - BT-536-Lot” in SF corresponds to “BT-536 Duration Start Date” in eForms. The corresponding XML element is /ContractNotice/ProcurementProjectLot/ProcurementProject/PlannedPeriod/StartDate. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / epo:Period / xsd:dateTime .
+#xpath: /ContractNotice/ProcurementProjectLot/ProcurementProject/PlannedPeriod/StartDate
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+		?this rdf:type epo:Lot .
+		?this epo:foreseesContractSpecificTerm / epo:definesContractPeriod / epo:hasBeginning ?value . }
