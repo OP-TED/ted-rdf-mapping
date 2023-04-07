@@ -49,11 +49,30 @@ tedm:ND-Root a rr:TriplesMap ;
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Notice" ;
             rr:class epo:Notice
         ] ;
+#    rr:predicateObjectMap
+#        [
+#            #rdfs:comment "We set the notice subtype to epo-not:CompetitionNotice, but this should be set conditionally based on the notice subtype";
+#            rr:predicate rdf:type ;
+#            rr:objectMap
+#                [
+#                    rml:reference "http://data.europa.eu/a4g/ontology#CompetitionNotice";
+#                    rr:termType rr:IRI;
+#                ] ;
+#        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-Lot"; #add in cm line that this goes from notice to lot
+            rr:predicate epo-not:announcesLot ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ND-Lot
+                ] ;
+        ] ;
     rr:predicateObjectMap
         [
             rdfs:comment "The notice refers to a Buyer role";
             rdfs:label "ND-ContractingParty";
-            rr:predicate epo:announcesRole ;
+            rr:predicate epo-not:announcesRole ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ND-ContractingParty
@@ -63,10 +82,60 @@ tedm:ND-Root a rr:TriplesMap ;
         [
             rdfs:comment "The notice refers to a Procurement Service Provider role";
             rdfs:label "ND-ServiceProviderParty";
-            rr:predicate epo:announcesRole ;
+            rr:predicate epo-not:announcesRole ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ND-ServiceProviderParty
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:comment "The notice refers to a Reviewer role";
+            rdfs:label "OPT-301-Lot-ReviewOrg";
+            rr:predicate epo-not:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Reviewer
+                ] ;
+        ]   ;
+    rr:predicateObjectMap
+        [
+            rdfs:comment "The notice refers to a Review Procedure Information Provider role";
+            rdfs:label "OPT-301-Lot-ReviewInfo";
+            rr:predicate epo-not:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ReviewProcedureInformationProvider
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:comment "The notice refers to a Lead Buyer role";
+            rdfs:label "OPP-050-Organization";
+            rr:predicate epo-not:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:LeadBuyer
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:comment "The notice refers to a Awarding Central Purchasing Body role";
+            rdfs:label "OPP-051-Organization";
+            rr:predicate epo-not:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:AwardingCentralPurchasingBody
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:comment "The notice refers to a Acquiring Central Purchasing Body role";
+            rdfs:label "OPP-052-Organization";
+            rr:predicate epo-not:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:AcquiringCentralPurchasingBody
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -76,16 +145,6 @@ tedm:ND-Root a rr:TriplesMap ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ND-ProcedureTenderingProcess
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:comment "The notice refers to a Reviewer role";
-            rdfs:label "OPT-301-Lot-ReviewOrg";
-            rr:predicate epo:announcesRole ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:Reviewer
                 ] ;
         ] .
 
@@ -394,6 +453,15 @@ tedm:ND-ProcedureTenderingProcess a rr:TriplesMap ;
             rr:class epo:Procedure
 
         ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "ND-Lot";#add in cm line that this goes from procedure to lot
+            rr:predicate epo:hasProcurementScopeDividedIntoLot ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:ND-Lot;
+                ]
+        ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-88-Procedure";
@@ -473,7 +541,7 @@ tedm:ND-ProcedureTenderingProcess a rr:TriplesMap ;
             rr:predicate epo:specifiesExclusionGround ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ND-ExclusionGrounds;
+                    rr:parentTriplesMap tedm:ND-ExclusionGrounds;#/*/cac:TenderingTerms/cac:TendererQualificationRequest/cac:SpecificTendererRequirement
                     rr:joinCondition [
                         rr:child "path(..)";
                         rr:parent "path(../../..)";
@@ -493,7 +561,6 @@ tedm:ND-ProcedureTenderingProcess a rr:TriplesMap ;
                     ];
                 ]
         ].
-
 
 #ND-ProcedureTerms
 tedm:ND-ProcedureTerms a rr:TriplesMap ;
@@ -667,7 +734,7 @@ tedm:ND-ProcedureProcurementScope a rr:TriplesMap ;
             rr:predicate epo:hasID ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:ProcurementProjectIdentifier;
+                    rr:parentTriplesMap tedm:ProcedureIdentifier;
                 ]
         ] ;
     rr:predicateObjectMap
@@ -719,7 +786,7 @@ tedm:ND-ProcedureValueEstimate a rr:TriplesMap ;
                 ] ;
         ] .
 
-tedm:ProcurementProjectIdentifier a rr:TriplesMap ;
+tedm:ProcedureIdentifier a rr:TriplesMap ;
     rdfs:label "BT-22-Procedure";
     rdfs:comment "The identifier of a procurement project";
     rml:logicalSource
@@ -730,7 +797,7 @@ tedm:ProcurementProjectIdentifier a rr:TriplesMap ;
         ];
     rr:subjectMap
         [
-            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcurementProjectIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcedureIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:Identifier
         ] ;
     rr:predicateObjectMap
@@ -1005,7 +1072,7 @@ tedm:LeadBuyer a rr:TriplesMap ;
                 ]
         ] .
 
-#OPP-051-Organization and OPP-052-Organization
+#OPP-051-Organization
 tedm:AwardingCentralPurchasingBody a rr:TriplesMap ;
     rdfs:label "OPP-051-Organization and OPP-052-Organization";
     rml:logicalSource
@@ -1016,8 +1083,36 @@ tedm:AwardingCentralPurchasingBody a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
-            rml:reference "if(exists(efbc:AwardingCPBIndicator) or exists(efbc:AcquiringCPBIndicator)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_AwardingCentralPurchasingBody_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null";
+            rml:reference "if(exists(efbc:AwardingCPBIndicator)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_AwardingCentralPurchasingBody_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null";
             rr:class epo:AwardingCentralPurchasingBody
+        ];
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:playedBy ;
+            rr:objectMap
+                [
+                    rdfs:label "ND-Company";
+                    rr:parentTriplesMap tedm:ND-Company ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ]
+        ] .
+
+#OPP-052-Organization
+tedm:AcquiringCentralPurchasingBody a rr:TriplesMap ;
+    rdfs:label "OPP-052-Organization";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference "if(exists(efbc:AcquiringCPBIndicator)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_AwardingCentralPurchasingBody_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null";
+            rr:class epo:AcquiringCentralPurchasingBody
         ];
     rr:predicateObjectMap
         [
