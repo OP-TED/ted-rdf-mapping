@@ -1,10 +1,10 @@
-#title: BT-13(t)-Lot ND-Lot.ND-LotTenderingProcess.ND-LotInfoRequestPeriod.BT-13(t)-Lot - BT-13(t)-Lot
-#description: “BT-13(t)-Lot ND-Lot.ND-LotTenderingProcess.ND-LotInfoRequestPeriod.BT-13(t)-Lot - BT-13(t)-Lot” in SF corresponds to “BT-13 Additional Information Deadline” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:AdditionalInformationRequestPeriod/cbc:EndTime. The expected ontology instances are epo: epo:Lot / epo:AccessTerm / xsd:dateTime .
-#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:AdditionalInformationRequestPeriod/cbc:EndTime
+#title: BT-634-Lot ND-Lot.ND-LotTenderingProcess.ND-LotTenderingProcessExtension.BT-634-Lot - BT-634-Lot
+#description: “BT-634-Lot ND-Lot.ND-LotTenderingProcess.ND-LotTenderingProcessExtension.BT-634-Lot - BT-634-Lot” in SF corresponds to “BT-634 Procurement Relaunch” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efbc:ProcedureRelaunchIndicator. The expected ontology instances are epo: epo:ProcurementProcessInformation / xsd:boolean .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efbc:ProcedureRelaunchIndicator
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Lot .
-		?this epo:isSubjectToLotSpecificTerm  / epo:hasAdditionalInformationDeadline ?value . }
+		?this rdf:type epo:ProcurementProcessInformation .
+		?this epo:isToBeRelaunched ?value }

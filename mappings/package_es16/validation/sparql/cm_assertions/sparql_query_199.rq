@@ -1,10 +1,9 @@
-#title: BT-506-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.ND-CompanyContact.BT-506-Organization-Company - BT-506-Organization-Company
-#description: “BT-506-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.ND-CompanyContact.BT-506-Organization-Company - BT-506-Organization-Company” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:Contact/cbc:ElectronicMail. The expected ontology instances are epo: cpov:ContactPoint / xsd:anyURI .
-#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:Contact/cbc:ElectronicMail
+#title: BT-512-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.ND-CompanyAddress.BT-512-Organization-Company - BT-512-Organization-Company
+#description: “BT-512-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.ND-CompanyAddress.BT-512-Organization-Company - BT-512-Organization-Company” in SF corresponds to “BT-512 Organisation Post Code” in eForms. The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:PostalAddress/cbc:PostalZone. The expected ontology instances are epo: org:Organization (from CL2) / locn:Address / rdf:langString .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:PostalAddress/cbc:PostalZone
 
-PREFIX cpov: <http://data.europa.eu/m8g/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX cv: <http://data.europa.eu/m8g/>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 
 ASK WHERE { 
-		?this rdf:type cpov:ContactPoint .
-		?this cpov:email ?value . }
+		?this cv:registeredAddress / locn:postCode ?value . }

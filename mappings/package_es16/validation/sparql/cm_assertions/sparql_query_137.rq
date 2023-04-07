@@ -1,10 +1,10 @@
-#title: BT-79-Lot ND-Lot.ND-LotTenderingTerms.BT-79-Lot - BT-79-Lot
-#description: “BT-79-Lot ND-Lot.ND-LotTenderingTerms.BT-79-Lot - BT-79-Lot” in SF corresponds to “BT-79 Performing Staff Qualification” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cbc:RequiredCurriculaCode. The expected ontology instances are epo: epo:Lot / at-voc:requirement-stage .
-#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cbc:RequiredCurriculaCode
+#title: BT-736-Lot ND-Lot.ND-LotTenderingTerms.BT-736-Lot - BT-736-Lot
+#description: “BT-736-Lot ND-Lot.ND-LotTenderingTerms.BT-736-Lot - BT-736-Lot” in SF corresponds to “BT-736 Reserved Execution” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:ContractExecutionRequirement/cbc:ExecutionRequirementCode[@listName='reserved-execution']. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / at-voc:applicability .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:ContractExecutionRequirement/cbc:ExecutionRequirementCode[@listName='reserved-execution']
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:hasPerformingStaffQualificationInformation ?value }
+		?this epo:foreseesContractSpecificTerm / epo:hasReservedExecution ?value . }

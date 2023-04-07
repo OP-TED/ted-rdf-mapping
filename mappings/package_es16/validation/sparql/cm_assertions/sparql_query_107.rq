@@ -1,10 +1,10 @@
-#title: BT-52-Lot ND-Lot.ND-LotTenderingProcess.BT-52-Lot - BT-52-Lot
-#description: “BT-52-Lot ND-Lot.ND-LotTenderingProcess.BT-52-Lot - BT-52-Lot” in SF corresponds to “BT-52 Successive Reduction” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cbc:CandidateReductionConstraintIndicator. The expected ontology instances are epo: epo:Lot / epo:MultipleStageProcedureTerm / xsd:boolean .
-#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cbc:CandidateReductionConstraintIndicator
+#title: BT-7531-Lot ND-Lot.ND-LotTenderingTerms.ND-NonUBLTenderingTerms.ND-SelectionCriteria.ND-SecondStageCriterionParameter.BT-7531-Lot - BT-7531-Lot
+#description: “BT-7531-Lot ND-Lot.ND-LotTenderingTerms.ND-NonUBLTenderingTerms.ND-SelectionCriteria.ND-SecondStageCriterionParameter.BT-7531-Lot - BT-7531-Lot” in SF corresponds to “BT-7531 Selection Criteria Second Stage Invite Number Weight” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:SelectionCriteria/efac:CriterionParameter/efbc:ParameterCode[@listName='number-weight']. The expected ontology instances are epo: epo:Lot / epo:SelectionCriterion / at-voc:number-weight .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:SelectionCriteria/efac:CriterionParameter/efbc:ParameterCode[@listName='number-weight']
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:isSubjectToLotSpecificTerm / epo:hasSuccessiveReduction ?value }
+		?this epo:specifiesSelectionCriterion / epo:hasWeightValueType ?value }

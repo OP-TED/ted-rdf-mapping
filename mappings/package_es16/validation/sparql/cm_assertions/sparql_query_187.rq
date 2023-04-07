@@ -1,8 +1,10 @@
-#title: BT-16-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.ND-CompanyAddress.BT-16-Organization-Company - BT-16-Organization-Company
-#description: “BT-16-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.ND-CompanyAddress.BT-16-Organization-Company - BT-16-Organization-Company” in SF corresponds to “BT-16 Organisation Part Name” in eForms. The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:PostalAddress/cbc:Department. The expected ontology instances are epo: org:Organization (from CL2) / rdf:langString .
-#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:PostalAddress/cbc:Department
+#title: BT-719-notice ND-RootExtension.ND-Changes.ND-Change.BT-719-notice - BT-719-notice
+#description: “BT-719-notice ND-RootExtension.ND-Changes.ND-Change.BT-719-notice - BT-719-notice” in SF corresponds to “BT-719 Change Procurement Documents Date” in eForms. The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Changes/efac:Change/efbc:ProcurementDocumentsChangeDate. The expected ontology instances are epo: epo:ElementChangeDescription / xsd:date .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Changes/efac:Change/efbc:ProcurementDocumentsChangeDate
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this epo:hasOrganisationUnit ?value . }
+		?this rdf:type epo:ElementChangeDescription .
+		?this epo:hasProcurementDocumentChangeDate ?value }

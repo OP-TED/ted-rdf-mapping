@@ -1,10 +1,10 @@
-#title: BT-743-Lot ND-Lot.ND-LotTenderingTerms.BT-743-Lot - BT-743-Lot
-#description: “BT-743-Lot ND-Lot.ND-LotTenderingTerms.BT-743-Lot - BT-743-Lot” in SF corresponds to “BT-743 Electronic Invoicing” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:ContractExecutionRequirement/cbc:ExecutionRequirementCode[@listName='einvoicing']. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / xsd:boolean .
-#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:ContractExecutionRequirement/cbc:ExecutionRequirementCode[@listName='einvoicing']
+#title: BT-95-Lot ND-Lot.ND-LotTenderingTerms.BT-95-Lot - BT-95-Lot
+#description: “BT-95-Lot ND-Lot.ND-LotTenderingTerms.BT-95-Lot - BT-95-Lot” in SF corresponds to “BT-95 Recurrence Description” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cbc:RecurringProcurementDescription. The expected ontology instances are epo: epo:Lot / rdf:langString .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cbc:RecurringProcurementDescription
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:foreseesContractSpecificTerm / epo:hasEInvoicing ?value . }
+		?this epo:hasRecurrenceDescription ?value . }

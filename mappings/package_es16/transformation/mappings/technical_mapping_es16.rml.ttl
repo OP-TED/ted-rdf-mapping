@@ -14,6 +14,7 @@
 @prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix cv: <http://data.europa.eu/m8g/> .
+@prefix cpv: <http://data.europa.eu/m8g/> .
 @prefix cccev: <http://data.europa.eu/m8g/> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix cpov: <http://data.europa.eu/m8g/> .
@@ -375,14 +376,14 @@ tedm:ND-ServiceProviderParty a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:ND-ContractingParty;
                     rr:joinCondition [
-                        rr:child "path(../..)";
+                        rr:child "path(/*/cac:ContractingParty)";
                         rr:parent "path(.)";
                     ];
                 ] ;
         ] .
 
 
-#ND-ProviderParty  #recall to link!!!
+#ND-ProviderParty
 tedm:ND-ProviderParty a rr:TriplesMap ;
     rdfs:label "ND-ProviderParty";
     rdfs:comment "Represents the Service Provider Organization";
@@ -4718,7 +4719,7 @@ tedm:ND-PostAwardProcess_Contract_Term a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-92-Lot";
-            rr:predicate epo:hasEPayment ;
+            rr:predicate epo:hasEOrdering ;
             rr:objectMap
                 [
                     rml:reference "cbc:ElectronicOrderUsageIndicator";
@@ -4803,7 +4804,17 @@ tedm:ND-LotPerformanceAddress a rr:TriplesMap ;
                         rr:parent "code.value";
                     ];
                 ] ;
-        ].
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-728-Lot";
+            rr:predicate epo:hasPlaceOfPerformanceAdditionalInformation ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Description";
+                    rr:datatype xsd:string;
+                ] ;
+        ] .
 
 tedm:ContractAddress a rr:TriplesMap ;
     rml:logicalSource

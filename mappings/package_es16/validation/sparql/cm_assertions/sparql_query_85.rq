@@ -1,10 +1,10 @@
-#title: ND-AuctionTerms ND-Lot.ND-LotTenderingProcess.ND-AuctionTerms - ND-AuctionTerms
-#description: “ND-AuctionTerms ND-Lot.ND-LotTenderingProcess.ND-AuctionTerms - ND-AuctionTerms” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:AuctionTerms. The expected ontology instances are epo: epo:Lot / epo:EAuctionTechniqueUsage .
-#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:AuctionTerms
+#title: BT-58-Lot ND-Lot.ND-LotProcurementScope.ND-OptionsAndRenewals.BT-58-Lot - BT-58-Lot
+#description: “BT-58-Lot ND-Lot.ND-LotProcurementScope.ND-OptionsAndRenewals.BT-58-Lot - BT-58-Lot” in SF corresponds to “BT-58 Renewal Maximum” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:ContractExtension/cbc:MaximumNumberNumeric. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / xsd:integer .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:ContractExtension/cbc:MaximumNumberNumeric
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:usesTechnique ?value }
+		?this epo:foreseesContractSpecificTerm / epo:hasMaximumNumberOfRenewals ?value }

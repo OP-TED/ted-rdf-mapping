@@ -1,10 +1,11 @@
-#title: OPP-051-Organization ND-RootExtension.ND-Organizations.ND-Organization.OPP-051-Organization - OPP-051-Organization
-#description: “OPP-051-Organization ND-RootExtension.ND-Organizations.ND-Organization.OPP-051-Organization - OPP-051-Organization” in SF corresponds to “OPP-051 nan” in eForms. The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efbc:AwardingCPBIndicator. The expected ontology instances are epo: epo:AwardingCentralPurchasingBody / org:Organization (from CL2) .
-#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efbc:AwardingCPBIndicator
+#title: BT-502-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.ND-CompanyContact.BT-502-Organization-Company - BT-502-Organization-Company
+#description: “BT-502-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.ND-CompanyContact.BT-502-Organization-Company - BT-502-Organization-Company” in SF corresponds to “BT-502 Organisation Contact Point” in eForms. The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:Contact/cbc:Name. The expected ontology instances are epo: cpov:ContactPoint / rdf:langString .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:Contact/cbc:Name
 
+PREFIX cpov: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:AwardingCentralPurchasingBody .
-		?this epo:playedBy ?value }
+		?this rdf:type cpov:ContactPoint .
+		?this epo:hasContactName  ?value . }

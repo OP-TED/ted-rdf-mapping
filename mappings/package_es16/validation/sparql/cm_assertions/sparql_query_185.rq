@@ -1,8 +1,10 @@
-#title: BT-501-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.BT-501-Organization-Company - BT-501-Organization-Company
-#description: “BT-501-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.BT-501-Organization-Company - BT-501-Organization-Company” in SF corresponds to “BT-501 Organisation Identifier” in eForms. The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:PartyLegalEntity/cbc:CompanyID. The expected ontology instances are epo: org:Organization (from CL2) / epo:Identifier / rdf:langString .
-#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:PartyLegalEntity/cbc:CompanyID
+#title: BT-141(a)-notice ND-RootExtension.ND-Changes.ND-Change.BT-141(a)-notice - BT-141(a)-notice
+#description: “BT-141(a)-notice ND-RootExtension.ND-Changes.ND-Change.BT-141(a)-notice - BT-141(a)-notice” in SF corresponds to “BT-141 Change Description” in eForms. The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Changes/efac:Change/efbc:ChangeDescription. The expected ontology instances are epo: epo:ElementChangeDescription / rdf:langString .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Changes/efac:Change/efbc:ChangeDescription
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this epo:hasID / epo:hasIdentifierValue ?value . }
+		?this rdf:type epo:ElementChangeDescription .
+		?this epo:hasChangeDescription ?value }

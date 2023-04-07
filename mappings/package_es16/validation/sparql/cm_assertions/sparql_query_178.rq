@@ -1,10 +1,10 @@
-#title: BT-762-notice ND-RootExtension.ND-Changes.ND-ChangeReason.BT-762-notice - BT-762-notice
-#description: “BT-762-notice ND-RootExtension.ND-Changes.ND-ChangeReason.BT-762-notice - BT-762-notice” in SF corresponds to “BT-762 Change Reason Description” in eForms. The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Changes/efac:ChangeReason/efbc:ReasonDescription. The expected ontology instances are epo: epo:NoticeChange / epo:ElementChangeDescription / rdf:langString .
-#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Changes/efac:ChangeReason/efbc:ReasonDescription
+#title: BT-1375-Procedure ND-ProcedureTerms.ND-LotDistribution.ND-GroupComposition.BT-1375-Procedure - BT-1375-Procedure
+#description: “BT-1375-Procedure ND-ProcedureTerms.ND-LotDistribution.ND-GroupComposition.BT-1375-Procedure - BT-1375-Procedure” in SF corresponds to “BT-1375 Group Lot Identifier” in eForms. The corresponding XML element is /*/cac:TenderingTerms/cac:LotDistribution/cac:LotsGroup/cac:ProcurementProjectLotReference/cbc:ID[@schemeName='Lot']. The expected ontology instances are epo: epo:LotGroup / epo:Lot / epo:Identifier / xsd:string .
+#xpath: /*/cac:TenderingTerms/cac:LotDistribution/cac:LotsGroup/cac:ProcurementProjectLotReference/cbc:ID[@schemeName='Lot']
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:NoticeChange .
-		?this epo:hasElementChange / epo:hasChangeReasonDescription ?value }
+		?this rdf:type epo:LotGroup .
+		?this epo:setsGroupingContextForLot / epo:hasID / epo:hasIdentifierValue ?value . }

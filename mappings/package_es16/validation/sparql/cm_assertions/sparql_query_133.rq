@@ -1,10 +1,10 @@
-#title: BT-769-Lot ND-Lot.ND-LotTenderingTerms.BT-769-Lot - BT-769-Lot
-#description: “BT-769-Lot ND-Lot.ND-LotTenderingTerms.BT-769-Lot - BT-769-Lot” in SF corresponds to “BT-769 Multiple Tenders” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cbc:MultipleTendersCode. The expected ontology instances are epo: epo:Lot / epo:SubmissionTerm / xsd:boolean .
-#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cbc:MultipleTendersCode
+#title: BT-63-Lot ND-Lot.ND-LotTenderingTerms.BT-63-Lot - BT-63-Lot
+#description: “BT-63-Lot ND-Lot.ND-LotTenderingTerms.BT-63-Lot - BT-63-Lot” in SF corresponds to “BT-63 Variants” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cbc:VariantConstraintCode. The expected ontology instances are epo: epo:Lot / epo:SubmissionTerm / at-voc:permission .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cbc:VariantConstraintCode
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:isSubjectToLotSpecificTerm  / epo:isMultipleTenderSubmissionAllowed ?value . }
+		?this epo:isSubjectToLotSpecificTerm  / epo:hasVariantPermission ?value . }

@@ -1,11 +1,10 @@
-#title: BT-5101(b)-Procedure ND-ProcedureProcurementScope.ND-ProcedurePlacePerformanceAdditionalInformation.ND-ProcedurePlacePerformance.BT-5101(b)-Procedure - BT-5101(b)-Procedure
-#description: “BT-5101(b)-Procedure ND-ProcedureProcurementScope.ND-ProcedurePlacePerformanceAdditionalInformation.ND-ProcedurePlacePerformance.BT-5101(b)-Procedure - BT-5101(b)-Procedure” in SF corresponds to “BT-5101 Place Performance Street” in eForms. The corresponding XML element is /*/cac:ProcurementProject/cac:RealizedLocation/cac:Address/cbc:AdditionalStreetName. The expected ontology instances are epo: epo:Procedure / epo:ContractTerm / dct:Location / locn:Address / rdf:langString .
-#xpath: /*/cac:ProcurementProject/cac:RealizedLocation/cac:Address/cbc:AdditionalStreetName
+#title: BT-271-Procedure ND-ProcedureProcurementScope.ND-ProcedureValueEstimate.ND-ProcedureValueEstimateExtension.BT-271-Procedure - BT-271-Procedure
+#description: “BT-271-Procedure ND-ProcedureProcurementScope.ND-ProcedureValueEstimate.ND-ProcedureValueEstimateExtension.BT-271-Procedure - BT-271-Procedure” in SF corresponds to “BT-271 Framework Maximum Value” in eForms. The corresponding XML element is /*/cac:ProcurementProject/cac:RequestedTenderTotal/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efbc:FrameworkMaximumAmount. The expected ontology instances are epo: epo:Procedure / epo:Lot / xsd:MonetaryValue / xsd:decimal .
+#xpath: /*/cac:ProcurementProject/cac:RequestedTenderTotal/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efbc:FrameworkMaximumAmount
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Procedure .
-		?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address /  locn:adminUnitL2 ?value . }
+		?this epo:hasProcurementScopeDividedIntoLot / epo:hasFrameworkAgreementMaximumValue / epo:hasAmountValue ?value }

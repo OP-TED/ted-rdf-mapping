@@ -1,10 +1,10 @@
-#title: ND-LotAwardCriterionParameter ND-Lot.ND-LotTenderingTerms.ND-AwardingTerms.ND-LotAwardCriteria.ND-LotAwardCriterion.ND-LotAwardCriterionParameters.ND-LotAwardCriterionParameter - ND-LotAwardCriterionParameter
-#description: “ND-LotAwardCriterionParameter ND-Lot.ND-LotTenderingTerms.ND-AwardingTerms.ND-LotAwardCriteria.ND-LotAwardCriterion.ND-LotAwardCriterionParameters.ND-LotAwardCriterionParameter - ND-LotAwardCriterionParameter” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter. The expected ontology instances are epo: epo:AwardCriterion .
-#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter
+#title: BT-539-Lot ND-Lot.ND-LotTenderingTerms.ND-AwardingTerms.ND-LotAwardCriteria.ND-LotAwardCriterion.BT-539-Lot - BT-539-Lot
+#description: “BT-539-Lot ND-Lot.ND-LotTenderingTerms.ND-AwardingTerms.ND-LotAwardCriteria.ND-LotAwardCriterion.BT-539-Lot - BT-539-Lot” in SF corresponds to “BT-539 Award Criterion Type” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/cbc:AwardingCriterionTypeCode[@listName='award-criterion-type']. The expected ontology instances are epo: epo:Lot / epo:AwardCriterion / at-voc:award-criterion-type .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/cbc:AwardingCriterionTypeCode[@listName='award-criterion-type']
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:AwardCriterion .
-		?this a epo:AwardCriterion }
+		?this rdf:type epo:Lot .
+		?this epo:specifiesAwardCriterion / epo:hasAwardCriterionType ?value }

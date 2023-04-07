@@ -1,11 +1,10 @@
-#title: BT-749-Lot ND-Lot.ND-LotTenderingTerms.ND-NonUBLTenderingTerms.ND-SelectionCriteria.BT-749-Lot - BT-749-Lot
-#description: “BT-749-Lot ND-Lot.ND-LotTenderingTerms.ND-NonUBLTenderingTerms.ND-SelectionCriteria.BT-749-Lot - BT-749-Lot” in SF corresponds to “BT-749 Selection Criteria Name” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:SelectionCriteria/cbc:Name. The expected ontology instances are epo: epo:Lot / epo:SelectionCriterion / rdf:langString .
-#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:SelectionCriteria/cbc:Name
+#title: BT-271-Lot ND-Lot.ND-LotProcurementScope.ND-LotValueEstimate.ND-LotValueEstimateExtension.BT-271-Lot - BT-271-Lot
+#description: “BT-271-Lot ND-Lot.ND-LotProcurementScope.ND-LotValueEstimate.ND-LotValueEstimateExtension.BT-271-Lot - BT-271-Lot” in SF corresponds to “BT-271 Framework Maximum Value” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:RequestedTenderTotal/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efbc:FrameworkMaximumAmount. The expected ontology instances are epo: epo:LotAwardOutcome / epo:MonetaryValue / xsd:decimal .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:RequestedTenderTotal/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efbc:FrameworkMaximumAmount
 
-PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Lot .
-		?this epo:specifiesSelectionCriterion / cccev:name ?value }
+		?this rdf:type epo:LotAwardOutcome .
+		?this epo:hasFrameworkAgreementMaximumValue / epo:hasAmountValue ?value . }

@@ -1,10 +1,10 @@
-#title: BT-615-Lot ND-Lot.ND-LotTenderingTerms.ND-LotRestrictedDocuments.BT-615-Lot - BT-615-Lot
-#description: “BT-615-Lot ND-Lot.ND-LotTenderingTerms.ND-LotRestrictedDocuments.BT-615-Lot - BT-615-Lot” in SF corresponds to “BT-615 Documents Restricted URL” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference[cbc:DocumentType/text()='restricted-document']/cac:Attachment/cac:ExternalReference/cbc:URI. The expected ontology instances are epo: epo:Lot / epo:AccessTerm / xsd:anyURI .
-#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference[cbc:DocumentType/text()='restricted-document']/cac:Attachment/cac:ExternalReference/cbc:URI
+#title: BT-708-Lot ND-Lot.ND-LotTenderingTerms.ND-LotProcurementDocument.BT-708-Lot - BT-708-Lot
+#description: “BT-708-Lot ND-Lot.ND-LotTenderingTerms.ND-LotProcurementDocument.BT-708-Lot - BT-708-Lot” in SF corresponds to “BT-708 Documents Official Language” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference/cbc:LanguageID[not(../cbc:DocumentStatusCode/text()='non-official')]. The expected ontology instances are epo: epo:Lot / epo:AccessTerm / epo:ProcurementDocument / at-voc:language .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference/cbc:LanguageID[not(../cbc:DocumentStatusCode/text()='non-official')]
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:isSubjectToLotSpecificTerm / epo:hasRestrictedAccessURL ?value }
+		?this epo:isSubjectToLotSpecificTerm / epo:involvesProcurementDocument / epo:hasUnofficialLanguage ?value }

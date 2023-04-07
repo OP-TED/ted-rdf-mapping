@@ -1,8 +1,10 @@
-#title: BT-505-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.BT-505-Organization-Company - BT-505-Organization-Company
-#description: “BT-505-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.BT-505-Organization-Company - BT-505-Organization-Company” in SF corresponds to “BT-505 Organisation Internet Address” in eForms. The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cbc:WebsiteURI. The expected ontology instances are epo: org:Organization (from CL2) / cpov:ContactPoint / xsd:anyURI .
-#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cbc:WebsiteURI
+#title: BT-633-Organization ND-RootExtension.ND-Organizations.ND-Organization.BT-633-Organization - BT-633-Organization
+#description: “BT-633-Organization ND-RootExtension.ND-Organizations.ND-Organization.BT-633-Organization - BT-633-Organization” in SF corresponds to “BT-633 Organisation Natural Person” in eForms. The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efbc:NaturalPersonIndicator. The expected ontology instances are epo: cpv:Person .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efbc:NaturalPersonIndicator
 
-PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX cpv: <^>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this epo:hasPrimaryContactPoint / epo:hasInternetAddress ?value . }
+		?this rdf:type cpv:Person .
+		?this a cpv:Person }

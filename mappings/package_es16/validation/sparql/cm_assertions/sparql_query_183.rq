@@ -1,10 +1,10 @@
-#title: BT-633-Organization ND-RootExtension.ND-Organizations.ND-Organization.BT-633-Organization - BT-633-Organization
-#description: “BT-633-Organization ND-RootExtension.ND-Organizations.ND-Organization.BT-633-Organization - BT-633-Organization” in SF corresponds to “BT-633 Organisation Natural Person” in eForms. The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efbc:NaturalPersonIndicator. The expected ontology instances are epo: cpv:Person .
-#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efbc:NaturalPersonIndicator
+#title: BT-762-notice ND-RootExtension.ND-Changes.ND-ChangeReason.BT-762-notice - BT-762-notice
+#description: “BT-762-notice ND-RootExtension.ND-Changes.ND-ChangeReason.BT-762-notice - BT-762-notice” in SF corresponds to “BT-762 Change Reason Description” in eForms. The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Changes/efac:ChangeReason/efbc:ReasonDescription. The expected ontology instances are epo: epo:NoticeChange / epo:ElementChangeDescription / rdf:langString .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Changes/efac:ChangeReason/efbc:ReasonDescription
 
-PREFIX cpv: <^>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type cpv:Person .
-		?this a cpv:Person }
+		?this rdf:type epo:NoticeChange .
+		?this epo:hasElementChange / epo:hasChangeReasonDescription ?value }

@@ -1,10 +1,11 @@
-#title: OPT-300-Procedure-Buyer ND-ContractingParty.ND-ServiceProvider.OPT-300-Procedure-Buyer - OPT-300-Procedure-Buyer
-#description: “OPT-300-Procedure-Buyer ND-ContractingParty.ND-ServiceProvider.OPT-300-Procedure-Buyer - OPT-300-Procedure-Buyer” in SF corresponds to “OPT-300 nan” in eForms. The corresponding XML element is /*/cac:ContractingParty/cac:Party/cac:PartyIdentification/cbc:ID. The expected ontology instances are epo: epo:AgentInRole (from CL1) / foaf:Agent / epo:Idenitifier / rdf:langString .
-#xpath: /*/cac:ContractingParty/cac:Party/cac:PartyIdentification/cbc:ID
+#title: ND-ContractingParty ND-ContractingParty - ND-ContractingParty
+#description: “ND-ContractingParty ND-ContractingParty - ND-ContractingParty” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /*/cac:ContractingParty. The expected ontology instances are epo: epo:Notice / epo:Lot .
+#xpath: /*/cac:ContractingParty
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX epo-not: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Buyer .
-		?this epo:playedBy / epo:hasID / epo:hasIdentifierValue ?value }
+		?this rdf:type epo:Notice .
+		?this epo-not:announcesLot ?value }
