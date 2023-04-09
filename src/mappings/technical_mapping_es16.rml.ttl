@@ -984,11 +984,7 @@ tedm:ND-ProcedurePlacePerformance a rr:TriplesMap ;
             rr:predicate epo:hasCountryCode  ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:country;
-                    rr:joinCondition [
-                        rr:child "cbc:IdentificationCode";
-                        rr:parent "code.value";
-                    ];
+                    rml:reference "descendant::cbc:IdentificationCode";
                 ] ;
         ].
 
@@ -1382,7 +1378,7 @@ tedm:ND-CompanyAddress  a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-513-Organization-Company";
-            rr:predicate locn:addressArea ;
+            rr:predicate locn:postName ;
             rr:objectMap
                 [
                     rml:reference "cbc:CityName";
@@ -1416,8 +1412,8 @@ tedm:ND-CompanyAddress  a rr:TriplesMap ;
             rr:predicate epo:hasCountryCode  ;
             rr:objectMap
                 [
-                    rml:reference "cbc:IdentificationCode";
-                    rr:termType rr:IRI;
+                    rml:reference "descendant::cbc:IdentificationCode";
+                    #rr:termType rr:IRI;
                 ] ;
         ] .
 ##################################################################################################################################################################################################
@@ -3019,7 +3015,7 @@ tedm:AccessTerm_UnofficialLanguage a rr:TriplesMap ;
         ];
     rr:subjectMap
         [
-            rml:reference "if (exists(cbc:LanguageID[not(../cbc:DocumentStatusCode/text()='non-official')]) or exists(cbc:LanguageID[../cbc:DocumentStatusCode/text()='non-official'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcurementDocument_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcurementDocument_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:ProcurementDocument
         ] ;
     rr:predicateObjectMap
@@ -4798,11 +4794,7 @@ tedm:ND-LotPerformanceAddress a rr:TriplesMap ;
             rr:predicate epo:hasCountryCode  ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:country;
-                    rr:joinCondition [
-                        rr:child "cbc:IdentificationCode";
-                        rr:parent "code.value";
-                    ];
+                   rml:reference "descendant::cbc:IdentificationCode";
                 ] ;
         ];
     rr:predicateObjectMap
