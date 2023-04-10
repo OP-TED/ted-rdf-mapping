@@ -1,10 +1,11 @@
-#title: BT-727-Lot ND-Lot.ND-LotProcurementScope.ND-LotPlacePerformance.ND-LotPerformanceAddress.BT-727-Lot - BT-727-Lot
-#description: “BT-727-Lot ND-Lot.ND-LotProcurementScope.ND-LotPlacePerformance.ND-LotPerformanceAddress.BT-727-Lot - BT-727-Lot” in SF corresponds to “BT-727 Place Performance Services Other” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:RealizedLocation/cac:Address/cbc:Region. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / rdf:langString .
-#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:RealizedLocation/cac:Address/cbc:Region
+#title: BT-538-Lot ND-Lot.ND-LotProcurementScope.ND-LotDuration.BT-538-Lot - BT-538-Lot
+#description: “BT-538-Lot ND-Lot.ND-LotProcurementScope.ND-LotDuration.BT-538-Lot - BT-538-Lot” in SF corresponds to “BT-538 Duration Other” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:PlannedPeriod/cbc:DescriptionCode. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / epo:SpecificDuration / time:TemporalUnit .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:PlannedPeriod/cbc:DescriptionCode
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX time: <http://www.w3.org/2006/time#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:foreseesContractSpecificTerm / epo:hasBroadPlaceOfPerformance ?value . }
+		?this epo:foreseesContractSpecificTerm / epo:definesContractDuration / time:unitType ?value . }

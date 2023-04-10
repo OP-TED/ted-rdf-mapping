@@ -1,10 +1,10 @@
-#title: BT-14-Lot ND-Lot.ND-LotTenderingTerms.ND-LotProcurementDocument.BT-14-Lot - BT-14-Lot
-#description: “BT-14-Lot ND-Lot.ND-LotTenderingTerms.ND-LotProcurementDocument.BT-14-Lot - BT-14-Lot” in SF corresponds to “BT-14 Documents Restricted” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference/cbc:DocumentType. The expected ontology instances are epo: epo:Lot / epo:AccessTerm / xsd:boolean .
-#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference/cbc:DocumentType
+#title: BT-615-Lot ND-Lot.ND-LotTenderingTerms.ND-LotRestrictedDocuments.BT-615-Lot - BT-615-Lot
+#description: “BT-615-Lot ND-Lot.ND-LotTenderingTerms.ND-LotRestrictedDocuments.BT-615-Lot - BT-615-Lot” in SF corresponds to “BT-615 Documents Restricted URL” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference[cbc:DocumentType/text()='restricted-document']/cac:Attachment/cac:ExternalReference/cbc:URI. The expected ontology instances are epo: epo:Lot / epo:AccessTerm / xsd:anyURI .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference[cbc:DocumentType/text()='restricted-document']/cac:Attachment/cac:ExternalReference/cbc:URI
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:isSubjectToLotSpecificTerm / epo:isProcurementDocumentRestricted ?value . }
+		?this epo:isSubjectToLotSpecificTerm / epo:hasRestrictedAccessURL ?value }

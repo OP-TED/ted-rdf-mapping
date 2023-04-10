@@ -1,11 +1,10 @@
-#title: BT-734-Lot ND-Lot.ND-LotTenderingTerms.ND-AwardingTerms.ND-LotAwardCriteria.ND-LotAwardCriterion.BT-734-Lot - BT-734-Lot
-#description: “BT-734-Lot ND-Lot.ND-LotTenderingTerms.ND-AwardingTerms.ND-LotAwardCriteria.ND-LotAwardCriterion.BT-734-Lot - BT-734-Lot” in SF corresponds to “BT-734 Award Criterion Name” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/cbc:Name. The expected ontology instances are epo: epo:Lot / epo:AwardCriterion / rdf:langString .
-#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/cbc:Name
+#title: BT-76-Lot ND-Lot.ND-LotTenderingTerms.ND-TendererLegalForm.BT-76-Lot - BT-76-Lot
+#description: “BT-76-Lot ND-Lot.ND-LotTenderingTerms.ND-TendererLegalForm.BT-76-Lot - BT-76-Lot” in SF corresponds to “BT-76 Tenderer Legal Form Description” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:TendererQualificationRequest[not(cac:SpecificTendererRequirement)]/cbc:CompanyLegalForm. The expected ontology instances are epo: epo:Tender / epo:Tenderer / org:Organization / rdf:langString . .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:TendererQualificationRequest[not(cac:SpecificTendererRequirement)]/cbc:CompanyLegalForm
 
-PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Lot .
-		?this epo:specifiesAwardCriterion / cccev:name ?value . }
+		?this rdf:type epo:Tender .
+		?this epo:isSubmittedBy / epo:playedBy / epo:hasLegalFormType ?value . }

@@ -886,7 +886,7 @@ tedm:ProcurementProjectContractLocation a rr:TriplesMap ;
         ];
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcurementProjectContractLocation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if (exists(descendant::cbc:CountrySubentityCode) or exists(descendant::cbc:IdentificationCode)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcurementProjectContractLocation_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class dct:Location
         ] ;
     rr:predicateObjectMap
@@ -900,6 +900,28 @@ tedm:ProcurementProjectContractLocation a rr:TriplesMap ;
                         rr:parent "path(../.)";
                     ];
                 ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5141-Procedure";
+            rr:predicate epo:hasCountryCode  ;
+            rr:objectMap
+                [
+                    rml:reference "descendant::cbc:IdentificationCode";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5071-Procedure";
+            rr:predicate epo:hasNutsCode  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:nuts;
+                    rr:joinCondition [
+                        rr:child "descendant::cbc:CountrySubentityCode";
+                        rr:parent "code.value";
+                    ];
+                ] ;
         ] .
 
 tedm:ND-ProcedurePlacePerformance a rr:TriplesMap ;
@@ -948,24 +970,11 @@ tedm:ND-ProcedurePlacePerformance a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-5131-Procedure";
-            rr:predicate locn:postName ;
+            rr:predicate locn:addressArea ;
             rr:objectMap
                 [
                     rml:reference "cbc:CityName";
                     rr:datatype xsd:string;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-5071-Procedure";
-            rr:predicate epo:hasNutsCode  ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:nuts;
-                    rr:joinCondition [
-                        rr:child "descendant::cbc:CountrySubentityCode";
-                        rr:parent "code.value";
-                    ];
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -977,16 +986,7 @@ tedm:ND-ProcedurePlacePerformance a rr:TriplesMap ;
                     rml:reference "cbc:PostalZone";
                     rr:datatype xsd:string;
                 ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-5141-Procedure";
-            rr:predicate epo:hasCountryCode  ;
-            rr:objectMap
-                [
-                    rml:reference "descendant::cbc:IdentificationCode";
-                ] ;
-        ].
+        ] .
 
 ##################################################################################################################################################################################################
 ##################################################################################################################################################################################################
@@ -1209,7 +1209,7 @@ tedm:ND-Company a rr:TriplesMap ;
             rr:predicate epo:hasOrganisationUnit ;
             rr:objectMap
                 [
-                    rml:reference "cbc:Department";
+                    rml:reference "descendant::cbc:Department";
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -1305,7 +1305,7 @@ tedm:ND-CompanyContact   a rr:TriplesMap ;
             rr:predicate epo:hasInternetAddress  ;
             rr:objectMap
                 [
-                    rml:reference "descendant::cbc:WebsiteURI";
+                    rml:reference "../cbc:WebsiteURI";
                     rr:datatype xsd:anyURI;
                 ] ;
         ].
@@ -2058,7 +2058,7 @@ tedm:ND-Changes  a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:definesNotice ;
+            rr:predicate epo:describesNotice ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ND-Root ;
@@ -3351,16 +3351,6 @@ tedm:ND-SubmissionDeadline a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-130-Lot";
-            rr:predicate epo:hasEstimatedInvitationToTenderDate ;
-            rr:objectMap
-                [
-                    rml:reference "descendant::cbc:StartDate";
-                    rr:datatype xsd:date;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
             rdfs:label "BT-131-Lot";
             rr:predicate epo:hasReceiptDeadline ;
             rr:objectMap
@@ -3476,7 +3466,7 @@ tedm:ND-LateTendererInformation a rr:TriplesMap ;
             rr:predicate epo:hasLateSubmissionInformationDescription;
             rr:objectMap
                 [
-                    rml:reference "descendant::cac:SpecificTendererRequirement[not(cbc:TendererRequirementTypeCode[@listName='reserved-procurement'])]/cbc:Description";
+                    rml:reference "descendant::cbc:Description";
                     rr:datatype xsd:string;
                 ] ;
         ] ;
@@ -3806,7 +3796,7 @@ tedm:ND-SelectionCriteria a rr:TriplesMap ;
                 ] ;
         ] .
 
-
+#ND-SecondStageCriterionConstrain
 tedm:ND-SecondStageCriterionParameter a rr:TriplesMap ;
     rdfs:label "ND-SecondStageCriterionParameter";
     rml:logicalSource
@@ -3839,7 +3829,7 @@ tedm:ND-SecondStageCriterionParameter a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:ND-SecondStageCriterionConstrain ;
                     rr:joinCondition [
                         rr:child "path(.)";
-                        rr:parent "path(../.)";
+                        rr:parent "path(.)";
                     ];
                 ] ;
         ] .
@@ -3850,7 +3840,7 @@ tedm:ND-SecondStageCriterionConstrain a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:SelectionCriteria/efac:CriterionParameter/efac:CriterionParameter";
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:SelectionCriteria/efac:CriterionParameter";
             rml:referenceFormulation ql:XPath
         ];
     rr:subjectMap
@@ -3887,7 +3877,7 @@ tedm:ND-SecondStage a rr:TriplesMap ;
             rr:predicate epo:hasSuccessiveReduction ;
             rr:objectMap
                 [
-                    rml:reference "descendant::cbc:CandidateReductionConstraintIndicator";
+                    rml:reference "../cbc:CandidateReductionConstraintIndicator";
                     rr:datatype xsd:boolean
                 ] ;
         ] ;
@@ -3909,6 +3899,16 @@ tedm:ND-SecondStage a rr:TriplesMap ;
                 [
                     rml:reference "cbc:MinimumQuantity";
                     rr:datatype xsd:integer
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-130-Lot";
+            rr:predicate epo:hasEstimatedInvitationToTenderDate ;
+            rr:objectMap
+                [
+                    rml:reference "../cac:InvitationSubmissionPeriod/cbc:StartDate";
+                    rr:datatype xsd:date;
                 ] ;
         ] .
 

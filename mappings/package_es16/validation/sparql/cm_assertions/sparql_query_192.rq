@@ -1,8 +1,9 @@
-#title: BT-16-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.ND-CompanyAddress.BT-16-Organization-Company - BT-16-Organization-Company
-#description: “BT-16-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.ND-CompanyAddress.BT-16-Organization-Company - BT-16-Organization-Company” in SF corresponds to “BT-16 Organisation Part Name” in eForms. The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:PostalAddress/cbc:Department. The expected ontology instances are epo: org:Organization (from CL2) / rdf:langString .
-#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:PostalAddress/cbc:Department
+#title: BT-510(c)-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.ND-CompanyAddress.BT-510(c)-Organization-Company - BT-510(c)-Organization-Company
+#description: “BT-510(c)-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.ND-CompanyAddress.BT-510(c)-Organization-Company - BT-510(c)-Organization-Company” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:PostalAddress/cac:AddressLine/cbc:Line. The expected ontology instances are epo: org:Organization (from CL2) /  locn:Address / rdf:langString .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:PostalAddress/cac:AddressLine/cbc:Line
 
-PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX cv: <http://data.europa.eu/m8g/>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 
 ASK WHERE { 
-		?this epo:hasOrganisationUnit ?value . }
+		?this cv:registeredAddress / locn:thoroughfare ?value . }

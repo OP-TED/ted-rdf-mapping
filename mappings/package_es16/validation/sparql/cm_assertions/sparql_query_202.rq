@@ -1,8 +1,10 @@
-#title: ND-CompanyContact ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.ND-CompanyContact - ND-CompanyContact
-#description: “ND-CompanyContact ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.ND-CompanyContact - ND-CompanyContact” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:Contact. The expected ontology instances are epo: org:Organization (from CL2) / cpov:ContactPoint .
-#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:Contact
+#title: OPP-050-Organization ND-RootExtension.ND-Organizations.ND-Organization.OPP-050-Organization - OPP-050-Organization
+#description: “OPP-050-Organization ND-RootExtension.ND-Organizations.ND-Organization.OPP-050-Organization - OPP-050-Organization” in SF corresponds to “OPP-050 nan” in eForms. The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efbc:GroupLeadIndicator. The expected ontology instances are epo: epo:LeadBuyer / org:Organization (from CL2) .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efbc:GroupLeadIndicator
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this epo:hasPrimaryContactPoint ?value . }
+		?this rdf:type epo:LeadBuyer .
+		?this epo:playedBy ?value }

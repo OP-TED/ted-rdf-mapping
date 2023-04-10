@@ -1,10 +1,10 @@
-#title: BT-708-Lot ND-Lot.ND-LotTenderingTerms.ND-LotProcurementDocument.BT-708-Lot - BT-708-Lot
-#description: “BT-708-Lot ND-Lot.ND-LotTenderingTerms.ND-LotProcurementDocument.BT-708-Lot - BT-708-Lot” in SF corresponds to “BT-708 Documents Official Language” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference/cbc:LanguageID[not(../cbc:DocumentStatusCode/text()='non-official')]. The expected ontology instances are epo: epo:Lot / epo:AccessTerm / epo:ProcurementDocument / at-voc:language .
-#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference/cbc:LanguageID[not(../cbc:DocumentStatusCode/text()='non-official')]
+#title: BT-632-Lot ND-Lot.ND-LotTenderingProcess.ND-LotTenderingProcessExtension.BT-632-Lot - BT-632-Lot
+#description: “BT-632-Lot ND-Lot.ND-LotTenderingProcess.ND-LotTenderingProcessExtension.BT-632-Lot - BT-632-Lot” in SF corresponds to “BT-632 Tool Name” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efbc:AccessToolName. The expected ontology instances are epo: epo:Lot / cv:Channel / rdf:langString .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efbc:AccessToolName
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:isSubjectToLotSpecificTerm / epo:involvesProcurementDocument / epo:hasUnofficialLanguage ?value }
+		?this epo:usesChannel  / epo:hasName ?value . }

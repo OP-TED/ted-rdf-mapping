@@ -1,10 +1,10 @@
-#title: BT-77-Lot ND-Lot.ND-LotTenderingTerms.ND-PaymentTerms.BT-77-Lot - BT-77-Lot
-#description: “BT-77-Lot ND-Lot.ND-LotTenderingTerms.ND-PaymentTerms.BT-77-Lot - BT-77-Lot” in SF corresponds to “BT-77 Terms Financial” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:PaymentTerms/cbc:Note. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / rdf:langString .
-#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:PaymentTerms/cbc:Note
+#title: BT-13(t)-Lot ND-Lot.ND-LotTenderingProcess.ND-LotInfoRequestPeriod.BT-13(t)-Lot - BT-13(t)-Lot
+#description: “BT-13(t)-Lot ND-Lot.ND-LotTenderingProcess.ND-LotInfoRequestPeriod.BT-13(t)-Lot - BT-13(t)-Lot” in SF corresponds to “BT-13 Additional Information Deadline” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:AdditionalInformationRequestPeriod/cbc:EndTime. The expected ontology instances are epo: epo:Lot / epo:AccessTerm / xsd:dateTime .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:AdditionalInformationRequestPeriod/cbc:EndTime
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:foreseesContractSpecificTerm / epo:hasPaymentArrangement ?value. }
+		?this epo:isSubjectToLotSpecificTerm  / epo:hasAdditionalInformationDeadline ?value . }

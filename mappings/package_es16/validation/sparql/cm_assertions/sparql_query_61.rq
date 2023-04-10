@@ -1,10 +1,10 @@
-#title: BT-625-Lot ND-Lot.ND-LotProcurementScope.BT-625-Lot - BT-625-Lot
-#description: “BT-625-Lot ND-Lot.ND-LotProcurementScope.BT-625-Lot - BT-625-Lot” in SF corresponds to “BT-625 Unit” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cbc:EstimatedOverallContractQuantity/@unitCode. The expected ontology instances are epo: epo:Lot / epo:Purpose / epo:Quantity / at-voc:measurement-unit .
-#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cbc:EstimatedOverallContractQuantity/@unitCode
+#title: BT-27-Lot ND-Lot.ND-LotProcurementScope.ND-LotValueEstimate.BT-27-Lot - BT-27-Lot
+#description: “BT-27-Lot ND-Lot.ND-LotProcurementScope.ND-LotValueEstimate.BT-27-Lot - BT-27-Lot” in SF corresponds to “BT-27 Estimated Value” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:RequestedTenderTotal/cbc:EstimatedOverallContractAmount. The expected ontology instances are epo: epo:Lot / epo:MonetaryValue / xsd:decimal .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:RequestedTenderTotal/cbc:EstimatedOverallContractAmount
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:hasPurpose / epo:hasTotalQuantity / epo:hasUnitCode ?value . }
+		?this epo:hasEstimatedValue / epo:hasAmountValue ?value }

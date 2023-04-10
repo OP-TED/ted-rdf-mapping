@@ -1,10 +1,10 @@
-#title: BT-113-Lot ND-Lot.ND-LotTenderingProcess.ND-FA.BT-113-Lot - BT-113-Lot
-#description: “BT-113-Lot ND-Lot.ND-LotTenderingProcess.ND-FA.BT-113-Lot - BT-113-Lot” in SF corresponds to “BT-113 Framework Maximum Participants Number” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:FrameworkAgreement/cbc:MaximumOperatorQuantity. The expected ontology instances are epo: epo:Lot / epo:FrameworkAgreementTerm / rdf:langString .
-#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:FrameworkAgreement/cbc:MaximumOperatorQuantity
+#title: BT-747-Lot ND-Lot.ND-LotTenderingTerms.ND-NonUBLTenderingTerms.ND-SelectionCriteria.BT-747-Lot - BT-747-Lot
+#description: “BT-747-Lot ND-Lot.ND-LotTenderingTerms.ND-NonUBLTenderingTerms.ND-SelectionCriteria.BT-747-Lot - BT-747-Lot” in SF corresponds to “BT-747 Selection Criteria Type” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:SelectionCriteria/cbc:CriterionTypeCode[@listName='selection-criterion']. The expected ontology instances are epo: epo:Lot / epo:SelectionCriterion / at-voc:selection-criterion .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:SelectionCriteria/cbc:CriterionTypeCode[@listName='selection-criterion']
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:isSubjectToProcedureSpecificTerm / epo:hasMaximumParticipantsNumber ?value . }
+		?this epo:specifiesSelectionCriterion / epo:hasSelectionCriterionType ?value }

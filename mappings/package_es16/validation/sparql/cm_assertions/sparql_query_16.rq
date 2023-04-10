@@ -1,10 +1,10 @@
-#title: ND-LocalLegalBasisNoID ND-ProcedureTerms.ND-LocalLegalBasisNoID - ND-LocalLegalBasisNoID
-#description: “ND-LocalLegalBasisNoID ND-ProcedureTerms.ND-LocalLegalBasisNoID - ND-LocalLegalBasisNoID” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /*/cac:TenderingTerms/cac:ProcurementLegislationDocumentReference[cbc:ID/text()='LocalLegalBasis']. The expected ontology instances are epo: epo:Procedure .
-#xpath: /*/cac:TenderingTerms/cac:ProcurementLegislationDocumentReference[cbc:ID/text()='LocalLegalBasis']
+#title: BT-01(e)-Procedure ND-ProcedureTerms.ND-LocalLegalBasisNoID.BT-01(e)-Procedure - BT-01(e)-Procedure
+#description: “BT-01(e)-Procedure ND-ProcedureTerms.ND-LocalLegalBasisNoID.BT-01(e)-Procedure - BT-01(e)-Procedure” in SF corresponds to “BT-01 Procedure Legal Basis” in eForms. The corresponding XML element is /*/cac:TenderingTerms/cac:ProcurementLegislationDocumentReference[cbc:ID/text()='LocalLegalBasis']/cbc:ID[text()='LocalLegalBasis']. The expected ontology instances are epo: epo:Procedure / epo:Identifier / rdf:langString .
+#xpath: /*/cac:TenderingTerms/cac:ProcurementLegislationDocumentReference[cbc:ID/text()='LocalLegalBasis']/cbc:ID[text()='LocalLegalBasis']
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Procedure .
-		?this a epo:Procedure }
+		?this epo:hasLegalBasis ?value . }

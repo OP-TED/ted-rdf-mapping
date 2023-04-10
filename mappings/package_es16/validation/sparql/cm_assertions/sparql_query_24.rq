@@ -1,10 +1,10 @@
-#title: BT-27-Procedure ND-ProcedureProcurementScope.ND-ProcedureValueEstimate.BT-27-Procedure - BT-27-Procedure
-#description: “BT-27-Procedure ND-ProcedureProcurementScope.ND-ProcedureValueEstimate.BT-27-Procedure - BT-27-Procedure” in SF corresponds to “BT-27 Estimated Value” in eForms. The corresponding XML element is /*/cac:ProcurementProject/cac:RequestedTenderTotal/cbc:EstimatedOverallContractAmount. The expected ontology instances are epo: epo:Procedure / epo:MonetaryValue / xsd:decimal .
-#xpath: /*/cac:ProcurementProject/cac:RequestedTenderTotal/cbc:EstimatedOverallContractAmount
+#title: BT-271-Procedure ND-ProcedureProcurementScope.ND-ProcedureValueEstimate.ND-ProcedureValueEstimateExtension.BT-271-Procedure - BT-271-Procedure
+#description: “BT-271-Procedure ND-ProcedureProcurementScope.ND-ProcedureValueEstimate.ND-ProcedureValueEstimateExtension.BT-271-Procedure - BT-271-Procedure” in SF corresponds to “BT-271 Framework Maximum Value” in eForms. The corresponding XML element is /*/cac:ProcurementProject/cac:RequestedTenderTotal/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efbc:FrameworkMaximumAmount. The expected ontology instances are epo: epo:Procedure / epo:Lot / xsd:MonetaryValue / xsd:decimal .
+#xpath: /*/cac:ProcurementProject/cac:RequestedTenderTotal/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efbc:FrameworkMaximumAmount
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Procedure .
-		?this epo:hasEstimatedValue / epo:hasAmountValue ?value . }
+		?this epo:hasProcurementScopeDividedIntoLot / epo:hasFrameworkAgreementMaximumValue / epo:hasAmountValue ?value }
