@@ -784,6 +784,7 @@ tedm:ND-ProcedureValueEstimate a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "cbc:EstimatedOverallContractAmount";
+                    rr:datatype xsd:decimal;
                 ] ;
         ] .
 
@@ -3157,7 +3158,7 @@ tedm:ND-PublicOpening a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if(exists(cbc:OccurrenceDate) and exists(cbc:OccurrenceTime)) then cbc:OccurrenceDate || 'T' || cbc:OccurrenceTime else if(exists(cbc:OccurrenceDate)) then cbc:OccurrenceDate else null";
-                    rr:datatype xsd:string;
+                    rr:datatype xsd:dateTime;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -3356,7 +3357,7 @@ tedm:ND-SubmissionDeadline a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if(exists(cbc:EndDate) and exists(cbc:EndTime)) then cbc:EndDate || 'T' || cbc:EndTime else if(exists(cbc:EndDate)) then cbc:EndDate else null";
-                    rr:datatype xsd:string;
+                    rr:datatype xsd:dateTime;
                 ] ;
         ] .
 
@@ -3381,7 +3382,7 @@ tedm:ND-ParticipationRequestPeriod a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if(exists(cbc:EndDate) and exists(cbc:EndTime)) then cbc:EndDate || 'T' || cbc:EndTime else if(exists(cbc:EndDate)) then cbc:EndDate else null";
-                    rr:datatype xsd:string;
+                    rr:datatype xsd:dateTime;
                 ] ;
         ] .
 
@@ -3933,7 +3934,7 @@ tedm:ND-SecondStage_BT-120-Lot a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "cbc:NoFurtherNegotiationIndicator";
-                    rr:datatype xsd:decimal;
+                    rr:datatype xsd:boolean;
                 ] ;
         ] .
 ########################################################################################################################################################################################
@@ -4201,7 +4202,7 @@ tedm:ND-FA a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "cbc:MaximumOperatorQuantity";
-                    rr:datatype xsd:string;
+                    rr:datatype xsd:integer;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -4398,6 +4399,7 @@ tedm:ND-LotProcurementScope_Quantity_Purpose a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "cbc:EstimatedOverallContractQuantity";
+                    rr:datatype xsd:decimal;
                 ] ;
         ] .
 
@@ -4421,6 +4423,7 @@ tedm:ND-LotProcurementScope_Monetary_Value_Purpose a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "cbc:EstimatedOverallContractAmount";
+                    rr:datatype xsd:decimal;
                 ] ;
         ] .
 
@@ -4563,6 +4566,7 @@ tedm:ContractDuration a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "cbc:DurationMeasure";
+                    rr:datatype xsd:decimal;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -4651,6 +4655,7 @@ tedm:ReservedProcurementContractTerm a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if(exists(cbc:ExecutionRequirementCode[@listName='einvoicing'])) then cbc:ExecutionRequirementCode else null";
+                    rr:datatype xsd:string;
                 ] ;
         ] .
 
@@ -4668,16 +4673,16 @@ tedm:ND-ExecutionRequirements_Contract_Term a rr:TriplesMap ;
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}";
             rr:class epo:ContractTerm
         ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-743-Lot";
-            rr:predicate epo:hasEInvoicing  ;
-            rr:objectMap
-                [
-                    rml:reference "cbc:ExecutionRequirementCode[@listName='einvoicing']";
-                    rr:datatype xsd:string;
-                ] ;
-        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "BT-743-Lot";
+#            rr:predicate epo:hasEInvoicing  ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if(exists(cbc:ExecutionRequirementCode[@listName='einvoicing'])) then 'true' else 'false'";
+#                    rr:datatype xsd:boolean;
+#                ] ;
+#        ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-70-Lot";
