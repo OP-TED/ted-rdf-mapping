@@ -1,0 +1,743 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script>function neighbourhoodHighlight(params) {
+  // console.log("in nieghbourhoodhighlight");
+  allNodes = nodes.get({ returnType: "Object" });
+  // originalNodes = JSON.parse(JSON.stringify(allNodes));
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    highlightActive = true;
+    var i, j;
+    var selectedNode = params.nodes[0];
+    var degrees = 2;
+
+    // mark all nodes as hard to read.
+    for (let nodeId in allNodes) {
+      // nodeColors[nodeId] = allNodes[nodeId].color;
+      allNodes[nodeId].color = "rgba(200,200,200,0.5)";
+      if (allNodes[nodeId].hiddenLabel === undefined) {
+        allNodes[nodeId].hiddenLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+    var connectedNodes = network.getConnectedNodes(selectedNode);
+    var allConnectedNodes = [];
+
+    // get the second degree nodes
+    for (i = 1; i < degrees; i++) {
+      for (j = 0; j < connectedNodes.length; j++) {
+        allConnectedNodes = allConnectedNodes.concat(
+          network.getConnectedNodes(connectedNodes[j])
+        );
+      }
+    }
+
+    // all second degree nodes get a different color and their label back
+    for (i = 0; i < allConnectedNodes.length; i++) {
+      // allNodes[allConnectedNodes[i]].color = "pink";
+      allNodes[allConnectedNodes[i]].color = "rgba(150,150,150,0.75)";
+      if (allNodes[allConnectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[allConnectedNodes[i]].label =
+          allNodes[allConnectedNodes[i]].hiddenLabel;
+        allNodes[allConnectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // all first degree nodes get their own color and their label back
+    for (i = 0; i < connectedNodes.length; i++) {
+      // allNodes[connectedNodes[i]].color = undefined;
+      allNodes[connectedNodes[i]].color = nodeColors[connectedNodes[i]];
+      if (allNodes[connectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[connectedNodes[i]].label =
+          allNodes[connectedNodes[i]].hiddenLabel;
+        allNodes[connectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // the main node gets its own color and its label back.
+    // allNodes[selectedNode].color = undefined;
+    allNodes[selectedNode].color = nodeColors[selectedNode];
+    if (allNodes[selectedNode].hiddenLabel !== undefined) {
+      allNodes[selectedNode].label = allNodes[selectedNode].hiddenLabel;
+      allNodes[selectedNode].hiddenLabel = undefined;
+    }
+  } else if (highlightActive === true) {
+    // console.log("highlightActive was true");
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      // allNodes[nodeId].color = "purple";
+      allNodes[nodeId].color = nodeColors[nodeId];
+      // delete allNodes[nodeId].color;
+      if (allNodes[nodeId].hiddenLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].hiddenLabel;
+        allNodes[nodeId].hiddenLabel = undefined;
+      }
+    }
+    highlightActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    // console.log("Nothing was selected");
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        // allNodes[nodeId].color = {};
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function filterHighlight(params) {
+  allNodes = nodes.get({ returnType: "Object" });
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    filterActive = true;
+    let selectedNodes = params.nodes;
+
+    // hiding all nodes and saving the label
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = true;
+      if (allNodes[nodeId].savedLabel === undefined) {
+        allNodes[nodeId].savedLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+
+    for (let i=0; i < selectedNodes.length; i++) {
+      allNodes[selectedNodes[i]].hidden = false;
+      if (allNodes[selectedNodes[i]].savedLabel !== undefined) {
+        allNodes[selectedNodes[i]].label = allNodes[selectedNodes[i]].savedLabel;
+        allNodes[selectedNodes[i]].savedLabel = undefined;
+      }
+    }
+
+  } else if (filterActive === true) {
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = false;
+      if (allNodes[nodeId].savedLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].savedLabel;
+        allNodes[nodeId].savedLabel = undefined;
+      }
+    }
+    filterActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function selectNode(nodes) {
+  network.selectNodes(nodes);
+  neighbourhoodHighlight({ nodes: nodes });
+  return nodes;
+}
+
+function selectNodes(nodes) {
+  network.selectNodes(nodes);
+  filterHighlight({nodes: nodes});
+  return nodes;
+}
+
+function highlightFilter(filter) {
+  let selectedNodes = []
+  let selectedProp = filter['property']
+  if (filter['item'] === 'node') {
+    let allNodes = nodes.get({ returnType: "Object" });
+    for (let nodeId in allNodes) {
+      if (allNodes[nodeId][selectedProp] && filter['value'].includes((allNodes[nodeId][selectedProp]).toString())) {
+        selectedNodes.push(nodeId)
+      }
+    }
+  }
+  else if (filter['item'] === 'edge'){
+    let allEdges = edges.get({returnType: 'object'});
+    // check if the selected property exists for selected edge and select the nodes connected to the edge
+    for (let edge in allEdges) {
+      if (allEdges[edge][selectedProp] && filter['value'].includes((allEdges[edge][selectedProp]).toString())) {
+        selectedNodes.push(allEdges[edge]['from'])
+        selectedNodes.push(allEdges[edge]['to'])
+      }
+    }
+  }
+  selectNodes(selectedNodes)
+}</script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+            
+            
+            
+            
+            
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tom-select/2.0.0-rc.4/css/tom-select.min.css" integrity="sha512-43fHB3GLgZfz8QXl1RPQ8O66oIgv3po9cJ5erMt1c4QISq9dYb195T3vr5ImnJPXuVroKcGBPXBFKETW8jrPNQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/tom-select/2.0.0-rc.4/js/tom-select.complete.js" integrity="sha512-jeF9CfnvzDiw9G9xiksVjxR2lib44Gnovvkv+3CgCG6NXCD4gqlA5nDAVW5WjpA+i+/zKsUWV5xNEbW1X/HH0Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 1000px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+             #config {
+                 float: left;
+                 width: 400px;
+                 height: 600px;
+             }
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+                <div id="select-menu" class="card-header">
+                    <div class="row no-gutters">
+                        <div class="col-10 pb-2">
+                            <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="selectNode([value]);"
+                            id="select-node"
+                            placeholder="Select node..."
+                            >
+                                <option selected>Select a Node by ID</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ContractTerm_246rmGzZvwFBcxRNZTXjTW">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ContractTerm_246rmGzZvwFBcxRNZTXjTW</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SubmissionTerm_246rmGzZvwFBcxRNZTXjTW">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SubmissionTerm_246rmGzZvwFBcxRNZTXjTW</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyAddress_kp4YHhT2Gw9BnTPKnwxcdW">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyAddress_kp4YHhT2Gw9BnTPKnwxcdW</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ExtensionGroup_ZY3SnQBRXooC6NjbRDS9an">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ExtensionGroup_ZY3SnQBRXooC6NjbRDS9an</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_QwLGZTLYe95szz5vdsUu7F">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_QwLGZTLYe95szz5vdsUu7F</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyAddress_SyrXybB9qnydTsiCYvqfwn">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyAddress_SyrXybB9qnydTsiCYvqfwn</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_AuctionTerms_Y7WNjU2HSM4HNny2xZsabR">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_AuctionTerms_Y7WNjU2HSM4HNny2xZsabR</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyContactPoint_CCKfjNm3UAMuYf3dDso6C2">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyContactPoint_CCKfjNm3UAMuYf3dDso6C2</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ReviewProcedureInformationProvider_D9HNqZBE8z3NZfKG6rn3Cq">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ReviewProcedureInformationProvider_D9HNqZBE8z3NZfKG6rn3Cq</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Notice">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Notice</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Organization_ORG-0001">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Organization_ORG-0001</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Reviewer_D9HNqZBE8z3NZfKG6rn3Cq">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Reviewer_D9HNqZBE8z3NZfKG6rn3Cq</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ProcurementDocumentIdentifier_naE3mfoLZyth2mWXywVhn6">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ProcurementDocumentIdentifier_naE3mfoLZyth2mWXywVhn6</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_FrameworkAgreementTechnicalUsage_bq3rWUnhLReULR3Pe8QxDZ">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_FrameworkAgreementTechnicalUsage_bq3rWUnhLReULR3Pe8QxDZ</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Organization_ORG-0003">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Organization_ORG-0003</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ReviewTerm_D9HNqZBE8z3NZfKG6rn3Cq">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ReviewTerm_D9HNqZBE8z3NZfKG6rn3Cq</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_DEqKehWh2My5y2k7i9vnNu">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_DEqKehWh2My5y2k7i9vnNu</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyContactPoint_7iFD8NVFhULkdXRNPqKyHs">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyContactPoint_7iFD8NVFhULkdXRNPqKyHs</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ProcurementDocument_naE3mfoLZyth2mWXywVhn6">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ProcurementDocument_naE3mfoLZyth2mWXywVhn6</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_F2EkrTHhwGTB3ZRA69q4nd">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_F2EkrTHhwGTB3ZRA69q4nd</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Buyer_MT3gdCnJ9BA7aEqaGqKxAh">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Buyer_MT3gdCnJ9BA7aEqaGqKxAh</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_OrganisationIdentifier_LmZfWzqV6Pr4nRLBcJSQYX">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_OrganisationIdentifier_LmZfWzqV6Pr4nRLBcJSQYX</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_LotIdentifier_246rmGzZvwFBcxRNZTXjTW">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_LotIdentifier_246rmGzZvwFBcxRNZTXjTW</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_OrganisationIdentifier_dncygpvZhCw79SnLWFkb6H">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_OrganisationIdentifier_dncygpvZhCw79SnLWFkb6H</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Procedure_MnX8qyREnFMNLeS5MJAX9K">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Procedure_MnX8qyREnFMNLeS5MJAX9K</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_DynamicPurchaseSystemTechnicalUsage_bq3rWUnhLReULR3Pe8QxDZ">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_DynamicPurchaseSystemTechnicalUsage_bq3rWUnhLReULR3Pe8QxDZ</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_AccessTerm_YWMCGu6i5HBxweh3xaUekn">http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_AccessTerm_YWMCGu6i5HBxweh3xaUekn</option>
+                                
+                                    <option value="services">services</option>
+                                
+                                    <option value="not-allowed">not-allowed</option>
+                                
+                                    <option value="LUX">LUX</option>
+                                
+                                    <option value="As stated in the procurement documents.">As stated in the procurement documents.</option>
+                                
+                                    <option value="ef-stand">ef-stand</option>
+                                
+                                    <option value="false">false</option>
+                                
+                                    <option value="true">true</option>
+                                
+                                    <option value="GeneralCourt.Registry@curia.europa.eu">GeneralCourt.Registry@curia.europa.eu</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/ontology#SubmissionTerm">http://data.europa.eu/a4g/ontology#SubmissionTerm</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/ontology#ReviewProcedureInformationProvider">http://data.europa.eu/a4g/ontology#ReviewProcedureInformationProvider</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/ontology#Lot">http://data.europa.eu/a4g/ontology#Lot</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/ontology#Notice">http://data.europa.eu/a4g/ontology#Notice</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/ontology#SelectionCriterion">http://data.europa.eu/a4g/ontology#SelectionCriterion</option>
+                                
+                                    <option value="http://data.europa.eu/m8g/ContactPoint">http://data.europa.eu/m8g/ContactPoint</option>
+                                
+                                    <option value="no">no</option>
+                                
+                                    <option value="eu-ins-bod-ag">eu-ins-bod-ag</option>
+                                
+                                    <option value="used">used</option>
+                                
+                                    <option value="Luxembourg">Luxembourg</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/ontology#Reviewer">http://data.europa.eu/a4g/ontology#Reviewer</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/ontology#Identifier">http://data.europa.eu/a4g/ontology#Identifier</option>
+                                
+                                    <option value="fa-wo-rc">fa-wo-rc</option>
+                                
+                                    <option value="http://data.europa.eu/nuts/code/LU000">http://data.europa.eu/nuts/code/LU000</option>
+                                
+                                    <option value="gen-pub">gen-pub</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/ontology#Buyer">http://data.europa.eu/a4g/ontology#Buyer</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/ontology#ContractTerm">http://data.europa.eu/a4g/ontology#ContractTerm</option>
+                                
+                                    <option value="EU-PO">EU-PO</option>
+                                
+                                    <option value="ENG">ENG</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/ontology#ReviewTerm">http://data.europa.eu/a4g/ontology#ReviewTerm</option>
+                                
+                                    <option value="5629">5629</option>
+                                
+                                    <option value="General Court of the European Union">General Court of the European Union</option>
+                                
+                                    <option value="GCEU">GCEU</option>
+                                
+                                    <option value="2985">2985</option>
+                                
+                                    <option value="required">required</option>
+                                
+                                    <option value="open">open</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/ontology#ExclusionGround">http://data.europa.eu/a4g/ontology#ExclusionGround</option>
+                                
+                                    <option value="Provision of IT services related to the information systems of the publications office (namely EUR-Lex, N-Lex, and Search Layer),
+			with the possibility to extend the provision to other information systems.">Provision of IT services related to the information systems of the publications office (namely EUR-Lex, N-Lex, and Search Layer),
+			with the possibility to extend the provision to other information systems.</option>
+                                
+                                    <option value="op-appels-offres@publications.europa.eu">op-appels-offres@publications.europa.eu</option>
+                                
+                                    <option value="none">none</option>
+                                
+                                    <option value="Provision of IT Services Related to OP IT Systems (EUR-Lex, N-Lex, Search Layer, and Others)">Provision of IT Services Related to OP IT Systems (EUR-Lex, N-Lex, Search Layer, and Others)</option>
+                                
+                                    <option value="http://www.w3.org/ns/org#Organization">http://www.w3.org/ns/org#Organization</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/ontology#Procedure">http://data.europa.eu/a4g/ontology#Procedure</option>
+                                
+                                    <option value="http://www.w3.org/ns/locn#Address">http://www.w3.org/ns/locn#Address</option>
+                                
+                                    <option value="Publications Office of the European Union">Publications Office of the European Union</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/ontology#AccessTerm">http://data.europa.eu/a4g/ontology#AccessTerm</option>
+                                
+                                    <option value="https://etendering.ted.europa.eu/cft/cft-display.html?cftId=5629">https://etendering.ted.europa.eu/cft/cft-display.html?cftId=5629</option>
+                                
+                                    <option value="tp-abil">tp-abil</option>
+                                
+                                    <option value="LOT-0000">LOT-0000</option>
+                                
+                                    <option value="+352 292944331">+352 292944331</option>
+                                
+                                    <option value="sui-act">sui-act</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/ontology#DynamicPurchaseSystemTechniqueUsage">http://data.europa.eu/a4g/ontology#DynamicPurchaseSystemTechniqueUsage</option>
+                                
+                                    <option value="Within 2 months of the notification to the plaintiff, or, in absence thereof, of the day on which it came to the knowledge of the plaintiff. A complaint to the European Ombudsman does not have as an effect either to suspend this period or to open a new period for lodging appeals.">Within 2 months of the notification to the plaintiff, or, in absence thereof, of the day on which it came to the knowledge of the plaintiff. A complaint to the European Ombudsman does not have as an effect either to suspend this period or to open a new period for lodging appeals.</option>
+                                
+                                    <option value="+352 4303-1">+352 4303-1</option>
+                                
+                                    <option value="2020-02-04T10:00:00+02:00">2020-02-04T10:00:00+02:00</option>
+                                
+                                    <option value="32014L0024  ">32014L0024  </option>
+                                
+                                    <option value="http://data.europa.eu/a4g/ontology#EAuctionTechniqueUsage">http://data.europa.eu/a4g/ontology#EAuctionTechniqueUsage</option>
+                                
+                                    <option value="6">6</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/ontology#FrameworkAgreementTechniqueUsage">http://data.europa.eu/a4g/ontology#FrameworkAgreementTechniqueUsage</option>
+                                
+                                    <option value="crime-org">crime-org</option>
+                                
+                                    <option value="http://data.europa.eu/a4g/ontology#ProcurementDocument">http://data.europa.eu/a4g/ontology#ProcurementDocument</option>
+                                
+                            </select>
+                        </div>
+                        <div class="col-2 pb-2">
+                            <button type="button" class="btn btn-primary btn-block" onclick="neighbourhoodHighlight({nodes: []});">Reset Selection</button>
+                        </div>
+                    </div>
+                </div>
+            
+            
+              <div id="filter-menu" class="card-header">
+                <div class="row no-gutters">
+                  <div class="col-3 pb-2">
+                    <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="updateFilter(value, 'item')"
+                            id="select-item"
+                        >
+                        <option value="">Select a network item</option>
+                        <option value="edge">edge</option>
+                        <option value="node">node</option>
+                    </select>
+                  </div>
+                  <div class="col-3 pb-2">
+                    <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="updateFilter(value, 'property')"
+                            id="select-property"
+                        >
+                        <option value="">Select a property...</option>
+                    </select>
+                  </div>
+                  <div class="col-3 pb-2">
+                    <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            id="select-value"
+                        >
+                        <option value="">Select value(s)...</option>
+                    </select>
+                  </div>
+                  <div class="col-1 pb-2">
+                    <button type="button" class="btn btn-primary btn-block" onclick="highlightFilter(filter);">Filter</button>
+                  </div>
+                  <div class="col-2 pb-2">
+                    <button type="button" class="btn btn-primary btn-block" onclick="clearFilter(true)">Reset Selection</button>
+                  </div>
+                </div>
+              </div>
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+            <div id="config"></div>
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+                  new TomSelect("#select-node",{
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      }
+                  });
+              
+
+              
+                  // explicitly using onItemAdd and this function as we need to save multiple values
+                  let updateValueFilter = function() {
+                      return function () {
+                      filter['value'].push(arguments[0])
+                      }
+                  }
+
+                  let valueControl = new TomSelect("#select-value",{
+                      maxItems: null,
+                      valueField: 'id',
+                      labelField: 'title',
+                      searchField: 'title',
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      },
+                      onItemAdd: updateValueFilter()
+                  });
+
+                  let addValues = function() {
+                      return function () {
+                          // clear the current value options and add the selected attribute values
+                          // tom-select handles duplicates
+                          let selectedProperty = arguments[0];
+                          valueControl.clear();
+                          valueControl.clearOptions();
+                          filter['value'] = []
+                          if (filter['item'] === 'node') {
+                              for (let each in allNodes) {
+                                  valueControl.addOption({
+                                      id:allNodes[each][selectedProperty],
+                                      title:allNodes[each][selectedProperty]
+                                  })
+                              }
+                          }
+                          else if (filter['item'] === 'edge') {
+                              for (let each in allEdges) {
+                                  valueControl.addOption({
+                                      id:allEdges[each][selectedProperty],
+                                      title:allEdges[each][selectedProperty]
+                                  })
+                              }
+                          }
+                      }
+                  };
+
+                  let propControl = new TomSelect("#select-property",{
+                      valueField: 'id',
+                      labelField: 'title',
+                      searchField: 'title',
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      },
+                      onItemAdd: addValues()
+                  });
+
+                  let addProperties = function() {
+                      return function () {
+                          // loops through the selected network item and adds the attributes to dropdown
+                          // tom-select handles duplicates
+                          clearFilter(false)
+                          if (arguments[0] === 'edge') {
+                              for (let each in allEdges) {
+                                  if (allEdges.hasOwnProperty(each)) {
+                                      for (let eachProp in allEdges[each]) {
+                                          if (allEdges[each].hasOwnProperty(eachProp)) {
+                                              propControl.addOption({id: eachProp, title: eachProp})
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                          else if (arguments[0] === 'node') {
+                              for (let each in allNodes) {
+                                  if (allNodes.hasOwnProperty(each)) {
+                                      for (let eachProp in allNodes[each]) {
+                                          if (allNodes[each].hasOwnProperty(eachProp)
+                                              && (eachProp !== 'hidden' && eachProp !== 'savedLabel'
+                                                  && eachProp !== 'hiddenLabel')) {
+                                              propControl.addOption({id: eachProp, title: eachProp})
+
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  };
+
+                  let itemControl = new TomSelect("#select-item",{
+                      create: false,
+                      sortField:{
+                          field: "text",
+                          direction: "asc"
+                      },
+                      onItemAdd: addProperties()
+                  });
+
+                  function clearFilter(reset) {
+                      // utility function to clear all the selected filter options
+                      // if reset is set to true, the existing filter will be removed
+                      // else, only the dropdown options are cleared
+                      propControl.clear();
+                      propControl.clearOptions();
+                      valueControl.clear();
+                      valueControl.clearOptions();
+                      filter = {
+                          item : '',
+                          property : '',
+                          value : []
+                      }
+                      if (reset) {
+                          itemControl.clear();
+                          filterHighlight({nodes: []})
+                      }
+                  }
+
+                  function updateFilter(value, key) {
+                      // key could be 'item' or 'property' and value is as selected in dropdown
+                      filter[key] = value
+                  }
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ContractTerm_246rmGzZvwFBcxRNZTXjTW", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ContractTerm_246rmGzZvwFBcxRNZTXjTW", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SubmissionTerm_246rmGzZvwFBcxRNZTXjTW", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SubmissionTerm_246rmGzZvwFBcxRNZTXjTW", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyAddress_kp4YHhT2Gw9BnTPKnwxcdW", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyAddress_kp4YHhT2Gw9BnTPKnwxcdW", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ExtensionGroup_ZY3SnQBRXooC6NjbRDS9an", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ExtensionGroup_ZY3SnQBRXooC6NjbRDS9an", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_QwLGZTLYe95szz5vdsUu7F", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_QwLGZTLYe95szz5vdsUu7F", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyAddress_SyrXybB9qnydTsiCYvqfwn", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyAddress_SyrXybB9qnydTsiCYvqfwn", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_AuctionTerms_Y7WNjU2HSM4HNny2xZsabR", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_AuctionTerms_Y7WNjU2HSM4HNny2xZsabR", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyContactPoint_CCKfjNm3UAMuYf3dDso6C2", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyContactPoint_CCKfjNm3UAMuYf3dDso6C2", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ReviewProcedureInformationProvider_D9HNqZBE8z3NZfKG6rn3Cq", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ReviewProcedureInformationProvider_D9HNqZBE8z3NZfKG6rn3Cq", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Notice", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Notice", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Organization_ORG-0001", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Organization_ORG-0001", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Reviewer_D9HNqZBE8z3NZfKG6rn3Cq", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Reviewer_D9HNqZBE8z3NZfKG6rn3Cq", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ProcurementDocumentIdentifier_naE3mfoLZyth2mWXywVhn6", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ProcurementDocumentIdentifier_naE3mfoLZyth2mWXywVhn6", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_FrameworkAgreementTechnicalUsage_bq3rWUnhLReULR3Pe8QxDZ", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_FrameworkAgreementTechnicalUsage_bq3rWUnhLReULR3Pe8QxDZ", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Organization_ORG-0003", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Organization_ORG-0003", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ReviewTerm_D9HNqZBE8z3NZfKG6rn3Cq", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ReviewTerm_D9HNqZBE8z3NZfKG6rn3Cq", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_DEqKehWh2My5y2k7i9vnNu", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_DEqKehWh2My5y2k7i9vnNu", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyContactPoint_7iFD8NVFhULkdXRNPqKyHs", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyContactPoint_7iFD8NVFhULkdXRNPqKyHs", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ProcurementDocument_naE3mfoLZyth2mWXywVhn6", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ProcurementDocument_naE3mfoLZyth2mWXywVhn6", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_F2EkrTHhwGTB3ZRA69q4nd", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_F2EkrTHhwGTB3ZRA69q4nd", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Buyer_MT3gdCnJ9BA7aEqaGqKxAh", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Buyer_MT3gdCnJ9BA7aEqaGqKxAh", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_OrganisationIdentifier_LmZfWzqV6Pr4nRLBcJSQYX", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_OrganisationIdentifier_LmZfWzqV6Pr4nRLBcJSQYX", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_LotIdentifier_246rmGzZvwFBcxRNZTXjTW", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_LotIdentifier_246rmGzZvwFBcxRNZTXjTW", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_OrganisationIdentifier_dncygpvZhCw79SnLWFkb6H", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_OrganisationIdentifier_dncygpvZhCw79SnLWFkb6H", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Procedure_MnX8qyREnFMNLeS5MJAX9K", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Procedure_MnX8qyREnFMNLeS5MJAX9K", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_DynamicPurchaseSystemTechnicalUsage_bq3rWUnhLReULR3Pe8QxDZ", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_DynamicPurchaseSystemTechnicalUsage_bq3rWUnhLReULR3Pe8QxDZ", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_AccessTerm_YWMCGu6i5HBxweh3xaUekn", "label": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_AccessTerm_YWMCGu6i5HBxweh3xaUekn", "shape": "dot"}, {"color": "#97c2fc", "id": "services", "label": "services", "shape": "dot"}, {"color": "#97c2fc", "id": "not-allowed", "label": "not-allowed", "shape": "dot"}, {"color": "#97c2fc", "id": "LUX", "label": "LUX", "shape": "dot"}, {"color": "#97c2fc", "id": "As stated in the procurement documents.", "label": "As stated in the procurement documents.", "shape": "dot"}, {"color": "#97c2fc", "id": "ef-stand", "label": "ef-stand", "shape": "dot"}, {"color": "#97c2fc", "id": "false", "label": "false", "shape": "dot"}, {"color": "#97c2fc", "id": "true", "label": "true", "shape": "dot"}, {"color": "#97c2fc", "id": "GeneralCourt.Registry@curia.europa.eu", "label": "GeneralCourt.Registry@curia.europa.eu", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/ontology#SubmissionTerm", "label": "http://data.europa.eu/a4g/ontology#SubmissionTerm", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/ontology#ReviewProcedureInformationProvider", "label": "http://data.europa.eu/a4g/ontology#ReviewProcedure...", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/ontology#Lot", "label": "http://data.europa.eu/a4g/ontology#Lot", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/ontology#Notice", "label": "http://data.europa.eu/a4g/ontology#Notice", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/ontology#SelectionCriterion", "label": "http://data.europa.eu/a4g/ontology#SelectionCriter...", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/m8g/ContactPoint", "label": "http://data.europa.eu/m8g/ContactPoint", "shape": "dot"}, {"color": "#97c2fc", "id": "no", "label": "no", "shape": "dot"}, {"color": "#97c2fc", "id": "eu-ins-bod-ag", "label": "eu-ins-bod-ag", "shape": "dot"}, {"color": "#97c2fc", "id": "used", "label": "used", "shape": "dot"}, {"color": "#97c2fc", "id": "Luxembourg", "label": "Luxembourg", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/ontology#Reviewer", "label": "http://data.europa.eu/a4g/ontology#Reviewer", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/ontology#Identifier", "label": "http://data.europa.eu/a4g/ontology#Identifier", "shape": "dot"}, {"color": "#97c2fc", "id": "fa-wo-rc", "label": "fa-wo-rc", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/nuts/code/LU000", "label": "http://data.europa.eu/nuts/code/LU000", "shape": "dot"}, {"color": "#97c2fc", "id": "gen-pub", "label": "gen-pub", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/ontology#Buyer", "label": "http://data.europa.eu/a4g/ontology#Buyer", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/ontology#ContractTerm", "label": "http://data.europa.eu/a4g/ontology#ContractTerm", "shape": "dot"}, {"color": "#97c2fc", "id": "EU-PO", "label": "EU-PO", "shape": "dot"}, {"color": "#97c2fc", "id": "ENG", "label": "ENG", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/ontology#ReviewTerm", "label": "http://data.europa.eu/a4g/ontology#ReviewTerm", "shape": "dot"}, {"color": "#97c2fc", "id": "5629", "label": "5629", "shape": "dot"}, {"color": "#97c2fc", "id": "General Court of the European Union", "label": "General Court of the European Union", "shape": "dot"}, {"color": "#97c2fc", "id": "GCEU", "label": "GCEU", "shape": "dot"}, {"color": "#97c2fc", "id": "2985", "label": "2985", "shape": "dot"}, {"color": "#97c2fc", "id": "required", "label": "required", "shape": "dot"}, {"color": "#97c2fc", "id": "open", "label": "open", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/ontology#ExclusionGround", "label": "http://data.europa.eu/a4g/ontology#ExclusionGround", "shape": "dot"}, {"color": "#97c2fc", "id": "Provision of IT services related to the information systems of the publications office (namely EUR-Lex, N-Lex, and Search Layer),\n\t\t\twith the possibility to extend the provision to other information systems.", "label": "Provision of IT services related to the informatio...", "shape": "dot"}, {"color": "#97c2fc", "id": "op-appels-offres@publications.europa.eu", "label": "op-appels-offres@publications.europa.eu", "shape": "dot"}, {"color": "#97c2fc", "id": "none", "label": "none", "shape": "dot"}, {"color": "#97c2fc", "id": "Provision of IT Services Related to OP IT Systems (EUR-Lex, N-Lex, Search Layer, and Others)", "label": "Provision of IT Services Related to OP IT Systems ...", "shape": "dot"}, {"color": "#97c2fc", "id": "http://www.w3.org/ns/org#Organization", "label": "http://www.w3.org/ns/org#Organization", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/ontology#Procedure", "label": "http://data.europa.eu/a4g/ontology#Procedure", "shape": "dot"}, {"color": "#97c2fc", "id": "http://www.w3.org/ns/locn#Address", "label": "http://www.w3.org/ns/locn#Address", "shape": "dot"}, {"color": "#97c2fc", "id": "Publications Office of the European Union", "label": "Publications Office of the European Union", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/ontology#AccessTerm", "label": "http://data.europa.eu/a4g/ontology#AccessTerm", "shape": "dot"}, {"color": "#97c2fc", "id": "https://etendering.ted.europa.eu/cft/cft-display.html?cftId=5629", "label": "https://etendering.ted.europa.eu/cft/cft-display.h...", "shape": "dot"}, {"color": "#97c2fc", "id": "tp-abil", "label": "tp-abil", "shape": "dot"}, {"color": "#97c2fc", "id": "LOT-0000", "label": "LOT-0000", "shape": "dot"}, {"color": "#97c2fc", "id": "+352 292944331", "label": "+352 292944331", "shape": "dot"}, {"color": "#97c2fc", "id": "sui-act", "label": "sui-act", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/ontology#DynamicPurchaseSystemTechniqueUsage", "label": "http://data.europa.eu/a4g/ontology#DynamicPurchase...", "shape": "dot"}, {"color": "#97c2fc", "id": "Within 2 months of the notification to the plaintiff, or, in absence thereof, of the day on which it came to the knowledge of the plaintiff. A complaint to the European Ombudsman does not have as an effect either to suspend this period or to open a new period for lodging appeals.", "label": "Within 2 months of the notification to the plainti...", "shape": "dot"}, {"color": "#97c2fc", "id": "+352 4303-1", "label": "+352 4303-1", "shape": "dot"}, {"color": "#97c2fc", "id": "2020-02-04T10:00:00+02:00", "label": "2020-02-04T10:00:00+02:00", "shape": "dot"}, {"color": "#97c2fc", "id": "32014L0024  ", "label": "32014L0024  ", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/ontology#EAuctionTechniqueUsage", "label": "http://data.europa.eu/a4g/ontology#EAuctionTechniq...", "shape": "dot"}, {"color": "#97c2fc", "id": "6", "label": "6", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/ontology#FrameworkAgreementTechniqueUsage", "label": "http://data.europa.eu/a4g/ontology#FrameworkAgreem...", "shape": "dot"}, {"color": "#97c2fc", "id": "crime-org", "label": "crime-org", "shape": "dot"}, {"color": "#97c2fc", "id": "http://data.europa.eu/a4g/ontology#ProcurementDocument", "label": "http://data.europa.eu/a4g/ontology#ProcurementDocu...", "shape": "dot"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ContractTerm_246rmGzZvwFBcxRNZTXjTW", "label": "http://data.europa.eu/a4g/ontology#hasAdditionalContractNature", "title": "http://data.europa.eu/a4g/ontology#hasAdditionalContractNature", "to": "services"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000", "label": "http://data.europa.eu/a4g/ontology#usesTechnique", "title": "http://data.europa.eu/a4g/ontology#usesTechnique", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_FrameworkAgreementTechnicalUsage_bq3rWUnhLReULR3Pe8QxDZ"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SubmissionTerm_246rmGzZvwFBcxRNZTXjTW", "label": "http://data.europa.eu/a4g/ontology#hasVariantPermission", "title": "http://data.europa.eu/a4g/ontology#hasVariantPermission", "to": "not-allowed"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyAddress_kp4YHhT2Gw9BnTPKnwxcdW", "label": "http://data.europa.eu/a4g/ontology#hasCountryCode", "title": "http://data.europa.eu/a4g/ontology#hasCountryCode", "to": "LUX"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ExtensionGroup_ZY3SnQBRXooC6NjbRDS9an", "label": "http://data.europa.eu/m8g/descrition", "title": "http://data.europa.eu/m8g/descrition", "to": "As stated in the procurement documents."}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_QwLGZTLYe95szz5vdsUu7F", "label": "http://data.europa.eu/a4g/ontology#hasSelectionCriterionType", "title": "http://data.europa.eu/a4g/ontology#hasSelectionCriterionType", "to": "ef-stand"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyAddress_SyrXybB9qnydTsiCYvqfwn", "label": "http://data.europa.eu/a4g/ontology#hasCountryCode", "title": "http://data.europa.eu/a4g/ontology#hasCountryCode", "to": "LUX"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_AuctionTerms_Y7WNjU2HSM4HNny2xZsabR", "label": "http://data.europa.eu/a4g/ontology#hasUsage", "title": "http://data.europa.eu/a4g/ontology#hasUsage", "to": "false"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ContractTerm_246rmGzZvwFBcxRNZTXjTW", "label": "http://data.europa.eu/a4g/ontology#hasEOrdering", "title": "http://data.europa.eu/a4g/ontology#hasEOrdering", "to": "true"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyContactPoint_CCKfjNm3UAMuYf3dDso6C2", "label": "http://data.europa.eu/m8g/email", "title": "http://data.europa.eu/m8g/email", "to": "GeneralCourt.Registry@curia.europa.eu"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SubmissionTerm_246rmGzZvwFBcxRNZTXjTW", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://data.europa.eu/a4g/ontology#SubmissionTerm"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ReviewProcedureInformationProvider_D9HNqZBE8z3NZfKG6rn3Cq", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://data.europa.eu/a4g/ontology#ReviewProcedureInformationProvider"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://data.europa.eu/a4g/ontology#Lot"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Notice", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://data.europa.eu/a4g/ontology#Notice"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Notice", "label": "http://data.europa.eu/a4g/ontology#announcesRole", "title": "http://data.europa.eu/a4g/ontology#announcesRole", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Buyer_MT3gdCnJ9BA7aEqaGqKxAh"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_QwLGZTLYe95szz5vdsUu7F", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://data.europa.eu/a4g/ontology#SelectionCriterion"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyContactPoint_CCKfjNm3UAMuYf3dDso6C2", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://data.europa.eu/m8g/ContactPoint"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ContractTerm_246rmGzZvwFBcxRNZTXjTW", "label": "http://data.europa.eu/a4g/ontology#hasReservedExecution", "title": "http://data.europa.eu/a4g/ontology#hasReservedExecution", "to": "no"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000", "label": "http://data.europa.eu/a4g/ontology#usesTechnique", "title": "http://data.europa.eu/a4g/ontology#usesTechnique", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_DynamicPurchaseSystemTechnicalUsage_bq3rWUnhLReULR3Pe8QxDZ"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000", "label": "http://data.europa.eu/a4g/ontology#usesTechnique", "title": "http://data.europa.eu/a4g/ontology#usesTechnique", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_AuctionTerms_Y7WNjU2HSM4HNny2xZsabR"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Organization_ORG-0001", "label": "http://data.europa.eu/a4g/ontology#hasBuyerLegalType", "title": "http://data.europa.eu/a4g/ontology#hasBuyerLegalType", "to": "eu-ins-bod-ag"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_QwLGZTLYe95szz5vdsUu7F", "label": "http://data.europa.eu/a4g/ontology#hasSelectionCriteriaUsage", "title": "http://data.europa.eu/a4g/ontology#hasSelectionCriteriaUsage", "to": "used"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000", "label": "http://data.europa.eu/a4g/ontology#isSubjectToLotSpecificTerm", "title": "http://data.europa.eu/a4g/ontology#isSubjectToLotSpecificTerm", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_AccessTerm_YWMCGu6i5HBxweh3xaUekn"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyAddress_SyrXybB9qnydTsiCYvqfwn", "label": "http://www.w3.org/ns/locn#postName", "title": "http://www.w3.org/ns/locn#postName", "to": "Luxembourg"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000", "label": "http://data.europa.eu/a4g/ontology#hasID", "title": "http://data.europa.eu/a4g/ontology#hasID", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_LotIdentifier_246rmGzZvwFBcxRNZTXjTW"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Reviewer_D9HNqZBE8z3NZfKG6rn3Cq", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://data.europa.eu/a4g/ontology#Reviewer"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ProcurementDocumentIdentifier_naE3mfoLZyth2mWXywVhn6", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://data.europa.eu/a4g/ontology#Identifier"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_FrameworkAgreementTechnicalUsage_bq3rWUnhLReULR3Pe8QxDZ", "label": "http://data.europa.eu/a4g/ontology#hasUsage", "title": "http://data.europa.eu/a4g/ontology#hasUsage", "to": "fa-wo-rc"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000", "label": "http://data.europa.eu/a4g/ontology#specifiesSelectionCriterion", "title": "http://data.europa.eu/a4g/ontology#specifiesSelectionCriterion", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_DEqKehWh2My5y2k7i9vnNu"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyAddress_kp4YHhT2Gw9BnTPKnwxcdW", "label": "http://data.europa.eu/a4g/ontology#hasNutsCode", "title": "http://data.europa.eu/a4g/ontology#hasNutsCode", "to": "http://data.europa.eu/nuts/code/LU000"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Organization_ORG-0001", "label": "http://data.europa.eu/a4g/ontology#hasMainActivity", "title": "http://data.europa.eu/a4g/ontology#hasMainActivity", "to": "gen-pub"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000", "label": "http://data.europa.eu/a4g/ontology#isSubjectToLotSpecificTerm", "title": "http://data.europa.eu/a4g/ontology#isSubjectToLotSpecificTerm", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ReviewTerm_D9HNqZBE8z3NZfKG6rn3Cq"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000", "label": "http://data.europa.eu/a4g/ontology#isSubjectToLotSpecificTerm", "title": "http://data.europa.eu/a4g/ontology#isSubjectToLotSpecificTerm", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SubmissionTerm_246rmGzZvwFBcxRNZTXjTW"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ContractTerm_246rmGzZvwFBcxRNZTXjTW", "label": "http://data.europa.eu/a4g/ontology#hasContractNatureType", "title": "http://data.europa.eu/a4g/ontology#hasContractNatureType", "to": "services"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyAddress_SyrXybB9qnydTsiCYvqfwn", "label": "http://data.europa.eu/a4g/ontology#hasNutsCode", "title": "http://data.europa.eu/a4g/ontology#hasNutsCode", "to": "http://data.europa.eu/nuts/code/LU000"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Organization_ORG-0003", "label": "http://data.europa.eu/a4g/ontology#hasPrimaryContactPoint", "title": "http://data.europa.eu/a4g/ontology#hasPrimaryContactPoint", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyContactPoint_CCKfjNm3UAMuYf3dDso6C2"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ReviewTerm_D9HNqZBE8z3NZfKG6rn3Cq", "label": "http://data.europa.eu/a4g/ontology#definesReviewProcedureInformationProvider", "title": "http://data.europa.eu/a4g/ontology#definesReviewProcedureInformationProvider", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ReviewProcedureInformationProvider_D9HNqZBE8z3NZfKG6rn3Cq"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_DEqKehWh2My5y2k7i9vnNu", "label": "http://data.europa.eu/a4g/ontology#hasSelectionCriteriaUsage", "title": "http://data.europa.eu/a4g/ontology#hasSelectionCriteriaUsage", "to": "used"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_DEqKehWh2My5y2k7i9vnNu", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://data.europa.eu/a4g/ontology#SelectionCriterion"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyContactPoint_7iFD8NVFhULkdXRNPqKyHs", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://data.europa.eu/m8g/ContactPoint"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ProcurementDocument_naE3mfoLZyth2mWXywVhn6", "label": "http://data.europa.eu/a4g/ontology#hasID", "title": "http://data.europa.eu/a4g/ontology#hasID", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ProcurementDocumentIdentifier_naE3mfoLZyth2mWXywVhn6"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_F2EkrTHhwGTB3ZRA69q4nd", "label": "http://data.europa.eu/a4g/ontology#hasSelectionCriteriaUsage", "title": "http://data.europa.eu/a4g/ontology#hasSelectionCriteriaUsage", "to": "used"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000", "label": "http://data.europa.eu/m8g/description", "title": "http://data.europa.eu/m8g/description", "to": "As stated in the procurement documents."}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Buyer_MT3gdCnJ9BA7aEqaGqKxAh", "label": "http://data.europa.eu/a4g/ontology#playedBy", "title": "http://data.europa.eu/a4g/ontology#playedBy", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Organization_ORG-0001"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_F2EkrTHhwGTB3ZRA69q4nd", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://data.europa.eu/a4g/ontology#SelectionCriterion"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Reviewer_D9HNqZBE8z3NZfKG6rn3Cq", "label": "http://data.europa.eu/a4g/ontology#playedBy", "title": "http://data.europa.eu/a4g/ontology#playedBy", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Organization_ORG-0003"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000", "label": "http://data.europa.eu/a4g/ontology#specifiesSelectionCriterion", "title": "http://data.europa.eu/a4g/ontology#specifiesSelectionCriterion", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_QwLGZTLYe95szz5vdsUu7F"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_OrganisationIdentifier_LmZfWzqV6Pr4nRLBcJSQYX", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://data.europa.eu/a4g/ontology#Identifier"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Buyer_MT3gdCnJ9BA7aEqaGqKxAh", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://data.europa.eu/a4g/ontology#Buyer"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_LotIdentifier_246rmGzZvwFBcxRNZTXjTW", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://data.europa.eu/a4g/ontology#Identifier"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000", "label": "http://data.europa.eu/a4g/ontology#foreseesContractSpecificTerm", "title": "http://data.europa.eu/a4g/ontology#foreseesContractSpecificTerm", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ContractTerm_246rmGzZvwFBcxRNZTXjTW"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ContractTerm_246rmGzZvwFBcxRNZTXjTW", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://data.europa.eu/a4g/ontology#ContractTerm"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_F2EkrTHhwGTB3ZRA69q4nd", "label": "http://data.europa.eu/m8g/description", "title": "http://data.europa.eu/m8g/description", "to": "As stated in the procurement documents."}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_OrganisationIdentifier_dncygpvZhCw79SnLWFkb6H", "label": "http://data.europa.eu/a4g/ontology#hasIdentifierValue", "title": "http://data.europa.eu/a4g/ontology#hasIdentifierValue", "to": "EU-PO"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Notice", "label": "http://data.europa.eu/a4g/ontology#announcesRole", "title": "http://data.europa.eu/a4g/ontology#announcesRole", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Reviewer_D9HNqZBE8z3NZfKG6rn3Cq"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SubmissionTerm_246rmGzZvwFBcxRNZTXjTW", "label": "http://data.europa.eu/a4g/ontology#hasLanguage", "title": "http://data.europa.eu/a4g/ontology#hasLanguage", "to": "ENG"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ReviewTerm_D9HNqZBE8z3NZfKG6rn3Cq", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://data.europa.eu/a4g/ontology#ReviewTerm"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Notice", "label": "http://data.europa.eu/a4g/ontology#announcesLot", "title": "http://data.europa.eu/a4g/ontology#announcesLot", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ProcurementDocumentIdentifier_naE3mfoLZyth2mWXywVhn6", "label": "http://data.europa.eu/a4g/ontology#hasIdentifierValue", "title": "http://data.europa.eu/a4g/ontology#hasIdentifierValue", "to": "5629"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Organization_ORG-0003", "label": "http://data.europa.eu/a4g/ontology#hasLegalName", "title": "http://data.europa.eu/a4g/ontology#hasLegalName", "to": "General Court of the European Union"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_OrganisationIdentifier_LmZfWzqV6Pr4nRLBcJSQYX", "label": "http://data.europa.eu/a4g/ontology#hasIdentifierValue", "title": "http://data.europa.eu/a4g/ontology#hasIdentifierValue", "to": "GCEU"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_DEqKehWh2My5y2k7i9vnNu", "label": "http://data.europa.eu/m8g/description", "title": "http://data.europa.eu/m8g/description", "to": "As stated in the procurement documents."}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ReviewProcedureInformationProvider_D9HNqZBE8z3NZfKG6rn3Cq", "label": "http://data.europa.eu/a4g/ontology#playedBy", "title": "http://data.europa.eu/a4g/ontology#playedBy", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Organization_ORG-0001"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyAddress_kp4YHhT2Gw9BnTPKnwxcdW", "label": "http://www.w3.org/ns/locn#postCode", "title": "http://www.w3.org/ns/locn#postCode", "to": "2985"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ContractTerm_246rmGzZvwFBcxRNZTXjTW", "label": "http://data.europa.eu/a4g/ontology#hasEInvoicing", "title": "http://data.europa.eu/a4g/ontology#hasEInvoicing", "to": "required"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ReviewTerm_D9HNqZBE8z3NZfKG6rn3Cq", "label": "http://data.europa.eu/a4g/ontology#definesReviewer", "title": "http://data.europa.eu/a4g/ontology#definesReviewer", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Reviewer_D9HNqZBE8z3NZfKG6rn3Cq"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyAddress_SyrXybB9qnydTsiCYvqfwn", "label": "http://www.w3.org/ns/locn#postCode", "title": "http://www.w3.org/ns/locn#postCode", "to": "2985"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_OrganisationIdentifier_dncygpvZhCw79SnLWFkb6H", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://data.europa.eu/a4g/ontology#Identifier"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Organization_ORG-0001", "label": "http://data.europa.eu/a4g/ontology#hasPrimaryContactPoint", "title": "http://data.europa.eu/a4g/ontology#hasPrimaryContactPoint", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyContactPoint_7iFD8NVFhULkdXRNPqKyHs"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Procedure_MnX8qyREnFMNLeS5MJAX9K", "label": "http://data.europa.eu/a4g/ontology#hasProcedureType", "title": "http://data.europa.eu/a4g/ontology#hasProcedureType", "to": "open"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Organization_ORG-0003", "label": "http://data.europa.eu/a4g/ontology#hasID", "title": "http://data.europa.eu/a4g/ontology#hasID", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_OrganisationIdentifier_LmZfWzqV6Pr4nRLBcJSQYX"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ExtensionGroup_ZY3SnQBRXooC6NjbRDS9an", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://data.europa.eu/a4g/ontology#ExclusionGround"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Procedure_MnX8qyREnFMNLeS5MJAX9K", "label": "http://data.europa.eu/m8g/description", "title": "http://data.europa.eu/m8g/description", "to": "Provision of IT services related to the information systems of the publications office (namely EUR-Lex, N-Lex, and Search Layer),\n\t\t\twith the possibility to extend the provision to other information systems."}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000", "label": "http://data.europa.eu/a4g/ontology#specifiesSelectionCriterion", "title": "http://data.europa.eu/a4g/ontology#specifiesSelectionCriterion", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_F2EkrTHhwGTB3ZRA69q4nd"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Organization_ORG-0001", "label": "http://data.europa.eu/m8g/registeredAddress", "title": "http://data.europa.eu/m8g/registeredAddress", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyAddress_SyrXybB9qnydTsiCYvqfwn"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyContactPoint_7iFD8NVFhULkdXRNPqKyHs", "label": "http://data.europa.eu/m8g/email", "title": "http://data.europa.eu/m8g/email", "to": "op-appels-offres@publications.europa.eu"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_DynamicPurchaseSystemTechnicalUsage_bq3rWUnhLReULR3Pe8QxDZ", "label": "http://data.europa.eu/a4g/ontology#hasDPSScope", "title": "http://data.europa.eu/a4g/ontology#hasDPSScope", "to": "none"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Procedure_MnX8qyREnFMNLeS5MJAX9K", "label": "http://data.europa.eu/m8g/title", "title": "http://data.europa.eu/m8g/title", "to": "Provision of IT Services Related to OP IT Systems (EUR-Lex, N-Lex, Search Layer, and Others)"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Organization_ORG-0003", "label": "http://data.europa.eu/m8g/registeredAddress", "title": "http://data.europa.eu/m8g/registeredAddress", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyAddress_kp4YHhT2Gw9BnTPKnwxcdW"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Organization_ORG-0001", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://www.w3.org/ns/org#Organization"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Organization_ORG-0003", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://www.w3.org/ns/org#Organization"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_AccessTerm_YWMCGu6i5HBxweh3xaUekn", "label": "http://data.europa.eu/a4g/ontology#isProcurementDocumentRestricted", "title": "http://data.europa.eu/a4g/ontology#isProcurementDocumentRestricted", "to": "false"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Procedure_MnX8qyREnFMNLeS5MJAX9K", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://data.europa.eu/a4g/ontology#Procedure"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyAddress_kp4YHhT2Gw9BnTPKnwxcdW", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://www.w3.org/ns/locn#Address"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Organization_ORG-0001", "label": "http://data.europa.eu/a4g/ontology#hasLegalName", "title": "http://data.europa.eu/a4g/ontology#hasLegalName", "to": "Publications Office of the European Union"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_AccessTerm_YWMCGu6i5HBxweh3xaUekn", "label": "http://data.europa.eu/a4g/ontology#involvesProcurementDocument", "title": "http://data.europa.eu/a4g/ontology#involvesProcurementDocument", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ProcurementDocument_naE3mfoLZyth2mWXywVhn6"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SubmissionTerm_246rmGzZvwFBcxRNZTXjTW", "label": "http://data.europa.eu/a4g/ontology#hasESubmissionPermission", "title": "http://data.europa.eu/a4g/ontology#hasESubmissionPermission", "to": "required"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_AccessTerm_YWMCGu6i5HBxweh3xaUekn", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://data.europa.eu/a4g/ontology#AccessTerm"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Procedure_MnX8qyREnFMNLeS5MJAX9K", "label": "http://data.europa.eu/a4g/ontology#specifiesExclusionGround", "title": "http://data.europa.eu/a4g/ontology#specifiesExclusionGround", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ExtensionGroup_ZY3SnQBRXooC6NjbRDS9an"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000", "label": "http://data.europa.eu/a4g/ontology#isUsingEUFunds", "title": "http://data.europa.eu/a4g/ontology#isUsingEUFunds", "to": "false"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SubmissionTerm_246rmGzZvwFBcxRNZTXjTW", "label": "http://data.europa.eu/a4g/ontology#hasSubmissionURL", "title": "http://data.europa.eu/a4g/ontology#hasSubmissionURL", "to": "https://etendering.ted.europa.eu/cft/cft-display.html?cftId=5629"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyAddress_SyrXybB9qnydTsiCYvqfwn", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://www.w3.org/ns/locn#Address"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_DEqKehWh2My5y2k7i9vnNu", "label": "http://data.europa.eu/a4g/ontology#hasSelectionCriterionType", "title": "http://data.europa.eu/a4g/ontology#hasSelectionCriterionType", "to": "tp-abil"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyAddress_kp4YHhT2Gw9BnTPKnwxcdW", "label": "http://www.w3.org/ns/locn#postName", "title": "http://www.w3.org/ns/locn#postName", "to": "Luxembourg"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_QwLGZTLYe95szz5vdsUu7F", "label": "http://data.europa.eu/m8g/description", "title": "http://data.europa.eu/m8g/description", "to": "As stated in the procurement documents."}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Notice", "label": "http://data.europa.eu/a4g/ontology#announcesProcedure", "title": "http://data.europa.eu/a4g/ontology#announcesProcedure", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Procedure_MnX8qyREnFMNLeS5MJAX9K"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_AccessTerm_YWMCGu6i5HBxweh3xaUekn", "label": "http://data.europa.eu/a4g/ontology#hasRestrictedAccessURL", "title": "http://data.europa.eu/a4g/ontology#hasRestrictedAccessURL", "to": "https://etendering.ted.europa.eu/cft/cft-display.html?cftId=5629"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_LotIdentifier_246rmGzZvwFBcxRNZTXjTW", "label": "http://data.europa.eu/a4g/ontology#hasIdentifierValue", "title": "http://data.europa.eu/a4g/ontology#hasIdentifierValue", "to": "LOT-0000"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyContactPoint_7iFD8NVFhULkdXRNPqKyHs", "label": "http://data.europa.eu/m8g/telephone", "title": "http://data.europa.eu/m8g/telephone", "to": "+352 292944331"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Notice", "label": "http://data.europa.eu/a4g/ontology#announcesRole", "title": "http://data.europa.eu/a4g/ontology#announcesRole", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ReviewProcedureInformationProvider_D9HNqZBE8z3NZfKG6rn3Cq"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SelectionTerm_F2EkrTHhwGTB3ZRA69q4nd", "label": "http://data.europa.eu/a4g/ontology#hasSelectionCriterionType", "title": "http://data.europa.eu/a4g/ontology#hasSelectionCriterionType", "to": "sui-act"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ContractTerm_246rmGzZvwFBcxRNZTXjTW", "label": "http://data.europa.eu/a4g/ontology#hasEPayment", "title": "http://data.europa.eu/a4g/ontology#hasEPayment", "to": "true"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000", "label": "http://data.europa.eu/a4g/ontology#hasReservedProcurement", "title": "http://data.europa.eu/a4g/ontology#hasReservedProcurement", "to": "false"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000", "label": "http://data.europa.eu/m8g/description", "title": "http://data.europa.eu/m8g/description", "to": "Provision of IT services related to the information systems of the publications office (namely EUR-Lex, N-Lex, and Search Layer),\n\t\t\twith the possibility to extend the provision to other information systems."}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Procedure_MnX8qyREnFMNLeS5MJAX9K", "label": "http://data.europa.eu/a4g/ontology#refersToProcedure", "title": "http://data.europa.eu/a4g/ontology#refersToProcedure", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Procedure_MnX8qyREnFMNLeS5MJAX9K"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_DynamicPurchaseSystemTechnicalUsage_bq3rWUnhLReULR3Pe8QxDZ", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://data.europa.eu/a4g/ontology#DynamicPurchaseSystemTechniqueUsage"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000", "label": "http://data.europa.eu/m8g/description", "title": "http://data.europa.eu/m8g/description", "to": "Within 2 months of the notification to the plaintiff, or, in absence thereof, of the day on which it came to the knowledge of the plaintiff. A complaint to the European Ombudsman does not have as an effect either to suspend this period or to open a new period for lodging appeals."}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Procedure_MnX8qyREnFMNLeS5MJAX9K", "label": "http://data.europa.eu/a4g/ontology#hasProcurementScopeDividedIntoLot", "title": "http://data.europa.eu/a4g/ontology#hasProcurementScopeDividedIntoLot", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_CompanyContactPoint_CCKfjNm3UAMuYf3dDso6C2", "label": "http://data.europa.eu/m8g/telephone", "title": "http://data.europa.eu/m8g/telephone", "to": "+352 4303-1"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SubmissionTerm_246rmGzZvwFBcxRNZTXjTW", "label": "http://data.europa.eu/a4g/ontology#hasReceiptDeadline", "title": "http://data.europa.eu/a4g/ontology#hasReceiptDeadline", "to": "2020-02-04T10:00:00+02:00"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000", "label": "http://data.europa.eu/m8g/title", "title": "http://data.europa.eu/m8g/title", "to": "Provision of IT Services Related to OP IT Systems (EUR-Lex, N-Lex, Search Layer, and Others)"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ReviewTerm_D9HNqZBE8z3NZfKG6rn3Cq", "label": "http://data.europa.eu/a4g/ontology#hasReviewDeadlineInformation", "title": "http://data.europa.eu/a4g/ontology#hasReviewDeadlineInformation", "to": "Within 2 months of the notification to the plaintiff, or, in absence thereof, of the day on which it came to the knowledge of the plaintiff. A complaint to the European Ombudsman does not have as an effect either to suspend this period or to open a new period for lodging appeals."}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Lot_LOT-0000", "label": "http://data.europa.eu/a4g/ontology#isCoveredByGPA", "title": "http://data.europa.eu/a4g/ontology#isCoveredByGPA", "to": "true"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Procedure_MnX8qyREnFMNLeS5MJAX9K", "label": "http://data.europa.eu/a4g/ontology#hasLegalBasis", "title": "http://data.europa.eu/a4g/ontology#hasLegalBasis", "to": "32014L0024  "}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_AuctionTerms_Y7WNjU2HSM4HNny2xZsabR", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://data.europa.eu/a4g/ontology#EAuctionTechniqueUsage"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_SubmissionTerm_246rmGzZvwFBcxRNZTXjTW", "label": "http://data.europa.eu/a4g/ontology#hasValidityPeriod", "title": "http://data.europa.eu/a4g/ontology#hasValidityPeriod", "to": "6"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_FrameworkAgreementTechnicalUsage_bq3rWUnhLReULR3Pe8QxDZ", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://data.europa.eu/a4g/ontology#FrameworkAgreementTechniqueUsage"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ExtensionGroup_ZY3SnQBRXooC6NjbRDS9an", "label": "http://data.europa.eu/m8g/type", "title": "http://data.europa.eu/m8g/type", "to": "crime-org"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_Organization_ORG-0001", "label": "http://data.europa.eu/a4g/ontology#hasID", "title": "http://data.europa.eu/a4g/ontology#hasID", "to": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_OrganisationIdentifier_dncygpvZhCw79SnLWFkb6H"}, {"arrows": "to", "from": "http://data.europa.eu/a4g/resource/id_f42be27e-09cf-4f0e-a745-63ec689631e6_ProcurementDocument_naE3mfoLZyth2mWXywVhn6", "label": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "http://data.europa.eu/a4g/ontology#ProcurementDocument"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": true,
+        "filter": [
+            "physics"
+        ]
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+                  // if this network requires displaying the configure window,
+                  // put it in its div
+                  options.configure["container"] = document.getElementById("config");
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+                    network.on("click", neighbourhoodHighlight);
+                  
+
+                  
+                    network.on("selectNode", neighbourhoodHighlight);
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
