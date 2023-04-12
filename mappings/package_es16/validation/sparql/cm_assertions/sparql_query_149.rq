@@ -1,10 +1,10 @@
-#title: BT-134-Lot ND-Lot.ND-LotTenderingProcess.ND-PublicOpening.BT-134-Lot - BT-134-Lot
-#description: “BT-134-Lot ND-Lot.ND-LotTenderingProcess.ND-PublicOpening.BT-134-Lot - BT-134-Lot” in SF corresponds to “BT-134 Public Opening Description” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:OpenTenderEvent/cbc:Description. The expected ontology instances are epo: epo:Lot / epo:OpeningTerm / rdf:langString .
-#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:OpenTenderEvent/cbc:Description
+#title: BT-751-Lot ND-Lot.ND-LotTenderingTerms.ND-FinancialGuarantee.BT-751-Lot - BT-751-Lot
+#description: “BT-751-Lot ND-Lot.ND-LotTenderingTerms.ND-FinancialGuarantee.BT-751-Lot - BT-751-Lot” in SF corresponds to “BT-751 Guarantee Required” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:RequiredFinancialGuarantee/cbc:GuaranteeTypeCode[@listName='tender-guarantee-required']. The expected ontology instances are epo: epo:Lot / epo:SubmissionTerm / xsd:boolean .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:RequiredFinancialGuarantee/cbc:GuaranteeTypeCode[@listName='tender-guarantee-required']
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:isSubjectToLotSpecificTerm / epo:hasOpeningDescription ?value }
+		?this epo:isSubjectToLotSpecificTerm / epo:isGuaranteeRequired ?value . }

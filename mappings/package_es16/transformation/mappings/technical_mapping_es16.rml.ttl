@@ -148,6 +148,39 @@ tedm:ND-Root a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:ND-ProcedureTenderingProcess
                 ] ;
         ] .
+#    rr:predicateObjectMap
+#        [
+#            rdfs:comment "The identifier of a notice";
+#            rr:predicate epo:hasID ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:NoticeIdentifier
+#                ] ;
+#        ] .
+#
+#
+#tedm:NoticeIdentifier a rr:TriplesMap ;
+#    rdfs:comment "The identifier of a notice";
+#    rml:logicalSource
+#        [
+#            rml:source "data/source.xml" ;
+#            rml:iterator "/*/cbc:ID[@schemeName='notice-id']";
+#            rml:referenceFormulation ql:XPath
+#        ];
+#    rr:subjectMap
+#        [
+#            rml:reference "if (exists(/*/cbc:ID[@schemeName='notice-id'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_NoticeIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+#            rr:class epo:Identifier
+#        ] ;
+#    rr:predicateObjectMap
+#        [
+#
+#            rr:predicate epo:hasIdentifierValue ;
+#            rr:objectMap
+#                [
+#                    rml:reference "/*/cbc:ID[@schemeName='notice-id']";
+#                ] ;
+#        ] .
 
 #    rr:predicateObjectMap
 #        [

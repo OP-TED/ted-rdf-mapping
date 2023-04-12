@@ -1,10 +1,10 @@
-#title: ND-LotReviewTerms ND-Lot.ND-LotTenderingTerms.ND-LotReviewTerms - ND-LotReviewTerms
-#description: “ND-LotReviewTerms ND-Lot.ND-LotTenderingTerms.ND-LotReviewTerms - ND-LotReviewTerms” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AppealTerms. The expected ontology instances are epo: epo:Lot / epo:ReviewTerm .
-#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AppealTerms
+#title: OPT-301-Lot-ReviewOrg ND-Lot.ND-LotTenderingTerms.ND-LotReviewTerms.OPT-301-Lot-ReviewOrg - OPT-301-Lot-ReviewOrg
+#description: “OPT-301-Lot-ReviewOrg ND-Lot.ND-LotTenderingTerms.ND-LotReviewTerms.OPT-301-Lot-ReviewOrg - OPT-301-Lot-ReviewOrg” in SF corresponds to “OPT-301 nan” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AppealTerms/cac:AppealReceiverParty/cac:PartyIdentification/cbc:ID. The expected ontology instances are epo: epo:Lot / epo:ReviewTerm / epo:Reviewer / org:Organization .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AppealTerms/cac:AppealReceiverParty/cac:PartyIdentification/cbc:ID
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:isSubjectToLotSpecificTerm ?value . }
+		?this epo:isSubjectToLotSpecificTerm / epo:definesReviewer / epo:playedBy ?value . }
