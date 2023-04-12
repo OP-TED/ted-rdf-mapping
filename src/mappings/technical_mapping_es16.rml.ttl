@@ -574,7 +574,8 @@ tedm:ND-ProcedureTerms a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcedureTerms_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if (exists(descendant::cbc:MaximumLotsSubmittedNumeric) or exists(descendant::cbc:MaximumLotsAwardedNumeric) or exists(cac:ProcurementLegislationDocumentReference[cbc:ID/text()='CrossBorderLaw']/cbc:ID[text()='CrossBorderLaw'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcedureTerms_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            #rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcedureTerms_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:ProcedureTerm
         ] ;
     rr:predicateObjectMap
@@ -597,26 +598,6 @@ tedm:ND-ProcedureTerms a rr:TriplesMap ;
                     rr:datatype xsd:integer
                 ] ;
         ] ;
-#    rr:predicateObjectMap
-#        [
-#            rdfs:label "BT-01-notice and BT-01(c)-notice and BT-01(d)-notice";
-#            rr:predicate  epo:hasLegalBasis  ;
-#            rr:objectMap
-#                [
-#                    rml:reference "if(exists(/*/cbc:RegulatoryDomain) or exists(cac:ProcurementLegislationDocumentReference[not(cbc:ID/text()=('CrossBorderLaw','LocalLegalBasis'))]/cbc:ID[not(text()=('CrossBorderLaw','LocalLegalBasis'))]) or exists(cac:ProcurementLegislationDocumentReference[not(cbc:ID/text()=('CrossBorderLaw','LocalLegalBasis'))]/cbc:DocumentDescription)) then concat(/*/cbc:RegulatoryDomain, ' ',concat(cac:ProcurementLegislationDocumentReference[not(cbc:ID/text()=('CrossBorderLaw','LocalLegalBasis'))]/cbc:ID[not(text()=('CrossBorderLaw','LocalLegalBasis'))], ' ', cac:ProcurementLegislationDocumentReference[not(cbc:ID/text()=('CrossBorderLaw','LocalLegalBasis'))]/cbc:DocumentDescription)) else null";
-#                    rr:datatype xsd:string
-#                ] ;
-#        ] ;
-#    rr:predicateObjectMap
-#        [
-#            rdfs:label "BT-01-notice and BT-01(e)-notice and BT-01(f)-notice";
-#            rr:predicate  epo:hasLegalBasis  ;
-#            rr:objectMap
-#                [
-#                    rml:reference "if(exists(/*/cbc:RegulatoryDomain) or exists(cac:ProcurementLegislationDocumentReference[cbc:ID/text()='LocalLegalBasis']/cbc:ID[text()='LocalLegalBasis']) or exists(cac:ProcurementLegislationDocumentReference[cbc:ID/text()='LocalLegalBasis']/cbc:DocumentDescription)) then concat(/*/cbc:RegulatoryDomain, ' ',concat(cac:ProcurementLegislationDocumentReference[cbc:ID/text()='LocalLegalBasis']/cbc:ID[text()='LocalLegalBasis'], ' ', cac:ProcurementLegislationDocumentReference[cbc:ID/text()='LocalLegalBasis']/cbc:DocumentDescription)) else null";
-#                    rr:datatype xsd:string
-#                ] ;
-#        ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-09(a)-Procedure";
@@ -785,6 +766,15 @@ tedm:ND-ProcedureValueEstimate a rr:TriplesMap ;
                 [
                     rml:reference "cbc:EstimatedOverallContractAmount";
                     rr:datatype xsd:decimal;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:EstimatedOverallContractAmount/@currencyID";
+                    rr:datatype xsd:string;
                 ] ;
         ] .
 
@@ -1826,6 +1816,15 @@ tedm:ND-LotsGroupFA  a rr:TriplesMap ;
                     rml:reference "cbc:EstimatedMaximumValueAmount";
                     rr:datatype xsd:decimal;
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:EstimatedMaximumValueAmount/@currencyID";
+                    rr:datatype xsd:string;
+                ] ;
         ] .
 
 #tedm:PurposeLotGroupEstimatedValue  a rr:TriplesMap ;
@@ -1848,6 +1847,15 @@ tedm:ND-LotsGroupFA  a rr:TriplesMap ;
 #                [
 #                    rml:reference "cbc:EstimatedOverallContractAmount";
 #                    rr:datatype xsd:decimal;
+#                ] ;
+#        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasCurrency ;
+#            rr:objectMap
+#                [
+#                    rml:reference "cbc:EstimatedOverallContractAmount/@currencyID";
+#                    rr:datatype xsd:string;
 #                ] ;
 #        ] .
 
@@ -1873,8 +1881,16 @@ tedm:ND-LotsGroupFA  a rr:TriplesMap ;
 #                    rml:reference "efbc:FrameworkMaximumAmount";
 #                    rr:datatype xsd:decimal;
 #                ] ;
+#        ];
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasCurrency ;
+#            rr:objectMap
+#                [
+#                    rml:reference "efbc:FrameworkMaximumAmount/@currencyID";
+#                    rr:datatype xsd:string;
+#                ] ;
 #        ] .
-
 
 #ND-LotDistribution
 tedm:ND-LotDistribution  a rr:TriplesMap ;
@@ -2531,7 +2547,7 @@ tedm:ND-Lot a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "ND-FA";
-            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
+            rr:predicate epo:isSubjectToLotSpecificTerm ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ND-FA ;
@@ -2607,19 +2623,19 @@ tedm:ND-Lot a rr:TriplesMap ;
                     ];
                 ] ;
         ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "ND-AwardingTerms";
-            rr:predicate epo:isSubjectToLotSpecificTerm ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:ND-AwardingTerms ;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(../..)";
-                    ];
-                ] ;
-        ]    ;
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "ND-AwardingTerms";
+#            rr:predicate epo:isSubjectToLotSpecificTerm ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:ND-AwardingTerms ;
+#                    rr:joinCondition [
+#                        rr:child "path(.)";
+#                        rr:parent "path(../..)";
+#                    ];
+#                ] ;
+#        ]    ;
     rr:predicateObjectMap
         [
             rdfs:label "ND-LateTendererInformation; ND-LotReservedProcurement";
@@ -4303,6 +4319,15 @@ tedm:ND-LotValueEstimateExtension a rr:TriplesMap ;
                     rml:reference "efbc:FrameworkMaximumAmount";
                     rr:datatype xsd:decimal;
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rml:reference "efbc:FrameworkMaximumAmount/@currencyID";
+                    rr:datatype xsd:string;
+                ] ;
         ] .
 
 #######################################################################ND-AuctionTerms####################################################################################################
@@ -4353,7 +4378,7 @@ tedm:ND-LotProcurementScope_Lot_Purpose a rr:TriplesMap ;
         ];
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotPurpose_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if (exists(cbc:EstimatedOverallContractQuantity/@unitCode) or exists(cbc:EstimatedOverallContractQuantity)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Purpose_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class  epo:Purpose;
         ] ;
     rr:predicateObjectMap
@@ -4424,6 +4449,15 @@ tedm:ND-LotProcurementScope_Monetary_Value_Purpose a rr:TriplesMap ;
                 [
                     rml:reference "cbc:EstimatedOverallContractAmount";
                     rr:datatype xsd:decimal;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:EstimatedOverallContractAmount/@currencyID";
+                    rr:datatype xsd:string;
                 ] ;
         ] .
 
