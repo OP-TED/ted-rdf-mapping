@@ -1,10 +1,10 @@
-#title: ND-Changes ND-RootExtension.ND-Changes - ND-Changes
-#description: “ND-Changes ND-RootExtension.ND-Changes - ND-Changes” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Changes. The expected ontology instances are epo: epo:NoticeChange / epo:Notice .
-#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Changes
+#title: BT-157-LotsGroup ND-LotsGroup.ND-LotsGroupFA.BT-157-LotsGroup - BT-157-LotsGroup
+#description: “BT-157-LotsGroup ND-LotsGroup.ND-LotsGroupFA.BT-157-LotsGroup - BT-157-LotsGroup” in SF corresponds to “BT-157 Group Framework Maximum Value” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='LotsGroup']/cac:TenderingProcess/cac:FrameworkAgreement/cbc:EstimatedMaximumValueAmount. The expected ontology instances are epo: epo:LotGroup / xsd:MonetaryValue / xsd:decimal .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='LotsGroup']/cac:TenderingProcess/cac:FrameworkAgreement/cbc:EstimatedMaximumValueAmount
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:NoticeChange .
-		?this epo:describesNotice ?value }
+		?this rdf:type epo:LotGroup .
+		?this epo:hasEstimatedValue / epo:hasAmountValue ?value . }

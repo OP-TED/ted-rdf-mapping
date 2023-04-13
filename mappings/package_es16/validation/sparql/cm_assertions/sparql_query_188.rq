@@ -1,9 +1,8 @@
-#title: BT-510(a)-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.ND-CompanyAddress.BT-510(a)-Organization-Company - BT-510(a)-Organization-Company
-#description: “BT-510(a)-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.ND-CompanyAddress.BT-510(a)-Organization-Company - BT-510(a)-Organization-Company” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:PostalAddress/cbc:StreetName. The expected ontology instances are epo: org:Organization (from CL2) /  locn:Address / rdf:langString .
-#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:PostalAddress/cbc:StreetName
+#title: BT-509-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.BT-509-Organization-Company - BT-509-Organization-Company
+#description: “BT-509-Organization-Company ND-RootExtension.ND-Organizations.ND-Organization.ND-Company.BT-509-Organization-Company - BT-509-Organization-Company” in SF corresponds to “BT-509 Organisation eDelivery Gateway” in eForms. The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cbc:EndpointID. The expected ontology instances are epo: org:Organization (from CL2) / cv:Channel / xsd:anyURI .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cbc:EndpointID
 
-PREFIX cv: <http://data.europa.eu/m8g/>
-PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 
 ASK WHERE { 
-		?this cv:registeredAddress / locn:thoroughfare ?value . }
+		?this epo:hasDeliveryGateway / epo:hasEndpoint ?value . }

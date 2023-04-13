@@ -1,11 +1,10 @@
-#title: BT-540-Lot ND-Lot.ND-LotTenderingTerms.ND-AwardingTerms.ND-LotAwardCriteria.ND-LotAwardCriterion.BT-540-Lot - BT-540-Lot
-#description: “BT-540-Lot ND-Lot.ND-LotTenderingTerms.ND-AwardingTerms.ND-LotAwardCriteria.ND-LotAwardCriterion.BT-540-Lot - BT-540-Lot” in SF corresponds to “BT-540 Award Criterion Description” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/cbc:Description. The expected ontology instances are epo: epo:Lot / epo:AwardCriterion / rdf:langString .
-#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/cbc:Description
+#title: BT-539-Lot ND-Lot.ND-LotTenderingTerms.ND-AwardingTerms.ND-LotAwardCriteria.ND-LotAwardCriterion.BT-539-Lot - BT-539-Lot
+#description: “BT-539-Lot ND-Lot.ND-LotTenderingTerms.ND-AwardingTerms.ND-LotAwardCriteria.ND-LotAwardCriterion.BT-539-Lot - BT-539-Lot” in SF corresponds to “BT-539 Award Criterion Type” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/cbc:AwardingCriterionTypeCode[@listName='award-criterion-type']. The expected ontology instances are epo: epo:Lot / epo:AwardCriterion / at-voc:award-criterion-type .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/cbc:AwardingCriterionTypeCode[@listName='award-criterion-type']
 
-PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:specifiesAwardCriterion / cccev:description ?value }
+		?this epo:specifiesAwardCriterion / epo:hasAwardCriterionType ?value }

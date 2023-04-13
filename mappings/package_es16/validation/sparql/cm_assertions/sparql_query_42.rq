@@ -1,10 +1,10 @@
-#title: BT-634-Procedure ND-ProcedureTenderingProcess.BT-634-Procedure - BT-634-Procedure
-#description: “BT-634-Procedure ND-ProcedureTenderingProcess.BT-634-Procedure - BT-634-Procedure” in SF corresponds to “BT-634 Procurement Relaunch” in eForms. The corresponding XML element is /*/cac:TenderingProcess/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efbc:ProcedureRelaunchIndicator. The expected ontology instances are epo: epo:ProcurementProcessInformation / xsd:boolean .
-#xpath: /*/cac:TenderingProcess/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efbc:ProcedureRelaunchIndicator
+#title: BT-33-Procedure ND-ProcedureTerms.ND-LotDistribution.BT-33-Procedure - BT-33-Procedure
+#description: “BT-33-Procedure ND-ProcedureTerms.ND-LotDistribution.BT-33-Procedure - BT-33-Procedure” in SF corresponds to “BT-33 Lots Max Awarded” in eForms. The corresponding XML element is /*/cac:TenderingTerms/cac:LotDistribution/cbc:MaximumLotsAwardedNumeric. The expected ontology instances are epo: epo:Procedure / epo:ProcedureTerm / rdf:langString .
+#xpath: /*/cac:TenderingTerms/cac:LotDistribution/cbc:MaximumLotsAwardedNumeric
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:ProcurementProcessInformation .
-		?this epo:isToBeRelaunched ?value . }
+		?this rdf:type epo:Procedure .
+		?this epo:isSubjectToProcedureSpecificTerm / epo:hasMaximumNumberOfLotsToBeAwarded ?value }

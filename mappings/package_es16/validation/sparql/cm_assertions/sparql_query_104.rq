@@ -1,11 +1,10 @@
-#title: BT-752-Lot ND-Lot.ND-LotTenderingTerms.ND-NonUBLTenderingTerms.ND-SelectionCriteria.ND-SecondStageCriterionParameter.BT-752-Lot - BT-752-Lot
-#description: “BT-752-Lot ND-Lot.ND-LotTenderingTerms.ND-NonUBLTenderingTerms.ND-SelectionCriteria.ND-SecondStageCriterionParameter.BT-752-Lot - BT-752-Lot” in SF corresponds to “BT-752 Selection Criteria Second Stage Invite Number” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:SelectionCriteria/efac:CriterionParameter/efbc:ParameterNumeric. The expected ontology instances are epo: epo:Lot / epo:SelectionCriterion / xsd:decimal OR epo:Lot / epo:SelectionCriterion / cccev:Constraint / xsd:decimal .
-#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:SelectionCriteria/efac:CriterionParameter/efbc:ParameterNumeric
+#title: BT-7532-Lot ND-Lot.ND-LotTenderingTerms.ND-NonUBLTenderingTerms.ND-SelectionCriteria.ND-SecondStageCriterionParameter.BT-7532-Lot - BT-7532-Lot
+#description: “BT-7532-Lot ND-Lot.ND-LotTenderingTerms.ND-NonUBLTenderingTerms.ND-SelectionCriteria.ND-SecondStageCriterionParameter.BT-7532-Lot - BT-7532-Lot” in SF corresponds to “BT-7532 Selection Criteria Second Stage Invite Number Threshold” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:SelectionCriteria/efac:CriterionParameter/efbc:ParameterCode[@listName='number-threshold']. The expected ontology instances are epo: epo:Lot / epo:SelectionCriterion / cccev:Constraint / at-voc:number-threshold .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:SelectionCriteria/efac:CriterionParameter/efbc:ParameterCode[@listName='number-threshold']
 
-PREFIX cccev: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		{?this epo:specifiesSelectionCriterion / cccev:weight ?value} UNION {?this epo:specifiesSelectionCriterion / epo:hasConstraint / epo:hasThresholdValue ?value} }
+		?this epo:specifiesSelectionCriterion / epo:hasConstraint / epo:hasThresholdType ?value }

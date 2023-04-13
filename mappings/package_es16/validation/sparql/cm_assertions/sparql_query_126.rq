@@ -1,10 +1,10 @@
-#title: BT-63-Lot ND-Lot.ND-LotTenderingTerms.BT-63-Lot - BT-63-Lot
-#description: “BT-63-Lot ND-Lot.ND-LotTenderingTerms.BT-63-Lot - BT-63-Lot” in SF corresponds to “BT-63 Variants” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cbc:VariantConstraintCode. The expected ontology instances are epo: epo:Lot / epo:SubmissionTerm / at-voc:permission .
-#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cbc:VariantConstraintCode
+#title: BT-71-Lot ND-Lot.ND-LotTenderingTerms.ND-LotReservedParticipation.ND-LotReservedProcurement.BT-71-Lot - BT-71-Lot
+#description: “BT-71-Lot ND-Lot.ND-LotTenderingTerms.ND-LotReservedParticipation.ND-LotReservedProcurement.BT-71-Lot - BT-71-Lot” in SF corresponds to “BT-71 Reserved Participation” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:TendererQualificationRequest[not(cbc:CompanyLegalFormCode)][not(cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode[@listName='missing-info-submission'])]/cac:SpecificTendererRequirement[cbc:TendererRequirementTypeCode/@listName='reserved-procurement']/cbc:TendererRequirementTypeCode[@listName='reserved-procurement']. The expected ontology instances are epo: epo:Lot / at-voc:reserved-procurement .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:TendererQualificationRequest[not(cbc:CompanyLegalFormCode)][not(cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode[@listName='missing-info-submission'])]/cac:SpecificTendererRequirement[cbc:TendererRequirementTypeCode/@listName='reserved-procurement']/cbc:TendererRequirementTypeCode[@listName='reserved-procurement']
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:isSubjectToLotSpecificTerm  / epo:hasVariantPermission ?value . }
+		?this epo:hasReservedProcurement ?value . }
