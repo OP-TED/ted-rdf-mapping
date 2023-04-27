@@ -1,0 +1,13 @@
+#title: Mandatory for NOTICE_NUMBER_OJ
+#description: A select SPARQL query that checks for the mandatory property epo:hasIdentifierValue of an epo:Notice
+
+PREFIX epd: <http://data.europa.eu/a4g/resource/>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT * WHERE {
+?value rdf:type  epo:Notice .
+?value epo:hasID ?t .
+    FILTER NOT EXISTS{?t epo:hasIdentifierValue ?p}
+} 
+

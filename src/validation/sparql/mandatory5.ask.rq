@@ -1,0 +1,11 @@
+#title: Mandatory for AWARD_CONTRACT
+#description: A select SPARQL query that checks for the mandatory property epo:announcesContract of an epo:Notice
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK { 
+    ?s rdf:type epo:Notice .
+    FILTER NOT EXISTS {?s epo:announcesContract ?o .}
+} 
+

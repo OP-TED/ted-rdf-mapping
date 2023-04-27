@@ -1,0 +1,12 @@
+#title: Mandatory for AC_CRITERION
+#description: A ask SPARQL query that checks for the mandatory property cccev:name of an epo:AwardCriterion
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX cccev: <http://data.europa.eu/m8g/>
+
+ASK {
+?value rdf:type epo:AwardCriterion .
+    FILTER NOT EXISTS {?value cccev:name ?t .}
+    
+} 

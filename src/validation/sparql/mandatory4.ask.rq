@@ -1,0 +1,10 @@
+#title: Mandatory for OBJECT_DESCR
+#description: A ask SPARQL query that checks for the mandatory property epo:includesLot of an epo:Contract
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK { 
+    ?s rdf:type epo:Contract .
+    FILTER NOT EXISTS {?s epo:includesLot ?o .}
+}
