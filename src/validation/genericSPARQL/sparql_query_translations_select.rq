@@ -1,0 +1,15 @@
+#title: Select SPARQL query for translations
+#description: A query that selects the triples where there is translation to a specific language for any given property value, there should be a translation to that language for all property values that have a language tag
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT DISTINCT (lang(?o1L1) as ?o11) (lang(?o2L1) as ?o21) (lang(?o1L2) as ?o12) (lang(?o2L2) as ?o22) WHERE {
+	?s1 ?p1 ?o1L1. 
+	?s1 ?p1 ?o1L2. 
+	?s2 ?p2 ?o2L1. 
+    OPTIONAL {?s2 ?p2 ?o2L2}
+    FILTER(lang(?o1L1) = lang(?o2L1) && ( ?o2L2 = "" || lang(?o1L2) =lang(?o2L2)))
+	FILTER (?s1 != ?s2 || ?p1 != ?p2)
+    } 
