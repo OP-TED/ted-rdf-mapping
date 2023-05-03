@@ -1,0 +1,21 @@
+#title: Ask SPARQL query for empty instances
+#description: This query aks if there exist instances that have only one property rdf:type and are instances of a class in ePO.
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX epd: <http://data.europa.eu/a4g/resource/>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+
+ASK {
+SELECT (COUNT(DISTINCT ?s) AS ?emptyInstance) WHERE{
+?s ?r ?t
+    {
+        SELECT ?s (COUNT(DISTINCT ?r) AS ?count) WHERE {
+            ?s rdf:type ?o .
+            FILTER(STRSTARTS(STR(?s), "http://data.europa.eu/a4g/resource/"))
+            FILTER(STRSTARTS(STR(?o), "http://data.europa.eu/a4g/ontology#"))
+            ?s ?r ?t
+
+        } GROUP BY ?s HAVING (?count = 1)
+    }
+    }  HAVING (?emptyInstance = 0)
+}
