@@ -1,11 +1,10 @@
-#title: IV.1.1.1.2 - Justification:
-#description: “IV.1.1.1.2 - Justification:” in SF corresponds to “BT-1351 Procedure Accelerated Justification” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/ACCELERATED_PROC/P. The expected ontology instances are epo: epo:Procedure / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/ACCELERATED_PROC/P
+#title: IV.1.1.1 - Open procedure
+#description: “IV.1.1.1 - Open procedure” in SF corresponds to “BT-105 Procedure Type” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_OPEN. The expected ontology instances are epo: epo:Procedure / at-voc:procurement-procedure-type .
+#xpath: /TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_OPEN
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Procedure .
-		?value rdf:type rdf:langString .
-		?this epo:hasAcceleratedProcedureJustification ?value . }
+		?this epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open> . }

@@ -11,7 +11,7 @@
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix cpov: <http://data.europa.eu/m8g/> .
-@prefix legal: <https://www.w3.org/ns/legal#> .
+@prefix cv: <http://data.europa.eu/m8g/> .
 
 tedm:complementary_information
   a owl:Ontology ;
@@ -40,7 +40,7 @@ tedm:ReviewTerm a rr:TriplesMap ;
                 ] ;
         ] .
 
-tedm:Reviewer a rr:TripleMap ;
+tedm:Reviewer a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:playedBy ;
@@ -53,6 +53,17 @@ tedm:Reviewer a rr:TripleMap ;
 tedm:ReviewerOrganisation a rr:TriplesMap ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:hasLegalName ;
+            rr:objectMap
+                [
+                    rml:reference "OFFICIALNAME";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate epo:hasPrimaryContactPoint ;
             rr:objectMap
                 [
@@ -61,7 +72,7 @@ tedm:ReviewerOrganisation a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate legal:registeredAddress ;
+            rr:predicate cv:registeredAddress ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ReviewerOrganisationAddress
@@ -75,7 +86,7 @@ tedm:ReviewerOrganisation a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:ReviewerOrganisationIdentifier
                 ]
         ] .
-tedm:ReviewerOrganisationIdentifier a rr:TripleMap ;
+tedm:ReviewerOrganisationIdentifier a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasIdentifierValue;
@@ -91,7 +102,7 @@ tedm:ReviewerContactPoint a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "URL";
-                    #-rr:termType rr:IRI;
+                    rr:datatype xsd:anyURI
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -110,14 +121,23 @@ tedm:ReviewerContactPoint a rr:TriplesMap ;
                     rml:reference "FAX"
                 ]
         ] ;
-
-
     rr:predicateObjectMap
         [
             rr:predicate cpov:telephone ;
             rr:objectMap
                 [
                     rml:reference "PHONE"
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContactName ;
+            rr:objectMap
+                [
+                    rml:reference "CONTACT_POINT";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
                 ]
         ] .
 tedm:ReviewerOrganisationAddress a rr:TriplesMap ;
@@ -155,18 +175,18 @@ tedm:ReviewerOrganisationAddress a rr:TriplesMap ;
 #                ]
 #
 #        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasNutsCode ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:nuts;
-                    rr:joinCondition [
-                        rr:child "*:NUTS/@CODE";
-                        rr:parent "code.value";
-                    ];
-                ] ;
-        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasNutsCode ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:nuts;
+#                    rr:joinCondition [
+#                        rr:child "*:NUTS/@CODE";
+#                        rr:parent "code.value";
+#                    ];
+#                ] ;
+#        ] ;
 #    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasCountryCode ;
@@ -190,7 +210,7 @@ tedm:ReviewerOrganisationAddress a rr:TriplesMap ;
                 ] ;
         ] .
 
-tedm:Mediator a rr:TripleMap ;
+tedm:Mediator a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:playedBy ;
@@ -202,6 +222,17 @@ tedm:Mediator a rr:TripleMap ;
 tedm:MediatorOrganisation a rr:TriplesMap ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:hasLegalName ;
+            rr:objectMap
+                [
+                    rml:reference "OFFICIALNAME";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate epo:hasPrimaryContactPoint ;
             rr:objectMap
                 [
@@ -210,7 +241,7 @@ tedm:MediatorOrganisation a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate legal:registeredAddress ;
+            rr:predicate cv:registeredAddress ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MediatorOrganisationAddress
@@ -224,7 +255,7 @@ tedm:MediatorOrganisation a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:MediatorOrganisationIdentifier
                 ]
         ] .
-tedm:MediatorOrganisationIdentifier a rr:TripleMap ;
+tedm:MediatorOrganisationIdentifier a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasIdentifierValue;
@@ -240,7 +271,7 @@ tedm:MediatorContactPoint a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "URL";
-                    #-rr:termType rr:IRI;
+                    rr:datatype xsd:anyURI
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -259,13 +290,23 @@ tedm:MediatorContactPoint a rr:TriplesMap ;
                     rml:reference "FAX"
                 ]
         ] ;
-
     rr:predicateObjectMap
         [
             rr:predicate cpov:telephone ;
             rr:objectMap
                 [
                     rml:reference "PHONE"
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContactName ;
+            rr:objectMap
+                [
+                    rml:reference "CONTACT_POINT";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
                 ]
         ] .
 tedm:MediatorOrganisationAddress a rr:TriplesMap ;
@@ -303,18 +344,18 @@ tedm:MediatorOrganisationAddress a rr:TriplesMap ;
 #                ]
 #
 #        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasNutsCode ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:nuts;
-                    rr:joinCondition [
-                        rr:child "*:NUTS/@CODE";
-                        rr:parent "code.value";
-                    ];
-                ] ;
-        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasNutsCode ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:nuts;
+#                    rr:joinCondition [
+#                        rr:child "*:NUTS/@CODE";
+#                        rr:parent "code.value";
+#                    ];
+#                ] ;
+#        ] ;
 #    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasCountryCode ;
@@ -338,7 +379,7 @@ tedm:MediatorOrganisationAddress a rr:TriplesMap ;
                 ] ;
         ] .
 
-tedm:ReviewProcedureInformationProvider a rr:TripleMap ;
+tedm:ReviewProcedureInformationProvider a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:playedBy ;
@@ -350,6 +391,17 @@ tedm:ReviewProcedureInformationProvider a rr:TripleMap ;
 tedm:ReviewProcedureInformationProviderOrganisation a rr:TriplesMap ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:hasLegalName ;
+            rr:objectMap
+                [
+                    rml:reference "OFFICIALNAME";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate epo:hasPrimaryContactPoint ;
             rr:objectMap
                 [
@@ -358,7 +410,7 @@ tedm:ReviewProcedureInformationProviderOrganisation a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate legal:registeredAddress ;
+            rr:predicate cv:registeredAddress ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ReviewProcedureInformationProviderOrganisationAddress
@@ -372,7 +424,7 @@ tedm:ReviewProcedureInformationProviderOrganisation a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:ReviewProcedureInformationProviderOrganisationIdentifier
                 ]
         ] .
-tedm:ReviewProcedureInformationProviderOrganisationIdentifier a rr:TripleMap ;
+tedm:ReviewProcedureInformationProviderOrganisationIdentifier a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasIdentifierValue;
@@ -388,7 +440,7 @@ tedm:ReviewProcedureInformationProviderContactPoint a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "URL";
-                    #-rr:termType rr:IRI;
+                    rr:datatype xsd:anyURI
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -417,12 +469,12 @@ tedm:ReviewProcedureInformationProviderContactPoint a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:hasDescription ;
+            rr:predicate epo:hasContactName ;
             rr:objectMap
                 [
                     rml:reference "CONTACT_POINT";
                     rml:languageMap [
-                         rml:reference "ancestor::F03_2014/@LG"
+                        rml:reference "lower-case(ancestor::*/@LG)"
                     ]
                 ]
         ] .
@@ -461,18 +513,18 @@ tedm:ReviewProcedureInformationProviderOrganisationAddress a rr:TriplesMap ;
 #                ]
 #
 #        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasNutsCode ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:nuts;
-                    rr:joinCondition [
-                        rr:child "*:NUTS/@CODE";
-                        rr:parent "code.value";
-                    ];
-                ] ;
-        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasNutsCode ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:nuts;
+#                    rr:joinCondition [
+#                        rr:child "*:NUTS/@CODE";
+#                        rr:parent "code.value";
+#                    ];
+#                ] ;
+#        ] ;
 #    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:hasCountryCode ;
@@ -494,4 +546,52 @@ tedm:ReviewProcedureInformationProviderOrganisationAddress a rr:TriplesMap ;
                         rr:parent "code.value";
                     ];
                 ] ;
+        ] .
+tedm:Procedure a rr:TriplesMap;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAdditionalInformation ;
+            rr:objectMap
+                [
+                    rml:reference "../COMPLEMENTARY_INFO/INFO_ADD";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:foreseesContractSpecificTerm ;
+            rr:objectMap
+            [
+                rr:parentTriplesMap tedm:ContractTermProcedure;
+            ]
+        ] .
+tedm:ContractTermProcedure a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasEOrdering;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(../COMPLEMENTARY_INFO/EORDERING)) then 'true' else null";
+                    rr:datatype xsd:boolean
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasEInvoicing;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(../COMPLEMENTARY_INFO/EINVOICING)) then 'true' else null";
+                    rr:datatype xsd:boolean
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasEPayment;
+            rr:objectMap
+                [
+                    rml:reference "if(exists(../COMPLEMENTARY_INFO/EPAYMENT)) then 'true' else null";
+                    rr:datatype xsd:boolean
+                ]
         ] .

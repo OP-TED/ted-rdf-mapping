@@ -1,11 +1,10 @@
-#title: VI.4.1 - Review body
-#description: “VI.4.1 - Review body” in SF corresponds to “--- nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO. The expected ontology instances are epo: epo:ResultNotice / epo:Reviewer .
-#xpath: /TED_EXPORT/FORM_SECTION/F03_2014/COMPLEMENTARY_INFO
+#title: V.2.5.5 - Proportion
+#description: “V.2.5.5 - Proportion” in SF corresponds to “BT-555 Subcontracting Percentage” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/PCT_SUBCONTRACTING. The expected ontology instances are epo: epo:Tender / epo:SubcontractingEstimate / xsd:decimal .
+#xpath: /TED_EXPORT/FORM_SECTION/F03_2014/AWARD_CONTRACT/AWARDED_CONTRACT/PCT_SUBCONTRACTING
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:ResultNotice .
-		?value rdf:type epo:Reviewer .
-		?this epo:announcesRole ?value }
+		?this rdf:type epo:Tender .
+		?this epo:foreseesSubcontracting / epo:hasEstimatedPercentage ?value . }
