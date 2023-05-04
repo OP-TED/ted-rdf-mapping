@@ -53,7 +53,7 @@ local-secrets-dotenv-file:
 
 install-rmlmapper:
 	@ mkdir -p ./.rmlmapper
-	@ wget -c https://api.bitbucket.org/2.0/repositories/Dragos0000/rml-mapper/src/master/rmlmapper.jar -P ./.rmlmapper
+	@ wget -c https://github.com/meaningfy-ws/rmlmapper-java/releases/download/6.1.3a/rmlmapper-6.1.3a-r367-all.jar -O ./.rmlmapper/rmlmapper.jar
 
 init-saxon:
 	@ echo -e "$(BUILD_PRINT)Saxon folder initialization $(END_BUILD_PRINT)"
