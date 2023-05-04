@@ -52,8 +52,14 @@ local-secrets-dotenv-file:
 	@ echo ALLEGRO_HOST=${ALLEGRO_HOST} >> .env
 
 install-rmlmapper:
+	@ rm -rf ./.rmlmapper
 	@ mkdir -p ./.rmlmapper
 	@ wget -c https://github.com/meaningfy-ws/rmlmapper-java/releases/download/6.1.3a/rmlmapper-6.1.3a-r367-all.jar -O ./.rmlmapper/rmlmapper.jar
+
+install-rmlmapper-with-cached-xmlresolver:
+	@ rm -rf ./.rmlmapper
+	@ mkdir -p ./.rmlmapper
+	@ wget -c https://github.com/meaningfy-ws/rmlmapper-java/releases/download/6.1.3a/rmlmapper-6.1.3a-cache-r368-all.jar -O ./.rmlmapper/rmlmapper.jar
 
 init-saxon:
 	@ echo -e "$(BUILD_PRINT)Saxon folder initialization $(END_BUILD_PRINT)"
