@@ -1221,19 +1221,19 @@ tedm:ReviewerOrganisationIdentifier a rr:TriplesMap ;
             rml:reference "if (exists(NATIONALID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ReviewerOrganisationIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:Identifier
         ] .
-#tedm:ReviewTerm a rr:TriplesMap ;
-#    rml:logicalSource
-#        [
-#            rml:source "data/source.xml" ;
-#            rml:iterator "/TED_EXPORT/FORM_SECTION/F23_2014[1]/COMPLEMENTARY_INFO";
-#            rml:referenceFormulation ql:XPath
-#        ];
-#    rr:subjectMap
-#        [
-#            rml:reference
-#                "if(exists(REVIEW_PROCEDURE)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ReviewTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
-#            rr:class epo:ReviewTerm
-#        ] .
+tedm:ReviewTerm a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F23_2014[1]/COMPLEMENTARY_INFO";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rml:reference
+                "if(exists(REVIEW_PROCEDURE)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ReviewTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:ReviewTerm
+        ] .
 #F25 mappings
 tedm:MonetaryValueProcedure a rr:TriplesMap ;
     rml:logicalSource
