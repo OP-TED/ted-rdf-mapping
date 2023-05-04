@@ -454,7 +454,19 @@ tedm:PreviousNotice a rr:TriplesMap ;
         [
             rml:reference "if (exists(NOTICE_NUMBER_OJ)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(NOTICE_NUMBER_OJ, ' ', '-' ), '/' , '-') || '_Notice' else null" ;
             rr:class epo:Notice
-        ] .
+        ];
+    rr:predicateObjectMap
+    [
+        rr:predicate epo:hasLegalBasis ;
+        rr:objectMap
+            [
+                rr:parentTriplesMap tedm:legalBasis;
+                rr:joinCondition [
+                        rr:child "../LEGAL_BASIS/@VALUE";
+                        rr:parent "code.value";
+                    ];
+            ] ;
+    ] .
 tedm:PreviousNoticeIdentifier a rr:TriplesMap ;
     rml:logicalSource
         [
@@ -855,7 +867,7 @@ tedm:ContractorOrganisationFromResults a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ContractorOrganisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_WinnerOrganisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class org:Organisation
         ] .
 
@@ -882,7 +894,7 @@ tedm:ContractorOrganisationFromResultsContactPoint a rr:TriplesMap ;
     rr:subjectMap
         [
             rml:reference
-                "if(exists(ADDRESS_WINNER/E_MAIL) or exists(ADDRESS_WINNER/FAX) or exists(ADDRESS_WINNER/PHONE) or exists(ADDRESS_WINNER/URL) or exists(ADDRESS_WINNER/CONTACT_POINT)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_ContractorOrganisationContactPoint_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+                "if(exists(ADDRESS_WINNER/E_MAIL) or exists(ADDRESS_WINNER/FAX) or exists(ADDRESS_WINNER/PHONE) or exists(ADDRESS_WINNER/URL) or exists(ADDRESS_WINNER/CONTACT_POINT)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_WinnerOrganisationContactPoint_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class cpov:ContactPoint
 
         ] .
@@ -896,7 +908,7 @@ tedm:ContractorOrganisationFromResultsAddress a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ContractorOrganisationAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_WinnerOrganisationAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class locn:Address
 
         ] .
@@ -923,7 +935,7 @@ tedm:ContractorOrganisation a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ContractorOrganisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_WinnerOrganisation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class org:Organization
         ] .
 
@@ -961,7 +973,7 @@ tedm:ContractorOrganisationAddress a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_ContractorOrganisationAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-')}_WinnerOrganisationAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class locn:Address
 
         ] .
