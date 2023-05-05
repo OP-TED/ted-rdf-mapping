@@ -245,18 +245,6 @@ tedm:ProcedurePurpose a rr:TriplesMap ;
                         rr:parent "code.value";
                     ];
                 ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasContractNatureType ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:contractNature ;
-                    rr:joinCondition [
-                        rr:child "lower-case(TYPE_CONTRACT/@CTYPE)";
-                        rr:parent "code.value";
-                    ];
-                ] ;
         ] .
 
 tedm:PreviousNotice a rr:TriplesMap ;
@@ -660,7 +648,20 @@ tedm:ContractTermLot a rr:TriplesMap ;
                     rml:reference "if(exists(OPTIONS)) then 'true' else if(exists(NO_OPTIONS)) then 'false' else null";
                     rr:datatype xsd:boolean
                 ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContractNatureType ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:contractNature ;
+                    rr:joinCondition [
+                        rr:child "lower-case(/TED_EXPORT/FORM_SECTION/F23_2014/OBJECT_CONTRACT/TYPE_CONTRACT/@CTYPE)";
+                        rr:parent "code.value";
+                    ];
+                ] ;
         ] .
+
 tedm:ContractTermLotLocation a rr:TriplesMap ;
 #    rr:predicateObjectMap
 #        [
