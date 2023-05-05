@@ -648,18 +648,6 @@ tedm:ContractTermLot a rr:TriplesMap ;
                     rml:reference "if(exists(OPTIONS)) then 'true' else if(exists(NO_OPTIONS)) then 'false' else null";
                     rr:datatype xsd:boolean
                 ]
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasContractNatureType ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:contractNature ;
-                    rr:joinCondition [
-                        rr:child "lower-case(../TYPE_CONTRACT/@CTYPE)";
-                        rr:parent "code.value";
-                    ];
-                ] ;
         ] .
 
 tedm:ContractTermLotLocation a rr:TriplesMap ;
@@ -851,6 +839,19 @@ tedm:ProcedureTerm a rr:TriplesMap ;
                     rml:reference "LOT_DIVISION/LOT_COMBINING_CONTRACT_RIGHT"
 
                 ]
+        ] .
+tedm:ContractTermProcedure a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContractNatureType ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:contractNature ;
+                    rr:joinCondition [
+                        rr:child "lower-case(../OBJECT_CONTRACT/TYPE_CONTRACT/@CTYPE)";
+                        rr:parent "code.value";
+                    ];
+                ] ;
         ] .
 tedm:MultipleStageProcedureTerm a rr:TriplesMap ;
     rr:predicateObjectMap
