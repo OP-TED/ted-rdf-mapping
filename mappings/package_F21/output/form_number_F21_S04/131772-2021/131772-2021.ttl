@@ -4,7 +4,14 @@
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -35,6 +42,9 @@ epd:id_2021-S-052-131772_ContractTermLot_9kJZhTgye29otV72ZHovp4 a epo:ContractTe
   epo:definesContractDuration epd:id_2021-S-052-131772_Duration_NrvbEmCZF6uD7i5tqyVJW5;
   epo:definesSpecificPlaceOfPerformance epd:id_2021-S-052-131772_ContractTermLotLocation_9kJZhTgye29otV72ZHovp4 .
 
+epd:id_2021-S-052-131772_ContractTermProcedure_K8q5v8TTWyR48h9DKNno8n a epo:ContractTerm;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+
 epd:id_2021-S-052-131772_Duration_NrvbEmCZF6uD7i5tqyVJW5 a epo:SpecificDuration;
   time:numericDuration 12.0;
   time:unitType time:unitMonth .
@@ -58,6 +68,7 @@ epd:id_2021-S-052-131772_Notice a epo:CompetitionNotice, epo:Notice;
     epd:id_2021-S-052-131772_Reviewer_cbWuhNnCxDFGewidLQWHhz, epd:id_2021-S-052-131772_TenderReceiver_3dwpAcw6fYdd72eXB5Lq6b;
   epo:hasDispatchDate "2021-03-11"^^xsd:date;
   epo:hasID epd:id_2021-S-052-131772_NoticeIdentifier_aCmfT72mHtfxPh7XQjZApJ;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasPublicationDate "20210316";
   epo:refersToLot epd:id_2021-S-052-131772_Lot_9kJZhTgye29otV72ZHovp4;
   epo:refersToProcedure epd:id_2021-S-052-131772_Procedure_aCmfT72mHtfxPh7XQjZApJ .
@@ -86,14 +97,13 @@ epd:id_2021-S-052-131772_ProcedureIdentifier_aCmfT72mHtfxPh7XQjZApJ a epo:Identi
   epo:hasIdentifierValue "2021/02/SE" .
 
 epd:id_2021-S-052-131772_ProcedurePurpose_aCmfT72mHtfxPh7XQjZApJ a epo:Purpose;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/85312000> .
 
 epd:id_2021-S-052-131772_Procedure_aCmfT72mHtfxPh7XQjZApJ a epo:Procedure;
+  epo:foreseesContractSpecificTerm epd:id_2021-S-052-131772_ContractTermProcedure_K8q5v8TTWyR48h9DKNno8n;
   epo:hasDescription "Servicio de comida a domicilio de la Provincia de Segovia."@es;
   epo:hasEstimatedValue epd:id_2021-S-052-131772_MonetaryValueProcedure_aCmfT72mHtfxPh7XQjZApJ;
   epo:hasID epd:id_2021-S-052-131772_ProcedureIdentifier_aCmfT72mHtfxPh7XQjZApJ;
-  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot epd:id_2021-S-052-131772_Lot_9kJZhTgye29otV72ZHovp4;
   epo:hasPurpose epd:id_2021-S-052-131772_ProcedurePurpose_aCmfT72mHtfxPh7XQjZApJ;
