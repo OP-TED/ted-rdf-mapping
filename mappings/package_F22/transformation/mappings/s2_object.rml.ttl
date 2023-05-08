@@ -245,18 +245,6 @@ tedm:ProcedurePurpose a rr:TriplesMap ;
                         rr:parent "code.value";
                     ];
                 ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasContractNatureType ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:contractNature ;
-                    rr:joinCondition [
-                        rr:child "lower-case(TYPE_CONTRACT/@CTYPE)";
-                        rr:parent "code.value";
-                    ];
-                ] ;
         ] .
 
 tedm:PreviousNotice a rr:TriplesMap ;
@@ -276,8 +264,8 @@ tedm:PreviousNotice a rr:TriplesMap ;
             [
                 rr:parentTriplesMap tedm:PreviousNoticeIdentifier;
                 rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:child "path()";
+                    rr:parent "path()";
                 ];
             ]
         ] .
@@ -341,8 +329,8 @@ tedm:Lot a rr:TriplesMap ;
             [
                 rr:parentTriplesMap tedm:LotIdentifier;
                 rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:child "path()";
+                    rr:parent "path()";
                 ];
             ]
         ] ;
@@ -353,8 +341,8 @@ tedm:Lot a rr:TriplesMap ;
             [
                 rr:parentTriplesMap tedm:MultipleStageProcedureTerm;
                 rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:child "path()";
+                    rr:parent "path()";
                 ];
             ]
         ] ;
@@ -365,8 +353,8 @@ tedm:Lot a rr:TriplesMap ;
             [
                 rr:parentTriplesMap tedm:Fund;
                 rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:child "path()";
+                    rr:parent "path()";
                 ];
             ]
         ] ;
@@ -393,8 +381,8 @@ tedm:Lot a rr:TriplesMap ;
             [
                 rr:parentTriplesMap tedm:ContractTermLot;
                 rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:child "path()";
+                    rr:parent "path()";
                 ];
             ]
         ] ;
@@ -454,8 +442,8 @@ tedm:Lot a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:MainMonetaryValueLot;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
 
                 ] ;
@@ -621,8 +609,8 @@ tedm:ContractTermLot a rr:TriplesMap ;
                     rr:joinCondition [
 #                        rr:child "./@ITEM";
 #                        rr:parent "./@ITEM";
-#                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-#                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                        rr:child "path()";
+#                        rr:parent "path()";
                         rr:child "if(exists(./@ITEM)) then ./@ITEM else 1";
                         rr:parent "if(exists(./@ITEM)) then ./@ITEM else 1";
                     ];
@@ -661,6 +649,7 @@ tedm:ContractTermLot a rr:TriplesMap ;
                     rr:datatype xsd:boolean
                 ]
         ] .
+
 tedm:ContractTermLotLocation a rr:TriplesMap ;
 #    rr:predicateObjectMap
 #        [
@@ -733,8 +722,8 @@ tedm:Period a rr:TriplesMap ;
             rr:predicate epo:hasBeginning ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(DATE_START)) then DATE_START || 'T00:00:00' else null";
-                    rr:datatype xsd:dateTime
+                    rml:reference "if(exists(DATE_START)) then DATE_START else null";
+                    rr:datatype xsd:date
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -742,8 +731,8 @@ tedm:Period a rr:TriplesMap ;
             rr:predicate epo:hasEnd ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(DATE_END)) then DATE_END || 'T00:00:00' else null";
-                    rr:datatype xsd:dateTime
+                    rml:reference "if(exists(DATE_END)) then DATE_END else null";
+                    rr:datatype xsd:date
                 ] ;
         ] .
 
@@ -851,6 +840,19 @@ tedm:ProcedureTerm a rr:TriplesMap ;
 
                 ]
         ] .
+tedm:ContractTermProcedure a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasContractNatureType ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:contractNature ;
+                    rr:joinCondition [
+                        rr:child "lower-case(../OBJECT_CONTRACT/TYPE_CONTRACT/@CTYPE)";
+                        rr:parent "code.value";
+                    ];
+                ] ;
+        ] .
 tedm:MultipleStageProcedureTerm a rr:TriplesMap ;
     rr:predicateObjectMap
         [
@@ -859,8 +861,8 @@ tedm:MultipleStageProcedureTerm a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:MultipleStageProcedureIndefiniteDuration;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ]
         ] ;
@@ -871,8 +873,8 @@ tedm:MultipleStageProcedureTerm a rr:TriplesMap ;
             [
                 rr:parentTriplesMap tedm:MultipleStageProcedurePeriod;
                 rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:child "path()";
+                    rr:parent "path()";
                 ];
             ]
         ] ;
@@ -890,8 +892,8 @@ tedm:MultipleStageProcedurePeriod a rr:TriplesMap ;
             rr:predicate epo:hasBeginning ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(QS/DATE_START)) then QS/DATE_START || 'T00:00:00' else null";
-                    rr:datatype xsd:dateTime
+                    rml:reference "if(exists(QS/DATE_START)) then QS/DATE_START else null";
+                    rr:datatype xsd:date
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -899,8 +901,8 @@ tedm:MultipleStageProcedurePeriod a rr:TriplesMap ;
             rr:predicate epo:hasEnd ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(QS/DATE_END)) then QS/DATE_END || 'T00:00:00' else null";
-                    rr:datatype xsd:dateTime
+                    rml:reference "if(exists(QS/DATE_END)) then QS/DATE_END |else null";
+                    rr:datatype xsd:date
                 ] ;
         ] .
 tedm:Fund a rr:TriplesMap ;

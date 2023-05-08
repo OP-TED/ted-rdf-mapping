@@ -4,7 +4,15 @@
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 epd:id_2020-S-034-081504_Notice a epo:CompetitionNotice, epo:Notice;
@@ -38,6 +46,9 @@ epd:id_2020-S-185-447782_ContractTermLotLocation_P8CuD8GqVLWXSaTLMofydw a dct:Lo
 epd:id_2020-S-185-447782_ContractTermLot_P8CuD8GqVLWXSaTLMofydw a epo:ContractTerm;
   epo:definesSpecificPlaceOfPerformance epd:id_2020-S-185-447782_ContractTermLotLocation_P8CuD8GqVLWXSaTLMofydw .
 
+epd:id_2020-S-185-447782_ContractTermProcedure_ZawHchWgNLRXJz7Dmxd4ot a epo:ContractTerm;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works> .
+
 epd:id_2020-S-185-447782_LotAwardOutcome_edeNvwWnVWhNZFpmnH8pqw a epo:LotAwardOutcome;
   epo:describesLot epd:id_2020-S-185-447782_Lot_P8CuD8GqVLWXSaTLMofydw;
   epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw>;
@@ -63,6 +74,7 @@ epd:id_2020-S-185-447782_Notice a epo:Notice, epo:ResultNotice;
   epo:announcesRole epd:id_2020-S-185-447782_Buyer_GiTM9QtjthUkynwBgQTQef, epd:id_2020-S-185-447782_Reviewer_VUXrs2cUUgoHUhmUNsV8RN;
   epo:hasDispatchDate "2020-09-18"^^xsd:date;
   epo:hasID epd:id_2020-S-185-447782_NoticeIdentifier_dFqaMxKQHDM2WYAKEJiEqP;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0023>;
   epo:hasPublicationDate "20200923";
   epo:refersToLot epd:id_2020-S-185-447782_Lot_P8CuD8GqVLWXSaTLMofydw;
   epo:refersToPrevious epd:id_2020-S-034-081504_Notice;
@@ -92,14 +104,13 @@ epd:id_2020-S-185-447782_ProcedureIdentifier_dFqaMxKQHDM2WYAKEJiEqP a epo:Identi
   epo:hasIdentifierValue "ENOTICES-ECAS_n002uqsc/2020-022007" .
 
 epd:id_2020-S-185-447782_ProcedurePurpose_dFqaMxKQHDM2WYAKEJiEqP a epo:Purpose;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works>;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/45000000> .
 
 epd:id_2020-S-185-447782_Procedure_dFqaMxKQHDM2WYAKEJiEqP a epo:Procedure;
+  epo:foreseesContractSpecificTerm epd:id_2020-S-185-447782_ContractTermProcedure_ZawHchWgNLRXJz7Dmxd4ot;
   epo:hasDescription "Обект на концесията е Балнеоложкият комплекс — Център за рекреация и отдих в с. Шипково, община Троян (обект на концесията) е разположен върху поземлени имоти — частна общинска собственост, с идентификатори 83212.501.1109 и 83212.501.1110 по кадастралната карта и кадастралните регистри (КККР). Центърът за рекреация и отдих е урегулиран с ПУП — ПРЗ през 2017 г., като е обособен като УПИ II-1109, 1110 в кв. 114 на с. Шипково, който е отреден „за басейн и курортни дейности“. Центърът за рекреация и отдих е с административен адрес с. Шипково, п.к. 5663, к.з. „Баните“, ул. „Шипковски бани“, община Троян, област Ловеч. Обектът на концесията представлява Център за рекреация и отдих, състоящ се от следните строежи, които формират плажна зона с плувни басейни, балнеолечебница иполиклиника"@bg;
   epo:hasEstimatedValue epd:id_2020-S-185-447782_MonetaryValueProcedure_dFqaMxKQHDM2WYAKEJiEqP;
   epo:hasID epd:id_2020-S-185-447782_ProcedureIdentifier_dFqaMxKQHDM2WYAKEJiEqP;
-  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0023>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot epd:id_2020-S-185-447782_Lot_P8CuD8GqVLWXSaTLMofydw;
   epo:hasPurpose epd:id_2020-S-185-447782_ProcedurePurpose_dFqaMxKQHDM2WYAKEJiEqP;
