@@ -1,6 +1,6 @@
 [#_technical-mapping-modularisation-chapter]
 === Create RML Rules Modules
-Forms tend to have similar or identical sections i.e. represent the same information. For example form F03 and F06 have the same section 1 which is the information about the contract authority.
+Forms tend to have similar or identical sections, i.e., represent the same information. For example form F03 and F06 have the same section 1 which is the information about the contract authority.
 
 In order to not write transformation rules twice (for section 1 of F03 and section 1 of F06), we have set up a module system which consists of writing transformation rules that are reusable by several forms. This gives us the following advantages:
 
@@ -46,43 +46,73 @@ This module is extended in the main file of F03 by adding the logicalSource and 
 ----
 
 The modules are stored in the ted-rdf-mapping project in the `src/mappings` folder.
-For the moment we covered five modules that represent the five sections of F03 and part of F06/F25, and one for Annex D1, which is part of F03. The modules are:
+For the moment we covered seven sections of F03, F06, F13, F20, F21, F22, F23, and F25, and three Annexes,
+Annex D1, Annex D2, and Annex D4. The mapping is performed with the generic mapping rules, i.e., those that are applicable across mapping suite packages:
 
 * s1_contracting_authority.rml.ttl
 * s2_object.rml.ttl
+* s3_legal_economic_financial.rml.ttl
 * s4_procedure.rml.ttl
 * s5_award_of_contract.rml.ttl
 * s6_complementary_information.rml.ttl
+* s7_modifications_to_contract.rml.ttl
 * annex_d1.rml.ttl
+* annex_d2.rml.ttl
+* annex_d4.rml.ttl
 
-The project contains one `src/mappings` folder containing all the modules files and one "main" entry point mapping file for each form package. Here is a representation:
+and with the specific mapping rule, i.e., those that are applicable only on one package:
+
+* technical_mapping_F03.rml.ttl
+* technical_mapping_F06.rml.ttl
+* technical_mapping_F13.rml.ttl
+* technical_mapping_F20.rml.ttl
+* technical_mapping_F21.rml.ttl
+* technical_mapping_F22.rml.ttl
+* technical_mapping_F23.rml.ttl
+* technical_mapping_F25.rml.ttl
+
+The project contains one `src/mappings` folder containing all the mapping rule files and one "main" entry point mapping file for each form mapping suite package.
+The main entry point `package_FXX/transformation/mappings` contains the mapping rules which are related with the mapping suite package, either generic or
+specific. Below one can see a representation of the described architecture:
 
 ----
 /ted-rdf-mapping
-	/XXX
 	/mappings
 		/package_F03
 			/transformation
-				XXXX
+				/resources
 				/mappings
+                    annex_d1.rml.ttl
 					...
 					technical_mapping_F03.rml.ttl
-		/package_FXX
+        ...
+		/package_F25
 			/transformation
-				XXXX
+				/resources
 				/mappings
+                    annex_d4.rml.ttl
 					...
-					technical_mapping_FXX.rml.ttl
+					technical_mapping_F25.rml.ttl
 	/src
 		/mappings
-			annex_d1.rml.ttl
-			s1_contracting_authority.rml.ttl
-			s2_object.rml.ttl
-			s4_procedure.rml.ttl
-			s5_award_of_contract.rml.ttl
-			s6_complementary_information.rml.ttl
-			technical_mapping_F03.rml.ttl
-			technical_mapping_FXX.rml.ttl
+            s1_contracting_authority.rml.ttl
+            s2_object.rml.ttl
+            s3_legal_economic_financial.rml.ttl
+            s4_procedure.rml.ttl
+            s5_award_of_contract.rml.ttl
+            s6_complementary_information.rml.ttl
+            s7_modifications_to_contract.rml.ttl
+            annex_d1.rml.ttl
+            annex_d2.rml.ttl
+            annex_d4.rml.ttl
+            technical_mapping_F03.rml.ttl
+            technical_mapping_F06.rml.ttl
+            technical_mapping_F13.rml.ttl
+            technical_mapping_F20.rml.ttl
+            technical_mapping_F21.rml.ttl
+            technical_mapping_F22.rml.ttl
+            technical_mapping_F23.rml.ttl
+            technical_mapping_F25.rml.ttl
 ----
 
 

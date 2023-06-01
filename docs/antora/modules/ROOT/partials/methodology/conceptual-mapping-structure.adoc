@@ -8,6 +8,7 @@ It consists of several important worksheets:
 
 * Metadata sheet: provides important technical and descriptive information about the mapping suite
 * Resources sheet: provides the list of resources used in the technical mappings. This list is used to automatically populate the mapping suite with indicated resources files.
+* RML Modules sheet: provides the list of RML modules used for mapping suite package at hand.
 * Rules sheet: provides the actual set of mapping rules
 * Misc: there are additional optional worksheets added by the semantic engineers to manage additional information.
 
@@ -16,20 +17,18 @@ https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQ
 |===
 |*Cell refs.*|*Header for content*|*Description*|*Notes*
 
-|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B2[B2]|Form number|Standard Form number (one of _F03_-_F08_, _F12_-_F25_, _T1_ or _T2_). For multiple forms a comma separated list can be used.|See list of standard forms https://simap.ted.europa.eu/standard-forms-for-public-procurement[here]
-|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B3[B3]|Legal Basis|Filter for the directives that constitute the legal bases for the notice. For multiple directives a comma separated list can be used. For any value the character * can be used.|Examples: D24 / D23, D25 / R1370
-|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B4[B4]|Year|Filter for the year when the notice was published. For multiple years a comma separated list or ranges of the form _startYear-endYear_, or a combination of these two can be used. For any value the character * can be used.|Valid examples: 2018 / 2016-2020 / 2016, 2018-2020
-|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B5[B5]|Notice type (eForms)|[TODO]|
-|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B6[B6]|Form type (eForms)|[TODO]|
-|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B7[B7]|Mapping Version|A version number for the current mapping table. The version number should be increased for each “released” version of the mapping table that is different from the previously released version, following https://semver.org/[semantic versioning] practices.|Example values: 0.1.0 / 1.0.0-beta / 1.1.0 / 2.3.2
-
-|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B8[B8]|EPO version|The version number of EPO to which the mapping is done.|
-|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B9[B9]|XSD version number(s)|The version number of the TED XML Schema file. Ranges should be also allowed. For multiple versions a comma separated list or ranges of the form (_startVersion, endVersion)_, or a combination of these two can be used. For any value the character * can be used.|Example values: R2.0.9.S05 (this includes all intermediary versions of R2.0.9.S05.E01, such as R2.0.9.S05.E01_001-20210730) /
- R2.0.9.S04.E01_002-20201027, R2.0.9.S04.E01_001-20201008 /
-(R2.0.9.S03.E01_005-20180515, R2.0.9.S03.E01_010-20200224] /
-Theoretically anything like this could be used: (,1.0],[1.2,)
-
-||||
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B3[B3]|Identifier|Standard Form number (one of _F03_-_F08_, _F12_-_F25_, _T1_ or _T2_). For multiple forms a comma separated list can be used.|See list of standard forms https://simap.ted.europa.eu/standard-forms-for-public-procurement[here]
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B4[B4]|Title|A title given to the conceptual mapping|Example: any string
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B5[B5]|Description|A description for the conceptual mapping|Example: any string
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B6[B6]|Mapping Version|A version number for the conceptual mapping|See details about versioning xref:versioning.adoc[here]
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B7[B7]|ePO Version|A number which indicates the version of ePO|Example: 3.0.0/ 3.0.1
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B8[B8]|Base XPath|The XPath which is used as basis in all iterators of Triples Map|Example: TED_EXPORT/FORM_SECTION/F03_2014/, TED_EXPORT/FORM_SECTION/F06_2014/, /*
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B11[B11]|eForms Subtype|Comma separated list, can be one or a few; a value that helps semantic engineers understand what type of
+https://docs.google.com/spreadsheets/d/1Nt1r-GVRxsZecDPWHa_xdNH8sfbv5Gr_/edit#gid=769953505[eForm] they are dealing with|Example: 4,12,13
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B12[B12]|Start Date|The start date of the conceptual mapping|Example: one value in format (yyyy-mm-dd), or empty cell
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B13[B13]|Start Date|The end date of the conceptual mapping|Example: one value in format (yyyy-mm-dd), or empty cell
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B14[B14]|Min XSD Version|The min acceptable XSD Version|Example: R2.0.9.S04.E01
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=0&range=B15[B15]|Max XSD Version|The max acceptable XSD Version|Example: R2.0.9.S04.E01
 |===
 
 https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=222960787[Resources sheet]
@@ -37,10 +36,17 @@ https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQ
 |===
 |*Cell refs.*|*Header for content*|*Description*|*Notes*
 
-|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=222960787&range=A2:A[A2:A]|File name|The name of the resource files that are used by the mappings and need to be present in the +resources +folder.|
-||||
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=222960787&range=A2:A[A2:A]|File name|The name of resource files that are used by the mappings and need to be present in the +resources +folder.|
 |===
 
+https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=1726830262[RML_Modules sheet]
+
+|===
+|*Cell refs.*|*Header for content*|*Description*|*Notes*
+
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=1726830262&range=A2:A[A2:A]|File name|The name of the RML mapping files included in the conceptual mapping|
+|https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=1726830262&range=B2:A[B2:A]|Comment (Optional)|Comments for the RML mapping files included in the conceptual mapping|
+|===
 
 https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674[Rules sheet]
 
@@ -61,6 +67,5 @@ _s p1 o1.   o1 p2 o2.   o2 p3 o._|Mandatory
 _s p1 o1.   o1 p2 o2.   o2 p3 o._|Mandatory
 |https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674&range=I3:I[I3:I]|Triple fingerprint (O)|[TODO]|Optional
 |https://docs.google.com/spreadsheets/d/1iSk02YD7lfPByKnBDU4Z2XiBjY6zCqMP79uyydiQxxU/edit#gid=435265674&range=J3:J[J3:J]|Fragment fingerprint (O)|[TODO]|Optional
-||||
 |===
 
