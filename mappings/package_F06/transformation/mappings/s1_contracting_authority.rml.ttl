@@ -114,8 +114,8 @@ tedm:AdditionalBuyer a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:AdditionalContactPoint;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ] ;
         ] ;
@@ -126,8 +126,8 @@ tedm:AdditionalBuyer a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:AdditionalOrganisation;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ] ;
         ] ;
@@ -148,8 +148,8 @@ tedm:AdditionalBuyerCP a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:AdditionalContactPoint;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ] ;
         ] ;
@@ -160,8 +160,8 @@ tedm:AdditionalBuyerCP a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:AdditionalOrganisation;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ] ;
         ] ;
@@ -193,8 +193,8 @@ tedm:AdditionalOrganisation a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:AdditionalOrganisationAddress;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ]
         ] ;
@@ -205,8 +205,8 @@ tedm:AdditionalOrganisation a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:AdditionalOrganisationIdentifier;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ]
         ] .
@@ -484,7 +484,8 @@ tedm:Organisation a rr:TriplesMap ;
             rr:predicate epo:hasBuyerLegalTypeDescription ;
             rr:objectMap
                 [
-                    rml:reference "../CA_TYPE_OTHER"
+                    #rml:reference "../CA_TYPE_OTHER"
+                    rml:reference "if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then ../CA_TYPE_OTHER else null";
                 ] ;
         ] .
 tedm:OrganisationIdentifier a rr:TriplesMap ;
@@ -780,8 +781,8 @@ tedm:InformationProviderOrganisation a rr:TriplesMap ;
 #                [
 #                    rr:parentTriplesMap tedm:InformationProviderOrganisationChannel;
 #                    rr:joinCondition [
-#                        rr:child "if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null";
-#                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                        rr:child "if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then path() else null";
+#                        rr:parent "path()";
 #                    ];
 #                ]
 #        ] ;

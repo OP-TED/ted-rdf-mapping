@@ -4,7 +4,15 @@
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 epd:id_2021-S-139-371255_Notice a epo:Notice;
@@ -31,6 +39,9 @@ epd:id_2022-S-081-219618_ContractTermLotLocation_2CGqCA6RtpGdBFNYKTn6pW a dct:Lo
 epd:id_2022-S-081-219618_ContractTermLot_2CGqCA6RtpGdBFNYKTn6pW a epo:ContractTerm;
   epo:definesSpecificPlaceOfPerformance epd:id_2022-S-081-219618_ContractTermLotLocation_2CGqCA6RtpGdBFNYKTn6pW;
   epo:hasOptions false .
+
+epd:id_2022-S-081-219618_ContractTermProcedure_2dqcQBqWnGPpMYpB3A3AQZ a epo:ContractTerm;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies> .
 
 epd:id_2022-S-081-219618_Contract_LUfJxzndLJ5ZGC8R3pQ4x4 a epo:Contract;
   epo:hasContractConclusionDate "2022-04-06"^^xsd:date;
@@ -62,6 +73,7 @@ epd:id_2022-S-081-219618_Notice a epo:Notice, epo:ResultNotice;
   epo:announcesTender epd:id_2022-S-081-219618_Tender_eynaMdVatR9UmjBHxNRtXT;
   epo:hasDispatchDate "2022-04-21"^^xsd:date;
   epo:hasID epd:id_2022-S-081-219618_NoticeIdentifier_MwWaD6Q9ULXGJmeajjeiuR;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
   epo:hasPublicationDate "20220426";
   epo:refersToLot epd:id_2022-S-081-219618_Lot_2CGqCA6RtpGdBFNYKTn6pW;
   epo:refersToPrevious epd:id_2021-S-139-371255_Notice;
@@ -90,13 +102,12 @@ epd:id_2022-S-081-219618_ProcedureIdentifier_MwWaD6Q9ULXGJmeajjeiuR a epo:Identi
   epo:hasIdentifierValue "14B01122M1" .
 
 epd:id_2022-S-081-219618_ProcedurePurpose_MwWaD6Q9ULXGJmeajjeiuR a epo:Purpose;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/32000000> .
 
 epd:id_2022-S-081-219618_Procedure_MwWaD6Q9ULXGJmeajjeiuR a epo:Procedure;
+  epo:foreseesContractSpecificTerm epd:id_2022-S-081-219618_ContractTermProcedure_2dqcQBqWnGPpMYpB3A3AQZ;
   epo:hasDescription """APOYOS METÁLICOS PARA LÍNEAS DE AT 132kV FERROL		"""@es;
   epo:hasID epd:id_2022-S-081-219618_ProcedureIdentifier_MwWaD6Q9ULXGJmeajjeiuR;
-  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot epd:id_2022-S-081-219618_Lot_2CGqCA6RtpGdBFNYKTn6pW;
   epo:hasPurpose epd:id_2022-S-081-219618_ProcedurePurpose_MwWaD6Q9ULXGJmeajjeiuR;
