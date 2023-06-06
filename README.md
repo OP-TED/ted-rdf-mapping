@@ -44,7 +44,7 @@ The following table indicates the implementation status of TED Standard Forms, s
 | can-social | **Yes** | **F21** | **F23** |      **F22**      |
 | can-desg | **Yes** | **F13** | **na** |      **F13**      |
 | can-modif |  | F20 | F20 |        F20        |
-| corr (eforms excel treats this as a change to a notice but implementation treats as new form) |  | F14 | F14 |        F14        |
+| corr  |  | F14 | F14 |        F14        |
 | pin-tran |  | na | na |        na         |
 | can-tran |  | na | na |        na         |
 
@@ -77,6 +77,27 @@ You are more than welcome to help expand and mature this project.
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
 
 Please note we adhere to [Apache code of conduct](https://www.apache.org/foundation/policies/conduct), please follow it in all your interactions with the project.  
+
+## Milestones
+
+Each milestone corresponds to a foreseen release of the ontology.
+
+## Issue labels
+
+The issues are classified based on for classification dimensions: 
+* type label
+  * bug - something implemented incorrectly in a release
+  * missing feature - something expected but missing from a release   
+  * feature request - something requested to be implemented in a future release
+  * implementation question - something needs clarified, refined or decided before the implementation can continue
+  * release question - something needs clarified before a release is considered accepted
+* action label
+  * for implementation - it can be implemented and closed, all is clear
+  * for closing - it can be closed but an additional confirmation is needed
+* auxiliary label
+  * ppds - it is related to the PPDS project
+  * bdti - it is related to the BDTI project
+
 
 # Licence 
 
