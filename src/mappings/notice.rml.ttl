@@ -206,7 +206,12 @@ tedm:Notice a rr:TriplesMap ;
             rr:predicate epo:announcesTender ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:Tender
+                    #rml:reference "if(not exists(/TED_EXPORT/FORM_SECTION/F20_2014[1])) then 'http://data.europa.eu/a4g/ontology#PlanningNotice' else null "
+                    rr:parentTriplesMap tedm:Tender;
+                    rr:joinCondition [
+                        rr:child "if (not exists(/TED_EXPORT/FORM_SECTION/F20_2014)) then true else false";
+                        rr:parent "true";
+                    ];
                 ] ;
         ] .
 tedm:NoticeIdentifier a rr:TriplesMap ;
