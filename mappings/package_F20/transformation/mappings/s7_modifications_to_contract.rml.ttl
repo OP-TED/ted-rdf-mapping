@@ -293,7 +293,7 @@ tedm:LotAwardOutcomeAwardedMonetaryValueModification a rr:TriplesMap ;
             rr:predicate epo:hasAmountValue ;
             rr:objectMap
                 [
-                    rml:reference "DESCRIPTION_PROCUREMENT/VALUES/VAL_TOTAL | DESCRIPTION_PROCUREMENT/VAL_TOTAL";
+                    rml:reference "if(exists(/TED_EXPORT/FORM_SECTION/F20_2014)) then INFO_MODIFICATIONS/VALUES/VAL_TOTAL_AFTER | INFO_MODIFICATIONS/VAL_TOTAL_AFTER else DESCRIPTION_PROCUREMENT/VALUES/VAL_TOTAL | DESCRIPTION_PROCUREMENT/VAL_TOTAL";
                     rr:datatype xsd:decimal
                 ] ;
         ] ;
@@ -304,7 +304,7 @@ tedm:LotAwardOutcomeAwardedMonetaryValueModification a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:currency;
                     rr:joinCondition [
-                        rr:child "DESCRIPTION_PROCUREMENT/VALUES/VAL_TOTAL/@CURRENCY | DESCRIPTION_PROCUREMENT/VAL_TOTAL/@CURRENCY";
+                        rr:child "if(exists(/TED_EXPORT/FORM_SECTION/F20_2014)) then INFO_MODIFICATIONS/VALUES/VAL_TOTAL_AFTER/@CURRENCY | INFO_MODIFICATIONS/VAL_TOTAL_AFTER/@CURRENCY else DESCRIPTION_PROCUREMENT/VALUES/VAL_TOTAL/@CURRENCY | DESCRIPTION_PROCUREMENT/VAL_TOTAL/@CURRENCY";
                         rr:parent "code.value";
                     ];
                 ] ;
