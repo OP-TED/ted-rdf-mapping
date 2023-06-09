@@ -209,7 +209,7 @@ tedm:LotAwardOutcomeAwardedMonetaryValue a rr:TriplesMap ;
             rr:predicate epo:hasAmountValue ;
             rr:objectMap
                 [
-                    rml:reference "AWARDED_CONTRACT/VALUES/VAL_TOTAL | AWARDED_CONTRACT/VALUE/VAL_TOTAL | AWARDED_CONTRACT/VAL_TOTAL";
+                    rml:reference "if(exists(/TED_EXPORT/FORM_SECTION/F20_2014)) then INFO_MODIFICATIONS/VALUES/VAL_TOTAL_BEFORE | INFO_MODIFICATIONS/VAL_TOTAL_BEFORE else AWARDED_CONTRACT/VALUES/VAL_TOTAL | AWARDED_CONTRACT/VALUE/VAL_TOTAL | AWARDED_CONTRACT/VAL_TOTAL";
                     rr:datatype xsd:decimal
                 ] ;
         ] ;
@@ -220,7 +220,7 @@ tedm:LotAwardOutcomeAwardedMonetaryValue a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:currency;
                     rr:joinCondition [
-                        rr:child "AWARDED_CONTRACT/VALUES/VAL_TOTAL/@CURRENCY | AWARDED_CONTRACT/VALUE/VAL_TOTAL/@CURRENCY | AWARDED_CONTRACT/VAL_TOTAL/@CURRENCY";
+                        rr:child "if(exists(/TED_EXPORT/FORM_SECTION/F20_2014)) then INFO_MODIFICATIONS/VALUES/VAL_TOTAL_BEFORE/@CURRENCY  | INFO_MODIFICATIONS/VAL_TOTAL_BEFORE/@CURRENCY else AWARDED_CONTRACT/VALUES/VAL_TOTAL/@CURRENCY | AWARDED_CONTRACT/VALUE/VAL_TOTAL/@CURRENCY | AWARDED_CONTRACT/VAL_TOTAL/@CURRENCY";
                         rr:parent "code.value";
                     ];
                 ] ;
@@ -267,8 +267,8 @@ tedm:LotAwardOutcome a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:LotAwardOutcomeAwardedMonetaryValue;
                     rr:joinCondition [
-                        rr:child "path()";
-                        rr:parent "path()";
+                        rr:child "if(exists(/TED_EXPORT/FORM_SECTION/F20_2014)) then path(..) else path()";
+                        rr:parent "if(exists(/TED_EXPORT/FORM_SECTION/F20_2014)) then path(..) else path()";
                     ];
                 ] ;
         ] ;
