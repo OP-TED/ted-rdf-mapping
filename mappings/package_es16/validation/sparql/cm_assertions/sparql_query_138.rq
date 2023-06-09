@@ -1,0 +1,10 @@
+#title: BT-93-Lot ND-Lot.ND-LotTenderingTerms.ND-PostAwarProcess.BT-93-Lot - BT-93-Lot
+#description: “BT-93-Lot ND-Lot.ND-LotTenderingTerms.ND-PostAwarProcess.BT-93-Lot - BT-93-Lot” in SF corresponds to “BT-93 Electronic Payment” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:PostAwardProcess/cbc:ElectronicPaymentUsageIndicator. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / xsd:boolean .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:PostAwardProcess/cbc:ElectronicPaymentUsageIndicator
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+		?this rdf:type epo:Lot .
+		?this epo:foreseesContractSpecificTerm / epo:hasEPayment ?value . }

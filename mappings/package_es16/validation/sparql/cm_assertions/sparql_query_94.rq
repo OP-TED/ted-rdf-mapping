@@ -1,0 +1,10 @@
+#title: BT-109-Lot ND-Lot.ND-LotTenderingProcess.ND-FA.BT-109-Lot - BT-109-Lot
+#description: “BT-109-Lot ND-Lot.ND-LotTenderingProcess.ND-FA.BT-109-Lot - BT-109-Lot” in SF corresponds to “BT-109 Framework Duration Justification” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:FrameworkAgreement/cbc:Justification. The expected ontology instances are epo: epo:Lot / epo:FrameworkAgreementTerm / rdf:langString .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:FrameworkAgreement/cbc:Justification
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+		?this rdf:type epo:Lot .
+		?this epo:isSubjectToLotSpecificTerm / epo:hasDurationExtensionJustification ?value . }

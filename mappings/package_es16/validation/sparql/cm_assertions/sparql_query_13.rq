@@ -1,0 +1,10 @@
+#title: ND-LocalLegalBasisWithID ND-ProcedureTerms.ND-LocalLegalBasisWithID - ND-LocalLegalBasisWithID
+#description: “ND-LocalLegalBasisWithID ND-ProcedureTerms.ND-LocalLegalBasisWithID - ND-LocalLegalBasisWithID” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /*/cac:TenderingTerms/cac:ProcurementLegislationDocumentReference[not(cbc:ID/text()=('CrossBorderLaw','LocalLegalBasis'))]. The expected ontology instances are epo: epo:Procedure / at-voc:legal-basis .
+#xpath: /*/cac:TenderingTerms/cac:ProcurementLegislationDocumentReference[not(cbc:ID/text()=('CrossBorderLaw','LocalLegalBasis'))]
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+		?this rdf:type epo:Procedure .
+		?this epo:hasLegalBasis ?value }

@@ -1,0 +1,10 @@
+#title: BT-78-Lot ND-Lot.ND-LotTenderingTerms.BT-78-Lot - BT-78-Lot
+#description: “BT-78-Lot ND-Lot.ND-LotTenderingTerms.BT-78-Lot - BT-78-Lot” in SF corresponds to “BT-78 Security Clearance Deadline” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cbc:LatestSecurityClearanceDate. The expected ontology instances are epo: epo:Lot / epo:SecurityClearanceTerm / xsd:dateTime .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cbc:LatestSecurityClearanceDate
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+		?this rdf:type epo:Lot .
+		?this epo:isSubjectToLotSpecificTerm / epo:hasDeadline ?value }

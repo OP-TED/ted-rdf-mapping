@@ -1,0 +1,10 @@
+#title: BT-767-Lot ND-Lot.ND-LotTenderingProcess.ND-AuctionTerms.BT-767-Lot - BT-767-Lot
+#description: “BT-767-Lot ND-Lot.ND-LotTenderingProcess.ND-AuctionTerms.BT-767-Lot - BT-767-Lot” in SF corresponds to “BT-767 Electronic Auction” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:AuctionTerms/cbc:AuctionConstraintIndicator. The expected ontology instances are epo: epo:Lot / epo:EAuctionTechniqueUsage / at-voc:usage .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:AuctionTerms/cbc:AuctionConstraintIndicator
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+		?this rdf:type epo:Lot .
+		?this epo:usesTechnique / epo:hasUsage ?value }

@@ -1,0 +1,10 @@
+#title: BT-13(d)-Lot ND-Lot.ND-LotTenderingProcess.ND-LotInfoRequestPeriod.BT-13(d)-Lot - BT-13(d)-Lot
+#description: “BT-13(d)-Lot ND-Lot.ND-LotTenderingProcess.ND-LotInfoRequestPeriod.BT-13(d)-Lot - BT-13(d)-Lot” in SF corresponds to “BT-13 Additional Information Deadline” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:AdditionalInformationRequestPeriod/cbc:EndDate. The expected ontology instances are epo: epo:Lot / epo:AccessTerm / xsd:dateTime .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:AdditionalInformationRequestPeriod/cbc:EndDate
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+		?this rdf:type epo:Lot .
+		?this epo:isSubjectToLotSpecificTerm  / epo:hasAdditionalInformationDeadline ?value . }
