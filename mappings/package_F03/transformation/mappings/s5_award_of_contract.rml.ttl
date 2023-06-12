@@ -162,8 +162,8 @@ tedm:Contract a rr:TriplesMap ;
 #                        rr:parent "if (count(../OBJECT_DESCR)=1) then ./@ITEM else ./LOT_NO";
 #                        rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)=1) then ../OBJECT_CONTRACT/OBJECT_DESCR else ./LOT_NO";
 #                        rr:parent "if (count(../OBJECT_DESCR)=1) then ../OBJECT_DESCR else ./LOT_NO";
-                        rr:child "if ((../NOTICE/@TYPE='AWARD_CONTRACT' or ../NOTICE/@TYPE='CONCESSION_AWARD_CONTRACT') and count(../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ./LOT_NO";
-                        rr:parent "if ((../NOTICE/@TYPE='AWARD_CONTRACT' or ../NOTICE/@TYPE='CONCESSION_AWARD_CONTRACT') and count(../OBJECT_DESCR)=1) then (if(exists(./@ITEM)) then ./@ITEM else 1) else ./LOT_NO   ";
+                        rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)=1) then 1 else ./LOT_NO";
+                        rr:parent "if (count(../OBJECT_DESCR)=1) then (if(exists(./@ITEM)) then ./@ITEM else 1) else ./LOT_NO   ";
 #                        rr:child "if (count(../OBJECT_CONTRACT/OBJECT_DESCR)>1) then ./LOT_NO else 1";
 #                        rr:parent "if (count(../OBJECT_DESCR)>1) then ./LOT_NO else if(exists(./@ITEM)) then ./@ITEM else 1";
                     ];
@@ -349,7 +349,7 @@ tedm:LotAwardOutcome a rr:TriplesMap ;
             rr:predicate epo:hasAwardStatus;
             rr:objectMap
                 [
-                    rml:reference "if(exists(NO_AWARDED_CONTRACT) or exists(NO_AWARDED_PRIZE)) then 'http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw' else if(exists(AWARDED_CONTRACT)) then 'http://publications.europa.eu/resource/authority/winner-selection-status/selec-w' else null";
+                    rml:reference "if(exists(NO_AWARDED_CONTRACT) or exists(NO_AWARDED_PRIZE)) then 'http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw' else if(exists(AWARDED_CONTRACT) or exists(AWARDED_PRIZE)) then 'http://publications.europa.eu/resource/authority/winner-selection-status/selec-w' else null";
                     rr:termType rr:IRI;
                 ]
         ] ;
