@@ -334,6 +334,14 @@ tedm:Lot a rr:TriplesMap ;
                 ];
             ]
         ] ;
+   rr:predicateObjectMap
+        [
+            rr:predicate epo:isSubjectToLotSpecificTerm;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:FrameworkAgreementTermLot
+                ] ;
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:isSubjectToLotSpecificTerm;
@@ -851,6 +859,18 @@ tedm:ContractTermProcedure a rr:TriplesMap ;
                         rr:child "lower-case(../OBJECT_CONTRACT/TYPE_CONTRACT/@CTYPE)";
                         rr:parent "code.value";
                     ];
+                ] ;
+        ] .
+tedm:FrameworkAgreementTermLot a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasDurationExtensionJustification ;
+            rr:objectMap
+                [
+                    rml:reference "JUSTIFICATION";
+                    rml:languageMap [
+                        rml:reference "lower-case(ancestor::*/@LG)"
+                    ]
                 ] ;
         ] .
 tedm:MultipleStageProcedureTerm a rr:TriplesMap ;

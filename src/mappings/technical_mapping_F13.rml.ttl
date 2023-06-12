@@ -1784,31 +1784,16 @@ tedm:country a rr:TriplesMap ;
                 "conceptURI.value" ;
         ] .
 
-#tedm:DesignContestRegimeTerm  a rr:TriplesMap ;
-#    rml:logicalSource
-#        [
-#            rml:source "data/source.xml" ;
-#            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014[1]/RESULTS/AWARDED_PRIZE" ;
-#            rml:referenceFormulation ql:XPath
-#        ] ;
-#    rr:subjectMap
-#        [
-#            rml:reference "if (exists(VAL_PRIZE)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_DesignContestRegimeTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
-#            rr:class epo:DesignContestRegimeTerm
-#        ] .
-#tedm:Prize  a rr:TriplesMap ;
-#    rml:logicalSource
-#        [
-#            rml:source "data/source.xml" ;
-#            rml:iterator "/TED_EXPORT/FORM_SECTION/F13_2014[1]/RESULTS/AWARDED_PRIZE" ;
-#            rml:referenceFormulation ql:XPath
-#        ] ;
-#    rr:subjectMap
-#        [
-#            rml:reference "if (exists(VAL_PRIZE)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_Prize_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
-#            rr:class epo:Prize
-#        ] .
-
+#F13 specific
+tedm:LotAwardOutcome a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasAwardedValue  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MonetaryValueLotPrize
+                ] ;
+        ] .
 tedm:MonetaryValueLotPrize a rr:TriplesMap ;
     rml:logicalSource
         [
@@ -1820,46 +1805,7 @@ tedm:MonetaryValueLotPrize a rr:TriplesMap ;
         [
             rml:reference "if (exists(VAL_PRIZE)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_MonetaryValueLot_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:MonetaryValue
-        ] .
-
-#tedm:Lot a rr:TriplesMap ;
-#    rr:predicateObjectMap
-#        [
-#            rr:predicate epo:isSubjectToLotSpecificTerm ;
-#            rr:objectMap
-#                [
-#                    rr:parentTriplesMap tedm:DesignContestRegimeTerm
-#                ] ;
-#        ] .
-#tedm:DesignContestRegimeTerm a rr:TriplesMap ;
-#    rr:predicateObjectMap
-#        [
-#            rr:predicate epo:definesPrize ;
-#            rr:objectMap
-#                [
-#                    rr:parentTriplesMap tedm:Prize
-#                ] ;
-#        ] .
-
-tedm:LotAwardOutcome a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:describesLot ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:Lot
-                ] ;
-        ] .
-tedm:LotAwardOutcome a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rr:predicate epo:hasAwardedValue  ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MonetaryValueLotPrize
-                ] ;
-        ] .
-tedm:MonetaryValueLotPrize a rr:TriplesMap ;
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasAmountValue ;
