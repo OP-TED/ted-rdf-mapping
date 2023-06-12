@@ -920,12 +920,12 @@ tedm:LotAwardOutcomeAwardedMonetaryValue a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/MODIFICATIONS_CONTRACT" ;
+            rml:iterator "/TED_EXPORT/FORM_SECTION/F20_2014[1]/AWARD_CONTRACT" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
         [
-            rml:reference "if (exists(INFO_MODIFICATIONS/VALUES/VAL_TOTAL_BEFORE) or exists(INFO_MODIFICATIONS/VAL_TOTAL_BEFORE)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_LotAwardOutcomeAwardedMonetaryValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(AWARDED_CONTRACT/VALUES/VAL_TOTAL) or exists(AWARDED_CONTRACT/VALUE/VAL_TOTAL) or exists(AWARDED_CONTRACT/VAL_TOTAL)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_LotAwardOutcomeAwardedMonetaryValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:MonetaryValue
 
         ] .
@@ -1681,7 +1681,7 @@ tedm:LotAwardOutcomeAwardedMonetaryValueModification a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
-            rml:reference "if (exists(INFO_MODIFICATIONS/VALUES/VAL_TOTAL_AFTER) or exists(INFO_MODIFICATIONS/VAL_TOTAL_AFTER)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_LotAwardOutcomeAwardedMonetaryValueModification_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(DESCRIPTION_PROCUREMENT/VALUES/VAL_TOTAL) or exists(DESCRIPTION_PROCUREMENT/VAL_TOTAL)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/TED_EXPORT/CODED_DATA_SECTION/NOTICE_DATA/NO_DOC_OJS, ' ', '-' ), '/' , '-') || '_LotAwardOutcomeAwardedMonetaryValueModification_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:MonetaryValue
         ] .
 #tedm:LotAwardOutcomeRestatedAwardedMonetaryValue a rr:TriplesMap ;
