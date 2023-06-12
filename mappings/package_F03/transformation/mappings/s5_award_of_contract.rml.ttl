@@ -119,15 +119,15 @@ tedm:Contract a rr:TriplesMap ;
 #                rr:parentTriplesMap tedm:BuyerCP;
 #            ] ;
 #    ] ;
-    rr:predicateObjectMap   #specific for F23 and F25
-        [
-            rr:predicate rdf:type;
-            rr:objectMap
-                [
-                    rml:reference "if ((../@FORM='F23' or ../@FORM='F25') and exists(AWARDED_CONTRACT)) then 'http://data.europa.eu/a4g/ontology#ConcessionContract' else null";
-                    rr:termType rr:IRI;
-                ]
-        ] ;
+#    rr:predicateObjectMap   #specific for F23 and F25
+#        [
+#            rr:predicate rdf:type;
+#            rr:objectMap
+#                [
+#                    rml:reference "if ((../@FORM='F23' or ../@FORM='F25') and exists(AWARDED_CONTRACT)) then 'http://data.europa.eu/a4g/ontology#ConcessionContract' else null";
+#                    rr:termType rr:IRI;
+#                ]
+#        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasTitle;
@@ -311,7 +311,7 @@ tedm:LotAwardOutcome a rr:TriplesMap ;
             rr:predicate epo:hasNonAwardedContractTitle;
             rr:objectMap
                 [
-                    rml:reference "if (exists(NO_AWARDED_CONTRACT)) then TITLE else null";
+                    rml:reference "if (not(../NOTICE/@TYPE='CONCESSION_AWARD_CONTRACT' or ../@FORM='F23' or ../@FORM='F25') and exists(NO_AWARDED_CONTRACT)) then TITLE else null";
                     rml:languageMap [
                         rml:reference "lower-case(ancestor::*/@LG)"
                     ]
