@@ -166,7 +166,7 @@ tedm:ProcurementProcessInformation a rr:TriplesMap ;
             rr:predicate epo:isCompetitionTerminated ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(TERMINATION_PIN)) then 'true' else null";
+                    rml:reference "if(exists(TERMINATION_PIN) or exists(../RESULTS/NO_AWARDED_PRIZE)) then 'true' else null";
                     rr:datatype xsd:boolean
                 ] ;
         ] ;
@@ -193,7 +193,7 @@ tedm:FrameworkAgreementTerm a rr:TriplesMap ;
             rr:predicate epo:hasDurationExtensionJustification ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(/TED_EXPORT/FORM_SECTION/F20_2014)) then JUSTIFICATION else FRAMEWORK/JUSTIFICATION";
+                    rml:reference "FRAMEWORK/JUSTIFICATION";
                     rml:languageMap [
                         rml:reference "lower-case(ancestor::*/@LG)"
                     ]
