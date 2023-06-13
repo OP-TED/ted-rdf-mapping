@@ -389,6 +389,18 @@ tedm:ContractIdentifier a rr:TriplesMap ;
 tedm:Winner a rr:TriplesMap ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:contextualisedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Procedure;
+                    rr:joinCondition [
+                        rr:child "if(exists(/TED_EXPORT/FORM_SECTION/F20_2014)) then 'true' else 'false'";
+                        rr:parent "'true'";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate epo:playedBy ;
             rr:objectMap
                 [
@@ -423,6 +435,18 @@ tedm:Winner a rr:TriplesMap ;
 #
 #        ] .
 #tedm:ContractSignatoryonContractorSide a rr:TriplesMap ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:contextualisedBy ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:Procedure;
+#                    rr:joinCondition [
+#                        rr:child "if(exists(/TED_EXPORT/FORM_SECTION/F20_2014)) then 'true' else 'false'";
+#                        rr:parent "'true'";
+#                    ];
+#                ] ;
+#        ] ;
 #    rr:predicateObjectMap
 #        [
 #            rr:predicate epo:playedBy ;
