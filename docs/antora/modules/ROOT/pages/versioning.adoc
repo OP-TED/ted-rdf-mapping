@@ -1,0 +1,73 @@
+= Mapping Suite Versioning Rules
+
+This section presents the versioning rules for mapping suites which considers the mapping suite structure, the conceptual and technical mappings (which impact the structure of the output), and the metadata. These rules play a crucial role in maintaining compatibility and ensuring smooth transitions between different mapping suite versions, especially when considering the potential impact on SPARQL queries on the transformation output.
+
+=== Semantic versioning in a nutshell
+
+“Dependency hell” plagues software management and impacts models, architecture and documentation. As a project expands, the complexity of changes and dependencies increase, complicating the release of new work packages. Version lock and version promiscuity impede progress, making it difficult to move projects forward safely and efficiently.
+
+Semantic Versioning offers a solution by providing a set of rules for assigning and incrementing version numbers. It clearly communicates changes in artefacts through version number increments and change notes, using the *X.Y.Z (Major.Minor.Patch)* format:
+
+* Bug fixes increment the patch version,
+* Backwards-compatible changes increment the minor version, and
+* Backwards-incompatible changes increment the major version.
+
+This approach provides numerous benefits:
+
+* Precise artefact version identification
+* Traceable artefact evolution for governance
+* Minimised client-side impact from artefact changes
+* Prevention of accidental semantic-level compatibility breaks
+* Effortless detection of version incompatibility
+* Clear differentiation of impact and compatibility levels for changes
+* Transparent artefact evolution timeline
+* Manageable artefact version governance (e.g., approval processes, quality gates, parallel versions, branches)
+
+
+=== Backwards compatibility
+
+A new version of the mapping suite is considered to be backwards compatible if it can be read directly by the same software that was able to read the previous version without requiring any modifications in its code.
+
+=== Major version increment
+
+* The mapping suite structure or metadata structure changes.
+
+_Implications:_
+
+* Applications must be aware of major releases and should not use them unless specifically designed to support them. Otherwise, a mapping suite with a major change cannot be read by an existing application (e.g. TED-SWS pipeline, Toolchain, etc.)
+* An example of a change that would break backwards compatibility is renaming, moving, or removing a file in the mapping suite. Another example would be changing the format of the contents of a file in the mapping suite, e.g., switching from RML to YARRML. A more concrete example would be altering the structure of objects inside the metadata file, renaming or removing some properties, or altering the column structure in the conceptual mapping file.
+
+=== Minor version increment
+
+* When the output of the mapping execution produces different results for the same input.
+** Mapping to a new version of the ontology.
+** Changes in mapping rules that would impact SPARQL queries on output data.
+** Deletion of a mapping rule that would impact SPARQL queries on output data.
+* The structure of the mapping suite is extended to accommodate new software features
+
+_Implications:_
+
+* If the output of the mappings impacts a SPARQL query, it is considered a minor change in the mapping suite, even if the impact on the query is major.
+* At first glance, these types of changes may appear quite substantial and potentially incompatible with previous versions. However, it's important to note the definition of backward compatibility we discussed earlier in this section. Backward compatibility is considered broken only when developers are required to make modifications to enable an application to read the new version while still being able to interpret the previous version. Fortunately, in the rules mentioned above, none of the changes require any adjustments within the application itself. Hence, these modifications can be seamlessly adopted without any impact on the application's functionality.
+* The RDF metadata in the output should indicate the ontology version it is compliant with, and the mapping suite version used to generate them, specifying only the major and minor versions (without the patch).
+
+=== Patch version increment
+
+* Variation in the source structure of the mapping that does not affect the output data
+** Mapping to a new XSD version of the source XML schema.
+** Mapping to a new version of the eForms SDK (XSD + JSON).
+* Adding new mapping rules to make the mapping suite more complete.
+* Editorial changes in mapping rules including comments, notes, and remarks.
+
+=== Release labelling
+
+* Pre-release (unstable) versions should be labelled with the suffix "-beta.#" (where # stands for a number e.g. 1,2,3).
+* Release candidate (stable) versions should be labelled with the suffix “-rc.#” (where # stands for a number e.g. 1,2,3). Release candidate versions are issued to allow stakeholders to test and provide final remarks.
+
+_Implications:_
+
+* This helps track unstable, in-development and release candidate versions, but does not impact precedence.
+
+=== Conclussion
+
+By adhering to the versioning rules outlined in this section, developers and maintainers can effectively manage versioning for mapping suites, ensuring compatibility and smooth transitions between different versions. These rules provide clear guidelines for when to increment major, minor and patch versions, considering the potential impact on SPARQL queries on the transformation output. Following these rules will help maintain consistency and compatibility across various systems that rely on the mapping suites.

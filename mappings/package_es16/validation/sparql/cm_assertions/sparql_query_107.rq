@@ -1,0 +1,10 @@
+#title: BT-51-Lot ND-Lot.ND-LotTenderingProcess.ND-SecondStage.BT-51-Lot - BT-51-Lot
+#description: “BT-51-Lot ND-Lot.ND-LotTenderingProcess.ND-SecondStage.BT-51-Lot - BT-51-Lot” in SF corresponds to “BT-51 Maximum Candidates Number” in eForms. The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:EconomicOperatorShortList/cbc:MaximumQuantity. The expected ontology instances are epo: epo:Lot / epo:MultipleStageProcedureTerm / xsd:integer .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:EconomicOperatorShortList/cbc:MaximumQuantity
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+		?this rdf:type epo:Lot .
+		?this epo:isSubjectToLotSpecificTerm / epo:hasMaximumNumberOfCandidates ?value }

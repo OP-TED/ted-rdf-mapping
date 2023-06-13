@@ -1,0 +1,11 @@
+#title: BT-5131-Procedure ND-ProcedureProcurementScope.ND-ProcedurePlacePerformanceAdditionalInformation.ND-ProcedurePlacePerformance.BT-5131-Procedure - BT-5131-Procedure
+#description: “BT-5131-Procedure ND-ProcedureProcurementScope.ND-ProcedurePlacePerformanceAdditionalInformation.ND-ProcedurePlacePerformance.BT-5131-Procedure - BT-5131-Procedure” in SF corresponds to “BT-5131 Place Performance City” in eForms. The corresponding XML element is /*/cac:ProcurementProject/cac:RealizedLocation/cac:Address/cbc:CityName. The expected ontology instances are epo: epo:Procedure / epo:ContractTerm / dct:Location / locn:Address / rdf:langString .
+#xpath: /*/cac:ProcurementProject/cac:RealizedLocation/cac:Address/cbc:CityName
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+		?this rdf:type epo:Procedure .
+		?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:addressArea ?value . }
