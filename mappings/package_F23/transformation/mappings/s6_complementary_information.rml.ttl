@@ -21,10 +21,10 @@ tedm:complementary_information
   rdfs:label "TED-SWS mapping of "@en ;
   dct:date "2022-05-11"^^xsd:date .
 
-tedm:Lot a rr:TriplesMap ;
+tedm:Procedure a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:isSubjectToLotSpecificTerm ;
+            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:ReviewTerm
@@ -41,6 +41,18 @@ tedm:ReviewTerm a rr:TriplesMap ;
         ] .
 
 tedm:Reviewer a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:contextualisedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Procedure;
+                    rr:joinCondition [
+                        rr:child "if(exists(/TED_EXPORT/FORM_SECTION/F20_2014)) then 'true' else 'false'";
+                        rr:parent "'true'";
+                    ];
+                ] ;
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:playedBy ;
@@ -213,6 +225,18 @@ tedm:ReviewerOrganisationAddress a rr:TriplesMap ;
 tedm:Mediator a rr:TriplesMap ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:contextualisedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Procedure;
+                    rr:joinCondition [
+                        rr:child "if(exists(/TED_EXPORT/FORM_SECTION/F20_2014)) then 'true' else 'false'";
+                        rr:parent "'true'";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate epo:playedBy ;
             rr:objectMap
                 [
@@ -380,6 +404,18 @@ tedm:MediatorOrganisationAddress a rr:TriplesMap ;
         ] .
 
 tedm:ReviewProcedureInformationProvider a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:contextualisedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Procedure;
+                    rr:joinCondition [
+                        rr:child "if(exists(/TED_EXPORT/FORM_SECTION/F20_2014)) then 'true' else 'false'";
+                        rr:parent "'true'";
+                    ];
+                ] ;
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:playedBy ;

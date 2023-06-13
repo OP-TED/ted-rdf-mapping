@@ -109,13 +109,25 @@ tedm:BuyerOrganisationGroup a rr:TriplesMap ;
 tedm:AdditionalBuyer a rr:TriplesMap ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:contextualisedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Procedure;
+                    rr:joinCondition [
+                        rr:child "if(exists(/TED_EXPORT/FORM_SECTION/F20_2014)) then 'true' else 'false'";
+                        rr:parent "'true'";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate epo:hasContactPointInRole ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:AdditionalContactPoint;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ] ;
         ] ;
@@ -126,8 +138,8 @@ tedm:AdditionalBuyer a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:AdditionalOrganisation;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ] ;
         ] ;
@@ -143,13 +155,25 @@ tedm:AdditionalBuyer a rr:TriplesMap ;
 tedm:AdditionalBuyerCP a rr:TriplesMap ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:contextualisedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Procedure;
+                    rr:joinCondition [
+                        rr:child "if(exists(/TED_EXPORT/FORM_SECTION/F20_2014)) then 'true' else 'false'";
+                        rr:parent "'true'";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate epo:hasContactPointInRole ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:AdditionalContactPoint;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ] ;
         ] ;
@@ -160,8 +184,8 @@ tedm:AdditionalBuyerCP a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:AdditionalOrganisation;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ] ;
         ] ;
@@ -193,8 +217,8 @@ tedm:AdditionalOrganisation a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:AdditionalOrganisationAddress;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ]
         ] ;
@@ -205,8 +229,8 @@ tedm:AdditionalOrganisation a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:AdditionalOrganisationIdentifier;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ]
         ] .
@@ -338,6 +362,18 @@ tedm:AdditionalOrganisationAddress  a rr:TriplesMap ;
 tedm:BuyerCP a rr:TriplesMap ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:contextualisedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Procedure;
+                    rr:joinCondition [
+                        rr:child "if(exists(/TED_EXPORT/FORM_SECTION/F20_2014)) then 'true' else 'false'";
+                        rr:parent "'true'";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate epo:playedBy ;
             rr:objectMap
                 [
@@ -362,6 +398,18 @@ tedm:BuyerCP a rr:TriplesMap ;
                 ] ;
         ] .
 tedm:Buyer a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:contextualisedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Procedure;
+                    rr:joinCondition [
+                        rr:child "if(exists(/TED_EXPORT/FORM_SECTION/F20_2014)) then 'true' else 'false'";
+                        rr:parent "'true'";
+                    ];
+                ] ;
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:playedBy ;
@@ -484,7 +532,7 @@ tedm:Organisation a rr:TriplesMap ;
             rr:predicate epo:hasBuyerLegalTypeDescription ;
             rr:objectMap
                 [
-                    rml:reference "../CA_TYPE_OTHER"
+                    rml:reference "if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then ../CA_TYPE_OTHER else null";
                 ] ;
         ] .
 tedm:OrganisationIdentifier a rr:TriplesMap ;
@@ -677,6 +725,10 @@ tedm:Notice a rr:TriplesMap ;
             rr:objectMap
             [
                 rr:parentTriplesMap tedm:ProcurementProcedureInformationProviderIdem;
+                rr:joinCondition [
+                    rr:child "if(not(exists(/TED_EXPORT/FORM_SECTION/F20_2014))) then 'true' else 'false'";
+                    rr:parent "'true'";
+                ];
             ]
         ] ;
     rr:predicateObjectMap
@@ -685,6 +737,10 @@ tedm:Notice a rr:TriplesMap ;
             rr:objectMap
             [
                 rr:parentTriplesMap tedm:ProcurementProcedureInformationProvider;
+                rr:joinCondition [
+                    rr:child "if(not(exists(/TED_EXPORT/FORM_SECTION/F20_2014))) then 'true' else 'false'";
+                    rr:parent "'true'";
+                ];
             ]
         ] ;
     rr:predicateObjectMap
@@ -693,6 +749,10 @@ tedm:Notice a rr:TriplesMap ;
             rr:objectMap
             [
                 rr:parentTriplesMap tedm:TenderReceiverIdem;
+                rr:joinCondition [
+                    rr:child "if(not(exists(/TED_EXPORT/FORM_SECTION/F20_2014))) then 'true' else 'false'";
+                    rr:parent "'true'";
+                ];
             ]
         ] ;
     rr:predicateObjectMap
@@ -701,9 +761,25 @@ tedm:Notice a rr:TriplesMap ;
             rr:objectMap
             [
                 rr:parentTriplesMap tedm:TenderReceiver;
+                rr:joinCondition [
+                    rr:child "if(not(exists(/TED_EXPORT/FORM_SECTION/F20_2014))) then 'true' else 'false'";
+                    rr:parent "'true'";
+                ];
             ]
         ] .
 tedm:ProcurementProcedureInformationProviderIdem a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:contextualisedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Procedure;
+                    rr:joinCondition [
+                        rr:child "if(exists(/TED_EXPORT/FORM_SECTION/F20_2014)) then 'true' else 'false'";
+                        rr:parent "'true'";
+                    ];
+                ] ;
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:playedBy ;
@@ -733,6 +809,18 @@ tedm:ProcurementProcedureInformationProviderIdem a rr:TriplesMap ;
 #                ] ;
         ] .
 tedm:ProcurementProcedureInformationProvider a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:contextualisedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Procedure;
+                    rr:joinCondition [
+                        rr:child "if(exists(/TED_EXPORT/FORM_SECTION/F20_2014)) then 'true' else 'false'";
+                        rr:parent "'true'";
+                    ];
+                ] ;
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:playedBy ;
@@ -780,8 +868,8 @@ tedm:InformationProviderOrganisation a rr:TriplesMap ;
 #                [
 #                    rr:parentTriplesMap tedm:InformationProviderOrganisationChannel;
 #                    rr:joinCondition [
-#                        rr:child "if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null";
-#                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                        rr:child "if(not(exists(../ADDRESS_CONTRACTING_BODY_ADDITIONAL[1]))) then path() else null";
+#                        rr:parent "path()";
 #                    ];
 #                ]
 #        ] ;
@@ -929,6 +1017,18 @@ tedm:InformationProviderOrganisationAddress  a rr:TriplesMap ;
 tedm:TenderReceiverIdem a rr:TriplesMap ;
     rr:predicateObjectMap
         [
+            rr:predicate epo:contextualisedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Procedure;
+                    rr:joinCondition [
+                        rr:child "if(exists(/TED_EXPORT/FORM_SECTION/F20_2014)) then 'true' else 'false'";
+                        rr:parent "'true'";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
             rr:predicate epo:playedBy ;
             rr:objectMap
                 [
@@ -956,6 +1056,18 @@ tedm:TenderReceiverIdem a rr:TriplesMap ;
 #                ] ;
         ] .
 tedm:TenderReceiver a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:contextualisedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Procedure;
+                    rr:joinCondition [
+                        rr:child "if(exists(/TED_EXPORT/FORM_SECTION/F20_2014)) then 'true' else 'false'";
+                        rr:parent "'true'";
+                    ];
+                ] ;
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:playedBy ;

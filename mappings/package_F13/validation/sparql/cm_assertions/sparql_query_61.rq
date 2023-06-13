@@ -1,10 +1,10 @@
-#title: V.3.2 - Information about participants
-#description: “V.3.2 - Information about participants” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / epo:LotAwardOutcome .
-#xpath: /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE
+#title: V.3.1 - Date of the jury decision
+#description: “V.3.1 - Date of the jury decision” in SF corresponds to “BT-1451 Winner Decision Date Winner Decision Date” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/DATE_DECISION_JURY. The expected ontology instances are epo: epo:LotAwardOutcome / xsd:date .
+#xpath: /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/DATE_DECISION_JURY
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:SubmissionStatisticalInformation .
-		?this epo:summarisesInformationForLotAwardOutcome ?value . }
+		?this rdf:type epo:LotAwardOutcome .
+		?this epo:hasAwardDecisionDate ?value . }

@@ -119,15 +119,15 @@ tedm:Contract a rr:TriplesMap ;
 #                rr:parentTriplesMap tedm:BuyerCP;
 #            ] ;
 #    ] ;
-    rr:predicateObjectMap   #specific for F23 and F25
-        [
-            rr:predicate rdf:type;
-            rr:objectMap
-                [
-                    rml:reference "if ((../@FORM='F23' or ../@FORM='F25') and exists(AWARDED_CONTRACT)) then 'http://data.europa.eu/a4g/ontology#ConcessionContract' else null";
-                    rr:termType rr:IRI;
-                ]
-        ] ;
+#    rr:predicateObjectMap   #specific for F23 and F25
+#        [
+#            rr:predicate rdf:type;
+#            rr:objectMap
+#                [
+#                    rml:reference "if ((../@FORM='F23' or ../@FORM='F25') and exists(AWARDED_CONTRACT)) then 'http://data.europa.eu/a4g/ontology#ConcessionContract' else null";
+#                    rr:termType rr:IRI;
+#                ]
+#        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasTitle;
@@ -255,8 +255,8 @@ tedm:LotAwardOutcome a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:LotAwardOutcomeBargainMonetaryValue;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ] ;
         ] ;
@@ -267,8 +267,8 @@ tedm:LotAwardOutcome a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:LotAwardOutcomeAwardedMonetaryValue;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ] ;
         ] ;
@@ -311,7 +311,7 @@ tedm:LotAwardOutcome a rr:TriplesMap ;
             rr:predicate epo:hasNonAwardedContractTitle;
             rr:objectMap
                 [
-                    rml:reference "if (exists(NO_AWARDED_CONTRACT)) then TITLE else null";
+                    rml:reference "if (not(../NOTICE/@TYPE='CONCESSION_AWARD_CONTRACT' or ../@FORM='F23' or ../@FORM='F25') and exists(NO_AWARDED_CONTRACT)) then TITLE else null";
                     rml:languageMap [
                         rml:reference "lower-case(ancestor::*/@LG)"
                     ]
@@ -349,7 +349,7 @@ tedm:LotAwardOutcome a rr:TriplesMap ;
             rr:predicate epo:hasAwardStatus;
             rr:objectMap
                 [
-                    rml:reference "if(exists(NO_AWARDED_CONTRACT) or exists(NO_AWARDED_PRIZE)) then 'http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw' else if(exists(AWARDED_CONTRACT)) then 'http://publications.europa.eu/resource/authority/winner-selection-status/selec-w' else null";
+                    rml:reference "if(exists(NO_AWARDED_CONTRACT) or exists(NO_AWARDED_PRIZE)) then 'http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw' else if(exists(AWARDED_CONTRACT) or exists(AWARDED_PRIZE)) then 'http://publications.europa.eu/resource/authority/winner-selection-status/selec-w' else null";
                     rr:termType rr:IRI;
                 ]
         ] ;
@@ -381,12 +381,24 @@ tedm:ContractIdentifier a rr:TriplesMap ;
 #                [
 #                    rr:parentTriplesMap tedm:ContractorOrganisation;
 #                    rr:joinCondition [
-#                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-#                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                        rr:child "path()";
+#                        rr:parent "path()";
 #                    ];
 #                ] ;
 #        ] .
 tedm:Winner a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:contextualisedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:Procedure;
+                    rr:joinCondition [
+                        rr:child "if(exists(/TED_EXPORT/FORM_SECTION/F20_2014)) then 'true' else 'false'";
+                        rr:parent "'true'";
+                    ];
+                ] ;
+        ] ;
     rr:predicateObjectMap
         [
             rr:predicate epo:playedBy ;
@@ -394,8 +406,8 @@ tedm:Winner a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:ContractorOrganisation;
                     rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:child "path()";
+                    rr:parent "path()";
                 ];
                 ] ;
         ] .
@@ -406,8 +418,8 @@ tedm:Winner a rr:TriplesMap ;
 #                [
 #                    rr:parentTriplesMap tedm:Business;
 #                    rr:joinCondition [
-#                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-#                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                        rr:child "path()";
+#                        rr:parent "path()";
 #                    ];
 #                ] ;
 #        ] .
@@ -425,13 +437,25 @@ tedm:Winner a rr:TriplesMap ;
 #tedm:ContractSignatoryonContractorSide a rr:TriplesMap ;
 #    rr:predicateObjectMap
 #        [
+#            rr:predicate epo:contextualisedBy ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:Procedure;
+#                    rr:joinCondition [
+#                        rr:child "if(exists(/TED_EXPORT/FORM_SECTION/F20_2014)) then 'true' else 'false'";
+#                        rr:parent "'true'";
+#                    ];
+#                ] ;
+#        ] ;
+#    rr:predicateObjectMap
+#        [
 #            rr:predicate epo:playedBy ;
 #            rr:objectMap
 #                [
 #                    rr:parentTriplesMap tedm:ContractorOrganisation;
 #                    rr:joinCondition [
-#                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-#                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                        rr:child "path()";
+#                        rr:parent "path()";
 #                    ];
 #                ] ;
 #        ] .
@@ -443,8 +467,8 @@ tedm:Winner a rr:TriplesMap ;
 #                [
 #                    rr:parentTriplesMap tedm:ContractorOrganisation;
 #                    rr:joinCondition [
-#                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-#                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+#                        rr:child "path()";
+#                        rr:parent "path()";
 #                    ];
 #                ] ;
 #        ] .
@@ -486,8 +510,8 @@ tedm:ContractorOrganisation a rr:TriplesMap ;
             [
                 rr:parentTriplesMap tedm:ContractorOrganisationIdentifier;
                 rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:child "path()";
+                    rr:parent "path()";
                 ];
             ] ;
         ] ;
@@ -498,8 +522,8 @@ tedm:ContractorOrganisation a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:ContractorOrganisationAddress;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ] ;
         ] ;
@@ -510,8 +534,8 @@ tedm:ContractorOrganisation a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:ContractorContactPoint;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ] ;
         ] .
@@ -680,8 +704,8 @@ tedm:Tender a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:ConcessionEstimate;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ] ;
         ] ;
@@ -725,8 +749,8 @@ tedm:Tender a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:SubcontractingEstimate;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ] ;
         ] .
@@ -738,8 +762,8 @@ tedm:SubcontractingEstimate a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:SubcontractingEstimatedValueMonetaryValue;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ] ;
         ] ;
@@ -877,8 +901,8 @@ tedm:ConcessionEstimate a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:UserConcessionRevenueMonetaryValue;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ] ;
         ] ;
@@ -889,8 +913,8 @@ tedm:ConcessionEstimate a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:BuyerConcessionRevenueMonetaryValue;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ] ;
         ] .
@@ -971,8 +995,8 @@ tedm:SubmissionStatisticalInformation a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:MonetaryValueSubmissionLowest;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ] ;
         ] ;
@@ -983,8 +1007,8 @@ tedm:SubmissionStatisticalInformation a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:MonetaryValueSubmissionHighest;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ] ;
         ] ;
@@ -1135,8 +1159,8 @@ tedm:WinnerFromResults a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:ContractorOrganisationFromResults;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ] ;
         ] .
@@ -1178,8 +1202,8 @@ tedm:ContractorOrganisationFromResults a rr:TriplesMap ;
             [
                 rr:parentTriplesMap tedm:ContractorOrganisationFromResultsIdentifier;
                 rr:joinCondition [
-                    rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                    rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                    rr:child "path()";
+                    rr:parent "path()";
                 ];
             ] ;
         ] ;
@@ -1190,8 +1214,8 @@ tedm:ContractorOrganisationFromResults a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:ContractorOrganisationFromResultsAddress;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ] ;
         ] ;
@@ -1202,8 +1226,8 @@ tedm:ContractorOrganisationFromResults a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:ContractorOrganisationFromResultsContactPoint ;
                     rr:joinCondition [
-                        rr:child "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
-                        rr:parent "unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')";
+                        rr:child "path()";
+                        rr:parent "path()";
                     ];
                 ] ;
         ] .

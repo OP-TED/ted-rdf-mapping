@@ -1,10 +1,10 @@
-#title: V.2.0.1 - Award of contract / concession
-#description: “V.2.0.1 - Award of contract / concession” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F20_2014/AWARD_CONTRACT/AWARDED_CONTRACT. The expected ontology instances are epo: epo:LotAwardOutcome / epo:TenderAwardOutcome / epo:Tender .
-#xpath: /TED_EXPORT/FORM_SECTION/F20_2014/AWARD_CONTRACT/AWARDED_CONTRACT
+#title: V.0.3 - Title
+#description: “V.0.3 - Title” in SF corresponds to “BT-721 Contract Title” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F20_2014/AWARD_CONTRACT/TITLE. The expected ontology instances are epo: epo:LotAwardOutcome / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F20_2014/AWARD_CONTRACT/TITLE
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:LotAwardOutcome .
-		?this epo:comprisesTenderAwardOutcome / epo:describesTender ?value }
+		?this epo:hasNonAwardedContractTitle ?value . }

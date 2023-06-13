@@ -1,10 +1,9 @@
-#title: V.2.3.4 - Town
-#description: “V.2.3.4 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/TOWN, /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR/ADDRESS_CONTRACTOR/TOWN. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/TOWN,/TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR/ADDRESS_CONTRACTOR/TOWN
+#title: V.2.3.5 - NUTS code
+#description: “V.2.3.5 - NUTS code” in SF corresponds to “BT-507 Organisation Country Subdivision” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/NUTS/@CODE ;; /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR/ADDRESS_CONTRACTOR/NUTS/@CODE. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / at-voc:nuts (from nuts.json) .
+#xpath: /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/NUTS/@CODE ;; /TED_EXPORT/FORM_SECTION/F21_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR/ADDRESS_CONTRACTOR/NUTS/@CODE
 
 PREFIX cv: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX locn: <http://www.w3.org/ns/locn#>
 
 ASK WHERE { 
-		?this epo:playedBy / cv:registeredAddress / locn:postName ?value . }
+		?this epo:playedBy / cv:registeredAddress / epo:hasNutsCode ?value . }

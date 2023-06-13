@@ -1,10 +1,10 @@
-#title: V.2.4.4.1 - Currency
-#description: “V.2.4.4.1 - Currency” in SF corresponds to “no direct match nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_RANGE_TOTAL/@CURRENCY, /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUE/VAL_RANGE_TOTAL/@CURRENCY, /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VAL_RANGE_TOTAL/@CURRENCY. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / epo:MonetaryValue / at-voc:currency (from currency.json) .
-#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUES/VAL_RANGE_TOTAL/@CURRENCY,/TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VALUE/VAL_RANGE_TOTAL/@CURRENCY,/TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/AWARDED_CONTRACT/VAL_RANGE_TOTAL/@CURRENCY
+#title: V.2.5.1 - The contract is likely to be subcontracted
+#description: “V.2.5.1 - The contract is likely to be subcontracted” in SF corresponds to “BT-773 Subcontracting” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/AWARDED_CONTRACT/LIKELY_SUBCONTRACTED. The expected ontology instances are epo: epo:Tender / epo:SubcontractingEstimate  .
+#xpath: /TED_EXPORT/FORM_SECTION/F22_2014/AWARD_CONTRACT/AWARDED_CONTRACT/LIKELY_SUBCONTRACTED
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:SubmissionStatisticalInformation .
-		?this epo:hasHighestReceivedTenderValue / epo:hasCurrency ?value . }
+		?this rdf:type epo:Tender .
+		?this epo:foreseesSubcontracting ?value }

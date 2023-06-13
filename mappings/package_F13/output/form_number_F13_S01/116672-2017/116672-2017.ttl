@@ -1,5 +1,4 @@
 @prefix cccev: <http://data.europa.eu/m8g/> .
-@prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
@@ -25,11 +24,6 @@ epd:id_2017-S-062-116672_ContactPoint_iYPqaLpBJgHU9VpUpJKqzF a cccev:ContactPoin
   cccev:email "op_silistra@abv.bg";
   cccev:telephone "+359 86-816260" .
 
-epd:id_2017-S-062-116672_ContractTermLotLocation_LgzbVnVCxGHf6Jsa5iGLn7 a dct:Location .
-
-epd:id_2017-S-062-116672_ContractTermLot_LgzbVnVCxGHf6Jsa5iGLn7 a epo:ContractTerm;
-  epo:definesSpecificPlaceOfPerformance epd:id_2017-S-062-116672_ContractTermLotLocation_LgzbVnVCxGHf6Jsa5iGLn7 .
-
 epd:id_2017-S-062-116672_Fund_LgzbVnVCxGHf6Jsa5iGLn7 a epo:Fund;
   epo:hasDescription "Обществената поръчка е във връзка с предстоящо кандидатстване по Оперативна програма „Региони в растеж“ 2014-2020, в изпълнение на Инвестиционната програма на Община Силистра."@bg .
 
@@ -42,13 +36,11 @@ epd:id_2017-S-062-116672_LotPurpose_LgzbVnVCxGHf6Jsa5iGLn7 a epo:Purpose;
   epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/71221000> .
 
 epd:id_2017-S-062-116672_Lot_LgzbVnVCxGHf6Jsa5iGLn7 a epo:Lot;
-  epo:foreseesContractSpecificTerm epd:id_2017-S-062-116672_ContractTermLot_LgzbVnVCxGHf6Jsa5iGLn7;
   epo:hasDescription """
 Откритият конкурс се провежда с цел възложителят да придобие идейна концепция за изграждане на сграда за соц. жилища в ПИ с идентификатор 66425.500.7014 по КККР на гр. Силистра, находящ се на ул. „Хаджи Димитър“ в гр. Силистра, във връзка с предстоящо кандидатстване по ОП „Региони в растеж“ 2014-2020, в изпълнение на Инвестиционната програма на Община Силистра. Целта на придобиването на идейна концепция е възложителят впоследствие да възложи проектирането — фаза работен инвестиционен проект и строителството на сграда за социални жилища, като получи най-доброто планово и функционално решение при съобразяване на съществуващите дадености. Чрез конкуренцията между участниците в конкурса се цели представяне на различни идеи за обекта.
 """@bg;
   epo:hasPurpose epd:id_2017-S-062-116672_LotPurpose_LgzbVnVCxGHf6Jsa5iGLn7;
   epo:isFundedBy epd:id_2017-S-062-116672_Fund_LgzbVnVCxGHf6Jsa5iGLn7;
-  epo:isSubjectToLotSpecificTerm epd:id_2017-S-062-116672_ReviewTerm_K44UUKX2q9c4FKKQfnRAHQ;
   epo:isUsingEUFunds true .
 
 epd:id_2017-S-062-116672_Notice a epo:Notice, epo:ResultNotice;
@@ -90,7 +82,12 @@ epd:id_2017-S-062-116672_Procedure_dCiYCaUYhYAkdFU4GtdgSv a epo:Procedure;
   epo:hasTitle """
 Открит конкурс за избор на идейна концепция за „Изграждане на сграда за социални жилища по ул. „Хаджи Димитър“, гр. Силистра, Община Силистра“.
 """@bg;
-  epo:isDesignContest true .
+  epo:isDesignContest true;
+  epo:isSubjectToProcedureSpecificTerm epd:id_2017-S-062-116672_ReviewTerm_K44UUKX2q9c4FKKQfnRAHQ .
+
+epd:id_2017-S-062-116672_ProcurementProcessInformation_BFBbQJXy34csVz6Y2NV2Wi a epo:ProcurementProcessInformation;
+  epo:concernsProcedure epd:id_2017-S-062-116672_Procedure_dCiYCaUYhYAkdFU4GtdgSv;
+  epo:isCompetitionTerminated true .
 
 epd:id_2017-S-062-116672_ReviewTerm_K44UUKX2q9c4FKKQfnRAHQ a epo:ReviewTerm;
   epo:hasReviewDeadlineInformation """

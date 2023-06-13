@@ -30,18 +30,6 @@ tedm:ProcedureIdentifier a rr:TriplesMap ;
 
 tedm:Procedure a rr:TriplesMap ;
     rr:predicateObjectMap
-    [
-        rr:predicate epo:hasLegalBasis ;
-        rr:objectMap
-            [
-                rr:parentTriplesMap tedm:legalBasis;
-                rr:joinCondition [
-                        rr:child "../LEGAL_BASIS/@VALUE";
-                        rr:parent "code.value";
-                    ];
-            ] ;
-    ] ;
-    rr:predicateObjectMap
         [
             rr:predicate epo:hasProcedureType ;
             rr:objectMap
@@ -178,7 +166,7 @@ tedm:ProcurementProcessInformation a rr:TriplesMap ;
             rr:predicate epo:isCompetitionTerminated ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(TERMINATION_PIN)) then 'true' else null";
+                    rml:reference "if(exists(TERMINATION_PIN) or exists(../RESULTS/NO_AWARDED_PRIZE)) then 'true' else null";
                     rr:datatype xsd:boolean
                 ] ;
         ] ;

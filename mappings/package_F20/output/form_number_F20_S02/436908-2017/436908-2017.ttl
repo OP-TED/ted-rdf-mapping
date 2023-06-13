@@ -22,6 +22,7 @@ epd:id_2015-S-137-253290_NoticeIdentifier_fqfw5hANKbaKT6uyGM9WEZ a epo:Identifie
   epo:hasIdentifierValue "2015/S 137-253290" .
 
 epd:id_2017-S-210-436908_Buyer_EDZAnT7HXvHuLqeZYHEzVQ a epo:Buyer;
+  epo:contextualisedBy epd:id_2017-S-210-436908_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
   epo:hasBuyerProfile "http://www.procurement.iag.bg:8080/cgi-bin/procurement.cgi?PodID=101&Unit=zop&lng=bg&act=Year&Year=2017"^^xsd:anyURI;
   epo:hasContactPointInRole epd:id_2017-S-210-436908_ContactPoint_iGF7ZaAiz9oMT8YWwHDjxN;
   epo:playedBy epd:id_2017-S-210-436908_Organisation_iGF7ZaAiz9oMT8YWwHDjxN .
@@ -67,6 +68,9 @@ epd:id_2017-S-210-436908_ContractTermLotModification_AKLYjQuv54nZUBKnyu7AP7 a ep
 epd:id_2017-S-210-436908_ContractTermLot_mtBaW8k5EC8G5zB7LwJPww a epo:ContractTerm;
   epo:definesContractDuration epd:id_2017-S-210-436908_Duration_AssvfddL5WkoAdKCpqdccz;
   epo:definesSpecificPlaceOfPerformance epd:id_2017-S-210-436908_ContractTermLotLocation_mtBaW8k5EC8G5zB7LwJPww .
+
+epd:id_2017-S-210-436908_ContractTermProcedure_fqfw5hANKbaKT6uyGM9WEZ a epo:ContractTerm;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
 
 epd:id_2017-S-210-436908_Contract_csNjfsBkdGQvJWHAcwuHPA a epo:Contract;
   epo:hasContractConclusionDate "2015-07-06"^^xsd:date;
@@ -164,7 +168,7 @@ epd:id_2017-S-210-436908_LotIdentifier_mtBaW8k5EC8G5zB7LwJPww a epo:Identifier;
   epo:hasIdentifierValue "2" .
 
 epd:id_2017-S-210-436908_LotModification_AKLYjQuv54nZUBKnyu7AP7 a epo:Lot;
-  epo:containsModificationsOn epd:id_2017-S-210-436908_Lot_mtBaW8k5EC8G5zB7LwJPww;
+  epo:containsModificationsOf epd:id_2017-S-210-436908_Lot_mtBaW8k5EC8G5zB7LwJPww;
   epo:foreseesContractSpecificTerm epd:id_2017-S-210-436908_ContractTermLotModification_AKLYjQuv54nZUBKnyu7AP7;
   epo:hasDescription """
                   „Извършване на инвентаризация на горските територии и изработване на горскостопански карти, план за ловностопански дейности и план за дейностите по опазване на горските територии от пожари, изработването на горскостопански план за горските територии, собственост на физически лица,юридически лица и техни обединения с обща площ до 2 хектара включително,в границите на община Белоградчик, обл. Видин землищата на с. Крачимир, с. Ошане, с. Раяновци, с. Стакевци и с. Салаш и горскостопански план за горските територии-държавна собственост в района на дейност на ТП „Държавно горско стопанство Миджур“ — гр. Белоградчик, обл. Видин към „Северозападно държавно предприятие“ гр. Враца.“.
@@ -187,18 +191,13 @@ epd:id_2017-S-210-436908_Lot_mtBaW8k5EC8G5zB7LwJPww a epo:Lot;
   epo:hasTitle """
                   Извършване на инвентаризация на горските територии и изработване на горскостопански карти, горскостопански план, план за ловностопански дейности и план за дейностите по опазване на горските територии
                """@bg;
-  epo:isSubjectToLotSpecificTerm epd:id_2017-S-210-436908_ReviewTerm_7TwSLEC9PvaDEEAmGcz5G4;
   epo:isUsingEUFunds false .
 
 epd:id_2017-S-210-436908_Notice a epo:ContractModificationNotice, epo:Notice;
-  epo:announcesContract epd:id_2017-S-210-436908_Contract_csNjfsBkdGQvJWHAcwuHPA;
-  epo:announcesRole epd:id_2017-S-210-436908_Buyer_EDZAnT7HXvHuLqeZYHEzVQ, epd:id_2017-S-210-436908_Reviewer_LLhJHMi9mby8ixbkfyGoWj,
-    epd:id_2017-S-210-436908_Winner_3VEXzij5C6MPdt27cZ58mW;
-  epo:announcesTender epd:id_2017-S-210-436908_Tender_NBeHHAEunZ8nwh2wSSps9G;
   epo:hasDispatchDate "2017-10-30"^^xsd:date;
   epo:hasID epd:id_2017-S-210-436908_NoticeIdentifier_aE3iyMRsoF9Qvy4eFQRpLT;
   epo:hasPublicationDate "20171102";
-  epo:refersToLot epd:id_2017-S-210-436908_Lot_mtBaW8k5EC8G5zB7LwJPww;
+  epo:refersToContractToBeModified epd:id_2017-S-210-436908_Contract_csNjfsBkdGQvJWHAcwuHPA;
   epo:refersToPrevious epd:id_2015-S-137-253290_Notice;
   epo:refersToProcedure epd:id_2017-S-210-436908_Procedure_aE3iyMRsoF9Qvy4eFQRpLT .
 
@@ -221,25 +220,26 @@ epd:id_2017-S-210-436908_Organisation_iGF7ZaAiz9oMT8YWwHDjxN a org:Organization;
   cccev:registeredAddress epd:id_2017-S-210-436908_OrganisationAddress_iGF7ZaAiz9oMT8YWwHDjxN .
 
 epd:id_2017-S-210-436908_PeriodModification_AKLYjQuv54nZUBKnyu7AP7 a epo:Period;
-  epo:hasEnd "2018-02-28T00:00:00"^^xsd:dateTime .
+  epo:hasEnd "2018-02-28"^^xsd:date .
 
 epd:id_2017-S-210-436908_ProcedureModification_AKLYjQuv54nZUBKnyu7AP7 a epo:Procedure;
-  epo:containsModificationsOn epd:id_2017-S-210-436908_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:containsModificationsOf epd:id_2017-S-210-436908_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
   epo:hasPurpose epd:id_2017-S-210-436908_ProcedurePurposeModification_AKLYjQuv54nZUBKnyu7AP7 .
 
 epd:id_2017-S-210-436908_ProcedurePurposeModification_AKLYjQuv54nZUBKnyu7AP7 a epo:Purpose;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/77231400> .
 
 epd:id_2017-S-210-436908_ProcedurePurpose_aE3iyMRsoF9Qvy4eFQRpLT a epo:Purpose;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/77231400> .
 
 epd:id_2017-S-210-436908_Procedure_aE3iyMRsoF9Qvy4eFQRpLT a epo:Procedure;
+  epo:foreseesContractSpecificTerm epd:id_2017-S-210-436908_ContractTermProcedure_fqfw5hANKbaKT6uyGM9WEZ;
   epo:hasProcurementScopeDividedIntoLot epd:id_2017-S-210-436908_Lot_mtBaW8k5EC8G5zB7LwJPww;
   epo:hasPurpose epd:id_2017-S-210-436908_ProcedurePurpose_aE3iyMRsoF9Qvy4eFQRpLT;
   epo:hasTitle """
                Извършване на инвентаризация на горските територии и изработване на горскостопански карти, горскостопански план, план за ловностопански дейности и план за дейностите по опазване на горските територии.
-            """@bg .
+            """@bg;
+  epo:isSubjectToProcedureSpecificTerm epd:id_2017-S-210-436908_ReviewTerm_7TwSLEC9PvaDEEAmGcz5G4 .
 
 epd:id_2017-S-210-436908_ReviewTerm_7TwSLEC9PvaDEEAmGcz5G4 a epo:ReviewTerm;
   epo:hasReviewDeadlineInformation """
@@ -264,6 +264,7 @@ epd:id_2017-S-210-436908_ReviewerOrganisation_LLhJHMi9mby8ixbkfyGoWj a org:Organ
   cccev:registeredAddress epd:id_2017-S-210-436908_ReviewerOrganisationAddress_LLhJHMi9mby8ixbkfyGoWj .
 
 epd:id_2017-S-210-436908_Reviewer_LLhJHMi9mby8ixbkfyGoWj a epo:Reviewer;
+  epo:contextualisedBy epd:id_2017-S-210-436908_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
   epo:playedBy epd:id_2017-S-210-436908_ReviewerOrganisation_LLhJHMi9mby8ixbkfyGoWj .
 
 epd:id_2017-S-210-436908_SubmissionStatisticalInformation_NBeHHAEunZ8nwh2wSSps9G a
@@ -283,4 +284,5 @@ epd:id_2017-S-210-436908_WinnerModification_ch8kRf2Nuq4cmhQ9TuWGKo a epo:Winner;
   epo:playedBy epd:id_2017-S-210-436908_ContractorOrganisationModification_ch8kRf2Nuq4cmhQ9TuWGKo .
 
 epd:id_2017-S-210-436908_Winner_3VEXzij5C6MPdt27cZ58mW a epo:Winner;
+  epo:contextualisedBy epd:id_2017-S-210-436908_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
   epo:playedBy epd:id_2017-S-210-436908_ContractorOrganisation_3VEXzij5C6MPdt27cZ58mW .

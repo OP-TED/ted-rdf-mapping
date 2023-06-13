@@ -1,5 +1,4 @@
 @prefix cccev: <http://data.europa.eu/m8g/> .
-@prefix dct: <http://purl.org/dc/terms/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
@@ -25,26 +24,20 @@ epd:id_2021-S-060-152181_ContactPoint_iYPqaLpBJgHU9VpUpJKqzF a cccev:ContactPoin
   cccev:email "op@sofia-agk.com";
   cccev:telephone "+359 29238299" .
 
-epd:id_2021-S-060-152181_ContractTermLotLocation_LgzbVnVCxGHf6Jsa5iGLn7 a dct:Location .
-
-epd:id_2021-S-060-152181_ContractTermLot_LgzbVnVCxGHf6Jsa5iGLn7 a epo:ContractTerm;
-  epo:definesSpecificPlaceOfPerformance epd:id_2021-S-060-152181_ContractTermLotLocation_LgzbVnVCxGHf6Jsa5iGLn7 .
-
 epd:id_2021-S-060-152181_LotAwardOutcome_YhpmJiyKGFhmsdGs8XtKfQ a epo:LotAwardOutcome;
   epo:describesLot epd:id_2021-S-060-152181_Lot_LgzbVnVCxGHf6Jsa5iGLn7;
   epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw>;
   epo:hasNonAwardJustification <http://publications.europa.eu/resource/authority/non-award-justification/other> .
 
 epd:id_2021-S-060-152181_Lot_LgzbVnVCxGHf6Jsa5iGLn7 a epo:Lot;
-  epo:foreseesContractSpecificTerm epd:id_2021-S-060-152181_ContractTermLot_LgzbVnVCxGHf6Jsa5iGLn7;
   epo:hasDescription "Предмет на настоящия конкурс е изработване на проект за изграждане на Мемориал на загиналите войници от Първи и Шести софийски пехотни полкове във фаза на проектиране: идеен проект. С настоящия конкурс Столична община цели да придобие проекта, който да послужи за възлагане на обществена поръчка по реда на чл. 79, ал. 1, т. 9 от ЗОП съгласно резултатите от класирането.На основание решение № 842/18.12.2014 г. на Столичен общински съвет и подкрепа, указана със становище с рег. № 20-01-281/23.09.2014 г. на министъра на отбраната, обект на конкурса е Мемориал на загиналите войници от Първи и Шести софийски пехотни полкове.Обектът следва да се разположи на мястото на демонтирания монумент „1300 години България“ в границите на поземлен имот с идентификатор 68134.1001.858 по КККР, за който е отреден УПИ I — за парк, НДК, КОО, подземни гаражи и обществена тоалетна в квартал 369 по плана на местност зони Г от главен градски център, район „Триадица“, Столична община."@bg;
-  epo:isSubjectToLotSpecificTerm epd:id_2021-S-060-152181_ReviewTerm_K44UUKX2q9c4FKKQfnRAHQ;
   epo:isUsingEUFunds false .
 
 epd:id_2021-S-060-152181_Notice a epo:Notice, epo:ResultNotice;
   epo:announcesRole epd:id_2021-S-060-152181_Buyer_izYUN4xxMSrSrt4CEgSz4b, epd:id_2021-S-060-152181_Reviewer_VnT5kmkygMcFC7rXsDPFju;
   epo:hasDispatchDate "2021-03-22"^^xsd:date;
   epo:hasID epd:id_2021-S-060-152181_NoticeIdentifier_dCiYCaUYhYAkdFU4GtdgSv;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasPublicationDate "20210326";
   epo:refersToLot epd:id_2021-S-060-152181_Lot_LgzbVnVCxGHf6Jsa5iGLn7;
   epo:refersToPrevious epd:id_2019-S-096-232749_Notice;
@@ -74,12 +67,16 @@ epd:id_2021-S-060-152181_ProcedurePurpose_dCiYCaUYhYAkdFU4GtdgSv a epo:Purpose;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/71210000> .
 
 epd:id_2021-S-060-152181_Procedure_dCiYCaUYhYAkdFU4GtdgSv a epo:Procedure;
-  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot epd:id_2021-S-060-152181_Lot_LgzbVnVCxGHf6Jsa5iGLn7;
   epo:hasPurpose epd:id_2021-S-060-152181_ProcedurePurpose_dCiYCaUYhYAkdFU4GtdgSv;
   epo:hasTitle "Изработване на проект за изграждане на Мемориал на загиналите войници от Първи и Шести софийски пехотни полкове"@bg;
-  epo:isDesignContest true .
+  epo:isDesignContest true;
+  epo:isSubjectToProcedureSpecificTerm epd:id_2021-S-060-152181_ReviewTerm_K44UUKX2q9c4FKKQfnRAHQ .
+
+epd:id_2021-S-060-152181_ProcurementProcessInformation_BFBbQJXy34csVz6Y2NV2Wi a epo:ProcurementProcessInformation;
+  epo:concernsProcedure epd:id_2021-S-060-152181_Procedure_dCiYCaUYhYAkdFU4GtdgSv;
+  epo:isCompetitionTerminated true .
 
 epd:id_2021-S-060-152181_ReviewTerm_K44UUKX2q9c4FKKQfnRAHQ a epo:ReviewTerm;
   epo:hasReviewDeadlineInformation "Чл. 197, ал. 1, т. 7 от ЗОП" .

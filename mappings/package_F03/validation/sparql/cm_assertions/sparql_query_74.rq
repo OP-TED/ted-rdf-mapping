@@ -1,10 +1,10 @@
-#title: II.2.13.2 - Identification of the project
-#description: “II.2.13.2 - Identification of the project” in SF corresponds to “BT-5011 Contract EU Funds Identifier” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/EU_PROGR_RELATED. The expected ontology instances are epo: epo:Lot / epo:Fund / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F03_2014/OBJECT_CONTRACT/OBJECT_DESCR/EU_PROGR_RELATED
+#title: IV.1.1.1 - Open procedure
+#description: “IV.1.1.1 - Open procedure” in SF corresponds to “BT-105 Procedure Type” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_OPEN. The expected ontology instances are epo: epo:Procedure / at-voc:procurement-procedure-type .
+#xpath: /TED_EXPORT/FORM_SECTION/F03_2014/PROCEDURE/PT_OPEN
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:Lot .
-		?this epo:isFundedBy / epo:hasDescription ?value . }
+		?this rdf:type epo:Procedure .
+		?this epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open> . }

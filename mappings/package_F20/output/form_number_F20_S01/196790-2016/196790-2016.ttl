@@ -22,6 +22,7 @@ epd:id_2010-S-177-269284_NoticeIdentifier_fqfw5hANKbaKT6uyGM9WEZ a epo:Identifie
   epo:hasIdentifierValue "2010/S 177-269284" .
 
 epd:id_2016-S-111-196790_Buyer_EDZAnT7HXvHuLqeZYHEzVQ a epo:Buyer;
+  epo:contextualisedBy epd:id_2016-S-111-196790_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
   epo:hasBuyerProfile "http://publications.europa.eu/en/web/about-us/procurement"^^xsd:anyURI;
   epo:hasContactPointInRole epd:id_2016-S-111-196790_ContactPoint_iGF7ZaAiz9oMT8YWwHDjxN;
   epo:playedBy epd:id_2016-S-111-196790_Organisation_iGF7ZaAiz9oMT8YWwHDjxN .
@@ -60,6 +61,9 @@ epd:id_2016-S-111-196790_ContractTermLotModification_AKLYjQuv54nZUBKnyu7AP7 a ep
 epd:id_2016-S-111-196790_ContractTermLot_mtBaW8k5EC8G5zB7LwJPww a epo:ContractTerm;
   epo:definesContractDuration epd:id_2016-S-111-196790_Duration_AssvfddL5WkoAdKCpqdccz;
   epo:definesSpecificPlaceOfPerformance epd:id_2016-S-111-196790_ContractTermLotLocation_mtBaW8k5EC8G5zB7LwJPww .
+
+epd:id_2016-S-111-196790_ContractTermProcedure_fqfw5hANKbaKT6uyGM9WEZ a epo:ContractTerm;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
 
 epd:id_2016-S-111-196790_Contract_csNjfsBkdGQvJWHAcwuHPA a epo:Contract;
   epo:hasContractConclusionDate "2004-07-30"^^xsd:date;
@@ -200,7 +204,11 @@ International DOI Foundation er det eneste godkendte organ med overordnet ansvar
 Publikationskontoret skal betale årlige medlemsgebyrer til International DOI Foundation for at kunne være et officielt DOI-registreringsagentur.
 """@da .
 
-epd:id_2016-S-111-196790_FrameworkAgreementTerm_AKLYjQuv54nZUBKnyu7AP7 a epo:FrameworkAgreementTerm;
+epd:id_2016-S-111-196790_FrameworkAgreementTermLotModification_AKLYjQuv54nZUBKnyu7AP7
+  a epo:FrameworkAgreementTerm;
+  epo:hasDurationExtensionJustification "Ubegrænset varighed med automatisk forlængelse for en periode på 1 år."@da .
+
+epd:id_2016-S-111-196790_FrameworkAgreementTermLot_mtBaW8k5EC8G5zB7LwJPww a epo:FrameworkAgreementTerm;
   epo:hasDurationExtensionJustification "Ubegrænset varighed med automatisk forlængelse for en periode på 1 år."@da .
 
 epd:id_2016-S-111-196790_LotAwardOutcomeAwardedMonetaryValueModification_MpnmDqEVk2292ibKg4KHnL
@@ -228,7 +236,7 @@ epd:id_2016-S-111-196790_LotIdentifier_mtBaW8k5EC8G5zB7LwJPww a epo:Identifier;
   epo:hasIdentifierValue "0" .
 
 epd:id_2016-S-111-196790_LotModification_AKLYjQuv54nZUBKnyu7AP7 a epo:Lot;
-  epo:containsModificationsOn epd:id_2016-S-111-196790_Lot_mtBaW8k5EC8G5zB7LwJPww;
+  epo:containsModificationsOf epd:id_2016-S-111-196790_Lot_mtBaW8k5EC8G5zB7LwJPww;
   epo:foreseesContractSpecificTerm epd:id_2016-S-111-196790_ContractTermLotModification_AKLYjQuv54nZUBKnyu7AP7;
   epo:hasDescription """
 A szerződés a Kiadóhivatalnak a Nemzetközi DOI Alapítvánnyal (International DOI Foundation, IDF) kötendő tagsági megállapodására vonatkozik. A megállapodás eredményeként a Kiadóhivatal hivatalos DOI-nyilvántartási ügynökségnek minősül.
@@ -302,7 +310,7 @@ Táto zákazka sa týka dohody o členstve Úradu pre vydávanie publikácií s 
     """
 Тази поръчка се отнася до споразумение за членство на Службата за публикации с Международната фондация DOI. С това споразумение, Службата за публикации става официална агенция за регистрация на DOI.
 """@bg;
-  epo:isSubjectToLotSpecificTerm epd:id_2016-S-111-196790_FrameworkAgreementTerm_AKLYjQuv54nZUBKnyu7AP7 .
+  epo:isSubjectToLotSpecificTerm epd:id_2016-S-111-196790_FrameworkAgreementTermLotModification_AKLYjQuv54nZUBKnyu7AP7 .
 
 epd:id_2016-S-111-196790_Lot_mtBaW8k5EC8G5zB7LwJPww a epo:Lot;
   epo:foreseesContractSpecificTerm epd:id_2016-S-111-196790_ContractTermLot_mtBaW8k5EC8G5zB7LwJPww;
@@ -434,17 +442,14 @@ nincs rész
 """@el, """
 Няма партида
 """@bg;
+  epo:isSubjectToLotSpecificTerm epd:id_2016-S-111-196790_FrameworkAgreementTermLot_mtBaW8k5EC8G5zB7LwJPww;
   epo:isUsingEUFunds false .
 
 epd:id_2016-S-111-196790_Notice a epo:ContractModificationNotice, epo:Notice;
-  epo:announcesContract epd:id_2016-S-111-196790_Contract_csNjfsBkdGQvJWHAcwuHPA;
-  epo:announcesRole epd:id_2016-S-111-196790_Buyer_EDZAnT7HXvHuLqeZYHEzVQ, epd:id_2016-S-111-196790_Reviewer_LLhJHMi9mby8ixbkfyGoWj,
-    epd:id_2016-S-111-196790_Winner_3VEXzij5C6MPdt27cZ58mW;
-  epo:announcesTender epd:id_2016-S-111-196790_Tender_NBeHHAEunZ8nwh2wSSps9G;
   epo:hasDispatchDate "2016-05-30"^^xsd:date;
   epo:hasID epd:id_2016-S-111-196790_NoticeIdentifier_aE3iyMRsoF9Qvy4eFQRpLT;
   epo:hasPublicationDate "20160610";
-  epo:refersToLot epd:id_2016-S-111-196790_Lot_mtBaW8k5EC8G5zB7LwJPww;
+  epo:refersToContractToBeModified epd:id_2016-S-111-196790_Contract_csNjfsBkdGQvJWHAcwuHPA;
   epo:refersToPrevious epd:id_2010-S-177-269284_Notice;
   epo:refersToProcedure epd:id_2016-S-111-196790_Procedure_aE3iyMRsoF9Qvy4eFQRpLT .
 
@@ -477,17 +482,17 @@ epd:id_2016-S-111-196790_ProcedureIdentifier_aE3iyMRsoF9Qvy4eFQRpLT a epo:Identi
   epo:hasIdentifierValue "2400." .
 
 epd:id_2016-S-111-196790_ProcedureModification_AKLYjQuv54nZUBKnyu7AP7 a epo:Procedure;
-  epo:containsModificationsOn epd:id_2016-S-111-196790_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:containsModificationsOf epd:id_2016-S-111-196790_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
   epo:hasPurpose epd:id_2016-S-111-196790_ProcedurePurposeModification_AKLYjQuv54nZUBKnyu7AP7 .
 
 epd:id_2016-S-111-196790_ProcedurePurposeModification_AKLYjQuv54nZUBKnyu7AP7 a epo:Purpose;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/72000000> .
 
 epd:id_2016-S-111-196790_ProcedurePurpose_aE3iyMRsoF9Qvy4eFQRpLT a epo:Purpose;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/72000000> .
 
 epd:id_2016-S-111-196790_Procedure_aE3iyMRsoF9Qvy4eFQRpLT a epo:Procedure;
+  epo:foreseesContractSpecificTerm epd:id_2016-S-111-196790_ContractTermProcedure_fqfw5hANKbaKT6uyGM9WEZ;
   epo:hasAdditionalInformation """
 20.8.2010 napon odaítélésre került az első, 470 000 USD összegű költségvetés-növelés.
 """@hu,
@@ -658,6 +663,7 @@ epd:id_2016-S-111-196790_ReviewerOrganisation_LLhJHMi9mby8ixbkfyGoWj a org:Organ
   cccev:registeredAddress epd:id_2016-S-111-196790_ReviewerOrganisationAddress_LLhJHMi9mby8ixbkfyGoWj .
 
 epd:id_2016-S-111-196790_Reviewer_LLhJHMi9mby8ixbkfyGoWj a epo:Reviewer;
+  epo:contextualisedBy epd:id_2016-S-111-196790_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
   epo:playedBy epd:id_2016-S-111-196790_ReviewerOrganisation_LLhJHMi9mby8ixbkfyGoWj .
 
 epd:id_2016-S-111-196790_SubmissionStatisticalInformation_NBeHHAEunZ8nwh2wSSps9G a
@@ -677,4 +683,5 @@ epd:id_2016-S-111-196790_WinnerModification_ch8kRf2Nuq4cmhQ9TuWGKo a epo:Winner;
   epo:playedBy epd:id_2016-S-111-196790_ContractorOrganisationModification_ch8kRf2Nuq4cmhQ9TuWGKo .
 
 epd:id_2016-S-111-196790_Winner_3VEXzij5C6MPdt27cZ58mW a epo:Winner;
+  epo:contextualisedBy epd:id_2016-S-111-196790_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
   epo:playedBy epd:id_2016-S-111-196790_ContractorOrganisation_3VEXzij5C6MPdt27cZ58mW .

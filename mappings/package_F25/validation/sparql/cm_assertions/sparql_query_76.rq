@@ -1,10 +1,12 @@
-#title: V.2.2.5 - Number of tenders received by electronic means
-#description: “V.2.2.5 - Number of tenders received by electronic means” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F25_2014/AWARD_CONTRACT/AWARDED_CONTRACT/TENDERS/NB_TENDERS_RECEIVED_EMEANS, /TED_EXPORT/FORM_SECTION/F25_2014/AWARD_CONTRACT/AWARDED_CONTRACT/NB_TENDERS_RECEIVED_EMEANS. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / xsd:integer .
-#xpath: /TED_EXPORT/FORM_SECTION/F25_2014/AWARD_CONTRACT/AWARDED_CONTRACT/TENDERS/NB_TENDERS_RECEIVED_EMEANS,/TED_EXPORT/FORM_SECTION/F25_2014/AWARD_CONTRACT/AWARDED_CONTRACT/NB_TENDERS_RECEIVED_EMEANS
+#title: V.2.3.4 - Town
+#description: “V.2.3.4 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F25_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/TOWN ;; /TED_EXPORT/FORM_SECTION/F25_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR/ADDRESS_CONTRACTOR/TOWN. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F25_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/TOWN ;; /TED_EXPORT/FORM_SECTION/F25_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR/ADDRESS_CONTRACTOR/TOWN
 
+PREFIX cv: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:SubmissionStatisticalInformation .
-		?this epo:hasElectronicTenders ?value . }
+		?this rdf:type epo:Winner .
+		?this epo:playedBy / cv:registeredAddress / locn:postName ?value . }

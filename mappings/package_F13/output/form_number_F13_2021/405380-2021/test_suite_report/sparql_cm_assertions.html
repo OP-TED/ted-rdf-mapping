@@ -1,12 +1,26 @@
 
 
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTML report for SPARQL Validation</title>
+    <title>
+
+
+    
+
+
+
+
+
+    
+    
+
+
+F13/405380-2021 SPARQL Validation Report</title>
     <link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <style type="text/css">
@@ -14,6 +28,9 @@
             font-family: Arial, sans-serif;
                 margin: 25px auto;
                 width: 80%;
+        }
+        a[data-search-by-status] {
+            text-decoration: none;
         }
         table th, table td {
             vertical-align: top;
@@ -29,6 +46,9 @@
         }
         .warning {
           color: #8a6d3b;
+        }
+        .unknown {
+            color: #000;
         }
         .danger, .invalid, .error {
           color: #a94442;
@@ -82,81 +102,106 @@
             padding: 10px;
         }
 
+        hr {
+            margin: 12px 0;
+            height: 5PX;
+            background: #ccc;
+            border: 0;
+        }
+
     </style>
   </head>
   <body>
-	<h1>SPARQL Validation HTML report </h1>
+	<h1>SPARQL Validation Report</h1>
 	<hr>
     <h2>Report details: </h2>
     <ul>
-        <li>Date created: 2023-03-01T10:46:17.257622</li>
+        <li>Date created: 2023-06-13T12:54:11.896356</li>
         <li>SPARQL test suite identifier: cm_assertions</li>
-        <li>Mapping suite identifier: package_F13_v6.7.3</li>
-        
-        <li><div><hr></div>Notice identifier(s):
-            <div data-role="collapsible" data-state=""
-                class="collapsible-wrapper">
-                <h4><a href="#"></a></h4>
-                <div class="ui-collapsible-content">
-                
-                    405380-2021
-                
-                </div>
-            </div>
-        </li>
-        
+        <li>Mapping suite identifier: package_F13_v6.8.1</li>
     </ul>
+    
+    <hr>
+    <ul>
+        <li>
+            
+            
+                <b>Notice identifier: 405380-2021</b>
+            
+        </li>
+    </ul>
+    
     <hr>
     <h2>Results summary</h2>
-        <table class="display" data-order='[[0, "asc"]]'>
-            <thead class="center aligned">
-            <tr>
-                <th>Result</th>
-                <th>Count</th>
-                <th>Ratio (%)</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                
-                
-                <td class="strong valid">valid</td>
-                <td>66</td>
-                <td>58.41%</td>
-            </tr>
-            <tr>
-                
-                
-                <td class="strong unverifiable">unverifiable</td>
-                <td>28</td>
-                <td>24.78%</td>
-            </tr>
-            <tr>
-                
-                
-                <td class="strong warning">warning</td>
-                <td>18</td>
-                <td>15.93%</td>
-            </tr>
-            <tr>
-                
-                
-                <td class="strong invalid">invalid</td>
-                <td>1</td>
-                <td>0.88%</td>
-            </tr>
-            <tr>
-                
-                
-                <td class="strong error">error</td>
-                <td>0</td>
-                <td>0.0%</td>
-            </tr>
-            </tbody>
-        </table>
+    <table class="display summary" data-order='[[0, "asc"]]'>
+        <thead class="center aligned">
+        <tr>
+            <th>Result</th>
+            <th>Count</th>
+            <th>Ratio (%)</th>
+        </tr>
+        </thead>
+        <tbody>
+        
+        <tr>
+            
+            <td>
+                <a href="#" data-search-by-status="valid" class="strong valid">valid</a>
+            </td>
+            <td>67</td>
+            <td>58.77%</td>
+        </tr>
+        
+        <tr>
+            
+            <td>
+                <a href="#" data-search-by-status="unverifiable" class="strong unverifiable">unverifiable</a>
+            </td>
+            <td>30</td>
+            <td>26.32%</td>
+        </tr>
+        
+        <tr>
+            
+            <td>
+                <a href="#" data-search-by-status="warning" class="strong warning">warning</a>
+            </td>
+            <td>17</td>
+            <td>14.91%</td>
+        </tr>
+        
+        <tr>
+            
+            <td>
+                <a href="#" data-search-by-status="invalid" class="strong invalid">invalid</a>
+            </td>
+            <td>0</td>
+            <td>0.0%</td>
+        </tr>
+        
+        <tr>
+            
+            <td>
+                <a href="#" data-search-by-status="error" class="strong error">error</a>
+            </td>
+            <td>0</td>
+            <td>0.0%</td>
+        </tr>
+        
+        <tr>
+            
+            <td>
+                <a href="#" data-search-by-status="unknown" class="strong unknown">unknown</a>
+            </td>
+            <td>0</td>
+            <td>0.0%</td>
+        </tr>
+        
+        </tbody>
+    </table>
     <hr>
     <h2>Results</h2>
-    <table class="display" data-order='[[0, "asc"]]'>
+    <table class="display results" data-order='[[0, "asc"]]'>
      <thead class="center aligned">
         <tr>
             <th>Form Field</th>
@@ -177,15 +222,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:OrganisationGroup .<br>		?this epo:hasMember ?value }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.0 - Contracting authority/entity">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -204,6 +248,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -220,15 +265,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Notice .<br>		?this epo:announcesRole ?value }</td>
-                <td class="strong warning">warning</td>
+                <td class="strong warning" data-search="warning">warning</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1 - Name and addresses">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -249,6 +293,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -263,15 +308,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Notice .<br>		?this epo:announcesRole ?value }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1 - Name and addresses">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -280,6 +324,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -297,15 +342,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:playedBy / epo:hasLegalName ?value . }</td>
-                <td class="strong warning">warning</td>
+                <td class="strong warning" data-search="warning">warning</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.1 - Official name">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -326,6 +370,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -340,15 +385,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:playedBy / epo:hasLegalName ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.1 - Official name">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -357,6 +401,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -374,15 +419,14 @@
                     </div>
                 </td>
                 <td>PREFIX cpov: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:hasContactPointInRole  / cpov:email ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.10 - E-mail">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -391,6 +435,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -408,15 +453,14 @@
                     </div>
                 </td>
                 <td>PREFIX cpov: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:hasContactPointInRole  / cpov:email ?value . }</td>
-                <td class="strong warning">warning</td>
+                <td class="strong warning" data-search="warning">warning</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.10 - E-mail">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -437,6 +481,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -451,15 +496,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:hasContactPointInRole  / epo:hasFax ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.11 - Fax">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -468,6 +512,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -485,15 +530,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:hasContactPointInRole  / epo:hasFax ?value . }</td>
-                <td class="strong warning">warning</td>
+                <td class="strong warning" data-search="warning">warning</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.11 - Fax">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -514,6 +558,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -528,15 +573,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:hasContactPointInRole / epo:hasInternetAddress ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.12.1 - Main address">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -545,6 +589,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -562,15 +607,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:hasContactPointInRole / epo:hasInternetAddress ?value . }</td>
-                <td class="strong warning">warning</td>
+                <td class="strong warning" data-search="warning">warning</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.12.1 - Main address">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -591,6 +635,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -605,15 +650,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:hasBuyerProfile ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.12.2 - Address of the buyer profile">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -622,6 +666,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -639,15 +684,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:hasBuyerProfile ?value . }</td>
-                <td class="strong warning">warning</td>
+                <td class="strong warning" data-search="warning">warning</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.12.2 - Address of the buyer profile">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -668,6 +712,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -682,15 +727,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:playedBy / epo:hasID / epo:hasIdentifierValue ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.2 - National registration number">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -699,6 +743,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -716,15 +761,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:playedBy / epo:hasID / epo:hasIdentifierValue ?value . }</td>
-                <td class="strong warning">warning</td>
+                <td class="strong warning" data-search="warning">warning</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.2 - National registration number">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -745,6 +789,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -759,15 +804,14 @@
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX locn: &lt;http://www.w3.org/ns/locn#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:playedBy / cv:registeredAddress / locn:thoroughfare ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.3 - Postal address">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -776,6 +820,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -793,15 +838,14 @@
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX locn: &lt;http://www.w3.org/ns/locn#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:playedBy / cv:registeredAddress / locn:thoroughfare ?value . }</td>
-                <td class="strong warning">warning</td>
+                <td class="strong warning" data-search="warning">warning</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.3 - Postal address">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -820,6 +864,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -836,15 +881,14 @@
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX locn: &lt;http://www.w3.org/ns/locn#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:playedBy / cv:registeredAddress / locn:postName ?value . }</td>
-                <td class="strong warning">warning</td>
+                <td class="strong warning" data-search="warning">warning</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.4 - Town">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -865,6 +909,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -879,15 +924,14 @@
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX locn: &lt;http://www.w3.org/ns/locn#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:playedBy / cv:registeredAddress / locn:postName ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.4 - Town">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -896,6 +940,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -913,17 +958,26 @@
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:playedBy / cv:registeredAddress / epo:hasNutsCode ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong warning" data-search="warning">warning</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.5 - NUTS code">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
+                        <ol>
+                        
+                            <li>/TED_EXPORT/FORM_SECTION/F13_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/NUTS/@CODE</li>
+                        
+                        </ol>
+                        </li>
+                    
+                    
+                        <li>
+                        <h4 class="danger">Missing fields:</h4>
                         <ol>
                         
                             <li>/TED_EXPORT/FORM_SECTION/F13_2014/CONTRACTING_BODY/ADDRESS_CONTRACTING_BODY/NUTS/@CODE</li>
@@ -947,15 +1001,14 @@
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:playedBy / cv:registeredAddress / epo:hasNutsCode ?value . }</td>
-                <td class="strong warning">warning</td>
+                <td class="strong warning" data-search="warning">warning</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.5 - NUTS code">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -974,6 +1027,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -990,15 +1044,14 @@
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX locn: &lt;http://www.w3.org/ns/locn#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:playedBy / cv:registeredAddress / locn:postCode ?value . }</td>
-                <td class="strong warning">warning</td>
+                <td class="strong warning" data-search="warning">warning</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.6 - Postal code">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -1019,6 +1072,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -1033,15 +1087,14 @@
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX locn: &lt;http://www.w3.org/ns/locn#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:playedBy / cv:registeredAddress / locn:postCode ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.6 - Postal code">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -1050,6 +1103,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -1067,15 +1121,14 @@
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:playedBy / cv:registeredAddress / epo:hasCountryCode ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.7 - Country">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -1084,6 +1137,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -1101,15 +1155,14 @@
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:playedBy / cv:registeredAddress / epo:hasCountryCode ?value . }</td>
-                <td class="strong warning">warning</td>
+                <td class="strong warning" data-search="warning">warning</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.7 - Country">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -1128,6 +1181,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -1144,15 +1198,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:hasContactPointInRole / epo:hasContactName ?value . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.8 - Contact person">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -1171,6 +1224,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -1187,15 +1241,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:hasContactPointInRole / epo:hasContactName ?value . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.8 - Contact person">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -1216,6 +1269,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -1230,15 +1284,14 @@
                     </div>
                 </td>
                 <td>PREFIX cpov: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:hasContactPointInRole  / cpov:telephone ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.9 - Telephone">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -1247,6 +1300,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -1264,15 +1318,14 @@
                     </div>
                 </td>
                 <td>PREFIX cpov: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Buyer .<br>		?this epo:hasContactPointInRole  / cpov:telephone ?value . }</td>
-                <td class="strong warning">warning</td>
+                <td class="strong warning" data-search="warning">warning</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.1.9 - Telephone">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -1291,6 +1344,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -1307,15 +1361,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Notice .<br>		?this epo:refersToProcedure / epo:isJointProcurement true . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.2.1 - The contest involves joint procurement">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -1334,6 +1387,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -1350,15 +1404,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Notice .<br>		?this epo:refersToProcedure / epo:isSubjectToProcedureSpecificTerm / epo:hasCrossBorderLaw ?value . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.2.1.1 - In the case of joint procurement involving different countries, state applicable national procurement law">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -1377,6 +1430,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -1393,15 +1447,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Notice .<br>		?this epo:refersToProcedure / epo:isSubjectToProcedureSpecificTerm / epo:isAwardedByCPB true . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.2.2 - The contest is organised by a central purchasing body">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -1422,6 +1475,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -1436,15 +1490,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX org: &lt;http://www.w3.org/ns/org#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type org:Organization .<br>		?this epo:hasBuyerLegalType ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.4 - Type of the contracting authority (in the case of a notice published by a contracting authority)">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -1453,6 +1506,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -1470,15 +1524,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX org: &lt;http://www.w3.org/ns/org#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type org:Organization .<br>		?this epo:hasBuyerLegalTypeDescription ?value . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.4.1 - Type of the contracting authority (in the case of a notice published by a contracting authority)">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -1499,6 +1552,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -1513,15 +1567,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX org: &lt;http://www.w3.org/ns/org#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type org:Organization .<br>		?this epo:hasMainActivity ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.5 - Main activity (in the case of a notice published by a contracting authority)">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -1530,6 +1583,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -1547,15 +1601,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX org: &lt;http://www.w3.org/ns/org#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type org:Organization .<br>		?this epo:hasMainActivityDescription ?value . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.5.1 - Main activity (in the case of a notice published by a contracting authority)">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -1574,6 +1627,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -1590,15 +1644,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX org: &lt;http://www.w3.org/ns/org#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type org:Organization .<br>		?this epo:hasMainActivity ?value . }</td>
-                <td class="strong warning">warning</td>
+                <td class="strong warning" data-search="warning">warning</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.6 - Main activity (in the case of a notice published by a contracting entity)">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -1617,6 +1670,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -1633,15 +1687,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX org: &lt;http://www.w3.org/ns/org#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type org:Organization .<br>		?this epo:hasMainActivityDescription ?value . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="I.6.1 - Main activity (in the case of a notice published by a contracting entity)">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -1662,6 +1715,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -1676,15 +1730,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Procedure .<br>		?this epo:hasTitle ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="II.1.1 - Title">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -1693,6 +1746,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -1710,15 +1764,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Procedure .<br>		?this epo:hasID / epo:hasIdentifierValue ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="II.1.1.1 - Reference number">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -1727,6 +1780,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -1744,15 +1798,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Procedure .<br>		?this epo:hasPurpose / epo:hasMainClassification ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="II.1.2 - Main CPV code">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -1762,82 +1815,6 @@
                         </ol>
                         </li>
                     
-                    
-                    
-                    </ul>
-                    </div>
-                </td>
-            </tr>
-        
-            <tr>
-                <td>II.1.2.1 - Supplementary CPV code</td>
-                <td>
-                    <button class="open-dialog">Description</button>
-                    <div class="dialog" title="II.1.2.1 - Supplementary CPV code">
-                        “II.1.2.1 - Supplementary CPV code” in SF corresponds to “BT-263 Additional Classification Codes” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/OBJECT_CONTRACT/CPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE. The expected ontology instances are epo: epo:Procedure / epo:Purpose / at-voc:cpvsuppl (from cpvsuppl.json) .
-                    </div>
-                </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Procedure .<br>		?this epo:hasPurpose / epo:hasMainClassification ?value . }</td>
-                <td class="strong warning">warning</td>
-                <td>
-                    <button class="open-dialog">Details</button>
-                    <div class="dialog" title="II.1.2.1 - Supplementary CPV code">
-                    <ul>
-                    <li>Query result: True</li>
-                    
-                    <li>Fields are covered: False</li>
-                    
-                        <li>
-                        <h4 class="info">Fields:</h4>
-                        <ol>
-                        
-                            <li>/TED_EXPORT/FORM_SECTION/F13_2014/OBJECT_CONTRACT/CPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE</li>
-                        
-                        </ol>
-                        </li>
-                    
-                    
-                        <li>
-                        <h4 class="danger">Missing fields:</h4>
-                        <ol>
-                        
-                            <li>/TED_EXPORT/FORM_SECTION/F13_2014/OBJECT_CONTRACT/CPV_MAIN/CPV_SUPPLEMENTARY_CODE/@CODE</li>
-                        
-                        </ol>
-                        </li>
-                    
-                    
-                    </ul>
-                    </div>
-                </td>
-            </tr>
-        
-            <tr>
-                <td>II.2 - Description</td>
-                <td>
-                    <button class="open-dialog">Description</button>
-                    <div class="dialog" title="II.2 - Description">
-                        “II.2 - Description” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/OBJECT_CONTRACT. The expected ontology instances are epo: epo:Procedure / epo:Lot .
-                    </div>
-                </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Procedure .<br>		?this epo:hasProcurementScopeDividedIntoLot ?value }</td>
-                <td class="strong valid">valid</td>
-                <td>
-                    <button class="open-dialog">Details</button>
-                    <div class="dialog" title="II.2 - Description">
-                    <ul>
-                    <li>Query result: True</li>
-                    
-                    <li>Fields are covered: True</li>
-                    
-                        <li>
-                        <h4 class="info">Fields:</h4>
-                        <ol>
-                        
-                            <li>/TED_EXPORT/FORM_SECTION/F13_2014/OBJECT_CONTRACT</li>
-                        
-                        </ol>
-                        </li>
                     
                     
                     
@@ -1855,15 +1832,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Notice .<br>		?this epo:refersToLot ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="II.2 - Description">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -1872,6 +1848,41 @@
                         
                         </ol>
                         </li>
+                    
+                    
+                    
+                    
+                    </ul>
+                    </div>
+                </td>
+            </tr>
+        
+            <tr>
+                <td>II.2 - Description</td>
+                <td>
+                    <button class="open-dialog">Description</button>
+                    <div class="dialog" title="II.2 - Description">
+                        “II.2 - Description” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/OBJECT_CONTRACT. The expected ontology instances are epo: epo:Procedure / epo:Lot .
+                    </div>
+                </td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Procedure .<br>		?this epo:hasProcurementScopeDividedIntoLot ?value }</td>
+                <td class="strong valid" data-search="valid">valid</td>
+                <td>
+                    <button class="open-dialog">Details</button>
+                    <div class="dialog" title="II.2 - Description">
+                    <ul>
+                    <li>Query result: True</li>
+                    
+                        <li>Fields are covered: True</li>
+                        <li>
+                        <h4 class="info">Fields:</h4>
+                        <ol>
+                        
+                            <li>/TED_EXPORT/FORM_SECTION/F13_2014/OBJECT_CONTRACT</li>
+                        
+                        </ol>
+                        </li>
+                    
                     
                     
                     
@@ -1889,15 +1900,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Lot .<br>		?this epo:isUsingEUFunds true . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="II.2.13.1 - The procurement is related to a project and/or programme financed by European Union funds">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -1918,6 +1928,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -1932,15 +1943,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Lot .<br>		?this epo:isUsingEUFunds false . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="II.2.13.1 - The procurement is related to a project and/or programme financed by European Union funds">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -1949,6 +1959,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -1966,15 +1977,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Lot .<br>		?this epo:isFundedBy / epo:hasDescription ?value . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="II.2.13.2 - Identification of the project">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -1993,6 +2003,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -2009,15 +2020,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Lot .<br>		?this epo:hasPurpose / epo:hasAdditionalClassification ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="II.2.2.1 - Main CPV code">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -2028,48 +2038,6 @@
                         </li>
                     
                     
-                    
-                    </ul>
-                    </div>
-                </td>
-            </tr>
-        
-            <tr>
-                <td>II.2.2.2 - Supplementary CPV code</td>
-                <td>
-                    <button class="open-dialog">Description</button>
-                    <div class="dialog" title="II.2.2.2 - Supplementary CPV code">
-                        “II.2.2.2 - Supplementary CPV code” in SF corresponds to “BT-263 Additional Classification Codes” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/OBJECT_CONTRACT/OBJECT_DESCR/CPV_ADDITIONAL/CPV_SUPPLEMENTARY_CODE/@CODE. The expected ontology instances are epo: epo:Lot / epo:Purpose / at-voc:cpvsuppl (from cpvsuppl.json) .
-                    </div>
-                </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Lot .<br>		?this epo:hasPurpose / epo:hasAdditionalClassification ?value . }</td>
-                <td class="strong warning">warning</td>
-                <td>
-                    <button class="open-dialog">Details</button>
-                    <div class="dialog" title="II.2.2.2 - Supplementary CPV code">
-                    <ul>
-                    <li>Query result: True</li>
-                    
-                    <li>Fields are covered: False</li>
-                    
-                        <li>
-                        <h4 class="info">Fields:</h4>
-                        <ol>
-                        
-                            <li>/TED_EXPORT/FORM_SECTION/F13_2014/OBJECT_CONTRACT/OBJECT_DESCR/CPV_ADDITIONAL/CPV_SUPPLEMENTARY_CODE/@CODE</li>
-                        
-                        </ol>
-                        </li>
-                    
-                    
-                        <li>
-                        <h4 class="danger">Missing fields:</h4>
-                        <ol>
-                        
-                            <li>/TED_EXPORT/FORM_SECTION/F13_2014/OBJECT_CONTRACT/OBJECT_DESCR/CPV_ADDITIONAL/CPV_SUPPLEMENTARY_CODE/@CODE</li>
-                        
-                        </ol>
-                        </li>
                     
                     
                     </ul>
@@ -2086,15 +2054,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Lot .<br>		?this epo:hasDescription ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="II.2.4 - Description of the procurement">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -2104,39 +2071,6 @@
                         </ol>
                         </li>
                     
-                    
-                    
-                    </ul>
-                    </div>
-                </td>
-            </tr>
-        
-            <tr>
-                <td>IV.1.0 - Description</td>
-                <td>
-                    <button class="open-dialog">Description</button>
-                    <div class="dialog" title="IV.1.0 - Description">
-                        “IV.1.0 - Description” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/PROCEDURE. The expected ontology instances are epo: epo:Procedure / xsd:boolean .
-                    </div>
-                </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Procedure .<br>		?this epo:foreseesContractSpecificTerm / epo:hasOptions false . }</td>
-                <td class="strong invalid">invalid</td>
-                <td>
-                    <button class="open-dialog">Details</button>
-                    <div class="dialog" title="IV.1.0 - Description">
-                    <ul>
-                    <li>Query result: False</li>
-                    
-                    <li>Fields are covered: True</li>
-                    
-                        <li>
-                        <h4 class="info">Fields:</h4>
-                        <ol>
-                        
-                            <li>/TED_EXPORT/FORM_SECTION/F13_2014/PROCEDURE</li>
-                        
-                        </ol>
-                        </li>
                     
                     
                     
@@ -2154,15 +2088,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Procedure .<br>		?this epo:hasProcedureType &lt;http://publications.europa.eu/resource/authority/procurement-procedure-type/open&gt; . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="IV.1.2.1 - Open">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -2171,6 +2104,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -2188,15 +2122,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Procedure .<br>		?this epo:hasProcedureType &lt;http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted&gt; . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="IV.1.2.2 - Restricted">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -2215,6 +2148,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -2231,15 +2165,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Notice .<br>		?this epo:refersToPrevious / epo:hasID / epo:hasIdentifierValue ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="IV.2.1 - Previous publication concerning this procedure">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -2251,6 +2184,7 @@
                     
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -2261,19 +2195,18 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="MetaData">
-                        “MetaData” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/LEGAL_BASIS/@VALUE. The expected ontology instances are epo: epo:Procedure / at-voc:legal-basis .
+                        “MetaData” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/LEGAL_BASIS/@VALUE. The expected ontology instances are epo: epo:Notice / at-voc:legal-basis .
                     </div>
                 </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Procedure .<br>		?this epo:hasLegalBasis ?value }</td>
-                <td class="strong valid">valid</td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Notice .<br>		?this epo:hasLegalBasis ?value }</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="MetaData">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -2285,6 +2218,7 @@
                     
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -2295,24 +2229,125 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="MetaData">
-                        “MetaData” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014//TED_EXPORT/CODED_DATA_SECTION/REF_OJS/DATE_PUB. The expected ontology instances are epo: epo:Notice / xsd:string .
+                        “MetaData” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/CODED_DATA_SECTION/REF_OJS/DATE_PUB. The expected ontology instances are epo: epo:Notice / xsd:string .
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Notice .<br>		?this epo:hasPublicationDate ?value }</td>
-                <td class="strong warning">warning</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="MetaData">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
                         
-                            <li>/TED_EXPORT/FORM_SECTION/F13_2014//TED_EXPORT/CODED_DATA_SECTION/REF_OJS/DATE_PUB</li>
+                            <li>/TED_EXPORT/CODED_DATA_SECTION/REF_OJS/DATE_PUB</li>
+                        
+                        </ol>
+                        </li>
+                    
+                    
+                    
+                    
+                    </ul>
+                    </div>
+                </td>
+            </tr>
+        
+            <tr>
+                <td>Section V - Results of contest</td>
+                <td>
+                    <button class="open-dialog">Description</button>
+                    <div class="dialog" title="Section V - Results of contest">
+                        “Section V - Results of contest” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS. The expected ontology instances are epo: epo:LotAwardOutcome / epo:Lot .
+                    </div>
+                </td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:LotAwardOutcome .<br>		?this epo:describesLot ?value }</td>
+                <td class="strong valid" data-search="valid">valid</td>
+                <td>
+                    <button class="open-dialog">Details</button>
+                    <div class="dialog" title="Section V - Results of contest">
+                    <ul>
+                    <li>Query result: True</li>
+                    
+                        <li>Fields are covered: True</li>
+                        <li>
+                        <h4 class="info">Fields:</h4>
+                        <ol>
+                        
+                            <li>/TED_EXPORT/FORM_SECTION/F13_2014/RESULTS</li>
+                        
+                        </ol>
+                        </li>
+                    
+                    
+                    
+                    
+                    </ul>
+                    </div>
+                </td>
+            </tr>
+        
+            <tr>
+                <td>V.0.4 - The contest was terminated without an award or attribution of prizes</td>
+                <td>
+                    <button class="open-dialog">Description</button>
+                    <div class="dialog" title="V.0.4 - The contest was terminated without an award or attribution of prizes">
+                        “V.0.4 - The contest was terminated without an award or attribution of prizes” in SF corresponds to “BT-142 Winner Chosen” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE. The expected ontology instances are epo: epo:LotAwardOutcome / at-voc:winner-selection-status .
+                    </div>
+                </td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:LotAwardOutcome .<br>		?this epo:hasAwardStatus &lt;http://publications.europa.eu/resource/authority/winner-selection-status/selec-w&gt; . }</td>
+                <td class="strong valid" data-search="valid">valid</td>
+                <td>
+                    <button class="open-dialog">Details</button>
+                    <div class="dialog" title="V.0.4 - The contest was terminated without an award or attribution of prizes">
+                    <ul>
+                    <li>Query result: True</li>
+                    
+                        <li>Fields are covered: True</li>
+                        <li>
+                        <h4 class="info">Fields:</h4>
+                        <ol>
+                        
+                            <li>/TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE</li>
+                        
+                        </ol>
+                        </li>
+                    
+                    
+                    
+                    
+                    </ul>
+                    </div>
+                </td>
+            </tr>
+        
+            <tr>
+                <td>V.0.4 - The contest was terminated without an award or attribution of prizes</td>
+                <td>
+                    <button class="open-dialog">Description</button>
+                    <div class="dialog" title="V.0.4 - The contest was terminated without an award or attribution of prizes">
+                        “V.0.4 - The contest was terminated without an award or attribution of prizes” in SF corresponds to “BT-142 Winner Chosen” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/NO_AWARDED_PRIZE. The expected ontology instances are epo: epo:ProcurementProcessInformation / xsd:boolean .
+                    </div>
+                </td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:ProcurementProcessInformation .<br>		?this epo:isCompetitionTerminated ?value . }</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
+                <td>
+                    <button class="open-dialog">Details</button>
+                    <div class="dialog" title="V.0.4 - The contest was terminated without an award or attribution of prizes">
+                    <ul>
+                    <li>Query result: False</li>
+                    
+                        <li>Fields are covered: False</li>
+                        <li>
+                        <h4 class="info">Fields:</h4>
+                        <ol>
+                        
+                            <li>/TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/NO_AWARDED_PRIZE</li>
                         
                         </ol>
                         </li>
@@ -2322,10 +2357,54 @@
                         <h4 class="danger">Missing fields:</h4>
                         <ol>
                         
-                            <li>/TED_EXPORT/FORM_SECTION/F13_2014//TED_EXPORT/CODED_DATA_SECTION/REF_OJS/DATE_PUB</li>
+                            <li>/TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/NO_AWARDED_PRIZE</li>
                         
                         </ol>
                         </li>
+                    
+                    
+                    
+                    </ul>
+                    </div>
+                </td>
+            </tr>
+        
+            <tr>
+                <td>V.0.4 - The contest was terminated without an award or attribution of prizes</td>
+                <td>
+                    <button class="open-dialog">Description</button>
+                    <div class="dialog" title="V.0.4 - The contest was terminated without an award or attribution of prizes">
+                        “V.0.4 - The contest was terminated without an award or attribution of prizes” in SF corresponds to “BT-142 Winner Chosen” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/NO_AWARDED_PRIZE. The expected ontology instances are epo: epo:LotAwardOutcome / at-voc:winner-selection-status .
+                    </div>
+                </td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:LotAwardOutcome .<br>		?this epo:hasAwardStatus &lt;http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw&gt; . }</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
+                <td>
+                    <button class="open-dialog">Details</button>
+                    <div class="dialog" title="V.0.4 - The contest was terminated without an award or attribution of prizes">
+                    <ul>
+                    <li>Query result: False</li>
+                    
+                        <li>Fields are covered: False</li>
+                        <li>
+                        <h4 class="info">Fields:</h4>
+                        <ol>
+                        
+                            <li>/TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/NO_AWARDED_PRIZE</li>
+                        
+                        </ol>
+                        </li>
+                    
+                    
+                        <li>
+                        <h4 class="danger">Missing fields:</h4>
+                        <ol>
+                        
+                            <li>/TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/NO_AWARDED_PRIZE</li>
+                        
+                        </ol>
+                        </li>
+                    
                     
                     
                     </ul>
@@ -2342,15 +2421,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:LotAwardOutcome .<br>		?this epo:hasNonAwardJustification &lt;http://publications.europa.eu/resource/authority/non-award-justification/none-rej&gt; . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="V.1.1.1 - No plans or projects were received or all were rejected">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -2369,6 +2447,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -2385,15 +2464,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:LotAwardOutcome .<br>		?this epo:hasNonAwardJustification &lt;http://publications.europa.eu/resource/authority/non-award-justification/other&gt; . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="V.1.1.2 - Other reasons (discontinuation of procedure)">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -2409,39 +2487,6 @@
                         <ol>
                         
                             <li>/TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/NO_AWARDED_PRIZE/PROCUREMENT_DISCONTINUED</li>
-                        
-                        </ol>
-                        </li>
-                    
-                    
-                    </ul>
-                    </div>
-                </td>
-            </tr>
-        
-            <tr>
-                <td>V.3.0.1 - Award and prizes</td>
-                <td>
-                    <button class="open-dialog">Description</button>
-                    <div class="dialog" title="V.3.0.1 - Award and prizes">
-                        “V.3.0.1 - Award and prizes” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE. The expected ontology instances are epo: epo:LotAwardOutcome / epo:TenderAwardOutcome / epo:Tender .
-                    </div>
-                </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:LotAwardOutcome .<br>		?this epo:comprisesTenderAwardOutcome / epo:describesTender ?value }</td>
-                <td class="strong valid">valid</td>
-                <td>
-                    <button class="open-dialog">Details</button>
-                    <div class="dialog" title="V.3.0.1 - Award and prizes">
-                    <ul>
-                    <li>Query result: True</li>
-                    
-                    <li>Fields are covered: True</li>
-                    
-                        <li>
-                        <h4 class="info">Fields:</h4>
-                        <ol>
-                        
-                            <li>/TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE</li>
                         
                         </ol>
                         </li>
@@ -2462,15 +2507,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:LotAwardOutcome .<br>		?this epo:comprisesTenderAwardOutcome / epo:indicatesAwardOfLotToWinner ?value }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="V.3.0.1 - Award and prizes">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -2479,6 +2523,41 @@
                         
                         </ol>
                         </li>
+                    
+                    
+                    
+                    
+                    </ul>
+                    </div>
+                </td>
+            </tr>
+        
+            <tr>
+                <td>V.3.0.1 - Award and prizes</td>
+                <td>
+                    <button class="open-dialog">Description</button>
+                    <div class="dialog" title="V.3.0.1 - Award and prizes">
+                        “V.3.0.1 - Award and prizes” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE. The expected ontology instances are epo: epo:LotAwardOutcome / epo:TenderAwardOutcome / epo:Tender .
+                    </div>
+                </td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:LotAwardOutcome .<br>		?this epo:comprisesTenderAwardOutcome / epo:describesTender ?value }</td>
+                <td class="strong valid" data-search="valid">valid</td>
+                <td>
+                    <button class="open-dialog">Details</button>
+                    <div class="dialog" title="V.3.0.1 - Award and prizes">
+                    <ul>
+                    <li>Query result: True</li>
+                    
+                        <li>Fields are covered: True</li>
+                        <li>
+                        <h4 class="info">Fields:</h4>
+                        <ol>
+                        
+                            <li>/TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE</li>
+                        
+                        </ol>
+                        </li>
+                    
                     
                     
                     
@@ -2496,15 +2575,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:LotAwardOutcome .<br>		?this epo:hasAwardDecisionDate ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="V.3.1 - Date of the jury decision">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -2513,6 +2591,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -2530,15 +2609,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:SubmissionStatisticalInformation .<br>		?this epo:summarisesInformationForLotAwardOutcome ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="V.3.2 - Information about participants">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -2547,6 +2625,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -2560,19 +2639,18 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="V.3.2.1 - Number of participants to be contemplated">
-                        “V.3.2.1 - Number of participants to be contemplated” in SF corresponds to “BT-759 Received Submissions Count” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/PARTICIPANTS/NB_PARTICIPANTS, /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/NB_PARTICIPANTS. The expected ontology instances are epo:  epo:SubmissionStatisticalInformation / xsd:integer .
+                        “V.3.2.1 - Number of participants to be contemplated” in SF corresponds to “BT-759 Received Submissions Count” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/PARTICIPANTS/NB_PARTICIPANTS ;; /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/NB_PARTICIPANTS. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / xsd:integer .
                     </div>
                 </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type  epo:SubmissionStatisticalInformation .<br>		?this epo:hasReceivedTenders ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:SubmissionStatisticalInformation .<br>		?this epo:hasReceivedTenders ?value . }</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="V.3.2.1 - Number of participants to be contemplated">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -2595,6 +2673,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -2605,19 +2684,18 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="V.3.2.2 - Number of participating SMEs">
-                        “V.3.2.2 - Number of participating SMEs” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/PARTICIPANTS/NB_PARTICIPANTS_SME, /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/NB_PARTICIPANTS_SME. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / xsd:integer .
+                        “V.3.2.2 - Number of participating SMEs” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/PARTICIPANTS/NB_PARTICIPANTS_SME ;; /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/NB_PARTICIPANTS_SME. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / xsd:integer .
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:SubmissionStatisticalInformation .<br>		?this epo:hasReceivedSMETenders ?value . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="V.3.2.2 - Number of participating SMEs">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -2640,6 +2718,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -2652,26 +2731,25 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="V.3.2.3 - Number of participants from other countries">
-                        “V.3.2.3 - Number of participants from other countries” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/PARTICIPANTS/NB_PARTICIPANTS_OTHER_EU, /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE//NB_PARTICIPANTS_OTHER_EU. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / xsd:integer .
+                        “V.3.2.3 - Number of participants from other countries” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/PARTICIPANTS/NB_PARTICIPANTS_OTHER_EU ;; /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/NB_PARTICIPANTS_OTHER_EU. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / xsd:integer .
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:SubmissionStatisticalInformation .<br>		  { ?this epo:hasEUReceivedTenders  ?value .  }<br>UNION<br> { ?this epo:hasReceivedNonEUTenders ?value . } }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="V.3.2.3 - Number of participants from other countries">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
                         
                             <li>/TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/PARTICIPANTS/NB_PARTICIPANTS_OTHER_EU</li>
                         
-                            <li>/TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE//NB_PARTICIPANTS_OTHER_EU</li>
+                            <li>/TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/NB_PARTICIPANTS_OTHER_EU</li>
                         
                         </ol>
                         </li>
@@ -2681,12 +2759,13 @@
                         <h4 class="danger">Missing fields:</h4>
                         <ol>
                         
-                            <li>/TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/PARTICIPANTS/NB_PARTICIPANTS_OTHER_EU</li>
+                            <li>/TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/NB_PARTICIPANTS_OTHER_EU</li>
                         
-                            <li>/TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE//NB_PARTICIPANTS_OTHER_EU</li>
+                            <li>/TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/PARTICIPANTS/NB_PARTICIPANTS_OTHER_EU</li>
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -2699,19 +2778,18 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="V.3.3.1 - Official name">
-                        “V.3.3.1 - Official name” in SF corresponds to “BT-500 Organisation Name” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/OFFICIALNAME, /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/OFFICIALNAME. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / rdf:langString .
+                        “V.3.3.1 - Official name” in SF corresponds to “BT-500 Organisation Name” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/OFFICIALNAME ;; /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/OFFICIALNAME. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / rdf:langString .
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Winner .<br>		?this epo:playedBy / epo:hasLegalName ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="V.3.3.1 - Official name">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -2734,6 +2812,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -2744,19 +2823,18 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="V.3.3.10 - Internet Addresses (URL)">
-                        “V.3.3.10 - Internet Addresses (URL)” in SF corresponds to “BT-505 Organisation Internet Address” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/URL, /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/URL. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / xsd:anyURI .
+                        “V.3.3.10 - Internet Addresses (URL)” in SF corresponds to “BT-505 Organisation Internet Address” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/URL ;; /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/URL. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / xsd:anyURI .
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Winner .<br>		?this epo:playedBy / epo:hasPrimaryContactPoint / epo:hasInternetAddress ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="V.3.3.10 - Internet Addresses (URL)">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -2779,6 +2857,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -2789,19 +2868,18 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="V.3.3.11 - Fax">
-                        “V.3.3.11 - Fax” in SF corresponds to “BT-739 Organisation Contact Fax” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/FAX, /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/FAX. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / rdf:langString .
+                        “V.3.3.11 - Fax” in SF corresponds to “BT-739 Organisation Contact Fax” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/FAX ;; /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/FAX. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / rdf:langString .
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Winner .<br>		?this epo:playedBy / epo:hasPrimaryContactPoint / epo:hasFax ?value . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="V.3.3.11 - Fax">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -2826,6 +2904,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -2836,19 +2915,18 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="V.3.3.12 - The winner is an SME">
-                        “V.3.3.12 - The winner is an SME” in SF corresponds to “BT-165 Winner Size” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/SME, /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/SME. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2)  / at-voc:economic-operator-size .
+                        “V.3.3.12 - The winner is an SME” in SF corresponds to “BT-165 Winner Size” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/SME ;; /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/SME. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2)  / at-voc:economic-operator-size .
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Winner .<br>		?this epo:playedBy / epo:hasBusinessSize &lt;http://publications.europa.eu/resource/authority/economic-operator-size/sme&gt; }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="V.3.3.12 - The winner is an SME">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -2871,6 +2949,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -2881,19 +2960,18 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="V.3.3.12 - The winner is an SME">
-                        “V.3.3.12 - The winner is an SME” in SF corresponds to “BT-165 Winner Size” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/SME, /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/SME. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2)  / at-voc:economic-operator-size .
+                        “V.3.3.12 - The winner is an SME” in SF corresponds to “BT-165 Winner Size” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/SME ;; /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/SME. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) .
                     </div>
                 </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Winner .<br>		?this epo:playedBy / epo:hasBusinessSize &lt;http://publications.europa.eu/resource/authority/economic-operator-size/sme&gt; }</td>
-                <td class="strong valid">valid</td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Winner .<br>		?this epo:playedBy / a epo:Business . }</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="V.3.3.12 - The winner is an SME">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -2914,6 +2992,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -2926,19 +3005,18 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="V.3.3.2 - National registration number">
-                        “V.3.3.2 - National registration number” in SF corresponds to “BT-501 Organisation Identifier” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/NATIONALID, /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/NATIONALID. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / epo:Identifier / rdf:langString .
+                        “V.3.3.2 - National registration number” in SF corresponds to “BT-501 Organisation Identifier” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/NATIONALID ;; /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/NATIONALID. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / epo:Identifier / rdf:langString .
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Winner .<br>		?this epo:playedBy / epo:hasID / epo:hasIdentifierValue ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="V.3.3.2 - National registration number">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -2961,6 +3039,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -2971,19 +3050,18 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="V.3.3.3 - Postal address">
-                        “V.3.3.3 - Postal address” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/ADDRESS, /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/ADDRESS. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .
+                        “V.3.3.3 - Postal address” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/ADDRESS ;; /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/ADDRESS. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX locn: &lt;http://www.w3.org/ns/locn#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Winner .<br>		?this epo:playedBy / cv:registeredAddress / locn:thoroughfare ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="V.3.3.3 - Postal address">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3006,6 +3084,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -3016,19 +3095,18 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="V.3.3.4 - Town">
-                        “V.3.3.4 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/TOWN, /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/TOWN. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .
+                        “V.3.3.4 - Town” in SF corresponds to “BT-513 Organisation City” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/TOWN ;; /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/TOWN. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX locn: &lt;http://www.w3.org/ns/locn#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Winner .<br>		?this epo:playedBy / cv:registeredAddress / locn:postName ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="V.3.3.4 - Town">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3051,6 +3129,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -3061,19 +3140,18 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="V.3.3.5 - NUTS code">
-                        “V.3.3.5 - NUTS code” in SF corresponds to “BT-507 Organisation Country Subdivision” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/NUTS/@CODE, /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/NUTS/@CODE. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / at-voc:nuts (from nuts.json) .
+                        “V.3.3.5 - NUTS code” in SF corresponds to “BT-507 Organisation Country Subdivision” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/NUTS/@CODE ;; /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/NUTS/@CODE. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / at-voc:nuts (from nuts.json) .
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Winner .<br>		?this epo:playedBy / cv:registeredAddress / epo:hasNutsCode ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong warning" data-search="warning">warning</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="V.3.3.5 - NUTS code">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3092,8 +3170,11 @@
                         
                             <li>/TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/NUTS/@CODE</li>
                         
+                            <li>/TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/NUTS/@CODE</li>
+                        
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -3106,19 +3187,18 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="V.3.3.6 - Postal code">
-                        “V.3.3.6 - Postal code” in SF corresponds to “BT-512 Organisation Post Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/POSTAL_CODE, /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/POSTAL_CODE. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / rdf:langString .
+                        “V.3.3.6 - Postal code” in SF corresponds to “BT-512 Organisation Post Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/POSTAL_CODE ;; /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/POSTAL_CODE. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / rdf:langString .
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX locn: &lt;http://www.w3.org/ns/locn#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Winner .<br>		?this epo:playedBy / cv:registeredAddress / locn:postCode ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="V.3.3.6 - Postal code">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3141,6 +3221,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -3151,19 +3232,18 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="V.3.3.7 - Country">
-                        “V.3.3.7 - Country” in SF corresponds to “BT-514 Organisation Country Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/COUNTRY, /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/COUNTRY. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / at-voc:country (from country.json) .
+                        “V.3.3.7 - Country” in SF corresponds to “BT-514 Organisation Country Code” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/COUNTRY ;; /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/COUNTRY. The expected ontology instances are epo: epo:AgentInRole (from CL1)  / org:Organization (from CL2) / locn:Address / at-voc:country (from country.json) .
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Winner .<br>		?this epo:playedBy / cv:registeredAddress / epo:hasCountryCode ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="V.3.3.7 - Country">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3186,6 +3266,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -3196,19 +3277,18 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="V.3.3.8 - E-mail">
-                        “V.3.3.8 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/E_MAIL, /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/E_MAIL. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / xsd:anyURI .
+                        “V.3.3.8 - E-mail” in SF corresponds to “BT-506 Organisation Contact Email Address” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/E_MAIL ;; /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/E_MAIL. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / xsd:anyURI .
                     </div>
                 </td>
                 <td>PREFIX cpov: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Winner .<br>		?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:email ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="V.3.3.8 - E-mail">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3231,6 +3311,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -3241,19 +3322,18 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="V.3.3.9 - Telephone">
-                        “V.3.3.9 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/PHONE, /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/PHONE. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / rdf:langString .
+                        “V.3.3.9 - Telephone” in SF corresponds to “BT-503 Organisation Contact Telephone Number” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNERS/WINNER/ADDRESS_WINNER/PHONE ;; /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/WINNER/ADDRESS_WINNER/PHONE. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / cpov:ContactPoint / rdf:langString .
                     </div>
                 </td>
                 <td>PREFIX cpov: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Winner .<br>		?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:telephone ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="V.3.3.9 - Telephone">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3276,6 +3356,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -3286,19 +3367,18 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="V.3.4.1 - Value of the prize(s) awarded excluding VAT">
-                        “V.3.4.1 - Value of the prize(s) awarded excluding VAT” in SF corresponds to “BT-644 Prize Value” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/VAL_PRIZE. The expected ontology instances are epo: epo:Lot / epo:DesignContestRegimeTerm / epo:Prize  / epo:MonetaryValue / xsd:decimal .
+                        “V.3.4.1 - Value of the prize(s) awarded excluding VAT” in SF corresponds to “BT-644 Prize Value” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/VAL_PRIZE. The expected ontology instances are epo: epo:LotAwardOutcome / epo:MonetaryValue / xsd:decimal .
                     </div>
                 </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Lot .<br>		?this epo:isSubjectToLotSpecificTerm / epo:definesPrize / epo:hasPrizeValue / epo:hasAmountValue ?value . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:LotAwardOutcome .<br>		?this epo:hasAwardedValue / epo:hasAmountValue ?value . }</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="V.3.4.1 - Value of the prize(s) awarded excluding VAT">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3317,6 +3397,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -3329,19 +3410,18 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="V.3.4.1.1 - Currency">
-                        “V.3.4.1.1 - Currency” in SF corresponds to “no direct match nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/VAL_PRIZE/@CURRENCY. The expected ontology instances are epo: epo:Lot / epo:DesignContestRegimeTerm / epo:Prize / epo:MonetaryValue / at-voc:currency (from currency.json) .
+                        “V.3.4.1.1 - Currency” in SF corresponds to “no direct match nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/RESULTS/AWARDED_PRIZE/VAL_PRIZE/@CURRENCY. The expected ontology instances are epo: epo:LotAwardOutcome / epo:MonetaryValue / at-voc:currency (from currency.json) .
                     </div>
                 </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Lot .<br>		?this epo:isSubjectToLotSpecificTerm / epo:definesPrize / epo:hasPrizeValue / epo:hasCurrency ?value . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:LotAwardOutcome .<br>		?this epo:hasAwardedValue / epo:hasCurrency ?value . }</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="V.3.4.1.1 - Currency">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3360,6 +3440,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -3376,15 +3457,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Procedure .<br>		?this epo:hasAdditionalInformation ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.3 - Additional information">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3393,6 +3473,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -3410,15 +3491,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Notice .<br>		?this epo:announcesRole ?value }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.1 - Review body">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3427,6 +3507,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -3444,15 +3525,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Reviewer .<br>		?this epo:playedBy / epo:hasLegalName ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.1.1 - Official name">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3461,6 +3541,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -3478,15 +3559,14 @@
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX locn: &lt;http://www.w3.org/ns/locn#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Reviewer .<br>		?this epo:playedBy / cv:registeredAddress / locn:thoroughfare ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.1.2 - Postal address">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3495,6 +3575,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -3512,15 +3593,14 @@
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX locn: &lt;http://www.w3.org/ns/locn#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Reviewer .<br>		?this epo:playedBy / cv:registeredAddress / locn:postName ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.1.3 - Town">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3529,6 +3609,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -3546,15 +3627,14 @@
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX locn: &lt;http://www.w3.org/ns/locn#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Reviewer .<br>		?this epo:playedBy / cv:registeredAddress / locn:postCode ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.1.4 - Postal code">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3563,6 +3643,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -3580,15 +3661,14 @@
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Reviewer .<br>		?this epo:playedBy / cv:registeredAddress / epo:hasCountryCode ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.1.5 - Country">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3597,6 +3677,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -3614,15 +3695,14 @@
                     </div>
                 </td>
                 <td>PREFIX cpov: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Reviewer .<br>		?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:email ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.1.6 - E-mail">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3631,6 +3711,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -3648,15 +3729,14 @@
                     </div>
                 </td>
                 <td>PREFIX cpov: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Reviewer .<br>		?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:telephone ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.1.7 - Telephone">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3665,6 +3745,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -3682,15 +3763,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Reviewer .<br>		?this epo:playedBy / epo:hasPrimaryContactPoint / epo:hasInternetAddress ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.1.8 - Internet Addresses (URL)">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3699,6 +3779,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -3716,15 +3797,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Reviewer .<br>		?this epo:playedBy / epo:hasPrimaryContactPoint / epo:hasFax ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.1.9 - Fax">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3733,6 +3813,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -3750,15 +3831,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Notice .<br>		?this epo:announcesRole ?value }</td>
-                <td class="strong warning">warning</td>
+                <td class="strong warning" data-search="warning">warning</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.2 - Body responsible for mediation procedures">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3777,6 +3857,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -3793,15 +3874,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Mediator .<br>		?this epo:playedBy / epo:hasLegalName ?value . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.2.1 - Official name">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3820,6 +3900,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -3836,15 +3917,14 @@
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX locn: &lt;http://www.w3.org/ns/locn#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Mediator .<br>		?this epo:playedBy / cv:registeredAddress / locn:thoroughfare ?value . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.2.2 - Postal address">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3863,6 +3943,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -3879,15 +3960,14 @@
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX locn: &lt;http://www.w3.org/ns/locn#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Mediator .<br>		?this epo:playedBy / cv:registeredAddress / locn:postName ?value . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.2.3 - Town">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3906,6 +3986,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -3922,15 +4003,14 @@
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX locn: &lt;http://www.w3.org/ns/locn#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Mediator .<br>		?this epo:playedBy / cv:registeredAddress / locn:postCode ?value . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.2.4 - Postal code">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3949,6 +4029,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -3965,15 +4046,14 @@
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Mediator .<br>		?this epo:playedBy / cv:registeredAddress / epo:hasCountryCode ?value . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.2.5 - Country">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -3992,6 +4072,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -4008,15 +4089,14 @@
                     </div>
                 </td>
                 <td>PREFIX cpov: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Mediator .<br>		?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:email ?value . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.2.6 - E-mail">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -4035,6 +4115,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -4051,15 +4132,14 @@
                     </div>
                 </td>
                 <td>PREFIX cpov: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Mediator .<br>		?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:telephone ?value . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.2.7 - Telephone">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -4078,6 +4158,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -4094,15 +4175,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Mediator .<br>		?this epo:playedBy / epo:hasPrimaryContactPoint / epo:hasInternetAddress ?value . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.2.8 - Internet Addresses (URL)">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -4121,6 +4201,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     </ul>
@@ -4137,15 +4218,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Mediator .<br>		?this epo:playedBy / epo:hasPrimaryContactPoint / epo:hasFax ?value . }</td>
-                <td class="strong unverifiable">unverifiable</td>
+                <td class="strong unverifiable" data-search="unverifiable">unverifiable</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.2.9 - Fax">
                     <ul>
                     <li>Query result: False</li>
                     
-                    <li>Fields are covered: False</li>
-                    
+                        <li>Fields are covered: False</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -4166,6 +4246,7 @@
                         </li>
                     
                     
+                    
                     </ul>
                     </div>
                 </td>
@@ -4176,19 +4257,18 @@
                 <td>
                     <button class="open-dialog">Description</button>
                     <div class="dialog" title="VI.4.3 - Review procedure">
-                        “VI.4.3 - Review procedure” in SF corresponds to “BT-99 Review Deadline Description” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/COMPLEMENTARY_INFO/REVIEW_PROCEDURE. The expected ontology instances are epo: epo:Lot / epo:ReviewTerm / rdf:langString .
+                        “VI.4.3 - Review procedure” in SF corresponds to “BT-99 Review Deadline Description” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F13_2014/COMPLEMENTARY_INFO/REVIEW_PROCEDURE. The expected ontology instances are epo: epo:Procedure / epo:ReviewTerm / rdf:langString .
                     </div>
                 </td>
-                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Lot .<br>		?this epo:isSubjectToLotSpecificTerm / epo:hasReviewDeadlineInformation ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Procedure .<br>		?this epo:isSubjectToProcedureSpecificTerm / epo:hasReviewDeadlineInformation ?value . }</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.3 - Review procedure">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -4197,6 +4277,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -4214,15 +4295,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Notice .<br>		?this epo:announcesRole ?value }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.4 - Service from which information about the review procedure may be obtained">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -4231,6 +4311,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -4248,15 +4329,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:ReviewProcedureInformationProvider .<br>		?this epo:playedBy / epo:hasLegalName ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.4.1 - Official name">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -4265,6 +4345,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -4282,15 +4363,14 @@
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX locn: &lt;http://www.w3.org/ns/locn#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:ReviewProcedureInformationProvider .<br>		?this epo:playedBy / cv:registeredAddress / locn:thoroughfare ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.4.2 - Postal address">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -4299,6 +4379,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -4316,15 +4397,14 @@
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX locn: &lt;http://www.w3.org/ns/locn#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:ReviewProcedureInformationProvider .<br>		?this epo:playedBy / cv:registeredAddress / locn:postName ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.4.3 - Town">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -4333,6 +4413,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -4350,15 +4431,14 @@
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX locn: &lt;http://www.w3.org/ns/locn#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:ReviewProcedureInformationProvider .<br>		?this epo:playedBy / cv:registeredAddress / locn:postCode ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.4.4 - Postal code">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -4367,6 +4447,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -4384,15 +4465,14 @@
                     </div>
                 </td>
                 <td>PREFIX cv: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:ReviewProcedureInformationProvider .<br>		?this epo:playedBy / cv:registeredAddress / epo:hasCountryCode ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.4.5 - Country">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -4401,6 +4481,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -4418,15 +4499,14 @@
                     </div>
                 </td>
                 <td>PREFIX cpov: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:ReviewProcedureInformationProvider .<br>		?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:email ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.4.6 - E-mail">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -4435,6 +4515,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -4452,15 +4533,14 @@
                     </div>
                 </td>
                 <td>PREFIX cpov: &lt;http://data.europa.eu/m8g/&gt;<br>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:ReviewProcedureInformationProvider .<br>		?this epo:playedBy / epo:hasPrimaryContactPoint / cpov:telephone ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.4.7 - Telephone">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -4469,6 +4549,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -4486,15 +4567,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:ReviewProcedureInformationProvider .<br>		?this epo:playedBy / epo:hasPrimaryContactPoint / epo:hasInternetAddress ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.4.8 - Internet Addresses (URL)">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -4503,6 +4583,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -4520,15 +4601,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:ReviewProcedureInformationProvider .<br>		?this epo:playedBy / epo:hasPrimaryContactPoint / epo:hasFax ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.4.4.9 - Fax">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -4537,6 +4617,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -4554,15 +4635,14 @@
                     </div>
                 </td>
                 <td>PREFIX epo: &lt;http://data.europa.eu/a4g/ontology#&gt;<br>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br><br>ASK WHERE { <br>		?this rdf:type epo:Notice .<br>		?this epo:hasDispatchDate ?value . }</td>
-                <td class="strong valid">valid</td>
+                <td class="strong valid" data-search="valid">valid</td>
                 <td>
                     <button class="open-dialog">Details</button>
                     <div class="dialog" title="VI.5 - Date of dispatch of this notice (dd/mm/yyyy)">
                     <ul>
                     <li>Query result: True</li>
                     
-                    <li>Fields are covered: True</li>
-                    
+                        <li>Fields are covered: True</li>
                         <li>
                         <h4 class="info">Fields:</h4>
                         <ol>
@@ -4571,6 +4651,7 @@
                         
                         </ol>
                         </li>
+                    
                     
                     
                     
@@ -4583,7 +4664,7 @@
     </table>
     <hr>
     <h2>Query results summary</h2>
-    <table class="display" data-order='[[0, "asc"]]'>
+    <table class="display summary" data-order='[[0, "asc"]]'>
         <thead class="center aligned">
         <tr>
             <th>Query result</th>
@@ -4597,14 +4678,14 @@
             
             <td class="strong">True</td>
             <td>84</td>
-            <td>74.34%</td>
+            <td>73.68%</td>
         </tr>
         <tr>
             
             
             <td class="strong">False</td>
-            <td>29</td>
-            <td>25.66%</td>
+            <td>30</td>
+            <td>26.32%</td>
         </tr>
         <tr>
             
@@ -4615,6 +4696,7 @@
         </tr>
         </tbody>
     </table>
+    <hr>
   </body>
 </html>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -4631,7 +4713,10 @@
             $c.attr("data-state", $c.attr("data-state") == "collapsed" ? "expanded" : "collapsed");
             return false;
         });
-        $("table.display").DataTable({
+        $("table.display.summary").DataTable({
+            dom: 'r'
+        });
+        const data_table = $("table.display.results").DataTable({
             dom: 'B<"clear">lfiprtip',
             buttons: [],
             "lengthMenu": [[5, 15, 30, -1], [5, 15, 30, "All"]],
@@ -4639,6 +4724,10 @@
             responsive: {
                 details: true
             }
+        });
+        $("a[data-search-by-status]").click(function() {
+            data_table.search($(this).data("search-by-status")).draw();
+            return false;
         });
 
         $(document).on('click', '.open-dialog', function () {

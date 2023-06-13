@@ -1,10 +1,10 @@
-#title: V.2.2.3 - Number of tenders received from tenderers from other EU Member States
-#description: “V.2.2.3 - Number of tenders received from tenderers from other EU Member States” in SF corresponds to “nan nan” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F23_2014/AWARD_CONTRACT/AWARDED_CONTRACT/TENDERS/NB_TENDERS_RECEIVED_OTHER_EU, /TED_EXPORT/FORM_SECTION/F23_2014/AWARD_CONTRACT/AWARDED_CONTRACT/NB_TENDERS_RECEIVED_OTHER_EU. The expected ontology instances are epo: epo:SubmissionStatisticalInformation / xsd:integer .
-#xpath: /TED_EXPORT/FORM_SECTION/F23_2014/AWARD_CONTRACT/AWARDED_CONTRACT/TENDERS/NB_TENDERS_RECEIVED_OTHER_EU,/TED_EXPORT/FORM_SECTION/F23_2014/AWARD_CONTRACT/AWARDED_CONTRACT/NB_TENDERS_RECEIVED_OTHER_EU
+#title: V.2.3.2 - National registration number
+#description: “V.2.3.2 - National registration number” in SF corresponds to “BT-501 Organisation Identifier” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F23_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/NATIONALID ;; /TED_EXPORT/FORM_SECTION/F23_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR/ADDRESS_CONTRACTOR/NATIONALID. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / epo:Identifier / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F23_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTORS/CONTRACTOR/ADDRESS_CONTRACTOR/NATIONALID ;; /TED_EXPORT/FORM_SECTION/F23_2014/AWARD_CONTRACT/AWARDED_CONTRACT/CONTRACTOR/ADDRESS_CONTRACTOR/NATIONALID
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
-		?this rdf:type epo:SubmissionStatisticalInformation .
-		?this epo:hasEUReceivedTenders  ?value . }
+		?this rdf:type epo:Winner .
+		?this epo:playedBy / epo:hasID / epo:hasIdentifierValue ?value . }

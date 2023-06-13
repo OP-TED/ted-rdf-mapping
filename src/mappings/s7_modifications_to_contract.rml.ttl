@@ -25,7 +25,7 @@ tedm:modifications_to_contract
 tedm:ProcedureModification a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:containsModificationsOn;
+            rr:predicate epo:containsModificationsOf;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:Procedure;
@@ -150,7 +150,7 @@ tedm:WinnerModification a rr:TriplesMap ;
 tedm:LotModification a rr:TriplesMap ;
     rr:predicateObjectMap
         [
-            rr:predicate epo:containsModificationsOn;
+            rr:predicate epo:containsModificationsOf;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:Lot;
@@ -176,7 +176,7 @@ tedm:LotModification a rr:TriplesMap ;
             rr:predicate epo:isSubjectToLotSpecificTerm ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:FrameworkAgreementTermLot
+                    rr:parentTriplesMap tedm:FrameworkAgreementTermLotModification
                 ] ;
         ] ;
 #    rr:predicateObjectMap
@@ -411,8 +411,8 @@ tedm:PeriodModification a rr:TriplesMap ;
             rr:predicate epo:hasBeginning ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(DATE_START)) then DATE_START || 'T00:00:00' else null";
-                    rr:datatype xsd:dateTime
+                    rml:reference "if(exists(DATE_START)) then DATE_START else null";
+                    rr:datatype xsd:date
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -420,8 +420,8 @@ tedm:PeriodModification a rr:TriplesMap ;
             rr:predicate epo:hasEnd ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(DATE_END)) then DATE_END || 'T00:00:00' else null";
-                    rr:datatype xsd:dateTime
+                    rml:reference "if(exists(DATE_END)) then DATE_END else null";
+                    rr:datatype xsd:date
                 ] ;
         ] .
 
@@ -496,7 +496,7 @@ tedm:ElementModificationDescription a rr:TriplesMap ;
                 ] ;
         ] .
 
-tedm:FrameworkAgreementTermLot a rr:TriplesMap ;
+tedm:FrameworkAgreementTermLotModification a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rr:predicate epo:hasDurationExtensionJustification ;
