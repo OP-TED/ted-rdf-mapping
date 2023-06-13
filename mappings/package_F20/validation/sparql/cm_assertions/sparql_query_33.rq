@@ -1,10 +1,10 @@
-#title: II.2.7.3 - End
-#description: “II.2.7.3 - End” in SF corresponds to “BT-537 Duration End Date” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F20_2014/OBJECT_CONTRACT/OBJECT_DESCR/DATE_END. The expected ontology instances are epo: epo:Lot / epo:ContractTerm / epo:Period / xsd:dateTime .
-#xpath: /TED_EXPORT/FORM_SECTION/F20_2014/OBJECT_CONTRACT/OBJECT_DESCR/DATE_END
+#title: II.2.7.4 - In the case of framework agreements, provide justification for any duration exceeding 8 years
+#description: “II.2.7.4 - In the case of framework agreements, provide justification for any duration exceeding 8 years” in SF corresponds to “BT-109 Framework Duration Justification” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F20_2014/OBJECT_CONTRACT/OBJECT_DESCR/JUSTIFICATION. The expected ontology instances are epo: epo:Lot / epo:FrameworkAgreementTerm / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F20_2014/OBJECT_CONTRACT/OBJECT_DESCR/JUSTIFICATION
 
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Lot .
-		?this epo:foreseesContractSpecificTerm / epo:definesContractPeriod / epo:hasEnd ?value . }
+		?this  epo:isSubjectToLotSpecificTerm / epo:hasDurationExtensionJustification ?value }
