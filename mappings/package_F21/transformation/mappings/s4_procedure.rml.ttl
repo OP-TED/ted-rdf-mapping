@@ -231,10 +231,10 @@ tedm:SubmissionTerm a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "if(../NOTICE/@TYPE='PRI_CALL_COMPETITION' or ../NOTICE/@TYPE='PER_CALL_COMPETITION') then (if(exists(DATE_RECEIPT_TENDERS) and exists(TIME_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T' || TIME_RECEIPT_TENDERS else if(exists(DATE_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS else null) else null";
-                    rr:datatype xsd:string
+#                    rr:datatype xsd:string
 #                    # below is the original, smarter, mapping to ensure conversion to a proper xsd:dateTime value:
 #                    rml:reference "if(../NOTICE/@TYPE='PRI_CALL_COMPETITION' or ../NOTICE/@TYPE='PER_CALL_COMPETITION') then (if(exists(DATE_RECEIPT_TENDERS) and exists(TIME_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T' || TIME_RECEIPT_TENDERS || ':00' else if(exists(DATE_RECEIPT_TENDERS)) then DATE_RECEIPT_TENDERS || 'T00:00:00' else null) else null";
-#                    rr:datatype xsd:dateTime
+                    rr:datatype xsd:dateTime
                 ] ;
         ] ;
     rr:predicateObjectMap
