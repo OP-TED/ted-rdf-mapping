@@ -1,0 +1,16 @@
+#title: TED-1302 GH issue 256
+#description: A ask query that checks if cv:Channel is connected to org:Organisation
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX cccev: <http://data.europa.eu/m8g/>
+
+ASK {
+   SELECT (COUNT(?s) AS ?count) WHERE {
+      ?s rdf:type cccev:Channel .
+      FILTER NOT EXISTS { ?s ?property org:Organization }
+   }
+   HAVING (?count > 1)
+}

@@ -1,0 +1,14 @@
+#title: TED-1302 GH issue 320
+#description: A select query that checks if epo:announcesNoticeAwardInformation is be used only for ResultNotices
+
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+
+
+SELECT * WHERE {
+   ?s epo:announcesNoticeAwardInformation ?t .
+   ?s rdf:type ?type
+   FILTER (?type != epo:ResultNotice && ?type != epo:Notice)
+}

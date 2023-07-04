@@ -1,0 +1,26 @@
+#title: TED-1302/ Git Issue 357
+#description: Ask query that checks if number of tenders reflects the number of Winners
+
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+ASK {
+   SELECT ?countTender ?countWinner WHERE {
+      {
+         SELECT (COUNT(?s) AS ?countTender) WHERE {
+            ?s rdf:type epo:Tender .
+
+         }
+      }
+      {
+         SELECT (COUNT(?t) AS ?countWinner) WHERE {
+            ?t rdf:type epo:Winner .
+
+         }
+      }
+
+      FILTER (?countWinner >= ?countTender)
+   }
+}

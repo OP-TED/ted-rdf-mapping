@@ -1,0 +1,28 @@
+#title: TED-1302 GH issue 366
+#description: Ask query that checks if there is a connection between Procedure and ProcurementScopeDividedIntoLots, then should also be between ContractModificationNotice and AgentInRole
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+ASK {
+   SELECT (COUNT(?t) AS ?count) (count(?type) AS ?countCompare) WHERE {
+      filter exists{ ?s epo:hasProcurementScopeDividedIntoLot ?lot . }
+      ?t rdf:type epo:ContractModificationNotice .
+      optional {
+         ?t ?property ?value .
+         ?value rdf:type ?type
+         VALUES ?type {
+            epo:Buyer epo:OfflineAccessProvider epo:ProcurementProcedureInformationProvider
+            epo:ReviewProcedureInformationProvider epo:Reviewer epo:Mediator epo:ParticipationRequestReceiver
+            epo:ParticipationRequestProcessor epo:PaymentExecutor epo:BudgetProvider epo:TenderReceiver
+            epo:TenderProcessor epo:AcquiringParty epo:Awarder epo:CatalogueReceiver epo:ProcurementServiceProvider
+            epo:LeadBuyer epo:CentralPurchasingBody epo:AwardingCentralPurchasingBody epo:AcquiringCentralPurchasingBody
+            epo:AuxiliaryParty epo:EmploymentInformationProvider epo:TaxInformationProvider
+            epo:EnvironmentalProtectionInformationProvider epo:OfferingParty epo:OtherEntity epo:ReviewRequester
+            epo:CatalogueProvider epo:Tenderer epo:Winner epo:Contractor epo:Subcontractor epo:AgentInRole
+         }
+      }
+   }
+   HAVING(?count > ?countCompare)
+}

@@ -1,0 +1,13 @@
+#title: TED-929/TED-1132 GH issue 292
+#description: Ask query that checks cardinality of locn:address
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+
+ASK {
+   SELECT (COUNT(?address) AS ?count) WHERE {
+      ?s locn:address ?address
+   }
+   GROUP BY ?s HAVING(?count > 1)
+}

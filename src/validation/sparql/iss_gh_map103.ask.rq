@@ -1,0 +1,14 @@
+#title: TED-1302 GH issue 103
+#description: A ask query that checks for datatype epo:hasPublicationDate being xsd:string
+
+PREFIX epd: <http://data.europa.eu/a4g/resource/>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+ASK {
+   SELECT ?t WHERE {
+      ?s epo:hasPublicationDate ?t .
+      FILTER ((datatype(?t)) != xsd:string)
+   }
+}

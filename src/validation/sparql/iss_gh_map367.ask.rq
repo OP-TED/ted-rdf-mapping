@@ -1,0 +1,19 @@
+#title: TED-1302 GH issue 367
+#description: Ask query that check if the values of epo:hasBeginning adn epo:hasEnd contain time
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+ASK {
+   SELECT ?s ?t ?v WHERE {
+      optional {
+         ?s epo:hasBeginning ?t .
+         filter contains(str(?t), "T")
+      }
+      optional {
+         ?s epo:hasEnd ?v .
+         filter contains(str(?v), "T")
+      }
+   }
+}

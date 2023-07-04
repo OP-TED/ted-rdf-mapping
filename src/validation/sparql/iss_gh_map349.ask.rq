@@ -1,0 +1,15 @@
+#title: TED-1302/ Git Issue 349
+#description: Ask query that checks if the epo:hasLegalBasis property is still attached epo:Procedure
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+
+ASK {
+   SELECT (COUNT(?s) as ?count) WHERE {
+      ?s epo:hasLegalBasis ?t .
+      ?s rdf:type ?type
+      FILTER CONTAINS(STR(?type), "Procedure")
+   }
+   HAVING (?count > 0)
+}

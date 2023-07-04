@@ -1,0 +1,13 @@
+#title: TED-1302 GH issue 305
+#description: Ask query that checks for datatype epo:hasReceiptDeadline being xsd:string
+
+PREFIX epd: <http://data.europa.eu/a4g/resource/>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+ASK {
+   SELECT ?t WHERE {
+      ?s epo:hasReceiptDeadline ?t .
+      FILTER ((datatype(?t)) != xsd:string)
+   }
+}

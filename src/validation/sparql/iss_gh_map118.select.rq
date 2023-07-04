@@ -1,0 +1,12 @@
+#title: TED-1302 GH issue 118
+#description: Select query that Check for existance of NoticeIdentifier
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT (COUNT(?t) AS ?notice) (COUNT(?r) AS ?identifier) WHERE {
+   VALUES ?s { epo:ResultNotice epo:Notice epo:PlanningNotice epo:CompetitionNotice}
+   ?t rdf:type ?s .
+   ?t epo:hasID/epo:hasIdentifierValue ?r .
+}
+HAVING (?notice = ?identifier)

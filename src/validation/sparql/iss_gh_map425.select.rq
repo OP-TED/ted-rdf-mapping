@@ -1,0 +1,15 @@
+#title: TED-1302/ Git Issue 425
+#description: Select query that checks that there are no "empty" individuals, i.e. individuals that do not have any property values attached other than their type
+
+PREFIX epd: <http://data.europa.eu/a4g/resource/>
+
+SELECT ?this WHERE {
+   {
+      SELECT ?this (COUNT(?someValue) AS ?vCount) WHERE {
+         ?this ?property ?someValue .
+         FILTER strstarts(str(?this),str(epd:)) .
+      }
+      GROUP BY ?this
+   }
+   FILTER ((EXISTS { ?this a ?class }) && ?vCount > 1)
+}

@@ -1,0 +1,17 @@
+#title: TED-1302 GH issue 303
+#description: Ask query that check if tedm:ContractTermLot is connected to epo:Lot
+
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+ASK {
+   SELECT (COUNT(?s) AS ?count) WHERE {
+      ?s rdf:type epo:ContractTerm .
+      FILTER CONTAINS(STR(?s), "ContractTermLot")
+      FILTER NOT EXISTS { ?s ?t epo:Lot }
+   }
+   HAVING (?count > 1)
+}

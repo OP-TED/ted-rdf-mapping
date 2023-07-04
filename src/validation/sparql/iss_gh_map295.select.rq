@@ -1,0 +1,13 @@
+#title: TED-1302 GH issue 295
+#description: Select query that checks if epo:Contract is connected with epo:LotAwardOutcome through epo:includesLotAwardOutcome
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+
+
+SELECT (count(?property) as ?count) WHERE {
+   ?s rdf:type epo:Contract .
+   ?s ?property ?r .
+   ?r rdf:type epo:LotAwardOutcome
+   filter (?property != epo:includesLotAwardOutcome)
+}

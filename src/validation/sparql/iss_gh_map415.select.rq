@@ -1,0 +1,11 @@
+#title: TED-1302/ Git Issue 415
+#description: Select query that checks for non existance of the property epo:refersToLot relationship linking a Lot instance to the Notice instance
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+SELECT (COUNT(?s) AS ?count) WHERE {
+   ?s epo:refersToLot ?t .
+}
+HAVING (?count > 0)

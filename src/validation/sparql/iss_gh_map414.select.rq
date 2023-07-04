@@ -1,0 +1,12 @@
+#title: TED-1302/ Git Issue 414
+#description: Select query that checks if the property epo:announcesTender relationship linking a Tender instance to the Notice instance.
+
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+SELECT (COUNT(?s) AS ?count) WHERE {
+   ?s epo:announcesTender ?t .
+}
+HAVING (?count > 0)

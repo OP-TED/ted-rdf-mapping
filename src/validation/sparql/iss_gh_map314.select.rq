@@ -1,0 +1,13 @@
+#title: TED-1302 GH issue 314
+#description: Select query that checks the cardinality of the epo:definesContractPeriod
+
+#SELECT
+PREFIX epd: <http://data.europa.eu/a4g/resource/>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+
+
+SELECT ?s (COUNT(DISTINCT ?s) AS ?count) WHERE {
+   ?s epo:definesContractPeriod ?t .
+}
+GROUP BY ?s
+

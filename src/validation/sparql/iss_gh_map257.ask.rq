@@ -1,0 +1,16 @@
+#title: TED-1302 GH issue 257
+#description: A ask query that checks if epo:AccessTerm is connected with epo:Procedure with epo:isSubjectToProcedureSpecificTerm
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+ASK {
+   SELECT * WHERE {
+      ?s rdf:type epo:AccessTerm .
+      ?t rdf:type epo:Procedure .
+      ?t ?property ?s
+      FILTER (?property != epo:isSubjectToProcedureSpecificTerm)
+   }
+}

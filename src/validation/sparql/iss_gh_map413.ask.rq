@@ -1,0 +1,13 @@
+#title: TED-1302/ Git Issue 413
+#description: Ask query that checks for non existance of epo:announcesContract
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+ASK {
+   SELECT (COUNT(?s) AS ?count) WHERE {
+      ?s epo:announcesContract ?t .
+   }
+   HAVING (?count > 0)
+}

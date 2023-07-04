@@ -1,0 +1,14 @@
+#title: TED-1302/ Git Issue 313
+#description: Select query that checks when exist organization group and an organization the values of the properties epo:hasMainActivityDescription should only be attached to the organization group
+
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+SELECT (COUNT(?organizationGroup) AS ?count) WHERE {
+   ?organizationGroup rdf:type epo:OrganisationGroup .
+   ?organizationGroup epo:hasMember ?organization .
+   ?organizationGroup epo:hasMainActivityDescription ?type .
+   ?organization epo:hasMainActivityDescription ?typeOther
+}
