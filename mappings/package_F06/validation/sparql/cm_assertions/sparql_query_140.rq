@@ -1,12 +1,10 @@
-#title: VI.4.1.2 - Postal address
-#description: “VI.4.1.2 - Postal address” in SF corresponds to “BT-510 Organisation Street” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY/ADDRESS. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) /  locn:Address / rdf:langString .
-#xpath: /TED_EXPORT/FORM_SECTION/F06_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY/ADDRESS
+#title: VI.4.1.1 - Official name
+#description: “VI.4.1.1 - Official name” in SF corresponds to “BT-500 Organisation Name” in eForms. The corresponding XML element is /TED_EXPORT/FORM_SECTION/F06_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY/OFFICIALNAME. The expected ontology instances are epo: epo:AgentInRole (from CL1) / org:Organization (from CL2) / rdf:langString .
+#xpath: /TED_EXPORT/FORM_SECTION/F06_2014/COMPLEMENTARY_INFO/ADDRESS_REVIEW_BODY/OFFICIALNAME
 
-PREFIX cv: <http://data.europa.eu/m8g/>
 PREFIX epo: <http://data.europa.eu/a4g/ontology#>
-PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ASK WHERE { 
 		?this rdf:type epo:Reviewer .
-		?this epo:playedBy / cv:registeredAddress / locn:thoroughfare ?value . }
+		?this epo:playedBy / epo:hasLegalName ?value . }
